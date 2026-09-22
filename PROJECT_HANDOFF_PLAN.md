@@ -156,8 +156,18 @@
   - Added encounters `ACT6_CH1_BORDER_BATTLE` and `ACT6_CH3_BUS_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
   - All unit tests passing in `CommanderAmericaGameTest.kt` (25/25 tests). Installed and verified on physical device.
 
+* [x] **Phase 9 (Act VII): The Lawfare Labyrinth & Steel Resolve — 5 Full Chapters**
+  - **Chapter 1: The 91 Indictment Gauntlet** (`scene_act7_ch1_gauntlet`) — `act7_ch1_intro`, Fulton County mugshot defiance, 34 bookkeeping counts elevated by sorcery, Kennedy appraisal of partisan prosecutors; `act7_ch1_indictment_battle` (Chief Partisan Prosecutor & Lawfare Docket Clerk). Party: all 5 heroes.
+  - **Chapter 2: The Gag Order Guillotine** (`scene_act7_ch2_gag`) — `act7_ch2_intro`, judge daughter conflict of interest, 10 unconstitutional gag orders, First Amendment silencing, Marco and Vance's surrogate sidewalk press conference; `act7_ch2_contempt_battle` (Gag Order Magistrate & Contempt Bailiff).
+  - **Chapter 3: The Butler Fairgrounds** (`scene_act7_ch3_butler`) — `act7_ch3_intro`, 50,000 patriots in Butler, PA, immigration chart on the jumbotron ("That chart saved my life!"), Kash outer perimeter warning of unmanned sloped roofs, taking the rally podium.
+  - **Chapter 4: Steel Ear & Fist Defiance** (`scene_act7_ch4_steel_ear`) — `act7_ch4_intro`, the head tilt that defied physics, 6:11 PM bullet graze, secret service dogpile ("Wait, I want my shoes!"), rising with bloody cheek, fist raised to the heavens shouting "FIGHT! FIGHT! FIGHT!", iconic flag photo, equipping the White Ear Bandage of Fortitude (+500% Defense).
+  - **Chapter 5: The Milwaukee Arena Coronation** (`scene_act7_ch5_milwaukee`) — `act7_ch5_intro`, Fiserv Forum RNC convention floor, sea of white ear bandages, Hulk Hogan ripping his shirt open ("LET TRUMPAMANIA RUN WILD!"), Vance nomination, Kennedy rallying cry; `act7_lawfare_battle` boss duel against the Lawfare Grand Inquisitor and Indictment Gargoyles; total lawfare obliteration leading into the Final Boss in Act VIII.
+  - Added scenes `SCENE_ACT7_CH1_GAUNTLET`, `SCENE_ACT7_CH2_GAG`, `SCENE_ACT7_CH3_BUTLER`, `SCENE_ACT7_CH4_STEEL_EAR`, `SCENE_ACT7_CH5_MILWAUKEE`; legacy `SCENE_ACT7_SANDS` preserved as backward-compat alias.
+  - Added encounters `ACT7_CH1_INDICTMENT_BATTLE` and `ACT7_CH2_CONTEMPT_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
+  - All unit tests passing in `CommanderAmericaGameTest.kt` (27/27 tests). Installed and verified on physical device.
 
-## 3. Master Phase Roadmap (Next Up: Phase 9)
+
+## 3. Master Phase Roadmap (Next Up: Phase 10)
 
 ```mermaid
 flowchart TD
@@ -166,8 +176,8 @@ flowchart TD
     P5 --> P6["Phase 6: Act IV - The Intelligence Vaults & Declassification (DONE)"]
     P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile (DONE)"]
     P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland (DONE)"]
-    P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve (NEXT)"]
-    P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel"]
+    P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve (DONE)"]
+    P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel (NEXT)"]
     P10 --> P11["Phase 11: Streamline Character Creation"]
     P11 --> P12["Phase 12: Streamline & Minimize Tutorial"]
 ```

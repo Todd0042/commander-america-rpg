@@ -292,12 +292,63 @@ object StoryScript {
         ambientDescription = "Floating venn diagrams and endless loops of circular logic drift over a misty swamp."
     )
 
+    // Act VII - Chapter 1: The 91 Indictment Gauntlet (Fulton County & Lower Manhattan Courts)
+    val SCENE_ACT7_CH1_GAUNTLET = StoryScene(
+        id = "scene_act7_ch1_gauntlet",
+        name = "The Courtroom Steps of Manhattan",
+        chapterTitle = "Act VII - Ch 1: The 91 Indictment Gauntlet (2024)",
+        backgroundAsset = "story/courtroom_steps.jpg",
+        initialNodeId = "act7_ch1_intro",
+        ambientDescription = "Reams of docket entries and 91 fabricated counts flutter across the courtroom marble steps."
+    )
+
+    // Act VII - Chapter 2: The Gag Order Guillotine (Contempt Hearing with Biased Judges)
+    val SCENE_ACT7_CH2_GAG = StoryScene(
+        id = "scene_act7_ch2_gag",
+        name = "The Silenced Hearing Chamber",
+        chapterTitle = "Act VII - Ch 2: The Gag Order Guillotine (2024)",
+        backgroundAsset = "story/gag_hearing.jpg",
+        initialNodeId = "act7_ch2_intro",
+        ambientDescription = "A menacing gavel echoes in a darkened chamber where speaking the truth is punished by unconstitutional contempt orders."
+    )
+
+    // Act VII - Chapter 3: The Butler Fairgrounds (July 13, 2024)
+    val SCENE_ACT7_CH3_BUTLER = StoryScene(
+        id = "scene_act7_ch3_butler",
+        name = "The Open Sky at Butler, PA",
+        chapterTitle = "Act VII - Ch 3: The Butler Fairgrounds (July 13, 2024)",
+        backgroundAsset = "story/butler_fairgrounds.jpg",
+        initialNodeId = "act7_ch3_intro",
+        ambientDescription = "The hot summer sun shines down over tens of thousands of cheering patriots gathered under an open sky."
+    )
+
+    // Act VII - Chapter 4: Steel Ear & Fist Defiance (2024)
+    val SCENE_ACT7_CH4_STEEL_EAR = StoryScene(
+        id = "scene_act7_ch4_steel_ear",
+        name = "The Stage of Steel Resolve",
+        chapterTitle = "Act VII - Ch 4: Steel Ear & Fist Defiance (2024)",
+        backgroundAsset = "story/steel_ear_miracle.jpg",
+        initialNodeId = "act7_ch4_intro",
+        ambientDescription = "A defining moment in American history: blood on the cheek, fist raised to the heavens, shouting FIGHT! FIGHT! FIGHT!"
+    )
+
+    // Act VII - Chapter 5: The Milwaukee Arena Coronation (2024)
+    val SCENE_ACT7_CH5_MILWAUKEE = StoryScene(
+        id = "scene_act7_ch5_milwaukee",
+        name = "Fiserv Forum Convention Floor",
+        chapterTitle = "Act VII - Ch 5: The Milwaukee Arena Coronation (2024)",
+        backgroundAsset = "story/rnc_milwaukee.jpg",
+        initialNodeId = "act7_ch5_intro",
+        ambientDescription = "Twenty thousand arena delegates wear symbolic white ear bandages as balloons and golden banners drop from the rafters."
+    )
+
+    // Legacy alias for Act VII
     val SCENE_ACT7_SANDS = StoryScene(
         id = "scene_act7_sands",
         name = "The Sands of Resolve",
         chapterTitle = "Act VII: Sands of Resolve & Steel Ear (2024)",
         backgroundAsset = "story/shadowed_crags.jpg",
-        initialNodeId = "act7_intro",
+        initialNodeId = "act7_ch1_intro",
         ambientDescription = "Desert winds howl across ancient ruins as legal writs float like cursed ravens."
     )
 
@@ -342,7 +393,12 @@ object StoryScript {
         SCENE_ACT6_CH4_COCONUT.id to SCENE_ACT6_CH4_COCONUT,
         SCENE_ACT6_CH5_UNBURDENED.id to SCENE_ACT6_CH5_UNBURDENED,
         SCENE_ACT6_WASTELAND.id to SCENE_ACT6_CH1_BORDER,   // legacy alias → ch1
-        SCENE_ACT7_SANDS.id to SCENE_ACT7_SANDS,
+        SCENE_ACT7_CH1_GAUNTLET.id to SCENE_ACT7_CH1_GAUNTLET,
+        SCENE_ACT7_CH2_GAG.id to SCENE_ACT7_CH2_GAG,
+        SCENE_ACT7_CH3_BUTLER.id to SCENE_ACT7_CH3_BUTLER,
+        SCENE_ACT7_CH4_STEEL_EAR.id to SCENE_ACT7_CH4_STEEL_EAR,
+        SCENE_ACT7_CH5_MILWAUKEE.id to SCENE_ACT7_CH5_MILWAUKEE,
+        SCENE_ACT7_SANDS.id to SCENE_ACT7_CH1_GAUNTLET,     // legacy alias → ch1
         SCENE_ACT8_CITADEL_FINAL.id to SCENE_ACT8_CITADEL_FINAL
     )
 
@@ -2309,8 +2365,8 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The Venn diagram shields shatter into dust! The Word-Salad fog has completely cleared! Now, we turn to the final trials — the Lawfare Labyrinth and the Sands of Steel Resolve!",
-            changeSceneId = SCENE_ACT7_SANDS.id,
-            nextNodeId = "act7_intro"
+            changeSceneId = SCENE_ACT7_CH1_GAUNTLET.id,
+            nextNodeId = "act7_ch1_intro"
         ),
 
         // Legacy compatibility nodes for Act VI
@@ -2365,13 +2421,341 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The word-salad fog clears! Only two Acts remain on our quest to eradicate stupidity!",
-            changeSceneId = SCENE_ACT7_SANDS.id,
-            nextNodeId = "act7_intro"
+            changeSceneId = SCENE_ACT7_CH1_GAUNTLET.id,
+            nextNodeId = "act7_ch1_intro"
         ),
 
         // =========================================================================
-        // ACT VII: SANDS OF RESOLVE & STEEL EAR (2024)
+        // ACT VII: THE LAWFARE LABYRINTH & STEEL RESOLVE (2024) — 5 CHAPTERS
         // =========================================================================
+
+        // -------------------------------------------------------------------------
+        // Chapter 1: The 91 Indictment Gauntlet (Fulton County & Lower Manhattan)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act7_ch1_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The year is 2024. In an unprecedented abuse of the legal system, four separate partisan jurisdictions hand down ninety-one fabricated criminal charges against Commander America!",
+            nextNodeId = "act7_ch1_court_arrival"
+        ),
+        DialogueNode(
+            id = "act7_ch1_court_arrival",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Ninety-one indictments, folks! Nobody has ever seen anything like it! If I fly over a blue state, they send a grand jury after me! Total election interference, but the people see right through it!",
+            nextNodeId = "act7_ch1_gauntlet_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch1_gauntlet_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The courtroom corridors are packed with cameras and partisan lawfare architects. How does the defense dismantle these charges?",
+            choices = listOf(
+                DialogueChoice("a7c1_mugshot", "Inspect the iconic Atlanta mugshot of defiance", listOf("mugshot", "atlanta", "fulton", "defiance", "photo"), "act7_ch1_mugshot_defiance"),
+                DialogueChoice("a7c1_charges", "Analyze the 34 bookkeeping misdemeanors turned into felonies", listOf("bookkeeping", "charges", "felonies", "manhattan", "counts"), "act7_ch1_bookkeeping_counts"),
+                DialogueChoice("a7c1_kennedy", "Ask Senator Kennedy for his appraisal of partisan prosecutors", listOf("kennedy", "prosecutor", "lawfare", "justice", "louisiana"), "act7_ch1_kennedy_appraisal"),
+                DialogueChoice("a7c1_proceed", "Charge past the docket blockade and confront the prosecutor", listOf("proceed", "charge", "court", "prosecutor", "confront"), "act7_ch1_prosecutor_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act7_ch1_mugshot_defiance",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "They thought that booking photo in Fulton County would break him. Instead, it became the most famous image on Earth — slapped onto t-shirts, coffee mugs, and billboards in every working-class town in America!",
+            nextNodeId = "act7_ch1_gauntlet_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch1_bookkeeping_counts",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "They took expired misdemeanor recordkeeping entries and magically spliced them with federal campaign law that the feds already declined to prosecute. It's legal origami constructed out of thin air!",
+            nextNodeId = "act7_ch1_gauntlet_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch1_kennedy_appraisal",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Up here in these activist courtrooms, the law doesn't matter a tinker's damn. These prosecutors are like a dog chasing a parked car — now that they've caught it, they have no idea how to drive it!",
+            nextNodeId = "act7_ch1_gauntlet_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch1_prosecutor_ambush",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "LOOK OUT, BROTHER! The Chief Partisan Prosecutor emerges from behind the bench, flanked by Lawfare Docket Clerks hurling stacks of stamped motions!",
+            nextNodeId = "act7_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act7_ch1_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Every single one of these 91 counts is a badge of honor! We fight for the Constitution, and we never back down!",
+            triggerBattleEncounterId = "act7_ch1_indictment_battle",
+            nextNodeId = "act7_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act7_ch1_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The indictments crumble under the weight of truth! But the judge bangs his gavel, attempting to slap an unconstitutional muzzle on our speech!",
+            changeSceneId = SCENE_ACT7_CH2_GAG.id,
+            nextNodeId = "act7_ch2_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 2: The Gag Order Guillotine (Contempt Hearing with Biased Judges)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act7_ch2_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The judge issues a sweeping, unprecedented gag order, threatening Commander America with immediate jail time if he dares speak publicly about the trial or the witnesses.",
+            nextNodeId = "act7_ch2_gag_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch2_gag_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "They want to silence the leading candidate for President while his political opponents attack him freely on television. How does the coalition counter this muzzle?",
+            choices = listOf(
+                DialogueChoice("a7c2_first_amendment", "Assert the First Amendment right of 80 million voters", listOf("first", "amendment", "voters", "rights", "free speech"), "act7_ch2_first_amendment"),
+                DialogueChoice("a7c2_sidewalk", "Deploy Marco and Vance for the legendary sidewalk press conference", listOf("sidewalk", "marco", "vance", "press", "surrogate"), "act7_ch2_sidewalk_press"),
+                DialogueChoice("a7c2_kennedy", "Hear Senator Kennedy's take on activist judges", listOf("kennedy", "judge", "activist", "gavel", "contempt"), "act7_ch2_kennedy_gavel"),
+                DialogueChoice("a7c2_shatter", "Shatter the Gag Order Guillotine and break free", listOf("shatter", "guillotine", "battle", "free", "contempt"), "act7_ch2_contempt_confront")
+            )
+        ),
+        DialogueNode(
+            id = "act7_ch2_first_amendment",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "They are not taking away my speech — they are taking away YOUR right to hear the truth! They want to muzzle the American people, and I won't let them do it!",
+            nextNodeId = "act7_ch2_gag_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch2_sidewalk_press",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "If the judge won't let the Commander speak in the courtroom, Vance and I will stand on the sidewalk outside in the pouring rain with twenty microphones and say every single word for him!",
+            nextNodeId = "act7_ch2_gag_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch2_kennedy_gavel",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "This gag order is more crooked than a barrel of snakes. You can't strip a man of his God-given constitutional rights just because his poll numbers are twenty points higher than yours!",
+            nextNodeId = "act7_ch2_gag_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch2_contempt_confront",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THE GAVEL IS FALLING, BROTHER! The Gag Order Magistrate and his Contempt Bailiffs are rushing the podium with handcuffs and fines!",
+            nextNodeId = "act7_ch2_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act7_ch2_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "You cannot jail the American spirit! Freedom of speech will prevail over partisan judges every single time!",
+            triggerBattleEncounterId = "act7_ch2_contempt_battle",
+            nextNodeId = "act7_ch2_post_battle"
+        ),
+        DialogueNode(
+            id = "act7_ch2_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The gag order shatters into a million pieces! We leave Manhattan behind and head into the open skies of Pennsylvania!",
+            changeSceneId = SCENE_ACT7_CH3_BUTLER.id,
+            nextNodeId = "act7_ch3_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 3: The Butler Fairgrounds (July 13, 2024)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act7_ch3_intro",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "JULY 13, 2024, BROTHER! Butler, Pennsylvania! Over fifty thousand patriots have gathered under the open sun! You can feel the electric energy in the air!",
+            nextNodeId = "act7_ch3_rally_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch3_rally_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Commander America steps up to the rally podium beneath an open summer sky. How does he prepare to deliver the historic speech?",
+            choices = listOf(
+                DialogueChoice("a7c3_chart", "Display the famous border immigration chart on the jumbotron", listOf("chart", "border", "jumbotron", "immigration", "screen"), "act7_ch3_display_chart"),
+                DialogueChoice("a7c3_patriots", "Wave to the sea of red hats and working-class families", listOf("patriots", "crowd", "wave", "families", "cheer"), "act7_ch3_crowd_wave"),
+                DialogueChoice("a7c3_kash", "Review perimeter security and suspicious nearby sloped roofs", listOf("security", "roof", "sloped", "kash", "perimeter"), "act7_ch3_kash_warning"),
+                DialogueChoice("a7c3_advance", "Take the center podium and begin the fateful address", listOf("podium", "begin", "address", "speech", "advance"), "act7_ch3_take_podium")
+            )
+        ),
+        DialogueNode(
+            id = "act7_ch3_display_chart",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Bring down that chart, folks! Look at that arrow right at the bottom — lowest illegal immigration in the history of our country! That beautiful chart shows the exact moment our borders were secure!",
+            nextNodeId = "act7_ch3_rally_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch3_crowd_wave",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Look at these people — steelworkers, nurses, farmers, truckers. They drove six hours and waited in the heat because they love this country and believe in the American comeback.",
+            nextNodeId = "act7_ch3_rally_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch3_kash_warning",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "Something isn't right with the outer perimeter. That warehouse roof with the slight slope is completely unmanned. Why did local command leave an elevated line of sight open?",
+            nextNodeId = "act7_ch3_rally_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch3_take_podium",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "It's time to speak to the people. Turn your head to the right and look at that chart...",
+            changeSceneId = SCENE_ACT7_CH4_STEEL_EAR.id,
+            nextNodeId = "act7_ch4_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 4: Steel Ear & Fist Defiance (2024)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act7_ch4_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "6:11 PM. A sharp crack splits the air. In a fraction of a millisecond, Commander America tilts his head to view the border chart as a high-velocity bullet grazes the right ear!",
+            nextNodeId = "act7_ch4_dogpile"
+        ),
+        DialogueNode(
+            id = "act7_ch4_dogpile",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THE AGENTS PILE ON, BROTHER! 'GET DOWN! GET DOWN!' But listen to what he says from the bottom of the stack!",
+            nextNodeId = "act7_ch4_shoes"
+        ),
+        DialogueNode(
+            id = "act7_ch4_shoes",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Wait, I want my shoes! Let me get my shoes!",
+            nextNodeId = "act7_ch4_fist_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch4_fist_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "He stands back up. Blood streams down the right cheek, but his eyes blaze with divine fortitude. What does Commander America do?",
+            choices = listOf(
+                DialogueChoice("a7c4_fist", "Pump your fist in the air and shout 'FIGHT! FIGHT! FIGHT!'", listOf("fight", "fist", "pump", "rise", "blood"), "act7_ch4_fist_shout"),
+                DialogueChoice("a7c4_bandage", "Equip the White Ear Bandage of Fortitude (+500% Defense)", listOf("bandage", "ear", "fortitude", "armor", "defense"), "act7_ch4_equip_bandage"),
+                DialogueChoice("a7c4_flag", "Raise your fist beneath the billowing American flag", listOf("flag", "iconic", "photo", "freedom", "american"), "act7_ch4_flag_photo"),
+                DialogueChoice("a7c4_advance", "Lead the unified coalition onward to Milwaukee!", listOf("milwaukee", "advance", "onward", "rnc", "lead"), "act7_ch4_advance_milwaukee")
+            )
+        ),
+        DialogueNode(
+            id = "act7_ch4_fist_shout",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "FIGHT! FIGHT! FIGHT! We will NEVER surrender! We will NEVER give up! God spared my life to save our great country!",
+            nextNodeId = "act7_ch4_fist_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch4_equip_bandage",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "This White Ear Bandage gives me +500% defense! Divine providence touched this stage today, folks! The enemy's greatest weapon couldn't stop the American movement!",
+            nextNodeId = "act7_ch4_fist_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch4_flag_photo",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "LOOK AT THAT PHOTOGRAPH, BROTHERS! Blood on the cheek, fist raised to the sky, Old Glory waving in the background! That is the ultimate symbol of American steel!",
+            nextNodeId = "act7_ch4_fist_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch4_advance_milwaukee",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Nothing on this Earth will stop us from saving America. Next stop: Milwaukee!",
+            changeSceneId = SCENE_ACT7_CH5_MILWAUKEE.id,
+            nextNodeId = "act7_ch5_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 5: The Milwaukee Arena Coronation (2024)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act7_ch5_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Fiserv Forum, Milwaukee. Tens of thousands of unified delegates wear symbolic white ear bandages in solidarity as golden balloons drop from the arena rafters!",
+            nextNodeId = "act7_ch5_coronation_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch5_coronation_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The entire coalition stands united on the convention stage. How do the 5 heroes prepare for the final showdown against the Lawfare Lich?",
+            choices = listOf(
+                DialogueChoice("a7c5_hulk", "Let Hulk Hogan rip his shirt open on the RNC podium", listOf("hulk", "shirt", "tear", "brother", "trumpamania"), "act7_ch5_hulk_shirt"),
+                DialogueChoice("a7c5_vance", "Confirm JD Vance as the Vice-Presidential nominee", listOf("vance", "vp", "nominee", "heartland", "coalition"), "act7_ch5_vance_nomination"),
+                DialogueChoice("a7c5_kennedy", "Deliver Senator Kennedy's convention rallying cry", listOf("kennedy", "speech", "cry", "louisiana", "rally"), "act7_ch5_kennedy_rally"),
+                DialogueChoice("a7c5_battle", "Confront the Lawfare Grand Inquisitor in the final arena duel", listOf("battle", "inquisitor", "lich", "lawfare", "fight"), "act7_ch5_lawfare_confront")
+            )
+        ),
+        DialogueNode(
+            id = "act7_ch5_hulk_shirt",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*RIPS SHIRT IN HALF* LET TRUMPAMANIA RUN WILD, BROTHER! They took a shot at the greatest leader on Earth, and he stood right back up! There is NO stopping this train now, brothers!",
+            nextNodeId = "act7_ch5_coronation_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch5_vance_nomination",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "To the forgotten men and women of Ohio, Pennsylvania, Michigan, and Wisconsin: your voices will never be forgotten again. We are taking our country back!",
+            nextNodeId = "act7_ch5_coronation_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch5_kennedy_rally",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "The American people have had a bellyful of the Washington establishment. In November, we're going to remind them who really runs this country, and we don't need a teleprompter to do it!",
+            nextNodeId = "act7_ch5_coronation_hub"
+        ),
+        DialogueNode(
+            id = "act7_ch5_lawfare_confront",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "The Lawfare Grand Inquisitor summons all remaining indictment gargoyles for a desperate last stand!",
+            nextNodeId = "act7_ch5_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act7_ch5_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Every indictment, every gag order, every bullet — all of it failed! Together, we are unstoppable! Patriots, charge!",
+            triggerBattleEncounterId = "act7_lawfare_battle",
+            nextNodeId = "act7_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act7_ch5_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The Lawfare Grand Inquisitor is vanquished and the 91 indictments are obliterated forever! The ear bandage shines like pure gold. Only ONE obstacle remains: the Malarkey Sovereign in the Oval Citadel!",
+            changeSceneId = SCENE_ACT8_CITADEL_FINAL.id,
+            nextNodeId = "act8_intro"
+        ),
+
+        // Legacy compatibility nodes for Act VII
         DialogueNode(
             id = "act7_intro",
             speaker = DialogueSpeaker.NARRATOR_HULK,

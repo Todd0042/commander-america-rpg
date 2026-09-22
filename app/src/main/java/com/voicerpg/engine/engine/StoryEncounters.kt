@@ -897,7 +897,34 @@ object StoryEncounters {
         initialParty = createFullAmericaParty()
     )
 
-    // 7. Act VII: Sands of Resolve & Steel Ear
+    // 7. Act VII: The Lawfare Labyrinth & Steel Resolve
+    // 7a. Act VII - Chapter 1: The 91 Indictment Gauntlet
+    val ACT7_CH1_INDICTMENT_BATTLE = EncounterDefinition(
+        id = "act7_ch1_indictment_battle",
+        name = "Act VII - Ch 1: The 91 Indictment Gauntlet",
+        description = "Partisan Prosecutors and Lawfare Docket Clerks attempt to bury Commander America beneath 91 fabricated counts!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("partisan_prosecutor", "Chief Partisan Prosecutor", "Occultist", currentHp = 560, maxHp = 560, baseAttack = 30, isBoss = true, isTargeted = true, spriteTint = Color(0xFF8E24AA), speed = 62, atbGauge = 0.35f),
+            Enemy("docket_clerk", "Lawfare Docket Clerk", "Sniper", currentHp = 360, maxHp = 360, baseAttack = 26, isTargeted = false, spriteTint = Color(0xFF5D4037), speed = 66, atbGauge = 0.40f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 7b. Act VII - Chapter 2: The Gag Order Guillotine
+    val ACT7_CH2_CONTEMPT_BATTLE = EncounterDefinition(
+        id = "act7_ch2_contempt_battle",
+        name = "Act VII - Ch 2: The Gag Order Guillotine",
+        description = "A Gag Order Magistrate and Contempt Bailiffs attempt to silence the coalition with unconstitutional gag orders!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("gag_magistrate", "Gag Order Magistrate", "Vanguard", currentHp = 600, maxHp = 600, baseAttack = 32, isBoss = true, isTargeted = true, spriteTint = Color(0xFFC2185B), speed = 46, atbGauge = 0.25f),
+            Enemy("contempt_bailiff", "Contempt Bailiff", "Sniper", currentHp = 380, maxHp = 380, baseAttack = 28, isTargeted = false, spriteTint = Color(0xFF37474F), speed = 64, atbGauge = 0.35f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 7c. Act VII - Chapter 5: The Milwaukee Arena Coronation (Lawfare Lich Boss Battle)
     val ACT7_LAWFARE_BATTLE = EncounterDefinition(
         id = "act7_lawfare_battle",
         name = "Act VII: Sands of Resolve & Steel Ear",
@@ -960,6 +987,8 @@ object StoryEncounters {
         ACT6_CH1_BORDER_BATTLE,
         ACT6_CH3_BUS_BATTLE,
         ACT6_KAMALA_BATTLE,
+        ACT7_CH1_INDICTMENT_BATTLE,
+        ACT7_CH2_CONTEMPT_BATTLE,
         ACT7_LAWFARE_BATTLE,
         ACT8_BIDEN_FINAL_BATTLE,
         PROLOGUE_SOLO,

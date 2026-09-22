@@ -105,6 +105,11 @@ class StoryViewModel(
             DebugChapterTarget("Act VI - Ch 4: Coconut Tree Grove", "act6_ch4_intro", 9),
             DebugChapterTarget("Act VI - Ch 5: Unburdened Climax", "act6_ch5_intro", 9),
             DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 9),
+            DebugChapterTarget("Act VII - Ch 1: 91 Indictment Gauntlet", "act7_ch1_intro", 10),
+            DebugChapterTarget("Act VII - Ch 2: Gag Order Guillotine", "act7_ch2_intro", 10),
+            DebugChapterTarget("Act VII - Ch 3: Butler PA Fairgrounds", "act7_ch3_intro", 10),
+            DebugChapterTarget("Act VII - Ch 4: Steel Ear Miracle", "act7_ch4_intro", 10),
+            DebugChapterTarget("Act VII - Ch 5: Milwaukee Coronation", "act7_ch5_intro", 10),
             DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 10),
             DebugChapterTarget("Act VIII: The Final Malarkey Citadel", "act8_intro", 11),
             // Legacy / Regression targets for existing test suite
@@ -1255,6 +1260,8 @@ class StoryViewModel(
             "act6_ch1_border_battle" -> StoryEncounters.ACT6_CH1_BORDER_BATTLE
             "act6_ch3_bus_battle" -> StoryEncounters.ACT6_CH3_BUS_BATTLE
             "act6_kamala_battle" -> StoryEncounters.ACT6_KAMALA_BATTLE
+            "act7_ch1_indictment_battle" -> StoryEncounters.ACT7_CH1_INDICTMENT_BATTLE
+            "act7_ch2_contempt_battle" -> StoryEncounters.ACT7_CH2_CONTEMPT_BATTLE
             "act7_lawfare_battle" -> StoryEncounters.ACT7_LAWFARE_BATTLE
             "act8_biden_final_battle" -> StoryEncounters.ACT8_BIDEN_FINAL_BATTLE
             "prologue_solo" -> StoryEncounters.PROLOGUE_SOLO
@@ -1333,7 +1340,9 @@ class StoryViewModel(
             "act6_ch1_border_battle" -> "act6_ch1_post_battle"
             "act6_ch3_bus_battle" -> "act6_ch3_post_battle"
             "act6_kamala_battle" -> "act6_ch5_post_battle"
-            "act7_lawfare_battle" -> "act7_post_battle"
+            "act7_ch1_indictment_battle" -> "act7_ch1_post_battle"
+            "act7_ch2_contempt_battle" -> "act7_ch2_post_battle"
+            "act7_lawfare_battle" -> "act7_ch5_post_battle"
             "act8_biden_final_battle" -> "act8_post_battle"
             "prologue_solo" -> "village_post_battle"
             "forest_ambush" -> "crossroads_post_battle"

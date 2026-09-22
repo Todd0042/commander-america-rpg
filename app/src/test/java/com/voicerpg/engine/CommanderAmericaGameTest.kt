@@ -137,7 +137,9 @@ class CommanderAmericaGameTest {
             "act6_ch1_border_battle" to "act6_ch1_post_battle",
             "act6_ch3_bus_battle" to "act6_ch3_post_battle",
             "act6_kamala_battle" to "act6_ch5_post_battle",
-            "act7_lawfare_battle" to "act7_post_battle",
+            "act7_ch1_indictment_battle" to "act7_ch1_post_battle",
+            "act7_ch2_contempt_battle" to "act7_ch2_post_battle",
+            "act7_lawfare_battle" to "act7_ch5_post_battle",
             "act8_biden_final_battle" to "act8_post_battle"
         )
 
@@ -1290,7 +1292,7 @@ class CommanderAmericaGameTest {
         storyViewModel.triggerEncounter("act6_kamala_battle")
         storyViewModel.onCombatVictory()
         assertEquals("act6_ch5_post_battle", storyViewModel.state.value.currentNode.id)
-        assertEquals("scene_act7_sands", storyViewModel.state.value.currentScene.id)
+        assertEquals("scene_act7_ch1_gauntlet", storyViewModel.state.value.currentScene.id)
 
         // -----------------------------------------------------------------------
         // 6. Debug warps for all Act VI chapters
@@ -1346,6 +1348,173 @@ class CommanderAmericaGameTest {
         assertTrue("act6_ch1_border_battle must be in ALL_ENCOUNTERS", allIds.contains("act6_ch1_border_battle"))
         assertTrue("act6_ch3_bus_battle must be in ALL_ENCOUNTERS", allIds.contains("act6_ch3_bus_battle"))
         assertTrue("act6_kamala_battle must be in ALL_ENCOUNTERS", allIds.contains("act6_kamala_battle"))
+    }
+
+    @Test
+    fun testAct7FiveChaptersFullProgressionAndDebugWarps() {
+        // -----------------------------------------------------------------------
+        // 1. Act VII Chapter 1: The 91 Indictment Gauntlet
+        // -----------------------------------------------------------------------
+        storyViewModel.debugWarpToChapter("act7_ch1_intro")
+        assertEquals("act7_ch1_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act7_ch1_gauntlet", storyViewModel.state.value.currentScene.id)
+        val ch1Party = storyViewModel.state.value.partyStats
+        assertEquals(5, ch1Party.size)
+        assertTrue(ch1Party.any { it.id == "hero" })
+        assertTrue(ch1Party.any { it.id == "marco" })
+        assertTrue(ch1Party.any { it.id == "vance" })
+        assertTrue(ch1Party.any { it.id == "kash" })
+        assertTrue(ch1Party.any { it.id == "kennedy" })
+
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch1_court_arrival", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch1_gauntlet_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select proceed
+        val proceedChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a7c1_proceed" }
+        storyViewModel.selectChoice(proceedChoice)
+        assertEquals("act7_ch1_prosecutor_ambush", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch1_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act7_ch1_indictment_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch1 battle
+        storyViewModel.triggerEncounter("act7_ch1_indictment_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act7_ch1_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act7_ch2_gag", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 2. Act VII Chapter 2: The Gag Order Guillotine
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch2_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch2_gag_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select shatter choice
+        val shatterChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a7c2_shatter" }
+        storyViewModel.selectChoice(shatterChoice)
+        assertEquals("act7_ch2_contempt_confront", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch2_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act7_ch2_contempt_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch2 battle
+        storyViewModel.triggerEncounter("act7_ch2_contempt_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act7_ch2_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act7_ch3_butler", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 3. Act VII Chapter 3: The Butler Fairgrounds (July 13, 2024)
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch3_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch3_rally_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select advance choice
+        val advancePodiumChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a7c3_advance" }
+        storyViewModel.selectChoice(advancePodiumChoice)
+        assertEquals("act7_ch3_take_podium", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch4_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act7_ch4_steel_ear", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 4. Act VII Chapter 4: Steel Ear & Fist Defiance
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch4_dogpile", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch4_shoes", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch4_fist_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select advance to Milwaukee
+        val advanceMkeChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a7c4_advance" }
+        storyViewModel.selectChoice(advanceMkeChoice)
+        assertEquals("act7_ch4_advance_milwaukee", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch5_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act7_ch5_milwaukee", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 5. Act VII Chapter 5: The Milwaukee Arena Coronation
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch5_coronation_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select battle choice
+        val battleChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a7c5_battle" }
+        storyViewModel.selectChoice(battleChoice)
+        assertEquals("act7_ch5_lawfare_confront", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch5_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act7_lawfare_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch5 Boss battle
+        storyViewModel.triggerEncounter("act7_lawfare_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act7_ch5_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_citadel_final", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 6. Debug warps for all Act VII chapters
+        // -----------------------------------------------------------------------
+        val act7FullTargets = listOf(
+            "act7_ch1_intro" to "scene_act7_ch1_gauntlet",
+            "act7_ch2_intro" to "scene_act7_ch2_gag",
+            "act7_ch3_intro" to "scene_act7_ch3_butler",
+            "act7_ch4_intro" to "scene_act7_ch4_steel_ear",
+            "act7_ch5_intro" to "scene_act7_ch5_milwaukee"
+        )
+        for ((nodeId, expectedSceneId) in act7FullTargets) {
+            storyViewModel.debugWarpToChapter(nodeId)
+            assertEquals("Node for $nodeId", nodeId, storyViewModel.state.value.currentNode.id)
+            assertEquals("Scene for $nodeId", expectedSceneId, storyViewModel.state.value.currentScene.id)
+            val party = storyViewModel.state.value.partyStats
+            assertEquals("Party size must be 5 at $nodeId", 5, party.size)
+            assertTrue("Party must have hero at $nodeId", party.any { it.id == "hero" })
+            assertTrue("Party must have marco at $nodeId", party.any { it.id == "marco" })
+            assertTrue("Party must have vance at $nodeId", party.any { it.id == "vance" })
+            assertTrue("Party must have kash at $nodeId", party.any { it.id == "kash" })
+            assertTrue("Party must have kennedy at $nodeId", party.any { it.id == "kennedy" })
+        }
+    }
+
+    @Test
+    fun testAct7EncountersAndPartyRoster() {
+        // Ch1 Indictment Battle
+        val indictmentBattle = StoryEncounters.ACT7_CH1_INDICTMENT_BATTLE
+        assertEquals("act7_ch1_indictment_battle", indictmentBattle.id)
+        assertEquals(5, indictmentBattle.initialParty?.size)
+        val prosecutor = indictmentBattle.enemies.firstOrNull { it.id == "partisan_prosecutor" }
+        assertNotNull("Partisan Prosecutor must be present", prosecutor)
+        assertTrue("Partisan Prosecutor is boss", prosecutor!!.isBoss)
+
+        // Ch2 Contempt Battle
+        val contemptBattle = StoryEncounters.ACT7_CH2_CONTEMPT_BATTLE
+        assertEquals("act7_ch2_contempt_battle", contemptBattle.id)
+        assertEquals(5, contemptBattle.initialParty?.size)
+        val magistrate = contemptBattle.enemies.firstOrNull { it.id == "gag_magistrate" }
+        assertNotNull("Gag Magistrate must be present", magistrate)
+        assertTrue("Gag Magistrate is boss", magistrate!!.isBoss)
+
+        // Ch5 Lawfare Boss Battle
+        val lawfareBattle = StoryEncounters.ACT7_LAWFARE_BATTLE
+        assertEquals("act7_lawfare_battle", lawfareBattle.id)
+        assertEquals(5, lawfareBattle.initialParty?.size)
+        val lawfareLich = lawfareBattle.enemies.firstOrNull { it.id == "lawfare_lich" }
+        assertNotNull("Lawfare Lich must be present", lawfareLich)
+
+        // Verify in ALL_ENCOUNTERS
+        val allIds = StoryEncounters.ALL_ENCOUNTERS.map { it.id }
+        assertTrue("act7_ch1_indictment_battle must be in ALL_ENCOUNTERS", allIds.contains("act7_ch1_indictment_battle"))
+        assertTrue("act7_ch2_contempt_battle must be in ALL_ENCOUNTERS", allIds.contains("act7_ch2_contempt_battle"))
+        assertTrue("act7_lawfare_battle must be in ALL_ENCOUNTERS", allIds.contains("act7_lawfare_battle"))
     }
 
     @Test
