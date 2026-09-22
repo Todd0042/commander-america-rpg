@@ -84,6 +84,10 @@ class StoryViewModel(
             DebugChapterTarget("Act II - Ch 1: Inaugural Address", "act2_ch1_intro", 4),
             DebugChapterTarget("Act II - Ch 2: The Oval Citadel", "act2_ch2_intro", 5),
             DebugChapterTarget("Act II - Ch 3: The Stock-Trading Lich", "act2_ch3_intro", 5),
+            DebugChapterTarget("Act III - Ch 1: Ohio Steel Mill", "act3_ch1_intro", 6),
+            DebugChapterTarget("Act III - Ch 2: USMCA Trade War", "act3_ch2_intro", 6),
+            DebugChapterTarget("Act III - Ch 3: Air Force One", "act3_ch3_intro", 6),
+            DebugChapterTarget("Act III - Ch 4: Crimson Summit", "act3_ch4_intro", 6),
             DebugChapterTarget("Act III: The Summit of Peace", "act3_intro", 6),
             DebugChapterTarget("Act IV: The Mueller Hoax", "act4_intro", 7),
             DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 8),
@@ -1301,7 +1305,9 @@ class StoryViewModel(
             "act1_ch3_machine_battle" -> "act1_ch3_post_battle"
             "act2_ch1_inauguration_battle" -> "act2_ch1_post_battle"
             "act2_media_battle" -> "act2_ch3_post_battle"
-            "act3_summit_battle" -> "act3_post_battle"
+            "act3_ch1_mill_battle" -> "act3_ch1_post_battle"
+            "act3_ch3_intercept_battle" -> "act3_ch3_post_battle"
+            "act3_summit_battle" -> "act3_ch4_post_battle"
             "act4_hoax_battle" -> "act4_post_battle"
             "act5_golem_battle" -> "act5_post_battle"
             "act6_kamala_battle" -> "act6_post_battle"

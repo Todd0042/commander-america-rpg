@@ -82,12 +82,53 @@ object StoryScript {
     )
 
 
+    // Act III - Chapter 1: The Ohio Steel Mill Awakening (Youngstown / Lordstown, OH)
+    val SCENE_ACT3_CH1_STEEL_MILL = StoryScene(
+        id = "scene_act3_ch1_steel_mill",
+        name = "Lordstown Steel Mill — Mahoning Valley, Ohio",
+        chapterTitle = "Act III - Ch 1: The Ohio Awakening (2018)",
+        backgroundAsset = "story/steel_mill.jpg",
+        initialNodeId = "act3_ch1_intro",
+        ambientDescription = "Blast furnaces roar back to life along the Mahoning River as union workers in hardhats pack the mill floor holding American flags."
+    )
+
+    // Act III - Chapter 2: The USMCA Renegotiation Showdown
+    val SCENE_ACT3_CH2_USMCA = StoryScene(
+        id = "scene_act3_ch2_usmca",
+        name = "USMCA Drafting Room — Washington, D.C.",
+        chapterTitle = "Act III - Ch 2: The Trade War Table (2018)",
+        backgroundAsset = "story/trade_room.jpg",
+        initialNodeId = "act3_ch2_intro",
+        ambientDescription = "Stacks of NAFTA binders line the walls, each one representing decades of outsourced American jobs. Time to rewrite the rules."
+    )
+
+    // Act III - Chapter 3: The Demilitarized Zone Flight (Air Force One)
+    val SCENE_ACT3_CH3_AF1 = StoryScene(
+        id = "scene_act3_ch3_af1",
+        name = "Air Force One — En Route to the DMZ",
+        chapterTitle = "Act III - Ch 3: The Diplomatic Flight (2018)",
+        backgroundAsset = "story/air_force_one.jpg",
+        initialNodeId = "act3_ch3_intro",
+        ambientDescription = "Air Force One banks over the Pacific at 41,000 feet. Career diplomats in the press pool are visibly sweating."
+    )
+
+    // Act III - Chapter 4: The Crimson Summit of Peace (38th Parallel)
+    val SCENE_ACT3_CH4_SUMMIT = StoryScene(
+        id = "scene_act3_ch4_summit",
+        name = "The 38th Parallel Summit Table",
+        chapterTitle = "Act III - Ch 4: The Summit of Peace (2018)",
+        backgroundAsset = "story/summit_table.jpg",
+        initialNodeId = "act3_ch4_intro",
+        ambientDescription = "A mahogany conference table sits precisely on the DMZ line. A tower of fast food bags anchors the center. Cameras roll for the entire planet."
+    )
+
+    // Legacy alias for the original single Act III scene
     val SCENE_ACT3_SUMMIT = StoryScene(
         id = "scene_act3_summit",
         name = "The Crimson Summit Spire",
         chapterTitle = "Act III: Rocket Man & The Summit of Peace (2018)",
         backgroundAsset = "story/clockwork_bastion.jpg",
-        initialNodeId = "act3_intro",
+        initialNodeId = "act3_ch1_intro",
         ambientDescription = "High above the demilitarized zone, red flags ripple in the wind near a table set with fast-food feasts."
     )
 
@@ -147,7 +188,11 @@ object StoryScript {
         SCENE_ACT2_CH2_OVAL.id to SCENE_ACT2_CH2_OVAL,
         SCENE_ACT2_CH3_ROTUNDA.id to SCENE_ACT2_CH3_ROTUNDA,
         SCENE_ACT2_OVAL.id to SCENE_ACT2_CH1_MALL,   // legacy alias → ch1
-        SCENE_ACT3_SUMMIT.id to SCENE_ACT3_SUMMIT,
+        SCENE_ACT3_CH1_STEEL_MILL.id to SCENE_ACT3_CH1_STEEL_MILL,
+        SCENE_ACT3_CH2_USMCA.id to SCENE_ACT3_CH2_USMCA,
+        SCENE_ACT3_CH3_AF1.id to SCENE_ACT3_CH3_AF1,
+        SCENE_ACT3_CH4_SUMMIT.id to SCENE_ACT3_CH4_SUMMIT,
+        SCENE_ACT3_SUMMIT.id to SCENE_ACT3_CH1_STEEL_MILL,  // legacy alias → ch1
         SCENE_ACT4_MUELLER.id to SCENE_ACT4_MUELLER,
         SCENE_ACT5_MARALAGO.id to SCENE_ACT5_MARALAGO,
         SCENE_ACT6_WASTELAND.id to SCENE_ACT6_WASTELAND,
@@ -735,8 +780,8 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Pelosi's insider trade ledger has been confiscated and her NVIDIA options were invalidated! The fact-checkers retreated to the green room and the anonymous sources went back to being anonymous! The Oval Citadel is secure — onward to international diplomacy!",
-            changeSceneId = SCENE_ACT3_SUMMIT.id,
-            nextNodeId = "act3_intro"
+            changeSceneId = SCENE_ACT3_CH1_STEEL_MILL.id,
+            nextNodeId = "act3_ch1_intro"
         ),
         // Legacy alias
         DialogueNode(
@@ -744,49 +789,315 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Pelosi's insider trade ledger was confiscated and her outrage storm shattered! The Oval Citadel is secure... for now!",
-            changeSceneId = SCENE_ACT3_SUMMIT.id,
-            nextNodeId = "act3_intro"
+            changeSceneId = SCENE_ACT3_CH1_STEEL_MILL.id,
+            nextNodeId = "act3_ch1_intro"
         ),
 
         // =========================================================================
-        // ACT III: ROCKET MAN & THE SUMMIT OF PEACE (2018)
+        // ACT III - CHAPTER 1: THE OHIO STEEL MILL AWAKENING (2018)
         // =========================================================================
+        DialogueNode(
+            id = "act3_ch1_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are live from the Lordstown Stamping Plant in Mahoning Valley, Ohio — a mill that the previous administration declared dead. Blast furnaces that haven't roared in years are lit again tonight. The workers didn't believe it was possible. Commander America made it happen.",
+            nextNodeId = "act3_ch1_mill_hub"
+        ),
+        // Legacy alias
         DialogueNode(
             id = "act3_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We take you live to the DMZ Crimson Spire for a historic international summit. No teleprompters, no canned diplomats—just Commander America sitting down with Chairman Rocket Man over a table of double cheeseburgers.",
+            text = "We are live from the Lordstown Stamping Plant in Mahoning Valley, Ohio — a mill that was declared dead. Tonight the blast furnaces roar back to life.",
+            nextNodeId = "act3_ch1_mill_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch1_mill_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "These workers were told their jobs were gone forever. The experts said manufacturing was dead. The experts were wrong. We brought it back. We're just getting started.",
             choices = listOf(
-                DialogueChoice("a3_shake", "Initiate the Alpha Handshake of Sovereignty", listOf("shake", "handshake", "alpha", "grip", "peace"), "act3_shake"),
-                DialogueChoice("a3_burger", "Offer a legendary fast-food diplomatic feast", listOf("burger", "feast", "food", "mcdonalds", "burger king"), "act3_burger")
+                DialogueChoice("a3c1_steel", "Announce the steel and aluminum tariff to protect American industry", listOf("steel", "tariff", "aluminum", "protect", "industry"), "act3_ch1_steel_tariff", completionFlag = "a3c1_steel"),
+                DialogueChoice("a3c1_nafta", "Call out NAFTA for gutting the Rust Belt over 25 years", listOf("nafta", "rust belt", "outsource", "gut", "jobs"), "act3_ch1_nafta_callout", completionFlag = "a3c1_nafta"),
+                DialogueChoice("a3c1_vance", "Call for JD Vance — the son of the heartland — to join the fight", listOf("vance", "jd", "heartland", "ohio", "rustbelt"), "act3_ch1_vance_arrives")
             )
         ),
+        DialogueNode(
+            id = "act3_ch1_steel_tariff",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "25% tariff on foreign steel! 10% on aluminum! Other countries have been dumping their cheap product to destroy our mills for decades! That ends! American steel for American infrastructure!",
+            nextNodeId = "act3_ch1_mill_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch1_nafta_callout",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "NAFTA was the worst trade deal in the history of the world! Negotiated by people who didn't know what they were doing! In 25 years it cost us 700,000 manufacturing jobs! We're ripping it up and replacing it with something fantastic!",
+            nextNodeId = "act3_ch1_karoline_confirm"
+        ),
+        DialogueNode(
+            id = "act3_ch1_karoline_confirm",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Confirmed: 700,000 manufacturing jobs lost under NAFTA. Bureau of Labor Statistics. It's in the binder on page forty-seven.",
+            nextNodeId = "act3_ch1_mill_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch1_vance_arrives",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Commander, JD Vance reporting in! I grew up twenty miles from this mill. My grandmother worked a shift press that looked exactly like that one. The establishment globalists wrote this whole valley off as collateral damage. I didn't, and neither did you. The Rustbelt Vanguard is ready to fight. Let's renegotiate everything.",
+            nextNodeId = "act3_ch1_hero_vance_reply"
+        ),
+        DialogueNode(
+            id = "act3_ch1_hero_vance_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "JD — tremendous! Pure Appalachian steel and Hillbilly Elegy common sense! You're the future of this country! The Rustbelt Vanguard is ONLINE! Now let's deal with the trade saboteurs trying to shut this mill down again!",
+            nextNodeId = "act3_ch1_union_ambush"
+        ),
+        DialogueNode(
+            id = "act3_ch1_union_ambush",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "The Globalist Trade Cartel is here! They've been tipped off by the Chamber of Commerce and they're here to shut down the mill with a barrage of cease-and-desist filings and WTO complaint forms! ATTACK!",
+            nextNodeId = "act3_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act3_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH, BROTHER! The steel workers are in the Commander's corner! Vance is FIRED UP! Blast those trade saboteurs back to their Brussels boardroom!",
+            triggerBattleEncounterId = "act3_ch1_mill_battle",
+            nextNodeId = "act3_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act3_ch1_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The trade cartel retreated! The mill is OPEN! 1,400 American jobs secured by the end of the night! Now — to Washington! We've got a new trade deal to write from scratch!",
+            changeSceneId = SCENE_ACT3_CH2_USMCA.id,
+            nextNodeId = "act3_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT III - CHAPTER 2: THE USMCA RENEGOTIATION SHOWDOWN (2018)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_ch2_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The NAFTA renegotiation war room is set. Canada and Mexico sent their top trade lawyers and three trolleys of stalling tactics. Commander America and Marco Rubio sit across the table armed with the Art of the Deal and a stack of sanctions so thick it has its own zip code.",
+            nextNodeId = "act3_ch2_table_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch2_table_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Gentlemen — and I use the term loosely — NAFTA is dead. We are replacing it with the USMCA. United States-Mexico-Canada Agreement. My people wrote it. It's fantastic. Much better for America. Now let's talk terms.",
+            choices = listOf(
+                DialogueChoice("a3c2_dairy", "Demand Canadian dairy market access — they've been blocking us for 30 years", listOf("dairy", "canada", "market", "farmers", "milk"), "act3_ch2_dairy", completionFlag = "a3c2_dairy"),
+                DialogueChoice("a3c2_autos", "Lock in 75% North American content rules for automobiles", listOf("autos", "cars", "content", "vehicles", "75"), "act3_ch2_autos", completionFlag = "a3c2_autos"),
+                DialogueChoice("a3c2_ip", "Enforce intellectual property protections for American innovators", listOf("ip", "intellectual", "patent", "innovation", "protect"), "act3_ch2_ip", completionFlag = "a3c2_ip"),
+                DialogueChoice("a3c2_sign", "Slam down the USMCA, sign it, and call it the greatest trade deal ever written", listOf("sign", "deal", "usmca", "greatest", "done"), "act3_ch2_sign_deal")
+            )
+        ),
+        DialogueNode(
+            id = "act3_ch2_dairy",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Canada charges our dairy farmers a 270% tariff! Our guys can barely get their product across the border! That is going to be ZERO. Open access. Our farmers are the best in the world — they don't need protection from competition, they just need a fair shot!",
+            nextNodeId = "act3_ch2_table_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch2_autos",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "Under our sanctions and tariff leverage, we are locking in 75% North American content rules for all vehicles. If you want to sell a car in America, most of it needs to be BUILT in America, Canada, or Mexico. The offshore shell games are over.",
+            nextNodeId = "act3_ch2_table_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch2_ip",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "American companies — pharmaceutical, tech, creative — spent billions innovating, and foreign competitors just copy it the next day! Under USMCA, we have ten-year protections for biologics and criminal penalties for trade secret theft! Protection for our geniuses!",
+            nextNodeId = "act3_ch2_table_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch2_sign_deal",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Alright, we've covered dairy, autos, and IP. The USMCA is signed! Greatest trade deal replacement in North American history — by far! NAFTA is officially buried. Tell Canada we said 'you're welcome.'",
+            nextNodeId = "act3_ch2_hulk_celebrate"
+        ),
+        DialogueNode(
+            id = "act3_ch2_hulk_celebrate",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "BROTHER! NAFTA IS DONE! The greatest trade deal replacement in history! Kayleigh, put that in the record books right NOW!",
+            nextNodeId = "act3_ch2_post_battle_transition"
+        ),
+        DialogueNode(
+            id = "act3_ch2_post_battle_transition",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Breaking news: Air Force One is wheels-up and bound for the Korean DMZ. A sitting American president is about to cross the 38th Parallel and meet Chairman Kim for the first time in history. Career diplomats are calling it impossible. Commander America is calling it Tuesday.",
+            changeSceneId = SCENE_ACT3_CH3_AF1.id,
+            nextNodeId = "act3_ch3_intro"
+        ),
+
+        // =========================================================================
+        // ACT III - CHAPTER 3: THE DIPLOMATIC FLIGHT ON AIR FORCE ONE (2018)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_ch3_intro",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH, BROTHER! Air Force One is cruising at 41,000 feet over the Pacific Ocean and the press pool in the back is having a collective breakdown! The career diplomats packed their talking points binders from 1953 and nobody told them those are useless now!",
+            nextNodeId = "act3_ch3_briefing_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch3_briefing_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "They said you can't negotiate with Rocket Man. They said it was impossible. They've said that about everything we've done. Let me tell you something — nobody has ever tried doing it MY way.",
+            choices = listOf(
+                DialogueChoice("a3c3_strategy", "Lay out the diplomatic leverage strategy with Marco", listOf("strategy", "leverage", "diplomatic", "approach", "plan"), "act3_ch3_strategy", completionFlag = "a3c3_strategy"),
+                DialogueChoice("a3c3_menu", "Review the fast-food diplomatic feast menu for the summit table", listOf("menu", "burger", "food", "feast", "cheeseburger"), "act3_ch3_menu", completionFlag = "a3c3_menu"),
+                DialogueChoice("a3c3_vance", "Ask JD Vance what the heartland thinks about peace on the Korean Peninsula", listOf("vance", "heartland", "ohio", "korea", "peace"), "act3_ch3_vance_korea", completionFlag = "a3c3_vance"),
+                DialogueChoice("a3c3_interceptors", "Deal with the deep state interceptors trying to derail the flight", listOf("intercept", "deep state", "sabotage", "derail", "stop"), "act3_ch3_interceptor_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act3_ch3_strategy",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "Maximum pressure, then maximum diplomacy. We tightened sanctions until his economy squeaked — then we opened a back-channel with a letter hand-delivered through Singapore. The carrot and the biggest stick ever assembled. Classic Sanctions Sorcery.",
+            nextNodeId = "act3_ch3_briefing_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch3_menu",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "We've got two dozen Big Macs, thirty cheeseburgers, Filet-O-Fish for the diplomatic delegation, and a Trump Tower chocolate cake as the centerpiece. Nothing says 'world peace' like a Golden Arches feast. Rocket Man is going to LOVE it.",
+            nextNodeId = "act3_ch3_briefing_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch3_vance_korea",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "The people of eastern Ohio have lost sons and daughters in Korea. They've been watching that peninsula for 70 years. If Commander America can end the conflict that career diplomats couldn't end in seven decades, those families deserve it more than anyone. Let's get this done.",
+            nextNodeId = "act3_ch3_briefing_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch3_interceptor_ambush",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "The Deep State Intercept Squadron has scrambled! Anonymous sources are filing emergency cables to sabotage the summit and force the plane to turn around! They cannot allow this summit to succeed — it would destroy the narrative!",
+            nextNodeId = "act3_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act3_ch3_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The Intercept Squadron is transmitting disinformation to every cable newsroom simultaneously! Commander, Marco, JD — take them down before they hijack the summit story!",
+            triggerBattleEncounterId = "act3_ch3_intercept_battle",
+            nextNodeId = "act3_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act3_ch3_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Intercept Squadron neutralized! The cables are clear! Fasten your seatbelts — we're beginning our descent to the DMZ. Tell the tower we're coming in HOT and we need a table set for twelve with a Big Mac centerpiece.",
+            changeSceneId = SCENE_ACT3_CH4_SUMMIT.id,
+            nextNodeId = "act3_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT III - CHAPTER 4: THE CRIMSON SUMMIT OF PEACE (2018)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_ch4_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are at the 38th Parallel. No sitting American president has ever stood here and met a North Korean Chairman face-to-face. The world is watching. 60 million viewers. More than any episode of anything, ever. The fast-food tower centerpiece is impeccable.",
+            nextNodeId = "act3_ch4_summit_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch4_summit_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Chairman — I brought the Big Macs. Sit down. Let's talk denuclearization, security guarantees, and why you keep testing missiles when you could be eating cheeseburgers.",
+            choices = listOf(
+                DialogueChoice("a3c4_handshake", "Deploy the legendary Alpha Handshake of Sovereignty", listOf("handshake", "shake", "grip", "alpha", "sovereign"), "act3_ch4_handshake"),
+                DialogueChoice("a3c4_button", "Remind him whose button is bigger and actually works", listOf("button", "nuclear", "bigger", "works", "rocket"), "act3_ch4_button"),
+                DialogueChoice("a3c4_burger", "Offer the diplomatic fast-food feast as a gesture of good faith", listOf("burger", "food", "feast", "mcdonald", "cheeseburger"), "act3_ch4_burger"),
+                DialogueChoice("a3c4_fight", "Tell Rocket Man to prove his strength in honorable combat", listOf("fight", "combat", "duel", "prove", "strength"), "act3_ch4_fight_challenge")
+            )
+        ),
+        DialogueNode(
+            id = "act3_ch4_handshake",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The handshake lasted 12 seconds. Firm. Deliberate. Equal pressure. The cameras caught every frame. History will note: this is how you project strength across a conference table.",
+            nextNodeId = "act3_ch4_rocket_reaction"
+        ),
+        DialogueNode(
+            id = "act3_ch4_button",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Little Rocket Man — I have buttons. My buttons are much bigger than your buttons. And mine WORKS! Now — are we going to talk about a beautiful peace deal or are we going to talk about buttons all day?",
+            nextNodeId = "act3_ch4_rocket_reaction"
+        ),
+        DialogueNode(
+            id = "act3_ch4_burger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Hamberders. The finest diplomatic currency ever invented. Big Mac, Filet-O-Fish, and a Royale with Cheese for the Chairman. Nothing brings world leaders together like American fast food. It's tremendous. It truly is.",
+            nextNodeId = "act3_ch4_rocket_reaction"
+        ),
+        DialogueNode(
+            id = "act3_ch4_fight_challenge",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Chairman, you've tested missiles. I've negotiated with some of the toughest people on the planet. Let's settle this the American way — a good old-fashioned battle of wits, strength, and the Art of the Deal!",
+            nextNodeId = "act3_ch4_rocket_reaction"
+        ),
+        DialogueNode(
+            id = "act3_ch4_rocket_reaction",
+            speaker = DialogueSpeaker.ROCKET_MAN,
+            side = SpeakerSide.RIGHT,
+            text = "Your handshake... it is formidable. Your buttons... they concern me greatly. Your hamberders... they are actually very good. But I must test your battle strength before I agree to anything! This is a matter of supreme pride and four decades of military tradition!",
+            nextNodeId = "act3_ch4_vance_battle_hype"
+        ),
+        // Legacy compat nodes for existing tests
         DialogueNode(
             id = "act3_shake",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Little Rocket Man, let's talk deal. We have bigger buttons, much bigger, and mine actually works!",
-            nextNodeId = "act3_rocket_reply"
+            nextNodeId = "act3_ch4_rocket_reaction"
         ),
         DialogueNode(
             id = "act3_burger",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Nothing brings world peace like a stack of golden arches hamberders! Tremendous flavor!",
-            nextNodeId = "act3_rocket_reply"
+            nextNodeId = "act3_ch4_rocket_reaction"
         ),
         DialogueNode(
             id = "act3_rocket_reply",
             speaker = DialogueSpeaker.ROCKET_MAN,
             side = SpeakerSide.RIGHT,
             text = "My fire-rockets will... wait! Is that a double cheeseburger?! Still, I must test your battle strength!",
-            nextNodeId = "act3_vance_joins"
+            nextNodeId = "act3_ch4_vance_battle_hype"
         ),
         DialogueNode(
             id = "act3_vance_joins",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
-            text = "Commander, Middle America has your back at this summit. While the establishment media doubts our resolve, the heartland brought common sense, Appalachian fortitude, and debate dismantle skills. Let's show Chairman Rocket Man American strength!",
+            text = "Commander, Middle America has your back at this summit. The Rustbelt Vanguard is ready!",
             nextNodeId = "act3_hero_vance_reply"
         ),
         DialogueNode(
@@ -794,16 +1105,55 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "JD, fantastic! The Rustbelt Vanguard is here! Rocket Man, meet the future of America!",
-            nextNodeId = "act3_battle_trigger"
+            nextNodeId = "act3_ch4_battle_trigger"
         ),
+        DialogueNode(
+            id = "act3_ch4_vance_battle_hype",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Commander, I've debated union reps, hostile media anchors, and a sitting Vice President. I've never been more ready for a fight than I am right now. Let's show Chairman Kim what American strength looks like when it walks in the room.",
+            nextNodeId = "act3_ch4_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act3_ch4_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "LOOK AT THAT HANDSHAKE, BROTHER! Vance and Rubio backing up Commander America! That's Appalachian grit and diplomatic steel! SHOW HIM THE ART OF THE DEAL, COMMANDER!",
+            triggerBattleEncounterId = "act3_summit_battle",
+            nextNodeId = "act3_ch4_post_battle"
+        ),
+        // Legacy alias
         DialogueNode(
             id = "act3_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "LOOK AT THAT HANDSHAKE, BROTHER! Vance and Rubio backing up Commander America! That's Appalachian grit and diplomatic steel! Show him the Art of the Deal, Commander!",
+            text = "LOOK AT THAT HANDSHAKE, BROTHER! Vance and Rubio backing up Commander America! Show him the Art of the Deal, Commander!",
             triggerBattleEncounterId = "act3_summit_battle",
-            nextNodeId = "act3_post_battle"
+            nextNodeId = "act3_ch4_post_battle"
         ),
+        DialogueNode(
+            id = "act3_ch4_post_battle",
+            speaker = DialogueSpeaker.ROCKET_MAN,
+            side = SpeakerSide.RIGHT,
+            text = "Your handshake grip is truly unstoppable. Your hamberders are extraordinary. I... agree to begin denuclearization talks. Also, can I have the rest of the Filet-O-Fish?",
+            nextNodeId = "act3_ch4_victory_speech"
+        ),
+        DialogueNode(
+            id = "act3_ch4_victory_speech",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Chairman, you've made an incredible decision! We've achieved something the career diplomats said was impossible! Peace talks — REAL peace talks — on the Korean Peninsula for the first time in 70 years! TREMENDOUS!",
+            nextNodeId = "act3_ch4_hulk_close"
+        ),
+        DialogueNode(
+            id = "act3_ch4_hulk_close",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "BROTHER! They said it couldn't be done! The Nobel Committee is probably already on the phone! Commander America just body-slammed 70 years of failed diplomacy onto the mat!",
+            changeSceneId = SCENE_ACT4_MUELLER.id,
+            nextNodeId = "act4_intro"
+        ),
+        // Legacy post battle alias
         DialogueNode(
             id = "act3_post_battle",
             speaker = DialogueSpeaker.ROCKET_MAN,

@@ -738,7 +738,33 @@ object StoryEncounters {
         initialParty = createAct2Party()
     )
 
-    // 3. Act III: Summit of Peace Duel
+    // 3a. Act III - Chapter 1: The Ohio Steel Mill Awakening
+    val ACT3_CH1_MILL_BATTLE = EncounterDefinition(
+        id = "act3_ch1_mill_battle",
+        name = "Act III - Ch 1: Globalist Trade Cartel",
+        description = "Globalist Trade Cartel lawyers and WTO saboteurs deploy cease-and-desist filings to shut down the Mahoning Valley blast furnaces!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("cartel_lawyer", "Globalist Trade Cartel Envoy", "Occultist", currentHp = 380, maxHp = 380, baseAttack = 24, isBoss = true, isTargeted = true, spriteTint = Color(0xFF5E35B1), speed = 62, atbGauge = 0.35f),
+            Enemy("wto_saboteur", "WTO Complaint Lobbyist", "Sniper", currentHp = 260, maxHp = 260, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF7E57C2), speed = 55, atbGauge = 0.25f)
+        ),
+        initialParty = createAct3Party() // Commander America, Marco Rubio, JD Vance
+    )
+
+    // 3b. Act III - Chapter 3: The Diplomatic Flight on Air Force One
+    val ACT3_CH3_INTERCEPT_BATTLE = EncounterDefinition(
+        id = "act3_ch3_intercept_battle",
+        name = "Act III - Ch 3: Deep State Intercept Squadron",
+        description = "Deep State interceptors transmit sabotaged diplomatic cables from 41,000 feet to derail the historic DMZ summit!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("intercept_commander", "Intercept Disinformation Director", "Sniper", currentHp = 420, maxHp = 420, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFFD81B60), speed = 66, atbGauge = 0.40f),
+            Enemy("cable_saboteur", "Phantom Cable Leaker", "Occultist", currentHp = 280, maxHp = 280, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFF8E24AA), speed = 58, atbGauge = 0.30f)
+        ),
+        initialParty = createAct3Party()
+    )
+
+    // 3c. Act III - Chapter 4: Summit of Peace Duel (Boss Encounter)
     val ACT3_SUMMIT_BATTLE = EncounterDefinition(
         id = "act3_summit_battle",
         name = "Act III: Summit of Peace Duel",
@@ -842,6 +868,8 @@ object StoryEncounters {
         ACT1_CH3_MACHINE_BATTLE,
         ACT2_CH1_INAUGURATION_BATTLE,
         ACT2_MEDIA_BATTLE,
+        ACT3_CH1_MILL_BATTLE,
+        ACT3_CH3_INTERCEPT_BATTLE,
         ACT3_SUMMIT_BATTLE,
         ACT4_HOAX_BATTLE,
         ACT5_GOLEM_BATTLE,

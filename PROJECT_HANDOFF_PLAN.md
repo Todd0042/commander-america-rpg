@@ -110,13 +110,32 @@
 
 ---
 
-## 3. Master Phase Roadmap (Next Up: Phase 4)
+* [x] **Phase 4 (Act II): The Inaugural Siege & Media Wars — 3 Full Chapters**
+  - **Chapter 1: The Inaugural Address** (National Mall / Capitol Steps, Jan 20, 2017) — `act2_ch1_intro`, hub choices (American Carnage, crowd call-out, media smack), Cable News Aerial Spin Crew + Hostile Fact-Checker battle (`act2_ch1_inauguration_battle`).
+  - **Chapter 2: The Oval Citadel & The Executive Pen** (The Oval Office) — `act2_ch2_intro`, Resolute Desk hub (gold drapes, 10:1 deregulation order, reciprocal tariffs); **Marco Rubio joins** as *Sanctions Sorcerer* (`act2_ch2_marco_arrives`).
+  - **Chapter 3: Confronting Madam Speaker** (Capitol Rotunda / Committee Hall) — `act2_ch3_intro`, Pelosi's EDGAR insider microchip filings exposed by Marco, escalating confrontation, `act2_media_battle` boss (Madam Pelosi - Stock Lich, Biased Fact-Checker, Anonymous Source Phantom).
+  - Added scenes `SCENE_ACT2_CH1_MALL`, `SCENE_ACT2_CH2_OVAL`, `SCENE_ACT2_CH3_ROTUNDA`; legacy `SCENE_ACT2_OVAL` preserved as backward-compat alias.
+  - Marco auto-join logic corrected: fires on `act2_ch2_*` and beyond only (excludes `act2_ch1_*`).
+  - Added `ACT2_CH1_INAUGURATION_BATTLE` encounter; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`, and `debugWarpToChapter()` companion thresholds.
+  - All unit tests passing in `CommanderAmericaGameTest.kt`. Installed and verified on physical device.
+
+* [x] **Phase 5 (Act III): The Rustbelt Summit & Heartland / Summit of Peace — 4 Full Chapters**
+  - **Chapter 1: The Ohio Steel Mill Awakening** (Lordstown Steel Mill, Mahoning Valley, OH) — `act3_ch1_intro`, steel tariff and NAFTA callout lore hubs; **JD Vance joins** as *Rustbelt Vanguard* (`act3_ch1_vance_arrives`); `act3_ch1_mill_battle` (Globalist Trade Cartel Envoy & WTO Complaint Lobbyist).
+  - **Chapter 2: The USMCA Renegotiation Showdown** (USMCA Drafting Room) — `act3_ch2_intro`, NAFTA renegotiation table hub (Canadian dairy tariffs, auto rules of origin, IP protections); signing of USMCA agreement.
+  - **Chapter 3: The Demilitarized Zone Flight** (Air Force One, 41,000 ft) — `act3_ch3_intro`, diplomatic leverage briefing hub (fast food summit menu, heartland perspectives); `act3_ch3_intercept_battle` (Deep State Intercept Disinformation Director & Phantom Cable Leaker).
+  - **Chapter 4: The Crimson Summit of Peace** (38th Parallel Summit Table) — `act3_ch4_intro`, historic meeting with Chairman Rocket Man; fast-food feast diplomatic offer, Alpha Handshake, button comparison; `act3_summit_battle` boss duel against Chairman Rocket Man; post-battle peace talks agreement.
+  - Added scenes `SCENE_ACT3_CH1_STEEL_MILL`, `SCENE_ACT3_CH2_USMCA`, `SCENE_ACT3_CH3_AF1`, `SCENE_ACT3_CH4_SUMMIT`; legacy `SCENE_ACT3_SUMMIT` preserved as backward-compat alias.
+  - Added encounters `ACT3_CH1_MILL_BATTLE` and `ACT3_CH3_INTERCEPT_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
+  - All unit tests passing in `CommanderAmericaGameTest.kt` (19/19 tests). Installed and verified on physical device.
+
+
+## 3. Master Phase Roadmap (Next Up: Phase 6)
 
 ```mermaid
 flowchart TD
-    P3["Phase 3: Act I Expansion (DONE)"] --> P4["Phase 4: Act II - The Inaugural Siege (NEXT)"]
-    P4 --> P5["Phase 5: Act III - The Rustbelt Summit & Heartland"]
-    P5 --> P6["Phase 6: Act IV - The Intelligence Vaults & Declassification"]
+    P3["Phase 3: Act I Expansion (DONE)"] --> P4["Phase 4: Act II - The Inaugural Siege (DONE)"]
+    P4 --> P5["Phase 5: Act III - The Rustbelt Summit & Heartland (DONE)"]
+    P5 --> P6["Phase 6: Act IV - The Intelligence Vaults & Declassification (NEXT)"]
     P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile"]
     P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland"]
     P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve"]
