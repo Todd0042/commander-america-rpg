@@ -146,8 +146,18 @@
   - Added encounters `ACT5_CH1_PIPE_BATTLE` and `ACT5_CH2_INQUEST_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`, and `isKennedyRecruited`.
   - All unit tests passing in `CommanderAmericaGameTest.kt` (23/23 tests). Installed and verified on physical device.
 
+* [x] **Phase 8 (Act VI): The Word-Salad Wasteland — 5 Full Chapters**
+  - **Chapter 1: The Border Czar Inspection** (`scene_act6_ch1_border`) — `act6_ch1_intro`, Border Czar Europe excuse, $300M in rusted steel bollards, fentanyl flood & cartel pipelines; `act6_ch1_border_battle` (Catch-and-Release Liaison & Cartel Smuggler Courier). Party: all 5 heroes.
+  - **Chapter 2: The Venn Diagram Fog** (`scene_act6_ch2_venn`) — `act6_ch2_intro`, swirling yellow and cyan logic circles, significance of the passage of time, what can be unburdened by what has been, Kennedy southern translation, dispelling the fog with hard numbers.
+  - **Chapter 3: The Electric School Bus Mire** (`scene_act6_ch3_bus`) — `act6_ch3_intro`, stranded half-million-dollar electric bus depot, yellow bus tribute cackle, $7.5B for 8 chargers audit, Vance grid impact; `act6_ch3_bus_battle` (Stranded EV Battery Golem & Federal Green Mandate Drone).
+  - **Chapter 4: The Coconut Tree Grove** (`scene_act6_ch4_coconut`) — `act6_ch4_intro`, tropical grove of existential context, falling out of coconut trees mystery, American grit vs tropical delusions, Kennedy bayou wisdom; advancing to the dais.
+  - **Chapter 5: The Unburdened Vice-Sovereign Confrontation** (`scene_act6_ch5_unburdened`) — `act6_ch5_intro`, Kamala the Unburdened upon the Dais of Circular Logic, 4-year inflation challenge, unscripted debate firepower, 5-hero supergroup verdict; `act6_kamala_battle` boss duel against Kamala the Unburdened and Yellow/Blue Venn loops; post-battle word-salad dissipation leading into Act VII.
+  - Added scenes `SCENE_ACT6_CH1_BORDER`, `SCENE_ACT6_CH2_VENN`, `SCENE_ACT6_CH3_BUS`, `SCENE_ACT6_CH4_COCONUT`, `SCENE_ACT6_CH5_UNBURDENED`; legacy `SCENE_ACT6_WASTELAND` preserved as backward-compat alias.
+  - Added encounters `ACT6_CH1_BORDER_BATTLE` and `ACT6_CH3_BUS_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
+  - All unit tests passing in `CommanderAmericaGameTest.kt` (25/25 tests). Installed and verified on physical device.
 
-## 3. Master Phase Roadmap (Next Up: Phase 8)
+
+## 3. Master Phase Roadmap (Next Up: Phase 9)
 
 ```mermaid
 flowchart TD
@@ -155,8 +165,8 @@ flowchart TD
     P4 --> P5["Phase 5: Act III - The Rustbelt Summit & Heartland (DONE)"]
     P5 --> P6["Phase 6: Act IV - The Intelligence Vaults & Declassification (DONE)"]
     P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile (DONE)"]
-    P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland (NEXT)"]
-    P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve"]
+    P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland (DONE)"]
+    P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve (NEXT)"]
     P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel"]
     P10 --> P11["Phase 11: Streamline Character Creation"]
     P11 --> P12["Phase 12: Streamline & Minimize Tutorial"]

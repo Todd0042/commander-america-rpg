@@ -134,7 +134,9 @@ class CommanderAmericaGameTest {
             "act5_ch1_pipe_battle" to "act5_ch1_post_battle",
             "act5_ch2_inquest_battle" to "act5_ch2_post_battle",
             "act5_golem_battle" to "act5_ch4_post_battle",
-            "act6_kamala_battle" to "act6_post_battle",
+            "act6_ch1_border_battle" to "act6_ch1_post_battle",
+            "act6_ch3_bus_battle" to "act6_ch3_post_battle",
+            "act6_kamala_battle" to "act6_ch5_post_battle",
             "act7_lawfare_battle" to "act7_post_battle",
             "act8_biden_final_battle" to "act8_post_battle"
         )
@@ -1116,7 +1118,7 @@ class CommanderAmericaGameTest {
         storyViewModel.triggerEncounter("act5_golem_battle")
         storyViewModel.onCombatVictory()
         assertEquals("act5_ch4_post_battle", storyViewModel.state.value.currentNode.id)
-        assertEquals("scene_act6_wasteland", storyViewModel.state.value.currentScene.id)
+        assertEquals("scene_act6_ch1_border", storyViewModel.state.value.currentScene.id)
 
         // -----------------------------------------------------------------------
         // 5. Debug warps for all Act V chapters
@@ -1179,6 +1181,171 @@ class CommanderAmericaGameTest {
         assertTrue("act5_ch1_pipe_battle must be in ALL_ENCOUNTERS", allIds.contains("act5_ch1_pipe_battle"))
         assertTrue("act5_ch2_inquest_battle must be in ALL_ENCOUNTERS", allIds.contains("act5_ch2_inquest_battle"))
         assertTrue("act5_golem_battle must be in ALL_ENCOUNTERS", allIds.contains("act5_golem_battle"))
+    }
+
+    @Test
+    fun testAct6FiveChaptersFullProgressionAndDebugWarps() {
+        // -----------------------------------------------------------------------
+        // 1. Act VI Chapter 1: The Border Czar Inspection (The Missing Border Wall Gap)
+        // -----------------------------------------------------------------------
+        storyViewModel.debugWarpToChapter("act6_ch1_intro")
+        assertEquals("act6_ch1_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act6_ch1_border", storyViewModel.state.value.currentScene.id)
+        val ch1Party = storyViewModel.state.value.partyStats
+        assertEquals(5, ch1Party.size)
+        assertTrue(ch1Party.any { it.id == "hero" })
+        assertTrue(ch1Party.any { it.id == "marco" })
+        assertTrue(ch1Party.any { it.id == "vance" })
+        assertTrue(ch1Party.any { it.id == "kash" })
+        assertTrue(ch1Party.any { it.id == "kennedy" })
+
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch1_border_arrival", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch1_border_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select proceed
+        val proceedChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a6c1_proceed" }
+        storyViewModel.selectChoice(proceedChoice)
+        assertEquals("act6_ch1_cartel_ambush", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch1_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act6_ch1_border_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch1 battle
+        storyViewModel.triggerEncounter("act6_ch1_border_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act6_ch1_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act6_ch2_venn", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 2. Act VI Chapter 2: The Venn Diagram Fog
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch2_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch2_venn_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select dispel choice
+        val dispelChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a6c2_dispel" }
+        storyViewModel.selectChoice(dispelChoice)
+        assertEquals("act6_ch2_dispel_fog", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch2_hero_dispel", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch3_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act6_ch3_bus", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 3. Act VI Chapter 3: The Electric School Bus Mire
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch3_bus_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select confront
+        val confrontChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a6c3_confront" }
+        storyViewModel.selectChoice(confrontChoice)
+        assertEquals("act6_ch3_golem_confront", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch3_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act6_ch3_bus_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch3 battle
+        storyViewModel.triggerEncounter("act6_ch3_bus_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act6_ch3_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act6_ch4_coconut", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 4. Act VI Chapter 4: The Coconut Tree Grove
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch4_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch4_grove_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select throne choice
+        val throneChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a6c4_throne" }
+        storyViewModel.selectChoice(throneChoice)
+        assertEquals("act6_ch4_advance_throne", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch5_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act6_ch5_unburdened", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 5. Act VI Chapter 5: The Unburdened Vice-Sovereign Confrontation
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch5_throne_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select battle choice
+        val battleChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a6c5_battle" }
+        storyViewModel.selectChoice(battleChoice)
+        assertEquals("act6_ch5_climax_battle", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch5_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act6_kamala_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch5 Boss battle
+        storyViewModel.triggerEncounter("act6_kamala_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act6_ch5_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act7_sands", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 6. Debug warps for all Act VI chapters
+        // -----------------------------------------------------------------------
+        val act6FullTargets = listOf(
+            "act6_ch1_intro" to "scene_act6_ch1_border",
+            "act6_ch2_intro" to "scene_act6_ch2_venn",
+            "act6_ch3_intro" to "scene_act6_ch3_bus",
+            "act6_ch4_intro" to "scene_act6_ch4_coconut",
+            "act6_ch5_intro" to "scene_act6_ch5_unburdened"
+        )
+        for ((nodeId, expectedSceneId) in act6FullTargets) {
+            storyViewModel.debugWarpToChapter(nodeId)
+            assertEquals("Node for $nodeId", nodeId, storyViewModel.state.value.currentNode.id)
+            assertEquals("Scene for $nodeId", expectedSceneId, storyViewModel.state.value.currentScene.id)
+            val party = storyViewModel.state.value.partyStats
+            assertEquals("Party size must be 5 at $nodeId", 5, party.size)
+            assertTrue("Party must have hero at $nodeId", party.any { it.id == "hero" })
+            assertTrue("Party must have marco at $nodeId", party.any { it.id == "marco" })
+            assertTrue("Party must have vance at $nodeId", party.any { it.id == "vance" })
+            assertTrue("Party must have kash at $nodeId", party.any { it.id == "kash" })
+            assertTrue("Party must have kennedy at $nodeId", party.any { it.id == "kennedy" })
+        }
+    }
+
+    @Test
+    fun testAct6EncountersAndPartyRoster() {
+        // Ch1 Border Battle
+        val borderBattle = StoryEncounters.ACT6_CH1_BORDER_BATTLE
+        assertEquals("act6_ch1_border_battle", borderBattle.id)
+        assertEquals(5, borderBattle.initialParty?.size)
+        val liaison = borderBattle.enemies.firstOrNull { it.id == "border_czar_liaison" }
+        assertNotNull("Catch-and-Release Liaison must be present", liaison)
+        assertTrue("Catch-and-Release Liaison is boss", liaison!!.isBoss)
+
+        // Ch3 Bus Battle
+        val busBattle = StoryEncounters.ACT6_CH3_BUS_BATTLE
+        assertEquals("act6_ch3_bus_battle", busBattle.id)
+        assertEquals(5, busBattle.initialParty?.size)
+        val batteryGolem = busBattle.enemies.firstOrNull { it.id == "battery_golem" }
+        assertNotNull("Stranded Battery Golem must be present", batteryGolem)
+        assertTrue("Stranded Battery Golem is boss", batteryGolem!!.isBoss)
+
+        // Ch5 Kamala Boss Battle
+        val kamalaBattle = StoryEncounters.ACT6_KAMALA_BATTLE
+        assertEquals("act6_kamala_battle", kamalaBattle.id)
+        assertEquals(5, kamalaBattle.initialParty?.size)
+        val kamala = kamalaBattle.enemies.firstOrNull { it.id == "kamala" }
+        assertNotNull("Kamala must be present", kamala)
+
+        // Verify in ALL_ENCOUNTERS
+        val allIds = StoryEncounters.ALL_ENCOUNTERS.map { it.id }
+        assertTrue("act6_ch1_border_battle must be in ALL_ENCOUNTERS", allIds.contains("act6_ch1_border_battle"))
+        assertTrue("act6_ch3_bus_battle must be in ALL_ENCOUNTERS", allIds.contains("act6_ch3_bus_battle"))
+        assertTrue("act6_kamala_battle must be in ALL_ENCOUNTERS", allIds.contains("act6_kamala_battle"))
     }
 
     @Test

@@ -857,6 +857,33 @@ object StoryEncounters {
     )
 
     // 6. Act VI: The Word-Salad Wasteland
+    // 6a. Act VI - Chapter 1: The Border Czar Inspection
+    val ACT6_CH1_BORDER_BATTLE = EncounterDefinition(
+        id = "act6_ch1_border_battle",
+        name = "Act VI - Ch 1: The Border Czar Inspection",
+        description = "Cartel Smuggler Couriers and Catch-and-Release Liaisons attempt to swarm the unfinished gap in the southern border wall!",
+        environment = BattleEnvironment.SWAMP,
+        enemies = listOf(
+            Enemy("border_czar_liaison", "Catch-and-Release Liaison", "Occultist", currentHp = 520, maxHp = 520, baseAttack = 28, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFB300), speed = 62, atbGauge = 0.35f),
+            Enemy("cartel_courier", "Cartel Smuggler Courier", "Sniper", currentHp = 340, maxHp = 340, baseAttack = 24, isTargeted = false, spriteTint = Color(0xFFE53935), speed = 68, atbGauge = 0.40f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 6b. Act VI - Chapter 3: The Electric School Bus Mire
+    val ACT6_CH3_BUS_BATTLE = EncounterDefinition(
+        id = "act6_ch3_bus_battle",
+        name = "Act VI - Ch 3: The Electric School Bus Mire",
+        description = "A Stranded Battery Golem and Federal Green Mandate Drones attempt to siphon the party's energy into non-existent chargers!",
+        environment = BattleEnvironment.SWAMP,
+        enemies = listOf(
+            Enemy("battery_golem", "Stranded EV Battery Golem", "Vanguard", currentHp = 650, maxHp = 650, baseAttack = 30, isBoss = true, isTargeted = true, spriteTint = Color(0xFF26A69A), speed = 44, atbGauge = 0.25f),
+            Enemy("mandate_drone", "Federal Green Mandate Drone", "Sniper", currentHp = 350, maxHp = 350, baseAttack = 26, isTargeted = false, spriteTint = Color(0xFF81C784), speed = 66, atbGauge = 0.35f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 6c. Act VI - Chapter 5: The Word-Salad Wasteland (Kamala Boss Encounter)
     val ACT6_KAMALA_BATTLE = EncounterDefinition(
         id = "act6_kamala_battle",
         name = "Act VI: The Word-Salad Wasteland",
@@ -930,6 +957,8 @@ object StoryEncounters {
         ACT5_CH1_PIPE_BATTLE,
         ACT5_CH2_INQUEST_BATTLE,
         ACT5_GOLEM_BATTLE,
+        ACT6_CH1_BORDER_BATTLE,
+        ACT6_CH3_BUS_BATTLE,
         ACT6_KAMALA_BATTLE,
         ACT7_LAWFARE_BATTLE,
         ACT8_BIDEN_FINAL_BATTLE,

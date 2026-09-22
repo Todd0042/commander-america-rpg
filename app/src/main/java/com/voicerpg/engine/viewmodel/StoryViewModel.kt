@@ -99,6 +99,11 @@ class StoryViewModel(
             DebugChapterTarget("Act V - Ch 3: Southern White House", "act5_ch3_intro", 8),
             DebugChapterTarget("Act V - Ch 4: Golden Closets", "act5_ch4_intro", 8),
             DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 8),
+            DebugChapterTarget("Act VI - Ch 1: Border Czar Inspection", "act6_ch1_intro", 9),
+            DebugChapterTarget("Act VI - Ch 2: Venn Diagram Fog", "act6_ch2_intro", 9),
+            DebugChapterTarget("Act VI - Ch 3: Electric Bus Mire", "act6_ch3_intro", 9),
+            DebugChapterTarget("Act VI - Ch 4: Coconut Tree Grove", "act6_ch4_intro", 9),
+            DebugChapterTarget("Act VI - Ch 5: Unburdened Climax", "act6_ch5_intro", 9),
             DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 9),
             DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 10),
             DebugChapterTarget("Act VIII: The Final Malarkey Citadel", "act8_intro", 11),
@@ -1247,6 +1252,8 @@ class StoryViewModel(
             "act3_summit_battle" -> StoryEncounters.ACT3_SUMMIT_BATTLE
             "act4_hoax_battle" -> StoryEncounters.ACT4_HOAX_BATTLE
             "act5_golem_battle" -> StoryEncounters.ACT5_GOLEM_BATTLE
+            "act6_ch1_border_battle" -> StoryEncounters.ACT6_CH1_BORDER_BATTLE
+            "act6_ch3_bus_battle" -> StoryEncounters.ACT6_CH3_BUS_BATTLE
             "act6_kamala_battle" -> StoryEncounters.ACT6_KAMALA_BATTLE
             "act7_lawfare_battle" -> StoryEncounters.ACT7_LAWFARE_BATTLE
             "act8_biden_final_battle" -> StoryEncounters.ACT8_BIDEN_FINAL_BATTLE
@@ -1323,7 +1330,9 @@ class StoryViewModel(
             "act5_ch1_pipe_battle" -> "act5_ch1_post_battle"
             "act5_ch2_inquest_battle" -> "act5_ch2_post_battle"
             "act5_golem_battle" -> "act5_ch4_post_battle"
-            "act6_kamala_battle" -> "act6_post_battle"
+            "act6_ch1_border_battle" -> "act6_ch1_post_battle"
+            "act6_ch3_bus_battle" -> "act6_ch3_post_battle"
+            "act6_kamala_battle" -> "act6_ch5_post_battle"
             "act7_lawfare_battle" -> "act7_post_battle"
             "act8_biden_final_battle" -> "act8_post_battle"
             "prologue_solo" -> "village_post_battle"

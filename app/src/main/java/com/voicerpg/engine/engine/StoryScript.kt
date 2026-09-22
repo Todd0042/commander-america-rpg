@@ -232,12 +232,63 @@ object StoryScript {
         ambientDescription = "Ocean breezes sweep across golden palm trees surrounding Commander America's exile retreat."
     )
 
+    // Act VI - Chapter 1: The Border Czar Inspection (The Missing Border Wall Gap)
+    val SCENE_ACT6_CH1_BORDER = StoryScene(
+        id = "scene_act6_ch1_border",
+        name = "The Southern Border Wall Gap",
+        chapterTitle = "Act VI - Ch 1: The Border Czar Inspection (2022)",
+        backgroundAsset = "story/border_wall.jpg",
+        initialNodeId = "act6_ch1_intro",
+        ambientDescription = "Rusted steel bollards stand unfinished beside stacks of unused wall panels where millions cross unchecked under the Border Czar's watch."
+    )
+
+    // Act VI - Chapter 2: The Venn Diagram Fog (Endless loops of unburdened circular logic)
+    val SCENE_ACT6_CH2_VENN = StoryScene(
+        id = "scene_act6_ch2_venn",
+        name = "The Yellow & Blue Venn Mirage",
+        chapterTitle = "Act VI - Ch 2: The Venn Diagram Fog (2023)",
+        backgroundAsset = "story/venn_fog.jpg",
+        initialNodeId = "act6_ch2_intro",
+        ambientDescription = "Luminescent yellow and cyan overlapping circles float through swirling fog as circular logic echoes across the plains."
+    )
+
+    // Act VI - Chapter 3: The Electric School Bus Mire (Stranded EV Convoy)
+    val SCENE_ACT6_CH3_BUS = StoryScene(
+        id = "scene_act6_ch3_bus",
+        name = "The Stranded EV Bus Depot",
+        chapterTitle = "Act VI - Ch 3: The Electric Bus Mire (2023)",
+        backgroundAsset = "story/electric_bus.jpg",
+        initialNodeId = "act6_ch3_intro",
+        ambientDescription = "Dozens of multi-million dollar electric school buses sit parked in deep mud with dead batteries and nowhere to plug in."
+    )
+
+    // Act VI - Chapter 4: The Coconut Tree Grove (Floating in the context of all in which you live)
+    val SCENE_ACT6_CH4_COCONUT = StoryScene(
+        id = "scene_act6_ch4_coconut",
+        name = "The Gilded Coconut Grove",
+        chapterTitle = "Act VI - Ch 4: The Coconut Tree Grove (2023)",
+        backgroundAsset = "story/coconut_grove.jpg",
+        initialNodeId = "act6_ch4_intro",
+        ambientDescription = "Towering tropical palms sway gently as voices ask if you think you just fell out of a coconut tree."
+    )
+
+    // Act VI - Chapter 5: The Unburdened Vice-Sovereign Confrontation (Kamala Boss Battle)
+    val SCENE_ACT6_CH5_UNBURDENED = StoryScene(
+        id = "scene_act6_ch5_unburdened",
+        name = "The Unburdened Throne of What Can Be",
+        chapterTitle = "Act VI - Ch 5: The Unburdened Climax (2023)",
+        backgroundAsset = "story/unburdened_throne.jpg",
+        initialNodeId = "act6_ch5_intro",
+        ambientDescription = "A shimmering dais elevated by the passage of time where Kamala the Unburdened delivers the final circular discourse."
+    )
+
+    // Legacy alias for the original single Act VI scene
     val SCENE_ACT6_WASTELAND = StoryScene(
         id = "scene_act6_wasteland",
         name = "The Word-Salad Wasteland",
         chapterTitle = "Act VI: The Word-Salad Wasteland (2022-2023)",
         backgroundAsset = "story/rotting_marsh.jpg",
-        initialNodeId = "act6_intro",
+        initialNodeId = "act6_ch1_intro",
         ambientDescription = "Floating venn diagrams and endless loops of circular logic drift over a misty swamp."
     )
 
@@ -285,7 +336,12 @@ object StoryScript {
         SCENE_ACT5_CH3_TERRACE.id to SCENE_ACT5_CH3_TERRACE,
         SCENE_ACT5_CH4_CLOSETS.id to SCENE_ACT5_CH4_CLOSETS,
         SCENE_ACT5_MARALAGO.id to SCENE_ACT5_CH1_ARENA,     // legacy alias → ch1
-        SCENE_ACT6_WASTELAND.id to SCENE_ACT6_WASTELAND,
+        SCENE_ACT6_CH1_BORDER.id to SCENE_ACT6_CH1_BORDER,
+        SCENE_ACT6_CH2_VENN.id to SCENE_ACT6_CH2_VENN,
+        SCENE_ACT6_CH3_BUS.id to SCENE_ACT6_CH3_BUS,
+        SCENE_ACT6_CH4_COCONUT.id to SCENE_ACT6_CH4_COCONUT,
+        SCENE_ACT6_CH5_UNBURDENED.id to SCENE_ACT6_CH5_UNBURDENED,
+        SCENE_ACT6_WASTELAND.id to SCENE_ACT6_CH1_BORDER,   // legacy alias → ch1
         SCENE_ACT7_SANDS.id to SCENE_ACT7_SANDS,
         SCENE_ACT8_CITADEL_FINAL.id to SCENE_ACT8_CITADEL_FINAL
     )
@@ -1870,8 +1926,8 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The Golem crumbles into scrap paper and the raid backfired completely! Donations broke our servers and our poll numbers hit record highs! The exile is over! Now we march across the Word-Salad Wasteland of the Vice-Sovereign!",
-            changeSceneId = SCENE_ACT6_WASTELAND.id,
-            nextNodeId = "act6_intro"
+            changeSceneId = SCENE_ACT6_CH1_BORDER.id,
+            nextNodeId = "act6_ch1_intro"
         ),
 
         // Legacy compatibility nodes for existing tests & saves
@@ -1930,13 +1986,334 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The Golem crumbles into scrap paper! Now, we navigate the confusing realm of the Vice-Sovereign!",
-            changeSceneId = SCENE_ACT6_WASTELAND.id,
-            nextNodeId = "act6_intro"
+            changeSceneId = SCENE_ACT6_CH1_BORDER.id,
+            nextNodeId = "act6_ch1_intro"
         ),
 
         // =========================================================================
-        // ACT VI: THE WORD-SALAD WASTELAND (2022-2023)
+        // ACT VI: THE WORD-SALAD WASTELAND (2022-2023) — 5 CHAPTERS
         // =========================================================================
+
+        // -------------------------------------------------------------------------
+        // Chapter 1: The Border Czar Inspection (2022)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act6_ch1_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The year is 2022. Millions of undocumented migrants are streaming across the southern border under the watchful eye of the newly appointed Border Czar, who has famously never visited the border herself!",
+            nextNodeId = "act6_ch1_border_arrival"
+        ),
+        DialogueNode(
+            id = "act6_ch1_border_arrival",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at this disaster, folks! Thousands of feet of brand-new, beautiful steel bollards left rusting on the dirt! We paid for them, they were ready to install, and they stopped construction on day one! Total madness!",
+            nextNodeId = "act6_ch1_border_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch1_border_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The team inspects the gaping openings in the unfinished perimeter. How do we break through the Border Czar's blockade?",
+            choices = listOf(
+                DialogueChoice("a6c1_excuse", "Demand an explanation for why the Border Czar hasn't visited", listOf("czar", "visit", "excuse", "europe", "border"), "act6_ch1_czar_excuse"),
+                DialogueChoice("a6c1_panels", "Inspect the $300 million in rusting, abandoned wall panels", listOf("panels", "rust", "steel", "materials", "waste"), "act6_ch1_rusted_panels"),
+                DialogueChoice("a6c1_fentanyl", "Expose the cartel smuggling pipelines and fentanyl surge", listOf("fentanyl", "cartel", "smuggling", "pipelines", "border"), "act6_ch1_fentanyl_crisis"),
+                DialogueChoice("a6c1_proceed", "Advance past the perimeter gap and confront the smugglers", listOf("advance", "proceed", "forward", "gap", "confront"), "act6_ch1_cartel_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act6_ch1_czar_excuse",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "When Lester Holt asked her why she hadn't visited the border, she literally laughed and said: 'Well, I haven't been to Europe either!' That is not foreign policy, folks — that is an admission of complete neglect!",
+            nextNodeId = "act6_ch1_border_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch1_rusted_panels",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Over three hundred million dollars of high-grade American steel sitting in the dirt being eaten by desert termites. Working-class taxpayers financed this while contractors were paid millions to stand down.",
+            nextNodeId = "act6_ch1_border_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch1_fentanyl_crisis",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Down in Louisiana, we have an old saying: you can put wings on a pig, but that don't make it an eagle. Calling yourself a Border Czar without visiting the border is like calling yourself an astronaut because you once ate a MoonPie!",
+            nextNodeId = "act6_ch1_border_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch1_cartel_ambush",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "LOOK OUT, BROTHER! Out from behind the rusted bollards come the cartel couriers and catch-and-release liaisons waving federal parole slips!",
+            nextNodeId = "act6_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act6_ch1_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Catch and release is officially cancelled! We're building the wall, securing the perimeter, and shutting down this cartel racket right now!",
+            triggerBattleEncounterId = "act6_ch1_border_battle",
+            nextNodeId = "act6_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act6_ch1_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The cartel couriers flee back across the river! But look ahead — a bizarre glowing haze of yellow and blue circular diagrams is rolling across the horizon!",
+            changeSceneId = SCENE_ACT6_CH2_VENN.id,
+            nextNodeId = "act6_ch2_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 2: The Venn Diagram Fog (2023)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act6_ch2_intro",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "WHAT IN THE NAME OF HULKAMANIA IS GOING ON, BROTHERS?! Overlapping circles of pure yellow and cyan light are floating everywhere! My brain is locked in an intellectual figure-four leglock!",
+            nextNodeId = "act6_ch2_venn_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch2_venn_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We have entered the Venn Diagram Fog. Speech here circles endlessly back onto itself without ever making a tangible point. How should the coalition navigate this labyrinth of jargon?",
+            choices = listOf(
+                DialogueChoice("a6c2_time", "Analyze the significance of the passage of time", listOf("time", "passage", "significance", "loop", "circular"), "act6_ch2_time_passage"),
+                DialogueChoice("a6c2_unburdened", "Ponder what can be unburdened by what has been", listOf("unburdened", "burden", "future", "past", "logic"), "act6_ch2_unburdened_loop"),
+                DialogueChoice("a6c2_kennedy", "Ask Senator Kennedy for a plain-English southern translation", listOf("kennedy", "louisiana", "english", "plain", "translate"), "act6_ch2_kennedy_translate"),
+                DialogueChoice("a6c2_dispel", "Dispel the fog with hard economic numbers and proceed", listOf("dispel", "numbers", "proceed", "advance", "clarity"), "act6_ch2_dispel_fog")
+            )
+        ),
+        DialogueNode(
+            id = "act6_ch2_time_passage",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "You see, there is great significance to the passage of time when you think about the passage of time, because time passes, and in the passing of time, there is great significance!",
+            nextNodeId = "act6_ch2_venn_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch2_unburdened_loop",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "What can be, unburdened by what has been! Because what has been was burdened, but what can be will be unburdened by the very things that have been!",
+            nextNodeId = "act6_ch2_venn_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch2_kennedy_translate",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Son, I've heard auctioneers with a mouthful of marbles make more sense than this. Listening to that is like watching a goat try to calculate property taxes. It's high-dollar gibberish!",
+            nextNodeId = "act6_ch2_venn_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch2_dispel_fog",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "I've reviewed the declassified transcripts. There is zero substance behind these floating circles — just an optical illusion designed to disguise record gas prices and soaring interest rates!",
+            nextNodeId = "act6_ch2_hero_dispel"
+        ),
+        DialogueNode(
+            id = "act6_ch2_hero_dispel",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Total word-salad! In the real world, you judge results, not circular speeches. Blow the fog away, Patriots! Let's see what they're hiding behind these yellow circles!",
+            changeSceneId = SCENE_ACT6_CH3_BUS.id,
+            nextNodeId = "act6_ch3_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 3: The Electric School Bus Mire (2023)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act6_ch3_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "As the fog parts, we stumble into a muddy municipal depot where dozens of brand-new, half-million-dollar electric school buses sit dead in the mud, completely unable to charge!",
+            nextNodeId = "act6_ch3_bus_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch3_bus_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The federal EV school bus initiative spent billions of taxpayer dollars, but the buses cannot handle sub-zero winters or basic rural bus routes. How do we address this stranded convoy?",
+            choices = listOf(
+                DialogueChoice("a6c3_cackle", "Listen to the recorded yellow school bus audio tribute", listOf("cackle", "yellow", "bus", "love", "laugh"), "act6_ch3_bus_cackle"),
+                DialogueChoice("a6c3_chargers", "Audit the $7.5 billion national EV charger program", listOf("chargers", "billion", "audit", "tally", "waste"), "act6_ch3_bus_chargers"),
+                DialogueChoice("a6c3_vance", "Ask JD Vance about the impact on Midwestern manufacturing", listOf("vance", "ohio", "grid", "workers", "manufacturing"), "act6_ch3_vance_grid"),
+                DialogueChoice("a6c3_confront", "Confront the Stranded Battery Golem barring the road", listOf("confront", "battery", "golem", "battle", "fight"), "act6_ch3_golem_confront")
+            )
+        ),
+        DialogueNode(
+            id = "act6_ch3_bus_cackle",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "Who doesn't love a yellow school bus, right?! Can you raise your hand if you love yellow school buses?! AHAHAHAHAHA! They're yellow, and they're buses!",
+            nextNodeId = "act6_ch3_bus_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch3_bus_chargers",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "Congress allocated seven point five BILLION dollars to build charging stations across the country. After two full years, do you know how many they actually built? EIGHT. Exactly eight chargers for eight billion dollars!",
+            nextNodeId = "act6_ch3_bus_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch3_vance_grid",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Our electric grid can't handle everyone turning their air conditioners on in July, yet Washington mandated that heavy diesel workbuses be replaced by fragile lithium battery packs made overseas.",
+            nextNodeId = "act6_ch3_bus_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch3_golem_confront",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "BROTHER! The dead battery packs in the mud are fusing together! A gigantic Stranded EV Battery Golem is rising up, powered by federal green mandate drones!",
+            nextNodeId = "act6_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act6_ch3_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "You can't drive school buses on mandates and wishful thinking, folks! Time to unplug the mandate and jump-start American common sense!",
+            triggerBattleEncounterId = "act6_ch3_bus_battle",
+            nextNodeId = "act6_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act6_ch3_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The Battery Golem short-circuits and shuts down! Look past the bus depot — we've arrived at a bizarre grove of palm trees raining golden coconuts!",
+            changeSceneId = SCENE_ACT6_CH4_COCONUT.id,
+            nextNodeId = "act6_ch4_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 4: The Coconut Tree Grove (2023)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act6_ch4_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We step into the surreal Coconut Tree Grove, where shimmering tropical fronds rustle in the breeze and disembodied laughter asks whether anyone just fell out of a tree.",
+            nextNodeId = "act6_ch4_grove_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch4_grove_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Every path through the grove is lined with quotes about existing in the context of all in which you live and what came before you. How does the party advance?",
+            choices = listOf(
+                DialogueChoice("a6c4_quote", "Examine the philosophical mystery of the coconut tree", listOf("coconut", "tree", "context", "fell", "quote"), "act6_ch4_coconut_quote"),
+                DialogueChoice("a6c4_pride", "Proclaim that American greatness comes from real grit, not trees", listOf("pride", "grit", "greatness", "american", "work"), "act6_ch4_american_pride"),
+                DialogueChoice("a6c4_kennedy", "Ask Senator Kennedy if coconuts grow on the bayou", listOf("kennedy", "bayou", "coconuts", "louisiana", "humor"), "act6_ch4_kennedy_coconuts"),
+                DialogueChoice("a6c4_throne", "Storm the elevated Dais of What Can Be", listOf("throne", "dais", "storm", "advance", "climax"), "act6_ch4_advance_throne")
+            )
+        ),
+        DialogueNode(
+            id = "act6_ch4_coconut_quote",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "My mother used to say to me, 'I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!' AHAHAHAHA! You exist in the context of all in which you live and what came before you!",
+            nextNodeId = "act6_ch4_grove_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch4_american_pride",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "The people who built our bridges, dug our coal mines, and poured our steel didn't fall out of a coconut tree. They built this nation with sweat and grit, and they deserve leadership that speaks clearly.",
+            nextNodeId = "act6_ch4_grove_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch4_kennedy_coconuts",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Down in Louisiana, if somebody starts talking about falling out of coconut trees in the middle of a budget crisis, we don't give them the nuclear football — we call them an ambulance and check for heat exhaustion!",
+            nextNodeId = "act6_ch4_grove_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch4_advance_throne",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Enough with the coconuts, enough with the context! At the top of that hill sits the Dais of Circular Logic. It's time to confront the Vice-Sovereign herself!",
+            changeSceneId = SCENE_ACT6_CH5_UNBURDENED.id,
+            nextNodeId = "act6_ch5_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 5: The Unburdened Vice-Sovereign Confrontation (2023)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act6_ch5_intro",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THIS IS THE MAIN EVENT, BROTHER! At the center of the Unburdened Throne stands Kamala the Unburdened, clutching a golden binder of circular speeches and flanked by swirling Venn loops!",
+            nextNodeId = "act6_ch5_throne_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch5_throne_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Kamala readies her overlapping yellow and blue Venn shields! How do Commander America and the 5-hero coalition dismantle her defenses?",
+            choices = listOf(
+                DialogueChoice("a6c5_record", "Challenge her record on 4-year inflation and open borders", listOf("record", "inflation", "economy", "borders", "prices"), "act6_ch5_record_challenge"),
+                DialogueChoice("a6c5_debate", "Unleash unscripted debate firepower and common sense", listOf("debate", "unscripted", "firepower", "teleprompter", "logic"), "act6_ch5_unscripted_fire"),
+                DialogueChoice("a6c5_supergroup", "Unite all 5 heroes for the final constitutional verdict", listOf("supergroup", "verdict", "heroes", "coalition", "unite"), "act6_ch5_supergroup_verdict"),
+                DialogueChoice("a6c5_battle", "Charge into battle and banish the Word-Salad forever!", listOf("battle", "charge", "fight", "climax", "win"), "act6_ch5_climax_battle")
+            )
+        ),
+        DialogueNode(
+            id = "act6_ch5_record_challenge",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "Prices up twenty-five percent across grocery shelves, gas prices doubling, mortgage rates pricing out young families — no circular speech can unburden the American people from those numbers!",
+            nextNodeId = "act6_ch5_throne_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch5_unscripted_fire",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Take away the teleprompter, take away the rehearsed soundbites, and what do you have? Total word-salad! It's unwatchable, folks! The ratings are terrible!",
+            nextNodeId = "act6_ch5_throne_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch5_supergroup_verdict",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "The American people aren't confused, Madam Vice-Sovereign. They know that when Washington tells you it's raining, you'd better check and make sure someone isn't peeing on your boots. The jig is up!",
+            nextNodeId = "act6_ch5_throne_hub"
+        ),
+        DialogueNode(
+            id = "act6_ch5_climax_battle",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "You think you can challenge what can be unburdened by what has been?! AHAHAHAHAHA! Feel the infinite rotation of the passage of time!",
+            nextNodeId = "act6_ch5_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act6_ch5_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Your circular logic ends today! Five heroes, one united movement, fighting for real common sense! Patriots, assemble!",
+            triggerBattleEncounterId = "act6_kamala_battle",
+            nextNodeId = "act6_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act6_ch5_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The Venn diagram shields shatter into dust! The Word-Salad fog has completely cleared! Now, we turn to the final trials — the Lawfare Labyrinth and the Sands of Steel Resolve!",
+            changeSceneId = SCENE_ACT7_SANDS.id,
+            nextNodeId = "act7_intro"
+        ),
+
+        // Legacy compatibility nodes for Act VI
         DialogueNode(
             id = "act6_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
