@@ -81,13 +81,15 @@ class StoryViewModel(
             DebugChapterTarget("Act I - Ch 1: Escalator", "act1_ch1_intro", 1),
             DebugChapterTarget("Act I - Ch 2: Primary Debate", "act1_ch2_intro", 2),
             DebugChapterTarget("Act I - Ch 3: Primary Sweep", "act1_ch3_intro", 3),
-            DebugChapterTarget("Act II: The Oval Citadel", "act2_intro", 4),
-            DebugChapterTarget("Act III: The Summit of Peace", "act3_intro", 5),
-            DebugChapterTarget("Act IV: The Mueller Hoax", "act4_intro", 6),
-            DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 7),
-            DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 8),
-            DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 9),
-            DebugChapterTarget("Act VIII: The Final Malarkey Citadel", "act8_intro", 10),
+            DebugChapterTarget("Act II - Ch 1: Inaugural Address", "act2_ch1_intro", 4),
+            DebugChapterTarget("Act II - Ch 2: The Oval Citadel", "act2_ch2_intro", 5),
+            DebugChapterTarget("Act II - Ch 3: The Stock-Trading Lich", "act2_ch3_intro", 5),
+            DebugChapterTarget("Act III: The Summit of Peace", "act3_intro", 6),
+            DebugChapterTarget("Act IV: The Mueller Hoax", "act4_intro", 7),
+            DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 8),
+            DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 9),
+            DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 10),
+            DebugChapterTarget("Act VIII: The Final Malarkey Citadel", "act8_intro", 11),
             // Legacy / Regression targets for existing test suite
             DebugChapterTarget("Prologue", "cottage_intro", 0),
             DebugChapterTarget("Chapter 1", "crossroads_intro", 1),
@@ -718,11 +720,12 @@ class StoryViewModel(
                 if (target.chapterIndex >= 11) put("lyra_trial_complete", true)
                 if (target.chapterIndex >= 12) put("zephyr_trial_complete", true)
             } else {
-                // Act warps: Act I chapters (1, 2, 3) are solo Commander America (no companion flags seeded)
-                if (target.chapterIndex >= 4) put("marco_recruited", true)
-                if (target.chapterIndex >= 5) put("vance_recruited", true)
-                if (target.chapterIndex >= 6) put("kash_recruited", true)
-                if (target.chapterIndex >= 7) put("kennedy_recruited", true)
+                // Act warps: Act I chapters (1,2,3) and Act II Ch1 (4) are solo Commander America
+                // Marco joins in Act II Ch2 (index 5), Vance in Act III (index 6), etc.
+                if (target.chapterIndex >= 5) put("marco_recruited", true)
+                if (target.chapterIndex >= 6) put("vance_recruited", true)
+                if (target.chapterIndex >= 7) put("kash_recruited", true)
+                if (target.chapterIndex >= 8) put("kennedy_recruited", true)
             }
         }
         // Overwrite, not union, the roster and trial flags so a downward warp
@@ -742,10 +745,10 @@ class StoryViewModel(
                 if (target.chapterIndex >= 6) add("lyra")
                 if (target.chapterIndex >= 9) add("zephyr")
             } else {
-                if (target.chapterIndex >= 4) add("marco")
-                if (target.chapterIndex >= 5) add("vance")
-                if (target.chapterIndex >= 6) add("kash")
-                if (target.chapterIndex >= 7) add("kennedy")
+                if (target.chapterIndex >= 5) add("marco")
+                if (target.chapterIndex >= 6) add("vance")
+                if (target.chapterIndex >= 7) add("kash")
+                if (target.chapterIndex >= 8) add("kennedy")
             }
         }
         val baseParty = if (_state.value.partyStats.any { it.id == "hero" }) {
@@ -980,11 +983,13 @@ class StoryViewModel(
             updatedPartyStats = updatedPartyStats + zephyrStats
         }
 
-        // Commander America Companions: Marco Rubio (Act 2), JD Vance (Act 3), Kash Patel (Act 4), RFK Jr. (Act 5)
-        val isMarcoRecruited = effectiveNode.id.startsWith("act2_") || effectiveNode.id.startsWith("act3_") ||
-            effectiveNode.id.startsWith("act4_") || effectiveNode.id.startsWith("act5_") ||
-            effectiveNode.id.startsWith("act6_") || effectiveNode.id.startsWith("act7_") ||
-            effectiveNode.id.startsWith("act8_") || updatedFlags["marco_recruited"] == true
+        // Commander America Companions: Marco Rubio (Act II Ch2+), JD Vance (Act 3), Kash Patel (Act 4), RFK Jr. (Act 5)
+        // Marco joins in Chapter 2 of Act II (act2_ch2_* and later). act2_ch1_* is pre-Marco.
+        val isMarcoRecruited = (effectiveNode.id.startsWith("act2_") && !effectiveNode.id.startsWith("act2_ch1_")) ||
+            effectiveNode.id.startsWith("act3_") || effectiveNode.id.startsWith("act4_") ||
+            effectiveNode.id.startsWith("act5_") || effectiveNode.id.startsWith("act6_") ||
+            effectiveNode.id.startsWith("act7_") || effectiveNode.id.startsWith("act8_") ||
+            updatedFlags["marco_recruited"] == true
         if (isMarcoRecruited && updatedPartyStats.none { it.id == "marco" }) {
             val marcoStats = SavedCharacterStats(
                 id = "marco",
@@ -1294,7 +1299,8 @@ class StoryViewModel(
             "act1_lobby_battle", "act1_ch1_press_battle" -> "act1_ch1_post_battle"
             "act1_ch2_debate_battle" -> "act1_ch2_post_battle"
             "act1_ch3_machine_battle" -> "act1_ch3_post_battle"
-            "act2_media_battle" -> "act2_post_battle"
+            "act2_ch1_inauguration_battle" -> "act2_ch1_post_battle"
+            "act2_media_battle" -> "act2_ch3_post_battle"
             "act3_summit_battle" -> "act3_post_battle"
             "act4_hoax_battle" -> "act4_post_battle"
             "act5_golem_battle" -> "act5_post_battle"

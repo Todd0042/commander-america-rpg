@@ -711,7 +711,20 @@ object StoryEncounters {
         initialParty = createAct1Party()
     )
 
-    // 2. Act II: Media Wars & The Insider Stock Lich
+    // 2a. Act II - Chapter 1: The Inaugural Address — Aerial Spin Crew Ambush
+    val ACT2_CH1_INAUGURATION_BATTLE = EncounterDefinition(
+        id = "act2_ch1_inauguration_battle",
+        name = "Act II - Ch 1: The Inaugural Aerial Spin Crew",
+        description = "Cable News Aerial Spin Crew and a Hostile Fact-Checker deploy fabricated crowd-size graphics to undermine the inauguration!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("aerial_spin_anchor", "Cable News Aerial Spin Anchor", "Sniper", currentHp = 320, maxHp = 320, baseAttack = 20, isBoss = true, isTargeted = true, spriteTint = Color(0xFFEF5350), speed = 68, atbGauge = 0.40f),
+            Enemy("hostile_fact_checker", "Hostile Fisheye Fact-Checker", "Occultist", currentHp = 240, maxHp = 240, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 60, atbGauge = 0.30f)
+        ),
+        initialParty = createAct1Party()   // Ch1: solo Commander America before Marco joins
+    )
+
+    // 2b. Act II: Media Wars & The Insider Stock Lich (Chapter 3 Boss encounter)
     val ACT2_MEDIA_BATTLE = EncounterDefinition(
         id = "act2_media_battle",
         name = "Act II: Media Wars & The Insider Stock Lich",
@@ -827,6 +840,7 @@ object StoryEncounters {
         ACT1_CH1_PRESS_BATTLE,
         ACT1_CH2_DEBATE_BATTLE,
         ACT1_CH3_MACHINE_BATTLE,
+        ACT2_CH1_INAUGURATION_BATTLE,
         ACT2_MEDIA_BATTLE,
         ACT3_SUMMIT_BATTLE,
         ACT4_HOAX_BATTLE,

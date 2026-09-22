@@ -123,7 +123,8 @@ class CommanderAmericaGameTest {
             "act1_ch1_press_battle" to "act1_ch1_post_battle",
             "act1_ch2_debate_battle" to "act1_ch2_post_battle",
             "act1_ch3_machine_battle" to "act1_ch3_post_battle",
-            "act2_media_battle" to "act2_post_battle",
+            "act2_ch1_inauguration_battle" to "act2_ch1_post_battle",
+            "act2_media_battle" to "act2_ch3_post_battle",
             "act3_summit_battle" to "act3_post_battle",
             "act4_hoax_battle" to "act4_post_battle",
             "act5_golem_battle" to "act5_post_battle",
@@ -232,13 +233,13 @@ class CommanderAmericaGameTest {
         assertEquals("act1_ch3_post_battle", storyViewModel.state.value.currentNode.id)
         storyViewModel.advanceDialogue()
         assertEquals("act1_ch3_victory_conclusion", storyViewModel.state.value.currentNode.id)
-        assertEquals("scene_act2_oval", storyViewModel.state.value.currentScene.id)
+        assertEquals("scene_act2_ch1_mall", storyViewModel.state.value.currentScene.id)
 
-        // Advance to hulk reaction and Act II transition
+        // Advance to hulk reaction and Act II Ch1 transition
         storyViewModel.advanceDialogue()
         assertEquals("act1_post_hulk", storyViewModel.state.value.currentNode.id)
         storyViewModel.advanceDialogue()
-        assertEquals("act2_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("act2_ch1_intro", storyViewModel.state.value.currentNode.id)
 
         // 4. Verify Debug Warps for all 3 Act I chapters
         storyViewModel.debugWarpToChapter("act1_ch1_intro")
@@ -542,6 +543,140 @@ class CommanderAmericaGameTest {
         assertTrue(kennedyCastingLeaks.isWrongCharacterSpell)
         assertEquals("kash", kennedyCastingLeaks.wrongCharacterOwnerId)
         assertEquals(TemplateHero.LEAK_PLUG.id, kennedyCastingLeaks.spell.id)
+    }
+
+    @Test
+    fun testAct2ThreeChaptersFullProgressionAndDebugWarps() {
+        // -----------------------------------------------------------------------
+        // 1. Warp into Act II Chapter 1: Inaugural Address (National Mall)
+        // -----------------------------------------------------------------------
+        storyViewModel.debugWarpToChapter("act2_ch1_intro")
+        assertEquals("act2_ch1_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act2_ch1_mall", storyViewModel.state.value.currentScene.id)
+        // Act II Ch1 is solo — Marco has NOT joined yet
+        assertEquals(1, storyViewModel.state.value.partyStats.size)
+        assertEquals("hero", storyViewModel.state.value.partyStats[0].id)
+        assertFalse("Marco must NOT be recruited at Ch1 warp",
+            storyViewModel.state.value.narrativeFlags["marco_recruited"] == true)
+
+        // Advance through Ch1 hub to spin crew ambush → battle trigger
+        storyViewModel.advanceDialogue() // → act2_ch1_address_hub
+        assertEquals("act2_ch1_address_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select "proceed" to skip hub lore and go straight to the ambush
+        val proceedChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a2c1_proceed" }
+        storyViewModel.selectChoice(proceedChoice)
+        assertEquals("act2_ch1_spin_crew_ambush", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch1_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act2_ch1_inauguration_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Trigger and win Ch1 battle
+        storyViewModel.triggerEncounter("act2_ch1_inauguration_battle")
+        assertEquals(GameScreen.COMBAT_ARENA, storyViewModel.state.value.gameScreen)
+        assertEquals("act2_ch1_inauguration_battle", storyViewModel.state.value.activeEncounter?.id)
+        storyViewModel.onCombatVictory()
+        assertEquals("act2_ch1_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act2_ch2_oval", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 2. Act II Chapter 2: The Oval Citadel & The Executive Pen
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch2_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch2_resolute_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select "marco" choice to trigger Marco's arrival
+        val marcoChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a2c2_marco" }
+        storyViewModel.selectChoice(marcoChoice)
+        assertEquals("act2_ch2_marco_arrives", storyViewModel.state.value.currentNode.id)
+        assertEquals("marco", storyViewModel.state.value.currentNode.speaker.id)
+
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch2_hero_marco_reply", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch2_hulk_marco", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch2_victory_advance", storyViewModel.state.value.currentNode.id)
+        // This node transitions to Ch3 Rotunda
+        assertEquals("scene_act2_ch3_rotunda", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 3. Act II Chapter 3: The Stock-Trading Lich (Capitol Rotunda)
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch3_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch3_pelosi_enter", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch3_hero_callout", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch3_marco_expose", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch3_pelosi_counter", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act2_ch3_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act2_media_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        storyViewModel.triggerEncounter("act2_media_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act2_ch3_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act3_summit", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 4. Debug warp assertions for Act II
+        // -----------------------------------------------------------------------
+        // Ch1 warp → solo Commander America, no Marco
+        storyViewModel.debugWarpToChapter("act2_ch1_intro")
+        assertEquals("scene_act2_ch1_mall", storyViewModel.state.value.currentScene.id)
+        assertEquals(1, storyViewModel.state.value.partyStats.size)
+        assertEquals("hero", storyViewModel.state.value.partyStats[0].id)
+
+        // Ch2 warp → Marco should be seeded (index 5)
+        storyViewModel.debugWarpToChapter("act2_ch2_intro")
+        assertEquals("scene_act2_ch2_oval", storyViewModel.state.value.currentScene.id)
+        assertTrue("Marco must be seeded for Ch2 warp",
+            storyViewModel.state.value.narrativeFlags["marco_recruited"] == true)
+        val ch2Party = storyViewModel.state.value.partyStats
+        assertTrue("Party must contain hero", ch2Party.any { it.id == "hero" })
+        assertTrue("Party must contain marco for Ch2 warp", ch2Party.any { it.id == "marco" })
+
+        // Ch3 warp → Marco seeded, no Vance
+        storyViewModel.debugWarpToChapter("act2_ch3_intro")
+        assertEquals("scene_act2_ch3_rotunda", storyViewModel.state.value.currentScene.id)
+        assertTrue("Marco must be seeded for Ch3 warp",
+            storyViewModel.state.value.narrativeFlags["marco_recruited"] == true)
+        assertFalse("Vance must NOT be seeded for Ch3 warp",
+            storyViewModel.state.value.narrativeFlags["vance_recruited"] == true)
+    }
+
+    @Test
+    fun testAct2EncountersAndPartyRoster() {
+        // Ch1 Inauguration Battle — solo Commander America
+        val inaugBattle = StoryEncounters.ACT2_CH1_INAUGURATION_BATTLE
+        assertEquals("act2_ch1_inauguration_battle", inaugBattle.id)
+        val spinAnchor = inaugBattle.enemies.firstOrNull { it.id == "aerial_spin_anchor" }
+        assertNotNull("Aerial Spin Anchor must be an enemy in Ch1 battle", spinAnchor)
+        assertTrue("Aerial Spin Anchor must be the boss", spinAnchor!!.isBoss)
+        assertEquals(1, inaugBattle.initialParty?.size)
+        assertEquals("hero", inaugBattle.initialParty!![0].id)
+
+        // Ch3 Media Battle — Commander America + Marco
+        val mediaBattle = StoryEncounters.ACT2_MEDIA_BATTLE
+        assertEquals("act2_media_battle", mediaBattle.id)
+        val pelosi = mediaBattle.enemies.firstOrNull { it.id == "pelosi" }
+        assertNotNull("Pelosi must be an enemy in the Act 2 Media Battle", pelosi)
+        assertEquals(2, mediaBattle.initialParty?.size)
+        assertEquals("hero", mediaBattle.initialParty!![0].id)
+        assertEquals("marco", mediaBattle.initialParty!![1].id)
+
+        // Verify all Act II encounters are in ALL_ENCOUNTERS
+        val allIds = StoryEncounters.ALL_ENCOUNTERS.map { it.id }
+        assertTrue("act2_ch1_inauguration_battle must be in ALL_ENCOUNTERS",
+            allIds.contains("act2_ch1_inauguration_battle"))
+        assertTrue("act2_media_battle must be in ALL_ENCOUNTERS",
+            allIds.contains("act2_media_battle"))
     }
 
     @Test

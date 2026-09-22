@@ -41,13 +41,44 @@ object StoryScript {
         ambientDescription = "Sub-zero blizzard winds howl outside while fifteen thousand roaring patriots pack the heated hangar."
     )
 
+    // Act II - Chapter 1: The Inaugural Address & Crowd Size Dispute (National Mall)
+    val SCENE_ACT2_CH1_MALL = StoryScene(
+        id = "scene_act2_ch1_mall",
+        name = "National Mall & Capitol Steps",
+        chapterTitle = "Act II - Ch 1: The Inaugural Address (Jan 20, 2017)",
+        backgroundAsset = "story/national_mall.jpg",
+        initialNodeId = "act2_ch1_intro",
+        ambientDescription = "The Capitol steps gleam under a crisp January sky as tens of thousands of American patriots pack the National Mall."
+    )
+
+    // Act II - Chapter 2: Entering the Oval Citadel (The Oval Office)
+    val SCENE_ACT2_CH2_OVAL = StoryScene(
+        id = "scene_act2_ch2_oval",
+        name = "The Oval Office — Resolute Desk",
+        chapterTitle = "Act II - Ch 2: The Executive Pen (Jan 2017)",
+        backgroundAsset = "story/oval_citadel.jpg",
+        initialNodeId = "act2_ch2_intro",
+        ambientDescription = "Gold drapes replace the old burgundy curtains. The Resolute Desk is cleared of bobbleheads and ready for historic executive action."
+    )
+
+    // Act II - Chapter 3: Confronting Madam Speaker (Capitol Rotunda)
+    val SCENE_ACT2_CH3_ROTUNDA = StoryScene(
+        id = "scene_act2_ch3_rotunda",
+        name = "Capitol Rotunda & Committee Hall",
+        chapterTitle = "Act II - Ch 3: The Stock-Trading Lich (2017)",
+        backgroundAsset = "story/capitol_rotunda.jpg",
+        initialNodeId = "act2_ch3_intro",
+        ambientDescription = "Marble columns tower above as Pelosi's microchip options spike on the trading terminal — right before the regulatory vote."
+    )
+
+    // Legacy alias: the existing act2_oval still points to Ch1 (backward compat)
     val SCENE_ACT2_OVAL = StoryScene(
         id = "scene_act2_oval",
         name = "The Oval Citadel",
         chapterTitle = "Act II: The Inaugural Siege & Media Wars (2017)",
         backgroundAsset = "story/oval_citadel.jpg",
-        initialNodeId = "act2_intro",
-        ambientDescription = "Gilded presidential drapes frame the Oval Office where Deep State ghouls lurk."
+        initialNodeId = "act2_ch1_intro",
+        ambientDescription = "Gilded presidential drapes frame the Oval Office where the Deep State swamp still lurks."
     )
 
 
@@ -112,7 +143,10 @@ object StoryScript {
         "scene_act1_escalator" to SCENE_ACT1_CH1_ESCALATOR,
         SCENE_ACT1_CH2_DEBATE.id to SCENE_ACT1_CH2_DEBATE,
         SCENE_ACT1_CH3_RALLY.id to SCENE_ACT1_CH3_RALLY,
-        SCENE_ACT2_OVAL.id to SCENE_ACT2_OVAL,
+        SCENE_ACT2_CH1_MALL.id to SCENE_ACT2_CH1_MALL,
+        SCENE_ACT2_CH2_OVAL.id to SCENE_ACT2_CH2_OVAL,
+        SCENE_ACT2_CH3_ROTUNDA.id to SCENE_ACT2_CH3_ROTUNDA,
+        SCENE_ACT2_OVAL.id to SCENE_ACT2_CH1_MALL,   // legacy alias → ch1
         SCENE_ACT3_SUMMIT.id to SCENE_ACT3_SUMMIT,
         SCENE_ACT4_MUELLER.id to SCENE_ACT4_MUELLER,
         SCENE_ACT5_MARALAGO.id to SCENE_ACT5_MARALAGO,
@@ -425,7 +459,7 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Tell the ground crew to spin up the jet engines on Trump-Force One! Next stop: Pennsylvania Avenue! The Oval Citadel awaits!",
-            changeSceneId = SCENE_ACT2_OVAL.id,
+            changeSceneId = SCENE_ACT2_CH1_MALL.id,
             nextNodeId = "act1_post_hulk"
         ),
         DialogueNode(
@@ -433,22 +467,172 @@ object StoryScript {
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
             text = "ONE, TWO, THREE, HE PINNED 'EM, BROTHER! The primary is swept! To the Oval Citadel, brother! Woooo!",
-            nextNodeId = "act2_intro"
+            nextNodeId = "act2_ch1_intro"
         ),
 
         // =========================================================================
-        // ACT II: THE INAUGURAL SIEGE & MEDIA WARS (2017)
+        // ACT II - CHAPTER 1: THE INAUGURAL ADDRESS & CROWD SIZE DISPUTE (JAN 20, 2017)
         // =========================================================================
+        DialogueNode(
+            id = "act2_ch1_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Good afternoon, America — we are broadcasting live from the Capitol steps on this historic January 20th. Commander America has just been sworn in on the Lincoln Bible, and the National Mall is absolutely packed from the reflecting pool all the way to the Washington Monument. The cable networks are already cropping the aerial photography. Unbelievable.",
+            nextNodeId = "act2_ch1_address_hub"
+        ),
+        // Legacy alias: act2_intro → ch1
         DialogueNode(
             id = "act2_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Breaking news tonight from the Oval Citadel. As Commander America takes the helm, Madam Speaker Pelosi has reportedly opened her stock trading terminal while drafting emergency regulations.",
+            text = "Good afternoon, America — we are broadcasting live from the Capitol steps on this historic January 20th. Commander America has just been sworn in on the Lincoln Bible, and the National Mall is absolutely packed. The cable networks are already cropping the aerial photography.",
+            nextNodeId = "act2_ch1_address_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch1_address_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "This is a very historic moment, and I have a few things I want to address before we move into the Oval Citadel.",
             choices = listOf(
-                DialogueChoice("a2_archive", "Examine the Media Double Standard Archives", listOf("archive", "receipts", "obama", "cages", "dates"), "act2_archive"),
-                DialogueChoice("a2_pelosi", "Confront Pelosi about insider chip stock trading", listOf("pelosi", "stocks", "insider", "trading", "nvidia", "gavel"), "act2_pelosi_confront")
+                DialogueChoice("a2c1_carnage", "Declare American Carnage is over — American Renewal begins NOW", listOf("carnage", "renewal", "stop", "forgotten", "over"), "act2_ch1_american_carnage", completionFlag = "a2c1_carnage"),
+                DialogueChoice("a2c1_crowd", "Call out the cable networks cropping the aerial photography", listOf("crowd", "aerial", "camera", "photos", "networks", "crop"), "act2_ch1_crowd_call", completionFlag = "a2c1_crowd"),
+                DialogueChoice("a2c1_media", "Announce the total eradication of American carnage in the media", listOf("media", "fake", "dishonest", "carnage", "pundit"), "act2_ch1_media_smack", completionFlag = "a2c1_media"),
+                DialogueChoice("a2c1_proceed", "Take the oath, sign the first executive order, and march into the Oval", listOf("proceed", "march", "oval", "oath", "sign"), "act2_ch1_spin_crew_ambush")
             )
         ),
+        DialogueNode(
+            id = "act2_ch1_american_carnage",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "This American carnage stops right here and stops right now! The forgotten men and women of our country will be forgotten no longer. January 20th, 2017 will be remembered as the day the people became the rulers of this nation once again!",
+            nextNodeId = "act2_ch1_address_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch1_crowd_call",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at those cameras refusing to turn around and show the crowd! Look at the mall — they cropped the aerial photography so you can't see the people stretching all the way back to the monument! Absolute dishonesty!",
+            nextNodeId = "act2_ch1_hulk_crowd"
+        ),
+        DialogueNode(
+            id = "act2_ch1_hulk_crowd",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "BROTHER! That is more patriots in one mall than I've seen in thirty years of body-slamming across all fifty states! The lens ain't wide enough to hold 'em all, dude!",
+            nextNodeId = "act2_ch1_address_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch1_media_smack",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "I have the Nielsen ratings right here in this binder! The cable pundits had to resort to a fisheye lens and a fog machine to make the crowd look smaller. These are documented facts!",
+            nextNodeId = "act2_ch1_address_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch1_spin_crew_ambush",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "HALT! The Aerial Spin Crew is deploying! Our anonymous source confirms the crowd was only seventeen people and a golden retriever! We are spinning this story into the stratosphere right now! Deploy the Hostile Fact-Checkers!",
+            nextNodeId = "act2_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The Cable News Aerial Spin Crew is LIVE with fabricated crowd graphics! Commander — demolish them with Tremendous Strike before they edit the footage!",
+            triggerBattleEncounterId = "act2_ch1_inauguration_battle",
+            nextNodeId = "act2_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_ch1_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Their fisheye lenses are shattered and the Spin Crew has retreated to the green room! Let the record show: the crowd was MASSIVE. Now — to the Oval Citadel! Time to replace those burgundy curtains with something GOLD.",
+            changeSceneId = SCENE_ACT2_CH2_OVAL.id,
+            nextNodeId = "act2_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT II - CHAPTER 2: ENTERING THE OVAL CITADEL & THE EXECUTIVE PEN (JAN 2017)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_ch2_intro",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH, BROTHER! The golden drapes are hung! The Resolute Desk is cleared! And Commander America is standing there with the biggest stack of executive orders I have ever seen in my life, dude! The Deep State bureaucrats are SHAKING!",
+            nextNodeId = "act2_ch2_resolute_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch2_resolute_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Alright, we've got a lot of work to do. Three things on the agenda before I deal with the phone calls from seventeen foreign leaders all competing to be my best friend.",
+            choices = listOf(
+                DialogueChoice("a2c2_drapes", "Announce the gold drapes are a non-negotiable upgrade", listOf("drapes", "gold", "curtains", "upgrade", "decor"), "act2_ch2_drapes", completionFlag = "a2c2_drapes"),
+                DialogueChoice("a2c2_deregulate", "Sign the first wave of deregulation orders with maximum flair", listOf("deregulate", "sign", "orders", "executive", "regulation", "pen"), "act2_ch2_deregulate", completionFlag = "a2c2_deregulate"),
+                DialogueChoice("a2c2_tariffs", "Announce reciprocal tariffs on every country that's been ripping us off", listOf("tariffs", "trade", "reciprocal", "unfair", "china", "foreign"), "act2_ch2_tariffs", completionFlag = "a2c2_tariffs"),
+                DialogueChoice("a2c2_marco", "Call Marco Rubio in — it's time to unlock the Sanctions Sorcerer", listOf("marco", "rubio", "sanctions", "call", "secretary", "state"), "act2_ch2_marco_arrives")
+            )
+        ),
+        DialogueNode(
+            id = "act2_ch2_drapes",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The burgundy curtains are gone. Absolutely gone. We replaced them with beautiful, full-length gold drapes that represent the golden age of America. Someone put that in the official record. This is important.",
+            nextNodeId = "act2_ch2_resolute_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch2_deregulate",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "For every one new regulation we add, we cut TEN old ones. That's the deal. Ten to one. I'm signing this right now. *Clicks the sharpie.* Tremendous. This pen has more power than a thousand bureaucrat memos.",
+            nextNodeId = "act2_ch2_karoline_count"
+        ),
+        DialogueNode(
+            id = "act2_ch2_karoline_count",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Twenty-six executive orders signed in the first week — a record. My binder has run out of pages for the first time in recorded history.",
+            nextNodeId = "act2_ch2_resolute_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch2_tariffs",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "China has been charging us 40% tariffs while we charge them virtually nothing for decades! That ends today. Reciprocal. If you charge us 40, we charge you 40. It's called being fair! Revolutionary concept, I know!",
+            nextNodeId = "act2_ch2_resolute_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch2_marco_arrives",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "Commander! Marco Rubio reporting for duty — confirmed as Secretary of State and fully operational Sanctions Sorcerer! I've got a leather briefcase full of maximum sanctions, a filibuster scroll that would make the Senate chamber shake, and... *holds up a cold water bottle* ...diplomatic hydration. Let's rearrange some foreign policy!",
+            nextNodeId = "act2_ch2_hero_marco_reply"
+        ),
+        DialogueNode(
+            id = "act2_ch2_hero_marco_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Marco! Tremendous! The Sanctions Sorcerer is in the Oval! You're going to be the greatest Secretary of State this country has ever seen — and believe me, I know a lot about great people. I'm surrounded by them. Now let's talk Iran, Venezuela, and China while we sign these orders.",
+            nextNodeId = "act2_ch2_hulk_marco"
+        ),
+        DialogueNode(
+            id = "act2_ch2_hulk_marco",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH! The Sanctions Sorcerer has entered the building, BROTHER! Rubio's got that diplomatic intensity in his eyes! The globalists are sweating through their Davos blazers right now!",
+            nextNodeId = "act2_ch2_victory_advance"
+        ),
+        DialogueNode(
+            id = "act2_ch2_victory_advance",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Breaking news: Madam Speaker Pelosi has been spotted in the Capitol Rotunda with a Bloomberg terminal, a stack of microchip company prospectuses, and a draft regulatory bill on her desk — simultaneously. We are racing to the Rotunda.",
+            changeSceneId = SCENE_ACT2_CH3_ROTUNDA.id,
+            nextNodeId = "act2_ch3_intro"
+        ),
+
+        // Legacy alias nodes (backward compat with existing tests / save migration)
         DialogueNode(
             id = "act2_archive",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
@@ -461,21 +645,7 @@ object StoryScript {
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
             text = "That is an indisputable fact! The press won't report it, but the receipts on those 2014 facilities are right here in the binder!",
-            nextNodeId = "act2_pelosi_confront"
-        ),
-        DialogueNode(
-            id = "act2_pelosi_confront",
-            speaker = DialogueSpeaker.PELOSI,
-            side = SpeakerSide.RIGHT,
-            text = "Mwahaha! I just timed the market perfectly before passing the bill! My stock portfolio is unstoppable! World chaos is fantastic for my quarterly returns!",
-            nextNodeId = "act2_hero_pelosi_reply"
-        ),
-        DialogueNode(
-            id = "act2_hero_pelosi_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "You're trading options on government policy! Total insider trading corruption! Check the dates on Barack's cages while you're at it!",
-            nextNodeId = "act2_marco_joins"
+            nextNodeId = "act2_ch3_intro"
         ),
         DialogueNode(
             id = "act2_marco_joins",
@@ -489,7 +659,7 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Marco, tremendous to have you! The Sanctions Sorcerer is on the team! Let's hit 'em with tariffs and the presidential veto!",
-            nextNodeId = "act2_battle_trigger"
+            nextNodeId = "act2_ch3_battle_trigger"
         ),
         DialogueNode(
             id = "act2_battle_trigger",
@@ -497,8 +667,78 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "OH YEAH! RUBIO'S IN THE CORNER, BROTHER! The Sanctions Sorcerer has entered the ring! Say your prayers and hit that Tremendous Strike!",
             triggerBattleEncounterId = "act2_media_battle",
-            nextNodeId = "act2_post_battle"
+            nextNodeId = "act2_ch3_post_battle"
         ),
+
+        // =========================================================================
+        // ACT II - CHAPTER 3: CONFRONTING MADAM SPEAKER & THE STOCK-TRADING LICH (2017)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_ch3_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are LIVE inside the Capitol Rotunda. Madam Speaker Pelosi is standing beneath the dome with a Bloomberg terminal in one hand and a NVIDIA prospectus in the other — and the Semiconductor Oversight Regulatory Act is literally on a table behind her. This is not subtle. This is not even trying to be subtle.",
+            nextNodeId = "act2_ch3_pelosi_enter"
+        ),
+        DialogueNode(
+            id = "act2_ch3_pelosi_enter",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.RIGHT,
+            text = "Oh, don't mind me... I'm simply... reorganizing my portfolio for purely *patriotic* reasons. The fact that I co-authored this regulatory framework last Tuesday and that the NVIDIA options expire THIS Friday is... a complete coincidence! Everything in Washington is a coincidence!",
+            nextNodeId = "act2_ch3_hero_callout"
+        ),
+        DialogueNode(
+            id = "act2_ch3_hero_callout",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "You purchased 500 semiconductor call options THREE DAYS before your own committee's bill passed! Your return rate on 'public service' is 17,000%! Nobody in American history has gotten RICH on a congressional salary! This isn't complicated!",
+            nextNodeId = "act2_ch3_marco_expose"
+        ),
+        DialogueNode(
+            id = "act2_ch3_marco_expose",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "I have the EDGAR filings right here. Cross-referencing the trade date against the committee markup schedule — there is a 72-hour window of maximum insider proximity. Maximum Sanctions, engaged! I'm freezing these accounts!",
+            nextNodeId = "act2_ch3_pelosi_counter"
+        ),
+        DialogueNode(
+            id = "act2_ch3_pelosi_counter",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.RIGHT,
+            text = "How DARE you! I have been doing this for DECADES and nobody has ever had the audacity to READ THE FILINGS! Fact-checkers, DEPLOY! Anonymous sources, to your stations! I am invoking my right to be above accountability!",
+            nextNodeId = "act2_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_pelosi_confront",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.RIGHT,
+            text = "Mwahaha! I just timed the market perfectly before passing the bill! My stock portfolio is unstoppable! World chaos is fantastic for my quarterly returns!",
+            nextNodeId = "act2_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_hero_pelosi_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "You're trading options on government policy! Total insider trading corruption! Check the dates on Barack's cages while you're at it!",
+            nextNodeId = "act2_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_ch3_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH! The Stock-Trading Shadow Lich is ACTIVATED, BROTHER! Anonymous sources are swarming the rotunda! Commander and the Sanctions Sorcerer — body-slam 'em with Tremendous Strike and Maximum Sanctions!",
+            triggerBattleEncounterId = "act2_media_battle",
+            nextNodeId = "act2_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_ch3_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Pelosi's insider trade ledger has been confiscated and her NVIDIA options were invalidated! The fact-checkers retreated to the green room and the anonymous sources went back to being anonymous! The Oval Citadel is secure — onward to international diplomacy!",
+            changeSceneId = SCENE_ACT3_SUMMIT.id,
+            nextNodeId = "act3_intro"
+        ),
+        // Legacy alias
         DialogueNode(
             id = "act2_post_battle",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
