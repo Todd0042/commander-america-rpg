@@ -817,14 +817,41 @@ object StoryEncounters {
     )
 
     // 5. Act V: Midnight Ballot Golem
+    // 5a. Act V - Chapter 1: The 3:00 AM Water Pipe Mystery
+    val ACT5_CH1_PIPE_BATTLE = EncounterDefinition(
+        id = "act5_ch1_pipe_battle",
+        name = "Act V - Ch 1: The 3 AM Water Pipe Mystery",
+        description = "The Burst Pipe Illusionist and Midnight Ballot Courier deploy vertical vote spikes under cover of darkness!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("burst_pipe", "Burst Pipe Illusionist", "Occultist", currentHp = 440, maxHp = 440, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFF29B6F6), speed = 58, atbGauge = 0.35f),
+            Enemy("ballot_courier", "Midnight Ballot Courier", "Vanguard", currentHp = 320, maxHp = 320, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFF546E7A), speed = 50, atbGauge = 0.25f)
+        ),
+        initialParty = createAct4Party() // Commander America, Marco Rubio, JD Vance, Kash Patel
+    )
+
+    // 5b. Act V - Chapter 2: The Senate Inquest
+    val ACT5_CH2_INQUEST_BATTLE = EncounterDefinition(
+        id = "act5_ch2_inquest_battle",
+        name = "Act V - Ch 2: The Senate Inquest",
+        description = "Stonewalling election officials and red-tape bureaucrats attempt to filibuster the Senate Judiciary hearing!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("stonewall_director", "Bureaucratic Stonewall Director", "Occultist", currentHp = 500, maxHp = 500, baseAttack = 28, isBoss = true, isTargeted = true, spriteTint = Color(0xFF7E57C2), speed = 60, atbGauge = 0.35f),
+            Enemy("red_tape_gargoyle", "Red-Tape Stonewaller", "Vanguard", currentHp = 350, maxHp = 350, baseAttack = 24, isTargeted = false, spriteTint = Color(0xFF8D6E63), speed = 48, atbGauge = 0.25f)
+        ),
+        initialParty = createFullAmericaParty() // All 5 heroes including Senator Kennedy!
+    )
+
+    // 5c. Act V - Chapter 4: Midnight Ballot Golem & Raid Phantoms (Boss Encounter)
     val ACT5_GOLEM_BATTLE = EncounterDefinition(
         id = "act5_golem_battle",
         name = "Act V: Midnight Ballot Golem",
-        description = "Spawned from 3 AM sorcery and mysterious water pipe leaks, the Ballot Golem rises!",
+        description = "Spawned from 3 AM sorcery and Mar-a-Lago raid mandates, the Midnight Ballot Golem rises to seize the golden closets!",
         environment = BattleEnvironment.CASTLE,
         enemies = listOf(
-            Enemy("ballot_golem", "3 AM Midnight Ballot Golem", "Vanguard", currentHp = 700, maxHp = 700, baseAttack = 32, isTargeted = true, spriteTint = Color(0xFF546E7A), speed = 42, atbGauge = 0.25f),
-            Enemy("burst_pipe", "Burst Pipe Illusionist", "Occultist", currentHp = 320, maxHp = 320, baseAttack = 25, isTargeted = false, spriteTint = Color(0xFF29B6F6), speed = 55, atbGauge = 0.35f)
+            Enemy("ballot_golem", "3 AM Midnight Ballot Golem", "Vanguard", currentHp = 700, maxHp = 700, baseAttack = 32, isBoss = true, isTargeted = true, spriteTint = Color(0xFF546E7A), speed = 42, atbGauge = 0.25f),
+            Enemy("raid_commander", "Mar-a-Lago Raid Commander", "Sniper", currentHp = 360, maxHp = 360, baseAttack = 26, isTargeted = false, spriteTint = Color(0xFFEC407A), speed = 65, atbGauge = 0.35f)
         ),
         initialParty = createFullAmericaParty()
     )
@@ -900,6 +927,8 @@ object StoryEncounters {
         ACT4_CH1_FISA_BATTLE,
         ACT4_CH3_SUBPOENA_BATTLE,
         ACT4_HOAX_BATTLE,
+        ACT5_CH1_PIPE_BATTLE,
+        ACT5_CH2_INQUEST_BATTLE,
         ACT5_GOLEM_BATTLE,
         ACT6_KAMALA_BATTLE,
         ACT7_LAWFARE_BATTLE,

@@ -137,16 +137,25 @@
   - Added encounters `ACT4_CH1_FISA_BATTLE` and `ACT4_CH3_SUBPOENA_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
   - All unit tests passing in `CommanderAmericaGameTest.kt` (21/21 tests). Installed and verified on physical device.
 
+* [x] **Phase 7 (Act V): Midnight Sorcery & The Exile — 4 Full Chapters**
+  - **Chapter 1: The 3:00 AM Water Pipe Mystery** (State Farm Arena Ballot Floor, Atlanta) — `act5_ch1_intro`, phantom urinal leak & emergency evacuation expose, 4K camera receipts; `act5_ch1_pipe_battle` (Burst Pipe Illusionist & Midnight Ballot Courier). Party: 4 heroes (Hero, Marco, Vance, Kash — pre-Kennedy).
+  - **Chapter 2: The Senate Inquest** (Dirksen Senate Hearing Chamber) — `act5_ch2_intro`, signature verification grill, "God is busy" & "dumber than a bag of hair" testimony; **Senator John Kennedy joins** as *Committee Cross-Examiner* (`act5_ch2_kennedy_arrives`); `act5_ch2_inquest_battle` (Bureaucratic Stonewall Director & Red-Tape Stonewaller).
+  - **Chapter 3: The Southern White House** (Mar-a-Lago Terrace & Fairway) — `act5_ch3_intro`, 320-yard presidential training drive, foreign diplomat bypass, Comeback Tour announcement, dawn raid intel briefing.
+  - **Chapter 4: The Deep State Raid on the Golden Closets** (Mar-a-Lago Storage Vault & Melania's Wardrobe) — `act5_ch4_intro`, Presidential Records Act civil defense, declassified mementos, passport recovery; `act5_golem_battle` boss encounter (3 AM Midnight Ballot Golem & Mar-a-Lago Raid Commander); exile triumph leading into Act VI.
+  - Added scenes `SCENE_ACT5_CH1_ARENA`, `SCENE_ACT5_CH2_SENATE`, `SCENE_ACT5_CH3_TERRACE`, `SCENE_ACT5_CH4_CLOSETS`; legacy `SCENE_ACT5_MARALAGO` preserved as backward-compat alias.
+  - Added encounters `ACT5_CH1_PIPE_BATTLE` and `ACT5_CH2_INQUEST_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`, and `isKennedyRecruited`.
+  - All unit tests passing in `CommanderAmericaGameTest.kt` (23/23 tests). Installed and verified on physical device.
 
-## 3. Master Phase Roadmap (Next Up: Phase 7)
+
+## 3. Master Phase Roadmap (Next Up: Phase 8)
 
 ```mermaid
 flowchart TD
     P3["Phase 3: Act I Expansion (DONE)"] --> P4["Phase 4: Act II - The Inaugural Siege (DONE)"]
     P4 --> P5["Phase 5: Act III - The Rustbelt Summit & Heartland (DONE)"]
     P5 --> P6["Phase 6: Act IV - The Intelligence Vaults & Declassification (DONE)"]
-    P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile (NEXT)"]
-    P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland"]
+    P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile (DONE)"]
+    P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland (NEXT)"]
     P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve"]
     P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel"]
     P10 --> P11["Phase 11: Streamline Character Creation"]

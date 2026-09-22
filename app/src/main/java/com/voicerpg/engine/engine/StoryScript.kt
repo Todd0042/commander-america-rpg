@@ -182,12 +182,53 @@ object StoryScript {
         ambientDescription = "Spectral paperwork and phantom subpoenas drift through the foggy tribunal hall."
     )
 
+    // Act V - Chapter 1: The 3:00 AM Water Pipe Mystery (State Farm Arena Ballot Storage Room)
+    val SCENE_ACT5_CH1_ARENA = StoryScene(
+        id = "scene_act5_ch1_arena",
+        name = "State Farm Arena — Ballot Floor",
+        chapterTitle = "Act V - Ch 1: The 3 AM Water Pipe (2020)",
+        backgroundAsset = "story/ballot_arena.jpg",
+        initialNodeId = "act5_ch1_intro",
+        ambientDescription = "Counting tables sit under dim arena lights after election observers were evacuated following a declared water pipe burst."
+    )
+
+    // Act V - Chapter 2: The Senate Inquest (Dirksen Senate Office Building)
+    val SCENE_ACT5_CH2_SENATE = StoryScene(
+        id = "scene_act5_ch2_senate",
+        name = "Senate Committee Hearing Room",
+        chapterTitle = "Act V - Ch 2: The Senate Inquest (2020)",
+        backgroundAsset = "story/senate_hearing.jpg",
+        initialNodeId = "act5_ch2_intro",
+        ambientDescription = "Microphones feedback softly against oak dais panels as stonewalling election officials and bureaucratic witnesses squirm in their seats."
+    )
+
+    // Act V - Chapter 3: The Southern White House (Mar-a-Lago Terrace & Palm Beach)
+    val SCENE_ACT5_CH3_TERRACE = StoryScene(
+        id = "scene_act5_ch3_terrace",
+        name = "Mar-a-Lago Terrace & Palm Beach",
+        chapterTitle = "Act V - Ch 3: The Southern White House (2021)",
+        backgroundAsset = "story/maralago_terrace.jpg",
+        initialNodeId = "act5_ch3_intro",
+        ambientDescription = "Warm Atlantic trade winds whisper through palm fronds outside the Grand Ballroom as world leaders and grassroots patriots arrive in Palm Beach."
+    )
+
+    // Act V - Chapter 4: The Deep State Raid on the Golden Closets (Mar-a-Lago Storage Vault)
+    val SCENE_ACT5_CH4_CLOSETS = StoryScene(
+        id = "scene_act5_ch4_closets",
+        name = "Mar-a-Lago Storage Vault & Melania's Closet",
+        chapterTitle = "Act V - Ch 4: The Golden Closets (2022)",
+        backgroundAsset = "story/storage_vault.jpg",
+        initialNodeId = "act5_ch4_intro",
+        ambientDescription = "Dozens of armed federal agents in windbreakers surround stacks of storage boxes beside ornate chandeliers and presidential mementos."
+    )
+
+    // Legacy alias for the original single Act V scene
     val SCENE_ACT5_MARALAGO = StoryScene(
         id = "scene_act5_maralago",
         name = "The Mar-a-Lago Fortress",
         chapterTitle = "Act V: Midnight Sorcery & The Exile (2020-2021)",
         backgroundAsset = "story/mausoleum_sun.jpg",
-        initialNodeId = "act5_intro",
+        initialNodeId = "act5_ch1_intro",
         ambientDescription = "Ocean breezes sweep across golden palm trees surrounding Commander America's exile retreat."
     )
 
@@ -239,7 +280,11 @@ object StoryScript {
         SCENE_ACT4_CH3_COURT.id to SCENE_ACT4_CH3_COURT,
         SCENE_ACT4_CH4_HEARING.id to SCENE_ACT4_CH4_HEARING,
         SCENE_ACT4_MUELLER.id to SCENE_ACT4_CH1_FISA,       // legacy alias → ch1
-        SCENE_ACT5_MARALAGO.id to SCENE_ACT5_MARALAGO,
+        SCENE_ACT5_CH1_ARENA.id to SCENE_ACT5_CH1_ARENA,
+        SCENE_ACT5_CH2_SENATE.id to SCENE_ACT5_CH2_SENATE,
+        SCENE_ACT5_CH3_TERRACE.id to SCENE_ACT5_CH3_TERRACE,
+        SCENE_ACT5_CH4_CLOSETS.id to SCENE_ACT5_CH4_CLOSETS,
+        SCENE_ACT5_MARALAGO.id to SCENE_ACT5_CH1_ARENA,     // legacy alias → ch1
         SCENE_ACT6_WASTELAND.id to SCENE_ACT6_WASTELAND,
         SCENE_ACT7_SANDS.id to SCENE_ACT7_SANDS,
         SCENE_ACT8_CITADEL_FINAL.id to SCENE_ACT8_CITADEL_FINAL
@@ -1484,8 +1529,8 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The phantom faded into zero evidence! Total exoneration confirmed by history! Pack the golf bags, folks — we're headed to the Mar-a-Lago Fortress for the greatest training arc in American history!",
-            changeSceneId = SCENE_ACT5_MARALAGO.id,
-            nextNodeId = "act5_intro"
+            changeSceneId = SCENE_ACT5_CH1_ARENA.id,
+            nextNodeId = "act5_ch1_intro"
         ),
 
         // Legacy compatibility nodes for existing tests & saves
@@ -1537,23 +1582,299 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The phantom faded into zero evidence! Another witch hunt shattered!",
-            changeSceneId = SCENE_ACT5_MARALAGO.id,
-            nextNodeId = "act5_intro"
+            changeSceneId = SCENE_ACT5_CH1_ARENA.id,
+            nextNodeId = "act5_ch1_intro"
         ),
 
         // =========================================================================
-        // ACT V: MIDNIGHT SORCERY & THE EXILE (2020-2021)
+        // ACT V - CHAPTER 1: THE 3:00 AM WATER PIPE MYSTERY (2020)
         // =========================================================================
+        DialogueNode(
+            id = "act5_ch1_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We take you live to the ballot counting floor at State Farm Arena in Atlanta. It is late on election night. Commander America holds an insurmountable lead across the swing states. Suddenly, arena officials order the building evacuated, claiming a catastrophic water main burst.",
+            nextNodeId = "act5_ch1_arena_hub"
+        ),
+        // Legacy alias
         DialogueNode(
             id = "act5_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are live tonight from Mar-a-Lago Fortress. Following the mysterious 3 AM ballot spikes, Commander America has commenced the greatest training arc in modern history on the championship fairway.",
+            text = "We are live tonight covering the mysterious 3 AM ballot spikes and the sudden cessation of counting across the battlegrounds.",
+            nextNodeId = "act5_ch1_arena_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch1_arena_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "A water pipe? Folks, it was an overflowing urinal three concourses away! They told Republican observers to pack up and go home, and the second the doors locked, look what came rolling out!",
             choices = listOf(
-                DialogueChoice("a5_golf", "Train on the championship golf course", listOf("golf", "swing", "driver", "hole in one", "train"), "act5_golf"),
-                DialogueChoice("a5_rally", "Hold massive rallies across the lands", listOf("rally", "crowd", "maga", "patriots", "comeback"), "act5_rally")
+                DialogueChoice("a5c1_pipe", "Investigate the phantom water pipe excuse", listOf("pipe", "water", "plumber", "burst", "leak"), "act5_ch1_pipe_investigate", completionFlag = "a5c1_pipe"),
+                DialogueChoice("a5c1_suitcases", "Check the wheeled ballot trunks pulled from under black skirts", listOf("suitcases", "trunks", "tables", "black", "cloth"), "act5_ch1_suitcases_check", completionFlag = "a5c1_suitcases"),
+                DialogueChoice("a5c1_observe", "Call out the illegal evacuation of bipartisan poll watchers", listOf("observers", "watchers", "sent home", "doors", "illegal"), "act5_ch1_observers_sent_home", completionFlag = "a5c1_observe"),
+                DialogueChoice("a5c1_confront", "Confront the Midnight Ballot Courier and Burst Pipe Illusionist", listOf("confront", "fight", "plumber", "courier", "spike"), "act5_ch1_golem_ambush")
             )
         ),
+        DialogueNode(
+            id = "act5_ch1_pipe_investigate",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "They claimed the arena was flooding! Karoline, did anyone call 911? Did anyone call the city water authority? Did anyone even grab a mop?!",
+            nextNodeId = "act5_ch1_karoline_plumber"
+        ),
+        DialogueNode(
+            id = "act5_ch1_karoline_plumber",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Binder receipts confirmed! Official county work logs show zero calls to the water department, zero emergency shutoffs, and an arena incident ticket for a slow-draining toilet. Case documented!",
+            nextNodeId = "act5_ch1_arena_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch1_suitcases_check",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "Security cameras recorded every angle in 4K. The second the observers walked out into the parking lot, four workers pulled wheeled containers from under black tablecloths and scanned the same stacks three and four times in a row without a single monitor present.",
+            nextNodeId = "act5_ch1_arena_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch1_observers_sent_home",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "In Florida, if election supervisors order bipartisan observers to leave and then keep running secret ballots in the dark at 3:00 AM, that is called a state felony. The rule of law doesn't take a nap at midnight.",
+            nextNodeId = "act5_ch1_arena_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch1_golem_ambush",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "STAND BACK! The 3:00 AM vertical spike of 138,000 votes to zero is mathematically completely normal! The Burst Pipe Illusionist and Midnight Ballot Courier demand you accept the count!",
+            nextNodeId = "act5_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act5_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH, BROTHER! They thought they could sneak those phantom trunks past the 24-inch pythons! Commander, Marco, JD, and Kash — body-slam this plumbing illusion straight down the drain!",
+            triggerBattleEncounterId = "act5_ch1_pipe_battle",
+            nextNodeId = "act5_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act5_ch1_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The phantom plumbing excuse has burst! The receipts are in the open! But the Beltway establishment refuses to hold hearings. We're taking this straight to the United States Senate!",
+            changeSceneId = SCENE_ACT5_CH2_SENATE.id,
+            nextNodeId = "act5_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT V - CHAPTER 2: THE SENATE INQUEST (2020)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_ch2_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are inside the Dirksen Senate Office Building for the Judiciary Committee Inquest. Stonewalling election bureaucrats and agency witnesses have arrived with three-ring binders full of prepared excuses. Across the dais sits Senator John Kennedy of Louisiana.",
+            nextNodeId = "act5_ch2_senate_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch2_senate_hub",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Now, I've been listening to these witnesses for two hours, and I've got a few questions that need answering in plain, simple English.",
+            choices = listOf(
+                DialogueChoice("a5c2_miracle", "Ask about fixing the administrative election chaos", listOf("miracle", "god", "busy", "fix", "chaos"), "act5_ch2_miracle_quote", completionFlag = "a5c2_miracle"),
+                DialogueChoice("a5c2_hammers", "Grill the officials on turning off signature verification", listOf("hammers", "dumber", "signature", "verify", "bag"), "act5_ch2_hammers_quote", completionFlag = "a5c2_hammers"),
+                DialogueChoice("a5c2_kennedy", "Call upon Senator Kennedy to officially join the 5-Hero Supergroup", listOf("kennedy", "join", "senator", "supergroup", "five"), "act5_ch2_kennedy_arrives")
+            )
+        ),
+        DialogueNode(
+            id = "act5_ch2_miracle_quote",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Now, let me say this politely, son. It will take a miracle to fix the mess you just described, and frankly, God is busy. You don't have to be a nuclear astrophysicist to figure out that if you don't check signatures, you ain't checking signatures.",
+            nextNodeId = "act5_ch2_senate_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch2_hammers_quote",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "I've listened to your testimony, and with all due respect, that explanation sounds dumber than a bag of hair. If common sense were water, some of these bureaucrats wouldn't have enough to fill a thimble.",
+            nextNodeId = "act5_ch2_senate_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch2_kennedy_arrives",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Now hold on just a minute, son. Did you write that 3 AM ballot rule yourself, or did somebody help you think it up? Because in plain English, that sounds dumber than a bag of hammers. Commander, let's grill these bureaucrats until they squeal!",
+            nextNodeId = "act5_ch2_hero_kennedy_reply"
+        ),
+        DialogueNode(
+            id = "act5_ch2_hero_kennedy_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Senator, I love it! Razor-sharp common sense, pure Louisiana steel, and the full 5-hero supergroup is assembled! The Committee Cross-Examiner is ON THE TEAM!",
+            nextNodeId = "act5_ch2_stonewall_ambush"
+        ),
+        DialogueNode(
+            id = "act5_ch2_stonewall_ambush",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "POINT OF ORDER! We refuse to answer under Executive Privilege and General Confusion! Stonewaller phantoms, deploy the bureaucratic filibuster!",
+            nextNodeId = "act5_ch2_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act5_ch2_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH! KENNEDY'S IN THE CORNER, BROTHER! That's five American legends in the ring! Drop the gavel of justice and body-slam the red tape!",
+            triggerBattleEncounterId = "act5_ch2_inquest_battle",
+            nextNodeId = "act5_ch2_post_battle"
+        ),
+        DialogueNode(
+            id = "act5_ch2_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Their stonewall collapsed under Kennedy's cross-examination! But Washington is entrenched in the swamp for now. It's time for the Exile arc — we head south to the Palm Beach citadel!",
+            changeSceneId = SCENE_ACT5_CH3_TERRACE.id,
+            nextNodeId = "act5_ch3_intro"
+        ),
+
+        // =========================================================================
+        // ACT V - CHAPTER 3: THE SOUTHERN WHITE HOUSE (2021)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_ch3_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are broadcasting live from Palm Beach, Florida — the Southern White House. The establishment media declared Commander America's movement finished. Instead, Mar-a-Lago has become the undisputed center of gravity for American politics.",
+            nextNodeId = "act5_ch3_terrace_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch3_terrace_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "They thought we would fade away into retirement! Fade away to where?! We have the championship golf course, the finest patriots in the world, and our movement is stronger than ever!",
+            choices = listOf(
+                DialogueChoice("a5c3_golf", "Train signature presidential drive on the fairway", listOf("golf", "swing", "driver", "hole in one", "train"), "act5_ch3_golf_training", completionFlag = "a5c3_golf"),
+                DialogueChoice("a5c3_foreign", "Host visiting world leaders seeking genuine diplomacy", listOf("diplomats", "leaders", "foreign", "delegation", "deals"), "act5_ch3_foreign_delegation", completionFlag = "a5c3_foreign"),
+                DialogueChoice("a5c3_rally", "Announce the nationwide Golden Comeback Tour", listOf("rally", "crowd", "comeback", "tour", "patriots"), "act5_ch3_comeback_tour", completionFlag = "a5c3_rally"),
+                DialogueChoice("a5c3_briefing", "Hold an emergency war room briefing with the 5 heroes", listOf("briefing", "war room", "intel", "closets", "raid"), "act5_ch3_war_room")
+            )
+        ),
+        DialogueNode(
+            id = "act5_ch3_golf_training",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Hit a clean 320-yard drive straight into the ocean crosswind! Hole-in-one on the 16th! Energy level at 1000%! The training arc is unmatched!",
+            nextNodeId = "act5_ch3_hulk_react"
+        ),
+        DialogueNode(
+            id = "act5_ch3_hulk_react",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THREE HUNDRED AND TWENTY YARDS RIGHT DOWN THE MIDDLE, BROTHER! Say your prayers, drink your raw milk, and watch the greatest comeback in sports and political history!",
+            nextNodeId = "act5_ch3_terrace_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch3_foreign_delegation",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "Prime ministers and foreign ambassadors keep bypassing Washington entirely and flying directly to Palm Beach. Everyone on the international stage knows where the real power is centered.",
+            nextNodeId = "act5_ch3_terrace_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch3_comeback_tour",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Rallies in Iowa, Ohio, Michigan, Pennsylvania! Lines three miles long in sub-zero snow! Nobody has ever seen crowds like this. The comeback will be historic!",
+            nextNodeId = "act5_ch3_terrace_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch3_war_room",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "Commander, our intelligence sources report the Beltway establishment is terrified of your poll numbers. They're preparing an unprecedented escalation — an armed dawn raid on Mar-a-Lago's storage rooms.",
+            nextNodeId = "act5_ch3_hero_closets"
+        ),
+        DialogueNode(
+            id = "act5_ch3_hero_closets",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "An armed raid on my home?! Over declassified personal papers, letters from Kim, and press clippings?! Let them come. To the storage vault!",
+            changeSceneId = SCENE_ACT5_CH4_CLOSETS.id,
+            nextNodeId = "act5_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT V - CHAPTER 4: THE DEEP STATE RAID ON THE GOLDEN CLOSETS (2022)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_ch4_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "BREAKING NEWS: Thirty armed federal agents have descended on Mar-a-Lago with search warrants, rifling through personal storage rooms, Melania's wardrobe, and decades of declassified souvenirs.",
+            nextNodeId = "act5_ch4_vault_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch4_vault_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "You took my passports! You rummaged through Melania's closets! Under the Presidential Records Act, every president has personal boxes! Bill had sock drawers, Barack had warehouses in Chicago!",
+            choices = listOf(
+                DialogueChoice("a5c4_pra", "Invoke the Presidential Records Act civil statutory protections", listOf("pra", "records", "act", "civil", "statute"), "act5_ch4_pra_argument", completionFlag = "a5c4_pra"),
+                DialogueChoice("a5c4_passports", "Demand the return of stolen passports and personal items", listOf("passports", "wardrobe", "melania", "stolen", "return"), "act5_ch4_passports_demand", completionFlag = "a5c4_passports"),
+                DialogueChoice("a5c4_kash", "Deploy Kash Patel's official declassification clearance logs", listOf("kash", "declassify", "clearance", "logs", "orders"), "act5_ch4_kash_declass", completionFlag = "a5c4_kash"),
+                DialogueChoice("a5c4_battle", "Unleash the 5-hero supergroup to defend the Golden Closets", listOf("fight", "raid", "golem", "battle", "defend"), "act5_ch4_raid_confront")
+            )
+        ),
+        DialogueNode(
+            id = "act5_ch4_pra_argument",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The Presidential Records Act is a civil negotiation statute, not a criminal weapon! You discuss storage with the National Archives over tea and scones, you don't send thirty armed agents with guns drawn!",
+            nextNodeId = "act5_ch4_vault_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch4_passports_demand",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Son, if you're taking a man's passport, his wife's clothes, and love letters from North Korea, you ain't looking for national security secrets. You're on a political fishing expedition, and you didn't even pack bait.",
+            nextNodeId = "act5_ch4_vault_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch4_kash_declass",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "Every box in this vault was declassified under standing executive authorities before departing the Oval Office. We have the transport manifests, clearance logs, and paper trail. This raid is completely unlawful.",
+            nextNodeId = "act5_ch4_vault_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch4_raid_confront",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "SEIZE THE BANKER BOXES! We must summon the Midnight Ballot Golem and Armed Raid Phantoms to suppress the comeback!",
+            nextNodeId = "act5_ch4_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act5_ch4_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VITAMINS, RAW MILK, AND TWENTY-FOUR INCH PYTHONS, BROTHER! The full dream team of 5 American legends is unleashed! Hit that Tremendous Strike and body-slam the Ballot Golem!",
+            triggerBattleEncounterId = "act5_golem_battle",
+            nextNodeId = "act5_ch4_post_battle"
+        ),
+        DialogueNode(
+            id = "act5_ch4_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The Golem crumbles into scrap paper and the raid backfired completely! Donations broke our servers and our poll numbers hit record highs! The exile is over! Now we march across the Word-Salad Wasteland of the Vice-Sovereign!",
+            changeSceneId = SCENE_ACT6_WASTELAND.id,
+            nextNodeId = "act6_intro"
+        ),
+
+        // Legacy compatibility nodes for existing tests & saves
         DialogueNode(
             id = "act5_golf",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
@@ -1602,7 +1923,7 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "VITAMINS, RAW MILK, AND TWENTY-FOUR INCH PYTHONS, BROTHER! The full dream team of 5 American legends is unleashed! Hit that Tremendous Strike and body-slam the Ballot Golem!",
             triggerBattleEncounterId = "act5_golem_battle",
-            nextNodeId = "act5_post_battle"
+            nextNodeId = "act5_ch4_post_battle"
         ),
         DialogueNode(
             id = "act5_post_battle",

@@ -131,7 +131,9 @@ class CommanderAmericaGameTest {
             "act4_ch1_fisa_battle" to "act4_ch1_post_battle",
             "act4_ch3_subpoena_battle" to "act4_ch3_post_battle",
             "act4_hoax_battle" to "act4_ch4_post_battle",
-            "act5_golem_battle" to "act5_post_battle",
+            "act5_ch1_pipe_battle" to "act5_ch1_post_battle",
+            "act5_ch2_inquest_battle" to "act5_ch2_post_battle",
+            "act5_golem_battle" to "act5_ch4_post_battle",
             "act6_kamala_battle" to "act6_post_battle",
             "act7_lawfare_battle" to "act7_post_battle",
             "act8_biden_final_battle" to "act8_post_battle"
@@ -954,7 +956,7 @@ class CommanderAmericaGameTest {
         storyViewModel.triggerEncounter("act4_hoax_battle")
         storyViewModel.onCombatVictory()
         assertEquals("act4_ch4_post_battle", storyViewModel.state.value.currentNode.id)
-        assertEquals("scene_act5_maralago", storyViewModel.state.value.currentScene.id)
+        assertEquals("scene_act5_ch1_arena", storyViewModel.state.value.currentScene.id)
 
         // -----------------------------------------------------------------------
         // 5. Debug warps for all Act IV chapters
@@ -1008,6 +1010,175 @@ class CommanderAmericaGameTest {
         assertTrue("act4_ch1_fisa_battle must be in ALL_ENCOUNTERS", allIds.contains("act4_ch1_fisa_battle"))
         assertTrue("act4_ch3_subpoena_battle must be in ALL_ENCOUNTERS", allIds.contains("act4_ch3_subpoena_battle"))
         assertTrue("act4_hoax_battle must be in ALL_ENCOUNTERS", allIds.contains("act4_hoax_battle"))
+    }
+
+    @Test
+    fun testAct5FourChaptersFullProgressionAndDebugWarps() {
+        // -----------------------------------------------------------------------
+        // 1. Warp into Act V Chapter 1: The 3:00 AM Water Pipe Mystery
+        // -----------------------------------------------------------------------
+        storyViewModel.debugWarpToChapter("act5_ch1_intro")
+        assertEquals("act5_ch1_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act5_ch1_arena", storyViewModel.state.value.currentScene.id)
+        // In Act V Ch1 warp, party has 4 heroes (Hero, Marco, Vance, Kash) — Kennedy hasn't joined yet
+        val ch1Party = storyViewModel.state.value.partyStats
+        assertEquals(4, ch1Party.size)
+        assertTrue("Party must contain hero", ch1Party.any { it.id == "hero" })
+        assertTrue("Party must contain marco", ch1Party.any { it.id == "marco" })
+        assertTrue("Party must contain vance", ch1Party.any { it.id == "vance" })
+        assertTrue("Party must contain kash", ch1Party.any { it.id == "kash" })
+        assertFalse("Kennedy must NOT be seeded for Act 5 Ch1 warp",
+            storyViewModel.state.value.narrativeFlags["kennedy_recruited"] == true)
+
+        // Advance to Ch1 hub
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch1_arena_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select "confront" choice
+        val confrontChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a5c1_confront" }
+        storyViewModel.selectChoice(confrontChoice)
+        assertEquals("act5_ch1_golem_ambush", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch1_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act5_ch1_pipe_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch1 battle
+        storyViewModel.triggerEncounter("act5_ch1_pipe_battle")
+        assertEquals(GameScreen.COMBAT_ARENA, storyViewModel.state.value.gameScreen)
+        assertEquals("act5_ch1_pipe_battle", storyViewModel.state.value.activeEncounter?.id)
+        storyViewModel.onCombatVictory()
+        assertEquals("act5_ch1_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act5_ch2_senate", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 2. Act V Chapter 2: The Senate Inquest & Senator Kennedy Joins
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch2_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch2_senate_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select "kennedy" choice to recruit Senator Kennedy
+        val kennedyChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a5c2_kennedy" }
+        storyViewModel.selectChoice(kennedyChoice)
+        assertEquals("act5_ch2_kennedy_arrives", storyViewModel.state.value.currentNode.id)
+        assertEquals("kennedy", storyViewModel.state.value.currentNode.speaker.id)
+
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch2_hero_kennedy_reply", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch2_stonewall_ambush", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch2_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act5_ch2_inquest_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch2 battle
+        storyViewModel.triggerEncounter("act5_ch2_inquest_battle")
+        assertEquals(GameScreen.COMBAT_ARENA, storyViewModel.state.value.gameScreen)
+        assertEquals("act5_ch2_inquest_battle", storyViewModel.state.value.activeEncounter?.id)
+        storyViewModel.onCombatVictory()
+        assertEquals("act5_ch2_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act5_ch3_terrace", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 3. Act V Chapter 3: The Southern White House (Mar-a-Lago Terrace)
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch3_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch3_terrace_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select "briefing" choice
+        val briefingChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a5c3_briefing" }
+        storyViewModel.selectChoice(briefingChoice)
+        assertEquals("act5_ch3_war_room", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch3_hero_closets", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act5_ch4_closets", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 4. Act V Chapter 4: The Deep State Raid on the Golden Closets
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch4_intro", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch4_vault_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select "battle" choice
+        val battleChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a5c4_battle" }
+        storyViewModel.selectChoice(battleChoice)
+        assertEquals("act5_ch4_raid_confront", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act5_ch4_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act5_golem_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch4 Boss battle
+        storyViewModel.triggerEncounter("act5_golem_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act5_ch4_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act6_wasteland", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 5. Debug warps for all Act V chapters
+        // -----------------------------------------------------------------------
+        // Ch1: 4 heroes (Kennedy not seeded)
+        storyViewModel.debugWarpToChapter("act5_ch1_intro")
+        assertEquals("act5_ch1_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act5_ch1_arena", storyViewModel.state.value.currentScene.id)
+        val ch1WarpParty = storyViewModel.state.value.partyStats
+        assertEquals(4, ch1WarpParty.size)
+        assertFalse(ch1WarpParty.any { it.id == "kennedy" })
+
+        // Ch2, Ch3, Ch4: 5 heroes (Kennedy seeded)
+        val act5FullTargets = listOf(
+            "act5_ch2_intro" to "scene_act5_ch2_senate",
+            "act5_ch3_intro" to "scene_act5_ch3_terrace",
+            "act5_ch4_intro" to "scene_act5_ch4_closets"
+        )
+        for ((nodeId, expectedSceneId) in act5FullTargets) {
+            storyViewModel.debugWarpToChapter(nodeId)
+            assertEquals("Node for $nodeId", nodeId, storyViewModel.state.value.currentNode.id)
+            assertEquals("Scene for $nodeId", expectedSceneId, storyViewModel.state.value.currentScene.id)
+            val party = storyViewModel.state.value.partyStats
+            assertEquals("Party size must be 5 at $nodeId", 5, party.size)
+            assertTrue("Party must have hero at $nodeId", party.any { it.id == "hero" })
+            assertTrue("Party must have marco at $nodeId", party.any { it.id == "marco" })
+            assertTrue("Party must have vance at $nodeId", party.any { it.id == "vance" })
+            assertTrue("Party must have kash at $nodeId", party.any { it.id == "kash" })
+            assertTrue("Party must have kennedy at $nodeId", party.any { it.id == "kennedy" })
+        }
+    }
+
+    @Test
+    fun testAct5EncountersAndPartyRoster() {
+        // Ch1 Pipe Battle — Hero, Marco, Vance, Kash (4 heroes)
+        val pipeBattle = StoryEncounters.ACT5_CH1_PIPE_BATTLE
+        assertEquals("act5_ch1_pipe_battle", pipeBattle.id)
+        assertEquals(4, pipeBattle.initialParty?.size)
+        val burstPipe = pipeBattle.enemies.firstOrNull { it.id == "burst_pipe" }
+        assertNotNull("Burst Pipe Illusionist must be present", burstPipe)
+        assertTrue("Burst Pipe is boss", burstPipe!!.isBoss)
+
+        // Ch2 Inquest Battle — All 5 heroes including Kennedy
+        val inquestBattle = StoryEncounters.ACT5_CH2_INQUEST_BATTLE
+        assertEquals("act5_ch2_inquest_battle", inquestBattle.id)
+        assertEquals(5, inquestBattle.initialParty?.size)
+        val stonewallDirector = inquestBattle.enemies.firstOrNull { it.id == "stonewall_director" }
+        assertNotNull("Stonewall Director must be present", stonewallDirector)
+        assertTrue("Stonewall Director is boss", stonewallDirector!!.isBoss)
+
+        // Ch4 Golem Battle — All 5 heroes
+        val golemBattle = StoryEncounters.ACT5_GOLEM_BATTLE
+        assertEquals("act5_golem_battle", golemBattle.id)
+        assertEquals(5, golemBattle.initialParty?.size)
+        val ballotGolem = golemBattle.enemies.firstOrNull { it.id == "ballot_golem" }
+        assertNotNull("Ballot Golem must be present", ballotGolem)
+
+        // Verify in ALL_ENCOUNTERS
+        val allIds = StoryEncounters.ALL_ENCOUNTERS.map { it.id }
+        assertTrue("act5_ch1_pipe_battle must be in ALL_ENCOUNTERS", allIds.contains("act5_ch1_pipe_battle"))
+        assertTrue("act5_ch2_inquest_battle must be in ALL_ENCOUNTERS", allIds.contains("act5_ch2_inquest_battle"))
+        assertTrue("act5_golem_battle must be in ALL_ENCOUNTERS", allIds.contains("act5_golem_battle"))
     }
 
     @Test

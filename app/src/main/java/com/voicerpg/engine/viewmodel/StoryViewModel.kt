@@ -94,6 +94,10 @@ class StoryViewModel(
             DebugChapterTarget("Act IV - Ch 3: Subpoena Swarm", "act4_ch3_intro", 7),
             DebugChapterTarget("Act IV - Ch 4: Nothingburger Climax", "act4_ch4_intro", 7),
             DebugChapterTarget("Act IV: The Mueller Hoax", "act4_intro", 7),
+            DebugChapterTarget("Act V - Ch 1: 3 AM Water Pipe", "act5_ch1_intro", 7),
+            DebugChapterTarget("Act V - Ch 2: Senate Inquest", "act5_ch2_intro", 8),
+            DebugChapterTarget("Act V - Ch 3: Southern White House", "act5_ch3_intro", 8),
+            DebugChapterTarget("Act V - Ch 4: Golden Closets", "act5_ch4_intro", 8),
             DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 8),
             DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 9),
             DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 10),
@@ -1055,8 +1059,9 @@ class StoryViewModel(
             updatedPartyStats = updatedPartyStats + kashStats
         }
 
-        val isKennedyRecruited = effectiveNode.id.startsWith("act5_") || effectiveNode.id.startsWith("act6_") ||
-            effectiveNode.id.startsWith("act7_") || effectiveNode.id.startsWith("act8_") || updatedFlags["kennedy_recruited"] == true
+        val isKennedyRecruited = ((effectiveNode.id.startsWith("act5_") && !effectiveNode.id.startsWith("act5_ch1_")) ||
+            effectiveNode.id.startsWith("act6_") || effectiveNode.id.startsWith("act7_") ||
+            effectiveNode.id.startsWith("act8_") || updatedFlags["kennedy_recruited"] == true)
         if (isKennedyRecruited && updatedPartyStats.none { it.id == "kennedy" }) {
             val kennedyStats = SavedCharacterStats(
                 id = "kennedy",
@@ -1315,7 +1320,9 @@ class StoryViewModel(
             "act4_ch1_fisa_battle" -> "act4_ch1_post_battle"
             "act4_ch3_subpoena_battle" -> "act4_ch3_post_battle"
             "act4_hoax_battle" -> "act4_ch4_post_battle"
-            "act5_golem_battle" -> "act5_post_battle"
+            "act5_ch1_pipe_battle" -> "act5_ch1_post_battle"
+            "act5_ch2_inquest_battle" -> "act5_ch2_post_battle"
+            "act5_golem_battle" -> "act5_ch4_post_battle"
             "act6_kamala_battle" -> "act6_post_battle"
             "act7_lawfare_battle" -> "act7_post_battle"
             "act8_biden_final_battle" -> "act8_post_battle"
