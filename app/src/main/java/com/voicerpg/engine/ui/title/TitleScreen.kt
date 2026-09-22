@@ -183,7 +183,7 @@ fun TitleScreen(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = "ECHOES OF THE LOGOS",
+                    text = "COMMANDER AMERICA",
                     color = LogosGold,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black,
@@ -209,12 +209,14 @@ fun TitleScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "A Voice-First High Fantasy Chronicle",
+                    text = "Quest for the Golden Tower",
                     color = Color.LightGray.copy(alpha = 0.85f),
-                    fontSize = 11.sp,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Monospace,
                     textAlign = TextAlign.Center
                 )
+
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -587,7 +589,7 @@ fun TitleScreen(
                         )
 
                         Text(
-                            text = "An active journey for ${saveSummary?.heroName ?: "your Hero"} in ${saveSummary?.chapterTitle ?: "Aethelgard"} is currently saved.\n\nBeginning a new campaign will replace this save file. Are you certain you wish to proceed?",
+                            text = "An active campaign for ${saveSummary?.heroName ?: "Commander America"} in ${saveSummary?.chapterTitle ?: "The Golden Tower"} is currently saved.\n\nBeginning a new campaign will replace this save file. Are you certain you wish to proceed?",
                             color = Color.LightGray,
                             fontSize = 12.sp,
                             fontFamily = FontFamily.Monospace,

@@ -7,6 +7,7 @@ import com.voicerpg.engine.model.EncounterDefinition
 import com.voicerpg.engine.model.PartyMember
 import com.voicerpg.engine.model.Spell
 import com.voicerpg.engine.model.SpellSchool
+import com.voicerpg.engine.template.TemplateHero
 
 object StoryEncounters {
 
@@ -81,7 +82,66 @@ object StoryEncounters {
         shadowStrikeSpell.id to shadowStrikeSpell,
         venomFlurrySpell.id to venomFlurrySpell,
         umbralSiphonSpell.id to umbralSiphonSpell,
-        quietLungsSpell.id to quietLungsSpell
+        quietLungsSpell.id to quietLungsSpell,
+        // Commander America Kit
+        TemplateHero.TREMENDOUS_STRIKE.id to TemplateHero.TREMENDOUS_STRIKE,
+        TemplateHero.ART_OF_THE_DEAL.id to TemplateHero.ART_OF_THE_DEAL,
+        TemplateHero.OBAMA_DID_IT_FIRST.id to TemplateHero.OBAMA_DID_IT_FIRST,
+        TemplateHero.PRESIDENTIAL_VETO.id to TemplateHero.PRESIDENTIAL_VETO,
+        TemplateHero.EXECUTIVE_ACTION.id to TemplateHero.EXECUTIVE_ACTION,
+        TemplateHero.BUILD_THE_WALL.id to TemplateHero.BUILD_THE_WALL,
+        TemplateHero.RALLY_THE_PATRIOTS.id to TemplateHero.RALLY_THE_PATRIOTS,
+        TemplateHero.TIRED_OF_WINNING.id to TemplateHero.TIRED_OF_WINNING,
+        // Marco Rubio Kit
+        TemplateHero.FILIBUSTER_STRIKE.id to TemplateHero.FILIBUSTER_STRIKE,
+        TemplateHero.MAXIMUM_SANCTIONS.id to TemplateHero.MAXIMUM_SANCTIONS,
+        TemplateHero.WATER_SIP_RESTORE.id to TemplateHero.WATER_SIP_RESTORE,
+        TemplateHero.TARIFF_DIVIDEND.id to TemplateHero.TARIFF_DIVIDEND,
+        // JD Vance Kit
+        TemplateHero.DEBATE_DISMANTLE.id to TemplateHero.DEBATE_DISMANTLE,
+        TemplateHero.APPALACHIAN_SLAM.id to TemplateHero.APPALACHIAN_SLAM,
+        TemplateHero.HILLBILLY_FORTITUDE.id to TemplateHero.HILLBILLY_FORTITUDE,
+        TemplateHero.COMMON_SENSE_RENEWAL.id to TemplateHero.COMMON_SENSE_RENEWAL,
+        // Kash Patel Kit
+        TemplateHero.DECLASSIFY_NOW.id to TemplateHero.DECLASSIFY_NOW,
+        TemplateHero.BINDER_OF_TRUTH.id to TemplateHero.BINDER_OF_TRUTH,
+        TemplateHero.SECURITY_CLEARANCE.id to TemplateHero.SECURITY_CLEARANCE,
+        TemplateHero.LEAK_PLUG.id to TemplateHero.LEAK_PLUG,
+        // Senator John Kennedy Kit
+        TemplateHero.PLAIN_ENGLISH_EXAM.id to TemplateHero.PLAIN_ENGLISH_EXAM,
+        TemplateHero.CALL_AN_OFFICER.id to TemplateHero.CALL_AN_OFFICER,
+        TemplateHero.COMMON_SENSE_REMEDY.id to TemplateHero.COMMON_SENSE_REMEDY,
+        TemplateHero.DEVASTATING_ONELINER.id to TemplateHero.DEVASTATING_ONELINER
+    )
+
+    fun createAct1Party(): List<PartyMember> = listOf(
+        TemplateHero.createTemplateAdventurer(id = "hero")
+    )
+
+    fun createAct2Party(): List<PartyMember> = listOf(
+        TemplateHero.createTemplateAdventurer(id = "hero"),
+        TemplateHero.createMarcoRubio()
+    )
+
+    fun createAct3Party(): List<PartyMember> = listOf(
+        TemplateHero.createTemplateAdventurer(id = "hero"),
+        TemplateHero.createMarcoRubio(),
+        TemplateHero.createJDVance()
+    )
+
+    fun createAct4Party(): List<PartyMember> = listOf(
+        TemplateHero.createTemplateAdventurer(id = "hero"),
+        TemplateHero.createMarcoRubio(),
+        TemplateHero.createJDVance(),
+        TemplateHero.createKashPatel()
+    )
+
+    fun createFullAmericaParty(): List<PartyMember> = listOf(
+        TemplateHero.createTemplateAdventurer(id = "hero"),
+        TemplateHero.createMarcoRubio(),
+        TemplateHero.createJDVance(),
+        TemplateHero.createKashPatel(),
+        TemplateHero.createJohnKennedy()
     )
 
     fun createDuoParty(): List<PartyMember> = listOf(
@@ -603,6 +663,149 @@ object StoryEncounters {
         initialParty = createQuadParty()
     )
 
+    // =========================================================================
+    // COMMANDER AMERICA 8-ACT ENCOUNTERS
+    // =========================================================================
+
+    // 1. Act I - Chapter 1: The Escalator Press Confrontation
+    val ACT1_CH1_PRESS_BATTLE = EncounterDefinition(
+        id = "act1_ch1_press_battle",
+        name = "Act I - Ch 1: Escalator Press Confrontation",
+        description = "Skeptical cable news anchors and K-Street retainer lobbyists attempt to block the Trump Tower press conference!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("pundit_producer", "Cable News Producer", "Sniper", currentHp = 220, maxHp = 220, baseAttack = 16, isTargeted = false, spriteTint = Color(0xFFEF5350), speed = 60, atbGauge = 0.35f),
+            Enemy("lobbyist_1", "K-Street Retainer Lobbyist", "Vanguard", currentHp = 260, maxHp = 260, baseAttack = 18, isTargeted = true, spriteTint = Color(0xFF78909C), speed = 50, atbGauge = 0.25f)
+        ),
+        initialParty = createAct1Party()
+    )
+
+    // Legacy alias for Act I Ch 1 encounter
+    val ACT1_LOBBY_BATTLE = ACT1_CH1_PRESS_BATTLE
+
+    // 1b. Act I - Chapter 2: The Primary Debate Arena
+    val ACT1_CH2_DEBATE_BATTLE = EncounterDefinition(
+        id = "act1_ch2_debate_battle",
+        name = "Act I - Ch 2: The Primary Debate Arena",
+        description = "Low-Energy Dynasty rivals and focus-grouped Super PAC strategists attempt to ambush the debate podium!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("dynasty_candidate", "Low-Energy Dynasty Candidate", "Vanguard", currentHp = 420, maxHp = 420, baseAttack = 20, isBoss = true, isTargeted = true, spriteTint = Color(0xFF5C6BC0), speed = 48, atbGauge = 0.30f),
+            Enemy("pac_strategist", "Super PAC Media Strategist", "Sniper", currentHp = 280, maxHp = 280, baseAttack = 16, isTargeted = false, spriteTint = Color(0xFFAB47BC), speed = 62, atbGauge = 0.35f),
+            Enemy("consultant_checker", "Consultant Fact-Checker", "Occultist", currentHp = 260, maxHp = 260, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 55, atbGauge = 0.20f)
+        ),
+        initialParty = createAct1Party()
+    )
+
+    // 1c. Act I - Chapter 3: The New Hampshire Snowstorm & Machine Battle
+    val ACT1_CH3_MACHINE_BATTLE = EncounterDefinition(
+        id = "act1_ch3_machine_battle",
+        name = "Act I - Ch 3: The Party Machine Showdown",
+        description = "The Establishment Party Boss and delegate brokers attempt to steal the primary election in a midnight airport hangar showdown!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("party_boss", "Establishment Party Boss", "Vanguard", currentHp = 600, maxHp = 600, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFFC62828), speed = 52, atbGauge = 0.35f),
+            Enemy("dark_money", "K-Street Dark Money Machine", "Sniper", currentHp = 350, maxHp = 350, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF37474F), speed = 58, atbGauge = 0.30f),
+            Enemy("delegate_broker", "Smug Delegate Broker", "Occultist", currentHp = 300, maxHp = 300, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF7E57C2), speed = 65, atbGauge = 0.25f)
+        ),
+        initialParty = createAct1Party()
+    )
+
+    // 2. Act II: Media Wars & The Insider Stock Lich
+    val ACT2_MEDIA_BATTLE = EncounterDefinition(
+        id = "act2_media_battle",
+        name = "Act II: Media Wars & The Insider Stock Lich",
+        description = "Madam Speaker Pelosi and fact-checker ghouls attempt to crash the economy with insider trading spells!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("pelosi", "Madam Pelosi (Stock Lich)", "Occultist", currentHp = 450, maxHp = 450, baseAttack = 28, isTargeted = true, spriteTint = Color(0xFFAB47BC), speed = 65, atbGauge = 0.35f),
+            Enemy("fact_checker", "Biased Fact-Checker Ghoul", "Sniper", currentHp = 240, maxHp = 240, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 58, atbGauge = 0.25f),
+            Enemy("anonymous_source", "Anonymous Source Phantom", "Vanguard", currentHp = 260, maxHp = 260, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF7E57C2), speed = 50, atbGauge = 0.20f)
+        ),
+        initialParty = createAct2Party()
+    )
+
+    // 3. Act III: Summit of Peace Duel
+    val ACT3_SUMMIT_BATTLE = EncounterDefinition(
+        id = "act3_summit_battle",
+        name = "Act III: Summit of Peace Duel",
+        description = "Chairman Rocket Man tests Commander America's handshake strength on the Crimson Summit!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("rocket_man", "Chairman Rocket Man", "Vanguard", currentHp = 550, maxHp = 550, baseAttack = 30, isTargeted = true, spriteTint = Color(0xFFD32F2F), speed = 55, atbGauge = 0.30f),
+            Enemy("missile_battery", "Parade Missile Battery", "Sniper", currentHp = 300, maxHp = 300, baseAttack = 25, isTargeted = false, spriteTint = Color(0xFFFF7043), speed = 45, atbGauge = 0.20f)
+        ),
+        initialParty = createAct3Party()
+    )
+
+    // 4. Act IV: The Mueller Illusion Hoax
+    val ACT4_HOAX_BATTLE = EncounterDefinition(
+        id = "act4_hoax_battle",
+        name = "Act IV: The Mueller Illusion Hoax",
+        description = "A spectral Russian collusion ghost and red-tape subpoenas fill the chamber with nothingburgers!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("mueller_ghost", "Phantom Mueller Hoax", "Occultist", currentHp = 600, maxHp = 600, baseAttack = 28, isTargeted = true, spriteTint = Color(0xFF90A4AE), speed = 60, atbGauge = 0.35f),
+            Enemy("subpoena_swarm", "Swarm of Redacted Subpoenas", "Sniper", currentHp = 280, maxHp = 280, baseAttack = 24, isTargeted = false, spriteTint = Color(0xFFB0BEC5), speed = 68, atbGauge = 0.40f)
+        ),
+        initialParty = createAct4Party()
+    )
+
+    // 5. Act V: Midnight Ballot Golem
+    val ACT5_GOLEM_BATTLE = EncounterDefinition(
+        id = "act5_golem_battle",
+        name = "Act V: Midnight Ballot Golem",
+        description = "Spawned from 3 AM sorcery and mysterious water pipe leaks, the Ballot Golem rises!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("ballot_golem", "3 AM Midnight Ballot Golem", "Vanguard", currentHp = 700, maxHp = 700, baseAttack = 32, isTargeted = true, spriteTint = Color(0xFF546E7A), speed = 42, atbGauge = 0.25f),
+            Enemy("burst_pipe", "Burst Pipe Illusionist", "Occultist", currentHp = 320, maxHp = 320, baseAttack = 25, isTargeted = false, spriteTint = Color(0xFF29B6F6), speed = 55, atbGauge = 0.35f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 6. Act VI: The Word-Salad Wasteland
+    val ACT6_KAMALA_BATTLE = EncounterDefinition(
+        id = "act6_kamala_battle",
+        name = "Act VI: The Word-Salad Wasteland",
+        description = "Kamala the Unburdened traps the hero in endless overlapping Venn diagrams and circular speeches!",
+        environment = BattleEnvironment.SWAMP,
+        enemies = listOf(
+            Enemy("kamala", "Kamala the Unburdened", "Occultist", currentHp = 750, maxHp = 750, baseAttack = 34, isTargeted = true, spriteTint = Color(0xFFFFCA28), speed = 65, atbGauge = 0.40f),
+            Enemy("yellow_venn", "Yellow Venn Loop", "Sniper", currentHp = 340, maxHp = 340, baseAttack = 26, isTargeted = false, spriteTint = Color(0xFFFFEB3B), speed = 70, atbGauge = 0.45f),
+            Enemy("blue_venn", "Blue Venn Loop", "Vanguard", currentHp = 360, maxHp = 360, baseAttack = 24, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 50, atbGauge = 0.30f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 7. Act VII: Sands of Resolve & Steel Ear
+    val ACT7_LAWFARE_BATTLE = EncounterDefinition(
+        id = "act7_lawfare_battle",
+        name = "Act VII: Sands of Resolve & Steel Ear",
+        description = "The Lawfare Grand Inquisitor attempts to overwhelm Commander America with 91 bogus indictments!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("lawfare_lich", "Lawfare Grand Inquisitor", "Occultist", currentHp = 850, maxHp = 850, baseAttack = 36, isTargeted = true, spriteTint = Color(0xFF8E24AA), speed = 60, atbGauge = 0.35f),
+            Enemy("indictment_gargoyle_1", "Indictment Gargoyle #47", "Vanguard", currentHp = 400, maxHp = 400, baseAttack = 28, isTargeted = false, spriteTint = Color(0xFF5D4037), speed = 48, atbGauge = 0.25f),
+            Enemy("indictment_gargoyle_2", "Indictment Gargoyle #91", "Sniper", currentHp = 380, maxHp = 380, baseAttack = 30, isTargeted = false, spriteTint = Color(0xFF4E342E), speed = 62, atbGauge = 0.30f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 8. Act VIII: Eradicating Malarkey - Final Boss
+    val ACT8_BIDEN_FINAL_BATTLE = EncounterDefinition(
+        id = "act8_biden_final_battle",
+        name = "Act VIII: Eradicating Malarkey - Final Boss",
+        description = "Biden the Malarkey Sovereign summons vanilla ice cream cones and teleprompter phantoms in the cosmic throne room!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("biden", "Biden the Malarkey Sovereign", "Occultist", currentHp = 1200, maxHp = 1200, baseAttack = 40, isTargeted = true, spriteTint = Color(0xFFE91E63), speed = 45, atbGauge = 0.30f),
+            Enemy("shadow_teleprompter", "Teleprompter Conduit", "Sniper", currentHp = 450, maxHp = 450, baseAttack = 32, isTargeted = false, spriteTint = Color(0xFF26A69A), speed = 65, atbGauge = 0.40f),
+            Enemy("vanilla_cone_golem", "Two-Scoop Vanilla Golem", "Vanguard", currentHp = 500, maxHp = 500, baseAttack = 30, isTargeted = false, spriteTint = Color(0xFFFFF9C4), speed = 40, atbGauge = 0.20f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
     // Helper to generate reinforcement minions dynamically
     fun createMinion(idSuffix: String, name: String = "Blighted Minion", subtitle: String = "Minion", hp: Int = 180): Enemy {
         return Enemy(
@@ -620,6 +823,17 @@ object StoryEncounters {
     }
 
     val ALL_ENCOUNTERS = listOf(
+        ACT1_LOBBY_BATTLE,
+        ACT1_CH1_PRESS_BATTLE,
+        ACT1_CH2_DEBATE_BATTLE,
+        ACT1_CH3_MACHINE_BATTLE,
+        ACT2_MEDIA_BATTLE,
+        ACT3_SUMMIT_BATTLE,
+        ACT4_HOAX_BATTLE,
+        ACT5_GOLEM_BATTLE,
+        ACT6_KAMALA_BATTLE,
+        ACT7_LAWFARE_BATTLE,
+        ACT8_BIDEN_FINAL_BATTLE,
         PROLOGUE_SOLO,
         FOREST_AMBUSH,
         DUNGEON_DESCENT,

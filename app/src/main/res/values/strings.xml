@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Voice RPG Engine</string>
-    <string name="record_audio_rationale">VoiceRPG requires microphone access to chant incantations and issue tactical party commands.</string>
+    <string name="app_name">Commander America</string>
+    <string name="record_audio_rationale">Commander America requires microphone access to speak patriotic incantations and issue presidential executive commands.</string>
+
 </resources>

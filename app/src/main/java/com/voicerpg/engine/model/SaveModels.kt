@@ -15,6 +15,18 @@ enum class HeroClass(
     val preferredSchool: SpellSchool,
     val starterSpellIds: List<String>
 ) {
+    COMMANDER(
+        id = "commander",
+        title = "Commander-in-Chief",
+        subtitle = "Patriotic Sovereign & Master of the Deal",
+        description = "Wields Tremendous Strike, Art of the Deal, Build The Wall, and Obama Did It First to obliterate political opposition.",
+        startingHp = 5000,
+        startingMp = 1776,
+        startingSpeed = 70,
+        startingBaseAttack = 50,
+        preferredSchool = SpellSchool.PHYSICAL,
+        starterSpellIds = listOf("ca_tremendous_strike", "ca_art_of_the_deal", "ca_obama_did_it_first", "ca_build_the_wall", "ca_rally_patriots")
+    ),
     ELEMENTALIST(
         id = "elementalist",
         title = "Elementalist",
@@ -79,11 +91,11 @@ enum class AuraColor(
 }
 
 data class PlayerCustomization(
-    val name: String = "Aethel",
-    val heroClass: HeroClass = HeroClass.ELEMENTALIST,
-    val title: String = "The Awakened Invocator",
-    val auraColor: AuraColor = AuraColor.SAPPHIRE_FROST,
-    val voiceAffinityBonusSchool: SpellSchool = SpellSchool.PYROMANCY
+    val name: String = "Commander America",
+    val heroClass: HeroClass = HeroClass.COMMANDER,
+    val title: String = "Commander-in-Chief",
+    val auraColor: AuraColor = AuraColor.SOLAR_GOLD,
+    val voiceAffinityBonusSchool: SpellSchool = SpellSchool.PHYSICAL
 )
 
 data class SavedCharacterStats(

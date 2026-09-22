@@ -104,7 +104,11 @@ enum class TargetSelection {
     HERO,
     CEDRIC,
     LYRA,
-    ZEPHYR
+    ZEPHYR,
+    MARCO,
+    VANCE,
+    KASH,
+    KENNEDY
 }
 
 enum class MetaCommand {
@@ -141,7 +145,10 @@ data class ParsedIntent(
     val rawUtterance: String,
     val targetEnemyId: String? = null,
     val targetHeroId: String? = null,
-    val metaCommand: MetaCommand = MetaCommand.NONE
+    val metaCommand: MetaCommand = MetaCommand.NONE,
+    val isWrongCharacterSpell: Boolean = false,
+    val wrongCharacterOwnerId: String? = null,
+    val wrongCharacterOwnerName: String? = null
 )
 
 data class EncounterDefinition(
@@ -170,6 +177,7 @@ enum class CombatantFaction {
 }
 
 enum class CombatPhase {
+    INACTIVE,
     ATB_WAITING,
     PLAYER_INPUT,
     INCANTATION_RESOLVING,

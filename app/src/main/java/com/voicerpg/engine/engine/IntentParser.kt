@@ -235,30 +235,82 @@ object IntentParser {
             }
         }
 
-        // 2. Detect spell
-        val matchedSpell = availableSpells.firstOrNull { spell ->
-            lower.contains(spell.name.lowercase())
-        } ?: availableSpells.firstOrNull { spell ->
-            spell.aliases.any { alias -> lower.contains(alias.lowercase()) }
-        } ?: availableSpells.firstOrNull { spell ->
-            val nameWords = spell.name.lowercase().split(" ")
-            nameWords.any { it.length >= 4 && lower.contains(it) }
-        } ?: availableSpells.firstOrNull { spell ->
-            // Breath/recovery high-priority: catch ASR-mangled breath commands by checking
-            // whether ANY breath alias keyword appears in the utterance (fuzzy match).
-            spell.manaRestorePct > 0f && spell.aliases.any { alias ->
-                alias.split(" ").filter { it.length >= 4 }.any { word -> lower.contains(word) }
+        // 2. Detect spell:
+        val cleanLower = lower.replace(Regex("[^a-z0-9 ]"), " ")
+
+        fun findBestSpellMatch(spells: List<Spell>): Spell? {
+            // Level 1: Exact spell name match (e.g. "art of the deal", "plug the leaks", "tremendous strike")
+            val exactName = spells.firstOrNull { spell ->
+                val cleanName = spell.name.lowercase().replace(Regex("[^a-z0-9 ]"), " ")
+                cleanLower.contains(cleanName) || lower.contains(spell.name.lowercase())
             }
-        } ?: availableSpells.firstOrNull { spell ->
-            spell.manaRestorePct == 0f && if (hasHealKeyword) spell.isHeal else (!spell.isHeal && spell.school != SpellSchool.HOLY)
-        } ?: availableSpells.firstOrNull { spell ->
-            spell.manaRestorePct == 0f && if (hasHealKeyword) spell.isHeal else !spell.isHeal
-        } ?: availableSpells.firstOrNull { spell ->
-            spell.manaRestorePct == 0f && if (hasHealKeyword) spell.isHeal else {
-                val schoolKeywords = SpellThesaurus.getKeywordsForSchool(spell.school)
-                schoolKeywords.any { lower.contains(it) }
+            if (exactName != null) return exactName
+
+            // Level 2: Multi-word alias match (e.g. "tremendous blow", "stop leaks", "fisa memo")
+            val multiWordAlias = spells.firstOrNull { spell ->
+                spell.aliases.any { alias ->
+                    alias.contains(" ") && (
+                        cleanLower.contains(alias.lowercase().replace(Regex("[^a-z0-9 ]"), " ")) ||
+                        lower.contains(alias.lowercase())
+                    )
+                }
             }
-        } ?: availableSpells.firstOrNull { it.manaRestorePct == 0f } ?: availableSpells.firstOrNull() ?: defaultFallbackSpell()
+            if (multiWordAlias != null) return multiWordAlias
+
+            // Level 3: Single-word alias or key name words (>= 4 characters)
+            val singleWordMatch = spells.firstOrNull { spell ->
+                val cleanName = spell.name.lowercase().replace(Regex("[^a-z0-9 ]"), " ")
+                val nameWords = cleanName.split(Regex("\\s+")).filter { it.length >= 4 }
+                if (nameWords.isNotEmpty() && nameWords.any { cleanLower.contains(it) }) return@firstOrNull true
+                val aliasWords = spell.aliases.flatMap { it.lowercase().split(Regex("[^a-z0-9]+")) }
+                    .filter { it.length >= 4 }
+                aliasWords.any { cleanLower.contains(it) }
+            }
+            if (singleWordMatch != null) return singleWordMatch
+
+            return null
+        }
+
+        // Step A: Check Active Character's spells first with hierarchical precision
+        val activeDirectMatch = findBestSpellMatch(availableSpells)
+
+        var isWrongCharacter = false
+        var wrongCharacterOwnerId: String? = null
+        var wrongCharacterOwnerName: String? = null
+
+        val matchedSpell = if (activeDirectMatch != null) {
+            activeDirectMatch
+        } else {
+            // Step B: Check other party members if user is trying to cast a spell belonging to someone else
+            var offTurnFound: Pair<Spell, PartyMember>? = null
+            for (member in party) {
+                val otherSpells = member.spells.filter { s -> availableSpells.none { it.id == s.id } }
+                if (otherSpells.isNotEmpty()) {
+                    val directMatch = findBestSpellMatch(otherSpells)
+                    if (directMatch != null) {
+                        offTurnFound = directMatch to member
+                        break
+                    }
+                }
+            }
+
+            if (offTurnFound != null) {
+                isWrongCharacter = true
+                wrongCharacterOwnerId = offTurnFound.second.id
+                wrongCharacterOwnerName = offTurnFound.second.name
+                offTurnFound.first
+            } else {
+                // Step C: Fallback to Active Character's school thesaurus keywords or default
+                val activeThesaurusMatch = availableSpells.firstOrNull { spell ->
+                    val schoolKeywords = SpellThesaurus.getKeywordsForSchool(spell.school)
+                    schoolKeywords.any { kw -> kw.length >= 4 && lower.contains(kw) } &&
+                            (if (hasHealKeyword) spell.isHeal else !spell.isHeal)
+                } ?: availableSpells.firstOrNull { it.manaRestorePct == 0f }
+                  ?: availableSpells.firstOrNull()
+                  ?: defaultFallbackSpell()
+                activeThesaurusMatch
+            }
+        }
 
         // If it's a heal spell and targeting was unset/first alive enemy/all enemies, default to party lowest
         if (matchedSpell.isHeal && (target == TargetSelection.FIRST_ALIVE_ENEMY || target == TargetSelection.ALL_ENEMIES || target == TargetSelection.SPECIFIC_ENEMY)) {
@@ -271,7 +323,10 @@ object IntentParser {
             target = target,
             rawUtterance = utterance,
             targetEnemyId = targetEnemyId,
-            targetHeroId = targetHeroId
+            targetHeroId = targetHeroId,
+            isWrongCharacterSpell = isWrongCharacter,
+            wrongCharacterOwnerId = wrongCharacterOwnerId,
+            wrongCharacterOwnerName = wrongCharacterOwnerName
         )
     }
 

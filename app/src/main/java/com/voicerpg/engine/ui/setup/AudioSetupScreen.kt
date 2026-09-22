@@ -145,12 +145,18 @@ fun AudioSetupScreen(
         // 4. Cycle / Switch companion voices
         if (lower.contains("cycle") || lower.contains("switch") || lower.contains("change voice") || lower.contains("next voice")) {
             val targetSpeaker = when {
-                lower.contains("cedric") -> DialogueSpeaker.CEDRIC
-                lower.contains("lyra") -> DialogueSpeaker.LYRA
-                lower.contains("aethel") -> DialogueSpeaker.AETHEL
-                lower.contains("zephyr") -> DialogueSpeaker.ZEPHYR
-                lower.contains("malakor") -> DialogueSpeaker.MALAKOR
-                lower.contains("narrator") || lower.contains("storyteller") -> DialogueSpeaker.NARRATOR
+                lower.contains("commander") || lower.contains("america") || lower.contains("trump") -> DialogueSpeaker.COMMANDER_AMERICA
+                lower.contains("elon") || lower.contains("musk") || lower.contains("doge") -> DialogueSpeaker.ELON
+                lower.contains("kayleigh") -> DialogueSpeaker.NARRATOR_KAYLEIGH
+                lower.contains("karoline") || lower.contains("press") || lower.contains("secretary") -> DialogueSpeaker.NARRATOR_KAROLINE
+                lower.contains("hulk") || lower.contains("hulkster") || lower.contains("brother") -> DialogueSpeaker.NARRATOR_HULK
+                lower.contains("narrator") || lower.contains("storyteller") || lower.contains("chronicle") -> DialogueSpeaker.NARRATOR_KAYLEIGH
+                lower.contains("pelosi") || lower.contains("speaker") || lower.contains("lich") -> DialogueSpeaker.PELOSI
+                lower.contains("kamala") || lower.contains("harris") || lower.contains("vice") -> DialogueSpeaker.KAMALA
+                lower.contains("barack") || lower.contains("obama") || lower.contains("sorcerer") -> DialogueSpeaker.OBAMA
+                lower.contains("biden") || lower.contains("boss") || lower.contains("malarkey") -> DialogueSpeaker.BIDEN
+                lower.contains("rocket") || lower.contains("kim") -> DialogueSpeaker.ROCKET_MAN
+                lower.contains("pundit") || lower.contains("media") || lower.contains("anchor") -> DialogueSpeaker.MEDIA_ANCHOR
                 else -> null
             }
             if (targetSpeaker != null) {
@@ -162,28 +168,52 @@ fun AudioSetupScreen(
         }
 
         // 5. Preview / sample companion voices
-        if (lower.contains("cedric")) {
-            combatNarrator.previewSpeakerVoice(DialogueSpeaker.CEDRIC)
+        if (lower.contains("commander") || lower.contains("america") || lower.contains("trump")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.COMMANDER_AMERICA)
             return
         }
-        if (lower.contains("lyra")) {
-            combatNarrator.previewSpeakerVoice(DialogueSpeaker.LYRA)
+        if (lower.contains("elon") || lower.contains("musk") || lower.contains("doge")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.ELON)
             return
         }
-        if (lower.contains("aethel")) {
-            combatNarrator.previewSpeakerVoice(DialogueSpeaker.AETHEL)
+        if (lower.contains("kayleigh")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR_KAYLEIGH)
             return
         }
-        if (lower.contains("zephyr")) {
-            combatNarrator.previewSpeakerVoice(DialogueSpeaker.ZEPHYR)
+        if (lower.contains("karoline") || lower.contains("press") || lower.contains("secretary")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR_KAROLINE)
             return
         }
-        if (lower.contains("malakor")) {
-            combatNarrator.previewSpeakerVoice(DialogueSpeaker.MALAKOR)
+        if (lower.contains("hulk") || lower.contains("hulkster") || lower.contains("brother")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR_HULK)
             return
         }
-        if (lower.contains("narrator") || lower.contains("storyteller")) {
-            combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR)
+        if (lower.contains("narrator") || lower.contains("storyteller") || lower.contains("chronicle")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR_KAYLEIGH)
+            return
+        }
+        if (lower.contains("pelosi") || lower.contains("speaker")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.PELOSI)
+            return
+        }
+        if (lower.contains("kamala") || lower.contains("harris")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.KAMALA)
+            return
+        }
+        if (lower.contains("barack") || lower.contains("obama")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.OBAMA)
+            return
+        }
+        if (lower.contains("biden") || lower.contains("malarkey")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.BIDEN)
+            return
+        }
+        if (lower.contains("rocket") || lower.contains("kim")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.ROCKET_MAN)
+            return
+        }
+        if (lower.contains("pundit") || lower.contains("media") || lower.contains("anchor")) {
+            combatNarrator.previewSpeakerVoice(DialogueSpeaker.MEDIA_ANCHOR)
             return
         }
 
@@ -329,7 +359,7 @@ fun AudioSetupScreen(
             ) {
                 Column {
                     Text(
-                        text = "🏰 VOICES OF THE REALM",
+                        text = "🦅 VOICES OF FREEDOM & POWER",
                         color = LogosGlow,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Black,
@@ -337,7 +367,7 @@ fun AudioSetupScreen(
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
-                        text = "In Echoes of the Aether, your journey is accompanied by distinct party companions and adversaries:",
+                        text = "In Commander America: Quest for the Golden Tower, customize the voice model for each political sovereign and ally:",
                         color = Color.White,
                         fontSize = 11.sp,
                         fontFamily = FontFamily.Monospace,
@@ -346,63 +376,153 @@ fun AudioSetupScreen(
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    // Companion voice breakdown with live assigned model, audition preview, and cycle switch
+                    // Character voice breakdown with live assigned model, audition preview, and cycle switch
                     CompanionVoiceBadge(
-                        speaker = DialogueSpeaker.CEDRIC,
-                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.CEDRIC)?.name },
-                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.CEDRIC) },
+                        speaker = DialogueSpeaker.COMMANDER_AMERICA,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.COMMANDER_AMERICA)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.COMMANDER_AMERICA) },
                         onCycle = {
-                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.CEDRIC)
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.COMMANDER_AMERICA)
                             voiceUpdateKey++
                             onVoiceChanged()
                         }
                     )
                     CompanionVoiceBadge(
-                        speaker = DialogueSpeaker.LYRA,
-                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.LYRA)?.name },
-                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.LYRA) },
+                        speaker = DialogueSpeaker.ELON,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.ELON)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.ELON) },
                         onCycle = {
-                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.LYRA)
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.ELON)
                             voiceUpdateKey++
                             onVoiceChanged()
                         }
                     )
                     CompanionVoiceBadge(
-                        speaker = DialogueSpeaker.AETHEL,
-                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.AETHEL)?.name },
-                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.AETHEL) },
+                        speaker = DialogueSpeaker.MARCO,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.MARCO)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.MARCO) },
                         onCycle = {
-                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.AETHEL)
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.MARCO)
                             voiceUpdateKey++
                             onVoiceChanged()
                         }
                     )
                     CompanionVoiceBadge(
-                        speaker = DialogueSpeaker.ZEPHYR,
-                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.ZEPHYR)?.name },
-                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.ZEPHYR) },
+                        speaker = DialogueSpeaker.VANCE,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.VANCE)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.VANCE) },
                         onCycle = {
-                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.ZEPHYR)
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.VANCE)
                             voiceUpdateKey++
                             onVoiceChanged()
                         }
                     )
                     CompanionVoiceBadge(
-                        speaker = DialogueSpeaker.MALAKOR,
-                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.MALAKOR)?.name },
-                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.MALAKOR) },
+                        speaker = DialogueSpeaker.KASH,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.KASH)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.KASH) },
                         onCycle = {
-                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.MALAKOR)
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.KASH)
                             voiceUpdateKey++
                             onVoiceChanged()
                         }
                     )
                     CompanionVoiceBadge(
-                        speaker = DialogueSpeaker.NARRATOR,
-                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.NARRATOR)?.name },
-                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR) },
+                        speaker = DialogueSpeaker.KENNEDY,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.KENNEDY)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.KENNEDY) },
                         onCycle = {
-                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.NARRATOR)
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.KENNEDY)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.NARRATOR_KAYLEIGH)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR_KAYLEIGH) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.NARRATOR_KAYLEIGH)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.NARRATOR_KAROLINE)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR_KAROLINE) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.NARRATOR_KAROLINE)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.NARRATOR_HULK,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.NARRATOR_HULK)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.NARRATOR_HULK) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.NARRATOR_HULK)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.PELOSI,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.PELOSI)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.PELOSI) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.PELOSI)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.KAMALA,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.KAMALA)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.KAMALA) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.KAMALA)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.OBAMA,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.OBAMA)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.OBAMA) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.OBAMA)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.BIDEN,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.BIDEN)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.BIDEN) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.BIDEN)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.ROCKET_MAN,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.ROCKET_MAN)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.ROCKET_MAN) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.ROCKET_MAN)
+                            voiceUpdateKey++
+                            onVoiceChanged()
+                        }
+                    )
+                    CompanionVoiceBadge(
+                        speaker = DialogueSpeaker.MEDIA_ANCHOR,
+                        assignedVoiceName = remember(voiceUpdateKey, installedVoiceCount) { combatNarrator.getVoiceForSpeaker(DialogueSpeaker.MEDIA_ANCHOR)?.name },
+                        onPreview = { combatNarrator.previewSpeakerVoice(DialogueSpeaker.MEDIA_ANCHOR) },
+                        onCycle = {
+                            combatNarrator.cycleSpeakerVoice(DialogueSpeaker.MEDIA_ANCHOR)
                             voiceUpdateKey++
                             onVoiceChanged()
                         }
@@ -766,7 +886,7 @@ fun AudioSetupScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = if (isFromGame) "🎤 Say 'Return', 'Switch Cedric', or 'Install voices'" else "🎤 Say 'Proceed' or 'Install voices'",
+                    text = if (isFromGame) "🎤 Say 'Return', 'Switch Trump', 'Switch Elon', or 'Install voices'" else "🎤 Say 'Proceed', 'Switch Trump', 'Switch Elon', or 'Install voices'",
                     color = Color.Gray,
                     fontSize = 10.sp,
                     fontFamily = FontFamily.Monospace
@@ -816,8 +936,8 @@ private fun CompanionVoiceBadge(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val displayName = if (speaker.id == "malakor") "Malakor" else speaker.name
-        val displayTitle = if (speaker.id == "malakor") "Inquisitor" else speaker.title
+        val displayName = speaker.name
+        val displayTitle = speaker.title
         Column(modifier = Modifier.weight(1f)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(

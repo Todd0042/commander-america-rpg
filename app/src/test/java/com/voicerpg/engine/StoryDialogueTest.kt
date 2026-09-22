@@ -40,13 +40,14 @@ class StoryDialogueTest {
     @Test
     fun testInitialStoryState() {
         val state = storyViewModel.state.value
-        assertEquals("scene_cottage", state.currentScene.id)
-        assertEquals("Aethel's Cottage", state.currentScene.name)
-        assertEquals("cottage_intro", state.currentNode.id)
+        assertEquals("scene_act1_escalator", state.currentScene.id)
+        assertEquals("The Golden Tower Escalator", state.currentScene.name)
+        assertEquals("act1_intro", state.currentNode.id)
         assertEquals(SpeakerSide.CENTER_NARRATOR, state.currentNode.side)
-        assertEquals(3, state.currentNode.choices.size)
+        assertEquals(2, state.currentNode.choices.size)
         assertEquals(GameScreen.STORY_EXPLORATION, state.gameScreen)
     }
+
 
     @Test
     fun testDialogueChoiceSelection() {

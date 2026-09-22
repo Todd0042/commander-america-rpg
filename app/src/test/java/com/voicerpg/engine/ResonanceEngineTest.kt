@@ -234,7 +234,12 @@ class ResonanceEngineTest {
             Spell("soothing_rain", "Soothing Rain", SpellSchool.NATURE, 65, 18, true, true, "Rain", "Rain"),
             Spell("briar_entangle", "Briar Entangle", SpellSchool.NATURE, 60, 12, false, false, "Snare", "Briar"),
             Spell("shadow_strike", "Shadow Strike", SpellSchool.SHADOW, 75, 12, false, false, "Shadow", "Strike"),
-            Spell("venom_flurry", "Venom Flurry", SpellSchool.SHADOW, 50, 15, false, true, "Venom", "Flurry")
+            Spell("venom_flurry", "Venom Flurry", SpellSchool.SHADOW, 50, 15, false, true, "Venom", "Flurry"),
+            Spell("ca_tremendous_strike", "Tremendous Strike", SpellSchool.PHYSICAL, 50, 10, false, false, "Strike", "Tremendous blow"),
+            Spell("ca_art_of_the_deal", "Art of the Deal", SpellSchool.HOLY, 55, 12, false, false, "Deal", "The deal"),
+            Spell("ca_obama_did_it_first", "Obama Did It First", SpellSchool.SHADOW, 45, 15, false, false, "Obama", "Blame Obama"),
+            Spell("ca_build_the_wall", "Build the Wall", SpellSchool.PHYSICAL, 40, 15, false, true, "Wall", "Build wall"),
+            Spell("ca_rally_patriots", "Rally Patriots", SpellSchool.HOLY, 60, 20, true, true, "Patriots", "Rally now")
         )
 
         val tiers = listOf(

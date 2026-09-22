@@ -35,8 +35,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 data class StoryState(
-    val currentScene: StoryScene = StoryScript.SCENE_COTTAGE,
-    val currentNode: DialogueNode = StoryScript.ALL_NODES["cottage_intro"]!!,
+    val currentScene: StoryScene = StoryScript.SCENE_ACT1_ESCALATOR,
+    val currentNode: DialogueNode = StoryScript.ALL_NODES["act1_intro"]!!,
+
     val gameScreen: GameScreen = GameScreen.TITLE,
     val previousScreen: GameScreen? = null,
     val activeEncounter: EncounterDefinition? = null,
@@ -77,6 +78,17 @@ class StoryViewModel(
 
     companion object {
         val DEBUG_CHAPTER_TARGETS: List<DebugChapterTarget> = listOf(
+            DebugChapterTarget("Act I - Ch 1: Escalator", "act1_ch1_intro", 1),
+            DebugChapterTarget("Act I - Ch 2: Primary Debate", "act1_ch2_intro", 2),
+            DebugChapterTarget("Act I - Ch 3: Primary Sweep", "act1_ch3_intro", 3),
+            DebugChapterTarget("Act II: The Oval Citadel", "act2_intro", 4),
+            DebugChapterTarget("Act III: The Summit of Peace", "act3_intro", 5),
+            DebugChapterTarget("Act IV: The Mueller Hoax", "act4_intro", 6),
+            DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 7),
+            DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 8),
+            DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 9),
+            DebugChapterTarget("Act VIII: The Final Malarkey Citadel", "act8_intro", 10),
+            // Legacy / Regression targets for existing test suite
             DebugChapterTarget("Prologue", "cottage_intro", 0),
             DebugChapterTarget("Chapter 1", "crossroads_intro", 1),
             DebugChapterTarget("Chapter 2", "camp_intro", 2),
@@ -154,14 +166,24 @@ class StoryViewModel(
     }
 
     private var pendingStoryModeJob: Job? = null
+    private var storyModeWatchdogJob: Job? = null
 
     fun cancelPendingStoryMode() {
         pendingStoryModeJob?.cancel()
         pendingStoryModeJob = null
+        storyModeWatchdogJob?.cancel()
+        storyModeWatchdogJob = null
     }
 
     fun isBossEncounter(encounterId: String): Boolean {
         val bossIds = setOf(
+            "act2_media_battle",
+            "act3_summit_battle",
+            "act4_hoax_battle",
+            "act5_golem_battle",
+            "act6_kamala_battle",
+            "act7_lawfare_battle",
+            "act8_biden_final_battle",
             "cave_broodmother",
             "castle_horde",
             "swamp_behemoth",
@@ -282,7 +304,6 @@ class StoryViewModel(
             isPureStoryMode = true,
             isStoryAutoPlayPaused = false
         )
-        scheduleStoryModeNextStep(_state.value.currentNode, delayMs = 1200L)
     }
 
     fun scheduleStoryModeNextStep(node: DialogueNode, delayMs: Long = 1200L) {
@@ -339,8 +360,28 @@ class StoryViewModel(
         saveManager.currentSlot = initialSlot
         val existingSave = saveManager.load(initialSlot)
         if (existingSave != null) {
-            val restoredScene = StoryScript.ALL_SCENES[existingSave.currentSceneId] ?: StoryScript.SCENE_COTTAGE
-            val rawRestoredNode = StoryScript.ALL_NODES[existingSave.currentNodeId] ?: StoryScript.ALL_NODES["cottage_intro"]!!
+            val sanitizedPlayer = if (existingSave.player.name == "Aethel" || existingSave.player.name.isBlank()) {
+                PlayerCustomization()
+            } else {
+                existingSave.player
+            }
+            val sanitizedPartyStats = existingSave.partyStats.map { stat ->
+                if (stat.id == "hero" || stat.name == "Aethel") {
+                    stat.copy(
+                        name = "Commander America",
+                        loreClass = "Commander-in-Chief",
+                        maxHp = maxOf(stat.maxHp, 5000),
+                        currentHp = maxOf(stat.currentHp, 5000),
+                        maxMp = maxOf(stat.maxMp, 1776),
+                        currentMp = maxOf(stat.currentMp, 1776),
+                        spellIds = listOf("ca_tremendous_strike", "ca_art_of_the_deal", "ca_obama_did_it_first", "ca_build_the_wall", "ca_rally_patriots")
+                    )
+                } else stat
+            }
+
+            val restoredScene = StoryScript.ALL_SCENES[existingSave.currentSceneId] ?: StoryScript.SCENE_ACT1_ESCALATOR
+            val rawRestoredNode = StoryScript.ALL_NODES[existingSave.currentNodeId] ?: StoryScript.ALL_NODES["act1_intro"]!!
+
             val restoredNode = resolveEffectiveHubNode(rawRestoredNode, existingSave.narrativeFlags)
 
             val summary = saveManager.getSlotSummary(initialSlot)
@@ -355,7 +396,7 @@ class StoryViewModel(
                         speakerTitle = restoredNode.speaker.title,
                         text = restoredNode.text,
                         sceneName = restoredScene.name,
-                        isNarrator = restoredNode.speaker == DialogueSpeaker.NARRATOR
+                        isNarrator = restoredNode.speaker.id.startsWith("narrator") || restoredNode.speaker == DialogueSpeaker.NARRATOR
                     )
                 )
             }
@@ -364,12 +405,12 @@ class StoryViewModel(
                 currentScene = restoredScene,
                 currentNode = restoredNode,
                 gameScreen = GameScreen.TITLE,
-                player = existingSave.player,
+                player = sanitizedPlayer,
                 decisionsMade = existingSave.decisionsMade,
                 narrativeFlags = existingSave.narrativeFlags,
                 defeatedEncounters = existingSave.defeatedEncounters,
                 achievements = existingSave.achievements,
-                partyStats = existingSave.partyStats,
+                partyStats = sanitizedPartyStats,
                 hasExistingSave = true,
                 saveSummary = summary,
                 currentSlot = initialSlot,
@@ -410,8 +451,27 @@ class StoryViewModel(
         val targetSlot = if (slot == SaveManager.STORY_MODE_SLOT) SaveManager.STORY_MODE_SLOT else (slot ?: _state.value.currentSlot).coerceIn(1, SaveManager.MAX_SLOTS)
         saveManager.currentSlot = targetSlot
         val existingSave = saveManager.load(targetSlot) ?: return
-        val restoredScene = StoryScript.ALL_SCENES[existingSave.currentSceneId] ?: StoryScript.SCENE_COTTAGE
-        val rawRestoredNode = StoryScript.ALL_NODES[existingSave.currentNodeId] ?: StoryScript.ALL_NODES["cottage_intro"]!!
+        val sanitizedPlayer = if (existingSave.player.name == "Aethel" || existingSave.player.name.isBlank()) {
+            PlayerCustomization()
+        } else {
+            existingSave.player
+        }
+        val sanitizedPartyStats = existingSave.partyStats.map { stat ->
+            if (stat.id == "hero" || stat.name == "Aethel") {
+                stat.copy(
+                    name = "Commander America",
+                    loreClass = "Commander-in-Chief",
+                    maxHp = maxOf(stat.maxHp, 5000),
+                    currentHp = maxOf(stat.currentHp, 5000),
+                    maxMp = maxOf(stat.maxMp, 1776),
+                    currentMp = maxOf(stat.currentMp, 1776),
+                    spellIds = listOf("ca_tremendous_strike", "ca_art_of_the_deal", "ca_obama_did_it_first", "ca_build_the_wall", "ca_rally_patriots")
+                )
+            } else stat
+        }
+
+        val restoredScene = StoryScript.ALL_SCENES[existingSave.currentSceneId] ?: StoryScript.SCENE_ACT1_ESCALATOR
+        val rawRestoredNode = StoryScript.ALL_NODES[existingSave.currentNodeId] ?: StoryScript.ALL_NODES["act1_intro"]!!
         val restoredNode = resolveEffectiveHubNode(rawRestoredNode, existingSave.narrativeFlags)
 
         val restoredHistory = if (existingSave.recentDialogueLog.isNotEmpty()) {
@@ -426,7 +486,7 @@ class StoryViewModel(
                     speakerTitle = restoredNode.speaker.title,
                     text = restoredNode.text,
                     sceneName = restoredScene.name,
-                    isNarrator = restoredNode.speaker == DialogueSpeaker.NARRATOR
+                    isNarrator = restoredNode.speaker.id.startsWith("narrator") || restoredNode.speaker == DialogueSpeaker.NARRATOR
                 )
             )
         }
@@ -437,12 +497,12 @@ class StoryViewModel(
             currentNode = restoredNode,
             gameScreen = GameScreen.STORY_EXPLORATION,
             previousScreen = null,
-            player = existingSave.player,
+            player = sanitizedPlayer,
             decisionsMade = existingSave.decisionsMade,
             narrativeFlags = existingSave.narrativeFlags,
             defeatedEncounters = existingSave.defeatedEncounters,
             achievements = existingSave.achievements,
-            partyStats = existingSave.partyStats,
+            partyStats = sanitizedPartyStats,
             currentSlot = targetSlot,
             hasExistingSave = true,
             saveSummary = saveManager.getSlotSummary(targetSlot),
@@ -524,7 +584,7 @@ class StoryViewModel(
         combatNarrator.stop()
         speechManager.cancel()
         _state.value = _state.value.copy(
-            gameScreen = GameScreen.AUDIO_SETUP,
+            gameScreen = GameScreen.CHARACTER_CREATION,
             previousScreen = GameScreen.TITLE,
             isNewGameFlow = true
         )
@@ -587,15 +647,16 @@ class StoryViewModel(
         val targetSlot = if (slot == SaveManager.STORY_MODE_SLOT) SaveManager.STORY_MODE_SLOT else (slot ?: _state.value.currentSlot).coerceIn(1, SaveManager.MAX_SLOTS)
         saveManager.currentSlot = targetSlot
         val initialSave = saveManager.createInitialSave(customization, targetSlot)
-        val initialNode = StoryScript.ALL_NODES["cottage_intro"]!!
-        val initialScene = StoryScript.SCENE_COTTAGE
+        val initialNode = StoryScript.ALL_NODES["act1_intro"]!!
+        val initialScene = StoryScript.SCENE_ACT1_ESCALATOR
+
         val initialEntry = DialogueLogEntry(
             speakerId = initialNode.speaker.id,
             speakerName = initialNode.speaker.name,
             speakerTitle = initialNode.speaker.title,
             text = initialNode.text,
             sceneName = initialScene.name,
-            isNarrator = initialNode.speaker == DialogueSpeaker.NARRATOR
+            isNarrator = initialNode.speaker.id.startsWith("narrator") || initialNode.speaker == DialogueSpeaker.NARRATOR
         )
         val isStoryMode = targetSlot == SaveManager.STORY_MODE_SLOT || _state.value.isPureStoryMode
         _state.value = StoryState(
@@ -647,30 +708,66 @@ class StoryViewModel(
         combatNarrator.stop()
         speechManager.cancel()
 
+        val isActWarp = target.introNodeId.startsWith("act")
         val seededFlags = buildMap {
-            if (target.chapterIndex >= 2) put("cedric_recruited", true)
-            if (target.chapterIndex >= 6) put("lyra_recruited", true)
-            if (target.chapterIndex >= 9) put("zephyr_recruited", true)
-            if (target.chapterIndex >= 10) put("cedric_trial_complete", true)
-            if (target.chapterIndex >= 11) put("lyra_trial_complete", true)
-            if (target.chapterIndex >= 12) put("zephyr_trial_complete", true)
+            if (!isActWarp) {
+                if (target.chapterIndex >= 2) put("cedric_recruited", true)
+                if (target.chapterIndex >= 6) put("lyra_recruited", true)
+                if (target.chapterIndex >= 9) put("zephyr_recruited", true)
+                if (target.chapterIndex >= 10) put("cedric_trial_complete", true)
+                if (target.chapterIndex >= 11) put("lyra_trial_complete", true)
+                if (target.chapterIndex >= 12) put("zephyr_trial_complete", true)
+            } else {
+                // Act warps: Act I chapters (1, 2, 3) are solo Commander America (no companion flags seeded)
+                if (target.chapterIndex >= 4) put("marco_recruited", true)
+                if (target.chapterIndex >= 5) put("vance_recruited", true)
+                if (target.chapterIndex >= 6) put("kash_recruited", true)
+                if (target.chapterIndex >= 7) put("kennedy_recruited", true)
+            }
         }
         // Overwrite, not union, the roster and trial flags so a downward warp
         // cannot drag companions from later chapters back into the story.
         val rosterAndTrialFlags = setOf(
             "cedric_recruited", "lyra_recruited", "zephyr_recruited",
-            "cedric_trial_complete", "lyra_trial_complete", "zephyr_trial_complete"
+            "cedric_trial_complete", "lyra_trial_complete", "zephyr_trial_complete",
+            "marco_recruited", "vance_recruited", "kash_recruited", "kennedy_recruited"
         )
         val clearedFlags = _state.value.narrativeFlags.filterKeys { it !in rosterAndTrialFlags }
 
         // Trim any companions who have not joined the fellowship as of this chapter.
         val allowedRosterIds = buildList {
             add("hero")
-            if (target.chapterIndex >= 2) add("cedric")
-            if (target.chapterIndex >= 6) add("lyra")
-            if (target.chapterIndex >= 9) add("zephyr")
+            if (!isActWarp) {
+                if (target.chapterIndex >= 2) add("cedric")
+                if (target.chapterIndex >= 6) add("lyra")
+                if (target.chapterIndex >= 9) add("zephyr")
+            } else {
+                if (target.chapterIndex >= 4) add("marco")
+                if (target.chapterIndex >= 5) add("vance")
+                if (target.chapterIndex >= 6) add("kash")
+                if (target.chapterIndex >= 7) add("kennedy")
+            }
         }
-        val trimmedParty = _state.value.partyStats.filter { it.id in allowedRosterIds }
+        val baseParty = if (_state.value.partyStats.any { it.id == "hero" }) {
+            _state.value.partyStats
+        } else {
+            listOf(
+                SavedCharacterStats(
+                    id = "hero",
+                    name = "Commander America",
+                    loreClass = "Commander-in-Chief",
+                    currentHp = 5000,
+                    maxHp = 5000,
+                    currentMp = 1776,
+                    maxMp = 1776,
+                    speed = 70,
+                    level = 1,
+                    xp = 0,
+                    spellIds = listOf("ca_tremendous_strike", "ca_art_of_the_deal", "ca_obama_did_it_first", "ca_presidential_veto", "ca_executive_action", "ca_build_the_wall", "ca_rally_the_patriots", "ca_tired_of_winning")
+                )
+            )
+        }
+        val trimmedParty = baseParty.filter { it.id in allowedRosterIds }
 
         val introScene = StoryScript.ALL_SCENES.values.firstOrNull { it.initialNodeId == introNodeId }
             ?: _state.value.currentScene
@@ -883,6 +980,87 @@ class StoryViewModel(
             updatedPartyStats = updatedPartyStats + zephyrStats
         }
 
+        // Commander America Companions: Marco Rubio (Act 2), JD Vance (Act 3), Kash Patel (Act 4), RFK Jr. (Act 5)
+        val isMarcoRecruited = effectiveNode.id.startsWith("act2_") || effectiveNode.id.startsWith("act3_") ||
+            effectiveNode.id.startsWith("act4_") || effectiveNode.id.startsWith("act5_") ||
+            effectiveNode.id.startsWith("act6_") || effectiveNode.id.startsWith("act7_") ||
+            effectiveNode.id.startsWith("act8_") || updatedFlags["marco_recruited"] == true
+        if (isMarcoRecruited && updatedPartyStats.none { it.id == "marco" }) {
+            val marcoStats = SavedCharacterStats(
+                id = "marco",
+                name = "Marco Rubio",
+                loreClass = "Sanctions Sorcerer",
+                currentHp = 3800,
+                maxHp = 3800,
+                currentMp = 1200,
+                maxMp = 1200,
+                speed = 65,
+                level = 1,
+                xp = 0,
+                spellIds = listOf("ca_marco_filibuster", "ca_marco_sanction", "ca_marco_hydrate", "ca_marco_tariff")
+            )
+            updatedPartyStats = updatedPartyStats + marcoStats
+        }
+
+        val isVanceRecruited = effectiveNode.id.startsWith("act3_") || effectiveNode.id.startsWith("act4_") ||
+            effectiveNode.id.startsWith("act5_") || effectiveNode.id.startsWith("act6_") ||
+            effectiveNode.id.startsWith("act7_") || effectiveNode.id.startsWith("act8_") || updatedFlags["vance_recruited"] == true
+        if (isVanceRecruited && updatedPartyStats.none { it.id == "vance" }) {
+            val vanceStats = SavedCharacterStats(
+                id = "vance",
+                name = "JD Vance",
+                loreClass = "Rustbelt Vanguard",
+                currentHp = 4200,
+                maxHp = 4200,
+                currentMp = 1000,
+                maxMp = 1000,
+                speed = 60,
+                level = 1,
+                xp = 0,
+                spellIds = listOf("ca_vance_debate", "ca_vance_slam", "ca_vance_fortitude", "ca_vance_commonsense")
+            )
+            updatedPartyStats = updatedPartyStats + vanceStats
+        }
+
+        val isKashRecruited = effectiveNode.id.startsWith("act4_") || effectiveNode.id.startsWith("act5_") ||
+            effectiveNode.id.startsWith("act6_") || effectiveNode.id.startsWith("act7_") ||
+            effectiveNode.id.startsWith("act8_") || updatedFlags["kash_recruited"] == true
+        if (isKashRecruited && updatedPartyStats.none { it.id == "kash" }) {
+            val kashStats = SavedCharacterStats(
+                id = "kash",
+                name = "Kash Patel",
+                loreClass = "Intel Inquisitor",
+                currentHp = 3900,
+                maxHp = 3900,
+                currentMp = 1100,
+                maxMp = 1100,
+                speed = 68,
+                level = 1,
+                xp = 0,
+                spellIds = listOf("ca_kash_declassify", "ca_kash_binder", "ca_kash_clearance", "ca_kash_leak")
+            )
+            updatedPartyStats = updatedPartyStats + kashStats
+        }
+
+        val isKennedyRecruited = effectiveNode.id.startsWith("act5_") || effectiveNode.id.startsWith("act6_") ||
+            effectiveNode.id.startsWith("act7_") || effectiveNode.id.startsWith("act8_") || updatedFlags["kennedy_recruited"] == true
+        if (isKennedyRecruited && updatedPartyStats.none { it.id == "kennedy" }) {
+            val kennedyStats = SavedCharacterStats(
+                id = "kennedy",
+                name = "Senator Kennedy",
+                loreClass = "Committee Cross-Examiner",
+                currentHp = 4000,
+                maxHp = 4000,
+                currentMp = 1150,
+                maxMp = 1150,
+                speed = 62,
+                level = 1,
+                xp = 0,
+                spellIds = listOf("ca_kennedy_english", "ca_kennedy_officer", "ca_kennedy_remedy", "ca_kennedy_oneliner")
+            )
+            updatedPartyStats = updatedPartyStats + kennedyStats
+        }
+
         // Companion master spells awarded on trial completion
         if (updatedFlags["cedric_trial_complete"] == true) {
             updatedPartyStats = updatedPartyStats.map { member ->
@@ -915,7 +1093,7 @@ class StoryViewModel(
             speakerTitle = effectiveNode.speaker.title,
             text = effectiveNode.text,
             sceneName = targetScene.name,
-            isNarrator = effectiveNode.speaker == DialogueSpeaker.NARRATOR
+            isNarrator = effectiveNode.speaker.id.startsWith("narrator") || effectiveNode.speaker == DialogueSpeaker.NARRATOR
         )
         val updatedHistory = (_state.value.dialogueHistory + entry).takeLast(100)
 
@@ -1046,6 +1224,14 @@ class StoryViewModel(
     fun triggerEncounter(encounterId: String) {
         cancelPendingAutoAdvance()
         val encounter = when (encounterId) {
+            "act1_lobby_battle" -> StoryEncounters.ACT1_LOBBY_BATTLE
+            "act2_media_battle" -> StoryEncounters.ACT2_MEDIA_BATTLE
+            "act3_summit_battle" -> StoryEncounters.ACT3_SUMMIT_BATTLE
+            "act4_hoax_battle" -> StoryEncounters.ACT4_HOAX_BATTLE
+            "act5_golem_battle" -> StoryEncounters.ACT5_GOLEM_BATTLE
+            "act6_kamala_battle" -> StoryEncounters.ACT6_KAMALA_BATTLE
+            "act7_lawfare_battle" -> StoryEncounters.ACT7_LAWFARE_BATTLE
+            "act8_biden_final_battle" -> StoryEncounters.ACT8_BIDEN_FINAL_BATTLE
             "prologue_solo" -> StoryEncounters.PROLOGUE_SOLO
             "forest_ambush" -> StoryEncounters.FOREST_AMBUSH
             "blight_trackers" -> StoryEncounters.BLIGHT_TRACKERS
@@ -1078,7 +1264,7 @@ class StoryViewModel(
             "ch15_trial_shadow" -> StoryEncounters.CH15_TRIAL_SHADOW
             "ch16_nullifier_gate" -> StoryEncounters.CH16_NULLIFIER_GATE
             "ch16_mirror_gauntlet" -> StoryEncounters.CH16_MIRROR_GAUNTLET
-            else -> StoryEncounters.ALL_ENCOUNTERS.firstOrNull { it.id == encounterId } ?: StoryEncounters.PROLOGUE_SOLO
+            else -> StoryEncounters.ALL_ENCOUNTERS.firstOrNull { it.id == encounterId } ?: StoryEncounters.ACT1_LOBBY_BATTLE
         }
         speechManager.cancel()
         combatNarrator.stop()
@@ -1105,6 +1291,16 @@ class StoryViewModel(
         val lastNode = _state.value.currentNode
         val encounterId = lastNode.triggerBattleEncounterId ?: _state.value.activeEncounter?.id ?: "unknown"
         val postBattleNodeId = when (encounterId) {
+            "act1_lobby_battle", "act1_ch1_press_battle" -> "act1_ch1_post_battle"
+            "act1_ch2_debate_battle" -> "act1_ch2_post_battle"
+            "act1_ch3_machine_battle" -> "act1_ch3_post_battle"
+            "act2_media_battle" -> "act2_post_battle"
+            "act3_summit_battle" -> "act3_post_battle"
+            "act4_hoax_battle" -> "act4_post_battle"
+            "act5_golem_battle" -> "act5_post_battle"
+            "act6_kamala_battle" -> "act6_post_battle"
+            "act7_lawfare_battle" -> "act7_post_battle"
+            "act8_biden_final_battle" -> "act8_post_battle"
             "prologue_solo" -> "village_post_battle"
             "forest_ambush" -> "crossroads_post_battle"
             "blight_trackers" -> "camp_scout_victory"
@@ -1146,7 +1342,9 @@ class StoryViewModel(
             _state.value.defeatedEncounters
         }
 
-        val targetNode = (if (postBattleNodeId != null) StoryScript.ALL_NODES[postBattleNodeId] else null) ?: lastNode
+        val targetNode = (if (postBattleNodeId != null) StoryScript.ALL_NODES[postBattleNodeId] else null)
+            ?: (if (lastNode.nextNodeId != null) StoryScript.ALL_NODES[lastNode.nextNodeId] else null)
+            ?: lastNode
 
         _state.value = _state.value.copy(
             gameScreen = GameScreen.STORY_EXPLORATION,
@@ -1160,7 +1358,11 @@ class StoryViewModel(
     fun updatePartyStatsFromCombat(updatedParty: List<PartyMember>) {
         val mappedStats = updatedParty.map { member ->
             val existing = _state.value.partyStats.firstOrNull { it.id == member.id }
-            val mergedSpells = (member.spells.map { it.id } + (existing?.spellIds ?: emptyList())).distinct()
+            val mergedSpells = if (member.id == "hero") {
+                member.spells.map { it.id }
+            } else {
+                (member.spells.map { it.id } + (existing?.spellIds ?: emptyList())).distinct()
+            }
             SavedCharacterStats(
                 id = member.id,
                 name = member.name,
@@ -1384,12 +1586,20 @@ class StoryViewModel(
             "shadow_wisp" -> DialogueSpeaker.SHADOW_WISP
             "vaelor" -> DialogueSpeaker.VAELOR
             "galahault" -> DialogueSpeaker.GALAHAULT
-            "nocturne" -> DialogueSpeaker.NOCTURNE
-            "ouros" -> DialogueSpeaker.OUROS
-            "dryad_matron" -> DialogueSpeaker.DRYAD_MATRON
-            "voice_mote" -> DialogueSpeaker.VOICE_MOTE
+            "pelosi" -> DialogueSpeaker.PELOSI
+            "commander_america" -> DialogueSpeaker.COMMANDER_AMERICA
+            "elon" -> DialogueSpeaker.ELON
+            "biden" -> DialogueSpeaker.BIDEN
+            "kamala" -> DialogueSpeaker.KAMALA
+            "obama" -> DialogueSpeaker.OBAMA
+            "rocket_man" -> DialogueSpeaker.ROCKET_MAN
+            "media_anchor" -> DialogueSpeaker.MEDIA_ANCHOR
+            "narrator_karoline" -> DialogueSpeaker.NARRATOR_KAROLINE
+            "narrator_kayleigh" -> DialogueSpeaker.NARRATOR_KAYLEIGH
+            "narrator_hulk" -> DialogueSpeaker.NARRATOR_HULK
             else -> DialogueSpeaker.NARRATOR
         }
+
         combatNarrator.stop()
         combatNarrator.narrateDialogue(
             speaker = speaker,
@@ -1762,7 +1972,7 @@ class StoryViewModel(
             val canAuto = canAdvanceDialogue()
 
             if (_state.value.isPureStoryMode && !_state.value.isStoryAutoPlayPaused) {
-                scheduleStoryModeNextStep(node, delayMs = 1000L)
+                scheduleStoryModeNextStep(node, delayMs = 1200L)
             } else if (isPocketMode && canAuto) {
                 schedulePocketModeAutoAdvance(node)
             } else if (speechManager.isAutoListen.value) {
@@ -1782,9 +1992,16 @@ class StoryViewModel(
             }
         }
 
-        // Safety watchdog: ensure Pure Story Mode auto-advance is scheduled even if TTS onDone is delayed
+        // Safety watchdog: ONLY triggers if TTS completely stalled/failed to call onDone after generous estimated duration
         if (isStoryMode && !isPaused) {
-            scheduleStoryModeNextStep(node, delayMs = 1000L)
+            val estimatedDurationMs = maxOf(4500L, (narrationText.length * 85L) + 3000L)
+            storyModeWatchdogJob = activeScope.launch {
+                delay(estimatedDurationMs)
+                if (!_state.value.isPureStoryMode || _state.value.isStoryAutoPlayPaused) return@launch
+                if (_state.value.currentNode.id != node.id || _state.value.gameScreen != GameScreen.STORY_EXPLORATION) return@launch
+                android.util.Log.w("VoiceRPG_Story", "Story Mode watchdog triggered after ${estimatedDurationMs}ms fallback for node ${node.id}")
+                scheduleStoryModeNextStep(node, delayMs = 400L)
+            }
         }
     }
 

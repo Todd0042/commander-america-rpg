@@ -22,33 +22,40 @@ object SpellThesaurus {
         "tempest", "thunderclap", "galvanic", "arc", "storm", "fulgur",
         "lightning", "volt", "voltage", "flash", "strike", "spark", "sparks",
         "thunder", "thunderbolt", "shock", "discharge", "surge", "electrify",
-        "static", "plasma"
+        "static", "plasma", "debate", "dismantle"
     )
 
     private val HOLY_ROOTS = setOf(
         "radiance", "radiant", "divine", "seraph", "celestial", "dawn",
         "sanctify", "blessing", "blessed", "mend", "mending", "aegis",
         "purity", "pure", "heal", "healing", "grace", "light", "halo",
-        "restorative", "prayer", "cure", "sanctuary", "smite", "soothing"
+        "restorative", "prayer", "cure", "sanctuary", "smite", "soothing",
+        "deal", "art", "negotiate", "patriots", "rally", "inspire", "freedom", "golden", "liberty",
+        "executive", "action", "order", "decree", "water", "sip", "hydrate", "fortitude", "clearance", "purge", "winning", "remedy"
     )
 
     private val NATURE_ROOTS = setOf(
         "grove", "briar", "thorns", "thorn", "vines", "vine", "rain", "nature",
         "rejuvenate", "verdant", "root", "roots", "canopy", "bloom", "petal",
         "moss", "fern", "blossom", "undergrowth", "bark", "seed", "sprout",
-        "wildwood", "pollen", "bramble", "nettle", "willow", "oaken", "earthen"
+        "wildwood", "pollen", "bramble", "nettle", "willow", "oaken", "earthen",
+        "oil", "oils", "milk", "raw", "colostrum", "electrolyte", "electrolytes", "spring"
     )
 
     private val SHADOW_ROOTS = setOf(
         "umbra", "abyss", "abyssal", "venom", "venomous", "phantom", "whisper",
         "shroud", "eclipse", "silent", "silence", "strike", "hollow", "dark",
         "darkness", "shade", "shadow", "void", "backstab", "stealth", "dread",
-        "nocturnal", "creeping", "siphon", "mend", "drain"
+        "nocturnal", "creeping", "siphon", "mend", "drain",
+        "obama", "receipts", "hypocrisy", "dates", "2014", "archive", "exposed",
+        "sanction", "sanctions", "embargo", "declassify", "memo", "binder", "fisa", "leak", "leaks", "plug", "officer", "squeal"
     )
 
     private val MARTIAL_ROOTS = setOf(
         "blade", "cleave", "rend", "slash", "steel", "shatter", "strike",
-        "vanguard", "shield", "smash", "pulverize", "bash", "crush", "charge"
+        "vanguard", "shield", "smash", "pulverize", "bash", "crush", "charge",
+        "tremendous", "wall", "border", "patriots", "america", "victory", "winning", "greatest", "historic", "huge", "bigly", "barrier", "fortify",
+        "veto", "filibuster", "tariff", "tariffs", "slam", "appalachian", "rustbelt", "common", "sense", "truth", "order", "kennedy", "english", "exam", "grill", "liner", "punchline"
     )
 
     fun getKeywordsForSchool(school: SpellSchool): Set<String> = when (school) {

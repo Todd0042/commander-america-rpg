@@ -16,7 +16,7 @@ data class AcousticProfile(
 ) {
     /**
      * Volume Score (0.0 to 0.40):
-     * Rewards confident vocal projection over timid mumbling.
+     * Rewards confident vocal projection over timid mumbling with smooth, responsive scaling.
      */
     val volumeScore: Float
         get() {
@@ -106,5 +106,56 @@ data class AcousticProfile(
             estimatedPitchHz = 195f,
             durationMs = 5200L
         )
+
+        /**
+         * Generates an organically randomized acoustic profile for simulator and button taps,
+         * producing varying, realistic vocal delivery telemetry that prioritizes lower ranges.
+         */
+        fun rollOrganicProfile(tier: ResonanceTier): AcousticProfile {
+            val rng = kotlin.random.Random.Default
+            return when (tier) {
+                ResonanceTier.BASIC -> AcousticProfile(
+                    peakVolumeDb = 1.6f + rng.nextFloat() * 1.5f,        // 1.6 - 3.1 dB
+                    averageVolumeDb = 1.3f + rng.nextFloat() * 0.9f,
+                    volumeDynamicRange = 0.6f + rng.nextFloat() * 1.2f,
+                    volumeCrescendoSlope = rng.nextFloat() * 0.25f,
+                    pitchVarianceHz = 2f + rng.nextFloat() * 5f,
+                    durationMs = 600L + rng.nextLong(400L)
+                )
+                ResonanceTier.ADEPT -> AcousticProfile(
+                    peakVolumeDb = 4.2f + rng.nextFloat() * 1.6f,        // 4.2 - 5.8 dB
+                    averageVolumeDb = 3.3f + rng.nextFloat() * 1.1f,
+                    volumeDynamicRange = 2.6f + rng.nextFloat() * 2.0f,
+                    volumeCrescendoSlope = 0.3f + rng.nextFloat() * 0.5f,
+                    pitchVarianceHz = 8f + rng.nextFloat() * 9f,
+                    durationMs = 1200L + rng.nextLong(600L)
+                )
+                ResonanceTier.MASTER -> AcousticProfile(
+                    peakVolumeDb = 6.2f + rng.nextFloat() * 1.4f,        // 6.2 - 7.6 dB
+                    averageVolumeDb = 5.0f + rng.nextFloat() * 1.1f,
+                    volumeDynamicRange = 4.4f + rng.nextFloat() * 1.8f,
+                    volumeCrescendoSlope = 0.8f + rng.nextFloat() * 0.8f,
+                    pitchVarianceHz = 16f + rng.nextFloat() * 9f,
+                    durationMs = 2200L + rng.nextLong(800L)
+                )
+                ResonanceTier.MYTHIC -> AcousticProfile(
+                    peakVolumeDb = 7.8f + rng.nextFloat() * 1.3f,        // 7.8 - 9.1 dB
+                    averageVolumeDb = 6.4f + rng.nextFloat() * 0.9f,
+                    volumeDynamicRange = 6.0f + rng.nextFloat() * 2.0f,
+                    volumeCrescendoSlope = 1.5f + rng.nextFloat() * 0.8f,
+                    pitchVarianceHz = 24f + rng.nextFloat() * 10f,
+                    durationMs = 3400L + rng.nextLong(1000L)
+                )
+                ResonanceTier.TRANSCENDENTAL -> AcousticProfile(
+                    peakVolumeDb = 9.4f + rng.nextFloat() * 1.2f,        // 9.4 - 10.6 dB
+                    averageVolumeDb = 7.8f + rng.nextFloat() * 1.1f,
+                    volumeDynamicRange = 8.2f + rng.nextFloat() * 1.6f,
+                    volumeCrescendoSlope = 2.2f + rng.nextFloat() * 0.8f,
+                    pitchVarianceHz = 34f + rng.nextFloat() * 14f,
+                    estimatedPitchHz = 190f + rng.nextFloat() * 20f,
+                    durationMs = 4800L + rng.nextLong(1200L)
+                )
+            }
+        }
     }
 }

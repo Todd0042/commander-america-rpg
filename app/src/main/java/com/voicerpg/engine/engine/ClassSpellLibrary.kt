@@ -3,8 +3,27 @@ package com.voicerpg.engine.engine
 import com.voicerpg.engine.model.HeroClass
 import com.voicerpg.engine.model.Spell
 import com.voicerpg.engine.model.SpellSchool
+import com.voicerpg.engine.template.TemplateHero
 
 object ClassSpellLibrary {
+
+    // 0. Commander America Spells
+    val COMMANDER_SPELLS = listOf(
+        TemplateHero.TREMENDOUS_STRIKE,
+        TemplateHero.ART_OF_THE_DEAL,
+        TemplateHero.OBAMA_DID_IT_FIRST,
+        TemplateHero.PRESIDENTIAL_VETO,
+        TemplateHero.EXECUTIVE_ACTION,
+        TemplateHero.BUILD_THE_WALL,
+        TemplateHero.RALLY_THE_PATRIOTS,
+        TemplateHero.TIRED_OF_WINNING
+    )
+
+    // Companion Party Spells
+    val MARCO_SPELLS = TemplateHero.MARCO_SPELLS
+    val VANCE_SPELLS = TemplateHero.VANCE_SPELLS
+    val KASH_SPELLS = TemplateHero.KASH_SPELLS
+    val KENNEDY_SPELLS = TemplateHero.KENNEDY_SPELLS
 
     // 1. Elementalist Spells
     val ELEMENTALIST_SPELLS = listOf(
@@ -39,6 +58,7 @@ object ClassSpellLibrary {
     )
 
     fun getSpellsForClass(heroClass: HeroClass): List<Spell> = when (heroClass) {
+        HeroClass.COMMANDER -> COMMANDER_SPELLS
         HeroClass.ELEMENTALIST -> ELEMENTALIST_SPELLS
         HeroClass.BATTLEMAGE -> BATTLEMAGE_SPELLS
         HeroClass.CHANTER -> CHANTER_SPELLS

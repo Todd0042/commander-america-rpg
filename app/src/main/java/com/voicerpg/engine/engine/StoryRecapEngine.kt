@@ -244,7 +244,12 @@ object StoryRecapEngine {
     }
 
     fun getFellowshipRoster(partyStats: List<SavedCharacterStats>): List<String> {
-        val names = mutableListOf("Aethel (Invocator)")
+        val isLegacy = partyStats.any { it.id == "hero" && it.name.contains("Aethel") }
+        val names = mutableListOf(if (isLegacy) "Aethel (Invocator)" else "Commander America (Commander-in-Chief)")
+        if (partyStats.any { it.id == "marco" }) names.add("Marco Rubio (Sanctions Sorcerer)")
+        if (partyStats.any { it.id == "vance" }) names.add("JD Vance (Rustbelt Vanguard)")
+        if (partyStats.any { it.id == "kash" }) names.add("Kash Patel (Intel Inquisitor)")
+        if (partyStats.any { it.id == "kennedy" }) names.add("Senator Kennedy (Committee Cross-Examiner)")
         if (partyStats.any { it.id == "cedric" }) names.add("Sir Cedric (Templar)")
         if (partyStats.any { it.id == "lyra" }) names.add("Lyra (Grove Warden)")
         if (partyStats.any { it.id == "zephyr" }) names.add("Zephyr (Shadowblade)")

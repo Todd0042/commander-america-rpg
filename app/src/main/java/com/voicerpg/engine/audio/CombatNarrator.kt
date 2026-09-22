@@ -35,12 +35,23 @@ class CombatNarrator(
          * otherwise the heuristic assignment below falls back gracefully.
          */
         val PREFERRED_VOICE_IDS: Map<String, String> = mapOf(
+            DialogueSpeaker.COMMANDER_AMERICA.id to "en-us-x-iob-local",
+            DialogueSpeaker.ELON.id to "en-us-x-tpc-local",
+            DialogueSpeaker.NARRATOR_KAROLINE.id to "en-us-x-tpf-local",
+            DialogueSpeaker.NARRATOR_KAYLEIGH.id to "en-us-x-sfg-local",
+            DialogueSpeaker.NARRATOR_HULK.id to "en-gb-x-gbd-local",
+            DialogueSpeaker.NARRATOR.id to "en-us-x-sfg-local",
+            DialogueSpeaker.PELOSI.id to "en-us-x-tpf-local",
+            DialogueSpeaker.KAMALA.id to "en-us-x-sfg-local",
+            DialogueSpeaker.OBAMA.id to "en-us-x-iog-local",
+            DialogueSpeaker.BIDEN.id to "en-us-x-iol-local",
+            DialogueSpeaker.ROCKET_MAN.id to "en-au-x-aub-local",
+            DialogueSpeaker.MEDIA_ANCHOR.id to "en-us-x-tpd-local",
             DialogueSpeaker.CEDRIC.id to "en-gb-x-gbd-local",
             DialogueSpeaker.AETHEL.id to "en-gb-x-gba-local",
             DialogueSpeaker.LYRA.id to "en-us-x-tpf-local",
             DialogueSpeaker.ZEPHYR.id to "en-us-x-tpc-local",
-            DialogueSpeaker.MALAKOR.id to "en-us-x-tpd-local",
-            DialogueSpeaker.NARRATOR.id to "en-gb-x-rjs-local"
+            DialogueSpeaker.MALAKOR.id to "en-us-x-tpd-local"
         )
 
         /**
@@ -68,15 +79,24 @@ class CombatNarrator(
     // Persisted per-speaker voice assignments restored from the save file (speakerId -> voice name)
     private var pendingVoiceAssignments: Map<String, String> = emptyMap()
 
-    // Multi-voice character profile mapping
+    // Multi-voice character profile mapping for Commander America roster
     private var defaultVoice: Voice? = null
-    private var cedricVoice: Voice? = null
-    private var aethelVoice: Voice? = null
-    private var lyraVoice: Voice? = null
-    private var zephyrVoice: Voice? = null
-    private var malakorVoice: Voice? = null
-    private var shadowWispVoice: Voice? = null
+    private var commanderAmericaVoice: Voice? = null
+    private var elonVoice: Voice? = null
     private var narratorVoice: Voice? = null
+    private var karolineVoice: Voice? = null
+    private var kayleighVoice: Voice? = null
+    private var hulkVoice: Voice? = null
+    private var pelosiVoice: Voice? = null
+    private var kamalaVoice: Voice? = null
+    private var obamaVoice: Voice? = null
+    private var bidenVoice: Voice? = null
+    private var rocketManVoice: Voice? = null
+    private var mediaAnchorVoice: Voice? = null
+    private var marcoVoice: Voice? = null
+    private var vanceVoice: Voice? = null
+    private var kashVoice: Voice? = null
+    private var kennedyVoice: Voice? = null
 
     private val _availableVoiceCount = MutableStateFlow(0)
     val availableVoiceCount: StateFlow<Int> = _availableVoiceCount.asStateFlow()
@@ -95,6 +115,9 @@ class CombatNarrator(
 
     private val _isCombatNarrationEnabled = MutableStateFlow(true)
     val isCombatNarrationEnabled: StateFlow<Boolean> = _isCombatNarrationEnabled.asStateFlow()
+
+    private val _isCombatActive = MutableStateFlow(false)
+    val isCombatActive: StateFlow<Boolean> = _isCombatActive.asStateFlow()
 
     private val _isNarrationEnabled = MutableStateFlow(true)
     val isNarrationEnabled: StateFlow<Boolean> = _isNarrationEnabled.asStateFlow()
@@ -261,78 +284,148 @@ class CombatNarrator(
             val malePool = (maleVoices + otherVoices.filterIndexed { i, _ -> i % 2 == 1 }).ifEmpty { englishPhysicalVoices }
             val femalePool = (femaleVoices + otherVoices.filterIndexed { i, _ -> i % 2 == 0 }).ifEmpty { englishPhysicalVoices }
 
-            // British narrator voice if present, else default
-            val britishStoryteller = englishPhysicalVoices.firstOrNull {
-                it.name.contains("rjs") || (it.locale.country.equals("GB", ignoreCase = true) && it.name in maleTokens)
-            } ?: defaultVoice
-
-            val distinctMalePool = if (britishStoryteller != null && malePool.size > 1) {
-                malePool.filter { it != britishStoryteller }
-            } else {
-                malePool
-            }
-
-            narratorVoice = applyVoicePreference(DialogueSpeaker.NARRATOR.id, britishStoryteller ?: defaultVoice, englishPhysicalVoices)
-
-            // Sir Cedric is a noble knight templar: prioritize deep, resonant US baritone male (iob or iog)
-            val cedricCandidate = distinctMalePool.firstOrNull { it.name.contains("iob") }
-                ?: distinctMalePool.firstOrNull { it.name.contains("iog") }
-                ?: distinctMalePool.firstOrNull { it.name.contains("gbc") }
-                ?: distinctMalePool.firstOrNull() ?: defaultVoice
-            cedricVoice = applyVoicePreference(DialogueSpeaker.CEDRIC.id, cedricCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterCedric = distinctMalePool.filter { it != cedricCandidate }
-
-            // Zephyr: swift agile rogue
-            val zephyrCandidate = remainingMaleAfterCedric.firstOrNull { it.name.contains("tpc") }
-                ?: remainingMaleAfterCedric.firstOrNull() ?: defaultVoice
-            zephyrVoice = applyVoicePreference(DialogueSpeaker.ZEPHYR.id, zephyrCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterZephyr = remainingMaleAfterCedric.filter { it != zephyrVoice }
-
-            // Malakor: dark brooding voidwalker inquisitor
-            val malakorCandidate = remainingMaleAfterZephyr.firstOrNull { it.name.contains("iog") }
-                ?: remainingMaleAfterZephyr.firstOrNull { it.name.contains("aub") }
-                ?: remainingMaleAfterZephyr.firstOrNull() ?: defaultVoice
-            malakorVoice = applyVoicePreference(DialogueSpeaker.MALAKOR.id, malakorCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterMalakor = remainingMaleAfterZephyr.filter { it != malakorVoice }
-
-            // Shadow Wisp: raspy sibilant shade
-            val shadowWispCandidate = remainingMaleAfterMalakor.firstOrNull { it.name.contains("iol") }
-                ?: remainingMaleAfterMalakor.firstOrNull() ?: defaultVoice
-            shadowWispVoice = applyVoicePreference(DialogueSpeaker.SHADOW_WISP.id, shadowWispCandidate, englishPhysicalVoices)
-
-            // Aethel: spirited elemental invocator (female)
-            val aethelCandidate = femalePool.firstOrNull { it.name.contains("gba") }
-                ?: femalePool.firstOrNull { it.name.contains("sfg") }
+            // 1. Narrator Trio: Kayleigh (Primetime anchor), Karoline (Press Sec), Hulkster (Hype legend)
+            val kayleighCandidate = femalePool.firstOrNull { it.name.contains("sfg") }
+                ?: femalePool.firstOrNull { it.name.contains("gba") }
                 ?: femalePool.firstOrNull() ?: defaultVoice
-            aethelVoice = applyVoicePreference(DialogueSpeaker.AETHEL.id, aethelCandidate, englishPhysicalVoices)
+            kayleighVoice = applyVoicePreference(DialogueSpeaker.NARRATOR_KAYLEIGH.id, kayleighCandidate, englishPhysicalVoices)
 
-            val remainingFemaleAfterAethel = femalePool.filter { it != aethelVoice }
+            val remainingFemaleAfterKayleigh = femalePool.filter { it != kayleighVoice }
 
-            // Lyra: lyrical soothing woodland grove warden (female)
-            val lyraCandidate = remainingFemaleAfterAethel.firstOrNull { it.name.contains("tpf") }
-                ?: remainingFemaleAfterAethel.firstOrNull { it.name.contains("iom") }
-                ?: remainingFemaleAfterAethel.firstOrNull() ?: defaultVoice
-            lyraVoice = applyVoicePreference(DialogueSpeaker.LYRA.id, lyraCandidate, englishPhysicalVoices)
+            val karolineCandidate = remainingFemaleAfterKayleigh.firstOrNull { it.name.contains("tpf") }
+                ?: remainingFemaleAfterKayleigh.firstOrNull { it.name.contains("iom") }
+                ?: remainingFemaleAfterKayleigh.firstOrNull() ?: defaultVoice
+            karolineVoice = applyVoicePreference(DialogueSpeaker.NARRATOR_KAROLINE.id, karolineCandidate, englishPhysicalVoices)
 
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Cedric: ${cedricVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Aethel: ${aethelVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Lyra: ${lyraVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Zephyr: ${zephyrVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Malakor: ${malakorVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned ShadowWisp: ${shadowWispVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Narrator: ${narratorVoice?.name}")
+            val remainingFemaleAfterKaroline = remainingFemaleAfterKayleigh.filter { it != karolineVoice }
+
+            val hulkCandidate = malePool.firstOrNull { it.name.contains("gbd") }
+                ?: malePool.firstOrNull { it.name.contains("iol") }
+                ?: malePool.firstOrNull { it.name.contains("rjs") }
+                ?: malePool.firstOrNull() ?: defaultVoice
+            hulkVoice = applyVoicePreference(DialogueSpeaker.NARRATOR_HULK.id, hulkCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterHulk = malePool.filter { it != hulkVoice }
+
+            // General narrator default falls back to Kayleigh's anchor voice
+            narratorVoice = applyVoicePreference(DialogueSpeaker.NARRATOR.id, kayleighVoice ?: defaultVoice, englishPhysicalVoices)
+
+            // Commander America: deep, resonant, charismatic US baritone male (iob or iog)
+            val commanderCandidate = remainingMaleAfterHulk.firstOrNull { it.name.contains("iob") }
+                ?: remainingMaleAfterHulk.firstOrNull { it.name.contains("iog") }
+                ?: remainingMaleAfterHulk.firstOrNull { it.name.contains("gbc") }
+                ?: remainingMaleAfterHulk.firstOrNull() ?: defaultVoice
+            commanderAmericaVoice = applyVoicePreference(DialogueSpeaker.COMMANDER_AMERICA.id, commanderCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterCommander = remainingMaleAfterHulk.filter { it != commanderAmericaVoice }
+
+            // Elon Musk: brisk, energetic US male (tpc or aub)
+            val elonCandidate = remainingMaleAfterCommander.firstOrNull { it.name.contains("tpc") }
+                ?: remainingMaleAfterCommander.firstOrNull { it.name.contains("aub") }
+                ?: remainingMaleAfterCommander.firstOrNull() ?: defaultVoice
+            elonVoice = applyVoicePreference(DialogueSpeaker.ELON.id, elonCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterElon = remainingMaleAfterCommander.filter { it != elonVoice }
+
+            // Barack Obama: smooth, baritone US male (iog or gbc)
+            val obamaCandidate = remainingMaleAfterElon.firstOrNull { it.name.contains("iog") }
+                ?: remainingMaleAfterElon.firstOrNull { it.name.contains("gbc") }
+                ?: remainingMaleAfterElon.firstOrNull() ?: defaultVoice
+            obamaVoice = applyVoicePreference(DialogueSpeaker.OBAMA.id, obamaCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterObama = remainingMaleAfterElon.filter { it != obamaVoice }
+
+            // Final Boss Biden: older raspy US male (iol or gbd)
+            val bidenCandidate = remainingMaleAfterObama.firstOrNull { it.name.contains("iol") }
+                ?: remainingMaleAfterObama.firstOrNull { it.name.contains("gbd") }
+                ?: remainingMaleAfterObama.firstOrNull() ?: defaultVoice
+            bidenVoice = applyVoicePreference(DialogueSpeaker.BIDEN.id, bidenCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterBiden = remainingMaleAfterObama.filter { it != bidenVoice }
+
+            // Rocket Man: deep resonant male (aud or remaining)
+            val rocketCandidate = remainingMaleAfterBiden.firstOrNull { it.name.contains("aud") }
+                ?: remainingMaleAfterBiden.firstOrNull() ?: defaultVoice
+            rocketManVoice = applyVoicePreference(DialogueSpeaker.ROCKET_MAN.id, rocketCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterRocket = remainingMaleAfterBiden.filter { it != rocketManVoice }
+
+            // Marco Rubio: articulate US male (iog or iob or remaining)
+            val marcoCandidate = remainingMaleAfterRocket.firstOrNull { it.name.contains("iog") }
+                ?: remainingMaleAfterRocket.firstOrNull { it.name.contains("iob") }
+                ?: remainingMaleAfterRocket.firstOrNull() ?: defaultVoice
+            marcoVoice = applyVoicePreference(DialogueSpeaker.MARCO.id, marcoCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterMarco = remainingMaleAfterRocket.filter { it != marcoVoice }
+
+            // JD Vance: measured baritone US male (tpc or iol or remaining)
+            val vanceCandidate = remainingMaleAfterMarco.firstOrNull { it.name.contains("tpc") }
+                ?: remainingMaleAfterMarco.firstOrNull { it.name.contains("iol") }
+                ?: remainingMaleAfterMarco.firstOrNull() ?: defaultVoice
+            vanceVoice = applyVoicePreference(DialogueSpeaker.VANCE.id, vanceCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterVance = remainingMaleAfterMarco.filter { it != vanceVoice }
+
+            // Kash Patel: confident, sharp US male (gbc or rjs or remaining)
+            val kashCandidate = remainingMaleAfterVance.firstOrNull { it.name.contains("gbc") }
+                ?: remainingMaleAfterVance.firstOrNull { it.name.contains("rjs") }
+                ?: remainingMaleAfterVance.firstOrNull() ?: defaultVoice
+            kashVoice = applyVoicePreference(DialogueSpeaker.KASH.id, kashCandidate, englishPhysicalVoices)
+
+            val remainingMaleAfterKash = remainingMaleAfterVance.filter { it != kashVoice }
+
+            // Senator John Kennedy: southern, measured US male
+            val kennedyCandidate = remainingMaleAfterKash.firstOrNull { it.name.contains("gbd") }
+                ?: remainingMaleAfterKash.firstOrNull { it.name.contains("aud") }
+                ?: remainingMaleAfterKash.firstOrNull() ?: defaultVoice
+            kennedyVoice = applyVoicePreference(DialogueSpeaker.KENNEDY.id, kennedyCandidate, englishPhysicalVoices)
+
+            // Madam Speaker Pelosi: sharp, calculating US female (tpf or iom)
+            val pelosiCandidate = remainingFemaleAfterKaroline.firstOrNull { it.name.contains("tpf") }
+                ?: remainingFemaleAfterKaroline.firstOrNull { it.name.contains("iom") }
+                ?: remainingFemaleAfterKaroline.firstOrNull() ?: defaultVoice
+            pelosiVoice = applyVoicePreference(DialogueSpeaker.PELOSI.id, pelosiCandidate, englishPhysicalVoices)
+
+            val remainingFemaleAfterPelosi = remainingFemaleAfterKaroline.filter { it != pelosiVoice }
+
+            // Kamala: melodic/expressive US female (sfg or gba)
+            val kamalaCandidate = remainingFemaleAfterPelosi.firstOrNull { it.name.contains("sfg") }
+                ?: remainingFemaleAfterPelosi.firstOrNull { it.name.contains("gba") }
+                ?: remainingFemaleAfterPelosi.firstOrNull() ?: defaultVoice
+            kamalaVoice = applyVoicePreference(DialogueSpeaker.KAMALA.id, kamalaCandidate, englishPhysicalVoices)
+
+            val remainingFemaleAfterKamala = remainingFemaleAfterPelosi.filter { it != kamalaVoice }
+
+            // Media Anchor: formal / sibilant (tpd or aua or remaining)
+            val mediaCandidate = remainingFemaleAfterKamala.firstOrNull { it.name.contains("tpd") }
+                ?: remainingFemaleAfterKamala.firstOrNull() ?: defaultVoice
+            mediaAnchorVoice = applyVoicePreference(DialogueSpeaker.MEDIA_ANCHOR.id, mediaCandidate, englishPhysicalVoices)
+
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Commander: ${commanderAmericaVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Elon: ${elonVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Kayleigh: ${kayleighVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Karoline: ${karolineVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Hulkster: ${hulkVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Pelosi: ${pelosiVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Kamala: ${kamalaVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Obama: ${obamaVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned Biden: ${bidenVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned RocketMan: ${rocketManVoice?.name}")
+            android.util.Log.d("VoiceRPG_TTS", "Assigned MediaAnchor: ${mediaAnchorVoice?.name}")
         } catch (e: Exception) {
             android.util.Log.e("VoiceRPG_TTS", "Error assigning voices", e)
-            cedricVoice = defaultVoice
-            aethelVoice = defaultVoice
-            lyraVoice = defaultVoice
-            zephyrVoice = defaultVoice
-            malakorVoice = defaultVoice
+            commanderAmericaVoice = defaultVoice
+            elonVoice = defaultVoice
+            kayleighVoice = defaultVoice
+            karolineVoice = defaultVoice
+            hulkVoice = defaultVoice
             narratorVoice = defaultVoice
-            shadowWispVoice = defaultVoice
+            pelosiVoice = defaultVoice
+            kamalaVoice = defaultVoice
+            obamaVoice = defaultVoice
+            bidenVoice = defaultVoice
+            rocketManVoice = defaultVoice
+            mediaAnchorVoice = defaultVoice
         }
     }
 
@@ -386,6 +479,10 @@ class CombatNarrator(
 
     fun setCombatNarrationEnabled(enabled: Boolean) {
         _isCombatNarrationEnabled.value = enabled
+    }
+
+    fun setCombatActive(active: Boolean) {
+        _isCombatActive.value = active
     }
 
     fun toggleCombatNarrationEnabled(): Boolean {
@@ -463,13 +560,18 @@ class CombatNarrator(
      */
     fun getVoiceAssignments(): Map<String, String> =
         listOf(
-            DialogueSpeaker.CEDRIC,
-            DialogueSpeaker.AETHEL,
-            DialogueSpeaker.LYRA,
-            DialogueSpeaker.ZEPHYR,
-            DialogueSpeaker.MALAKOR,
-            DialogueSpeaker.SHADOW_WISP,
-            DialogueSpeaker.NARRATOR
+            DialogueSpeaker.COMMANDER_AMERICA,
+            DialogueSpeaker.ELON,
+            DialogueSpeaker.NARRATOR_KAYLEIGH,
+            DialogueSpeaker.NARRATOR_KAROLINE,
+            DialogueSpeaker.NARRATOR_HULK,
+            DialogueSpeaker.NARRATOR,
+            DialogueSpeaker.PELOSI,
+            DialogueSpeaker.KAMALA,
+            DialogueSpeaker.OBAMA,
+            DialogueSpeaker.BIDEN,
+            DialogueSpeaker.ROCKET_MAN,
+            DialogueSpeaker.MEDIA_ANCHOR
         ).mapNotNull { speaker -> getVoiceForSpeaker(speaker)?.name?.let { speaker.id to it } }
             .toMap()
 
@@ -498,38 +600,78 @@ class CombatNarrator(
     }
 
     fun getVoiceForSpeaker(speaker: DialogueSpeaker): Voice? = when (speaker.id) {
-        DialogueSpeaker.CEDRIC.id -> cedricVoice
-        DialogueSpeaker.AETHEL.id -> aethelVoice
-        DialogueSpeaker.LYRA.id -> lyraVoice
-        DialogueSpeaker.ZEPHYR.id -> zephyrVoice
-        DialogueSpeaker.MALAKOR.id -> malakorVoice
-        DialogueSpeaker.SHADOW_WISP.id -> shadowWispVoice
+        DialogueSpeaker.COMMANDER_AMERICA.id -> commanderAmericaVoice
+        DialogueSpeaker.ELON.id -> elonVoice
+        DialogueSpeaker.NARRATOR_KAROLINE.id -> karolineVoice ?: narratorVoice
+        DialogueSpeaker.NARRATOR_KAYLEIGH.id -> kayleighVoice ?: narratorVoice
+        DialogueSpeaker.NARRATOR_HULK.id -> hulkVoice ?: narratorVoice
         DialogueSpeaker.NARRATOR.id -> narratorVoice
+        DialogueSpeaker.PELOSI.id -> pelosiVoice
+        DialogueSpeaker.KAMALA.id -> kamalaVoice
+        DialogueSpeaker.OBAMA.id -> obamaVoice
+        DialogueSpeaker.BIDEN.id -> bidenVoice
+        DialogueSpeaker.ROCKET_MAN.id -> rocketManVoice
+        DialogueSpeaker.MEDIA_ANCHOR.id -> mediaAnchorVoice
+        DialogueSpeaker.MARCO.id -> marcoVoice
+        DialogueSpeaker.VANCE.id -> vanceVoice
+        DialogueSpeaker.KASH.id -> kashVoice
+        DialogueSpeaker.KENNEDY.id -> kennedyVoice
+        // Legacy fallbacks for any older save compatibility
+        "cedric" -> commanderAmericaVoice
+        "aethel" -> commanderAmericaVoice
+        "lyra" -> kamalaVoice
+        "zephyr" -> elonVoice
+        "malakor" -> bidenVoice
         else -> narratorVoice
     }
 
     fun setSpeakerVoice(speaker: DialogueSpeaker, voice: Voice) {
         when (speaker.id) {
-            DialogueSpeaker.CEDRIC.id -> cedricVoice = voice
-            DialogueSpeaker.AETHEL.id -> aethelVoice = voice
-            DialogueSpeaker.LYRA.id -> lyraVoice = voice
-            DialogueSpeaker.ZEPHYR.id -> zephyrVoice = voice
-            DialogueSpeaker.MALAKOR.id -> malakorVoice = voice
-            DialogueSpeaker.SHADOW_WISP.id -> shadowWispVoice = voice
-            DialogueSpeaker.NARRATOR.id -> narratorVoice = voice
+            DialogueSpeaker.COMMANDER_AMERICA.id -> commanderAmericaVoice = voice
+            DialogueSpeaker.ELON.id -> elonVoice = voice
+            DialogueSpeaker.NARRATOR_KAROLINE.id -> karolineVoice = voice
+            DialogueSpeaker.NARRATOR_KAYLEIGH.id -> {
+                kayleighVoice = voice
+                narratorVoice = voice
+            }
+            DialogueSpeaker.NARRATOR_HULK.id -> hulkVoice = voice
+            DialogueSpeaker.NARRATOR.id -> {
+                narratorVoice = voice
+                kayleighVoice = voice
+            }
+            DialogueSpeaker.PELOSI.id -> pelosiVoice = voice
+            DialogueSpeaker.KAMALA.id -> kamalaVoice = voice
+            DialogueSpeaker.OBAMA.id -> obamaVoice = voice
+            DialogueSpeaker.BIDEN.id -> bidenVoice = voice
+            DialogueSpeaker.ROCKET_MAN.id -> rocketManVoice = voice
+            DialogueSpeaker.MEDIA_ANCHOR.id -> mediaAnchorVoice = voice
+            DialogueSpeaker.MARCO.id -> marcoVoice = voice
+            DialogueSpeaker.VANCE.id -> vanceVoice = voice
+            DialogueSpeaker.KASH.id -> kashVoice = voice
+            DialogueSpeaker.KENNEDY.id -> kennedyVoice = voice
             else -> narratorVoice = voice
         }
     }
 
     fun previewSpeakerVoice(speaker: DialogueSpeaker, onDone: (() -> Unit)? = null) {
         val samplePhrase = when (speaker.id) {
-            DialogueSpeaker.CEDRIC.id -> "By the light of the dawn, our shields will hold the line."
-            DialogueSpeaker.LYRA.id -> "The ancient grove whispers its secrets to those who listen."
-            DialogueSpeaker.AETHEL.id -> "The aether responds to our command. Let us begin."
-            DialogueSpeaker.ZEPHYR.id -> "Keep your senses sharp and stay in the shadows."
-            DialogueSpeaker.MALAKOR.id -> "The void harbors power far older than this kingdom."
-            DialogueSpeaker.SHADOW_WISP.id -> "The shadows will consume all who dare enter."
-            else -> "The chronicle of Aethelgard unfolds with every step."
+            DialogueSpeaker.COMMANDER_AMERICA.id -> "We are going to win so much, folks! You may get tired of winning, but believe me, we won't stop!"
+            DialogueSpeaker.ELON.id -> "Occupy Mars! Full Self-Driving starships, Dogecoin, and total government efficiency. Let's make the future epic!"
+            DialogueSpeaker.NARRATOR_KAROLINE.id -> "Good morning! Let's get right to the facts. The numbers in this binder are indisputable, and Commander America's momentum cannot be stopped!"
+            DialogueSpeaker.NARRATOR_KAYLEIGH.id -> "Welcome back to primetime. Tonight, all eyes turn to the Capitol spire as the fellowship makes their historic stand."
+            DialogueSpeaker.NARRATOR_HULK.id -> "WELL LET ME TELL YA SOMETHING, BROTHER! When the Hulkster and Commander America run wild on this realm, what'cha gonna do?!"
+            DialogueSpeaker.NARRATOR.id -> "Welcome back to primetime. Tonight, all eyes turn to the Capitol spire as the fellowship makes their historic stand."
+            DialogueSpeaker.PELOSI.id -> "We must pass the bill so you can find out what is in it! And my stock portfolio has never looked better!"
+            DialogueSpeaker.KAMALA.id -> "You think you just fell out of a coconut tree? You exist in the context of all in which you live and what came before you!"
+            DialogueSpeaker.OBAMA.id -> "Now, uh... let me be clear. Don't boo. Vote! And check the receipts from 2014."
+            DialogueSpeaker.BIDEN.id -> "No joke, man! Look, here's the deal! Two scoops of chocolate chocolate chip ice cream, period!"
+            DialogueSpeaker.ROCKET_MAN.id -> "Tremble before the Crimson Spire! Our glorious rockets shall conquer the Pacific!"
+            DialogueSpeaker.MEDIA_ANCHOR.id -> "Breaking news! Unnamed anonymous sources claim that victory is completely unverified!"
+            DialogueSpeaker.MARCO.id -> "Commander, maximum sanctions are locked in, foreign assets frozen, and I have a fresh bottle of water ready for the journey!"
+            DialogueSpeaker.VANCE.id -> "Middle America will never be forgotten again. We've got common sense, family fortitude, and we're dismantling the establishment debate stage!"
+            DialogueSpeaker.KASH.id -> "Everything is declassified. The binders are open, the leaks are plugged, and the truth will prevail!"
+            DialogueSpeaker.KENNEDY.id -> "Did you write that rule yourself, or did someone help you think it up? In plain English, that sounds dumber than a bag of hammers!"
+            else -> "The chronicle of the Golden Tower unfolds with every step."
         }
         narrateDialogue(speaker, samplePhrase, emptyList(), force = true) {
             onDone?.invoke()
@@ -599,33 +741,65 @@ class CombatNarrator(
         // Apply character vocal inflection/pitch if enabled
         if (_isCharacterPitchEnabled.value) {
             when (speaker.id) {
-                DialogueSpeaker.CEDRIC.id -> {
-                    tts?.setPitch(0.82f) // Deep baritone noble knight
-                    tts?.setSpeechRate(_speechRate.value * 0.95f)
-                }
-                DialogueSpeaker.AETHEL.id -> {
-                    tts?.setPitch(1.08f) // Clear, spirited invocator
-                    tts?.setSpeechRate(_speechRate.value)
-                }
-                DialogueSpeaker.LYRA.id -> {
-                    tts?.setPitch(1.20f) // Lyrical, soothing grove warden
-                    tts?.setSpeechRate(_speechRate.value * 0.98f)
-                }
-                DialogueSpeaker.ZEPHYR.id -> {
-                    tts?.setPitch(0.95f) // Jaunty, agile rogue
+                DialogueSpeaker.COMMANDER_AMERICA.id -> {
+                    tts?.setPitch(0.90f) // Resonant, charismatic
                     tts?.setSpeechRate(_speechRate.value * 1.05f)
                 }
-                DialogueSpeaker.MALAKOR.id -> {
-                    tts?.setPitch(0.72f) // Dark, brooding inquisitor
-                    tts?.setSpeechRate(_speechRate.value * 0.90f)
+                DialogueSpeaker.ELON.id -> {
+                    tts?.setPitch(1.02f) // Brisk, energetic tech visionary
+                    tts?.setSpeechRate(_speechRate.value * 1.10f)
                 }
-                DialogueSpeaker.SHADOW_WISP.id -> {
-                    tts?.setPitch(0.70f) // Raspy sibilant phantom
+                DialogueSpeaker.NARRATOR_KAROLINE.id -> {
+                    tts?.setPitch(1.12f) // Fast, crisp press secretary
+                    tts?.setSpeechRate(_speechRate.value * 1.15f)
+                }
+                DialogueSpeaker.NARRATOR_KAYLEIGH.id, DialogueSpeaker.NARRATOR.id -> {
+                    tts?.setPitch(1.02f) // Smooth, measured primetime desk anchor
+                    tts?.setSpeechRate(_speechRate.value * 1.05f)
+                }
+                DialogueSpeaker.NARRATOR_HULK.id -> {
+                    tts?.setPitch(0.78f) // Deep, booming wrestling hype legend
+                    tts?.setSpeechRate(_speechRate.value * 1.00f)
+                }
+                DialogueSpeaker.PELOSI.id -> {
+                    tts?.setPitch(1.15f) // Sharp, calculating
+                    tts?.setSpeechRate(_speechRate.value * 0.95f)
+                }
+                DialogueSpeaker.KAMALA.id -> {
+                    tts?.setPitch(1.25f) // Melodic, expressive
+                    tts?.setSpeechRate(_speechRate.value * 1.02f)
+                }
+                DialogueSpeaker.OBAMA.id -> {
+                    tts?.setPitch(0.92f) // Smooth, rhythmic cadence
+                    tts?.setSpeechRate(_speechRate.value * 0.92f)
+                }
+                DialogueSpeaker.BIDEN.id -> {
+                    tts?.setPitch(0.85f) // Folksy raspy cadence
                     tts?.setSpeechRate(_speechRate.value * 0.88f)
                 }
-                DialogueSpeaker.NARRATOR.id -> {
-                    tts?.setPitch(1.0f) // Measured storyteller cadence
-                    tts?.setSpeechRate(_speechRate.value)
+                DialogueSpeaker.ROCKET_MAN.id -> {
+                    tts?.setPitch(0.78f) // Deep dramatic cadence
+                    tts?.setSpeechRate(_speechRate.value * 1.0f)
+                }
+                DialogueSpeaker.MEDIA_ANCHOR.id -> {
+                    tts?.setPitch(1.10f) // High-tempo news anchor
+                    tts?.setSpeechRate(_speechRate.value * 1.15f)
+                }
+                DialogueSpeaker.MARCO.id -> {
+                    tts?.setPitch(1.05f) // Confident, articulate diplomatic cadence
+                    tts?.setSpeechRate(_speechRate.value * 1.08f)
+                }
+                DialogueSpeaker.VANCE.id -> {
+                    tts?.setPitch(0.92f) // Grounded, measured Rust Belt baritone
+                    tts?.setSpeechRate(_speechRate.value * 1.00f)
+                }
+                DialogueSpeaker.KASH.id -> {
+                    tts?.setPitch(0.98f) // Sharp, focused intel cadence
+                    tts?.setSpeechRate(_speechRate.value * 1.05f)
+                }
+                DialogueSpeaker.KENNEDY.id -> {
+                    tts?.setPitch(0.88f) // Southern committee cross-examiner drawl
+                    tts?.setSpeechRate(_speechRate.value * 0.92f)
                 }
                 else -> {
                     tts?.setPitch(1.0f)
@@ -638,7 +812,12 @@ class CombatNarrator(
         }
 
         val cleanedText = text.replace("...", ". ").trim()
-        val speakerPrefix = if (speaker == DialogueSpeaker.NARRATOR || !_isSpeakerAttributionEnabled.value) "" else "${speaker.name} says: "
+        val isAnyNarrator = speaker == DialogueSpeaker.NARRATOR ||
+                speaker == DialogueSpeaker.NARRATOR_KAROLINE ||
+                speaker == DialogueSpeaker.NARRATOR_KAYLEIGH ||
+                speaker == DialogueSpeaker.NARRATOR_HULK ||
+                speaker.id.startsWith("narrator")
+        val speakerPrefix = if (isAnyNarrator || !_isSpeakerAttributionEnabled.value) "" else "${speaker.name} says: "
 
         val fullScript = StringBuilder()
         fullScript.append("$speakerPrefix$cleanedText")
@@ -688,9 +867,7 @@ class CombatNarrator(
 
         val utteranceId = "combat_tts_${System.currentTimeMillis()}"
         activeUtteranceId = utteranceId
-        val prevCb = pendingSpeechOnDone
         pendingSpeechOnDone = onDone
-        prevCb?.invoke()
         _isSpeaking.value = true
 
         val params = Bundle().apply {
@@ -732,14 +909,12 @@ class CombatNarrator(
     }
 
     fun stop() {
-        val cb = pendingSpeechOnDone
         pendingSpeechOnDone = null
         activeUtteranceId = null
         try {
             tts?.stop()
         } catch (_: Exception) {}
         _isSpeaking.value = false
-        cb?.invoke()
     }
 
     internal fun setSpeakingForTesting(speaking: Boolean) {
@@ -751,7 +926,7 @@ class CombatNarrator(
     // =========================================================================
 
     fun narratePlayerTurn(hero: PartyMember, enemies: List<Enemy>, onDone: () -> Unit) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) {
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) {
             onDone()
             return
         }
@@ -767,7 +942,7 @@ class CombatNarrator(
     }
 
     suspend fun narratePlayerTurnSuspend(hero: PartyMember, enemies: List<Enemy>, timeoutMs: Long = 8000L) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) return
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) return
         if (tts == null || !isTtsInitialized) return
         withTimeoutOrNull(timeoutMs) {
             suspendCancellableCoroutine<Unit> { cont ->
@@ -789,7 +964,7 @@ class CombatNarrator(
         effectNote: String? = null,
         onDone: (() -> Unit)? = null
     ) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) {
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) {
             onDone?.invoke()
             return
         }
@@ -823,7 +998,7 @@ class CombatNarrator(
         effectNote: String? = null,
         timeoutMs: Long = 8000L
     ) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) return
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) return
         if (tts == null || !isTtsInitialized) return
         withTimeoutOrNull(timeoutMs) {
             suspendCancellableCoroutine<Unit> { cont ->
@@ -843,7 +1018,7 @@ class CombatNarrator(
         statusNote: String? = null,
         onDone: (() -> Unit)? = null
     ) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) {
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) {
             onDone?.invoke()
             return
         }
@@ -866,7 +1041,7 @@ class CombatNarrator(
         statusNote: String? = null,
         timeoutMs: Long = 8000L
     ) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) return
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) return
         if (tts == null || !isTtsInitialized) return
         withTimeoutOrNull(timeoutMs) {
             suspendCancellableCoroutine<Unit> { cont ->
@@ -878,7 +1053,7 @@ class CombatNarrator(
     }
 
     fun narrateReinforcements(count: Int, enemyNames: List<String>, onDone: (() -> Unit)? = null) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) {
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) {
             onDone?.invoke()
             return
         }
@@ -891,7 +1066,7 @@ class CombatNarrator(
     }
 
     suspend fun narrateReinforcementsSuspend(count: Int, enemyNames: List<String>, timeoutMs: Long = 8000L) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) return
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) return
         if (tts == null || !isTtsInitialized) return
         withTimeoutOrNull(timeoutMs) {
             suspendCancellableCoroutine<Unit> { cont ->
@@ -903,6 +1078,10 @@ class CombatNarrator(
     }
 
     fun narrateStatus(party: List<PartyMember>, enemies: List<Enemy>, onDone: (() -> Unit)? = null) {
+        if (!_isCombatActive.value) {
+            onDone?.invoke()
+            return
+        }
         val aliveHeroes = party.filter { it.isAlive }
         val partyStatus = aliveHeroes.joinToString(", ") { "${it.name} at ${it.currentHp} HP" }
         val aliveEnemies = enemies.filter { it.isAlive }
@@ -914,6 +1093,10 @@ class CombatNarrator(
     }
 
     fun narrateEnemies(enemies: List<Enemy>, onDone: (() -> Unit)? = null) {
+        if (!_isCombatActive.value) {
+            onDone?.invoke()
+            return
+        }
         val alive = enemies.filter { it.isAlive }
         val targeted = alive.firstOrNull { it.isTargeted }?.name ?: alive.firstOrNull()?.name
         val list = alive.mapIndexed { idx, e -> "Enemy ${idx + 1}, ${e.name} with ${e.currentHp} HP" }.joinToString(". ")
@@ -922,6 +1105,10 @@ class CombatNarrator(
     }
 
     fun narrateParty(party: List<PartyMember>, onDone: (() -> Unit)? = null) {
+        if (!_isCombatActive.value) {
+            onDone?.invoke()
+            return
+        }
         val members = party.map {
             if (it.isAlive) "${it.name} the ${it.loreClass}, ${it.currentHp} HP" else "${it.name} has fallen"
         }.joinToString(". ")
@@ -930,6 +1117,10 @@ class CombatNarrator(
     }
 
     fun narrateHelp(onDone: (() -> Unit)? = null) {
+        if (!_isCombatActive.value) {
+            onDone?.invoke()
+            return
+        }
         val text = "Voice commands. Say your spell name to cast. Say 'Status' for situation report. " +
                 "Say 'Enemies' for target scan. Say 'Pocket mode' to toggle audio guidance. " +
                 "Say 'Auto listen' to toggle hands-free mic. Say 'Options' to open settings."
@@ -937,7 +1128,7 @@ class CombatNarrator(
     }
 
     fun narrateConclusion(isVictory: Boolean, onDone: (() -> Unit)? = null) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) {
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) {
             onDone?.invoke()
             return
         }
@@ -950,7 +1141,7 @@ class CombatNarrator(
     }
 
     suspend fun narrateConclusionSuspend(isVictory: Boolean, timeoutMs: Long = 8000L) {
-        if (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value) return
+        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) return
         if (tts == null || !isTtsInitialized) return
         withTimeoutOrNull(timeoutMs) {
             suspendCancellableCoroutine<Unit> { cont ->

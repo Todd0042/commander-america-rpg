@@ -232,7 +232,8 @@ fun ResonanceConsole(
                         onClick = {
                             val rolledTier = rollWeightedResonanceTier()
                             val preset = SpellChantPresets.getPreset(spell, rolledTier)
-                            onSubmitChant(preset.chantText, preset.acousticProfile)
+                            val organicProfile = AcousticProfile.rollOrganicProfile(rolledTier)
+                            onSubmitChant(preset.chantText, organicProfile)
                         }
                     )
                 }
@@ -696,18 +697,19 @@ fun AudioEqualizerBars(
 
 /**
  * Weighted random resonance tier generator:
- * - Basic (+10%): 50% chance
- * - Adept (+40%): 30% chance
- * - Master (+80%): 14% chance
- * - Mythic (+125%): 5% chance
- * - Transcendental (+200% MAX): 1% rare chance
+ * Balanced for button taps with varying randomness where lower amounts are prioritized:
+ * - Basic (0%..18% bonus): 55% chance (prioritizing lower resonance common hits)
+ * - Adept (20%..48% bonus): 28% chance (moderate oratorical command)
+ * - Master (50%..85% bonus): 12% chance (strong charismatic delivery)
+ * - Mythic (90%..135% bonus): 4% chance (rare crowd roar crit)
+ * - Transcendental (150%..200% MAX): 1% chance (legendary jackpot surge)
  */
 private fun rollWeightedResonanceTier(): ResonanceTier {
     val roll = kotlin.random.Random.nextFloat()
     return when {
-        roll < 0.50f -> ResonanceTier.BASIC
-        roll < 0.80f -> ResonanceTier.ADEPT
-        roll < 0.94f -> ResonanceTier.MASTER
+        roll < 0.55f -> ResonanceTier.BASIC
+        roll < 0.83f -> ResonanceTier.ADEPT
+        roll < 0.95f -> ResonanceTier.MASTER
         roll < 0.99f -> ResonanceTier.MYTHIC
         else -> ResonanceTier.TRANSCENDENTAL
     }

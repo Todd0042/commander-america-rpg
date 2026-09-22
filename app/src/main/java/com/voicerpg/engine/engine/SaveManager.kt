@@ -198,8 +198,8 @@ class SaveManager(private val context: Context? = null) {
 
         val newSave = GameSaveData(
             player = customization,
-            currentSceneId = "scene_cottage",
-            currentNodeId = "cottage_intro",
+            currentSceneId = StoryScript.SCENE_ACT1_ESCALATOR.id,
+            currentNodeId = "act1_intro",
             decisionsMade = emptyList(),
             partyStats = listOf(initialHeroStats),
             defeatedEncounters = emptyList(),

@@ -93,56 +93,41 @@ fun StoryScreen(
     val backgroundBitmap = remember(storyState.currentScene.backgroundAsset) {
         StoryAssetLoader.loadBitmap(context, storyState.currentScene.backgroundAsset)
     }
-    val aethelBitmap = remember {
-        StoryAssetLoader.loadBitmap(context, "portraits/aethel.jpg")
+    val heroSpeaker = DialogueSpeaker.COMMANDER_AMERICA
+    val heroBitmap = remember {
+        StoryAssetLoader.loadBitmap(context, "portraits/commander_america.jpg")
+            ?: StoryAssetLoader.loadBitmap(context, "portraits/aethel.jpg")
     }
 
     val currentNode = storyState.currentNode
-    val isNarratorSpeaking = (currentNode.speaker == DialogueSpeaker.NARRATOR)
+    val isNarratorSpeaking = (currentNode.speaker == DialogueSpeaker.NARRATOR ||
+            currentNode.speaker == DialogueSpeaker.NARRATOR_KAROLINE ||
+            currentNode.speaker == DialogueSpeaker.NARRATOR_KAYLEIGH ||
+            currentNode.speaker == DialogueSpeaker.NARRATOR_HULK ||
+            currentNode.speaker.id.startsWith("narrator"))
 
-    val narratorAsset = remember(currentNode.id) {
-        DialogueSpeaker.NARRATOR.effectivePortraitAsset()
+    val narratorAsset = remember(currentNode.id, currentNode.speaker.id) {
+        currentNode.speaker.effectivePortraitAsset(currentNode.id)
+            ?: DialogueSpeaker.NARRATOR.effectivePortraitAsset(currentNode.id)
     }
     val narratorBitmap = remember(narratorAsset) {
         narratorAsset?.let { StoryAssetLoader.loadBitmap(context, it) }
     }
 
-    val leftSpeaker = if (isNarratorSpeaking) DialogueSpeaker.NARRATOR else DialogueSpeaker.AETHEL
-    val leftBitmap = if (isNarratorSpeaking) narratorBitmap else aethelBitmap
-    val isLeftSpeaking = if (isNarratorSpeaking) true else (currentNode.speaker == DialogueSpeaker.AETHEL || currentNode.side == SpeakerSide.LEFT)
+    val leftSpeaker = if (isNarratorSpeaking) currentNode.speaker else heroSpeaker
+    val leftBitmap = if (isNarratorSpeaking) narratorBitmap else heroBitmap
+    val isLeftSpeaking = if (isNarratorSpeaking) true else (currentNode.speaker == heroSpeaker || currentNode.speaker == DialogueSpeaker.COMMANDER_AMERICA || currentNode.side == SpeakerSide.LEFT)
 
     val rightSpeaker: DialogueSpeaker? = remember(currentNode.id, currentNode.speaker.id, storyState.currentScene.name) {
         when {
-            currentNode.speaker == DialogueSpeaker.NARRATOR -> {
+            isNarratorSpeaking -> {
                 null
             }
-            currentNode.speaker != DialogueSpeaker.AETHEL -> {
+            currentNode.speaker != heroSpeaker && currentNode.speaker != DialogueSpeaker.COMMANDER_AMERICA -> {
                 currentNode.speaker
             }
-            storyState.currentScene.chapterTitle.contains("Prologue", ignoreCase = true) ||
-            storyState.currentScene.name.contains("Cottage", ignoreCase = true) -> {
-                null
-            }
-            currentNode.id.contains("lyra", ignoreCase = true) ||
-            storyState.partyStats.any { it.id == "lyra" } ||
-            storyState.currentScene.chapterTitle.contains("Chapter 5", ignoreCase = true) ||
-            storyState.currentScene.chapterTitle.contains("Chapter 6", ignoreCase = true) -> {
-                DialogueSpeaker.LYRA
-            }
-            currentNode.id.contains("zephyr", ignoreCase = true) ||
-            storyState.partyStats.any { it.id == "zephyr" } ||
-            storyState.currentScene.chapterTitle.contains("Chapter 7", ignoreCase = true) ||
-            storyState.currentScene.chapterTitle.contains("Chapter 8", ignoreCase = true) -> {
-                DialogueSpeaker.ZEPHYR
-            }
-            currentNode.id.contains("malakor", ignoreCase = true) ||
-            storyState.partyStats.any { it.id == "malakor" } ||
-            storyState.currentScene.chapterTitle.contains("Chapter 9", ignoreCase = true) ||
-            storyState.currentScene.chapterTitle.contains("Chapter 10", ignoreCase = true) -> {
-                DialogueSpeaker.MALAKOR
-            }
             else -> {
-                DialogueSpeaker.CEDRIC
+                null
             }
         }
     }

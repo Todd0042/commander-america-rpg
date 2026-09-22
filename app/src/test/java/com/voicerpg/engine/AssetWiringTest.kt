@@ -77,10 +77,8 @@ class AssetWiringTest {
             DialogueSpeaker.SHADOW_WISP,
             DialogueSpeaker.VAELOR,
             DialogueSpeaker.GALAHAULT,
-            DialogueSpeaker.NOCTURNE,
-            DialogueSpeaker.OUROS,
-            DialogueSpeaker.DRYAD_MATRON,
-            DialogueSpeaker.VOICE_MOTE
+            DialogueSpeaker.PELOSI,
+            DialogueSpeaker.COMMANDER_AMERICA
         )
         val missing = mutableListOf<String>()
         for (speaker in speakers) {
@@ -113,8 +111,10 @@ class AssetWiringTest {
             DialogueSpeaker.NOCTURNE,
             DialogueSpeaker.OUROS,
             DialogueSpeaker.DRYAD_MATRON,
-            DialogueSpeaker.VOICE_MOTE
+            DialogueSpeaker.PELOSI,
+            DialogueSpeaker.COMMANDER_AMERICA
         )
+
         for (speaker in nonNarrators) {
             repeat(200) {
                 assertTrue(
@@ -127,7 +127,7 @@ class AssetWiringTest {
 
     @Test
     fun narratorEffectivePortraitChoosesOnlyValidArt() {
-        val valid = setOf("portraits/narrator.jpg", "portraits/narrator1.jpg")
+        val valid = setOf("portraits/narrator.jpg", "portraits/narrator1.jpg", "portraits/narrator_kayleigh.jpg")
         var alternateCount = 0
         val trials = 10000
         repeat(trials) {

@@ -97,7 +97,7 @@ fun MicPermissionRationaleDialog(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "VOICE OF THE LOGOS",
+                    text = "COMMANDER AMERICA",
                     color = LogosGold,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Black,
@@ -109,7 +109,7 @@ fun MicPermissionRationaleDialog(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = "Hands-Free Fantasy Roleplay",
+                    text = "Hands-Free Presidential Voice RPG",
                     color = Color.LightGray.copy(alpha = 0.85f),
                     fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace,
@@ -123,7 +123,7 @@ fun MicPermissionRationaleDialog(
                     icon = Icons.Default.Mic,
                     iconTint = FrostCyan,
                     title = "Hands-Free & Pocket Mode",
-                    description = "Cast spells, make dialogue choices, and explore the chronicle seamlessly while walking with your screen dimmed in your pocket."
+                    description = "Issue executive orders, make campaign choices, and unleash Tremendous Strikes seamlessly while walking with your screen dimmed in your pocket."
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -133,8 +133,9 @@ fun MicPermissionRationaleDialog(
                     icon = Icons.Default.Security,
                     iconTint = HolyYellow,
                     title = "Private & On-Device Processing",
-                    description = "Speech recognition runs locally via Android speech services. VoiceRPG never records, stores, or uploads your voice to any remote servers."
+                    description = "Speech recognition runs locally via Android speech services. Commander America never records, stores, or uploads your voice to remote servers."
                 )
+
 
                 Spacer(modifier = Modifier.height(8.dp))
 

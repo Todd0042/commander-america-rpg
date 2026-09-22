@@ -1,56 +1,50 @@
-# VoiceRPG Android: Agent Guidelines & Engineering Rules
+# Commander America: Quest for the Golden Tower
+## Agent Guidelines, Architectural Rules & Non-Subservience Policy
 
-This repository contains the native Android implementation of *VoiceRPG: Echoes of the Logos*. When pair programming on this codebase, adhere strictly to the following architectural guidelines and core project rules.
-
----
-
-## 1. Combat Roster & Story Synchronization
-* **Strict Narrative Roster Fidelity:** Never include companions in combat who have not yet officially joined the fellowship in the active story.
-  * **Act I (Chapters 1–4):** Strictly the **Duo Fellowship** (**Aethel** + **Sir Cedric**). Lyra must NOT appear in combat.
-  * **Act II Chapter 5:** Strictly the **Duo Fellowship** on a rescue operation.
-  * **Act II Chapter 6:** **Trio Fellowship** (**Aethel**, **Sir Cedric**, and **Lyra the Grove Warden**).
-  * Subsequent companions (Vane, Zephyr) join only when recruited in their respective chapters.
-* Default fallback parties in `CombatViewModel` and test encounters must default to the Duo Fellowship unless testing multi-character mechanics explicitly.
+This repository contains the standalone satirical retro voice/tactile JRPG *Commander America: Quest for the Golden Tower*. When pair programming on this codebase, adhere strictly to the following architectural guidelines and core project rules.
 
 ---
 
-## 2. Dialogue Hubs & Completed Option Elimination
-* **No Endless Loops:** When the player visits a narrative hub offering multiple choices/inquiries (e.g. Camp, Aqueducts, Solaria Belfry, Drowned Fane):
-  1. Each choice branch must set a distinct completion flag (e.g., `setFlagOnEnter = "ch5_creek_scouted"`).
-  2. Choices with matching `completionFlag` must be filtered out / eliminated once completed so the player cannot loop endlessly.
-  3. When all sub-story options in a hub are completed, the hub node must automatically advance to the next narrative milestone.
-* **Rich Narrative Prose:** Maintain evocative, atmospheric JRPG storytelling with meaningful dialogue and distinct character voices, avoiding 1-line dismissive dialogue.
+## 1. Absolute Independence & Non-Subservience Policy
+* **Engine vs. Game Content:** This game is built on the VoiceRPG engine, but is **NOT in any way subservient to the original game (*Echoes of the Logos*)**.
+* **Zero Legacy Fantasy Relics:** Never import, reintroduce, or reference characters, locations, or lore from the original fantasy template:
+  * NO "Aethel", "Sir Cedric", "Lyra", "Zephyr", "Malakor", "Vaelor", "Galahault", "Nocturne", or "Aethelgard".
+  * NO "Echoes of the Aether", "Awaken in Aethelgard", or medieval fantasy relics.
+* All narrative scripts, bosses, spells, voice assignments, and UI strings belong exclusively to the *Commander America* satirical universe.
 
 ---
 
-## 3. Screenless & Audio-First Playability (Pocket Mode)
-* The game must remain **100% playable without looking at the screen**:
-  * All dialogue lines and combat actions must support Text-To-Speech (TTS) narration.
-  * Available choices must be readable aloud via `isReadChoicesEnabled` (*"Option 1: ... Option 2: ... What is your command?"*).
-  * System toggles and status queries must be operable hands-free via speech meta-commands (*"Status"*, *"Enemies"*, *"Toggle narration"*, *"Read choices"*, *"Pocket mode"*, *"Auto listen"*, *"Options"*).
-  * Auto-listen microphone re-arms seamlessly after TTS completion.
+## 2. Character Roster & Voice System
+* **Active Cast:**
+  * **Commander America** (Donald J. Trump) - The Golden Sovereign & Protagonist.
+  * **Elon Musk** ("The Chief Doge & Starship Sovereign") - Tech ally, Cyber Command, Starlink, Cybertrucks.
+  * **Chronicle Narrator** - Epic presidential chronicle narrator.
+  * **Madam Speaker Pelosi** - The Stock-Trading Shadow Lich.
+  * **Kamala** - The Unburdened Vice-Sovereign.
+  * **Barack** - The Teleprompter Sorcerer.
+  * **Final Boss Biden** - The Malarkey Sovereign.
+  * **Chairman Rocket Man** - Chairman of the Crimson Spire.
+  * **Media Pundit Spectre** - Fact-Checker Ghoul / Cable News Pundit.
+  * **Marco Rubio** ("Little Marco" / "The Bottled Orator") & Primary Debate Rivals.
+* Every character must have their own unique voice profile, TTS pitch, preview phrase, and voice command recognition in `AudioSetupScreen` and `CombatNarrator`.
 
 ---
 
-## 4. Multi-Voice Character Assignment
-* Use Android's `android.speech.tts.Voice` API to programmatically discover installed voice models on the device:
-  * Bind distinct physical voice models to each character:
-    * **Sir Cedric:** Installed deep male baritone voice.
-    * **Aethel (Hero):** Heroic female / invocator voice.
-    * **Lyra:** Gentle nature warden voice.
-    * **Narrator:** Impartial chronicle storyteller voice.
-  * Fall back smoothly if fewer voice models are installed, using pitch and rate modulation as secondary character expressions.
+## 3. Combat Mechanics & Story Synchronization
+* **Combat Spells:** The protagonist uses Commander spells (`TREMENDOUS_STRIKE`, `ART_OF_THE_DEAL`, `OBAMA_DID_IT_FIRST`, `BUILD_THE_WALL`, `RALLY_THE_PATRIOTS`).
+* **No Pre-Battle Dialogue Loops:** Winning an encounter must always transition directly to that Act's post-battle dialogue node (e.g., `act1_lobby_battle` -> `act1_post_battle`).
+* Encounters must never loop back to the pre-battle challenge node.
 
 ---
 
-## 5. Mandatory Verification, GitHub Release & Device Deployment
-* **Automated Testing:** Always verify all changes with automated tests: `./gradlew test`.
-* **Compilation:** Always build a fresh debug APK: `./gradlew assembleDebug`.
-* **Mandatory GitHub Release For Every Change:** For every change or feature completed, always tag, create, and publish a new GitHub release with the compiled `app-debug.apk` attached as an asset.
-* **Mandatory Phone Installation For Every Change:** For every change or feature completed, always automatically install the updated APK directly onto the user's connected phone via ADB (`adb install -r app/build/outputs/apk/debug/app-debug.apk`) without waiting to be asked.
+## 4. Screenless & Audio-First Playability (Pocket Mode)
+* The entire game must remain 100% playable eyes-free / hands-free:
+  * Full TTS narration of all dialogue and battle actions.
+  * Spoken choices aloud via `isReadChoicesEnabled`.
+  * Hands-free speech recognition for all combat moves, dialogue choices, and system menus.
 
 ---
 
-## 6. Standalone Engine Synchronization
-* **Engine Parity:** Any major engine-level feature, system capability, persistence improvement, audio option, or gameplay mode (e.g., Pure Story Mode auto-play, multi-slot `AtomicFile` persistence, narration playback rate controls, playstyle presets, cheat codes) added or updated in `voice-rpg-android` MUST be synchronized into this standalone engine repository.
-
+## 5. Verification & Deployment Protocol
+* After any change, verify compilation with `./gradlew assembleDebug`.
+* Install the resulting APK to connected ADB devices.

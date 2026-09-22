@@ -86,23 +86,24 @@ fun CharacterCreationScreen(
 
     val context = LocalContext.current
     val aethelBitmap = remember {
-        StoryAssetLoader.loadBitmap(context, "portraits/aethel.jpg")
+        StoryAssetLoader.loadBitmap(context, "portraits/commander_america.jpg")
+            ?: StoryAssetLoader.loadBitmap(context, "portraits/aethel.jpg")
     }
 
     val titles = listOf(
-        "The Awakened Invocator",
-        "The Flame-Woven",
-        "The Silent Breaker",
-        "The Star-Caller",
-        "The Oath-Bound"
+        "Commander-in-Chief",
+        "Master of the Deal",
+        "Patriotic Sovereign",
+        "The Indomitable",
+        "Defender of Freedom"
     )
 
-    val quickNames = listOf("Aethel", "Rowan", "Kaelen", "Elira", "Vaelen")
+    val quickNames = listOf("Commander America", "The Boss", "Donald", "Patriot 47")
 
     fun confirmAndAwaken() {
         speechManager?.cancel()
         val finalCustomization = PlayerCustomization(
-            name = if (name.isBlank()) "Aethel" else name.trim(),
+            name = if (name.isBlank()) "Commander America" else name.trim(),
             heroClass = selectedClass,
             title = selectedTitle,
             auraColor = selectedAura,
@@ -118,7 +119,7 @@ fun CharacterCreationScreen(
         // 1. Awaken / Embark command
         val embarkKeywords = listOf(
             "awaken", "embark", "begin", "start", "enter", "let us begin", "ready",
-            "venture", "let's go", "awaken in aethelgard", "begin journey", "start game",
+            "venture", "let's go", "golden escalator", "make america great", "begin campaign", "start game",
             "play", "lets go", "confirm", "forward", "onward"
         )
         if (embarkKeywords.any { lower.contains(it) }) {
@@ -498,7 +499,7 @@ fun CharacterCreationScreen(
                     .height(48.dp)
             ) {
                 Text(
-                    text = "AWAKEN IN AETHELGARD ➔",
+                    text = "DESCEND GOLDEN ESCALATOR ➔",
                     fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Black,
                     fontSize = 14.sp

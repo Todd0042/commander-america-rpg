@@ -40,14 +40,34 @@ data class DialogueSpeaker(
             ttsPitch = 0.85f
         )
 
-        val NARRATOR = DialogueSpeaker(
-            id = "narrator",
-            name = "Narrator",
-            title = "Chronicle",
-            portraitAsset = "portraits/narrator.jpg",
-            themeColor = LogosGold,
-            ttsPitch = 1.0f
+        val NARRATOR_KAROLINE = DialogueSpeaker(
+            id = "narrator_karoline",
+            name = "Karoline (Press Sec)",
+            title = "Press Secretary of Truth",
+            portraitAsset = "portraits/narrator_karoline.jpg",
+            themeColor = Color(0xFFFFD54F),
+            ttsPitch = 1.12f
         )
+
+        val NARRATOR_KAYLEIGH = DialogueSpeaker(
+            id = "narrator_kayleigh",
+            name = "Anchor Kayleigh",
+            title = "Primetime Desk Anchor",
+            portraitAsset = "portraits/narrator_kayleigh.jpg",
+            themeColor = Color(0xFF4FC3F7),
+            ttsPitch = 1.02f
+        )
+
+        val NARRATOR_HULK = DialogueSpeaker(
+            id = "narrator_hulk",
+            name = "The Hulkster",
+            title = "Legend of the 24-Inch Pythons",
+            portraitAsset = "portraits/narrator_hulk.jpg",
+            themeColor = Color(0xFFFF5252),
+            ttsPitch = 0.78f
+        )
+
+        val NARRATOR = NARRATOR_KAYLEIGH
 
         val SHADOW_WISP = DialogueSpeaker(
             id = "shadow_wisp",
@@ -130,13 +150,131 @@ data class DialogueSpeaker(
             ttsPitch = 1.05f
         )
 
-        val VOICE_MOTE = DialogueSpeaker(
-            id = "voice_mote",
-            name = "A Freed Voice Mote",
-            title = "Echo of the Reservoir",
-            portraitAsset = "portraits/voice_mote.jpg",
-            themeColor = Color(0xFF80DEEA),
-            ttsPitch = 1.30f
+        val COMMANDER_AMERICA = DialogueSpeaker(
+            id = "commander_america",
+            name = "Commander America",
+            title = "Commander-in-Chief of Freedom",
+            portraitAsset = "portraits/commander_america.jpg",
+            themeColor = Color(0xFFFFD700),
+            ttsPitch = 0.90f
+        )
+
+        val ELON = DialogueSpeaker(
+            id = "elon",
+            name = "Elon Musk",
+            title = "The Chief Doge & Starship Sovereign",
+            portraitAsset = "portraits/elon.jpg",
+            themeColor = Color(0xFF00E5FF),
+            ttsPitch = 1.05f
+        )
+
+
+        val BIDEN = DialogueSpeaker(
+            id = "biden",
+            name = "Final Boss Biden",
+            title = "The Malarkey Sovereign",
+            portraitAsset = "portraits/biden.jpg",
+            themeColor = Color(0xFF90CAF9),
+            ttsPitch = 0.65f
+        )
+
+        val KAMALA = DialogueSpeaker(
+            id = "kamala",
+            name = "Kamala",
+            title = "The Unburdened Vice-Sovereign",
+            portraitAsset = "portraits/kamala.jpg",
+            themeColor = Color(0xFFCE93D8),
+            ttsPitch = 1.25f
+        )
+
+        val OBAMA = DialogueSpeaker(
+            id = "obama",
+            name = "Barack",
+            title = "The Teleprompter Sorcerer",
+            portraitAsset = "portraits/obama.jpg",
+            themeColor = Color(0xFF4FC3F7),
+            ttsPitch = 0.95f
+        )
+
+        val ROCKET_MAN = DialogueSpeaker(
+            id = "rocket_man",
+            name = "Rocket Man",
+            title = "Chairman of the Crimson Spire",
+            portraitAsset = "portraits/rocket_man.jpg",
+            themeColor = Color(0xFFEF5350),
+            ttsPitch = 0.70f
+        )
+
+        val MEDIA_ANCHOR = DialogueSpeaker(
+            id = "media_anchor",
+            name = "Cable News Anchor",
+            title = "Smug Primetime Pundit",
+            portraitAsset = "portraits/media_anchor.jpg",
+            themeColor = Color(0xFFB0BEC5),
+            ttsPitch = 1.10f
+        )
+
+        val ESTABLISHMENT_RIVAL = DialogueSpeaker(
+            id = "establishment_rival",
+            name = "Dynasty Rival",
+            title = "Focus-Grouped Candidate",
+            portraitAsset = "portraits/media_anchor.jpg",
+            themeColor = Color(0xFF5C6BC0),
+            ttsPitch = 0.85f
+        )
+
+        val PARTY_BOSS = DialogueSpeaker(
+            id = "party_boss",
+            name = "Establishment Party Boss",
+            title = "Convention Delegate Broker",
+            portraitAsset = "portraits/malakor.jpg",
+            themeColor = Color(0xFFC62828),
+            ttsPitch = 0.70f
+        )
+
+        val PELOSI = DialogueSpeaker(
+            id = "pelosi",
+            name = "Madam Speaker Pelosi",
+            title = "The Stock-Trading Shadow Lich",
+            portraitAsset = "portraits/pelosi.jpg",
+            themeColor = Color(0xFF81C784),
+            ttsPitch = 0.80f
+        )
+
+        val MARCO = DialogueSpeaker(
+            id = "marco",
+            name = "Marco Rubio",
+            title = "Secretary of State",
+            portraitAsset = "portraits/marco.jpg",
+            themeColor = Color(0xFF42A5F5),
+            ttsPitch = 1.05f
+        )
+
+        val VANCE = DialogueSpeaker(
+            id = "vance",
+            name = "JD Vance",
+            title = "The Vice President",
+            portraitAsset = "portraits/vance.jpg",
+            themeColor = Color(0xFF5C6BC0),
+            ttsPitch = 0.92f
+        )
+
+        val KASH = DialogueSpeaker(
+            id = "kash",
+            name = "Kash Patel",
+            title = "FBI Director",
+            portraitAsset = "portraits/kash.jpg",
+            themeColor = Color(0xFFAB47BC),
+            ttsPitch = 0.98f
+        )
+
+        val KENNEDY = DialogueSpeaker(
+            id = "kennedy",
+            name = "Senator Kennedy",
+            title = "Committee Cross-Examiner",
+            portraitAsset = "portraits/kennedy.jpg",
+            themeColor = Color(0xFF78909C),
+            ttsPitch = 0.88f
         )
     }
 
@@ -234,8 +372,24 @@ data class DialogueLogEntry(
             "galahault" -> DialogueSpeaker.GALAHAULT.themeColor
             "nocturne" -> DialogueSpeaker.NOCTURNE.themeColor
             "ouros" -> DialogueSpeaker.OUROS.themeColor
-            "dryad_matron" -> DialogueSpeaker.DRYAD_MATRON.themeColor
-            "voice_mote" -> DialogueSpeaker.VOICE_MOTE.themeColor
+            "pelosi" -> DialogueSpeaker.PELOSI.themeColor
+            "commander_america" -> DialogueSpeaker.COMMANDER_AMERICA.themeColor
+            "elon" -> DialogueSpeaker.ELON.themeColor
+            "biden" -> DialogueSpeaker.BIDEN.themeColor
+            "kamala" -> DialogueSpeaker.KAMALA.themeColor
+            "obama" -> DialogueSpeaker.OBAMA.themeColor
+            "rocket_man" -> DialogueSpeaker.ROCKET_MAN.themeColor
+            "media_anchor" -> DialogueSpeaker.MEDIA_ANCHOR.themeColor
+            "establishment_rival" -> DialogueSpeaker.ESTABLISHMENT_RIVAL.themeColor
+            "party_boss" -> DialogueSpeaker.PARTY_BOSS.themeColor
+            "marco" -> DialogueSpeaker.MARCO.themeColor
+            "vance" -> DialogueSpeaker.VANCE.themeColor
+            "kash" -> DialogueSpeaker.KASH.themeColor
+            "kennedy" -> DialogueSpeaker.KENNEDY.themeColor
+            "narrator_karoline" -> DialogueSpeaker.NARRATOR_KAROLINE.themeColor
+            "narrator_kayleigh" -> DialogueSpeaker.NARRATOR_KAYLEIGH.themeColor
+            "narrator_hulk" -> DialogueSpeaker.NARRATOR_HULK.themeColor
+            "narrator" -> DialogueSpeaker.NARRATOR.themeColor
             else -> if (isNarrator) LogosGold else Color.White
         }
     }
@@ -253,10 +407,27 @@ data class DialogueLogEntry(
             "nocturne" -> DialogueSpeaker.NOCTURNE.portraitAsset
             "ouros" -> DialogueSpeaker.OUROS.portraitAsset
             "dryad_matron" -> DialogueSpeaker.DRYAD_MATRON.portraitAsset
-            "voice_mote" -> DialogueSpeaker.VOICE_MOTE.portraitAsset
+            "pelosi" -> DialogueSpeaker.PELOSI.portraitAsset
+            "commander_america" -> DialogueSpeaker.COMMANDER_AMERICA.portraitAsset
+            "elon" -> DialogueSpeaker.ELON.portraitAsset
+            "biden" -> DialogueSpeaker.BIDEN.portraitAsset
+            "kamala" -> DialogueSpeaker.KAMALA.portraitAsset
+            "obama" -> DialogueSpeaker.OBAMA.portraitAsset
+            "rocket_man" -> DialogueSpeaker.ROCKET_MAN.portraitAsset
+            "media_anchor" -> DialogueSpeaker.MEDIA_ANCHOR.portraitAsset
+            "establishment_rival" -> DialogueSpeaker.ESTABLISHMENT_RIVAL.portraitAsset
+            "party_boss" -> DialogueSpeaker.PARTY_BOSS.portraitAsset
+            "marco" -> DialogueSpeaker.MARCO.portraitAsset
+            "vance" -> DialogueSpeaker.VANCE.portraitAsset
+            "kash" -> DialogueSpeaker.KASH.portraitAsset
+            "kennedy" -> DialogueSpeaker.KENNEDY.portraitAsset
+            "narrator_karoline" -> DialogueSpeaker.NARRATOR_KAROLINE.portraitAsset
+            "narrator_kayleigh" -> DialogueSpeaker.NARRATOR_KAYLEIGH.portraitAsset
+            "narrator_hulk" -> DialogueSpeaker.NARRATOR_HULK.portraitAsset
             "narrator" -> DialogueSpeaker.NARRATOR.portraitAsset
             else -> null
         }
     }
+
 }
 

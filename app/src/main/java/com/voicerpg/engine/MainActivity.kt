@@ -124,6 +124,8 @@ class MainActivity : ComponentActivity() {
         }
         storyViewModel.onCloseOptions = { combatViewModel.closeOptions() }
         combatViewModel.onContinueStory = {
+            combatNarrator.setCombatActive(false)
+            combatViewModel.pauseAtb()
             storyViewModel.updatePartyStatsFromCombat(combatViewModel.state.value.party)
             storyViewModel.onCombatVictory()
         }
@@ -195,6 +197,19 @@ class MainActivity : ComponentActivity() {
                     combatViewModel.applySavedStats(storyState.partyStats)
                     combatViewModel.startEncounter(encounter)
                     combatViewModel.setPureStoryMode(storyState.isPureStoryMode)
+                } ?: run {
+                    combatNarrator.setCombatActive(false)
+                    combatViewModel.pauseAtb()
+                }
+            }
+
+            LaunchedEffect(storyState.gameScreen) {
+                if (storyState.gameScreen != GameScreen.COMBAT_ARENA) {
+                    combatNarrator.setCombatActive(false)
+                    combatViewModel.pauseAtb()
+                }
+                if (storyState.gameScreen == GameScreen.TUTORIAL) {
+                    tutorialBattleViewModel.startTutorial()
                 }
             }
 
