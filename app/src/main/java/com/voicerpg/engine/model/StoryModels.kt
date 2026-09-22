@@ -227,7 +227,7 @@ data class DialogueSpeaker(
             id = "party_boss",
             name = "Establishment Party Boss",
             title = "Convention Delegate Broker",
-            portraitAsset = "portraits/malakor.jpg",
+            portraitAsset = "portraits/media_anchor.jpg",
             themeColor = Color(0xFFC62828),
             ttsPitch = 0.70f
         )
@@ -322,7 +322,7 @@ data class StoryScene(
     val backgroundAsset: String,
     val initialNodeId: String,
     val ambientDescription: String,
-    val musicAsset: String = "audio/music/bgm_act1_forest.ogg"
+    val musicAsset: String = "audio/music/bgm_rally.ogg"
 )
 
 enum class GameScreen {

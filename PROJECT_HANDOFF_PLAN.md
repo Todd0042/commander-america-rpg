@@ -194,6 +194,29 @@
   - Updated `TutorialBattleTest.kt` unit tests covering initial state, progression, damage execution, resonance multiplier scaling, breath restoration, enemy counter-attacks, and reset. All 8 tutorial test cases passing.
   - Built and successfully installed debug APK on physical Android device (`192.168.1.253:42679`).
 
+* [x] **Phase 13: Asset Overhaul — Custom Story Backgrounds & America-Wins-Everything Music**
+  - **Complete Removal of Deprecated Assets:** Purged all 25+ legacy fantasy `.jpg` backgrounds and all deprecated fantasy character portraits (`aethel.jpg`, `cedric.jpg`, `lyra.jpg`, `zephyr.jpg`, `malakor.jpg`, `vaelor.jpg`, `galahault.jpg`, `nocturne.jpg`, `ouros.jpg`, `dryad_matron.jpg`, `shadow_wisp.jpg`) from `app/src/main/assets/story/` and `app/src/main/assets/portraits/`.
+  - **Custom Story Backgrounds Generation (29 Unique 16:9 1376x768 Artworks):** Created custom retro-cinematic RPG backgrounds mapped to every chapter across all 8 Acts:
+    - Act I: `primary_debate.jpg` (Quicken Loans Arena, 16 podiums under spotlights), `airport_rally.jpg` (Manchester Hangar, Boeing 757, crowds).
+    - Act II: `national_mall.jpg` (Inaugural Mall & Capitol steps), `capitol_rotunda.jpg` (Neoclassical Rotunda dome & trading terminals).
+    - Act III: `steel_mill.jpg` (Lordstown OH glowing blast furnaces & molten steel), `trade_room.jpg` (USMCA drafting room & seal), `air_force_one.jpg` (Presidential cabin at 41,000 ft), `summit_table.jpg` (DMZ 38th parallel blue buildings & fast-food feast).
+    - Act IV: `fisa_vault.jpg` (FBI Hoover sub-basement archive cabinets), `scif_vault.jpg` (Reinforced SCIF vault door & declassification screens), `courtroom_steps.jpg` (Corinthian courthouse steps & press cameras), `hearing_room.jpg` (Special Counsel hearing dais & gavel).
+    - Act V: `ballot_arena.jpg` (State Farm Arena 3 AM burst pipe & ballot tables), `senate_hearing.jpg` (Dirksen Senate inquest dais), `maralago_terrace.jpg` (Palm Beach terrace sunset & royal palms), `storage_vault.jpg` (Gilded storage room with Bankers boxes).
+    - Act VI: `border_wall.jpg` (30-foot steel bollards & Sonoran desert), `venn_fog.jpg` (Yellow and cyan holographic Venn rings in mist), `electric_bus.jpg` (Mud-stranded EV school buses & offline chargers), `coconut_grove.jpg` (Tropical palm grove & falling coconuts), `unburdened_throne.jpg` (Shimmering circular logic dais).
+    - Act VII: `gag_hearing.jpg` (Silenced Manhattan courtroom & menacing gavel), `butler_fairgrounds.jpg` (Butler PA outdoor stage & crane-hoisted US flag), `steel_ear_miracle.jpg` (Iconic raised fist, bloodied ear, and rippling flag), `rnc_milwaukee.jpg` (Fiserv Forum arena balloons & gold confetti).
+    - Act VIII: `basement_bunker.jpg` (Wilmington virtual green screen studio & ring lights), `scranton_platform.jpg` (Windy train platform & dual glass teleprompters), `autopen_factory.jpg` (Robotic arms signing trillions in omnibus spending bills), `golden_inauguration.jpg` (Golden sunrise over Capitol dome, millions cheering, golden dawn of America).
+  - **Wired Assets into Engine:** Updated all scenes in `StoryScript.kt` and `TitleScreen.kt` to reference the newly generated backgrounds.
+  - **Patriotic Background Music (BGM) Overhaul:** Synthesized 6 brand-new multi-track polyphonic audio tracks in 44.1kHz Vorbis OGG:
+    - `bgm_title.ogg`: Majestic Stars & Stripes / Hail to the Chief trumpet fanfare and timpani.
+    - `bgm_combat.ogg`: 132 BPM driving arena rock with distorted power chords, heavy drums, and triumphant victory brass riff.
+    - `bgm_rally.ogg`: 126 BPM high-energy stadium rally rock anthem with driving synth bass and celebratory hooks.
+    - `bgm_oval.ogg`: 104 BPM regal presidential sovereign march with noble horns and marching snare.
+    - `bgm_intrigue.ogg`: 128 BPM espionage / swamp-draining thriller beat with pulsing bass and dramatic brass stabs.
+    - `bgm_inauguration.ogg`: 120 BPM Golden Age grand finale climax fanfare with ringing bells and ascending trumpets.
+    - Overwrote legacy ambient tracks (`bgm_act1_forest.ogg`, `bgm_act2_marsh.ogg`, `bgm_act3_bastion.ogg`, `bgm_act4_celestial.ogg`) with the new patriotic tracks for complete backward compatibility.
+  - **Wired Music into MusicManager & ViewModels:** Updated `MusicManager.kt`, `StoryViewModel.kt`, and `MainActivity.kt` to play thematic tracks per scene and screen.
+  - **Unit Testing & Verification:** Added automated asset validation tests in `CommanderAmericaGameTest.kt` verifying all 31 background assets, all 6 music tracks, and all dialogue speaker portraits are valid and present on disk. 33/33 tests passing, 8/8 tutorial tests passing. Built debug APK and installed successfully on physical Android device (`192.168.1.253:42679`).
+
 
 ## 3. Master Phase Roadmap (ALL PHASES COMPLETE)
 
@@ -208,6 +231,7 @@ flowchart TD
     P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel (DONE)"]
     P10 --> P11["Phase 11: Streamline Character Creation (DONE)"]
     P11 --> P12["Phase 12: Streamline & Minimize Tutorial (DONE)"]
+    P12 --> P13["Phase 13: Asset Overhaul - Backgrounds & Patriotic Music (DONE)"]
 ```
 
 ### Detailed Breakdown of Remaining Phases:

@@ -459,10 +459,10 @@ class StoryViewModel(
             speechManager.setChimeMuted(existingSave.isChimeMuted)
             musicManager?.setMusicEnabled(existingSave.isMusicEnabled)
             musicManager?.setVolume(existingSave.musicVolume)
-            musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_ACT1_FOREST)
+            musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_RALLY)
         } else {
             // First time player: start at Title Screen
-            musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_ACT1_FOREST)
+            musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_TITLE)
             _state.value = StoryState(
                 gameScreen = GameScreen.TITLE,
                 hasExistingSave = false,
@@ -653,7 +653,7 @@ class StoryViewModel(
             isPureStoryMode = false,
             isStoryAutoPlayPaused = false
         )
-        musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_ACT1_FOREST)
+        musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_TITLE)
     }
 
     fun getStoryModeSaveSummary(): SaveSummary? = saveManager.getSlotSummary(SaveManager.STORY_MODE_SLOT)
@@ -1527,7 +1527,7 @@ class StoryViewModel(
         } else if (returnTarget == GameScreen.TITLE) {
             musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_TITLE)
         } else {
-            musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_ACT1_FOREST)
+            musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_RALLY)
         }
     }
 

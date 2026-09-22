@@ -96,7 +96,6 @@ fun StoryScreen(
     val heroSpeaker = DialogueSpeaker.COMMANDER_AMERICA
     val heroBitmap = remember {
         StoryAssetLoader.loadBitmap(context, "portraits/commander_america.jpg")
-            ?: StoryAssetLoader.loadBitmap(context, "portraits/aethel.jpg")
     }
 
     val currentNode = storyState.currentNode

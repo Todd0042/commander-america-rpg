@@ -225,7 +225,7 @@ class MainActivity : ComponentActivity() {
                 } else if (storyState.gameScreen == GameScreen.TITLE || storyState.gameScreen == GameScreen.TUTORIAL) {
                     musicManager.playTrack(MusicManager.TRACK_TITLE)
                 } else {
-                    musicManager.playTrack(MusicManager.TRACK_ACT1_FOREST)
+                    musicManager.playTrack(MusicManager.TRACK_RALLY)
                 }
             }
 

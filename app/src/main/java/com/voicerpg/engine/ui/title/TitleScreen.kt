@@ -112,7 +112,8 @@ fun TitleScreen(
     var slotDialogIsNewGameMode by remember { mutableStateOf(false) }
 
     val backgroundBitmap = remember {
-        StoryAssetLoader.loadBitmap(context, "backgrounds/bg_summit.jpg")
+        StoryAssetLoader.loadBitmap(context, "story/golden_inauguration.jpg")
+            ?: StoryAssetLoader.loadBitmap(context, "story/oval_citadel.jpg")
     }
 
     val infiniteTransition = rememberInfiniteTransition(label = "title_glow")

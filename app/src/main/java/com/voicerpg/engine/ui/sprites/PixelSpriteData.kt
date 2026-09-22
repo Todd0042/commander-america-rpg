@@ -844,7 +844,7 @@ private val COMMANDER_AMERICA_UPRIGHT = listOf(
         val lowerId = characterId.lowercase()
         return when {
             // Hero / Commander America
-            lowerId == "hero" || lowerId.contains("commander") || lowerId == "aethel" || lowerId.contains("america") -> {
+            lowerId == "hero" || lowerId.contains("commander") || lowerId.contains("america") -> {
                 val grid = when (frame) {
                     SpriteFrame.IDLE_UPRIGHT -> COMMANDER_AMERICA_UPRIGHT
                     SpriteFrame.IDLE_CROUCH -> COMMANDER_AMERICA_CROUCH

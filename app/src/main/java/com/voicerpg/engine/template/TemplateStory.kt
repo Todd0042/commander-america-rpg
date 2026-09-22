@@ -26,7 +26,7 @@ object TemplateStory {
         id = "template_mentor",
         name = "Grandmaster Vael",
         title = "Chamber Warden",
-        portraitAsset = "portraits/cedric.jpg", // Reusable sample portrait included in assets
+        portraitAsset = "portraits/commander_america.jpg", // Reusable sample portrait included in assets
         themeColor = Color(0xFFFFB74D),
         ttsPitch = 0.85f // Deep baritone mentor pitch
     )
@@ -36,7 +36,7 @@ object TemplateStory {
         id = "template_proving_grounds",
         name = "The Proving Grounds",
         chapterTitle = "Sandbox: The Voice Sanctuary",
-        backgroundAsset = "story/bell_chamber.jpg",
+        backgroundAsset = "story/oval_citadel.jpg",
         initialNodeId = "template_linear_narration",
         ambientDescription = "An ancient vaulted chamber where stone glyphs hum in resonance with human incantations.",
         musicAsset = "audio/music/bgm_title.ogg"

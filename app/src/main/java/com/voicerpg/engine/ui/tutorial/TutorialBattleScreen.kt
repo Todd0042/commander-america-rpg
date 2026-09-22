@@ -1031,7 +1031,7 @@ private fun TutorialFloatingNumberItem(ft: TutorialFloatingText) {
         modifier = Modifier
             .offset {
                 // If it's damage to enemy dummy, place it on the right side; if heal/damage to hero, place it on left
-                val isHeroTarget = ft.targetId == "aethel" || ft.targetId == "cedric" || ft.targetId == "lyra" || ft.targetId == "zephyr"
+                val isHeroTarget = ft.targetId == "hero" || ft.targetId == "marco" || ft.targetId == "vance" || ft.targetId == "kash" || ft.targetId == "kennedy"
                 val baseX = if (isHeroTarget) 120 else 600
                 val baseY = if (ft.targetId.contains("beta")) 380 else if (ft.targetId.contains("gamma")) 460 else 300
                 IntOffset(

@@ -27,7 +27,7 @@ object StoryScript {
         id = "scene_act1_ch2_debate",
         name = "Quicken Loans Arena Debate Stage",
         chapterTitle = "Act I - Ch 2: The Primary Debate Arena (2015)",
-        backgroundAsset = "story/clockwork_bastion.jpg",
+        backgroundAsset = "story/primary_debate.jpg",
         initialNodeId = "act1_ch2_intro",
         ambientDescription = "Blinding studio spotlights illuminate sixteen rival podiums and a hostile press panel."
     )
@@ -36,7 +36,7 @@ object StoryScript {
         id = "scene_act1_ch3_rally",
         name = "Manchester Airport Hangar",
         chapterTitle = "Act I - Ch 3: The Primary Sweep (2016)",
-        backgroundAsset = "story/final_summit.jpg",
+        backgroundAsset = "story/airport_rally.jpg",
         initialNodeId = "act1_ch3_intro",
         ambientDescription = "Sub-zero blizzard winds howl outside while fifteen thousand roaring patriots pack the heated hangar."
     )
@@ -48,7 +48,8 @@ object StoryScript {
         chapterTitle = "Act II - Ch 1: The Inaugural Address (Jan 20, 2017)",
         backgroundAsset = "story/national_mall.jpg",
         initialNodeId = "act2_ch1_intro",
-        ambientDescription = "The Capitol steps gleam under a crisp January sky as tens of thousands of American patriots pack the National Mall."
+        ambientDescription = "The Capitol steps gleam under a crisp January sky as tens of thousands of American patriots pack the National Mall.",
+        musicAsset = "audio/music/bgm_title.ogg"
     )
 
     // Act II - Chapter 2: Entering the Oval Citadel (The Oval Office)
@@ -58,7 +59,8 @@ object StoryScript {
         chapterTitle = "Act II - Ch 2: The Executive Pen (Jan 2017)",
         backgroundAsset = "story/oval_citadel.jpg",
         initialNodeId = "act2_ch2_intro",
-        ambientDescription = "Gold drapes replace the old burgundy curtains. The Resolute Desk is cleared of bobbleheads and ready for historic executive action."
+        ambientDescription = "Gold drapes replace the old burgundy curtains. The Resolute Desk is cleared of bobbleheads and ready for historic executive action.",
+        musicAsset = "audio/music/bgm_oval.ogg"
     )
 
     // Act II - Chapter 3: Confronting Madam Speaker (Capitol Rotunda)
@@ -68,7 +70,8 @@ object StoryScript {
         chapterTitle = "Act II - Ch 3: The Stock-Trading Lich (2017)",
         backgroundAsset = "story/capitol_rotunda.jpg",
         initialNodeId = "act2_ch3_intro",
-        ambientDescription = "Marble columns tower above as Pelosi's microchip options spike on the trading terminal — right before the regulatory vote."
+        ambientDescription = "Marble columns tower above as Pelosi's microchip options spike on the trading terminal — right before the regulatory vote.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
     )
 
     // Legacy alias: the existing act2_oval still points to Ch1 (backward compat)
@@ -78,7 +81,8 @@ object StoryScript {
         chapterTitle = "Act II: The Inaugural Siege & Media Wars (2017)",
         backgroundAsset = "story/oval_citadel.jpg",
         initialNodeId = "act2_ch1_intro",
-        ambientDescription = "Gilded presidential drapes frame the Oval Office where the Deep State swamp still lurks."
+        ambientDescription = "Gilded presidential drapes frame the Oval Office where the Deep State swamp still lurks.",
+        musicAsset = "audio/music/bgm_oval.ogg"
     )
 
 
@@ -127,7 +131,7 @@ object StoryScript {
         id = "scene_act3_summit",
         name = "The Crimson Summit Spire",
         chapterTitle = "Act III: Rocket Man & The Summit of Peace (2018)",
-        backgroundAsset = "story/clockwork_bastion.jpg",
+        backgroundAsset = "story/summit_table.jpg",
         initialNodeId = "act3_ch1_intro",
         ambientDescription = "High above the demilitarized zone, red flags ripple in the wind near a table set with fast-food feasts."
     )
@@ -177,7 +181,7 @@ object StoryScript {
         id = "scene_act4_mueller",
         name = "The Chamber of Phantom Hoaxes",
         chapterTitle = "Act IV: The Mueller Illusion Hoax (2019)",
-        backgroundAsset = "story/obsidian_vaults.jpg",
+        backgroundAsset = "story/hearing_room.jpg",
         initialNodeId = "act4_ch1_intro",
         ambientDescription = "Spectral paperwork and phantom subpoenas drift through the foggy tribunal hall."
     )
@@ -227,7 +231,7 @@ object StoryScript {
         id = "scene_act5_maralago",
         name = "The Mar-a-Lago Fortress",
         chapterTitle = "Act V: Midnight Sorcery & The Exile (2020-2021)",
-        backgroundAsset = "story/mausoleum_sun.jpg",
+        backgroundAsset = "story/maralago_terrace.jpg",
         initialNodeId = "act5_ch1_intro",
         ambientDescription = "Ocean breezes sweep across golden palm trees surrounding Commander America's exile retreat."
     )
@@ -287,7 +291,7 @@ object StoryScript {
         id = "scene_act6_wasteland",
         name = "The Word-Salad Wasteland",
         chapterTitle = "Act VI: The Word-Salad Wasteland (2022-2023)",
-        backgroundAsset = "story/rotting_marsh.jpg",
+        backgroundAsset = "story/unburdened_throne.jpg",
         initialNodeId = "act6_ch1_intro",
         ambientDescription = "Floating venn diagrams and endless loops of circular logic drift over a misty swamp."
     )
@@ -347,7 +351,7 @@ object StoryScript {
         id = "scene_act7_sands",
         name = "The Sands of Resolve",
         chapterTitle = "Act VII: Sands of Resolve & Steel Ear (2024)",
-        backgroundAsset = "story/shadowed_crags.jpg",
+        backgroundAsset = "story/steel_ear_miracle.jpg",
         initialNodeId = "act7_ch1_intro",
         ambientDescription = "Desert winds howl across ancient ruins as legal writs float like cursed ravens."
     )
@@ -387,9 +391,10 @@ object StoryScript {
         id = "scene_act8_ch4_citadel",
         name = "The Cosmic Oval Citadel",
         chapterTitle = "Act VIII - Ch 4: The Malarkey Sovereign Climax",
-        backgroundAsset = "story/final_summit.jpg",
+        backgroundAsset = "story/oval_citadel.jpg",
         initialNodeId = "act8_ch4_intro",
-        ambientDescription = "Inside the cosmic Oval Citadel, Biden the Malarkey Sovereign sits in his executive recliner clutching two melting scoops of vanilla ice cream."
+        ambientDescription = "Inside the cosmic Oval Citadel, Biden the Malarkey Sovereign sits in his executive recliner clutching two melting scoops of vanilla ice cream.",
+        musicAsset = "audio/music/bgm_oval.ogg"
     )
 
     // Act VIII - Chapter 5: The Golden Inauguration & Golden Age of America
@@ -399,7 +404,8 @@ object StoryScript {
         chapterTitle = "Act VIII - Ch 5: The Golden Inauguration",
         backgroundAsset = "story/golden_inauguration.jpg",
         initialNodeId = "act8_ch5_intro",
-        ambientDescription = "Sunshine gleams over the National Mall as millions celebrate the dawn of the Golden Age of America."
+        ambientDescription = "Sunshine gleams over the National Mall as millions celebrate the dawn of the Golden Age of America.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
     )
 
     // Legacy alias for Act VIII
@@ -407,9 +413,10 @@ object StoryScript {
         id = "scene_act8_citadel_final",
         name = "The Final Malarkey Citadel",
         chapterTitle = "Act VIII: Eradicating Malarkey - The Final Showdown",
-        backgroundAsset = "story/final_summit.jpg",
+        backgroundAsset = "story/golden_inauguration.jpg",
         initialNodeId = "act8_ch1_intro",
-        ambientDescription = "A cosmic arena powered by infinite scoops of vanilla ice cream and stumbles."
+        ambientDescription = "A cosmic arena powered by infinite scoops of vanilla ice cream and stumbles.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
     )
 
     val SCENE_COTTAGE = SCENE_ACT1_ESCALATOR

@@ -1806,4 +1806,87 @@ class CommanderAmericaGameTest {
             }
         }
     }
+
+    @Test
+    fun testAllStoryScenesReferenceValidCustomBackgroundAssets() {
+        val forbiddenKeywords = listOf(
+            "clockwork", "bastion", "final_summit", "obsidian", "mausoleum", "rotting", "shadowed", "bell_chamber"
+        )
+        val assetsDir = java.io.File("src/main/assets")
+
+        for ((sceneId, scene) in StoryScript.ALL_SCENES) {
+            assertTrue("Scene $sceneId backgroundAsset should not be empty", scene.backgroundAsset.isNotEmpty())
+            assertTrue("Scene $sceneId backgroundAsset should be in story/ folder: ${scene.backgroundAsset}", scene.backgroundAsset.startsWith("story/"))
+            
+            for (forbidden in forbiddenKeywords) {
+                assertFalse(
+                    "Scene $sceneId uses legacy fantasy asset '${scene.backgroundAsset}' containing '$forbidden'!",
+                    scene.backgroundAsset.contains(forbidden)
+                )
+            }
+
+            val assetFile = java.io.File(assetsDir, scene.backgroundAsset)
+            assertTrue("Asset file for scene $sceneId should exist on disk: ${assetFile.absolutePath}", assetFile.exists())
+            assertTrue("Asset file for scene $sceneId should not be empty: ${assetFile.absolutePath}", assetFile.length() > 0)
+        }
+    }
+
+    @Test
+    fun testAllPatrioticMusicTracksExistAndConfigured() {
+        val assetsDir = java.io.File("src/main/assets")
+        val tracks = listOf(
+            com.voicerpg.engine.audio.MusicManager.TRACK_TITLE,
+            com.voicerpg.engine.audio.MusicManager.TRACK_COMBAT,
+            com.voicerpg.engine.audio.MusicManager.TRACK_RALLY,
+            com.voicerpg.engine.audio.MusicManager.TRACK_OVAL,
+            com.voicerpg.engine.audio.MusicManager.TRACK_INTRIGUE,
+            com.voicerpg.engine.audio.MusicManager.TRACK_INAUGURATION
+        )
+
+        for (trackPath in tracks) {
+            val file = java.io.File(assetsDir, trackPath)
+            assertTrue("Music track file should exist: ${file.absolutePath}", file.exists())
+            assertTrue("Music track file should not be empty: ${file.absolutePath}", file.length() > 1000)
+        }
+    }
+
+    @Test
+    fun testNoLegacyFantasyPortraitsAreReferencedByDialogueSpeakers() {
+        val forbiddenNames = listOf(
+            "aethel", "cedric", "lyra", "zephyr", "malakor", "vaelor", "galahault",
+            "nocturne", "ouros", "dryad_matron", "shadow_wisp"
+        )
+        val speakers = listOf(
+            com.voicerpg.engine.model.DialogueSpeaker.COMMANDER_AMERICA,
+            com.voicerpg.engine.model.DialogueSpeaker.MARCO,
+            com.voicerpg.engine.model.DialogueSpeaker.VANCE,
+            com.voicerpg.engine.model.DialogueSpeaker.KASH,
+            com.voicerpg.engine.model.DialogueSpeaker.KENNEDY,
+            com.voicerpg.engine.model.DialogueSpeaker.ELON,
+            com.voicerpg.engine.model.DialogueSpeaker.NARRATOR_KAYLEIGH,
+            com.voicerpg.engine.model.DialogueSpeaker.NARRATOR_KAROLINE,
+            com.voicerpg.engine.model.DialogueSpeaker.NARRATOR_HULK,
+            com.voicerpg.engine.model.DialogueSpeaker.PELOSI,
+            com.voicerpg.engine.model.DialogueSpeaker.KAMALA,
+            com.voicerpg.engine.model.DialogueSpeaker.BIDEN,
+            com.voicerpg.engine.model.DialogueSpeaker.OBAMA,
+            com.voicerpg.engine.model.DialogueSpeaker.ROCKET_MAN,
+            com.voicerpg.engine.model.DialogueSpeaker.PARTY_BOSS,
+            com.voicerpg.engine.model.DialogueSpeaker.ESTABLISHMENT_RIVAL
+        )
+
+        val assetsDir = java.io.File("src/main/assets")
+        for (speaker in speakers) {
+            val portrait = speaker.portraitAsset
+            assertNotNull("Speaker ${speaker.id} portrait must not be null", portrait)
+            for (forbidden in forbiddenNames) {
+                assertFalse(
+                    "Speaker ${speaker.id} references forbidden fantasy portrait '$portrait'",
+                    portrait?.contains(forbidden) == true
+                )
+            }
+            val portraitFile = java.io.File(assetsDir, portrait!!)
+            assertTrue("Portrait file for ${speaker.id} should exist: ${portraitFile.absolutePath}", portraitFile.exists())
+        }
+    }
 }
