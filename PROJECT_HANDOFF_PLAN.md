@@ -128,15 +128,24 @@
   - Added encounters `ACT3_CH1_MILL_BATTLE` and `ACT3_CH3_INTERCEPT_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
   - All unit tests passing in `CommanderAmericaGameTest.kt` (19/19 tests). Installed and verified on physical device.
 
+* [x] **Phase 6 (Act IV): The Intelligence Vaults & Declassification — 4 Full Chapters**
+  - **Chapter 1: The FISA Warrant Labyrinth** (Hoover Building Sub-Basement Archives) — `act4_ch1_intro`, unverified dossier & secret renewal warrant hubs; **Kash Patel joins** as *Intel Inquisitor* (`act4_ch1_kash_arrives`); `act4_ch1_fisa_battle` (Chief Bureau Archivist & Redaction Marker Sentinel).
+  - **Chapter 2: The Unredacted Binder Inquest** (House Intelligence Secure SCIF) — `act4_ch2_intro`, felt marker solvent scrub, raw transcript release, 53 under-oath witness reviews; packing the unredacted binder for court.
+  - **Chapter 3: The Phantom Subpoena Ambush** (Federal Courtroom Steps) — `act4_ch3_intro`, 32-million dollar taxpayer tally, the 100% perfect call defense; `act4_ch3_subpoena_battle` (Chief Process Server & Lawfare Retainer Clerk).
+  - **Chapter 4: The Mueller Illusion Hoax Climax** (Special Counsel Hearing Room) — `act4_ch4_intro`, the legendary "NOTHINGBURGER" verdict, congressional record presentation, Kash's final declassified findings; `act4_hoax_battle` boss encounter (Phantom Mueller Hoax & Redacted Subpoenas); total exoneration epilogue leading into Mar-a-Lago Fortress.
+  - Added scenes `SCENE_ACT4_CH1_FISA`, `SCENE_ACT4_CH2_BINDER`, `SCENE_ACT4_CH3_COURT`, `SCENE_ACT4_CH4_HEARING`; legacy `SCENE_ACT4_MUELLER` preserved as backward-compat alias.
+  - Added encounters `ACT4_CH1_FISA_BATTLE` and `ACT4_CH3_SUBPOENA_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
+  - All unit tests passing in `CommanderAmericaGameTest.kt` (21/21 tests). Installed and verified on physical device.
 
-## 3. Master Phase Roadmap (Next Up: Phase 6)
+
+## 3. Master Phase Roadmap (Next Up: Phase 7)
 
 ```mermaid
 flowchart TD
     P3["Phase 3: Act I Expansion (DONE)"] --> P4["Phase 4: Act II - The Inaugural Siege (DONE)"]
     P4 --> P5["Phase 5: Act III - The Rustbelt Summit & Heartland (DONE)"]
-    P5 --> P6["Phase 6: Act IV - The Intelligence Vaults & Declassification (NEXT)"]
-    P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile"]
+    P5 --> P6["Phase 6: Act IV - The Intelligence Vaults & Declassification (DONE)"]
+    P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile (NEXT)"]
     P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland"]
     P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve"]
     P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel"]

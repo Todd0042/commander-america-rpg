@@ -777,7 +777,33 @@ object StoryEncounters {
         initialParty = createAct3Party()
     )
 
-    // 4. Act IV: The Mueller Illusion Hoax
+    // 4a. Act IV - Chapter 1: The FISA Warrant Labyrinth
+    val ACT4_CH1_FISA_BATTLE = EncounterDefinition(
+        id = "act4_ch1_fisa_battle",
+        name = "Act IV - Ch 1: Archivist Phantoms",
+        description = "Bureau Archivist Phantoms and unauthorized redaction officers attempt to shred the declassified FISA memos!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("archivist_boss", "Chief Bureau Archivist", "Occultist", currentHp = 460, maxHp = 460, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFF7E57C2), speed = 64, atbGauge = 0.35f),
+            Enemy("redaction_guard", "Redaction Marker Sentinel", "Vanguard", currentHp = 320, maxHp = 320, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFF546E7A), speed = 52, atbGauge = 0.25f)
+        ),
+        initialParty = createAct4Party() // Commander America, Marco Rubio, JD Vance, Kash Patel
+    )
+
+    // 4b. Act IV - Chapter 3: The Phantom Subpoena Ambush
+    val ACT4_CH3_SUBPOENA_BATTLE = EncounterDefinition(
+        id = "act4_ch3_subpoena_battle",
+        name = "Act IV - Ch 3: Process Server Swarm",
+        description = "Process Server Phantoms and lawfare retainers swarm the courthouse steps with reams of stamped subpoenas!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("process_server_boss", "Chief Process Server", "Sniper", currentHp = 480, maxHp = 480, baseAttack = 28, isBoss = true, isTargeted = true, spriteTint = Color(0xFFEC407A), speed = 68, atbGauge = 0.40f),
+            Enemy("lawfare_clerk", "Lawfare Retainer Clerk", "Occultist", currentHp = 300, maxHp = 300, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFFAB47BC), speed = 56, atbGauge = 0.30f)
+        ),
+        initialParty = createAct4Party()
+    )
+
+    // 4c. Act IV - Chapter 4: The Mueller Illusion Hoax Climax (Boss Encounter)
     val ACT4_HOAX_BATTLE = EncounterDefinition(
         id = "act4_hoax_battle",
         name = "Act IV: The Mueller Illusion Hoax",
@@ -871,6 +897,8 @@ object StoryEncounters {
         ACT3_CH1_MILL_BATTLE,
         ACT3_CH3_INTERCEPT_BATTLE,
         ACT3_SUMMIT_BATTLE,
+        ACT4_CH1_FISA_BATTLE,
+        ACT4_CH3_SUBPOENA_BATTLE,
         ACT4_HOAX_BATTLE,
         ACT5_GOLEM_BATTLE,
         ACT6_KAMALA_BATTLE,

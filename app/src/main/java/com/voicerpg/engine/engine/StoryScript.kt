@@ -132,12 +132,53 @@ object StoryScript {
         ambientDescription = "High above the demilitarized zone, red flags ripple in the wind near a table set with fast-food feasts."
     )
 
+    // Act IV - Chapter 1: The FISA Warrant Labyrinth (Hoover Building Sub-Basement)
+    val SCENE_ACT4_CH1_FISA = StoryScene(
+        id = "scene_act4_ch1_fisa",
+        name = "Hoover Building Sub-Basement Archives",
+        chapterTitle = "Act IV - Ch 1: The FISA Labyrinth (2019)",
+        backgroundAsset = "story/fisa_vault.jpg",
+        initialNodeId = "act4_ch1_intro",
+        ambientDescription = "Fluorescent bulbs buzz over rows of locked steel filing cabinets where midnight warrant applications are hidden away."
+    )
+
+    // Act IV - Chapter 2: The Unredacted Binder Inquest (House Intelligence Vault)
+    val SCENE_ACT4_CH2_BINDER = StoryScene(
+        id = "scene_act4_ch2_binder",
+        name = "House Intelligence Secure Vault (SCIF)",
+        chapterTitle = "Act IV - Ch 2: The Unredacted Vault (2019)",
+        backgroundAsset = "story/scif_vault.jpg",
+        initialNodeId = "act4_ch2_intro",
+        ambientDescription = "Heavy acoustic isolation doors seal the room as thick black marker redactions are scrubbed from the original transcripts."
+    )
+
+    // Act IV - Chapter 3: The Phantom Subpoena Ambush (Federal Courtroom Steps)
+    val SCENE_ACT4_CH3_COURT = StoryScene(
+        id = "scene_act4_ch3_court",
+        name = "Federal Courtroom Steps & Media Plaza",
+        chapterTitle = "Act IV - Ch 3: The Subpoena Swarm (2019)",
+        backgroundAsset = "story/courtroom_steps.jpg",
+        initialNodeId = "act4_ch3_intro",
+        ambientDescription = "Hundreds of flashbulbs pop as process servers and legal commentators brandish stacks of phantom subpoenas."
+    )
+
+    // Act IV - Chapter 4: The Mueller Illusion Hoax Climax (Special Counsel Hearing Room)
+    val SCENE_ACT4_CH4_HEARING = StoryScene(
+        id = "scene_act4_ch4_hearing",
+        name = "Special Counsel Hearing Room",
+        chapterTitle = "Act IV - Ch 4: The Nothingburger Climax (2019)",
+        backgroundAsset = "story/hearing_room.jpg",
+        initialNodeId = "act4_ch4_intro",
+        ambientDescription = "The wooden gavel rests on the witness dais. Three years of cable hype culminate in zero evidence and total exoneration."
+    )
+
+    // Legacy alias for the original single Act IV scene
     val SCENE_ACT4_MUELLER = StoryScene(
         id = "scene_act4_mueller",
         name = "The Chamber of Phantom Hoaxes",
         chapterTitle = "Act IV: The Mueller Illusion Hoax (2019)",
         backgroundAsset = "story/obsidian_vaults.jpg",
-        initialNodeId = "act4_intro",
+        initialNodeId = "act4_ch1_intro",
         ambientDescription = "Spectral paperwork and phantom subpoenas drift through the foggy tribunal hall."
     )
 
@@ -193,7 +234,11 @@ object StoryScript {
         SCENE_ACT3_CH3_AF1.id to SCENE_ACT3_CH3_AF1,
         SCENE_ACT3_CH4_SUMMIT.id to SCENE_ACT3_CH4_SUMMIT,
         SCENE_ACT3_SUMMIT.id to SCENE_ACT3_CH1_STEEL_MILL,  // legacy alias → ch1
-        SCENE_ACT4_MUELLER.id to SCENE_ACT4_MUELLER,
+        SCENE_ACT4_CH1_FISA.id to SCENE_ACT4_CH1_FISA,
+        SCENE_ACT4_CH2_BINDER.id to SCENE_ACT4_CH2_BINDER,
+        SCENE_ACT4_CH3_COURT.id to SCENE_ACT4_CH3_COURT,
+        SCENE_ACT4_CH4_HEARING.id to SCENE_ACT4_CH4_HEARING,
+        SCENE_ACT4_MUELLER.id to SCENE_ACT4_CH1_FISA,       // legacy alias → ch1
         SCENE_ACT5_MARALAGO.id to SCENE_ACT5_MARALAGO,
         SCENE_ACT6_WASTELAND.id to SCENE_ACT6_WASTELAND,
         SCENE_ACT7_SANDS.id to SCENE_ACT7_SANDS,
@@ -1150,8 +1195,8 @@ object StoryScript {
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
             text = "BROTHER! They said it couldn't be done! The Nobel Committee is probably already on the phone! Commander America just body-slammed 70 years of failed diplomacy onto the mat!",
-            changeSceneId = SCENE_ACT4_MUELLER.id,
-            nextNodeId = "act4_intro"
+            changeSceneId = SCENE_ACT4_CH1_FISA.id,
+            nextNodeId = "act4_ch1_intro"
         ),
         // Legacy post battle alias
         DialogueNode(
@@ -1159,23 +1204,291 @@ object StoryScript {
             speaker = DialogueSpeaker.ROCKET_MAN,
             side = SpeakerSide.RIGHT,
             text = "Your handshake grip is unstoppable! We have achieved complete peaceful harmony!",
-            changeSceneId = SCENE_ACT4_MUELLER.id,
-            nextNodeId = "act4_intro"
+            changeSceneId = SCENE_ACT4_CH1_FISA.id,
+            nextNodeId = "act4_ch1_intro"
         ),
 
         // =========================================================================
-        // ACT IV: THE MUELLER ILLUSION HOAX (2019)
+        // ACT IV - CHAPTER 1: THE FISA WARRANT LABYRINTH (2019)
         // =========================================================================
+        DialogueNode(
+            id = "act4_ch1_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are deep in the sub-basement archives of the J. Edgar Hoover Building. Row after row of rusted government filing cabinets, locked behind three layers of security badges. This is where midnight FISA warrant applications were filed on flimsy tabloid clippings.",
+            nextNodeId = "act4_ch1_fisa_hub"
+        ),
+        // Legacy alias
         DialogueNode(
             id = "act4_intro",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
             text = "Good morning to everyone except the anonymous sources who pushed three straight years of phantom collusion! My binder is open to zero charges, zero evidence, and 100% total exoneration!",
+            nextNodeId = "act4_ch1_fisa_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch1_fisa_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "They spied on our campaign! They said it was a conspiracy theory. Now we're in the basement pulling the actual surveillance orders out of the cabinets!",
             choices = listOf(
-                DialogueChoice("a4_nothing", "Expose the Nothingburger Reveal", listOf("nothing", "nothingburger", "hoax", "no collusion", "witch hunt"), "act4_nothing"),
-                DialogueChoice("a4_transcripts", "Release the Perfect Phone Call transcript", listOf("transcript", "perfect", "call", "phone", "read"), "act4_transcripts")
+                DialogueChoice("a4c1_dossier", "Expose the unverified political opposition dossier", listOf("dossier", "unverified", "steele", "fake", "opposition"), "act4_ch1_dossier_expose", completionFlag = "a4c1_dossier"),
+                DialogueChoice("a4c1_warrant", "Demand to see who signed the renewal warrants in secret", listOf("warrant", "signed", "fisa", "secret", "court", "judge"), "act4_ch1_warrant_inquest", completionFlag = "a4c1_warrant"),
+                DialogueChoice("a4c1_kash", "Call in Kash Patel — the Intel Inquisitor with the master key", listOf("kash", "patel", "inquisitor", "memo", "fisa", "intel"), "act4_ch1_kash_arrives")
             )
         ),
+        DialogueNode(
+            id = "act4_ch1_dossier_expose",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "They took a totally unverified opposition dossier paid for by the DNC, brought it to a secret court, and told the judges it was confirmed intelligence! The greatest scandal in American history!",
+            nextNodeId = "act4_ch1_hulk_react"
+        ),
+        DialogueNode(
+            id = "act4_ch1_hulk_react",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "BROTHER! That's not intel, that's comic book fan fiction! The 24-inch pythons of justice are about to smash right through those filing cabinets!",
+            nextNodeId = "act4_ch1_fisa_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch1_warrant_inquest",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Four different renewals! Every ninety days they signed off on it, knowing full well it was completely fabricated! The American people deserve the names!",
+            nextNodeId = "act4_ch1_kayleigh_note"
+        ),
+        DialogueNode(
+            id = "act4_ch1_kayleigh_note",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Inspector General reports later confirmed seventeen separate major omissions and inaccuracies submitted to the FISA court. Documented history.",
+            nextNodeId = "act4_ch1_fisa_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch1_kash_arrives",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "Commander, Kash Patel on site! I've been digging through these archives for sixteen months. I've got the unredacted FISA memo right here in this binder. The collusion story is a complete phantom hoax. I'm declassifying everything and plugging their leaks right now!",
+            nextNodeId = "act4_ch1_hero_kash_reply"
+        ),
+        DialogueNode(
+            id = "act4_ch1_hero_kash_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Kash, beautiful! Nobody knows the binders of truth like Kash! The Intel Inquisitor is in the game! Declassify it all!",
+            nextNodeId = "act4_ch1_bureau_ambush"
+        ),
+        DialogueNode(
+            id = "act4_ch1_bureau_ambush",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "ALERT! Bureau Archivist phantoms and unauthorized redaction officers are deploying! You cannot read these files! They are protected by lifetime pension immunity!",
+            nextNodeId = "act4_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act4_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The Archivist Phantoms are attempting to shred the unredacted pages! Commander, Marco, JD, and Kash — clean house before the shredder starts!",
+            triggerBattleEncounterId = "act4_ch1_fisa_battle",
+            nextNodeId = "act4_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_ch1_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The shredders are unplugged and the memos are SECURED! The full four-page memo is public! Next stop: the House Intelligence SCIF vault!",
+            changeSceneId = SCENE_ACT4_CH2_BINDER.id,
+            nextNodeId = "act4_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT IV - CHAPTER 2: THE UNREDACTED BINDER INQUEST (2019)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_ch2_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are inside the secure subterranean SCIF of the House Intelligence Committee. Steel blast doors, no cell phones, acoustic dampening walls. Across the room sit boxes of redacted transcripts where every single sentence proving innocence was blacked out with felt markers.",
+            nextNodeId = "act4_ch2_vault_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch2_vault_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at this! 90% black ink! They blacked out entire paragraphs that said 'Witness confirmed no coordination occurred.' We brought the solvent, folks!",
+            choices = listOf(
+                DialogueChoice("a4c2_unredact", "Declassify and scrub the black marker redactions", listOf("scrub", "marker", "unredact", "declassify", "ink"), "act4_ch2_scrub_ink", completionFlag = "a4c2_unredact"),
+                DialogueChoice("a4c2_transcripts", "Release the complete transcripts to the public immediately", listOf("release", "transcripts", "public", "read", "truth"), "act4_ch2_release_transcripts", completionFlag = "a4c2_transcripts"),
+                DialogueChoice("a4c2_witnesses", "Highlight testimony from 50+ witnesses admitting zero collusion", listOf("witnesses", "testimony", "fifty", "zero", "evidence"), "act4_ch2_witness_review", completionFlag = "a4c2_witnesses"),
+                DialogueChoice("a4c2_proceed", "Pack the unredacted binder and head to the federal courthouse", listOf("proceed", "courthouse", "steps", "march", "pack"), "act4_ch2_advance_to_court")
+            )
+        ),
+        DialogueNode(
+            id = "act4_ch2_scrub_ink",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "I've cross-referenced every redaction against original executive branch authorities. None of this qualifies as classified national defense information — it was classified solely to hide bureaucratic embarrassment. Unredacted!",
+            nextNodeId = "act4_ch2_vault_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch2_release_transcripts",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Publish them! Post every single page online! Don't let the cable news networks filter it through their 9:00 PM panels! Let the American people read the raw transcripts!",
+            nextNodeId = "act4_ch2_vault_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch2_witness_review",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Fifty-three separate under-oath interviews. Every single official admitted behind closed doors they had zero direct evidence of collusion — while telling Sunday morning television the exact opposite. Pure establishment double-speak.",
+            nextNodeId = "act4_ch2_vault_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch2_advance_to_court",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The binder is full, unredacted, and heavy as an anvil! Time to confront the subpoena machine outside the courthouse!",
+            nextNodeId = "act4_ch2_hulk_march"
+        ),
+        DialogueNode(
+            id = "act4_ch2_hulk_march",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "MARCH ON 'EM, BROTHER! They thought they could lock the truth in a vault! The Commander America supergroup is rolling out!",
+            changeSceneId = SCENE_ACT4_CH3_COURT.id,
+            nextNodeId = "act4_ch3_intro"
+        ),
+
+        // =========================================================================
+        // ACT IV - CHAPTER 3: THE PHANTOM SUBPOENA AMBUSH (2019)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_ch3_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We are on the steps of the federal courthouse in Washington, D.C. A dense crowd of cable commentators, process servers, and lawfare retainers has blocked the plaza, waving reams of stamped subpoenas like trading cards.",
+            nextNodeId = "act4_ch3_steps_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch3_steps_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at them with their little clipboards! 'Subpoena for this, subpoena for that!' Five hundred subpoenas issued and not one crime found!",
+            choices = listOf(
+                DialogueChoice("a4c3_cost", "Tally up the 32-million-dollar taxpayer bill for the investigation", listOf("cost", "taxpayer", "millions", "waste", "thirty"), "act4_ch3_taxpayer_cost", completionFlag = "a4c3_cost"),
+                DialogueChoice("a4c3_perfect", "Declare the phone call was completely, 100% PERFECT", listOf("perfect", "call", "transcript", "phone", "perfection"), "act4_ch3_perfect_call", completionFlag = "a4c3_perfect"),
+                DialogueChoice("a4c3_swat", "Command the team to blast through the subpoena swarm", listOf("swarm", "subpoena", "ambush", "smash", "fight"), "act4_ch3_subpoena_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act4_ch3_taxpayer_cost",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Thirty-two million dollars of hard-working American taxpayer money! Spent on phantom collusion! We could have rebuilt fifty bridges in Ohio for that money!",
+            nextNodeId = "act4_ch3_steps_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch3_perfect_call",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "It was a perfect call! Read the transcript! Even their own witnesses admitted nobody was pressured! Absolute total perfection!",
+            nextNodeId = "act4_ch3_steps_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch3_subpoena_ambush",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "STOP! We are serving Subpoena #412 and #413! You must hand over every napkin, receipt, and tweet from the last five years! Process Server Phantoms, swarm!",
+            nextNodeId = "act4_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act4_ch3_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "OH YEAH! The Subpoena Swarm is trying to bury the truth under paper, BROTHER! Hit 'em with Appalachian Fortitude and Maximum Sanctions!",
+            triggerBattleEncounterId = "act4_ch3_subpoena_battle",
+            nextNodeId = "act4_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_ch3_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The subpoenas are shredded and the process servers retreated to their green rooms! Now — into the Special Counsel hearing room for the final climax!",
+            changeSceneId = SCENE_ACT4_CH4_HEARING.id,
+            nextNodeId = "act4_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT IV - CHAPTER 4: THE MUELLER ILLUSION HOAX CLIMAX (2019)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_ch4_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "This is the moment the cable networks spent two solid years hyping. The Special Counsel Hearing Room. Hundreds of reporters packed in. The phantom illusion is about to dissolve under the harsh light of documented facts.",
+            nextNodeId = "act4_ch4_hearing_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch4_hearing_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Two years of investigations. 2,800 subpoenas. 500 search warrants. And what did they find? Say it with me, folks!",
+            choices = listOf(
+                DialogueChoice("a4c4_nothingburger", "Deliver the legendary 'NOTHINGBURGER' verdict", listOf("nothingburger", "nothing", "zero", "exoneration", "collusion"), "act4_ch4_nothingburger"),
+                DialogueChoice("a4c4_transcripts", "Present the unredacted transcripts entered into the congressional record", listOf("transcript", "record", "exonerated", "evidence", "facts"), "act4_ch4_record_present"),
+                DialogueChoice("a4c4_kash_verdict", "Have Kash Patel deliver the definitive declassified findings", listOf("kash", "findings", "declassified", "verdict", "inquest"), "act4_ch4_kash_verdict"),
+                DialogueChoice("a4c4_fight", "Dispel the Phantom Mueller Hoax once and for all in battle", listOf("fight", "battle", "hoax", "phantom", "dispel"), "act4_ch4_phantom_confront")
+            )
+        ),
+        DialogueNode(
+            id = "act4_ch4_nothingburger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "A complete and total NOTHINGBURGER! No collusion! No obstruction! Total and complete exoneration! The greatest political hoax ever perpetrated on our nation has completely evaporated!",
+            nextNodeId = "act4_ch4_phantom_confront"
+        ),
+        DialogueNode(
+            id = "act4_ch4_record_present",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Entered into the official congressional record: zero evidence of coordination. The Russian collusion story was a fairy tale manufactured by political operatives!",
+            nextNodeId = "act4_ch4_phantom_confront"
+        ),
+        DialogueNode(
+            id = "act4_ch4_kash_verdict",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "Every intelligence stream was traced back to its origin. The source material was fabricated political oppo. The case is closed, declassified, and documented for history.",
+            nextNodeId = "act4_ch4_phantom_confront"
+        ),
+        DialogueNode(
+            id = "act4_ch4_phantom_confront",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "Wait! The narrative... it cannot die! Even with zero evidence, the *walls are closing in*! We must summon the Phantom Mueller Hoax to keep the chyron running!",
+            nextNodeId = "act4_ch4_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act4_ch4_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THE WALLS ARE CLOSIN' IN ON THE PHANTOM, BROTHER! Four heroes in the ring: Commander, Marco, Vance, and Kash! Body-slam this hoax straight into the history books!",
+            triggerBattleEncounterId = "act4_hoax_battle",
+            nextNodeId = "act4_ch4_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_ch4_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The phantom faded into zero evidence! Total exoneration confirmed by history! Pack the golf bags, folks — we're headed to the Mar-a-Lago Fortress for the greatest training arc in American history!",
+            changeSceneId = SCENE_ACT5_MARALAGO.id,
+            nextNodeId = "act5_intro"
+        ),
+
+        // Legacy compatibility nodes for existing tests & saves
         DialogueNode(
             id = "act4_transcripts",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
@@ -1217,7 +1530,7 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The memos are unredacted and the facts are in the binder! Commander, Marco, JD, and Kash—unleash the Art of the Deal and blast this phantom back to the green room!",
             triggerBattleEncounterId = "act4_hoax_battle",
-            nextNodeId = "act4_post_battle"
+            nextNodeId = "act4_ch4_post_battle"
         ),
         DialogueNode(
             id = "act4_post_battle",

@@ -89,6 +89,10 @@ class StoryViewModel(
             DebugChapterTarget("Act III - Ch 3: Air Force One", "act3_ch3_intro", 6),
             DebugChapterTarget("Act III - Ch 4: Crimson Summit", "act3_ch4_intro", 6),
             DebugChapterTarget("Act III: The Summit of Peace", "act3_intro", 6),
+            DebugChapterTarget("Act IV - Ch 1: FISA Labyrinth", "act4_ch1_intro", 7),
+            DebugChapterTarget("Act IV - Ch 2: Unredacted Vault", "act4_ch2_intro", 7),
+            DebugChapterTarget("Act IV - Ch 3: Subpoena Swarm", "act4_ch3_intro", 7),
+            DebugChapterTarget("Act IV - Ch 4: Nothingburger Climax", "act4_ch4_intro", 7),
             DebugChapterTarget("Act IV: The Mueller Hoax", "act4_intro", 7),
             DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 8),
             DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 9),
@@ -1308,7 +1312,9 @@ class StoryViewModel(
             "act3_ch1_mill_battle" -> "act3_ch1_post_battle"
             "act3_ch3_intercept_battle" -> "act3_ch3_post_battle"
             "act3_summit_battle" -> "act3_ch4_post_battle"
-            "act4_hoax_battle" -> "act4_post_battle"
+            "act4_ch1_fisa_battle" -> "act4_ch1_post_battle"
+            "act4_ch3_subpoena_battle" -> "act4_ch3_post_battle"
+            "act4_hoax_battle" -> "act4_ch4_post_battle"
             "act5_golem_battle" -> "act5_post_battle"
             "act6_kamala_battle" -> "act6_post_battle"
             "act7_lawfare_battle" -> "act7_post_battle"
