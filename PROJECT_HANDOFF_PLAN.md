@@ -187,7 +187,15 @@
   - Added comprehensive unit tests in `CommanderAmericaGameTest.kt` (`testPlayerCustomizationDefaultsToCommanderInChiefAndSignatureSpells` and `testCharacterCreationSaveAndLoadRoundtrip`). 31/31 tests passing. Built and installed to physical device.
 
 
-## 3. Master Phase Roadmap (Next Up: Phase 12)
+* [x] **Phase 12: Streamline & Minimize Tutorial**
+  - Completely redesigned `TutorialBattleContent.kt` and `TutorialBattleViewModel.kt` to replace legacy fantasy characters (*Aethel*, *Sir Cedric*, *Lyra*, *Zephyr*) and generic dummies with the high-energy, hilarious **Patriot Bootcamp**.
+  - Features **Commander America** (*Tremendous Strike*, *Art of the Deal*, *Obama Did It First!*, *Tired of Winning*) and companion **Marco Rubio** (*Sanctions Blizzard*, *Hydrate & Rebut*, *Water Bottle Chug*), narrated by **Hulk Hogan** against media and swamp targets (*Hostile Cable Pundit*, *Rigged Teleprompter*, *Swamp Red-Tape Clerk*).
+  - Streamlined tutorial steps from 27 down to 16 fast-paced, punchy interactions teaching spoken voice attacks, AoE attacks, zero-cost breath MP restoration (*Tired of Winning*), companion joining and commands, the Voice Resonance multiplier system (comparing simple vs elaborate swagger chants), enemy counter-attacks, and graduation to the Golden Escalator.
+  - Updated `TutorialBattleTest.kt` unit tests covering initial state, progression, damage execution, resonance multiplier scaling, breath restoration, enemy counter-attacks, and reset. All 8 tutorial test cases passing.
+  - Built and successfully installed debug APK on physical Android device (`192.168.1.253:42679`).
+
+
+## 3. Master Phase Roadmap (ALL PHASES COMPLETE)
 
 ```mermaid
 flowchart TD
@@ -199,7 +207,7 @@ flowchart TD
     P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve (DONE)"]
     P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel (DONE)"]
     P10 --> P11["Phase 11: Streamline Character Creation (DONE)"]
-    P11 --> P12["Phase 12: Streamline & Minimize Tutorial (NEXT)"]
+    P11 --> P12["Phase 12: Streamline & Minimize Tutorial (DONE)"]
 ```
 
 ### Detailed Breakdown of Remaining Phases:
