@@ -111,6 +111,11 @@ class StoryViewModel(
             DebugChapterTarget("Act VII - Ch 4: Steel Ear Miracle", "act7_ch4_intro", 10),
             DebugChapterTarget("Act VII - Ch 5: Milwaukee Coronation", "act7_ch5_intro", 10),
             DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 10),
+            DebugChapterTarget("Act VIII - Ch 1: Basement Bunker", "act8_ch1_intro", 11),
+            DebugChapterTarget("Act VIII - Ch 2: Teleprompter Jammer", "act8_ch2_intro", 11),
+            DebugChapterTarget("Act VIII - Ch 3: Auto-Pen Phantoms", "act8_ch3_intro", 11),
+            DebugChapterTarget("Act VIII - Ch 4: Malarkey Sovereign", "act8_ch4_intro", 11),
+            DebugChapterTarget("Act VIII - Ch 5: Golden Inauguration", "act8_ch5_intro", 11),
             DebugChapterTarget("Act VIII: The Final Malarkey Citadel", "act8_intro", 11),
             // Legacy / Regression targets for existing test suite
             DebugChapterTarget("Prologue", "cottage_intro", 0),
@@ -1263,6 +1268,9 @@ class StoryViewModel(
             "act7_ch1_indictment_battle" -> StoryEncounters.ACT7_CH1_INDICTMENT_BATTLE
             "act7_ch2_contempt_battle" -> StoryEncounters.ACT7_CH2_CONTEMPT_BATTLE
             "act7_lawfare_battle" -> StoryEncounters.ACT7_LAWFARE_BATTLE
+            "act8_ch1_bunker_battle" -> StoryEncounters.ACT8_CH1_BUNKER_BATTLE
+            "act8_ch2_teleprompter_battle" -> StoryEncounters.ACT8_CH2_TELEPROMPTER_BATTLE
+            "act8_ch3_autopen_battle" -> StoryEncounters.ACT8_CH3_AUTOPEN_BATTLE
             "act8_biden_final_battle" -> StoryEncounters.ACT8_BIDEN_FINAL_BATTLE
             "prologue_solo" -> StoryEncounters.PROLOGUE_SOLO
             "forest_ambush" -> StoryEncounters.FOREST_AMBUSH
@@ -1343,7 +1351,10 @@ class StoryViewModel(
             "act7_ch1_indictment_battle" -> "act7_ch1_post_battle"
             "act7_ch2_contempt_battle" -> "act7_ch2_post_battle"
             "act7_lawfare_battle" -> "act7_ch5_post_battle"
-            "act8_biden_final_battle" -> "act8_post_battle"
+            "act8_ch1_bunker_battle" -> "act8_ch1_post_battle"
+            "act8_ch2_teleprompter_battle" -> "act8_ch2_post_battle"
+            "act8_ch3_autopen_battle" -> "act8_ch3_post_battle"
+            "act8_biden_final_battle" -> if (lastNode.id == "act8_battle_trigger") "act8_post_battle" else "act8_ch4_post_battle"
             "prologue_solo" -> "village_post_battle"
             "forest_ambush" -> "crossroads_post_battle"
             "blight_trackers" -> "camp_scout_victory"

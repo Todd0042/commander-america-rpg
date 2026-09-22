@@ -167,7 +167,18 @@
   - All unit tests passing in `CommanderAmericaGameTest.kt` (27/27 tests). Installed and verified on physical device.
 
 
-## 3. Master Phase Roadmap (Next Up: Phase 10)
+* [x] **Phase 10 (Act VIII): The Final Malarkey Citadel & Golden Inauguration — 5 Full Chapters**
+  - **Chapter 1: The Basement Bunker Breach** (`scene_act8_ch1_bunker`) — `act8_ch1_intro`, Wilmington virtual studio set, 9:15 AM "calling a lid" expose, green screen chroma bleed, Kennedy remote control truck appraisal; `act8_ch1_bunker_battle` (Virtual Studio Director & Green Screen Technician). Party: all 5 heroes.
+  - **Chapter 2: The Teleprompter Jammer** (`scene_act8_ch2_teleprompter`) — `act8_ch2_intro`, Scranton platform giant scrolling teleprompters, "repeat the line" gaffe, Barack kalorama soundproof bunker whisper, Kash frequency jammer uploading the US Constitution; `act8_ch2_teleprompter_battle` (Teleprompter Sorcerer Phantom & Scriptwriter Aide).
+  - **Chapter 3: The Auto-Pen Phantoms** (`scene_act8_ch3_autopen`) — `act8_ch3_intro`, secret executive order assembly line, 4000-page unread omnibus spending bills dropped at 2:00 AM, robotic signatures signing more debt than first 40 presidents combined, Kennedy spiderman-meme accountability; `act8_ch3_autopen_battle` (Mechanical Auto-Pen Sovereign & Omnibus Mandate Drone).
+  - **Chapter 4: The Malarkey Sovereign Climax** (`scene_act8_ch4_citadel`) — `act8_ch4_intro`, glowing Oval Citadel throne room, Biden clutching two scoops of melting vanilla ice cream in cosmic recliner, chocolate chip tall tales, Barack retreating into curtain shadows, Kennedy steer-with-an-iPhone verdict, Commander America's ultimate showdown; `act8_biden_final_battle` boss duel against Biden the Malarkey Sovereign, Teleprompter Conduits, and Two-Scoop Vanilla Golem; post-battle nap exit leading to the National Mall.
+  - **Chapter 5: The Golden Inauguration & Golden Age of America** (`scene_act8_ch5_inauguration`) — `act8_ch5_intro`, January 20, 2025 radiant sunshine over Pennsylvania Avenue, Presidential Oath of Office on the Bible ("SO HELP ME GOD!"), honoring the 5-hero supergroup coalition (Marco, Vance, Kash, Kennedy), thanking Elon Musk & DOGE bureaucracy elimination, declaring the Golden Age of America, and final triumphant signoff with Kayleigh, Karoline, and Hulk Hogan flexing 24-inch pythons as golden confetti rains down!
+  - Added scenes `SCENE_ACT8_CH1_BUNKER`, `SCENE_ACT8_CH2_TELEPROMPTER`, `SCENE_ACT8_CH3_AUTOPEN`, `SCENE_ACT8_CH4_CITADEL`, `SCENE_ACT8_CH5_INAUGURATION`; legacy `SCENE_ACT8_CITADEL_FINAL` preserved as backward-compat alias.
+  - Added encounters `ACT8_CH1_BUNKER_BATTLE`, `ACT8_CH2_TELEPROMPTER_BATTLE`, and `ACT8_CH3_AUTOPEN_BATTLE`; updated `ALL_ENCOUNTERS`, `onCombatVictory()`, `DEBUG_CHAPTER_TARGETS`.
+  - All unit tests passing in `CommanderAmericaGameTest.kt` (29/29 tests). Installed and verified on physical device.
+
+
+## 3. Master Phase Roadmap (Next Up: Phase 11)
 
 ```mermaid
 flowchart TD
@@ -177,8 +188,8 @@ flowchart TD
     P6 --> P7["Phase 7: Act V - Midnight Sorcery & The Exile (DONE)"]
     P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland (DONE)"]
     P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve (DONE)"]
-    P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel (NEXT)"]
-    P10 --> P11["Phase 11: Streamline Character Creation"]
+    P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel (DONE)"]
+    P10 --> P11["Phase 11: Streamline Character Creation (NEXT)"]
     P11 --> P12["Phase 12: Streamline & Minimize Tutorial"]
 ```
 

@@ -140,7 +140,10 @@ class CommanderAmericaGameTest {
             "act7_ch1_indictment_battle" to "act7_ch1_post_battle",
             "act7_ch2_contempt_battle" to "act7_ch2_post_battle",
             "act7_lawfare_battle" to "act7_ch5_post_battle",
-            "act8_biden_final_battle" to "act8_post_battle"
+            "act8_ch1_bunker_battle" to "act8_ch1_post_battle",
+            "act8_ch2_teleprompter_battle" to "act8_ch2_post_battle",
+            "act8_ch3_autopen_battle" to "act8_ch3_post_battle",
+            "act8_biden_final_battle" to "act8_ch4_post_battle"
         )
 
         for ((encounterId, expectedPostNodeId) in acts) {
@@ -1459,7 +1462,7 @@ class CommanderAmericaGameTest {
         storyViewModel.triggerEncounter("act7_lawfare_battle")
         storyViewModel.onCombatVictory()
         assertEquals("act7_ch5_post_battle", storyViewModel.state.value.currentNode.id)
-        assertEquals("scene_act8_citadel_final", storyViewModel.state.value.currentScene.id)
+        assertEquals("scene_act8_ch1_bunker", storyViewModel.state.value.currentScene.id)
 
         // -----------------------------------------------------------------------
         // 6. Debug warps for all Act VII chapters
@@ -1515,6 +1518,191 @@ class CommanderAmericaGameTest {
         assertTrue("act7_ch1_indictment_battle must be in ALL_ENCOUNTERS", allIds.contains("act7_ch1_indictment_battle"))
         assertTrue("act7_ch2_contempt_battle must be in ALL_ENCOUNTERS", allIds.contains("act7_ch2_contempt_battle"))
         assertTrue("act7_lawfare_battle must be in ALL_ENCOUNTERS", allIds.contains("act7_lawfare_battle"))
+    }
+
+    @Test
+    fun testAct8FiveChaptersFullProgressionAndDebugWarps() {
+        // Warp to Act VIII Chapter 1
+        storyViewModel.debugWarpToChapter("act8_ch1_intro")
+        assertEquals("act8_ch1_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch1_bunker", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 1. Act VIII Chapter 1: The Basement Bunker Breach
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch1_bunker_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select proceed / breach choice
+        val breachChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a8c1_proceed" }
+        storyViewModel.selectChoice(breachChoice)
+        assertEquals("act8_ch1_studio_ambush", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch1_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act8_ch1_bunker_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch1 battle
+        storyViewModel.triggerEncounter("act8_ch1_bunker_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act8_ch1_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch2_teleprompter", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 2. Act VIII Chapter 2: The Teleprompter Jammer
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch2_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch2_teleprompter", storyViewModel.state.value.currentScene.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch2_teleprompter_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select confront choice
+        val confrontChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a8c2_confront" }
+        storyViewModel.selectChoice(confrontChoice)
+        assertEquals("act8_ch2_sorcerer_confront", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch2_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act8_ch2_teleprompter_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch2 battle
+        storyViewModel.triggerEncounter("act8_ch2_teleprompter_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act8_ch2_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch3_autopen", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 3. Act VIII Chapter 3: The Auto-Pen Phantoms
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch3_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch3_autopen", storyViewModel.state.value.currentScene.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch3_autopen_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select shutdown choice
+        val shutdownChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a8c3_shutdown" }
+        storyViewModel.selectChoice(shutdownChoice)
+        assertEquals("act8_ch3_autopen_confront", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch3_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act8_ch3_autopen_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Ch3 battle
+        storyViewModel.triggerEncounter("act8_ch3_autopen_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act8_ch3_post_battle", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch4_citadel", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 4. Act VIII Chapter 4: The Malarkey Sovereign Climax
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch4_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch4_citadel", storyViewModel.state.value.currentScene.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch4_biden_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select final battle choice
+        val finalBattleChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a8c4_battle" }
+        storyViewModel.selectChoice(finalBattleChoice)
+        assertEquals("act8_ch4_climax_battle", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch4_hero_quote", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch4_battle_trigger", storyViewModel.state.value.currentNode.id)
+        assertEquals("act8_biden_final_battle", storyViewModel.state.value.currentNode.triggerBattleEncounterId)
+
+        // Win Final Boss battle
+        storyViewModel.triggerEncounter("act8_biden_final_battle")
+        storyViewModel.onCombatVictory()
+        assertEquals("act8_ch4_post_battle", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch4_victory_advance", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch5_inauguration", storyViewModel.state.value.currentScene.id)
+
+        // -----------------------------------------------------------------------
+        // 5. Act VIII Chapter 5: The Golden Inauguration
+        // -----------------------------------------------------------------------
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch5_intro", storyViewModel.state.value.currentNode.id)
+        assertEquals("scene_act8_ch5_inauguration", storyViewModel.state.value.currentScene.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch5_oath", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch5_celebration_hub", storyViewModel.state.value.currentNode.id)
+
+        // Select epilogue choice
+        val epilogueChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a8c5_epilogue" }
+        storyViewModel.selectChoice(epilogueChoice)
+        assertEquals("act8_ch5_final_broadcast", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch5_karoline_signoff", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch5_hulk_finale", storyViewModel.state.value.currentNode.id)
+
+        // -----------------------------------------------------------------------
+        // 6. Debug warps for all Act VIII chapters
+        // -----------------------------------------------------------------------
+        val act8FullTargets = listOf(
+            "act8_ch1_intro" to "scene_act8_ch1_bunker",
+            "act8_ch2_intro" to "scene_act8_ch2_teleprompter",
+            "act8_ch3_intro" to "scene_act8_ch3_autopen",
+            "act8_ch4_intro" to "scene_act8_ch4_citadel",
+            "act8_ch5_intro" to "scene_act8_ch5_inauguration"
+        )
+        for ((nodeId, expectedSceneId) in act8FullTargets) {
+            storyViewModel.debugWarpToChapter(nodeId)
+            assertEquals("Node for $nodeId", nodeId, storyViewModel.state.value.currentNode.id)
+            assertEquals("Scene for $nodeId", expectedSceneId, storyViewModel.state.value.currentScene.id)
+            val party = storyViewModel.state.value.partyStats
+            assertEquals("Party size must be 5 at $nodeId", 5, party.size)
+            assertTrue("Party must have hero at $nodeId", party.any { it.id == "hero" })
+            assertTrue("Party must have marco at $nodeId", party.any { it.id == "marco" })
+            assertTrue("Party must have vance at $nodeId", party.any { it.id == "vance" })
+            assertTrue("Party must have kash at $nodeId", party.any { it.id == "kash" })
+            assertTrue("Party must have kennedy at $nodeId", party.any { it.id == "kennedy" })
+        }
+    }
+
+    @Test
+    fun testAct8EncountersAndPartyRoster() {
+        // Ch1 Bunker Battle
+        val bunkerBattle = StoryEncounters.ACT8_CH1_BUNKER_BATTLE
+        assertEquals("act8_ch1_bunker_battle", bunkerBattle.id)
+        assertEquals(5, bunkerBattle.initialParty?.size)
+        val studioDirector = bunkerBattle.enemies.firstOrNull { it.id == "studio_director" }
+        assertNotNull("Studio Director must be present", studioDirector)
+        assertTrue("Studio Director is boss", studioDirector!!.isBoss)
+
+        // Ch2 Teleprompter Battle
+        val teleprompterBattle = StoryEncounters.ACT8_CH2_TELEPROMPTER_BATTLE
+        assertEquals("act8_ch2_teleprompter_battle", teleprompterBattle.id)
+        assertEquals(5, teleprompterBattle.initialParty?.size)
+        val sorcerer = teleprompterBattle.enemies.firstOrNull { it.id == "teleprompter_sorcerer" }
+        assertNotNull("Teleprompter Sorcerer must be present", sorcerer)
+        assertTrue("Teleprompter Sorcerer is boss", sorcerer!!.isBoss)
+
+        // Ch3 Auto-Pen Battle
+        val autopenBattle = StoryEncounters.ACT8_CH3_AUTOPEN_BATTLE
+        assertEquals("act8_ch3_autopen_battle", autopenBattle.id)
+        assertEquals(5, autopenBattle.initialParty?.size)
+        val autopenSovereign = autopenBattle.enemies.firstOrNull { it.id == "autopen_sovereign" }
+        assertNotNull("Auto-Pen Sovereign must be present", autopenSovereign)
+        assertTrue("Auto-Pen Sovereign is boss", autopenSovereign!!.isBoss)
+
+        // Ch4 Biden Final Boss Battle
+        val bidenBattle = StoryEncounters.ACT8_BIDEN_FINAL_BATTLE
+        assertEquals("act8_biden_final_battle", bidenBattle.id)
+        assertEquals(5, bidenBattle.initialParty?.size)
+        val biden = bidenBattle.enemies.firstOrNull { it.id == "biden" }
+        assertNotNull("Biden must be present", biden)
+
+        // Verify in ALL_ENCOUNTERS
+        val allIds = StoryEncounters.ALL_ENCOUNTERS.map { it.id }
+        assertTrue("act8_ch1_bunker_battle must be in ALL_ENCOUNTERS", allIds.contains("act8_ch1_bunker_battle"))
+        assertTrue("act8_ch2_teleprompter_battle must be in ALL_ENCOUNTERS", allIds.contains("act8_ch2_teleprompter_battle"))
+        assertTrue("act8_ch3_autopen_battle must be in ALL_ENCOUNTERS", allIds.contains("act8_ch3_autopen_battle"))
+        assertTrue("act8_biden_final_battle must be in ALL_ENCOUNTERS", allIds.contains("act8_biden_final_battle"))
     }
 
     @Test

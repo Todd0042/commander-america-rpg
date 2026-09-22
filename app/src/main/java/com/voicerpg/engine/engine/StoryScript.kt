@@ -352,12 +352,63 @@ object StoryScript {
         ambientDescription = "Desert winds howl across ancient ruins as legal writs float like cursed ravens."
     )
 
+    // Act VIII - Chapter 1: The Basement Bunker Breach (Wilmington Virtual Studio)
+    val SCENE_ACT8_CH1_BUNKER = StoryScene(
+        id = "scene_act8_ch1_bunker",
+        name = "Wilmington Virtual Broadcast Bunker",
+        chapterTitle = "Act VIII - Ch 1: The Basement Bunker Breach",
+        backgroundAsset = "story/basement_bunker.jpg",
+        initialNodeId = "act8_ch1_intro",
+        ambientDescription = "Green screens and teleprompter rigs hum softly in a climate-controlled Wilmington basement."
+    )
+
+    // Act VIII - Chapter 2: The Teleprompter Jammer (Scranton Train Platform)
+    val SCENE_ACT8_CH2_TELEPROMPTER = StoryScene(
+        id = "scene_act8_ch2_teleprompter",
+        name = "The Scranton Train Platform",
+        chapterTitle = "Act VIII - Ch 2: The Teleprompter Jammer",
+        backgroundAsset = "story/scranton_platform.jpg",
+        initialNodeId = "act8_ch2_intro",
+        ambientDescription = "A windy train platform where giant scrolling glass teleprompters flash 'PAUSE FOR APPLAUSE'."
+    )
+
+    // Act VIII - Chapter 3: The Auto-Pen Phantoms (Executive Order Factory)
+    val SCENE_ACT8_CH3_AUTOPEN = StoryScene(
+        id = "scene_act8_ch3_autopen",
+        name = "The Executive Order Factory",
+        chapterTitle = "Act VIII - Ch 3: The Auto-Pen Phantoms",
+        backgroundAsset = "story/autopen_factory.jpg",
+        initialNodeId = "act8_ch3_intro",
+        ambientDescription = "Mechanical robotic pens replicate signature after signature on trillions of dollars in omnibus mandates."
+    )
+
+    // Act VIII - Chapter 4: The Malarkey Sovereign Climax (Cosmic Oval Citadel)
+    val SCENE_ACT8_CH4_CITADEL = StoryScene(
+        id = "scene_act8_ch4_citadel",
+        name = "The Cosmic Oval Citadel",
+        chapterTitle = "Act VIII - Ch 4: The Malarkey Sovereign Climax",
+        backgroundAsset = "story/final_summit.jpg",
+        initialNodeId = "act8_ch4_intro",
+        ambientDescription = "Inside the cosmic Oval Citadel, Biden the Malarkey Sovereign sits in his executive recliner clutching two melting scoops of vanilla ice cream."
+    )
+
+    // Act VIII - Chapter 5: The Golden Inauguration & Golden Age of America
+    val SCENE_ACT8_CH5_INAUGURATION = StoryScene(
+        id = "scene_act8_ch5_inauguration",
+        name = "The Golden Capitol Steps & Pennsylvania Avenue",
+        chapterTitle = "Act VIII - Ch 5: The Golden Inauguration",
+        backgroundAsset = "story/golden_inauguration.jpg",
+        initialNodeId = "act8_ch5_intro",
+        ambientDescription = "Sunshine gleams over the National Mall as millions celebrate the dawn of the Golden Age of America."
+    )
+
+    // Legacy alias for Act VIII
     val SCENE_ACT8_CITADEL_FINAL = StoryScene(
         id = "scene_act8_citadel_final",
         name = "The Final Malarkey Citadel",
         chapterTitle = "Act VIII: Eradicating Malarkey - The Final Showdown",
         backgroundAsset = "story/final_summit.jpg",
-        initialNodeId = "act8_intro",
+        initialNodeId = "act8_ch1_intro",
         ambientDescription = "A cosmic arena powered by infinite scoops of vanilla ice cream and stumbles."
     )
 
@@ -399,7 +450,12 @@ object StoryScript {
         SCENE_ACT7_CH4_STEEL_EAR.id to SCENE_ACT7_CH4_STEEL_EAR,
         SCENE_ACT7_CH5_MILWAUKEE.id to SCENE_ACT7_CH5_MILWAUKEE,
         SCENE_ACT7_SANDS.id to SCENE_ACT7_CH1_GAUNTLET,     // legacy alias → ch1
-        SCENE_ACT8_CITADEL_FINAL.id to SCENE_ACT8_CITADEL_FINAL
+        SCENE_ACT8_CH1_BUNKER.id to SCENE_ACT8_CH1_BUNKER,
+        SCENE_ACT8_CH2_TELEPROMPTER.id to SCENE_ACT8_CH2_TELEPROMPTER,
+        SCENE_ACT8_CH3_AUTOPEN.id to SCENE_ACT8_CH3_AUTOPEN,
+        SCENE_ACT8_CH4_CITADEL.id to SCENE_ACT8_CH4_CITADEL,
+        SCENE_ACT8_CH5_INAUGURATION.id to SCENE_ACT8_CH5_INAUGURATION,
+        SCENE_ACT8_CITADEL_FINAL.id to SCENE_ACT8_CH1_BUNKER // legacy alias → ch1
     )
 
     // -------------------------------------------------------------------------
@@ -2751,8 +2807,8 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The Lawfare Grand Inquisitor is vanquished and the 91 indictments are obliterated forever! The ear bandage shines like pure gold. Only ONE obstacle remains: the Malarkey Sovereign in the Oval Citadel!",
-            changeSceneId = SCENE_ACT8_CITADEL_FINAL.id,
-            nextNodeId = "act8_intro"
+            changeSceneId = SCENE_ACT8_CH1_BUNKER.id,
+            nextNodeId = "act8_ch1_intro"
         ),
 
         // Legacy compatibility nodes for Act VII
@@ -2807,13 +2863,368 @@ object StoryScript {
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "All 91 indictments crushed! The ear bandage shines with divine grace. Now... to the Oval Citadel for the Final Showdown against Biden!",
-            changeSceneId = SCENE_ACT8_CITADEL_FINAL.id,
-            nextNodeId = "act8_intro"
+            changeSceneId = SCENE_ACT8_CH1_BUNKER.id,
+            nextNodeId = "act8_ch1_intro"
         ),
 
         // =========================================================================
-        // ACT VIII: ERADICATING MALARKEY - THE FINAL BOSS (BIDEN)
+        // ACT VIII: THE FINAL MALARKEY CITADEL & GOLDEN INAUGURATION — 5 CHAPTERS
         // =========================================================================
+
+        // -------------------------------------------------------------------------
+        // Chapter 1: The Basement Bunker Breach (Wilmington Virtual Studio)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act8_ch1_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The final campaign begins! Deep beneath a residential compound in Wilmington, Delaware, a clandestine virtual broadcast studio operates behind closed doors!",
+            nextNodeId = "act8_ch1_bunker_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch1_bunker_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Green screens, studio lighting, and simulated White House backdrops create the illusion of an active administration. How does Commander America breach the bunker?",
+            choices = listOf(
+                DialogueChoice("a8c1_lid", "Investigate why a 'lid' was called on the day at 9:15 AM", listOf("lid", "called", "morning", "nap", "schedule"), "act8_ch1_lid_called"),
+                DialogueChoice("a8c1_greenscreen", "Inspect the green screen artifacts and teleprompter rigs", listOf("greenscreen", "virtual", "studio", "backdrop", "lighting"), "act8_ch1_greenscreen_inspect"),
+                DialogueChoice("a8c1_kennedy", "Ask Senator Kennedy about basement campaign strategies", listOf("kennedy", "basement", "delaware", "campaign", "bunker"), "act8_ch1_kennedy_basement"),
+                DialogueChoice("a8c1_proceed", "Breach the control room and disconnect the virtual feeds", listOf("proceed", "breach", "control", "feeds", "confront"), "act8_ch1_studio_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act8_ch1_lid_called",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "It's 9:15 in the morning and they already called a lid! A lid! I've been awake since 4:00 AM, did four rallies, three interviews, and played eighteen holes of golf! Low energy, folks!",
+            nextNodeId = "act8_ch1_bunker_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch1_greenscreen_inspect",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Look closely at the edges around his hands — you can see the green chroma-key bleed! They're broadcasting a digital hologram while the country runs on autopilot!",
+            nextNodeId = "act8_ch1_bunker_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch1_kennedy_basement",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Running a superpower from a basement recliner is like trying to drive an eighteen-wheeler using a television remote. Sooner or later, you're going to end up in the ditch!",
+            nextNodeId = "act8_ch1_bunker_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch1_studio_ambush",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "RED ALERT IN THE CONTROL ROOM, BROTHER! The Virtual Studio Director and Green Screen Technicians are pulling cables and desperately trying to keep the feed alive!",
+            nextNodeId = "act8_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act8_ch1_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Cut the fake feeds, shut down the green screens, and pull back the curtain on this basement charade! Patriots, attack!",
+            triggerBattleEncounterId = "act8_ch1_bunker_battle",
+            nextNodeId = "act8_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act8_ch1_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The virtual studio goes dark! The cables trace north toward a foggy train platform in Scranton, Pennsylvania!",
+            changeSceneId = SCENE_ACT8_CH2_TELEPROMPTER.id,
+            nextNodeId = "act8_ch2_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 2: The Teleprompter Jammer (Scranton Train Platform)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act8_ch2_intro",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "WE'RE ON THE TRACKS IN SCRANTON, BROTHER! Huge scrolling glass teleprompters are flashing script lines in giant bold letters!",
+            nextNodeId = "act8_ch2_teleprompter_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch2_teleprompter_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The teleprompters project endless stage instructions: 'REPEAT THE LINE', 'PAUSE FOR APPLAUSE', and 'SALUTE MARINE'. How do we disrupt this messaging conduit?",
+            choices = listOf(
+                DialogueChoice("a8c2_repeat", "Examine the teleprompter prompting 'Repeat the line'", listOf("repeat", "line", "prompt", "instructions", "script"), "act8_ch2_repeat_line"),
+                DialogueChoice("a8c2_barack", "Spot Barack casting teleprompter spells from the shadows", listOf("barack", "obama", "shadows", "spells", "teleprompter"), "act8_ch2_barack_shadows"),
+                DialogueChoice("a8c2_kash", "Deploy Kash Patel's signal jammer on the script conduit", listOf("kash", "jammer", "signal", "jam", "disrupt"), "act8_ch2_kash_jam"),
+                DialogueChoice("a8c2_confront", "Smash through the Teleprompter Sorcerer and shatter the glass", listOf("sorcerer", "smash", "glass", "battle", "fight"), "act8_ch2_sorcerer_confront")
+            )
+        ),
+        DialogueNode(
+            id = "act8_ch2_repeat_line",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "He literally read 'End of quote, repeat the line' off the glass! Who does that?! You can't lead the free world if you read the stage directions out loud!",
+            nextNodeId = "act8_ch2_teleprompter_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch2_barack_shadows",
+            speaker = DialogueSpeaker.OBAMA,
+            side = SpeakerSide.RIGHT,
+            text = "Now... let me be clear... I was merely offering... uh... editorial guidance from my Kalorama soundproof bunker...",
+            nextNodeId = "act8_ch2_teleprompter_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch2_kash_jam",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "I've tuned the frequency jammer directly to their script uplink. The teleprompter screen is now scrolling the Constitution instead of scripted talking points!",
+            nextNodeId = "act8_ch2_teleprompter_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch2_sorcerer_confront",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THE SCRIPTWRITERS ARE PANICKING, BROTHER! The Teleprompter Sorcerer Phantom is casting optic illusions across the railway!",
+            nextNodeId = "act8_ch2_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act8_ch2_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "No more teleprompters, no more rehearsals! Pure unscripted American common sense! Let's take 'em down!",
+            triggerBattleEncounterId = "act8_ch2_teleprompter_battle",
+            nextNodeId = "act8_ch2_post_battle"
+        ),
+        DialogueNode(
+            id = "act8_ch2_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The glass teleprompters shatter into harmless sparkles! But listen — a frantic rhythmic clicking sound is echoing from a nearby federal warehouse!",
+            changeSceneId = SCENE_ACT8_CH3_AUTOPEN.id,
+            nextNodeId = "act8_ch3_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 3: The Auto-Pen Phantoms (Executive Order Factory)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act8_ch3_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "We discover the secret Executive Order Factory! Banks of motorized robotic pens are furiously scribbling Presidential signatures on thousands of pages of omnibus mandates!",
+            nextNodeId = "act8_ch3_autopen_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch3_autopen_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Trillions of dollars in federal spending and regulatory bans are being enacted without a human being ever laying eyes on them. How does the party halt the assembly line?",
+            choices = listOf(
+                DialogueChoice("a8c3_bills", "Inspect the 4,000-page unread omnibus spending bills", listOf("omnibus", "bills", "spending", "trillions", "pages"), "act8_ch3_inspect_bills"),
+                DialogueChoice("a8c3_marco", "Have Marco audit the robotic pen calibration data", listOf("marco", "audit", "autopen", "robotic", "signatures"), "act8_ch3_marco_audit"),
+                DialogueChoice("a8c3_kennedy", "Ask Senator Kennedy who really authorized these orders", listOf("kennedy", "authorized", "signature", "staffers", "bureaucrats"), "act8_ch3_kennedy_staffers"),
+                DialogueChoice("a8c3_shutdown", "Overload the Auto-Pen machinery and seize the master power switch", listOf("shutdown", "power", "overload", "machinery", "battle"), "act8_ch3_autopen_confront")
+            )
+        ),
+        DialogueNode(
+            id = "act8_ch3_inspect_bills",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Four thousand pages dropped at 2:00 AM, voted on at 6:00 AM, and signed by an auto-pen at 8:00 AM. Not a single elected official read a single sentence!",
+            nextNodeId = "act8_ch3_autopen_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch3_marco_audit",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "This robotic pen has signed more debt into law in eighteen months than the first forty presidents combined! It's an automated rubber-stamp machine!",
+            nextNodeId = "act8_ch3_autopen_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch3_kennedy_staffers",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "If you ask the folks in Washington who told the auto-pen to sign, they all point at each other like spiderman memes. Nobody knows who is running the store!",
+            nextNodeId = "act8_ch3_autopen_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch3_autopen_confront",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THE AUTO-PEN FACTORY IS OVERHEATING, BROTHER! The Mechanical Auto-Pen Sovereign rises up, firing streams of bureaucratic ink and omnibus mandate drones!",
+            nextNodeId = "act8_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act8_ch3_battle_trigger",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Unplug the machine! Government of the people, by the people, and for the people is returning right now!",
+            triggerBattleEncounterId = "act8_ch3_autopen_battle",
+            nextNodeId = "act8_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act8_ch3_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The auto-pen runs completely out of ink and powers down! The path is clear. Ascend the grand staircase to the Cosmic Oval Citadel for the Final Showdown!",
+            changeSceneId = SCENE_ACT8_CH4_CITADEL.id,
+            nextNodeId = "act8_ch4_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 4: The Malarkey Sovereign Climax (Final Boss: Biden)
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act8_ch4_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome to the final cosmic arena. Inside the glowing Oval Citadel, Biden the Malarkey Sovereign sits in his executive recliner, clutching two melting scoops of vanilla ice cream, flanked by teleprompter conduits!",
+            nextNodeId = "act8_ch4_biden_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch4_biden_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The Malarkey Sovereign prepares his signature defense of whispered warnings, chocolate chip tall tales, and confused wanderings. How do the 5 heroes dismantle his aura?",
+            choices = listOf(
+                DialogueChoice("a8c4_confront", "Confront Biden directly and demand an immediate end to the malarkey", listOf("confront", "biden", "malarkey", "ice cream", "vanilla"), "act8_ch4_biden_confront"),
+                DialogueChoice("a8c4_barack", "Call out Barack standing in the shadows behind the recliner", listOf("barack", "shadows", "teleprompter", "obama", "puppet"), "act8_ch4_barack_callout"),
+                DialogueChoice("a8c4_supergroup", "Unleash the full 5-hero supergroup constitutional indictment", listOf("supergroup", "heroes", "constitution", "verdict", "unite"), "act8_ch4_supergroup_verdict"),
+                DialogueChoice("a8c4_battle", "Body-slam the Malarkey Sovereign through the canvas of history!", listOf("battle", "fight", "climax", "slam", "win"), "act8_ch4_climax_battle")
+            )
+        ),
+        DialogueNode(
+            id = "act8_ch4_biden_confront",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "Look, folks... here's the deal... no joke! My grandfather used to say in Scranton... chocolate chip... wait, no, vanilla ice cream! Where am I? Who's that guy with the golden tie?!",
+            nextNodeId = "act8_ch4_biden_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch4_barack_callout",
+            speaker = DialogueSpeaker.OBAMA,
+            side = SpeakerSide.RIGHT,
+            text = "Don't look at me... let me be clear, he's... uh... entirely in charge of his own speech... *slowly backs into the curtain shadows*",
+            nextNodeId = "act8_ch4_biden_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch4_supergroup_verdict",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Joe, with all due respect, you're looking like a steer trying to operate an iPhone. The country has had enough malarkey to fill Lake Michigan, and it's time to cash in your chips!",
+            nextNodeId = "act8_ch4_biden_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch4_climax_battle",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "Anyway... don't pull the trigger, man! I came here for my two scoops of vanilla... anyway... God save the Queen, man!",
+            nextNodeId = "act8_ch4_hero_quote"
+        ),
+        DialogueNode(
+            id = "act8_ch4_hero_quote",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Joe, you don't even know where the exit door is! The malarkey ends today! For humanity, for freedom, for AMERICA!",
+            nextNodeId = "act8_ch4_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act8_ch4_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THIS IS FOR ALL THE MARBLES AND THE HEAVYWEIGHT BELT, BROTHER! BODY-SLAM THE MALARKEY THROUGH THE CANVAS AND BRING COMMON SENSE BACK TO AMERICA!",
+            triggerBattleEncounterId = "act8_biden_final_battle",
+            nextNodeId = "act8_ch4_post_battle"
+        ),
+        DialogueNode(
+            id = "act8_ch4_post_battle",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "I... I think I'll go take a nap and eat my vanilla ice cream now... good job, man... where's the door? Oh, this way...",
+            nextNodeId = "act8_ch4_victory_advance"
+        ),
+        DialogueNode(
+            id = "act8_ch4_victory_advance",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The Malarkey Sovereign has officially left the building! The golden doors swing open to the National Mall! Let's begin the Golden Inauguration!",
+            changeSceneId = SCENE_ACT8_CH5_INAUGURATION.id,
+            nextNodeId = "act8_ch5_intro"
+        ),
+
+        // -------------------------------------------------------------------------
+        // Chapter 5: The Golden Inauguration & Golden Age of America
+        // -------------------------------------------------------------------------
+        DialogueNode(
+            id = "act8_ch5_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "JANUARY 20, 2025. Bright, radiant sunlight pours down over the National Mall as millions of cheering patriots pack Pennsylvania Avenue from the Capitol to the White House!",
+            nextNodeId = "act8_ch5_oath"
+        ),
+        DialogueNode(
+            id = "act8_ch5_oath",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "I do solemnly swear that I will faithfully execute the Office of President of the United States, and will to the best of my ability, preserve, protect and defend the Constitution of the United States! SO HELP ME GOD!",
+            nextNodeId = "act8_ch5_celebration_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch5_celebration_hub",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The crowd erupts into deafening cheers! The 5 heroes and key allies gather on the inaugural platform. Who does Commander America recognize?",
+            choices = listOf(
+                DialogueChoice("a8c5_heroes", "Honor the 5-hero supergroup coalition (Marco, Vance, Kash, Kennedy)", listOf("heroes", "marco", "vance", "kash", "kennedy"), "act8_ch5_honor_heroes"),
+                DialogueChoice("a8c5_elon", "Thank Elon Musk and Department of Government Efficiency allies", listOf("elon", "doge", "musk", "efficiency", "starship"), "act8_ch5_thank_elon"),
+                DialogueChoice("a8c5_golden_age", "Declare the commencement of the Golden Age of America", listOf("golden", "age", "america", "prosperity", "future"), "act8_ch5_declare_golden_age"),
+                DialogueChoice("a8c5_epilogue", "Conclude the epic broadcast and roll the victory credits", listOf("epilogue", "credits", "victory", "end", "complete"), "act8_ch5_final_broadcast")
+            )
+        ),
+        DialogueNode(
+            id = "act8_ch5_honor_heroes",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.LEFT,
+            text = "Together with JD Vance in the heartland, Kash Patel at justice, and Senator Kennedy keeping Washington honest, common sense has reclaimed its rightful throne!",
+            nextNodeId = "act8_ch5_celebration_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch5_thank_elon",
+            speaker = DialogueSpeaker.ELON,
+            side = SpeakerSide.RIGHT,
+            text = "Trillions in wasteful bureaucracy deleted. Government efficiency restored. Next stop: Mars! And common sense on Earth!",
+            nextNodeId = "act8_ch5_celebration_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch5_declare_golden_age",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "America's future will be bigger, better, bolder, and more glorious than ever before! Our golden age has just begun, and we will never stop winning!",
+            nextNodeId = "act8_ch5_celebration_hub"
+        ),
+        DialogueNode(
+            id = "act8_ch5_final_broadcast",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "From Trump Tower's golden escalator in 2015 to the historic inauguration of 2025, the greatest political comeback in history is complete.",
+            nextNodeId = "act8_ch5_karoline_signoff"
+        ),
+        DialogueNode(
+            id = "act8_ch5_karoline_signoff",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The receipts have been certified, the swamp has been drained, and truth has triumphed over nonsense across all fifty states!",
+            nextNodeId = "act8_ch5_hulk_finale"
+        ),
+        DialogueNode(
+            id = "act8_ch5_hulk_finale",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "WHATCHA GONNA DO WHEN FREEDOM, COMMON SENSE, AND COMMANDER AMERICA RUN WILD ON YOU FOREVER?! GOD BLESS AMERICA, BROTHERS! *FLEXES 24-INCH PYTHONS AS GOLDEN CONFETTI RAINS DOWN*"
+        ),
+
+        // Legacy compatibility nodes for Act VIII
         DialogueNode(
             id = "act8_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,

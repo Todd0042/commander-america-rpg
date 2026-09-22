@@ -938,7 +938,47 @@ object StoryEncounters {
         initialParty = createFullAmericaParty()
     )
 
-    // 8. Act VIII: Eradicating Malarkey - Final Boss
+    // 8. Act VIII: Eradicating Malarkey
+    // 8a. Act VIII - Chapter 1: The Basement Bunker Studio
+    val ACT8_CH1_BUNKER_BATTLE = EncounterDefinition(
+        id = "act8_ch1_bunker_battle",
+        name = "Act VIII - Ch 1: Basement Bunker Studio",
+        description = "A Virtual Studio Director and Green Screen Technicians try to keep the fake White House studio set running!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("studio_director", "Virtual Studio Director", "Occultist", currentHp = 620, maxHp = 620, baseAttack = 32, isBoss = true, isTargeted = true, spriteTint = Color(0xFF00897B), speed = 58, atbGauge = 0.35f),
+            Enemy("screen_technician", "Green Screen Technician", "Sniper", currentHp = 380, maxHp = 380, baseAttack = 28, isTargeted = false, spriteTint = Color(0xFF43A047), speed = 65, atbGauge = 0.40f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 8b. Act VIII - Chapter 2: The Teleprompter Sorcery
+    val ACT8_CH2_TELEPROMPTER_BATTLE = EncounterDefinition(
+        id = "act8_ch2_teleprompter_battle",
+        name = "Act VIII - Ch 2: The Teleprompter Sorcery",
+        description = "A Teleprompter Sorcerer Phantom and Scriptwriter Aides beam contradictory talking points directly into the cameras!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("teleprompter_sorcerer", "Teleprompter Sorcerer Phantom", "Occultist", currentHp = 660, maxHp = 660, baseAttack = 34, isBoss = true, isTargeted = true, spriteTint = Color(0xFF0288D1), speed = 60, atbGauge = 0.35f),
+            Enemy("scriptwriter_aide", "Scriptwriter Aide", "Sniper", currentHp = 400, maxHp = 400, baseAttack = 30, isTargeted = false, spriteTint = Color(0xFF7E57C2), speed = 64, atbGauge = 0.38f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 8c. Act VIII - Chapter 3: The Mechanical Auto-Pen
+    val ACT8_CH3_AUTOPEN_BATTLE = EncounterDefinition(
+        id = "act8_ch3_autopen_battle",
+        name = "Act VIII - Ch 3: The Mechanical Auto-Pen",
+        description = "A Mechanical Auto-Pen Sovereign and Omnibus Mandate Drones attempt to sign endless emergency declarations without presidential consciousness!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("autopen_sovereign", "Mechanical Auto-Pen Sovereign", "Vanguard", currentHp = 720, maxHp = 720, baseAttack = 36, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFB300), speed = 50, atbGauge = 0.30f),
+            Enemy("mandate_drone", "Omnibus Mandate Drone", "Sniper", currentHp = 420, maxHp = 420, baseAttack = 30, isTargeted = false, spriteTint = Color(0xFFFB8C00), speed = 66, atbGauge = 0.40f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // 8d. Act VIII - Chapter 4: Eradicating Malarkey - Final Boss
     val ACT8_BIDEN_FINAL_BATTLE = EncounterDefinition(
         id = "act8_biden_final_battle",
         name = "Act VIII: Eradicating Malarkey - Final Boss",
@@ -990,6 +1030,9 @@ object StoryEncounters {
         ACT7_CH1_INDICTMENT_BATTLE,
         ACT7_CH2_CONTEMPT_BATTLE,
         ACT7_LAWFARE_BATTLE,
+        ACT8_CH1_BUNKER_BATTLE,
+        ACT8_CH2_TELEPROMPTER_BATTLE,
+        ACT8_CH3_AUTOPEN_BATTLE,
         ACT8_BIDEN_FINAL_BATTLE,
         PROLOGUE_SOLO,
         FOREST_AMBUSH,
