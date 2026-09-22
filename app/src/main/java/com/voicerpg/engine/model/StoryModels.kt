@@ -301,7 +301,16 @@ data class DialogueChoice(
     val voiceKeywords: List<String>,
     val nextNodeId: String,
     val completionFlag: String? = null
-)
+) {
+    fun isCompleted(narrativeFlags: Map<String, Boolean>): Boolean {
+        if (completionFlag != null) {
+            return narrativeFlags[completionFlag] == true ||
+                   narrativeFlags["choice_done_$id"] == true ||
+                   narrativeFlags[id] == true
+        }
+        return narrativeFlags["choice_done_$id"] == true
+    }
+}
 
 data class DialogueNode(
     val id: String,

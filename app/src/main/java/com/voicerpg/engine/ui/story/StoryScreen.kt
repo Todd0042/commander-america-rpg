@@ -493,7 +493,7 @@ fun StoryScreen(
                             verticalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             currentNode.choices.forEachIndexed { index, choice ->
-                                val isCompleted = choice.completionFlag != null && storyState.narrativeFlags[choice.completionFlag] == true
+                                val isCompleted = choice.isCompleted(storyState.narrativeFlags)
                                 DialogueChoiceItem(
                                     index = index + 1,
                                     choice = choice,
@@ -605,7 +605,7 @@ fun StoryScreen(
                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 currentNode.choices.forEachIndexed { index, choice ->
-                                    val isCompleted = choice.completionFlag != null && storyState.narrativeFlags[choice.completionFlag] == true
+                                    val isCompleted = choice.isCompleted(storyState.narrativeFlags)
                                     DialogueChoiceItem(
                                         index = index + 1,
                                         choice = choice,
@@ -626,7 +626,7 @@ fun StoryScreen(
                                 ) {
                                     for (i in 0..1) {
                                         val choice = currentNode.choices[i]
-                                        val isCompleted = choice.completionFlag != null && storyState.narrativeFlags[choice.completionFlag] == true
+                                        val isCompleted = choice.isCompleted(storyState.narrativeFlags)
                                         DialogueChoiceItem(
                                             index = i + 1,
                                             choice = choice,
@@ -637,7 +637,7 @@ fun StoryScreen(
                                     }
                                 }
                                 val choice3 = currentNode.choices[2]
-                                val isCompleted = choice3.completionFlag != null && storyState.narrativeFlags[choice3.completionFlag] == true
+                                val isCompleted = choice3.isCompleted(storyState.narrativeFlags)
                                 DialogueChoiceItem(
                                     index = 3,
                                     choice = choice3,
@@ -652,7 +652,7 @@ fun StoryScreen(
                                 verticalArrangement = Arrangement.spacedBy(4.dp)
                             ) {
                                 currentNode.choices.forEachIndexed { index, choice ->
-                                    val isCompleted = choice.completionFlag != null && storyState.narrativeFlags[choice.completionFlag] == true
+                                    val isCompleted = choice.isCompleted(storyState.narrativeFlags)
                                     DialogueChoiceItem(
                                         index = index + 1,
                                         choice = choice,

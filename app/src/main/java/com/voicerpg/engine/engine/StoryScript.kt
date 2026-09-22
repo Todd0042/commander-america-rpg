@@ -545,6 +545,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act1_ch1_lore_deal",
+            setFlagOnEnter = "a1_lore_deal",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Our politicians get taken to the cleaners! They sign trade deals written by foreign lobbyists that gut our factories in Ohio, Pennsylvania, and Michigan. I wrote The Art of the Deal—we're renegotiating everything!",
@@ -552,6 +553,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act1_ch1_lore_wall",
+            setFlagOnEnter = "a1_lore_wall",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "A country without borders is not a country! We are going to build a great, powerful wall on the southern border. And it's going to have a big, beautiful golden door so people can come in legally!",
@@ -559,6 +561,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act1_ch1_lore_swamp",
+            setFlagOnEnter = "a1_lore_swamp",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Career bureaucrats go to Washington on a $174k salary and retire four years later with a $50 million net worth and three K-Street lobbying contracts! We are going to drain the swamp, believe me!",
@@ -812,6 +815,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act2_ch1_american_carnage",
+            setFlagOnEnter = "a2c1_carnage",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "This American carnage stops right here and stops right now! The forgotten men and women of our country will be forgotten no longer. January 20th, 2017 will be remembered as the day the people became the rulers of this nation once again!",
@@ -819,6 +823,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act2_ch1_crowd_call",
+            setFlagOnEnter = "a2c1_crowd",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Look at those cameras refusing to turn around and show the crowd! Look at the mall — they cropped the aerial photography so you can't see the people stretching all the way back to the monument! Absolute dishonesty!",
@@ -833,6 +838,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act2_ch1_media_smack",
+            setFlagOnEnter = "a2c1_media",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
             text = "I have the Nielsen ratings right here in this binder! The cable pundits had to resort to a fisheye lens and a fog machine to make the crowd look smaller. These are documented facts!",
@@ -886,6 +892,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act2_ch2_drapes",
+            setFlagOnEnter = "a2c2_drapes",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The burgundy curtains are gone. Absolutely gone. We replaced them with beautiful, full-length gold drapes that represent the golden age of America. Someone put that in the official record. This is important.",
@@ -893,6 +900,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act2_ch2_deregulate",
+            setFlagOnEnter = "a2c2_deregulate",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "For every one new regulation we add, we cut TEN old ones. That's the deal. Ten to one. I'm signing this right now. *Clicks the sharpie.* Tremendous. This pen has more power than a thousand bureaucrat memos.",
@@ -907,6 +915,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act2_ch2_tariffs",
+            setFlagOnEnter = "a2c2_tariffs",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "China has been charging us 40% tariffs while we charge them virtually nothing for decades! That ends today. Reciprocal. If you charge us 40, we charge you 40. It's called being fair! Revolutionary concept, I know!",
@@ -1089,6 +1098,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch1_steel_tariff",
+            setFlagOnEnter = "a3c1_steel",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "25% tariff on foreign steel! 10% on aluminum! Other countries have been dumping their cheap product to destroy our mills for decades! That ends! American steel for American infrastructure!",
@@ -1096,6 +1106,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch1_nafta_callout",
+            setFlagOnEnter = "a3c1_nafta",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "NAFTA was the worst trade deal in the history of the world! Negotiated by people who didn't know what they were doing! In 25 years it cost us 700,000 manufacturing jobs! We're ripping it up and replacing it with something fantastic!",
@@ -1170,6 +1181,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch2_dairy",
+            setFlagOnEnter = "a3c2_dairy",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Canada charges our dairy farmers a 270% tariff! Our guys can barely get their product across the border! That is going to be ZERO. Open access. Our farmers are the best in the world — they don't need protection from competition, they just need a fair shot!",
@@ -1177,6 +1189,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch2_autos",
+            setFlagOnEnter = "a3c2_autos",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "Under our sanctions and tariff leverage, we are locking in 75% North American content rules for all vehicles. If you want to sell a car in America, most of it needs to be BUILT in America, Canada, or Mexico. The offshore shell games are over.",
@@ -1184,6 +1197,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch2_ip",
+            setFlagOnEnter = "a3c2_ip",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "American companies — pharmaceutical, tech, creative — spent billions innovating, and foreign competitors just copy it the next day! Under USMCA, we have ten-year protections for biologics and criminal penalties for trade secret theft! Protection for our geniuses!",
@@ -1236,6 +1250,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch3_strategy",
+            setFlagOnEnter = "a3c3_strategy",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "Maximum pressure, then maximum diplomacy. We tightened sanctions until his economy squeaked — then we opened a back-channel with a letter hand-delivered through Singapore. The carrot and the biggest stick ever assembled. Classic Sanctions Sorcery.",
@@ -1243,6 +1258,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch3_menu",
+            setFlagOnEnter = "a3c3_menu",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "We've got two dozen Big Macs, thirty cheeseburgers, Filet-O-Fish for the diplomatic delegation, and a Trump Tower chocolate cake as the centerpiece. Nothing says 'world peace' like a Golden Arches feast. Rocket Man is going to LOVE it.",
@@ -1250,6 +1266,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act3_ch3_vance_korea",
+            setFlagOnEnter = "a3c3_vance",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "The people of eastern Ohio have lost sons and daughters in Korea. They've been watching that peninsula for 70 years. If Commander America can end the conflict that career diplomats couldn't end in seven decades, those families deserve it more than anyone. Let's get this done.",
@@ -1459,6 +1476,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act4_ch1_dossier_expose",
+            setFlagOnEnter = "a4c1_dossier",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "They took a totally unverified opposition dossier paid for by the DNC, brought it to a secret court, and told the judges it was confirmed intelligence! The greatest scandal in American history!",
@@ -1473,6 +1491,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act4_ch1_warrant_inquest",
+            setFlagOnEnter = "a4c1_warrant",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Four different renewals! Every ninety days they signed off on it, knowing full well it was completely fabricated! The American people deserve the names!",
@@ -1547,6 +1566,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act4_ch2_scrub_ink",
+            setFlagOnEnter = "a4c2_unredact",
             speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
             text = "I've cross-referenced every redaction against original executive branch authorities. None of this qualifies as classified national defense information — it was classified solely to hide bureaucratic embarrassment. Unredacted!",
@@ -1554,6 +1574,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act4_ch2_release_transcripts",
+            setFlagOnEnter = "a4c2_transcripts",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Publish them! Post every single page online! Don't let the cable news networks filter it through their 9:00 PM panels! Let the American people read the raw transcripts!",
@@ -1561,6 +1582,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act4_ch2_witness_review",
+            setFlagOnEnter = "a4c2_witnesses",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "Fifty-three separate under-oath interviews. Every single official admitted behind closed doors they had zero direct evidence of collusion — while telling Sunday morning television the exact opposite. Pure establishment double-speak.",
@@ -1605,6 +1627,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act4_ch3_taxpayer_cost",
+            setFlagOnEnter = "a4c3_cost",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Thirty-two million dollars of hard-working American taxpayer money! Spent on phantom collusion! We could have rebuilt fifty bridges in Ohio for that money!",
@@ -1612,6 +1635,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act4_ch3_perfect_call",
+            setFlagOnEnter = "a4c3_perfect",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "It was a perfect call! Read the transcript! Even their own witnesses admitted nobody was pressured! Absolute total perfection!",
@@ -1793,6 +1817,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch1_pipe_investigate",
+            setFlagOnEnter = "a5c1_pipe",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "They claimed the arena was flooding! Karoline, did anyone call 911? Did anyone call the city water authority? Did anyone even grab a mop?!",
@@ -1807,6 +1832,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch1_suitcases_check",
+            setFlagOnEnter = "a5c1_suitcases",
             speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
             text = "Security cameras recorded every angle in 4K. The second the observers walked out into the parking lot, four workers pulled wheeled containers from under black tablecloths and scanned the same stacks three and four times in a row without a single monitor present.",
@@ -1814,6 +1840,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch1_observers_sent_home",
+            setFlagOnEnter = "a5c1_observe",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "In Florida, if election supervisors order bipartisan observers to leave and then keep running secret ballots in the dark at 3:00 AM, that is called a state felony. The rule of law doesn't take a nap at midnight.",
@@ -1866,6 +1893,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch2_miracle_quote",
+            setFlagOnEnter = "a5c2_miracle",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Now, let me say this politely, son. It will take a miracle to fix the mess you just described, and frankly, God is busy. You don't have to be a nuclear astrophysicist to figure out that if you don't check signatures, you ain't checking signatures.",
@@ -1873,6 +1901,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch2_hammers_quote",
+            setFlagOnEnter = "a5c2_hammers",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "I've listened to your testimony, and with all due respect, that explanation sounds dumber than a bag of hair. If common sense were water, some of these bureaucrats wouldn't have enough to fill a thimble.",
@@ -1940,6 +1969,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch3_golf_training",
+            setFlagOnEnter = "a5c3_golf",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Hit a clean 320-yard drive straight into the ocean crosswind! Hole-in-one on the 16th! Energy level at 1000%! The training arc is unmatched!",
@@ -1954,6 +1984,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch3_foreign_delegation",
+            setFlagOnEnter = "a5c3_foreign",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "Prime ministers and foreign ambassadors keep bypassing Washington entirely and flying directly to Palm Beach. Everyone on the international stage knows where the real power is centered.",
@@ -1961,6 +1992,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch3_comeback_tour",
+            setFlagOnEnter = "a5c3_rally",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Rallies in Iowa, Ohio, Michigan, Pennsylvania! Lines three miles long in sub-zero snow! Nobody has ever seen crowds like this. The comeback will be historic!",
@@ -2006,6 +2038,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch4_pra_argument",
+            setFlagOnEnter = "a5c4_pra",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "The Presidential Records Act is a civil negotiation statute, not a criminal weapon! You discuss storage with the National Archives over tea and scones, you don't send thirty armed agents with guns drawn!",
@@ -2013,6 +2046,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch4_passports_demand",
+            setFlagOnEnter = "a5c4_passports",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Son, if you're taking a man's passport, his wife's clothes, and love letters from North Korea, you ain't looking for national security secrets. You're on a political fishing expedition, and you didn't even pack bait.",
@@ -2020,6 +2054,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act5_ch4_kash_declass",
+            setFlagOnEnter = "a5c4_kash",
             speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
             text = "Every box in this vault was declassified under standing executive authorities before departing the Oval Office. We have the transport manifests, clearance logs, and paper trail. This raid is completely unlawful.",
@@ -2136,14 +2171,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The team inspects the gaping openings in the unfinished perimeter. How do we break through the Border Czar's blockade?",
             choices = listOf(
-                DialogueChoice("a6c1_excuse", "Demand an explanation for why the Border Czar hasn't visited", listOf("czar", "visit", "excuse", "europe", "border"), "act6_ch1_czar_excuse"),
-                DialogueChoice("a6c1_panels", "Inspect the $300 million in rusting, abandoned wall panels", listOf("panels", "rust", "steel", "materials", "waste"), "act6_ch1_rusted_panels"),
-                DialogueChoice("a6c1_fentanyl", "Expose the cartel smuggling pipelines and fentanyl surge", listOf("fentanyl", "cartel", "smuggling", "pipelines", "border"), "act6_ch1_fentanyl_crisis"),
+                DialogueChoice("a6c1_excuse", "Demand an explanation for why the Border Czar hasn't visited", listOf("czar", "visit", "excuse", "europe", "border"), "act6_ch1_czar_excuse", completionFlag = "a6c1_excuse"),
+                DialogueChoice("a6c1_panels", "Inspect the $300 million in rusting, abandoned wall panels", listOf("panels", "rust", "steel", "materials", "waste"), "act6_ch1_rusted_panels", completionFlag = "a6c1_panels"),
+                DialogueChoice("a6c1_fentanyl", "Expose the cartel smuggling pipelines and fentanyl surge", listOf("fentanyl", "cartel", "smuggling", "pipelines", "border"), "act6_ch1_fentanyl_crisis", completionFlag = "a6c1_fentanyl"),
                 DialogueChoice("a6c1_proceed", "Advance past the perimeter gap and confront the smugglers", listOf("advance", "proceed", "forward", "gap", "confront"), "act6_ch1_cartel_ambush")
             )
         ),
         DialogueNode(
             id = "act6_ch1_czar_excuse",
+            setFlagOnEnter = "a6c1_excuse",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "When Lester Holt asked her why she hadn't visited the border, she literally laughed and said: 'Well, I haven't been to Europe either!' That is not foreign policy, folks — that is an admission of complete neglect!",
@@ -2151,6 +2187,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch1_rusted_panels",
+            setFlagOnEnter = "a6c1_panels",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "Over three hundred million dollars of high-grade American steel sitting in the dirt being eaten by desert termites. Working-class taxpayers financed this while contractors were paid millions to stand down.",
@@ -2158,6 +2195,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch1_fentanyl_crisis",
+            setFlagOnEnter = "a6c1_fentanyl",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Down in Louisiana, we have an old saying: you can put wings on a pig, but that don't make it an eagle. Calling yourself a Border Czar without visiting the border is like calling yourself an astronaut because you once ate a MoonPie!",
@@ -2203,14 +2241,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "We have entered the Venn Diagram Fog. Speech here circles endlessly back onto itself without ever making a tangible point. How should the coalition navigate this labyrinth of jargon?",
             choices = listOf(
-                DialogueChoice("a6c2_time", "Analyze the significance of the passage of time", listOf("time", "passage", "significance", "loop", "circular"), "act6_ch2_time_passage"),
-                DialogueChoice("a6c2_unburdened", "Ponder what can be unburdened by what has been", listOf("unburdened", "burden", "future", "past", "logic"), "act6_ch2_unburdened_loop"),
-                DialogueChoice("a6c2_kennedy", "Ask Senator Kennedy for a plain-English southern translation", listOf("kennedy", "louisiana", "english", "plain", "translate"), "act6_ch2_kennedy_translate"),
+                DialogueChoice("a6c2_time", "Analyze the significance of the passage of time", listOf("time", "passage", "significance", "loop", "circular"), "act6_ch2_time_passage", completionFlag = "a6c2_time"),
+                DialogueChoice("a6c2_unburdened", "Ponder what can be unburdened by what has been", listOf("unburdened", "burden", "future", "past", "logic"), "act6_ch2_unburdened_loop", completionFlag = "a6c2_unburdened"),
+                DialogueChoice("a6c2_kennedy", "Ask Senator Kennedy for a plain-English southern translation", listOf("kennedy", "louisiana", "english", "plain", "translate"), "act6_ch2_kennedy_translate", completionFlag = "a6c2_kennedy"),
                 DialogueChoice("a6c2_dispel", "Dispel the fog with hard economic numbers and proceed", listOf("dispel", "numbers", "proceed", "advance", "clarity"), "act6_ch2_dispel_fog")
             )
         ),
         DialogueNode(
             id = "act6_ch2_time_passage",
+            setFlagOnEnter = "a6c2_time",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
             text = "You see, there is great significance to the passage of time when you think about the passage of time, because time passes, and in the passing of time, there is great significance!",
@@ -2218,6 +2257,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch2_unburdened_loop",
+            setFlagOnEnter = "a6c2_unburdened",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
             text = "What can be, unburdened by what has been! Because what has been was burdened, but what can be will be unburdened by the very things that have been!",
@@ -2225,6 +2265,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch2_kennedy_translate",
+            setFlagOnEnter = "a6c2_kennedy",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Son, I've heard auctioneers with a mouthful of marbles make more sense than this. Listening to that is like watching a goat try to calculate property taxes. It's high-dollar gibberish!",
@@ -2262,14 +2303,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The federal EV school bus initiative spent billions of taxpayer dollars, but the buses cannot handle sub-zero winters or basic rural bus routes. How do we address this stranded convoy?",
             choices = listOf(
-                DialogueChoice("a6c3_cackle", "Listen to the recorded yellow school bus audio tribute", listOf("cackle", "yellow", "bus", "love", "laugh"), "act6_ch3_bus_cackle"),
-                DialogueChoice("a6c3_chargers", "Audit the $7.5 billion national EV charger program", listOf("chargers", "billion", "audit", "tally", "waste"), "act6_ch3_bus_chargers"),
-                DialogueChoice("a6c3_vance", "Ask JD Vance about the impact on Midwestern manufacturing", listOf("vance", "ohio", "grid", "workers", "manufacturing"), "act6_ch3_vance_grid"),
+                DialogueChoice("a6c3_cackle", "Listen to the recorded yellow school bus audio tribute", listOf("cackle", "yellow", "bus", "love", "laugh"), "act6_ch3_bus_cackle", completionFlag = "a6c3_cackle"),
+                DialogueChoice("a6c3_chargers", "Audit the $7.5 billion national EV charger program", listOf("chargers", "billion", "audit", "tally", "waste"), "act6_ch3_bus_chargers", completionFlag = "a6c3_chargers"),
+                DialogueChoice("a6c3_vance", "Ask JD Vance about the impact on Midwestern manufacturing", listOf("vance", "ohio", "grid", "workers", "manufacturing"), "act6_ch3_vance_grid", completionFlag = "a6c3_vance"),
                 DialogueChoice("a6c3_confront", "Confront the Stranded Battery Golem barring the road", listOf("confront", "battery", "golem", "battle", "fight"), "act6_ch3_golem_confront")
             )
         ),
         DialogueNode(
             id = "act6_ch3_bus_cackle",
+            setFlagOnEnter = "a6c3_cackle",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
             text = "Who doesn't love a yellow school bus, right?! Can you raise your hand if you love yellow school buses?! AHAHAHAHAHA! They're yellow, and they're buses!",
@@ -2277,6 +2319,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch3_bus_chargers",
+            setFlagOnEnter = "a6c3_chargers",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "Congress allocated seven point five BILLION dollars to build charging stations across the country. After two full years, do you know how many they actually built? EIGHT. Exactly eight chargers for eight billion dollars!",
@@ -2284,6 +2327,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch3_vance_grid",
+            setFlagOnEnter = "a6c3_vance",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "Our electric grid can't handle everyone turning their air conditioners on in July, yet Washington mandated that heavy diesel workbuses be replaced by fragile lithium battery packs made overseas.",
@@ -2329,14 +2373,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "Every path through the grove is lined with quotes about existing in the context of all in which you live and what came before you. How does the party advance?",
             choices = listOf(
-                DialogueChoice("a6c4_quote", "Examine the philosophical mystery of the coconut tree", listOf("coconut", "tree", "context", "fell", "quote"), "act6_ch4_coconut_quote"),
-                DialogueChoice("a6c4_pride", "Proclaim that American greatness comes from real grit, not trees", listOf("pride", "grit", "greatness", "american", "work"), "act6_ch4_american_pride"),
-                DialogueChoice("a6c4_kennedy", "Ask Senator Kennedy if coconuts grow on the bayou", listOf("kennedy", "bayou", "coconuts", "louisiana", "humor"), "act6_ch4_kennedy_coconuts"),
+                DialogueChoice("a6c4_quote", "Examine the philosophical mystery of the coconut tree", listOf("coconut", "tree", "context", "fell", "quote"), "act6_ch4_coconut_quote", completionFlag = "a6c4_quote"),
+                DialogueChoice("a6c4_pride", "Proclaim that American greatness comes from real grit, not trees", listOf("pride", "grit", "greatness", "american", "work"), "act6_ch4_american_pride", completionFlag = "a6c4_pride"),
+                DialogueChoice("a6c4_kennedy", "Ask Senator Kennedy if coconuts grow on the bayou", listOf("kennedy", "bayou", "coconuts", "louisiana", "humor"), "act6_ch4_kennedy_coconuts", completionFlag = "a6c4_kennedy"),
                 DialogueChoice("a6c4_throne", "Storm the elevated Dais of What Can Be", listOf("throne", "dais", "storm", "advance", "climax"), "act6_ch4_advance_throne")
             )
         ),
         DialogueNode(
             id = "act6_ch4_coconut_quote",
+            setFlagOnEnter = "a6c4_quote",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
             text = "My mother used to say to me, 'I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!' AHAHAHAHA! You exist in the context of all in which you live and what came before you!",
@@ -2344,6 +2389,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch4_american_pride",
+            setFlagOnEnter = "a6c4_pride",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "The people who built our bridges, dug our coal mines, and poured our steel didn't fall out of a coconut tree. They built this nation with sweat and grit, and they deserve leadership that speaks clearly.",
@@ -2351,6 +2397,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch4_kennedy_coconuts",
+            setFlagOnEnter = "a6c4_kennedy",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Down in Louisiana, if somebody starts talking about falling out of coconut trees in the middle of a budget crisis, we don't give them the nuclear football — we call them an ambulance and check for heat exhaustion!",
@@ -2381,14 +2428,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "Kamala readies her overlapping yellow and blue Venn shields! How do Commander America and the 5-hero coalition dismantle her defenses?",
             choices = listOf(
-                DialogueChoice("a6c5_record", "Challenge her record on 4-year inflation and open borders", listOf("record", "inflation", "economy", "borders", "prices"), "act6_ch5_record_challenge"),
-                DialogueChoice("a6c5_debate", "Unleash unscripted debate firepower and common sense", listOf("debate", "unscripted", "firepower", "teleprompter", "logic"), "act6_ch5_unscripted_fire"),
-                DialogueChoice("a6c5_supergroup", "Unite all 5 heroes for the final constitutional verdict", listOf("supergroup", "verdict", "heroes", "coalition", "unite"), "act6_ch5_supergroup_verdict"),
+                DialogueChoice("a6c5_record", "Challenge her record on 4-year inflation and open borders", listOf("record", "inflation", "economy", "borders", "prices"), "act6_ch5_record_challenge", completionFlag = "a6c5_record"),
+                DialogueChoice("a6c5_debate", "Unleash unscripted debate firepower and common sense", listOf("debate", "unscripted", "firepower", "teleprompter", "logic"), "act6_ch5_unscripted_fire", completionFlag = "a6c5_debate"),
+                DialogueChoice("a6c5_supergroup", "Unite all 5 heroes for the final constitutional verdict", listOf("supergroup", "verdict", "heroes", "coalition", "unite"), "act6_ch5_supergroup_verdict", completionFlag = "a6c5_supergroup"),
                 DialogueChoice("a6c5_battle", "Charge into battle and banish the Word-Salad forever!", listOf("battle", "charge", "fight", "climax", "win"), "act6_ch5_climax_battle")
             )
         ),
         DialogueNode(
             id = "act6_ch5_record_challenge",
+            setFlagOnEnter = "a6c5_record",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "Prices up twenty-five percent across grocery shelves, gas prices doubling, mortgage rates pricing out young families — no circular speech can unburden the American people from those numbers!",
@@ -2396,6 +2444,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch5_unscripted_fire",
+            setFlagOnEnter = "a6c5_debate",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Take away the teleprompter, take away the rehearsed soundbites, and what do you have? Total word-salad! It's unwatchable, folks! The ratings are terrible!",
@@ -2403,6 +2452,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act6_ch5_supergroup_verdict",
+            setFlagOnEnter = "a6c5_supergroup",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "The American people aren't confused, Madam Vice-Sovereign. They know that when Washington tells you it's raining, you'd better check and make sure someone isn't peeing on your boots. The jig is up!",
@@ -2515,14 +2565,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The courtroom corridors are packed with cameras and partisan lawfare architects. How does the defense dismantle these charges?",
             choices = listOf(
-                DialogueChoice("a7c1_mugshot", "Inspect the iconic Atlanta mugshot of defiance", listOf("mugshot", "atlanta", "fulton", "defiance", "photo"), "act7_ch1_mugshot_defiance"),
-                DialogueChoice("a7c1_charges", "Analyze the 34 bookkeeping misdemeanors turned into felonies", listOf("bookkeeping", "charges", "felonies", "manhattan", "counts"), "act7_ch1_bookkeeping_counts"),
-                DialogueChoice("a7c1_kennedy", "Ask Senator Kennedy for his appraisal of partisan prosecutors", listOf("kennedy", "prosecutor", "lawfare", "justice", "louisiana"), "act7_ch1_kennedy_appraisal"),
+                DialogueChoice("a7c1_mugshot", "Inspect the iconic Atlanta mugshot of defiance", listOf("mugshot", "atlanta", "fulton", "defiance", "photo"), "act7_ch1_mugshot_defiance", completionFlag = "a7c1_mugshot"),
+                DialogueChoice("a7c1_charges", "Analyze the 34 bookkeeping misdemeanors turned into felonies", listOf("bookkeeping", "charges", "felonies", "manhattan", "counts"), "act7_ch1_bookkeeping_counts", completionFlag = "a7c1_charges"),
+                DialogueChoice("a7c1_kennedy", "Ask Senator Kennedy for his appraisal of partisan prosecutors", listOf("kennedy", "prosecutor", "lawfare", "justice", "louisiana"), "act7_ch1_kennedy_appraisal", completionFlag = "a7c1_kennedy"),
                 DialogueChoice("a7c1_proceed", "Charge past the docket blockade and confront the prosecutor", listOf("proceed", "charge", "court", "prosecutor", "confront"), "act7_ch1_prosecutor_ambush")
             )
         ),
         DialogueNode(
             id = "act7_ch1_mugshot_defiance",
+            setFlagOnEnter = "a7c1_mugshot",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "They thought that booking photo in Fulton County would break him. Instead, it became the most famous image on Earth — slapped onto t-shirts, coffee mugs, and billboards in every working-class town in America!",
@@ -2530,6 +2581,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch1_bookkeeping_counts",
+            setFlagOnEnter = "a7c1_charges",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "They took expired misdemeanor recordkeeping entries and magically spliced them with federal campaign law that the feds already declined to prosecute. It's legal origami constructed out of thin air!",
@@ -2537,6 +2589,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch1_kennedy_appraisal",
+            setFlagOnEnter = "a7c1_kennedy",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Up here in these activist courtrooms, the law doesn't matter a tinker's damn. These prosecutors are like a dog chasing a parked car — now that they've caught it, they have no idea how to drive it!",
@@ -2582,14 +2635,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "They want to silence the leading candidate for President while his political opponents attack him freely on television. How does the coalition counter this muzzle?",
             choices = listOf(
-                DialogueChoice("a7c2_first_amendment", "Assert the First Amendment right of 80 million voters", listOf("first", "amendment", "voters", "rights", "free speech"), "act7_ch2_first_amendment"),
-                DialogueChoice("a7c2_sidewalk", "Deploy Marco and Vance for the legendary sidewalk press conference", listOf("sidewalk", "marco", "vance", "press", "surrogate"), "act7_ch2_sidewalk_press"),
-                DialogueChoice("a7c2_kennedy", "Hear Senator Kennedy's take on activist judges", listOf("kennedy", "judge", "activist", "gavel", "contempt"), "act7_ch2_kennedy_gavel"),
+                DialogueChoice("a7c2_first_amendment", "Assert the First Amendment right of 80 million voters", listOf("first", "amendment", "voters", "rights", "free speech"), "act7_ch2_first_amendment", completionFlag = "a7c2_first_amendment"),
+                DialogueChoice("a7c2_sidewalk", "Deploy Marco and Vance for the legendary sidewalk press conference", listOf("sidewalk", "marco", "vance", "press", "surrogate"), "act7_ch2_sidewalk_press", completionFlag = "a7c2_sidewalk"),
+                DialogueChoice("a7c2_kennedy", "Hear Senator Kennedy's take on activist judges", listOf("kennedy", "judge", "activist", "gavel", "contempt"), "act7_ch2_kennedy_gavel", completionFlag = "a7c2_kennedy"),
                 DialogueChoice("a7c2_shatter", "Shatter the Gag Order Guillotine and break free", listOf("shatter", "guillotine", "battle", "free", "contempt"), "act7_ch2_contempt_confront")
             )
         ),
         DialogueNode(
             id = "act7_ch2_first_amendment",
+            setFlagOnEnter = "a7c2_first_amendment",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "They are not taking away my speech — they are taking away YOUR right to hear the truth! They want to muzzle the American people, and I won't let them do it!",
@@ -2597,6 +2651,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch2_sidewalk_press",
+            setFlagOnEnter = "a7c2_sidewalk",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "If the judge won't let the Commander speak in the courtroom, Vance and I will stand on the sidewalk outside in the pouring rain with twenty microphones and say every single word for him!",
@@ -2604,6 +2659,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch2_kennedy_gavel",
+            setFlagOnEnter = "a7c2_kennedy",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "This gag order is more crooked than a barrel of snakes. You can't strip a man of his God-given constitutional rights just because his poll numbers are twenty points higher than yours!",
@@ -2649,14 +2705,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "Commander America steps up to the rally podium beneath an open summer sky. How does he prepare to deliver the historic speech?",
             choices = listOf(
-                DialogueChoice("a7c3_chart", "Display the famous border immigration chart on the jumbotron", listOf("chart", "border", "jumbotron", "immigration", "screen"), "act7_ch3_display_chart"),
-                DialogueChoice("a7c3_patriots", "Wave to the sea of red hats and working-class families", listOf("patriots", "crowd", "wave", "families", "cheer"), "act7_ch3_crowd_wave"),
-                DialogueChoice("a7c3_kash", "Review perimeter security and suspicious nearby sloped roofs", listOf("security", "roof", "sloped", "kash", "perimeter"), "act7_ch3_kash_warning"),
+                DialogueChoice("a7c3_chart", "Display the famous border immigration chart on the jumbotron", listOf("chart", "border", "jumbotron", "immigration", "screen"), "act7_ch3_display_chart", completionFlag = "a7c3_chart"),
+                DialogueChoice("a7c3_patriots", "Wave to the sea of red hats and working-class families", listOf("patriots", "crowd", "wave", "families", "cheer"), "act7_ch3_crowd_wave", completionFlag = "a7c3_patriots"),
+                DialogueChoice("a7c3_kash", "Review perimeter security and suspicious nearby sloped roofs", listOf("security", "roof", "sloped", "kash", "perimeter"), "act7_ch3_kash_warning", completionFlag = "a7c3_kash"),
                 DialogueChoice("a7c3_advance", "Take the center podium and begin the fateful address", listOf("podium", "begin", "address", "speech", "advance"), "act7_ch3_take_podium")
             )
         ),
         DialogueNode(
             id = "act7_ch3_display_chart",
+            setFlagOnEnter = "a7c3_chart",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "Bring down that chart, folks! Look at that arrow right at the bottom — lowest illegal immigration in the history of our country! That beautiful chart shows the exact moment our borders were secure!",
@@ -2664,6 +2721,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch3_crowd_wave",
+            setFlagOnEnter = "a7c3_patriots",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "Look at these people — steelworkers, nurses, farmers, truckers. They drove six hours and waited in the heat because they love this country and believe in the American comeback.",
@@ -2671,6 +2729,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch3_kash_warning",
+            setFlagOnEnter = "a7c3_kash",
             speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
             text = "Something isn't right with the outer perimeter. That warehouse roof with the slight slope is completely unmanned. Why did local command leave an elevated line of sight open?",
@@ -2715,14 +2774,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "He stands back up. Blood streams down the right cheek, but his eyes blaze with divine fortitude. What does Commander America do?",
             choices = listOf(
-                DialogueChoice("a7c4_fist", "Pump your fist in the air and shout 'FIGHT! FIGHT! FIGHT!'", listOf("fight", "fist", "pump", "rise", "blood"), "act7_ch4_fist_shout"),
-                DialogueChoice("a7c4_bandage", "Equip the White Ear Bandage of Fortitude (+500% Defense)", listOf("bandage", "ear", "fortitude", "armor", "defense"), "act7_ch4_equip_bandage"),
-                DialogueChoice("a7c4_flag", "Raise your fist beneath the billowing American flag", listOf("flag", "iconic", "photo", "freedom", "american"), "act7_ch4_flag_photo"),
+                DialogueChoice("a7c4_fist", "Pump your fist in the air and shout 'FIGHT! FIGHT! FIGHT!'", listOf("fight", "fist", "pump", "rise", "blood"), "act7_ch4_fist_shout", completionFlag = "a7c4_fist"),
+                DialogueChoice("a7c4_bandage", "Equip the White Ear Bandage of Fortitude (+500% Defense)", listOf("bandage", "ear", "fortitude", "armor", "defense"), "act7_ch4_equip_bandage", completionFlag = "a7c4_bandage"),
+                DialogueChoice("a7c4_flag", "Raise your fist beneath the billowing American flag", listOf("flag", "iconic", "photo", "freedom", "american"), "act7_ch4_flag_photo", completionFlag = "a7c4_flag"),
                 DialogueChoice("a7c4_advance", "Lead the unified coalition onward to Milwaukee!", listOf("milwaukee", "advance", "onward", "rnc", "lead"), "act7_ch4_advance_milwaukee")
             )
         ),
         DialogueNode(
             id = "act7_ch4_fist_shout",
+            setFlagOnEnter = "a7c4_fist",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "FIGHT! FIGHT! FIGHT! We will NEVER surrender! We will NEVER give up! God spared my life to save our great country!",
@@ -2730,6 +2790,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch4_equip_bandage",
+            setFlagOnEnter = "a7c4_bandage",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "This White Ear Bandage gives me +500% defense! Divine providence touched this stage today, folks! The enemy's greatest weapon couldn't stop the American movement!",
@@ -2737,6 +2798,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch4_flag_photo",
+            setFlagOnEnter = "a7c4_flag",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
             text = "LOOK AT THAT PHOTOGRAPH, BROTHERS! Blood on the cheek, fist raised to the sky, Old Glory waving in the background! That is the ultimate symbol of American steel!",
@@ -2767,14 +2829,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The entire coalition stands united on the convention stage. How do the 5 heroes prepare for the final showdown against the Lawfare Lich?",
             choices = listOf(
-                DialogueChoice("a7c5_hulk", "Let Hulk Hogan rip his shirt open on the RNC podium", listOf("hulk", "shirt", "tear", "brother", "trumpamania"), "act7_ch5_hulk_shirt"),
-                DialogueChoice("a7c5_vance", "Confirm JD Vance as the Vice-Presidential nominee", listOf("vance", "vp", "nominee", "heartland", "coalition"), "act7_ch5_vance_nomination"),
-                DialogueChoice("a7c5_kennedy", "Deliver Senator Kennedy's convention rallying cry", listOf("kennedy", "speech", "cry", "louisiana", "rally"), "act7_ch5_kennedy_rally"),
+                DialogueChoice("a7c5_hulk", "Let Hulk Hogan rip his shirt open on the RNC podium", listOf("hulk", "shirt", "tear", "brother", "trumpamania"), "act7_ch5_hulk_shirt", completionFlag = "a7c5_hulk"),
+                DialogueChoice("a7c5_vance", "Confirm JD Vance as the Vice-Presidential nominee", listOf("vance", "vp", "nominee", "heartland", "coalition"), "act7_ch5_vance_nomination", completionFlag = "a7c5_vance"),
+                DialogueChoice("a7c5_kennedy", "Deliver Senator Kennedy's convention rallying cry", listOf("kennedy", "speech", "cry", "louisiana", "rally"), "act7_ch5_kennedy_rally", completionFlag = "a7c5_kennedy"),
                 DialogueChoice("a7c5_battle", "Confront the Lawfare Grand Inquisitor in the final arena duel", listOf("battle", "inquisitor", "lich", "lawfare", "fight"), "act7_ch5_lawfare_confront")
             )
         ),
         DialogueNode(
             id = "act7_ch5_hulk_shirt",
+            setFlagOnEnter = "a7c5_hulk",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
             text = "*RIPS SHIRT IN HALF* LET TRUMPAMANIA RUN WILD, BROTHER! They took a shot at the greatest leader on Earth, and he stood right back up! There is NO stopping this train now, brothers!",
@@ -2782,6 +2845,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch5_vance_nomination",
+            setFlagOnEnter = "a7c5_vance",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "To the forgotten men and women of Ohio, Pennsylvania, Michigan, and Wisconsin: your voices will never be forgotten again. We are taking our country back!",
@@ -2789,6 +2853,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act7_ch5_kennedy_rally",
+            setFlagOnEnter = "a7c5_kennedy",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "The American people have had a bellyful of the Washington establishment. In November, we're going to remind them who really runs this country, and we don't need a teleprompter to do it!",
@@ -2894,14 +2959,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "Green screens, studio lighting, and simulated White House backdrops create the illusion of an active administration. How does Commander America breach the bunker?",
             choices = listOf(
-                DialogueChoice("a8c1_lid", "Investigate why a 'lid' was called on the day at 9:15 AM", listOf("lid", "called", "morning", "nap", "schedule"), "act8_ch1_lid_called"),
-                DialogueChoice("a8c1_greenscreen", "Inspect the green screen artifacts and teleprompter rigs", listOf("greenscreen", "virtual", "studio", "backdrop", "lighting"), "act8_ch1_greenscreen_inspect"),
-                DialogueChoice("a8c1_kennedy", "Ask Senator Kennedy about basement campaign strategies", listOf("kennedy", "basement", "delaware", "campaign", "bunker"), "act8_ch1_kennedy_basement"),
+                DialogueChoice("a8c1_lid", "Investigate why a 'lid' was called on the day at 9:15 AM", listOf("lid", "called", "morning", "nap", "schedule"), "act8_ch1_lid_called", completionFlag = "a8c1_lid"),
+                DialogueChoice("a8c1_greenscreen", "Inspect the green screen artifacts and teleprompter rigs", listOf("greenscreen", "virtual", "studio", "backdrop", "lighting"), "act8_ch1_greenscreen_inspect", completionFlag = "a8c1_greenscreen"),
+                DialogueChoice("a8c1_kennedy", "Ask Senator Kennedy about basement campaign strategies", listOf("kennedy", "basement", "delaware", "campaign", "bunker"), "act8_ch1_kennedy_basement", completionFlag = "a8c1_kennedy"),
                 DialogueChoice("a8c1_proceed", "Breach the control room and disconnect the virtual feeds", listOf("proceed", "breach", "control", "feeds", "confront"), "act8_ch1_studio_ambush")
             )
         ),
         DialogueNode(
             id = "act8_ch1_lid_called",
+            setFlagOnEnter = "a8c1_lid",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "It's 9:15 in the morning and they already called a lid! A lid! I've been awake since 4:00 AM, did four rallies, three interviews, and played eighteen holes of golf! Low energy, folks!",
@@ -2909,6 +2975,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch1_greenscreen_inspect",
+            setFlagOnEnter = "a8c1_greenscreen",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "Look closely at the edges around his hands — you can see the green chroma-key bleed! They're broadcasting a digital hologram while the country runs on autopilot!",
@@ -2916,6 +2983,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch1_kennedy_basement",
+            setFlagOnEnter = "a8c1_kennedy",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Running a superpower from a basement recliner is like trying to drive an eighteen-wheeler using a television remote. Sooner or later, you're going to end up in the ditch!",
@@ -2961,14 +3029,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The teleprompters project endless stage instructions: 'REPEAT THE LINE', 'PAUSE FOR APPLAUSE', and 'SALUTE MARINE'. How do we disrupt this messaging conduit?",
             choices = listOf(
-                DialogueChoice("a8c2_repeat", "Examine the teleprompter prompting 'Repeat the line'", listOf("repeat", "line", "prompt", "instructions", "script"), "act8_ch2_repeat_line"),
-                DialogueChoice("a8c2_barack", "Spot Barack casting teleprompter spells from the shadows", listOf("barack", "obama", "shadows", "spells", "teleprompter"), "act8_ch2_barack_shadows"),
-                DialogueChoice("a8c2_kash", "Deploy Kash Patel's signal jammer on the script conduit", listOf("kash", "jammer", "signal", "jam", "disrupt"), "act8_ch2_kash_jam"),
+                DialogueChoice("a8c2_repeat", "Examine the teleprompter prompting 'Repeat the line'", listOf("repeat", "line", "prompt", "instructions", "script"), "act8_ch2_repeat_line", completionFlag = "a8c2_repeat"),
+                DialogueChoice("a8c2_barack", "Spot Barack casting teleprompter spells from the shadows", listOf("barack", "obama", "shadows", "spells", "teleprompter"), "act8_ch2_barack_shadows", completionFlag = "a8c2_barack"),
+                DialogueChoice("a8c2_kash", "Deploy Kash Patel's signal jammer on the script conduit", listOf("kash", "jammer", "signal", "jam", "disrupt"), "act8_ch2_kash_jam", completionFlag = "a8c2_kash"),
                 DialogueChoice("a8c2_confront", "Smash through the Teleprompter Sorcerer and shatter the glass", listOf("sorcerer", "smash", "glass", "battle", "fight"), "act8_ch2_sorcerer_confront")
             )
         ),
         DialogueNode(
             id = "act8_ch2_repeat_line",
+            setFlagOnEnter = "a8c2_repeat",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "He literally read 'End of quote, repeat the line' off the glass! Who does that?! You can't lead the free world if you read the stage directions out loud!",
@@ -2976,6 +3045,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch2_barack_shadows",
+            setFlagOnEnter = "a8c2_barack",
             speaker = DialogueSpeaker.OBAMA,
             side = SpeakerSide.RIGHT,
             text = "Now... let me be clear... I was merely offering... uh... editorial guidance from my Kalorama soundproof bunker...",
@@ -2983,6 +3053,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch2_kash_jam",
+            setFlagOnEnter = "a8c2_kash",
             speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
             text = "I've tuned the frequency jammer directly to their script uplink. The teleprompter screen is now scrolling the Constitution instead of scripted talking points!",
@@ -3028,14 +3099,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "Trillions of dollars in federal spending and regulatory bans are being enacted without a human being ever laying eyes on them. How does the party halt the assembly line?",
             choices = listOf(
-                DialogueChoice("a8c3_bills", "Inspect the 4,000-page unread omnibus spending bills", listOf("omnibus", "bills", "spending", "trillions", "pages"), "act8_ch3_inspect_bills"),
-                DialogueChoice("a8c3_marco", "Have Marco audit the robotic pen calibration data", listOf("marco", "audit", "autopen", "robotic", "signatures"), "act8_ch3_marco_audit"),
-                DialogueChoice("a8c3_kennedy", "Ask Senator Kennedy who really authorized these orders", listOf("kennedy", "authorized", "signature", "staffers", "bureaucrats"), "act8_ch3_kennedy_staffers"),
+                DialogueChoice("a8c3_bills", "Inspect the 4,000-page unread omnibus spending bills", listOf("omnibus", "bills", "spending", "trillions", "pages"), "act8_ch3_inspect_bills", completionFlag = "a8c3_bills"),
+                DialogueChoice("a8c3_marco", "Have Marco audit the robotic pen calibration data", listOf("marco", "audit", "autopen", "robotic", "signatures"), "act8_ch3_marco_audit", completionFlag = "a8c3_marco"),
+                DialogueChoice("a8c3_kennedy", "Ask Senator Kennedy who really authorized these orders", listOf("kennedy", "authorized", "signature", "staffers", "bureaucrats"), "act8_ch3_kennedy_staffers", completionFlag = "a8c3_kennedy"),
                 DialogueChoice("a8c3_shutdown", "Overload the Auto-Pen machinery and seize the master power switch", listOf("shutdown", "power", "overload", "machinery", "battle"), "act8_ch3_autopen_confront")
             )
         ),
         DialogueNode(
             id = "act8_ch3_inspect_bills",
+            setFlagOnEnter = "a8c3_bills",
             speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
             text = "Four thousand pages dropped at 2:00 AM, voted on at 6:00 AM, and signed by an auto-pen at 8:00 AM. Not a single elected official read a single sentence!",
@@ -3043,6 +3115,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch3_marco_audit",
+            setFlagOnEnter = "a8c3_marco",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "This robotic pen has signed more debt into law in eighteen months than the first forty presidents combined! It's an automated rubber-stamp machine!",
@@ -3050,6 +3123,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch3_kennedy_staffers",
+            setFlagOnEnter = "a8c3_kennedy",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "If you ask the folks in Washington who told the auto-pen to sign, they all point at each other like spiderman memes. Nobody knows who is running the store!",
@@ -3095,14 +3169,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The Malarkey Sovereign prepares his signature defense of whispered warnings, chocolate chip tall tales, and confused wanderings. How do the 5 heroes dismantle his aura?",
             choices = listOf(
-                DialogueChoice("a8c4_confront", "Confront Biden directly and demand an immediate end to the malarkey", listOf("confront", "biden", "malarkey", "ice cream", "vanilla"), "act8_ch4_biden_confront"),
-                DialogueChoice("a8c4_barack", "Call out Barack standing in the shadows behind the recliner", listOf("barack", "shadows", "teleprompter", "obama", "puppet"), "act8_ch4_barack_callout"),
-                DialogueChoice("a8c4_supergroup", "Unleash the full 5-hero supergroup constitutional indictment", listOf("supergroup", "heroes", "constitution", "verdict", "unite"), "act8_ch4_supergroup_verdict"),
+                DialogueChoice("a8c4_confront", "Confront Biden directly and demand an immediate end to the malarkey", listOf("confront", "biden", "malarkey", "ice cream", "vanilla"), "act8_ch4_biden_confront", completionFlag = "a8c4_confront"),
+                DialogueChoice("a8c4_barack", "Call out Barack standing in the shadows behind the recliner", listOf("barack", "shadows", "teleprompter", "obama", "puppet"), "act8_ch4_barack_callout", completionFlag = "a8c4_barack"),
+                DialogueChoice("a8c4_supergroup", "Unleash the full 5-hero supergroup constitutional indictment", listOf("supergroup", "heroes", "constitution", "verdict", "unite"), "act8_ch4_supergroup_verdict", completionFlag = "a8c4_supergroup"),
                 DialogueChoice("a8c4_battle", "Body-slam the Malarkey Sovereign through the canvas of history!", listOf("battle", "fight", "climax", "slam", "win"), "act8_ch4_climax_battle")
             )
         ),
         DialogueNode(
             id = "act8_ch4_biden_confront",
+            setFlagOnEnter = "a8c4_confront",
             speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.RIGHT,
             text = "Look, folks... here's the deal... no joke! My grandfather used to say in Scranton... chocolate chip... wait, no, vanilla ice cream! Where am I? Who's that guy with the golden tie?!",
@@ -3110,6 +3185,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch4_barack_callout",
+            setFlagOnEnter = "a8c4_barack",
             speaker = DialogueSpeaker.OBAMA,
             side = SpeakerSide.RIGHT,
             text = "Don't look at me... let me be clear, he's... uh... entirely in charge of his own speech... *slowly backs into the curtain shadows*",
@@ -3117,6 +3193,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch4_supergroup_verdict",
+            setFlagOnEnter = "a8c4_supergroup",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
             text = "Joe, with all due respect, you're looking like a steer trying to operate an iPhone. The country has had enough malarkey to fill Lake Michigan, and it's time to cash in your chips!",
@@ -3183,14 +3260,15 @@ object StoryScript {
             side = SpeakerSide.CENTER_NARRATOR,
             text = "The crowd erupts into deafening cheers! The 5 heroes and key allies gather on the inaugural platform. Who does Commander America recognize?",
             choices = listOf(
-                DialogueChoice("a8c5_heroes", "Honor the 5-hero supergroup coalition (Marco, Vance, Kash, Kennedy)", listOf("heroes", "marco", "vance", "kash", "kennedy"), "act8_ch5_honor_heroes"),
-                DialogueChoice("a8c5_elon", "Thank Elon Musk and Department of Government Efficiency allies", listOf("elon", "doge", "musk", "efficiency", "starship"), "act8_ch5_thank_elon"),
-                DialogueChoice("a8c5_golden_age", "Declare the commencement of the Golden Age of America", listOf("golden", "age", "america", "prosperity", "future"), "act8_ch5_declare_golden_age"),
+                DialogueChoice("a8c5_heroes", "Honor the 5-hero supergroup coalition (Marco, Vance, Kash, Kennedy)", listOf("heroes", "marco", "vance", "kash", "kennedy"), "act8_ch5_honor_heroes", completionFlag = "a8c5_heroes"),
+                DialogueChoice("a8c5_elon", "Thank Elon Musk and Department of Government Efficiency allies", listOf("elon", "doge", "musk", "efficiency", "starship"), "act8_ch5_thank_elon", completionFlag = "a8c5_elon"),
+                DialogueChoice("a8c5_golden_age", "Declare the commencement of the Golden Age of America", listOf("golden", "age", "america", "prosperity", "future"), "act8_ch5_declare_golden_age", completionFlag = "a8c5_golden_age"),
                 DialogueChoice("a8c5_epilogue", "Conclude the epic broadcast and roll the victory credits", listOf("epilogue", "credits", "victory", "end", "complete"), "act8_ch5_final_broadcast")
             )
         ),
         DialogueNode(
             id = "act8_ch5_honor_heroes",
+            setFlagOnEnter = "a8c5_heroes",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
             text = "Together with JD Vance in the heartland, Kash Patel at justice, and Senator Kennedy keeping Washington honest, common sense has reclaimed its rightful throne!",
@@ -3198,6 +3276,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch5_thank_elon",
+            setFlagOnEnter = "a8c5_elon",
             speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.RIGHT,
             text = "Trillions in wasteful bureaucracy deleted. Government efficiency restored. Next stop: Mars! And common sense on Earth!",
@@ -3205,6 +3284,7 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act8_ch5_declare_golden_age",
+            setFlagOnEnter = "a8c5_golden_age",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
             text = "America's future will be bigger, better, bolder, and more glorious than ever before! Our golden age has just begun, and we will never stop winning!",

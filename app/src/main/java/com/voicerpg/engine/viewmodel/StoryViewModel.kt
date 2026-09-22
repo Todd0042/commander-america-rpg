@@ -151,10 +151,11 @@ class StoryViewModel(
         pendingAutoAdvanceJob = null
     }
 
+    fun isChoiceCompleted(choice: DialogueChoice): Boolean =
+        choice.isCompleted(_state.value.narrativeFlags)
+
     private fun eligibleChoices(node: DialogueNode): List<DialogueChoice> =
-        node.choices.filter { choice ->
-            choice.completionFlag == null || _state.value.narrativeFlags[choice.completionFlag] != true
-        }
+        node.choices.filter { choice -> !isChoiceCompleted(choice) }
 
     private fun effectiveDialogueChoices(node: DialogueNode): List<DialogueChoice> {
         val eligible = eligibleChoices(node)
@@ -254,8 +255,7 @@ class StoryViewModel(
 
         // 2. Uncompleted sub-story choices in hubs and camps (longest exploration path)
         val uncompleted = eligible.filter { choice ->
-            choice.completionFlag != null &&
-            _state.value.narrativeFlags[choice.completionFlag] != true &&
+            !isChoiceCompleted(choice) &&
             !choice.id.contains("skip", ignoreCase = true) &&
             !choice.text.contains("Rest briefly", ignoreCase = true)
         }
@@ -879,7 +879,7 @@ class StoryViewModel(
         }
         cancelPendingAutoAdvance()
         cancelPendingStoryMode()
-        if (choice.completionFlag != null && _state.value.narrativeFlags[choice.completionFlag] == true) {
+        if (isChoiceCompleted(choice)) {
             combatNarrator.speak("That objective has already been completed. Please select a remaining task.", force = true)
             return
         }
@@ -888,8 +888,16 @@ class StoryViewModel(
         speechManager.cancel()
         val nextNode = StoryScript.ALL_NODES[choice.nextNodeId]
         if (nextNode != null) {
+            val updatedFlags = if (choice.completionFlag != null) {
+                _state.value.narrativeFlags + (choice.completionFlag to true) + ("choice_done_${choice.id}" to true) + (choice.id to true)
+            } else {
+                _state.value.narrativeFlags
+            }
             val updatedDecisions = _state.value.decisionsMade + choice.id
-            _state.value = _state.value.copy(decisionsMade = updatedDecisions)
+            _state.value = _state.value.copy(
+                narrativeFlags = updatedFlags,
+                decisionsMade = updatedDecisions
+            )
             applyNodeTransition(nextNode)
         }
     }
@@ -1925,15 +1933,14 @@ class StoryViewModel(
         }
 
         // 3. Flexible choice selection with loud & nerdy roleplay matching
-        val effective = effectiveDialogueChoices(node)
-        if (effective.isNotEmpty()) {
+        if (node.choices.isNotEmpty()) {
             val matchedChoice = StoryChoiceMatcher.matchChoice(
                 utterance = utterance,
-                choices = effective,
+                choices = node.choices,
                 completedFlags = _state.value.narrativeFlags
             )
             if (matchedChoice != null) {
-                if (matchedChoice.completionFlag != null && _state.value.narrativeFlags[matchedChoice.completionFlag] == true) {
+                if (isChoiceCompleted(matchedChoice)) {
                     combatNarrator.speak("That objective has already been completed. Please select a remaining task.", force = true)
                     return
                 }
@@ -1943,6 +1950,7 @@ class StoryViewModel(
         }
 
         // 4. Non-branching progression command (natural & nerdy progression phrases)
+        val effective = effectiveDialogueChoices(node)
         if (effective.isEmpty() && StoryChoiceMatcher.isProgressionUtterance(utterance)) {
             advanceDialogue()
             return

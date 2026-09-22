@@ -84,12 +84,10 @@ object StoryChoiceMatcher {
             .map { it.trim() }
             .filter { it.length >= 2 && it !in STOP_WORDS }
 
-        // Filter out choices that have already been completed if there are other uncompleted choices
-        val validChoices = choices.filter { choice ->
-            choice.completionFlag == null || completedFlags[choice.completionFlag] != true
-        }.ifEmpty { choices }
+        val eligibleChoices = choices.filter { !it.isCompleted(completedFlags) }
+        val completedChoices = choices.filter { it.isCompleted(completedFlags) }
 
-        val scoredChoices = validChoices.map { choice ->
+        fun scoreChoice(choice: DialogueChoice): Int {
             var score = 0
             val choiceTextLower = choice.text.lowercase()
 
@@ -141,12 +139,25 @@ object StoryChoiceMatcher {
                 }
             }
 
-            choice to score
+            return score
         }
 
-        val best = scoredChoices.maxByOrNull { it.second }
-        // Minimum score threshold of 25 guarantees a meaningful match while tolerating nerdy additions
-        return if (best != null && best.second >= 25) best.first else null
+        // 1. Prioritize uncompleted/eligible choices
+        val scoredEligible = eligibleChoices.map { it to scoreChoice(it) }
+        val bestEligible = scoredEligible.maxByOrNull { it.second }
+        if (bestEligible != null && bestEligible.second >= 25) {
+            return bestEligible.first
+        }
+
+        // 2. If no eligible choice matched, check if a completed choice was specifically spoken
+        // so the caller can give vocal feedback that the objective has already been completed
+        val scoredCompleted = completedChoices.map { it to scoreChoice(it) }
+        val bestCompleted = scoredCompleted.maxByOrNull { it.second }
+        if (bestCompleted != null && bestCompleted.second >= 25) {
+            return bestCompleted.first
+        }
+
+        return null
     }
 
     /**

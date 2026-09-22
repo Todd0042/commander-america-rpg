@@ -1889,4 +1889,157 @@ class CommanderAmericaGameTest {
             assertTrue("Portrait file for ${speaker.id} should exist: ${portraitFile.absolutePath}", portraitFile.exists())
         }
     }
+
+    @Test
+    fun testHubChoiceCompletionAndLockoutAct1() {
+        // 1. Jump directly to Act 1 Chapter 1 Hub
+        val hubNode = StoryScript.ALL_NODES["act1_ch1_hub"]!!
+        val jumpChoice = com.voicerpg.engine.model.DialogueChoice("test_jump", "jump", emptyList(), hubNode.id)
+        storyViewModel.selectChoice(jumpChoice)
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id)
+
+        // All 3 lore choices must initially be uncompleted
+        val initialChoices = storyViewModel.state.value.currentNode.choices
+        val dealChoice = initialChoices.first { it.id == "a1_hub_deal" }
+        val borderChoice = initialChoices.first { it.id == "a1_hub_border" }
+        val swampChoice = initialChoices.first { it.id == "a1_hub_swamp" }
+        val proceedChoice = initialChoices.first { it.id == "a1_hub_proceed" }
+
+        assertFalse(storyViewModel.isChoiceCompleted(dealChoice))
+        assertFalse(storyViewModel.isChoiceCompleted(borderChoice))
+        assertFalse(storyViewModel.isChoiceCompleted(swampChoice))
+        assertFalse(storyViewModel.isChoiceCompleted(proceedChoice))
+
+        // 2. Select option 1 (Trade deals)
+        storyViewModel.selectChoice(dealChoice)
+        assertEquals("act1_ch1_lore_deal", storyViewModel.state.value.currentNode.id)
+        assertTrue(storyViewModel.state.value.narrativeFlags["a1_lore_deal"] == true)
+
+        // Advance back to the hub
+        storyViewModel.advanceDialogue()
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id)
+
+        // Verify trade deals choice is now marked completed
+        val hubAfterChoice1 = storyViewModel.state.value.currentNode
+        val updatedDealChoice = hubAfterChoice1.choices.first { it.id == "a1_hub_deal" }
+        assertTrue(storyViewModel.isChoiceCompleted(updatedDealChoice))
+        assertTrue(updatedDealChoice.isCompleted(storyViewModel.state.value.narrativeFlags))
+
+        // 3. Verify attempting to select the completed choice again via click is locked out
+        storyViewModel.selectChoice(updatedDealChoice)
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id) // Must stay on hub
+
+        // 4. Verify attempting to select the completed choice via voice is locked out
+        storyViewModel.handleStoryVoiceInput("let's talk about foreign trade deals and jobs")
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id) // Must stay on hub
+
+        // 5. Select option 2 (Southern Border)
+        val updatedBorderChoice = hubAfterChoice1.choices.first { it.id == "a1_hub_border" }
+        storyViewModel.selectChoice(updatedBorderChoice)
+        assertEquals("act1_ch1_lore_wall", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id)
+
+        val hubAfterChoice2 = storyViewModel.state.value.currentNode
+        assertTrue(storyViewModel.isChoiceCompleted(hubAfterChoice2.choices.first { it.id == "a1_hub_deal" }))
+        assertTrue(storyViewModel.isChoiceCompleted(hubAfterChoice2.choices.first { it.id == "a1_hub_border" }))
+        assertFalse(storyViewModel.isChoiceCompleted(hubAfterChoice2.choices.first { it.id == "a1_hub_swamp" }))
+
+        // 6. Select option 3 (Drain the Swamp)
+        val updatedSwampChoice = hubAfterChoice2.choices.first { it.id == "a1_hub_swamp" }
+        storyViewModel.selectChoice(updatedSwampChoice)
+        assertEquals("act1_ch1_lore_swamp", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id)
+
+        // All 3 lore choices are now completed! Only proceedChoice remains eligible
+        val hubAllDone = storyViewModel.state.value.currentNode
+        assertTrue(storyViewModel.isChoiceCompleted(hubAllDone.choices.first { it.id == "a1_hub_deal" }))
+        assertTrue(storyViewModel.isChoiceCompleted(hubAllDone.choices.first { it.id == "a1_hub_border" }))
+        assertTrue(storyViewModel.isChoiceCompleted(hubAllDone.choices.first { it.id == "a1_hub_swamp" }))
+        assertFalse(storyViewModel.isChoiceCompleted(hubAllDone.choices.first { it.id == "a1_hub_proceed" }))
+
+        // When only progression choice remains, advanceDialogue() progresses the story!
+        assertTrue(storyViewModel.canAdvanceDialogue())
+        storyViewModel.advanceDialogue()
+        assertEquals("act1_ch1_lobby_ambush", storyViewModel.state.value.currentNode.id)
+    }
+
+    @Test
+    fun testHubChoiceCompletionAcrossActs6Through8() {
+        // Act 6 Border Hub
+        val a6Hub = StoryScript.ALL_NODES["act6_ch1_border_hub"]!!
+        val jumpA6 = com.voicerpg.engine.model.DialogueChoice("jump_a6", "jump", emptyList(), a6Hub.id)
+        storyViewModel.selectChoice(jumpA6)
+        assertEquals("act6_ch1_border_hub", storyViewModel.state.value.currentNode.id)
+
+        val excuseChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a6c1_excuse" }
+        assertFalse(storyViewModel.isChoiceCompleted(excuseChoice))
+        storyViewModel.selectChoice(excuseChoice)
+        assertEquals("act6_ch1_czar_excuse", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act6_ch1_border_hub", storyViewModel.state.value.currentNode.id)
+        assertTrue(storyViewModel.isChoiceCompleted(storyViewModel.state.value.currentNode.choices.first { it.id == "a6c1_excuse" }))
+
+        // Act 7 Gauntlet Hub
+        val a7Hub = StoryScript.ALL_NODES["act7_ch1_gauntlet_hub"]!!
+        val jumpA7 = com.voicerpg.engine.model.DialogueChoice("jump_a7", "jump", emptyList(), a7Hub.id)
+        storyViewModel.selectChoice(jumpA7)
+        assertEquals("act7_ch1_gauntlet_hub", storyViewModel.state.value.currentNode.id)
+
+        val mugshotChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a7c1_mugshot" }
+        assertFalse(storyViewModel.isChoiceCompleted(mugshotChoice))
+        storyViewModel.selectChoice(mugshotChoice)
+        assertEquals("act7_ch1_mugshot_defiance", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act7_ch1_gauntlet_hub", storyViewModel.state.value.currentNode.id)
+        assertTrue(storyViewModel.isChoiceCompleted(storyViewModel.state.value.currentNode.choices.first { it.id == "a7c1_mugshot" }))
+
+        // Act 8 Bunker Hub
+        val a8Hub = StoryScript.ALL_NODES["act8_ch1_bunker_hub"]!!
+        val jumpA8 = com.voicerpg.engine.model.DialogueChoice("jump_a8", "jump", emptyList(), a8Hub.id)
+        storyViewModel.selectChoice(jumpA8)
+        assertEquals("act8_ch1_bunker_hub", storyViewModel.state.value.currentNode.id)
+
+        val lidChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a8c1_lid" }
+        assertFalse(storyViewModel.isChoiceCompleted(lidChoice))
+        storyViewModel.selectChoice(lidChoice)
+        assertEquals("act8_ch1_lid_called", storyViewModel.state.value.currentNode.id)
+        storyViewModel.advanceDialogue()
+        assertEquals("act8_ch1_bunker_hub", storyViewModel.state.value.currentNode.id)
+        assertTrue(storyViewModel.isChoiceCompleted(storyViewModel.state.value.currentNode.choices.first { it.id == "a8c1_lid" }))
+    }
+
+    @Test
+    fun testHubChoiceCompletionPersistenceAndNewGameReset() {
+        // Start fresh game and go to Act 1 Hub
+        storyViewModel.startNewGame(PlayerCustomization(name = "Commander"))
+        val hubNode = StoryScript.ALL_NODES["act1_ch1_hub"]!!
+        storyViewModel.selectChoice(com.voicerpg.engine.model.DialogueChoice("jump", "jump", emptyList(), hubNode.id))
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id)
+
+        // Complete deal choice
+        val dealChoice = storyViewModel.state.value.currentNode.choices.first { it.id == "a1_hub_deal" }
+        storyViewModel.selectChoice(dealChoice)
+        storyViewModel.advanceDialogue()
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id)
+        assertTrue(storyViewModel.isChoiceCompleted(storyViewModel.state.value.currentNode.choices.first { it.id == "a1_hub_deal" }))
+
+        // Save progress to current slot
+        val currentSlot = storyViewModel.state.value.currentSlot
+        storyViewModel.persistCurrentState()
+
+        // Reload the game from slot
+        storyViewModel.continueGame(currentSlot)
+        assertEquals("act1_ch1_hub", storyViewModel.state.value.currentNode.id)
+        val loadedDeal = storyViewModel.state.value.currentNode.choices.first { it.id == "a1_hub_deal" }
+        assertTrue("Completed choice must remain completed after reloading save", storyViewModel.isChoiceCompleted(loadedDeal))
+
+        // Reset with new game
+        storyViewModel.startNewGame(PlayerCustomization(name = "Commander Fresh"))
+        val freshHub = StoryScript.ALL_NODES["act1_ch1_hub"]!!
+        storyViewModel.selectChoice(com.voicerpg.engine.model.DialogueChoice("jump_fresh", "jump", emptyList(), freshHub.id))
+        val freshDeal = storyViewModel.state.value.currentNode.choices.first { it.id == "a1_hub_deal" }
+        assertFalse("Completed choice must be reset to uncompleted on new game", storyViewModel.isChoiceCompleted(freshDeal))
+    }
 }
