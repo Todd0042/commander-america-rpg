@@ -156,7 +156,7 @@ class SaveManager(private val context: Context? = null) {
 
     fun getSlotSummary(slot: Int): SaveSummary? {
         val data = load(slot) ?: return null
-        val scene = StoryScript.ALL_SCENES[data.currentSceneId] ?: StoryScript.SCENE_COTTAGE
+        val scene = StoryScript.ALL_SCENES[data.currentSceneId] ?: StoryScript.SCENE_ACT1_ESCALATOR
         return SaveSummary(
             slotIndex = slot,
             heroName = data.player.name,

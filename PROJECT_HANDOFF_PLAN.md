@@ -178,7 +178,16 @@
   - All unit tests passing in `CommanderAmericaGameTest.kt` (29/29 tests). Installed and verified on physical device.
 
 
-## 3. Master Phase Roadmap (Next Up: Phase 11)
+* [x] **Phase 11: Streamline Character Creation**
+  - Completely streamlined `CharacterCreationScreen.kt` to eliminate legacy fantasy archetype selection (Elementalist, Battlemage, Chanter, Shadowweaver) in favor of the unified Commander-in-Chief presidential loadout.
+  - Added dedicated `PresidentialArsenalCard` displaying Commander-in-Chief stats (HP: 5000, MP: 1776, SPD: 70, ATK: 50) and all 8 signature spells (*Tremendous Strike*, *Art of the Deal*, *Obama Did It First!*, *Presidential Veto*, *Executive Action*, *Build The Wall*, *Rally The Patriots*, *Tired of Winning!*).
+  - Maintained full cosmetic customization: Candidate Name (with patriotic quick-pick names: *Commander America*, *The Boss*, *Donald*, *Patriot 47*), Presidential Aura & Tie Color (*Solar Gold*, *Crimson Pyre*, *Sapphire Frost*, *Emerald Grove*, *Amethyst Void*), and Honorific Titles (*Commander-in-Chief*, *Master of the Deal*, *Patriotic Sovereign*, *The Indomitable*, *Defender of Freedom*).
+  - Updated voice input handling to respond to presidential aura selections, honorific titles, candidate names, and campaign launch triggers ("Begin", "Start", "Golden Escalator", "Awaken").
+  - Updated `SaveManager.kt` to replace legacy cottage scene fallback with `StoryScript.SCENE_ACT1_ESCALATOR`.
+  - Added comprehensive unit tests in `CommanderAmericaGameTest.kt` (`testPlayerCustomizationDefaultsToCommanderInChiefAndSignatureSpells` and `testCharacterCreationSaveAndLoadRoundtrip`). 31/31 tests passing. Built and installed to physical device.
+
+
+## 3. Master Phase Roadmap (Next Up: Phase 12)
 
 ```mermaid
 flowchart TD
@@ -189,8 +198,8 @@ flowchart TD
     P7 --> P8["Phase 8: Act VI - The Word-Salad Wasteland (DONE)"]
     P8 --> P9["Phase 9: Act VII - The Lawfare Labyrinth & Steel Resolve (DONE)"]
     P9 --> P10["Phase 10: Act VIII - The Final Malarkey Citadel (DONE)"]
-    P10 --> P11["Phase 11: Streamline Character Creation (NEXT)"]
-    P11 --> P12["Phase 12: Streamline & Minimize Tutorial"]
+    P10 --> P11["Phase 11: Streamline Character Creation (DONE)"]
+    P11 --> P12["Phase 12: Streamline & Minimize Tutorial (NEXT)"]
 ```
 
 ### Detailed Breakdown of Remaining Phases:

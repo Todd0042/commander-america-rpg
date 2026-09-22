@@ -1706,6 +1706,72 @@ class CommanderAmericaGameTest {
     }
 
     @Test
+    fun testPlayerCustomizationDefaultsToCommanderInChiefAndSignatureSpells() {
+        val defaultCustom = com.voicerpg.engine.model.PlayerCustomization()
+        assertEquals("Commander America", defaultCustom.name)
+        assertEquals(com.voicerpg.engine.model.HeroClass.COMMANDER, defaultCustom.heroClass)
+        assertEquals("Commander-in-Chief", defaultCustom.title)
+        assertEquals(com.voicerpg.engine.model.AuraColor.SOLAR_GOLD, defaultCustom.auraColor)
+
+        // Class spell library must contain all 8 signature spells
+        val spells = com.voicerpg.engine.engine.ClassSpellLibrary.getSpellsForClass(defaultCustom.heroClass)
+        assertEquals(8, spells.size)
+        val expectedSpellIds = listOf(
+            "ca_tremendous_strike",
+            "ca_art_of_the_deal",
+            "ca_obama_did_it_first",
+            "ca_presidential_veto",
+            "ca_executive_action",
+            "ca_build_the_wall",
+            "ca_rally_patriots",
+            "ca_tired_of_winning"
+        )
+        for (spellId in expectedSpellIds) {
+            assertTrue("Spells must contain $spellId", spells.any { it.id == spellId })
+        }
+
+        // SaveManager initial save verifies Commander-in-Chief loadout
+        val initialSave = saveManager.createInitialSave(defaultCustom, slot = 1)
+        assertEquals("scene_act1_ch1_escalator", initialSave.currentSceneId)
+        assertEquals("act1_intro", initialSave.currentNodeId)
+        val heroStats = initialSave.partyStats.first { it.id == "hero" }
+        assertEquals("Commander America", heroStats.name)
+        assertEquals("Commander-in-Chief", heroStats.loreClass)
+        assertEquals(5000, heroStats.currentHp)
+        assertEquals(5000, heroStats.maxHp)
+        assertEquals(1776, heroStats.currentMp)
+        assertEquals(1776, heroStats.maxMp)
+        assertEquals(70, heroStats.speed)
+        assertEquals(8, heroStats.spellIds.size)
+
+        val summary = saveManager.getSlotSummary(1)
+        assertNotNull(summary)
+        assertEquals("Commander America", summary!!.heroName)
+        assertEquals("Commander-in-Chief", summary.heroClassTitle)
+    }
+
+    @Test
+    fun testCharacterCreationSaveAndLoadRoundtrip() {
+        val custom = com.voicerpg.engine.model.PlayerCustomization(
+            name = "The Boss",
+            heroClass = com.voicerpg.engine.model.HeroClass.COMMANDER,
+            title = "Master of the Deal",
+            auraColor = com.voicerpg.engine.model.AuraColor.CRIMSON_PYRE
+        )
+        val initialSave = saveManager.createInitialSave(custom, slot = 2)
+        assertEquals("The Boss", initialSave.player.name)
+        assertEquals("Master of the Deal", initialSave.player.title)
+        assertEquals(com.voicerpg.engine.model.AuraColor.CRIMSON_PYRE, initialSave.player.auraColor)
+
+        val loaded = saveManager.load(2)
+        assertNotNull(loaded)
+        assertEquals("The Boss", loaded!!.player.name)
+        assertEquals("Master of the Deal", loaded.player.title)
+        assertEquals(com.voicerpg.engine.model.HeroClass.COMMANDER, loaded.player.heroClass)
+        assertEquals(com.voicerpg.engine.model.AuraColor.CRIMSON_PYRE, loaded.player.auraColor)
+    }
+
+    @Test
     fun testAllSpellsAtMaximumResonanceDebugPresetsResolveCorrectly() {
         val fullParty = StoryEncounters.createFullAmericaParty()
         val tiers = listOf(

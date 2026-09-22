@@ -36,11 +36,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import com.voicerpg.engine.audio.CombatNarrator
-import com.voicerpg.engine.audio.SpeechManager
-import com.voicerpg.engine.audio.SpeechState
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,18 +47,23 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.voicerpg.engine.audio.CombatNarrator
+import com.voicerpg.engine.audio.SpeechManager
+import com.voicerpg.engine.audio.SpeechState
 import com.voicerpg.engine.engine.ClassSpellLibrary
 import com.voicerpg.engine.model.AuraColor
 import com.voicerpg.engine.model.HeroClass
 import com.voicerpg.engine.model.PlayerCustomization
+import com.voicerpg.engine.model.Spell
 import com.voicerpg.engine.model.SpellSchool
 import com.voicerpg.engine.ui.story.StoryAssetLoader
-import com.voicerpg.engine.ui.theme.LogosGold
 import com.voicerpg.engine.ui.theme.LogosGlow
+import com.voicerpg.engine.ui.theme.LogosGold
 import com.voicerpg.engine.ui.theme.RetroBlack
 import com.voicerpg.engine.ui.theme.RetroBorder
-import com.voicerpg.engine.ui.theme.RetroBorderGold
 import com.voicerpg.engine.ui.theme.RetroPanel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun CharacterCreationScreen(
@@ -75,19 +75,16 @@ fun CharacterCreationScreen(
     modifier: Modifier = Modifier
 ) {
     var name by remember { mutableStateOf(initialCustomization.name) }
-    var selectedClass by remember { mutableStateOf(initialCustomization.heroClass) }
     var selectedTitle by remember { mutableStateOf(initialCustomization.title) }
     var selectedAura by remember { mutableStateOf(initialCustomization.auraColor) }
-    var selectedAffinity by remember { mutableStateOf(initialCustomization.voiceAffinityBonusSchool) }
 
     val isAutoListen = speechManager?.isAutoListen?.collectAsState()?.value ?: false
     val speechState = speechManager?.speechState?.collectAsState()?.value ?: SpeechState.Idle
     val coroutineScope = rememberCoroutineScope()
 
     val context = LocalContext.current
-    val aethelBitmap = remember {
+    val commanderBitmap = remember {
         StoryAssetLoader.loadBitmap(context, "portraits/commander_america.jpg")
-            ?: StoryAssetLoader.loadBitmap(context, "portraits/aethel.jpg")
     }
 
     val titles = listOf(
@@ -104,10 +101,10 @@ fun CharacterCreationScreen(
         speechManager?.cancel()
         val finalCustomization = PlayerCustomization(
             name = if (name.isBlank()) "Commander America" else name.trim(),
-            heroClass = selectedClass,
+            heroClass = HeroClass.COMMANDER,
             title = selectedTitle,
             auraColor = selectedAura,
-            voiceAffinityBonusSchool = selectedClass.preferredSchool
+            voiceAffinityBonusSchool = SpellSchool.PHYSICAL
         )
         onConfirmCharacter(finalCustomization)
     }
@@ -116,11 +113,11 @@ fun CharacterCreationScreen(
         val lower = utterance.lowercase().trim()
         if (lower.isBlank()) return
 
-        // 1. Awaken / Embark command
+        // 1. Embark / Start command
         val embarkKeywords = listOf(
             "awaken", "embark", "begin", "start", "enter", "let us begin", "ready",
             "venture", "let's go", "golden escalator", "make america great", "begin campaign", "start game",
-            "play", "lets go", "confirm", "forward", "onward"
+            "play", "lets go", "confirm", "forward", "onward", "descend"
         )
         if (embarkKeywords.any { lower.contains(it) }) {
             confirmAndAwaken()
@@ -134,38 +131,40 @@ fun CharacterCreationScreen(
             return
         }
 
-        // 2. Class selection commands
+        // 2. Aura selection commands
         when {
-            lower.contains("elementalist") || lower.contains("mage") || lower.contains("sorcerer") || lower.contains("wizard") || lower.contains("pyromancer") -> {
-                selectedClass = HeroClass.ELEMENTALIST
-                selectedAffinity = SpellSchool.PYROMANCY
-                combatNarrator?.speak("Elementalist selected. Master of pyromancy and destructive elements.", force = true)
+            lower.contains("gold") || lower.contains("solar") || lower.contains("yellow") -> {
+                selectedAura = AuraColor.SOLAR_GOLD
+                combatNarrator?.speak("Solar Gold aura selected. Radiant presidential brilliance.", force = true)
             }
-            lower.contains("battlemage") || lower.contains("templar") || lower.contains("paladin") || lower.contains("knight") || lower.contains("crusader") || lower.contains("warrior") || lower.contains("spellblade") -> {
-                selectedClass = HeroClass.BATTLEMAGE
-                selectedAffinity = SpellSchool.PHYSICAL
-                combatNarrator?.speak("Battlemage selected. Frontline spellblade vanguard.", force = true)
+            lower.contains("crimson") || lower.contains("red") || lower.contains("pyre") || lower.contains("fire") -> {
+                selectedAura = AuraColor.CRIMSON_PYRE
+                combatNarrator?.speak("Crimson Pyre aura selected. Fierce patriotic flame.", force = true)
             }
-            lower.contains("chanter") || lower.contains("chronomancer") || lower.contains("bard") || lower.contains("acoustic") || lower.contains("lightning") -> {
-                selectedClass = HeroClass.CHANTER
-                selectedAffinity = SpellSchool.ELECTROMANCY
-                combatNarrator?.speak("Chanter selected. Acoustic chronomancer and master of cadence.", force = true)
+            lower.contains("sapphire") || lower.contains("blue") || lower.contains("frost") || lower.contains("cyan") -> {
+                selectedAura = AuraColor.SAPPHIRE_FROST
+                combatNarrator?.speak("Sapphire Frost aura selected. Cool tactical composure.", force = true)
             }
-            lower.contains("shadowweaver") || lower.contains("shadowblade") || lower.contains("rogue") || lower.contains("assassin") || lower.contains("shadow") || lower.contains("thief") || lower.contains("occultist") -> {
-                selectedClass = HeroClass.SHADOWWEAVER
-                selectedAffinity = SpellSchool.SHADOW
-                combatNarrator?.speak("Shadowweaver selected. Umbral occultist of lethal precision.", force = true)
+            lower.contains("emerald") || lower.contains("green") || lower.contains("grove") -> {
+                selectedAura = AuraColor.EMERALD_GROVE
+                combatNarrator?.speak("Emerald Grove aura selected. Prosperous economic vitality.", force = true)
+            }
+            lower.contains("amethyst") || lower.contains("purple") || lower.contains("void") || lower.contains("shadow") -> {
+                selectedAura = AuraColor.AMETHYST_VOID
+                combatNarrator?.speak("Amethyst Void aura selected. Sovereign presidential authority.", force = true)
             }
         }
 
         // 3. Title selection
         titles.firstOrNull { lower.contains(it.lowercase()) }?.let {
             selectedTitle = it
+            combatNarrator?.speak("$it title confirmed.", force = true)
         }
 
         // 4. Quick name selection
         quickNames.firstOrNull { lower.contains(it.lowercase()) }?.let {
             name = it
+            combatNarrator?.speak("Welcome, $it.", force = true)
         }
 
         // Re-listen if auto-listen is enabled
@@ -228,14 +227,14 @@ fun CharacterCreationScreen(
 
             // Header
             Text(
-                text = "⚔️ FORGE YOUR INVOCATOR ⚔️",
+                text = "🇺🇸 PRESIDENTIAL CAMPAIGN CUSTOMIZATION 🇺🇸",
                 color = LogosGold,
-                fontSize = 18.sp,
+                fontSize = 15.sp,
                 fontWeight = FontWeight.Black,
                 fontFamily = FontFamily.Monospace
             )
             Text(
-                text = "Character Creation & Initial Loadout",
+                text = "Establish Your Identity & Presidential Aura",
                 color = Color.LightGray,
                 fontSize = 11.sp,
                 fontFamily = FontFamily.Monospace
@@ -260,14 +259,14 @@ fun CharacterCreationScreen(
                     // Portrait Bust
                     Box(
                         modifier = Modifier
-                            .size(80.dp)
+                            .size(84.dp)
                             .shadow(8.dp, RoundedCornerShape(10.dp), spotColor = auraColorVal)
                             .clip(RoundedCornerShape(10.dp))
                             .border(2.dp, auraColorVal, RoundedCornerShape(10.dp))
                     ) {
-                        if (aethelBitmap != null) {
+                        if (commanderBitmap != null) {
                             Image(
-                                bitmap = aethelBitmap,
+                                bitmap = commanderBitmap,
                                 contentDescription = name,
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier.fillMaxSize()
@@ -280,7 +279,7 @@ fun CharacterCreationScreen(
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
-                                    text = name.firstOrNull()?.toString() ?: "A",
+                                    text = name.firstOrNull()?.toString() ?: "C",
                                     color = auraColorVal,
                                     fontSize = 28.sp,
                                     fontWeight = FontWeight.Bold
@@ -293,7 +292,7 @@ fun CharacterCreationScreen(
 
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = if (name.isBlank()) "Nameless" else name,
+                            text = if (name.isBlank()) "Nameless Leader" else name,
                             color = LogosGlow,
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Black,
@@ -307,7 +306,7 @@ fun CharacterCreationScreen(
                             fontWeight = FontWeight.SemiBold
                         )
                         Text(
-                            text = "Class: ${selectedClass.title} • Affinity: ${selectedAffinity.name}",
+                            text = "Role: Commander-in-Chief • HP: 5000 • MP: 1776",
                             color = Color.LightGray,
                             fontSize = 10.sp,
                             fontFamily = FontFamily.Monospace
@@ -318,9 +317,9 @@ fun CharacterCreationScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Section 1: Name Input
+            // Section 1: Campaign Name Input
             Text(
-                text = "1. INVOCATOR'S TRUE NAME",
+                text = "1. PRESIDENTIAL CAMPAIGN NAME",
                 color = LogosGold,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
@@ -333,7 +332,7 @@ fun CharacterCreationScreen(
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
-                label = { Text("Character Name", fontFamily = FontFamily.Monospace) },
+                label = { Text("Candidate Name", fontFamily = FontFamily.Monospace) },
                 singleLine = true,
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = LogosGold,
@@ -377,9 +376,9 @@ fun CharacterCreationScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Section 2: Class Selection
+            // Section 2: Presidential Arsenal & Loadout
             Text(
-                text = "2. CHOOSE YOUR DISCIPLINE (CLASS)",
+                text = "2. PRESIDENTIAL ARSENAL & LOADOUT",
                 color = LogosGold,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
@@ -389,21 +388,15 @@ fun CharacterCreationScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                HeroClass.entries.forEach { hc ->
-                    ClassOptionCard(
-                        heroClass = hc,
-                        isSelected = hc == selectedClass,
-                        onSelect = { selectedClass = hc }
-                    )
-                }
-            }
+            PresidentialArsenalCard(
+                spells = ClassSpellLibrary.COMMANDER_SPELLS
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Section 3: Aesthetics (Aura Color & Title)
+            // Section 3: Presidential Aura (Aesthetics)
             Text(
-                text = "3. AURA LUMINESCENCE (AESTHETICS)",
+                text = "3. PRESIDENTIAL AURA & TIE COLOR",
                 color = LogosGold,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
@@ -446,7 +439,7 @@ fun CharacterCreationScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Epithet Title Selector
+            // Section 4: Honorific Title Selector
             Text(
                 text = "4. HONORIFIC TITLE",
                 color = LogosGold,
@@ -515,7 +508,7 @@ fun CharacterCreationScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "🎤 Speak class or say 'Awaken' to start",
+                    text = "🎤 Speak aura, title, or say 'Start' to begin",
                     color = Color.Gray,
                     fontSize = 10.sp,
                     fontFamily = FontFamily.Monospace
@@ -551,24 +544,19 @@ fun CharacterCreationScreen(
 }
 
 @Composable
-private fun ClassOptionCard(
-    heroClass: HeroClass,
-    isSelected: Boolean,
-    onSelect: () -> Unit
+private fun PresidentialArsenalCard(
+    spells: List<Spell>
 ) {
-    val spells = remember(heroClass) { ClassSpellLibrary.getSpellsForClass(heroClass) }
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(10.dp))
-            .background(if (isSelected) RetroPanel else Color(0xFF141420))
+            .background(RetroPanel)
             .border(
-                width = if (isSelected) 2.dp else 1.dp,
-                color = if (isSelected) LogosGold else RetroBorder,
+                width = 2.dp,
+                color = LogosGold,
                 shape = RoundedCornerShape(10.dp)
             )
-            .clickable { onSelect() }
             .padding(12.dp)
     ) {
         Column {
@@ -579,15 +567,15 @@ private fun ClassOptionCard(
             ) {
                 Column {
                     Text(
-                        text = heroClass.title.uppercase(),
-                        color = if (isSelected) LogosGold else Color.White,
+                        text = "COMMANDER-IN-CHIEF",
+                        color = LogosGold,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Black,
                         fontFamily = FontFamily.Monospace
                     )
                     Text(
-                        text = heroClass.subtitle,
-                        color = if (isSelected) LogosGlow else Color.Gray,
+                        text = "Patriotic Sovereign & Master of the Deal",
+                        color = LogosGlow,
                         fontSize = 10.sp,
                         fontFamily = FontFamily.Monospace
                     )
@@ -595,25 +583,26 @@ private fun ClassOptionCard(
 
                 // Stats Pills
                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    StatPill("HP", heroClass.startingHp.toString(), Color(0xFF4CAF50))
-                    StatPill("MP", heroClass.startingMp.toString(), Color(0xFF00B0FF))
-                    StatPill("SPD", heroClass.startingSpeed.toString(), Color(0xFFFFB74D))
+                    StatPill("HP", "5000", Color(0xFF4CAF50))
+                    StatPill("MP", "1776", Color(0xFF00B0FF))
+                    StatPill("SPD", "70", Color(0xFFFFB74D))
+                    StatPill("ATK", "50", LogosGold)
                 }
             }
 
             Spacer(modifier = Modifier.height(6.dp))
 
             Text(
-                text = heroClass.description,
+                text = "Equipped with 8 signature presidential abilities to obliterate political obstruction, restore economic sovereignty, and lead America into a golden age.",
                 color = Color.LightGray,
                 fontSize = 10.sp,
                 fontFamily = FontFamily.Monospace,
                 lineHeight = 14.sp
             )
 
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
-            // Starter Spells
+            // Signature Spells
             @OptIn(ExperimentalLayoutApi::class)
             FlowRow(
                 modifier = Modifier.fillMaxWidth(),
@@ -625,12 +614,12 @@ private fun ClassOptionCard(
                         modifier = Modifier
                             .clip(RoundedCornerShape(4.dp))
                             .background(Color(0xFF222234))
-                            .border(1.dp, Color(0xFF42425E), RoundedCornerShape(4.dp))
+                            .border(1.dp, LogosGold.copy(alpha = 0.5f), RoundedCornerShape(4.dp))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
                         Text(
                             text = "⚡ ${sp.name}",
-                            color = Color(0xFF80D8FF),
+                            color = LogosGold,
                             fontSize = 9.sp,
                             fontFamily = FontFamily.Monospace,
                             maxLines = 1,
