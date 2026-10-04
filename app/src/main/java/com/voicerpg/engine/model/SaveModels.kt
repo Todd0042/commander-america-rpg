@@ -173,5 +173,9 @@ data class GameSaveData(
     val musicVolume: Float = 0.55f,
 
     // 7. Per-speaker TTS voice assignments (installed Android voice model names keyed by speaker id)
-    val voiceAssignments: Map<String, String> = emptyMap()
+    val voiceAssignments: Map<String, String> = emptyMap(),
+
+    // 8. Auto-Play & Dynamic Metrics
+    val isAutoPlayEnabled: Boolean = false,
+    val dynamicMetrics: Map<String, Float> = emptyMap()
 )

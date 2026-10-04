@@ -9,7 +9,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.voicerpg.engine"
+        applicationId = "com.commanderamerica.app"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

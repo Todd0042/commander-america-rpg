@@ -186,8 +186,6 @@ class SaveSystemTest {
         assertFalse(storyVm.state.value.hasExistingSave)
 
         storyVm.startNewGameFlow()
-        assertEquals(GameScreen.AUDIO_SETUP, storyVm.state.value.gameScreen)
-        storyVm.proceedToCharacterCreation()
         assertEquals(GameScreen.CHARACTER_CREATION, storyVm.state.value.gameScreen)
     }
 
@@ -211,22 +209,22 @@ class SaveSystemTest {
         storyVm.startNewGame(custom)
 
         assertEquals(GameScreen.STORY_EXPLORATION, storyVm.state.value.gameScreen)
-        assertEquals("scene_cottage", storyVm.state.value.currentScene.id)
-        assertEquals("cottage_intro", storyVm.state.value.currentNode.id)
+        assertEquals(StoryScript.SCENE_ACT1_ESCALATOR.id, storyVm.state.value.currentScene.id)
+        assertEquals("act1_intro", storyVm.state.value.currentNode.id)
         assertEquals("Rowan", storyVm.state.value.player.name)
 
-        // Make decision 1: "Try to speak"
-        val speakChoice = storyVm.state.value.currentNode.choices.first { it.id == "c1_speak" }
+        // Make decision 1: Deliver speech
+        val speakChoice = storyVm.state.value.currentNode.choices.first { it.id == "a1_speech" }
         storyVm.selectChoice(speakChoice)
 
-        assertEquals("cottage_voice", storyVm.state.value.currentNode.id)
-        assertEquals(listOf("c1_speak"), storyVm.state.value.decisionsMade)
+        assertEquals("act1_ch1_speech", storyVm.state.value.currentNode.id)
+        assertEquals(listOf("a1_speech"), storyVm.state.value.decisionsMade)
 
         // Verify save was written to disk/memory
         val autoSavedData = saveManager.load()
         assertNotNull(autoSavedData)
-        assertEquals("cottage_voice", autoSavedData!!.currentNodeId)
-        assertEquals(listOf("c1_speak"), autoSavedData.decisionsMade)
+        assertEquals("act1_ch1_speech", autoSavedData!!.currentNodeId)
+        assertEquals(listOf("a1_speech"), autoSavedData.decisionsMade)
         assertEquals("Rowan", autoSavedData.player.name)
     }
 
@@ -251,18 +249,11 @@ class SaveSystemTest {
         storyVm1.startNewGame(custom)
 
         // Make choice
-        val choice = storyVm1.state.value.currentNode.choices.first { it.id == "c1_speak" }
+        val choice = storyVm1.state.value.currentNode.choices.first { it.id == "a1_speech" }
         storyVm1.selectChoice(choice)
 
-        // Advance to village
-        val villageTransNode = StoryScript.ALL_NODES["cottage_to_village"]!!
-        val jumpChoice = com.voicerpg.engine.model.DialogueChoice("jump", "Go to village", emptyList(), villageTransNode.id)
-        storyVm1.selectChoice(jumpChoice)
-        storyVm1.advanceDialogue()
-
-        assertEquals("scene_village", storyVm1.state.value.currentScene.id)
-        assertEquals("village_intro", storyVm1.state.value.currentNode.id)
-        assertEquals(listOf("c1_speak", "jump"), storyVm1.state.value.decisionsMade)
+        assertEquals("act1_ch1_speech", storyVm1.state.value.currentNode.id)
+        assertEquals(listOf("a1_speech"), storyVm1.state.value.decisionsMade)
 
         // Session 2: Fresh launch of the app with existing save
         val storyVm2 = StoryViewModel(
@@ -282,11 +273,11 @@ class SaveSystemTest {
         // Continue chronicle resumes directly into story
         storyVm2.continueGame()
         assertEquals(GameScreen.STORY_EXPLORATION, storyVm2.state.value.gameScreen)
-        assertEquals("scene_village", storyVm2.state.value.currentScene.id)
-        assertEquals("village_intro", storyVm2.state.value.currentNode.id)
+        assertEquals(StoryScript.SCENE_ACT1_ESCALATOR.id, storyVm2.state.value.currentScene.id)
+        assertEquals("act1_ch1_speech", storyVm2.state.value.currentNode.id)
         assertEquals("Elora", storyVm2.state.value.player.name)
         assertEquals(HeroClass.CHANTER, storyVm2.state.value.player.heroClass)
-        assertEquals(listOf("c1_speak", "jump"), storyVm2.state.value.decisionsMade)
+        assertEquals(listOf("a1_speech"), storyVm2.state.value.decisionsMade)
 
         // Return to title persists and transitions back to Title Screen
         storyVm2.returnToTitle()

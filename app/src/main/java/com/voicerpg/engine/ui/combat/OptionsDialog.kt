@@ -48,9 +48,11 @@ fun OptionsDialog(
     isOpen: Boolean,
     isEyesFreeMode: Boolean,
     isNarrationEnabled: Boolean,
+    isAutoPlayEnabled: Boolean = false,
     isCombatNarrationEnabled: Boolean = true,
     isPocketGuardEnabled: Boolean = true,
     isReadChoicesEnabled: Boolean,
+    isAutoReadHubChoices: Boolean = true,
     isCharacterPitchEnabled: Boolean,
     isSpeakerAttributionEnabled: Boolean,
     onToggleSpeakerAttribution: () -> Unit,
@@ -61,9 +63,11 @@ fun OptionsDialog(
     musicVolume: Float = 0.55f,
     onToggleEyesFreeMode: () -> Unit,
     onToggleNarration: () -> Unit,
+    onToggleAutoPlay: () -> Unit = {},
     onToggleCombatNarration: () -> Unit = {},
     onTogglePocketGuard: () -> Unit = {},
     onToggleReadChoices: () -> Unit,
+    onToggleAutoReadHubChoices: () -> Unit = {},
     onToggleCharacterPitch: () -> Unit,
     onSpeechRateChange: (Float) -> Unit,
     onToggleAutoListen: () -> Unit,
@@ -277,6 +281,18 @@ fun OptionsDialog(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
+                // Toggle: Auto-Play / Story Mode
+                OptionToggleRow(
+                    title = "🤖 Auto-Play / Story Mode",
+                    subtitle = "Phone automatically reads story, picks choices hands-free, and executes combat turns across any save slot.",
+                    voiceHint = "Voice command: \"Auto Play\" or \"Story Mode\"",
+                    checked = isAutoPlayEnabled,
+                    activeColor = Color(0xFFBA68C8),
+                    onCheckedChange = { onToggleAutoPlay() }
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 // Toggle: Read Combat Actions Aloud
                 OptionToggleRow(
                     title = "⚔️ Read Combat Actions Aloud",
@@ -304,7 +320,7 @@ fun OptionsDialog(
                 // Toggle: Character Voice Pitch Modulation
                 OptionToggleRow(
                     title = "🎭 Character Voice Pitch",
-                    subtitle = "Modulates pitch per character (Cedric deep knight, Aethel spirited, Wisps raspy).",
+                    subtitle = "Modulates pitch per character to create distinctive vocal profiles.",
                     voiceHint = "Dynamic pitch shifting",
                     checked = isCharacterPitchEnabled,
                     activeColor = Color(0xFFCE93D8),
@@ -316,7 +332,7 @@ fun OptionsDialog(
                 // Toggle: Speaker Name Attribution
                 OptionToggleRow(
                     title = "🗣️ Speaker Names Aloud",
-                    subtitle = "Narrator announces who is talking (\"Commander America says...\"). Off keeps each character's distinct voice, just without the name.",
+                    subtitle = "Narrator announces who is talking aloud. Off keeps each character's distinct voice, just without the name.",
                     voiceHint = "Voice command: \"Speaker names\" or \"Who is speaking\"",
                     checked = isSpeakerAttributionEnabled,
                     activeColor = Color(0xFFFFB74D),
@@ -433,7 +449,7 @@ fun OptionsDialog(
                                 )
                                 Spacer(modifier = Modifier.height(2.dp))
                                 Text(
-                                    text = "Open system Text-to-Speech settings to download additional English voices for Commander America, Elon, Pelosi, Kamala, Obama, and Biden.",
+                                    text = "Open system Text-to-Speech settings to download additional English voices for your story characters and adversaries.",
                                     color = Color.LightGray,
                                     fontSize = 10.sp,
                                     lineHeight = 13.sp,
@@ -478,7 +494,7 @@ fun OptionsDialog(
                                 )
                                 Spacer(modifier = Modifier.height(2.dp))
                                 Text(
-                                    text = "Audition character quotes, cycle voice models for Commander America, Elon, Pelosi, Kamala, and others without restarting your game.",
+                                    text = "Audition character quotes, cycle voice models for characters and adversaries without restarting your game.",
                                     color = Color.LightGray,
                                     fontSize = 10.sp,
                                     lineHeight = 13.sp,
@@ -692,7 +708,7 @@ fun OptionsDialog(
                         VoiceCommandItem(command = "🎧 \"Pocket Mode\"", desc = "Toggles audio-guided combat")
                         VoiceCommandItem(command = "👂 \"Auto Listen\"", desc = "Toggles hands-free turn mic on/off")
                         VoiceCommandItem(command = "🎭 \"Assign Voices\"", desc = "Opens character voice customization screen")
-                        VoiceCommandItem(command = "🗣️ \"Speaker Names\"", desc = "Toggles \"Commander America says...\" announcements")
+                        VoiceCommandItem(command = "🗣️ \"Speaker Names\"", desc = "Toggles spoken speaker name announcements")
                         VoiceCommandItem(command = "🎵 \"Music\" / \"Toggle Music\"", desc = "Toggles ambient background music on/off")
                         VoiceCommandItem(command = "🏠 \"Title Screen\" / \"Main Menu\"", desc = "Saves and returns to Title Screen")
                         VoiceCommandItem(command = "⚙️ \"Options\" / \"Close\"", desc = "Opens or closes this settings screen")
@@ -745,6 +761,19 @@ fun OptionsDialog(
                         )
                     }
                 }
+
+                // =============================================================
+                // Toggle: Auto-Read Hub Choices in Screenless Pocket Mode
+                // =============================================================
+                Spacer(modifier = Modifier.height(10.dp))
+                OptionToggleRow(
+                    title = "🎧 Pocket Mode Auto-Read Choices",
+                    subtitle = "When Screenless Pocket Mode is active, automatically reads all available story choices upon visiting story hubs.",
+                    voiceHint = "Pocket Mode default: ON",
+                    checked = isAutoReadHubChoices,
+                    activeColor = Color(0xFF64B5F6),
+                    onCheckedChange = onToggleAutoReadHubChoices
+                )
 
                 // =============================================================
                 // Universal Cheat Code: up up down down left right left right b a start

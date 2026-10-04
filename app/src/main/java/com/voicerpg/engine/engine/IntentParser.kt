@@ -238,7 +238,7 @@ object IntentParser {
         // 2. Detect spell:
         val cleanLower = lower.replace(Regex("[^a-z0-9 ]"), " ")
 
-        fun findBestSpellMatch(spells: List<Spell>): Spell? {
+        fun findExactSpellMatch(spells: List<Spell>): Spell? {
             // Level 1: Exact spell name match (e.g. "art of the deal", "plug the leaks", "tremendous strike")
             val exactName = spells.firstOrNull { spell ->
                 val cleanName = spell.name.lowercase().replace(Regex("[^a-z0-9 ]"), " ")
@@ -247,7 +247,7 @@ object IntentParser {
             if (exactName != null) return exactName
 
             // Level 2: Multi-word alias match (e.g. "tremendous blow", "stop leaks", "fisa memo")
-            val multiWordAlias = spells.firstOrNull { spell ->
+            return spells.firstOrNull { spell ->
                 spell.aliases.any { alias ->
                     alias.contains(" ") && (
                         cleanLower.contains(alias.lowercase().replace(Regex("[^a-z0-9 ]"), " ")) ||
@@ -255,10 +255,11 @@ object IntentParser {
                     )
                 }
             }
-            if (multiWordAlias != null) return multiWordAlias
+        }
 
+        fun findLooseSpellMatch(spells: List<Spell>): Spell? {
             // Level 3: Single-word alias or key name words (>= 4 characters)
-            val singleWordMatch = spells.firstOrNull { spell ->
+            return spells.firstOrNull { spell ->
                 val cleanName = spell.name.lowercase().replace(Regex("[^a-z0-9 ]"), " ")
                 val nameWords = cleanName.split(Regex("\\s+")).filter { it.length >= 4 }
                 if (nameWords.isNotEmpty() && nameWords.any { cleanLower.contains(it) }) return@firstOrNull true
@@ -266,13 +267,46 @@ object IntentParser {
                     .filter { it.length >= 4 }
                 aliasWords.any { cleanLower.contains(it) }
             }
-            if (singleWordMatch != null) return singleWordMatch
-
-            return null
         }
 
-        // Step A: Check Active Character's spells first with hierarchical precision
-        val activeDirectMatch = findBestSpellMatch(availableSpells)
+        // Step 1: Check active character's exact/multi-word matches
+        val activeExactMatch = findExactSpellMatch(availableSpells)
+
+        // Step 2: Check other party members' exact/multi-word matches (prevent loose word match from stealing exact spell names)
+        var offTurnFound: Pair<Spell, PartyMember>? = null
+        if (activeExactMatch == null) {
+            for (member in party) {
+                val otherSpells = member.spells.filter { s -> availableSpells.none { it.id == s.id } }
+                if (otherSpells.isNotEmpty()) {
+                    val directMatch = findExactSpellMatch(otherSpells)
+                    if (directMatch != null) {
+                        offTurnFound = directMatch to member
+                        break
+                    }
+                }
+            }
+        }
+
+        // Step 3: Check active character's loose single-word match
+        val activeLooseMatch = if (activeExactMatch == null && offTurnFound == null) {
+            findLooseSpellMatch(availableSpells)
+        } else null
+
+        // Step 4: Check other party members' loose match if still not found
+        if (activeExactMatch == null && offTurnFound == null && activeLooseMatch == null) {
+            for (member in party) {
+                val otherSpells = member.spells.filter { s -> availableSpells.none { it.id == s.id } }
+                if (otherSpells.isNotEmpty()) {
+                    val looseMatch = findLooseSpellMatch(otherSpells)
+                    if (looseMatch != null) {
+                        offTurnFound = looseMatch to member
+                        break
+                    }
+                }
+            }
+        }
+
+        val activeDirectMatch = activeExactMatch ?: activeLooseMatch
 
         var isWrongCharacter = false
         var wrongCharacterOwnerId: String? = null
@@ -280,26 +314,12 @@ object IntentParser {
 
         val matchedSpell = if (activeDirectMatch != null) {
             activeDirectMatch
+        } else if (offTurnFound != null) {
+            isWrongCharacter = true
+            wrongCharacterOwnerId = offTurnFound.second.id
+            wrongCharacterOwnerName = offTurnFound.second.name
+            offTurnFound.first
         } else {
-            // Step B: Check other party members if user is trying to cast a spell belonging to someone else
-            var offTurnFound: Pair<Spell, PartyMember>? = null
-            for (member in party) {
-                val otherSpells = member.spells.filter { s -> availableSpells.none { it.id == s.id } }
-                if (otherSpells.isNotEmpty()) {
-                    val directMatch = findBestSpellMatch(otherSpells)
-                    if (directMatch != null) {
-                        offTurnFound = directMatch to member
-                        break
-                    }
-                }
-            }
-
-            if (offTurnFound != null) {
-                isWrongCharacter = true
-                wrongCharacterOwnerId = offTurnFound.second.id
-                wrongCharacterOwnerName = offTurnFound.second.name
-                offTurnFound.first
-            } else {
                 // Step C: Fallback to Active Character's school thesaurus keywords or default
                 val activeThesaurusMatch = availableSpells.firstOrNull { spell ->
                     val schoolKeywords = SpellThesaurus.getKeywordsForSchool(spell.school)
@@ -309,7 +329,6 @@ object IntentParser {
                   ?: availableSpells.firstOrNull()
                   ?: defaultFallbackSpell()
                 activeThesaurusMatch
-            }
         }
 
         // If it's a heal spell and targeting was unset/first alive enemy/all enemies, default to party lowest

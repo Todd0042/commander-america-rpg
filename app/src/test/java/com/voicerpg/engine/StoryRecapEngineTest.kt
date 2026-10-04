@@ -22,7 +22,7 @@ class StoryRecapEngineTest {
 
         val recap = StoryRecapEngine.buildRecap(scene, node, flags, party)
         assertNotNull(recap)
-        assertEquals("The Golden Tower Escalator", recap.currentSceneName)
+        assertEquals(StoryScript.SCENE_ACT1_ESCALATOR.name, recap.currentSceneName)
     }
 
     @Test

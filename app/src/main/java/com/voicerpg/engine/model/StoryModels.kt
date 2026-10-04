@@ -300,7 +300,10 @@ data class DialogueChoice(
     val text: String,
     val voiceKeywords: List<String>,
     val nextNodeId: String,
-    val completionFlag: String? = null
+    val completionFlag: String? = null,
+    val metricDeltas: Map<String, Float> = emptyMap(),
+    val assignHeroClassId: String? = null,
+    val triggerMiniGameId: String? = null
 ) {
     fun isCompleted(narrativeFlags: Map<String, Boolean>): Boolean {
         if (completionFlag != null) {
@@ -317,11 +320,18 @@ data class DialogueNode(
     val speaker: DialogueSpeaker,
     val side: SpeakerSide,
     val text: String,
+    val revisitText: String? = null,
     val choices: List<DialogueChoice> = emptyList(),
     val nextNodeId: String? = null,
     val triggerBattleEncounterId: String? = null,
+    val triggerMiniGameId: String? = null,
     val changeSceneId: String? = null,
-    val setFlagOnEnter: String? = null
+    val setFlagOnEnter: String? = null,
+    val metricDeltas: Map<String, Float> = emptyMap(),
+    val metricOverrides: Map<String, Float> = emptyMap(),
+    val assignHeroClassId: String? = null,
+    val allowIncidents: Boolean = true,
+    val blacklistIncidents: Boolean = false
 )
 
 data class StoryScene(
@@ -340,7 +350,9 @@ enum class GameScreen {
     AUDIO_SETUP,
     CHARACTER_CREATION,
     STORY_EXPLORATION,
-    COMBAT_ARENA
+    COMBAT_ARENA,
+    MINI_GAME,
+    ASSET_VIEWER
 }
 
 data class SaveSummary(

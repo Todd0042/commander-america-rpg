@@ -95,10 +95,16 @@ fun TitleScreen(
     onSelectSlot: (Int) -> Unit = {},
     onDeleteSlot: (Int) -> Unit = {},
     onContinueSlot: (Int) -> Unit = { onContinue() },
+    onContinueSlotAuto: (Int) -> Unit = { onContinueSlot(it) },
     onNewGameInSlot: (Int) -> Unit = { onNewGame() },
     onAudioSetup: () -> Unit,
     onOptions: () -> Unit,
     onTutorial: () -> Unit,
+    onAssetViewer: () -> Unit = {},
+    isMiniGameTestMenuOpen: Boolean = false,
+    onOpenMiniGameTestMenu: () -> Unit = {},
+    onCloseMiniGameTestMenu: () -> Unit = {},
+    onLaunchMiniGame: (String) -> Unit = {},
     storyModeSummary: SaveSummary? = null,
     onPureStoryMode: (fresh: Boolean) -> Unit = {},
     onStartListening: () -> Unit,
@@ -512,6 +518,38 @@ fun TitleScreen(
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "CHRONICLE GUIDE",
+                            color = Color.White,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Monospace
+                        )
+                    }
+                }
+
+                // 6. Gallery & Jukebox Button
+                Button(
+                    onClick = onAssetViewer,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(1.dp, RetroBorder, RoundedCornerShape(8.dp)),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = RetroDeepSlate.copy(alpha = 0.85f)
+                    ),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.padding(vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.VolumeUp,
+                            contentDescription = null,
+                            tint = FrostCyan,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "GALLERY & JUKEBOX",
                             color = Color.White,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,

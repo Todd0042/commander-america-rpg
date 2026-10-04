@@ -42,6 +42,7 @@ class MusicManager(
         const val TRACK_INAUGURATION = "audio/music/bgm_inauguration.ogg"
 
         // Legacy compatibility aliases pointing to patriotic tracks
+        const val TRACK_EXPLORATION = TRACK_RALLY
         const val TRACK_ACT1_FOREST = TRACK_RALLY
         const val TRACK_ACT2_MARSH = TRACK_OVAL
         const val TRACK_ACT3_BASTION = TRACK_INTRIGUE
@@ -259,6 +260,27 @@ class MusicManager(
                 startTrackPlayback(_currentTrack.value!!)
             }
         }
+    }
+
+    val isPlaying: Boolean get() = mediaPlayer?.isPlaying == true
+
+    fun isTrackPlaying(assetPath: String): Boolean {
+        return _currentTrack.value == assetPath && mediaPlayer?.isPlaying == true
+    }
+
+    fun stop() {
+        volumeFadeJob?.cancel()
+        mediaPlayer?.let {
+            try {
+                if (it.isPlaying) it.stop()
+            } catch (_: Exception) {}
+        }
+        abandonAudioFocus()
+    }
+
+    fun stopTrack() {
+        stop()
+        _currentTrack.value = null
     }
 
     fun destroy() {

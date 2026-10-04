@@ -42,6 +42,8 @@ import com.voicerpg.engine.ui.setup.AudioSetupScreen
 import com.voicerpg.engine.ui.setup.MicPermissionRationaleDialog
 import com.voicerpg.engine.ui.story.StoryScreen
 import com.voicerpg.engine.ui.theme.VoiceRPGTheme
+import com.voicerpg.engine.ui.gallery.AssetViewerScreen
+import com.voicerpg.engine.ui.minigame.MiniGameContainerScreen
 import com.voicerpg.engine.ui.title.TitleScreen
 import com.voicerpg.engine.ui.tutorial.TutorialBattleScreen
 import com.voicerpg.engine.viewmodel.CombatViewModel
@@ -246,9 +248,15 @@ class MainActivity : ComponentActivity() {
                                 onSelectSlot = { slot -> storyViewModel.selectSlot(slot) },
                                 onDeleteSlot = { slot -> storyViewModel.deleteSlot(slot) },
                                 onContinueSlot = { slot -> storyViewModel.continueGame(slot) },
+                                onContinueSlotAuto = { slot -> storyViewModel.continueGame(slot, startInAutoPlay = true) },
                                 onNewGameInSlot = { slot -> storyViewModel.startNewGameFlow(slot) },
                                 onAudioSetup = { storyViewModel.openAudioSetup() },
                                 onOptions = { combatViewModel.openOptions() },
+                                onAssetViewer = { storyViewModel.openAssetViewer() },
+                                isMiniGameTestMenuOpen = storyState.isMiniGameTestMenuOpen,
+                                onOpenMiniGameTestMenu = { storyViewModel.openMiniGameTestMenu() },
+                                onCloseMiniGameTestMenu = { storyViewModel.closeMiniGameTestMenu() },
+                                onLaunchMiniGame = { id -> storyViewModel.triggerMiniGame(id) },
                                 storyModeSummary = storyViewModel.getStoryModeSaveSummary(),
                                 onPureStoryMode = { fresh -> storyViewModel.startPureStoryMode(fresh) },
                                 onTutorial = {
@@ -261,6 +269,24 @@ class MainActivity : ComponentActivity() {
                                     )
                                 },
                                 onStopListening = { speechManager.stopListening() }
+                            )
+                        }
+                        GameScreen.MINI_GAME -> {
+                            storyState.activeMiniGameConfig?.let { config ->
+                                MiniGameContainerScreen(
+                                    config = config,
+                                    onFinish = { outcome -> storyViewModel.onMiniGameFinished(outcome) },
+                                    onSkip = { storyViewModel.onSkipMiniGame() }
+                                )
+                            } ?: run {
+                                storyViewModel.returnToTitle()
+                            }
+                        }
+                        GameScreen.ASSET_VIEWER -> {
+                            AssetViewerScreen(
+                                musicManager = musicManager,
+                                speechManager = speechManager,
+                                onBack = { storyViewModel.returnFromAssetViewer() }
                             )
                         }
                         GameScreen.TUTORIAL -> {
@@ -338,6 +364,11 @@ class MainActivity : ComponentActivity() {
                         isReadChoicesEnabled = isReadChoicesEnabled,
                         isCharacterPitchEnabled = isCharacterPitchEnabled,
                         isSpeakerAttributionEnabled = isSpeakerAttributionEnabled,
+                        isAutoPlayEnabled = storyState.isPureStoryMode,
+                        onToggleAutoPlay = {
+                            storyViewModel.toggleAutoPlay()
+                            storyViewModel.persistCurrentState()
+                        },
                         speechRate = speechRate,
                         isAutoListen = isAutoListen,
                         isChimeMuted = isChimeMuted,

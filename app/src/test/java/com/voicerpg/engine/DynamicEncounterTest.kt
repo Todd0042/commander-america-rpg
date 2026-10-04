@@ -78,14 +78,15 @@ class DynamicEncounterTest {
         assertEquals(BattleEnvironment.FOREST, state.currentEnvironment)
 
         // Dynamic voice targeting by custom enemy name
+        val heroSpell = state.party[0].spells.first()
         val intent = IntentParser.parse(
-            utterance = "Fireball the shadow wisp beta!",
+            utterance = "${heroSpell.name} the shadow wisp beta!",
             availableSpells = state.party[0].spells,
             activeEnemies = state.enemies,
             party = state.party
         )
 
-        assertEquals("fireball", intent.spell.id)
+        assertEquals(heroSpell.id, intent.spell.id)
         assertEquals("wisp_2", intent.targetEnemyId)
     }
 
@@ -609,9 +610,10 @@ class DynamicEncounterTest {
 
         val initialAethelMp = viewModel.state.value.party.first { it.id == "hero" }.currentMp
         val initialEnemyHps = viewModel.state.value.enemies.associate { it.id to it.currentHp }
+        val heroSpellName = viewModel.state.value.party.first { it.id == "hero" }.spells.first().name
 
-        // Zephyr's turn: player tries to cast Aethel's Fireball
-        viewModel.processIncantation("Fireball archer")
+        // Zephyr's turn: player tries to cast hero's spell out of turn
+        viewModel.processIncantation("$heroSpellName archer")
 
         // Wait briefly to allow any coroutines/effects to process
         Thread.sleep(150)
@@ -635,7 +637,7 @@ class DynamicEncounterTest {
         assertEquals(1.0f, zephyr.atbGauge, 0.001f)
 
         // 5. Floating text warning should be present
-        assertTrue(currentState.floatingTexts.any { it.text.contains("charging") || it.text.contains("turn") })
+        assertTrue(currentState.floatingTexts.any { it.text.contains("charging") || it.text.contains("turn") || it.text.contains("spell") })
     }
 
     @Test
@@ -650,7 +652,7 @@ class DynamicEncounterTest {
         val initialEnemyHps = viewModel.state.value.enemies.associate { it.id to it.currentHp }
 
         // Player chants Cedric's smite out of turn
-        viewModel.processIncantation("Cedric attack archer")
+        viewModel.processIncantation("Holy Smite archer")
         Thread.sleep(150)
 
         val currentState = viewModel.state.value

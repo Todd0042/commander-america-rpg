@@ -68,17 +68,22 @@ class AssetWiringTest {
     @Test
     fun everyPortraitAssetResolvesToARealFile() {
         val speakers = listOf(
-            DialogueSpeaker.AETHEL,
-            DialogueSpeaker.CEDRIC,
-            DialogueSpeaker.LYRA,
-            DialogueSpeaker.ZEPHYR,
-            DialogueSpeaker.MALAKOR,
-            DialogueSpeaker.NARRATOR,
-            DialogueSpeaker.SHADOW_WISP,
-            DialogueSpeaker.VAELOR,
-            DialogueSpeaker.GALAHAULT,
+            DialogueSpeaker.COMMANDER_AMERICA,
+            DialogueSpeaker.MARCO,
+            DialogueSpeaker.VANCE,
+            DialogueSpeaker.KASH,
+            DialogueSpeaker.KENNEDY,
+            DialogueSpeaker.ELON,
+            DialogueSpeaker.NARRATOR_KAYLEIGH,
+            DialogueSpeaker.NARRATOR_KAROLINE,
+            DialogueSpeaker.NARRATOR_HULK,
             DialogueSpeaker.PELOSI,
-            DialogueSpeaker.COMMANDER_AMERICA
+            DialogueSpeaker.KAMALA,
+            DialogueSpeaker.BIDEN,
+            DialogueSpeaker.OBAMA,
+            DialogueSpeaker.ROCKET_MAN,
+            DialogueSpeaker.PARTY_BOSS,
+            DialogueSpeaker.ESTABLISHMENT_RIVAL
         )
         val missing = mutableListOf<String>()
         for (speaker in speakers) {

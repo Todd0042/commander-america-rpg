@@ -11,7 +11,9 @@ import androidx.compose.ui.graphics.asImageBitmap
 object StoryAssetLoader {
     private val bitmapCache = mutableMapOf<String, ImageBitmap?>()
 
-    fun loadBitmap(context: Context, assetPath: String): ImageBitmap? {
+    var activeSlot: Int = 1
+
+    fun loadBitmap(context: Context, assetPath: String, slot: Int? = null): ImageBitmap? {
         if (bitmapCache.containsKey(assetPath)) {
             return bitmapCache[assetPath]
         }
@@ -24,6 +26,10 @@ object StoryAssetLoader {
         }
         bitmapCache[assetPath] = bitmap
         return bitmap
+    }
+
+    fun loadBackground(context: Context, assetPath: String, isPortrait: Boolean = false): ImageBitmap? {
+        return loadBitmap(context, assetPath)
     }
 
     fun clear() {

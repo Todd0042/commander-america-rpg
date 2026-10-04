@@ -178,6 +178,7 @@ class EyesFreeAccessibilityTest {
 
     @Test
     fun testAtbLoopPausesWhenEyesFreeModeAndSpeakingActive() = runBlocking {
+        viewModel.restartBattle()
         dummyNarrator.setEyesFreeMode(true)
         dummyNarrator.setSpeakingForTesting(true)
 
@@ -202,6 +203,7 @@ class EyesFreeAccessibilityTest {
 
     @Test
     fun testAtbLoopDoesNotPauseWhenEyesFreeModeIsDisabled() = runBlocking {
+        viewModel.restartBattle()
         dummyNarrator.setEyesFreeMode(false)
         dummyNarrator.setSpeakingForTesting(true)
 

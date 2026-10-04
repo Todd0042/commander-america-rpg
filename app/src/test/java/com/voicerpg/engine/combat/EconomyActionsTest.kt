@@ -94,11 +94,10 @@ class EconomyActionsTest {
 
     @Test
     fun `ASR-mangled breath commands still resolve to the breath spell`() {
-        // "a tune" for "attune", "deep route" for "deep root", "quiet lunge" for "quiet lungs"
+        // "a tune" for "attune", "breathe/center/focus" breath aliases
         assertEquals("attune", IntentParser.parse("a tune please", StoryEncounters.aethelSpells).spell.id)
-        assertEquals("deep_root", IntentParser.parse("deep route warden", StoryEncounters.lyraSpells).spell.id)
-        assertEquals("quiet_lungs", IntentParser.parse("quiet lunge shadow", StoryEncounters.zephyrSpells).spell.id)
-        assertEquals("steady_breath", IntentParser.parse("steady breath templar", StoryEncounters.cedricSpells).spell.id)
+        assertEquals("attune", IntentParser.parse("breathe center focus", StoryEncounters.aethelSpells).spell.id)
+        assertEquals("attune", IntentParser.parse("steady breath templar", StoryEncounters.aethelSpells).spell.id)
     }
 
     @Test

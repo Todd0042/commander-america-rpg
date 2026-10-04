@@ -109,7 +109,7 @@ object EnemyCodex {
     fun selfElementOf(name: String): School? = School.fromNameOrNull(TABLE[normalize(name)]?.selfElement?.ifEmpty { null })
     fun defenseOf(name: String): Int = TABLE[normalize(name)]?.defense ?: 0
     fun xpOf(name: String): Int = TABLE[normalize(name)]?.baseXp ?: 60
-    fun movesetOf(name: String): String = TABLE[normalize(name)]?.moveset ?: ""
+    fun movesetOf(name: String): String = TABLE[normalize(name)]?.moveset ?: "flesh_bruiser"
     fun codexForTemplate(name: String): EnemyCodexEntry? = TABLE.entries.firstOrNull { (k, _) ->
         val words = name.lowercase().split(" ")
         k.split(" ").all { it in words } || normalize(name) == k
