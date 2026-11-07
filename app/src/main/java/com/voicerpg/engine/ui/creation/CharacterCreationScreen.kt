@@ -1,10 +1,16 @@
 package com.voicerpg.engine.ui.creation
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,8 +30,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,22 +43,25 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
 import com.voicerpg.engine.audio.SpeechState
-import com.voicerpg.engine.engine.ClassSpellLibrary
 import com.voicerpg.engine.model.AuraColor
+import com.voicerpg.engine.model.CampaignTrack
+import com.voicerpg.engine.model.DialogueSpeaker
 import com.voicerpg.engine.model.HeroClass
 import com.voicerpg.engine.model.PlayerCustomization
-import com.voicerpg.engine.model.Spell
 import com.voicerpg.engine.model.SpellSchool
 import com.voicerpg.engine.ui.story.StoryAssetLoader
 import com.voicerpg.engine.ui.theme.LogosGlow
@@ -65,6 +72,59 @@ import com.voicerpg.engine.ui.theme.RetroPanel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+enum class ArcadeCandidate(
+    val id: String,
+    val candidateName: String,
+    val alias: String,
+    val title: String,
+    val track: CampaignTrack,
+    val portraitAsset: String,
+    val speaker: DialogueSpeaker,
+    val neonColor: Color,
+    val secondaryColor: Color,
+    val slogan: String,
+    val startingScene: String,
+    val playstyle: String,
+    val coalitionRoster: String,
+    val moves: List<String>,
+    val soundbiteLabel: String
+) {
+    COMMANDER_AMERICA(
+        id = "commander",
+        candidateName = "COMMANDER AMERICA",
+        alias = "THE GOLDEN SOVEREIGN",
+        title = "Commander-in-Chief",
+        track = CampaignTrack.TRACK_A,
+        portraitAsset = "portraits/commander_america.jpg",
+        speaker = DialogueSpeaker.COMMANDER_AMERICA,
+        neonColor = Color(0xFFFFD700),
+        secondaryColor = Color(0xFFD32F2F),
+        slogan = "MAKE AMERICA GREAT AGAIN • WE NEVER STOP WINNING",
+        startingScene = "Act I: The Golden Escalator",
+        playstyle = "5-Hero Supergroup Coalition",
+        coalitionRoster = "Rubio • Vance • Patel • Kennedy",
+        moves = listOf("Tremendous Strike", "Art of the Deal", "Presidential Veto", "Build The Wall"),
+        soundbiteLabel = "WINNING!"
+    ),
+    HILL_ROD(
+        id = "hill_rod",
+        candidateName = "HILL-ROD",
+        alias = "CHAPPAQUA TECHNOMANCER",
+        title = "Standard-Bearer & Server Specialist",
+        track = CampaignTrack.TRACK_B,
+        portraitAsset = "portraits/template/hill_rod_template.jpg",
+        speaker = DialogueSpeaker.HILL_ROD,
+        neonColor = Color(0xFF00E5FF),
+        secondaryColor = Color(0xFF7C4DFF),
+        slogan = "IT'S HER TURN • WIPE IT WITH A CLOTH",
+        startingScene = "Act I: Chappaqua Server Room",
+        playstyle = "4-Hero Standard-Bearer Relay",
+        coalitionRoster = "Hill-Rod ➔ Joe Naptime ➔ Kamala ➔ Barry",
+        moves = listOf("Cloth Wipe", "BleachBit Protocol", "SuperPAC Surge", "Reset Button"),
+        soundbiteLabel = "EMAILS!"
+    )
+}
+
 @Composable
 fun CharacterCreationScreen(
     initialCustomization: PlayerCustomization = PlayerCustomization(),
@@ -74,117 +134,98 @@ fun CharacterCreationScreen(
     onConfirmCharacter: (PlayerCustomization) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var name by remember { mutableStateOf(initialCustomization.name) }
-    var selectedTitle by remember { mutableStateOf(initialCustomization.title) }
-    var selectedAura by remember { mutableStateOf(initialCustomization.auraColor) }
-    var selectedTrack by remember { mutableStateOf(initialCustomization.campaignTrack) }
+    var selectedCandidate by remember {
+        mutableStateOf(
+            if (initialCustomization.campaignTrack == CampaignTrack.TRACK_B) ArcadeCandidate.HILL_ROD
+            else ArcadeCandidate.COMMANDER_AMERICA
+        )
+    }
 
     val isAutoListen = speechManager?.isAutoListen?.collectAsState()?.value ?: false
     val speechState = speechManager?.speechState?.collectAsState()?.value ?: SpeechState.Idle
     val coroutineScope = rememberCoroutineScope()
-
     val context = LocalContext.current
+
+    // Load portraits
     val commanderBitmap = remember {
-        StoryAssetLoader.loadBitmap(context, "portraits/commander_america.jpg")
+        StoryAssetLoader.loadBitmap(context, ArcadeCandidate.COMMANDER_AMERICA.portraitAsset)
+    }
+    val hillRodBitmap = remember {
+        StoryAssetLoader.loadBitmap(context, ArcadeCandidate.HILL_ROD.portraitAsset)
     }
 
-    val titles = listOf(
-        "Commander-in-Chief",
-        "Master of the Deal",
-        "Patriotic Sovereign",
-        "The Indomitable",
-        "Defender of Freedom"
+    // Arcade pulsing light animation
+    val infiniteTransition = rememberInfiniteTransition(label = "ArcadePulse")
+    val pulseAlpha by infiniteTransition.animateFloat(
+        initialValue = 0.6f,
+        targetValue = 1.0f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(800, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "PulseAlpha"
     )
 
-    val quickNames = listOf("Commander America", "The Boss", "Donald", "Patriot 47")
-
-    fun confirmAndAwaken() {
+    fun confirmCandidate(candidate: ArcadeCandidate) {
         speechManager?.cancel()
-        val finalCustomization = PlayerCustomization(
-            name = if (name.isBlank()) "Commander America" else name.trim(),
+        val custom = PlayerCustomization(
+            name = if (candidate == ArcadeCandidate.COMMANDER_AMERICA) "Commander America" else "Hill-Rod",
             heroClass = HeroClass.COMMANDER,
-            title = selectedTitle,
-            auraColor = selectedAura,
+            title = candidate.title,
+            auraColor = if (candidate == ArcadeCandidate.COMMANDER_AMERICA) AuraColor.SOLAR_GOLD else AuraColor.SAPPHIRE_FROST,
             voiceAffinityBonusSchool = SpellSchool.PHYSICAL,
-            campaignTrack = selectedTrack
+            campaignTrack = candidate.track
         )
-        onConfirmCharacter(finalCustomization)
+        onConfirmCharacter(custom)
     }
 
-    fun processCreationVoiceInput(utterance: String) {
+    fun playCandidateSoundbite(candidate: ArcadeCandidate) {
+        combatNarrator?.previewSpeakerVoice(candidate.speaker)
+    }
+
+    fun processVoiceInput(utterance: String) {
         val lower = utterance.lowercase().trim()
         if (lower.isBlank()) return
 
-        // Track selection voice commands
-        if (lower.contains("track b") || lower.contains("standard bearer") || lower.contains("relay") || lower.contains("hill rod")) {
-            selectedTrack = com.voicerpg.engine.model.CampaignTrack.TRACK_B
-            combatNarrator?.speak("Track B selected: The Standard-Bearer Relay.", force = true)
+        // 1. Candidate selection
+        if (lower.contains("trump") || lower.contains("commander") || lower.contains("track a") || lower == "one" || lower.contains("america")) {
+            selectedCandidate = ArcadeCandidate.COMMANDER_AMERICA
+            combatNarrator?.speak("Commander America selected. The Golden Sovereign.", force = true)
             return
-        } else if (lower.contains("track a") || lower.contains("commander") || lower.contains("coalition")) {
-            selectedTrack = com.voicerpg.engine.model.CampaignTrack.TRACK_A
-            combatNarrator?.speak("Track A selected: Commander's Coalition.", force = true)
+        } else if (lower.contains("hillary") || lower.contains("hill rod") || lower.contains("hillrod") || lower.contains("track b") || lower == "two" || lower.contains("relay")) {
+            selectedCandidate = ArcadeCandidate.HILL_ROD
+            combatNarrator?.speak("Hill-Rod selected. The Standard-Bearer Relay.", force = true)
             return
         }
 
-        // 1. Embark / Start command
-        val embarkKeywords = listOf(
-            "awaken", "embark", "begin", "start", "enter", "let us begin", "ready",
-            "venture", "let's go", "golden escalator", "make america great", "begin campaign", "start game",
-            "play", "lets go", "confirm", "forward", "onward", "descend"
+        // 2. Soundbite audition
+        if (lower.contains("soundbite") || lower.contains("quote") || lower.contains("audition") || lower.contains("voice") || lower.contains("speak")) {
+            playCandidateSoundbite(selectedCandidate)
+            return
+        }
+
+        // 3. Lock-in / Start game
+        val startKeywords = listOf(
+            "start", "lock in", "lock", "select", "begin", "play", "enter", "ready",
+            "fight", "let's go", "lets go", "embark", "confirm", "descend", "chappaqua", "escalator"
         )
-        if (embarkKeywords.any { lower.contains(it) }) {
-            confirmAndAwaken()
+        if (startKeywords.any { lower.contains(it) }) {
+            confirmCandidate(selectedCandidate)
             return
         }
 
-        // 1b. Back command
-        if (lower == "back" || lower.contains("go back") || lower.contains("audio setup") || lower == "return") {
+        // 4. Return to title
+        if (lower == "back" || lower.contains("go back") || lower.contains("title") || lower == "return") {
             speechManager?.cancel()
             onBack?.invoke()
             return
         }
 
-        // 2. Aura selection commands
-        when {
-            lower.contains("gold") || lower.contains("solar") || lower.contains("yellow") -> {
-                selectedAura = AuraColor.SOLAR_GOLD
-                combatNarrator?.speak("Solar Gold aura selected. Radiant presidential brilliance.", force = true)
-            }
-            lower.contains("crimson") || lower.contains("red") || lower.contains("pyre") || lower.contains("fire") -> {
-                selectedAura = AuraColor.CRIMSON_PYRE
-                combatNarrator?.speak("Crimson Pyre aura selected. Fierce patriotic flame.", force = true)
-            }
-            lower.contains("sapphire") || lower.contains("blue") || lower.contains("frost") || lower.contains("cyan") -> {
-                selectedAura = AuraColor.SAPPHIRE_FROST
-                combatNarrator?.speak("Sapphire Frost aura selected. Cool tactical composure.", force = true)
-            }
-            lower.contains("emerald") || lower.contains("green") || lower.contains("grove") -> {
-                selectedAura = AuraColor.EMERALD_GROVE
-                combatNarrator?.speak("Emerald Grove aura selected. Prosperous economic vitality.", force = true)
-            }
-            lower.contains("amethyst") || lower.contains("purple") || lower.contains("void") || lower.contains("shadow") -> {
-                selectedAura = AuraColor.AMETHYST_VOID
-                combatNarrator?.speak("Amethyst Void aura selected. Sovereign presidential authority.", force = true)
-            }
-        }
-
-        // 3. Title selection
-        titles.firstOrNull { lower.contains(it.lowercase()) }?.let {
-            selectedTitle = it
-            combatNarrator?.speak("$it title confirmed.", force = true)
-        }
-
-        // 4. Quick name selection
-        quickNames.firstOrNull { lower.contains(it.lowercase()) }?.let {
-            name = it
-            combatNarrator?.speak("Welcome, $it.", force = true)
-        }
-
-        // Re-listen if auto-listen is enabled
+        // Re-listen if auto-listen is active
         if (speechManager != null && speechManager.isAutoListen.value) {
             coroutineScope.launch {
                 delay(200)
-                speechManager.startListening { next -> processCreationVoiceInput(next) }
+                speechManager.startListening { next -> processVoiceInput(next) }
             }
         }
     }
@@ -192,7 +233,7 @@ fun CharacterCreationScreen(
     LaunchedEffect(isAutoListen) {
         if (isAutoListen) {
             delay(300)
-            speechManager?.startListening { utterance -> processCreationVoiceInput(utterance) }
+            speechManager?.startListening { utterance -> processVoiceInput(utterance) }
         }
     }
 
@@ -208,14 +249,14 @@ fun CharacterCreationScreen(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Optional Back navigation
-            if (onBack != null) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 10.dp),
-                    horizontalArrangement = Arrangement.Start
-                ) {
+            // Arcade Header Bar
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Back button
+                if (onBack != null) {
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(6.dp))
@@ -225,369 +266,21 @@ fun CharacterCreationScreen(
                                 speechManager?.cancel()
                                 onBack()
                             }
-                            .padding(horizontal = 12.dp, vertical = 6.dp)
+                            .padding(horizontal = 10.dp, vertical = 6.dp)
                     ) {
                         Text(
-                            text = "◀ BACK TO AUDIO SETUP",
+                            text = "◀ TITLE",
                             color = LogosGold,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace
                         )
                     }
+                } else {
+                    Spacer(modifier = Modifier.width(60.dp))
                 }
-            }
 
-            // Header
-            Text(
-                text = "🇺🇸 PRESIDENTIAL CAMPAIGN CUSTOMIZATION 🇺🇸",
-                color = LogosGold,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Black,
-                fontFamily = FontFamily.Monospace
-            )
-            Text(
-                text = "Establish Your Identity & Presidential Aura",
-                color = Color.LightGray,
-                fontSize = 11.sp,
-                fontFamily = FontFamily.Monospace
-            )
-
-            Spacer(modifier = Modifier.height(14.dp))
-
-            // Character Preview Card with chosen Aura & Name
-            val auraColorVal = Color(android.graphics.Color.parseColor(selectedAura.hexColor))
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(RetroPanel.copy(alpha = 0.9f))
-                    .border(2.dp, auraColorVal, RoundedCornerShape(12.dp))
-                    .padding(14.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    // Portrait Bust
-                    Box(
-                        modifier = Modifier
-                            .size(84.dp)
-                            .shadow(8.dp, RoundedCornerShape(10.dp), spotColor = auraColorVal)
-                            .clip(RoundedCornerShape(10.dp))
-                            .border(2.dp, auraColorVal, RoundedCornerShape(10.dp))
-                    ) {
-                        if (commanderBitmap != null) {
-                            Image(
-                                bitmap = commanderBitmap,
-                                contentDescription = name,
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        } else {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .background(auraColorVal.copy(alpha = 0.3f)),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = name.firstOrNull()?.toString() ?: "C",
-                                    color = auraColorVal,
-                                    fontSize = 28.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            }
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.width(14.dp))
-
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = if (name.isBlank()) "Nameless Leader" else name,
-                            color = LogosGlow,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Black,
-                            fontFamily = FontFamily.Monospace
-                        )
-                        Text(
-                            text = selectedTitle,
-                            color = auraColorVal,
-                            fontSize = 11.sp,
-                            fontFamily = FontFamily.Monospace,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        Text(
-                            text = "Role: Commander-in-Chief • HP: 5000 • MP: 1776",
-                            color = Color.LightGray,
-                            fontSize = 10.sp,
-                            fontFamily = FontFamily.Monospace
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Section 1: Campaign Name Input
-            Text(
-                text = "1. PRESIDENTIAL CAMPAIGN NAME",
-                color = LogosGold,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Monospace,
-                modifier = Modifier.align(Alignment.Start)
-            )
-
-            Spacer(modifier = Modifier.height(6.dp))
-
-            OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                label = { Text("Candidate Name", fontFamily = FontFamily.Monospace) },
-                singleLine = true,
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = LogosGold,
-                    unfocusedBorderColor = RetroBorder,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White,
-                    focusedContainerColor = RetroPanel,
-                    unfocusedContainerColor = RetroPanel
-                ),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(6.dp))
-
-            // Quick Name Suggestions
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                quickNames.forEach { qn ->
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(if (name == qn) LogosGold.copy(alpha = 0.2f) else RetroPanel)
-                            .border(1.dp, if (name == qn) LogosGold else RetroBorder, RoundedCornerShape(6.dp))
-                            .clickable { name = qn }
-                            .padding(horizontal = 8.dp, vertical = 4.dp)
-                    ) {
-                        Text(
-                            text = qn,
-                            color = if (name == qn) LogosGold else Color.LightGray,
-                            fontSize = 10.sp,
-                            fontFamily = FontFamily.Monospace
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Section 2: Presidential Arsenal & Loadout
-            Text(
-                text = "2. PRESIDENTIAL ARSENAL & LOADOUT",
-                color = LogosGold,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Monospace,
-                modifier = Modifier.align(Alignment.Start)
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            PresidentialArsenalCard(
-                spells = ClassSpellLibrary.COMMANDER_SPELLS
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Section 3: Presidential Aura (Aesthetics)
-            Text(
-                text = "3. PRESIDENTIAL AURA & TIE COLOR",
-                color = LogosGold,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Monospace,
-                modifier = Modifier.align(Alignment.Start)
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                AuraColor.entries.forEach { aura ->
-                    val isSelected = aura == selectedAura
-                    val col = Color(android.graphics.Color.parseColor(aura.hexColor))
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.clickable { selectedAura = aura }
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(36.dp)
-                                .shadow(if (isSelected) 10.dp else 2.dp, CircleShape, spotColor = col)
-                                .clip(CircleShape)
-                                .background(col)
-                                .border(if (isSelected) 3.dp else 1.dp, if (isSelected) Color.White else RetroBorder, CircleShape)
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = aura.displayName.split(" ").first(),
-                            color = if (isSelected) col else Color.Gray,
-                            fontSize = 9.sp,
-                            fontFamily = FontFamily.Monospace,
-                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Section 4: Honorific Title Selector
-            Text(
-                text = "4. HONORIFIC TITLE",
-                color = LogosGold,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Monospace,
-                modifier = Modifier.align(Alignment.Start)
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                titles.forEach { t ->
-                    val isSelected = t == selectedTitle
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(if (isSelected) LogosGold.copy(alpha = 0.2f) else RetroPanel)
-                            .border(1.dp, if (isSelected) LogosGold else RetroBorder, RoundedCornerShape(6.dp))
-                            .clickable { selectedTitle = t }
-                            .padding(horizontal = 10.dp, vertical = 6.dp)
-                    ) {
-                        Text(
-                            text = t,
-                            color = if (isSelected) LogosGold else Color.LightGray,
-                            fontSize = 10.sp,
-                            fontFamily = FontFamily.Monospace
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Section 5: Campaign Track Selector
-            Text(
-                text = "5. CHOOSE YOUR CAMPAIGN TRACK",
-                color = LogosGold,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Monospace,
-                modifier = Modifier.align(Alignment.Start)
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                com.voicerpg.engine.model.CampaignTrack.entries.forEach { track ->
-                    val isSelected = track == selectedTrack
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(if (isSelected) LogosGold.copy(alpha = 0.2f) else RetroPanel)
-                            .border(
-                                width = if (isSelected) 2.dp else 1.dp,
-                                color = if (isSelected) LogosGold else RetroBorder,
-                                shape = RoundedCornerShape(8.dp)
-                            )
-                            .clickable { selectedTrack = track }
-                            .padding(10.dp)
-                    ) {
-                        Column {
-                            Text(
-                                text = if (track == com.voicerpg.engine.model.CampaignTrack.TRACK_A) "🇺🇸 TRACK A" else "📜 TRACK B",
-                                color = if (isSelected) LogosGold else Color.White,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Black,
-                                fontFamily = FontFamily.Monospace
-                            )
-                            Text(
-                                text = track.displayName.substringAfter(": "),
-                                color = if (isSelected) LogosGlow else Color.LightGray,
-                                fontSize = 10.sp,
-                                fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily.Monospace
-                            )
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = track.subtitle,
-                                color = Color.Gray,
-                                fontSize = 8.sp,
-                                lineHeight = 11.sp,
-                                fontFamily = FontFamily.Monospace
-                            )
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Confirm & Enter Adventure Button
-            Button(
-                onClick = { confirmAndAwaken() },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = LogosGold,
-                    contentColor = RetroBlack
-                ),
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
-            ) {
-                Text(
-                    text = if (selectedTrack == com.voicerpg.engine.model.CampaignTrack.TRACK_B) "ENTER CHAPPAQUA BASEMENT ➔" else "DESCEND GOLDEN ESCALATOR ➔",
-                    fontFamily = FontFamily.Monospace,
-                    fontWeight = FontWeight.Black,
-                    fontSize = 14.sp
-                )
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            // Voice Prompt Bar for Hands-free Interaction
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "🎤 Speak aura, title, or say 'Start' to begin",
-                    color = Color.Gray,
-                    fontSize = 10.sp,
-                    fontFamily = FontFamily.Monospace
-                )
-
+                // Voice Mic Button
                 if (speechManager != null) {
                     Box(
                         modifier = Modifier
@@ -598,16 +291,388 @@ fun CharacterCreationScreen(
                                 if (speechState is SpeechState.Listening) {
                                     speechManager.stopListening()
                                 } else {
-                                    speechManager.startListening { utterance -> processCreationVoiceInput(utterance) }
+                                    speechManager.startListening { utterance -> processVoiceInput(utterance) }
                                 }
                             }
                             .padding(horizontal = 10.dp, vertical = 5.dp)
                     ) {
                         Text(
-                            text = if (speechState is SpeechState.Listening) "🎙️ LISTENING..." else "🎤 SPEAK",
+                            text = if (speechState is SpeechState.Listening) "🎙️ LISTENING..." else "🎤 VOICE READY",
                             color = LogosGold,
-                            fontSize = 9.sp,
+                            fontSize = 10.sp,
                             fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Monospace
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Flashing 90s Arcade Marquee
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(Color(0xFF2E1C00), Color(0xFF140D00), Color(0xFF2E1C00))
+                        )
+                    )
+                    .border(
+                        width = 2.dp,
+                        color = LogosGold.copy(alpha = pulseAlpha),
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .padding(vertical = 10.dp, horizontal = 14.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = "★ SELECT YOUR CANDIDATE ★",
+                        color = LogosGold,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Black,
+                        fontFamily = FontFamily.Monospace,
+                        letterSpacing = 1.sp
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = "90S RETRO ARCADE CAMPAIGN SELECT • 1P VS ESTABLISHMENT",
+                        color = Color(0xFFFFD54F).copy(alpha = 0.9f),
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Monospace
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Candidate Cards: 2 Fighters Side-by-Side (or stacked on small screens)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                // Card 1: Commander America
+                ArcadeCandidateCard(
+                    candidate = ArcadeCandidate.COMMANDER_AMERICA,
+                    isSelected = selectedCandidate == ArcadeCandidate.COMMANDER_AMERICA,
+                    portraitBitmap = commanderBitmap,
+                    pulseAlpha = if (selectedCandidate == ArcadeCandidate.COMMANDER_AMERICA) pulseAlpha else 1f,
+                    onSelect = {
+                        selectedCandidate = ArcadeCandidate.COMMANDER_AMERICA
+                        playCandidateSoundbite(ArcadeCandidate.COMMANDER_AMERICA)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+
+                // Card 2: Hill-Rod
+                ArcadeCandidateCard(
+                    candidate = ArcadeCandidate.HILL_ROD,
+                    isSelected = selectedCandidate == ArcadeCandidate.HILL_ROD,
+                    portraitBitmap = hillRodBitmap,
+                    pulseAlpha = if (selectedCandidate == ArcadeCandidate.HILL_ROD) pulseAlpha else 1f,
+                    onSelect = {
+                        selectedCandidate = ArcadeCandidate.HILL_ROD
+                        playCandidateSoundbite(ArcadeCandidate.HILL_ROD)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Selected Candidate Dossier & Campaign Preview
+            SelectedCandidateDossier(
+                candidate = selectedCandidate,
+                onAuditionSoundbite = { playCandidateSoundbite(selectedCandidate) }
+            )
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Giant Arcade "LOCK IN / PRESS START" Button
+            val buttonColor by animateColorAsState(
+                targetValue = selectedCandidate.neonColor,
+                animationSpec = tween(300),
+                label = "ButtonColor"
+            )
+
+            Button(
+                onClick = { confirmCandidate(selectedCandidate) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = buttonColor,
+                    contentColor = Color.Black
+                ),
+                shape = RoundedCornerShape(10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+                    .shadow(12.dp, RoundedCornerShape(10.dp), spotColor = buttonColor)
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = if (selectedCandidate == ArcadeCandidate.COMMANDER_AMERICA)
+                            "★ LOCK IN COMMANDER AMERICA ★"
+                        else
+                            "★ LOCK IN HILL-ROD ★",
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.Black,
+                        fontSize = 15.sp,
+                        letterSpacing = 1.sp
+                    )
+                    Text(
+                        text = "PRESS TO EMBARK OR SAY \"LOCK IN\"",
+                        color = Color.Black.copy(alpha = 0.75f),
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Monospace
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Quick Voice Hint Footer
+            Text(
+                text = "🎤 Voice Enabled: Say \"Trump\", \"Hillary\", \"Soundbite\", or \"Start\"",
+                color = Color.Gray,
+                fontSize = 10.sp,
+                fontFamily = FontFamily.Monospace,
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
+@Composable
+private fun ArcadeCandidateCard(
+    candidate: ArcadeCandidate,
+    isSelected: Boolean,
+    portraitBitmap: androidx.compose.ui.graphics.ImageBitmap?,
+    pulseAlpha: Float,
+    onSelect: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val borderColor = if (isSelected) candidate.neonColor.copy(alpha = pulseAlpha) else RetroBorder
+    val borderWidth = if (isSelected) 3.dp else 1.dp
+    val bgColor = if (isSelected) Color(0xFF1E1E2E) else RetroPanel
+
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(10.dp))
+            .background(bgColor)
+            .border(borderWidth, borderColor, RoundedCornerShape(10.dp))
+            .clickable { onSelect() }
+            .padding(8.dp)
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            // Track & Slot Badge
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(if (isSelected) candidate.neonColor else Color.DarkGray)
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = if (candidate.track == CampaignTrack.TRACK_A) "TRACK A • 1P" else "TRACK B • 2P",
+                    color = if (isSelected) Color.Black else Color.LightGray,
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Black,
+                    fontFamily = FontFamily.Monospace
+                )
+            }
+
+            Spacer(modifier = Modifier.height(6.dp))
+
+            // Big 1:1 Portrait Box
+            Box(
+                modifier = Modifier
+                    .size(110.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .border(2.dp, if (isSelected) candidate.neonColor else Color.Gray, RoundedCornerShape(8.dp))
+                    .background(Color.Black)
+            ) {
+                if (portraitBitmap != null) {
+                    Image(
+                        bitmap = portraitBitmap,
+                        contentDescription = candidate.candidateName,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(candidate.neonColor.copy(alpha = 0.25f)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = candidate.candidateName.first().toString(),
+                            color = candidate.neonColor,
+                            fontSize = 32.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                    }
+                }
+
+                // Selected Checkmark Overlay
+                if (isSelected) {
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(4.dp)
+                            .clip(CircleShape)
+                            .background(candidate.neonColor)
+                            .size(18.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "✓",
+                            color = Color.Black,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Candidate Name
+            Text(
+                text = candidate.candidateName,
+                color = if (isSelected) candidate.neonColor else Color.White,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Black,
+                fontFamily = FontFamily.Monospace,
+                textAlign = TextAlign.Center,
+                maxLines = 1
+            )
+
+            // Callsign
+            Text(
+                text = candidate.alias,
+                color = if (isSelected) LogosGlow else Color.Gray,
+                fontSize = 8.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Monospace,
+                textAlign = TextAlign.Center,
+                maxLines = 1
+            )
+        }
+    }
+}
+
+@Composable
+private fun SelectedCandidateDossier(
+    candidate: ArcadeCandidate,
+    onAuditionSoundbite: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF14141F))
+            .border(1.5.dp, candidate.neonColor.copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Column {
+            // Header Row with Soundbite Audition Button
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = candidate.candidateName,
+                        color = candidate.neonColor,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Black,
+                        fontFamily = FontFamily.Monospace
+                    )
+                    Text(
+                        text = candidate.slogan,
+                        color = Color.LightGray,
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = FontFamily.Monospace
+                    )
+                }
+
+                // Soundbite Button
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(candidate.neonColor.copy(alpha = 0.2f))
+                        .border(1.dp, candidate.neonColor, RoundedCornerShape(6.dp))
+                        .clickable { onAuditionSoundbite() }
+                        .padding(horizontal = 8.dp, vertical = 5.dp)
+                ) {
+                    Text(
+                        text = "🔊 ${candidate.soundbiteLabel}",
+                        color = candidate.neonColor,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Monospace
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Campaign Dossier Grid
+            Row(modifier = Modifier.fillMaxWidth()) {
+                // Left Column: Campaign Type & Start
+                Column(modifier = Modifier.weight(1f)) {
+                    DossierField(label = "CAMPAIGN FORMAT", value = candidate.playstyle, accent = candidate.neonColor)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    DossierField(label = "STARTING CHAPTER", value = candidate.startingScene, accent = Color.White)
+                }
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                // Right Column: Party Lineup
+                Column(modifier = Modifier.weight(1f)) {
+                    DossierField(label = "COALITION ROSTER", value = candidate.coalitionRoster, accent = LogosGlow)
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Signature Moves Banner
+            Text(
+                text = "SIGNATURE ARSENAL & ABILITIES:",
+                color = Color.Gray,
+                fontSize = 9.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Monospace
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            @OptIn(ExperimentalLayoutApi::class)
+            FlowRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                candidate.moves.forEach { move ->
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(0xFF222238))
+                            .border(1.dp, candidate.neonColor.copy(alpha = 0.5f), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = "⚡ $move",
+                            color = candidate.neonColor,
+                            fontSize = 9.sp,
                             fontFamily = FontFamily.Monospace
                         )
                     }
@@ -618,108 +683,24 @@ fun CharacterCreationScreen(
 }
 
 @Composable
-private fun PresidentialArsenalCard(
-    spells: List<Spell>
+private fun DossierField(
+    label: String,
+    value: String,
+    accent: Color
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(10.dp))
-            .background(RetroPanel)
-            .border(
-                width = 2.dp,
-                color = LogosGold,
-                shape = RoundedCornerShape(10.dp)
-            )
-            .padding(12.dp)
-    ) {
-        Column {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column {
-                    Text(
-                        text = "COMMANDER-IN-CHIEF",
-                        color = LogosGold,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Black,
-                        fontFamily = FontFamily.Monospace
-                    )
-                    Text(
-                        text = "Patriotic Sovereign & Master of the Deal",
-                        color = LogosGlow,
-                        fontSize = 10.sp,
-                        fontFamily = FontFamily.Monospace
-                    )
-                }
-
-                // Stats Pills
-                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    StatPill("HP", "5000", Color(0xFF4CAF50))
-                    StatPill("MP", "1776", Color(0xFF00B0FF))
-                    StatPill("SPD", "70", Color(0xFFFFB74D))
-                    StatPill("ATK", "50", LogosGold)
-                }
-            }
-
-            Spacer(modifier = Modifier.height(6.dp))
-
-            Text(
-                text = "Equipped with 8 signature presidential abilities to obliterate political obstruction, restore economic sovereignty, and lead America into a golden age.",
-                color = Color.LightGray,
-                fontSize = 10.sp,
-                fontFamily = FontFamily.Monospace,
-                lineHeight = 14.sp
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Signature Spells
-            @OptIn(ExperimentalLayoutApi::class)
-            FlowRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                spells.forEach { sp ->
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(4.dp))
-                            .background(Color(0xFF222234))
-                            .border(1.dp, LogosGold.copy(alpha = 0.5f), RoundedCornerShape(4.dp))
-                            .padding(horizontal = 6.dp, vertical = 2.dp)
-                    ) {
-                        Text(
-                            text = "⚡ ${sp.name}",
-                            color = LogosGold,
-                            fontSize = 9.sp,
-                            fontFamily = FontFamily.Monospace,
-                            maxLines = 1,
-                            softWrap = false
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun StatPill(label: String, value: String, color: Color) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(4.dp))
-            .background(color.copy(alpha = 0.18f))
-            .border(1.dp, color.copy(alpha = 0.6f), RoundedCornerShape(4.dp))
-            .padding(horizontal = 4.dp, vertical = 2.dp)
-    ) {
+    Column {
         Text(
-            text = "$label:$value",
-            color = color,
-            fontSize = 9.sp,
+            text = label,
+            color = Color.Gray,
+            fontSize = 8.sp,
             fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily.Monospace
+        )
+        Text(
+            text = value,
+            color = accent,
+            fontSize = 10.sp,
+            fontWeight = FontWeight.SemiBold,
             fontFamily = FontFamily.Monospace
         )
     }

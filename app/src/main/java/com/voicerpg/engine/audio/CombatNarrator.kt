@@ -671,6 +671,7 @@ class CombatNarrator(
             DialogueSpeaker.VANCE.id -> "Middle America will never be forgotten again. We've got common sense, family fortitude, and we're dismantling the establishment debate stage!"
             DialogueSpeaker.KASH.id -> "Everything is declassified. The binders are open, the leaks are plugged, and the truth will prevail!"
             DialogueSpeaker.KENNEDY.id -> "Did you write that rule yourself, or did someone help you think it up? In plain English, that sounds dumber than a bag of hammers!"
+            DialogueSpeaker.HILL_ROD.id -> "Delete the emails! Wipe the server with a cloth, and let's take back the party!"
             else -> "The chronicle of the Golden Tower unfolds with every step."
         }
         narrateDialogue(speaker, samplePhrase, emptyList(), force = true) {
