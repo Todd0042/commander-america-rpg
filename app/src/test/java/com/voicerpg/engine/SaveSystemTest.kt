@@ -8,6 +8,7 @@ import com.voicerpg.engine.engine.SaveManager
 import com.voicerpg.engine.engine.StoryEncounters
 import com.voicerpg.engine.engine.StoryScript
 import com.voicerpg.engine.model.AuraColor
+import com.voicerpg.engine.model.CampaignTrack
 import com.voicerpg.engine.model.GameSaveData
 import com.voicerpg.engine.model.GameScreen
 import com.voicerpg.engine.model.HeroClass
@@ -525,6 +526,26 @@ class SaveSystemTest {
         val archives = saveManager.getAllSlotInfos()
         assertEquals(3, archives.size)
         assertEquals(listOf(1, 2, 3), archives.map { it.slotIndex })
+    }
+
+    @Test
+    fun testPureStoryModeTrackBSelection() {
+        val testScope = CoroutineScope(Dispatchers.Default)
+        val storyVm = StoryViewModel(
+            speechManager = speechManager,
+            combatNarrator = combatNarrator,
+            saveManager = saveManager,
+            scopeOverride = testScope
+        )
+
+        // Start Pure Story Mode on Track B
+        storyVm.startPureStoryMode(fresh = true, track = CampaignTrack.TRACK_B)
+        assertTrue(storyVm.state.value.isPureStoryMode)
+        assertEquals(SaveManager.STORY_MODE_SLOT, storyVm.state.value.currentSlot)
+        assertEquals("Hill-Rod", storyVm.state.value.player.name)
+        assertEquals(CampaignTrack.TRACK_B, storyVm.state.value.player.campaignTrack)
+        assertEquals("act1_tb_ch1_intro", storyVm.state.value.currentNode.id)
+        assertEquals(StoryScript.SCENE_ACT1_TB_CH1_SERVER.id, storyVm.state.value.currentScene.id)
     }
 
     @Test

@@ -64,6 +64,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.voicerpg.engine.audio.SpeechState
+import com.voicerpg.engine.model.CampaignTrack
 import com.voicerpg.engine.model.SaveSlotInfo
 import com.voicerpg.engine.model.SaveSummary
 import com.voicerpg.engine.ui.story.StoryAssetLoader
@@ -106,7 +107,7 @@ fun TitleScreen(
     onCloseMiniGameTestMenu: () -> Unit = {},
     onLaunchMiniGame: (String) -> Unit = {},
     storyModeSummary: SaveSummary? = null,
-    onPureStoryMode: (fresh: Boolean) -> Unit = {},
+    onPureStoryMode: (fresh: Boolean, track: CampaignTrack) -> Unit = { _, _ -> },
     onStartListening: () -> Unit,
     onStopListening: () -> Unit,
     modifier: Modifier = Modifier
@@ -115,6 +116,7 @@ fun TitleScreen(
     var showOverwriteDialog by remember { mutableStateOf(false) }
     var showSlotArchivesDialog by remember { mutableStateOf(false) }
     var showStoryModePromptDialog by remember { mutableStateOf(false) }
+    var showStoryModeTrackDialog by remember { mutableStateOf(false) }
     var slotDialogIsNewGameMode by remember { mutableStateOf(false) }
 
     val backgroundBitmap = remember {
@@ -398,7 +400,7 @@ fun TitleScreen(
                         if (storyModeSummary != null) {
                             showStoryModePromptDialog = true
                         } else {
-                            onPureStoryMode(true)
+                            showStoryModeTrackDialog = true
                         }
                     },
                     modifier = Modifier
@@ -718,7 +720,7 @@ fun TitleScreen(
                         Button(
                             onClick = {
                                 showStoryModePromptDialog = false
-                                onPureStoryMode(false)
+                                onPureStoryMode(false, CampaignTrack.TRACK_A)
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -738,7 +740,7 @@ fun TitleScreen(
                         Button(
                             onClick = {
                                 showStoryModePromptDialog = false
-                                onPureStoryMode(true)
+                                showStoryModeTrackDialog = true
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -757,6 +759,126 @@ fun TitleScreen(
 
                         Button(
                             onClick = { showStoryModePromptDialog = false },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .border(1.dp, RetroBorder, RoundedCornerShape(8.dp)),
+                            colors = ButtonDefaults.buttonColors(containerColor = RetroDeepSlate),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Text(
+                                text = "CANCEL",
+                                color = Color.LightGray,
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = FontFamily.Monospace
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
+        // Pure Story Mode Track Selector Modal Dialog
+        if (showStoryModeTrackDialog) {
+            Dialog(onDismissRequest = { showStoryModeTrackDialog = false }) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(RetroBlack)
+                        .border(2.dp, Color(0xFFBA68C8), RoundedCornerShape(12.dp))
+                        .padding(20.dp)
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(14.dp)
+                    ) {
+                        Text(
+                            text = "🎬 SELECT AUTO-PLAY STORY",
+                            color = Color(0xFFE1BEE7),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Black,
+                            fontFamily = FontFamily.Monospace,
+                            textAlign = TextAlign.Center
+                        )
+
+                        Text(
+                            text = "Choose which campaign track to watch hands-free in Pure Story Mode:\n(Regular battles are auto-won, story advances automatically)",
+                            color = Color.LightGray,
+                            fontSize = 10.sp,
+                            fontFamily = FontFamily.Monospace,
+                            textAlign = TextAlign.Center,
+                            lineHeight = 15.sp
+                        )
+
+                        // Track A Option
+                        Button(
+                            onClick = {
+                                showStoryModeTrackDialog = false
+                                onPureStoryMode(true, CampaignTrack.TRACK_A)
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .border(1.5.dp, LogosGold, RoundedCornerShape(8.dp)),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E1C00)),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(vertical = 4.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = "🇺🇸 TRACK A: COMMANDER'S COALITION",
+                                    color = LogosGold,
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Black,
+                                    fontFamily = FontFamily.Monospace
+                                )
+                                Text(
+                                    text = "Trump • Rubio • Vance • Patel • Kennedy",
+                                    color = Color.LightGray,
+                                    fontSize = 9.sp,
+                                    fontFamily = FontFamily.Monospace
+                                )
+                            }
+                        }
+
+                        // Track B Option
+                        Button(
+                            onClick = {
+                                showStoryModeTrackDialog = false
+                                onPureStoryMode(true, CampaignTrack.TRACK_B)
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .border(1.5.dp, Color(0xFF00E5FF), RoundedCornerShape(8.dp)),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF002233)),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(vertical = 4.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = "📜 TRACK B: THE STANDARD-BEARER RELAY",
+                                    color = Color(0xFF00E5FF),
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Black,
+                                    fontFamily = FontFamily.Monospace
+                                )
+                                Text(
+                                    text = "Hill-Rod ➔ Joe Naptime ➔ Kamala ➔ Barry",
+                                    color = Color.LightGray,
+                                    fontSize = 9.sp,
+                                    fontFamily = FontFamily.Monospace
+                                )
+                            }
+                        }
+
+                        // Cancel Button
+                        Button(
+                            onClick = { showStoryModeTrackDialog = false },
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .border(1.dp, RetroBorder, RoundedCornerShape(8.dp)),

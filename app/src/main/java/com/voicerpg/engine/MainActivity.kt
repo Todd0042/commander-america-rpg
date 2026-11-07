@@ -261,7 +261,7 @@ class MainActivity : ComponentActivity() {
                                 onCloseMiniGameTestMenu = { storyViewModel.closeMiniGameTestMenu() },
                                 onLaunchMiniGame = { id -> storyViewModel.triggerMiniGame(id) },
                                 storyModeSummary = storyViewModel.getStoryModeSaveSummary(),
-                                onPureStoryMode = { fresh -> storyViewModel.startPureStoryMode(fresh) },
+                                onPureStoryMode = { fresh, track -> storyViewModel.startPureStoryMode(fresh, track) },
                                 onTutorial = {
                                     tutorialBattleViewModel.resetTutorial()
                                     storyViewModel.openTutorial()

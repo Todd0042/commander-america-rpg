@@ -20,6 +20,8 @@ import com.voicerpg.engine.model.EncounterDefinition
 import com.voicerpg.engine.model.GameSaveData
 import com.voicerpg.engine.model.GameScreen
 import com.voicerpg.engine.model.MetaCommand
+import com.voicerpg.engine.model.AuraColor
+import com.voicerpg.engine.model.CampaignTrack
 import com.voicerpg.engine.model.PartyMember
 import com.voicerpg.engine.model.PlayerCustomization
 import com.voicerpg.engine.model.SaveSlotInfo
@@ -342,7 +344,7 @@ class StoryViewModel(
         return newPaused
     }
 
-    fun startPureStoryMode(fresh: Boolean = false) {
+    fun startPureStoryMode(fresh: Boolean = false, track: CampaignTrack = CampaignTrack.TRACK_A) {
         cancelPendingAutoAdvance()
         cancelPendingStoryMode()
         speechManager.cancel()
@@ -365,7 +367,22 @@ class StoryViewModel(
             continueGame(storySlot)
         } else {
             saveManager.deleteSave(storySlot)
-            startNewGame(PlayerCustomization(), storySlot)
+            val custom = if (track == CampaignTrack.TRACK_B) {
+                PlayerCustomization(
+                    name = "Hill-Rod",
+                    title = "Standard-Bearer & Server Specialist",
+                    auraColor = AuraColor.SAPPHIRE_FROST,
+                    campaignTrack = CampaignTrack.TRACK_B
+                )
+            } else {
+                PlayerCustomization(
+                    name = "Commander America",
+                    title = "Commander-in-Chief",
+                    auraColor = AuraColor.SOLAR_GOLD,
+                    campaignTrack = CampaignTrack.TRACK_A
+                )
+            }
+            startNewGame(custom, storySlot)
         }
 
         _state.value = _state.value.copy(
