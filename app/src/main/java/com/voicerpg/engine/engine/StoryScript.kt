@@ -801,11 +801,11 @@ object StoryScript {
             id = "act1_ch1_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Good evening, America! I'm Kayleigh Binder-Tabs, flipping to Tab 1 of our 2015 Fact-Checked Satire Chronicle! Before Commander America steps onto the brass escalator at Trump Tower on June 16, 2015, we have to rewind to April 30, 2011 at the White House Correspondents' Dinner—where Barry Teleprompter refused to let the birth-certificate feud go and played the opening scene of Disney's The Lion King as his 'official birth video'! Choose your opening move or switch to Track B (Hill-Rod)!",
+            text = "June 16, 2015. Trump Tower lobby! The cameras are flashing, the red ties are flapping, and Commander America is descending the brass escalator to launch the most outrageous presidential campaign in American history! Step up to the mic, Commander!",
             choices = listOf(
-                DialogueChoice("a1_speech", "Deliver the unscripted announcement speech (Track A: Commander America)", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
-                DialogueChoice("a1_swagger", "Showcase escalator swagger & address the \$50 Extra Mile Casting actors", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
-                DialogueChoice("a1_media", "Switch to Track B: Play as Hill-Rod in the Chappaqua Server Basement!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
+                DialogueChoice("a1_speech", "Drop the speech notes & fire from the hip!", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
+                DialogueChoice("a1_swagger", "Flex the escalator swagger & magnificent hair!", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
+                DialogueChoice("a1_media", "Roast the fake news camera crews in the lobby!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
             )
         ),
         // Legacy alias for Act I intro
@@ -813,11 +813,11 @@ object StoryScript {
             id = "act1_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Good evening, America! I'm Kayleigh Binder-Tabs, flipping to Tab 1 of our 2015 Fact-Checked Satire Chronicle! Before Commander America steps onto the brass escalator at Trump Tower on June 16, 2015, we have to rewind to April 30, 2011 at the White House Correspondents' Dinner—where Barry Teleprompter refused to let the birth-certificate feud go and played the opening scene of Disney's The Lion King as his 'official birth video'! Choose your opening move or switch to Track B (Hill-Rod)!",
+            text = "June 16, 2015. Trump Tower lobby! The cameras are flashing, the red ties are flapping, and Commander America is descending the brass escalator to launch the most outrageous presidential campaign in American history! Step up to the mic, Commander!",
             choices = listOf(
-                DialogueChoice("a1_speech", "Deliver the unscripted announcement speech (Track A: Commander America)", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
-                DialogueChoice("a1_swagger", "Showcase escalator swagger & address the \$50 Extra Mile Casting actors", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
-                DialogueChoice("a1_media", "Switch to Track B: Play as Hill-Rod in the Chappaqua Server Basement!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
+                DialogueChoice("a1_speech", "Drop the speech notes & fire from the hip!", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
+                DialogueChoice("a1_swagger", "Flex the escalator swagger & magnificent hair!", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
+                DialogueChoice("a1_media", "Roast the fake news camera crews in the lobby!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
             )
         ),
 
@@ -825,49 +825,49 @@ object StoryScript {
             id = "act1_ch1_swagger",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Look at that escalator glide, folks! Smoother than silk! And the fake news is already hyperventilating because the Hollywood Reporter dug up an email from Extra Mile Casting offering background actors \$50 a head through Gotham Government Relations to wear T-shirts and wave signs in the lobby! Look, if somebody got fifty bucks to stand beneath this magnificent hair, that's called trickle-down escalator economics!",
+            text = "Look at this escalator, folks! Smooth as silk, 24-karat gold! The fake news is already crying that I paid people fifty bucks to cheer in the lobby. Fake news! I paid them seventy-five, plus a taco bowl voucher! Greatest deal in New York real estate history!",
             nextNodeId = "act1_ch1_hulk_cheer"
         ),
         DialogueNode(
             id = "act1_ch1_hulk_cheer",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH, BROTHER! Hulkster 24-Pythons here, ripping my tank top clean in half from the commentary booth! That brass escalator is carrying 100% pure American entertainment straight to the podium, jack! Even if the guy in the third row only showed up for fifty bucks and a free voucher at the Trump Grill taco-bowl counter!",
+            text = "OH YEAH, BROTHER! The brass escalator is gliding down with 100% pure American swagger, jack! When Commander America steps off that moving staircase, what'cha gonna do?!",
             nextNodeId = "act1_ch1_psaki_interrupts"
         ),
         DialogueNode(
             id = "act1_ch1_psaki_interrupts",
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "*Leans over from the Track B commentary desk* Excuse me, Kayleigh—Jen Circle-Back here! We're going to circle back to those \$50 paid escalator actors in 2016, 2018, 2020, and 2024! In fact, FEC Matter Under Review 6940 specifically documented that Gotham Government Relations hired background extras on June 12, 2015! We are literally never letting that go!",
+            text = "Excuse me—Jen Circle-Back here! We're circling back to those paid escalator actors in 2016, 2020, and 2024! We have an entire spreadsheet of people in neon t-shirts, and we will never let this go!",
             nextNodeId = "act1_ch1_karoline_note"
         ),
         DialogueNode(
             id = "act1_ch1_karoline_note",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Oh yeah, Jen?! Well we're never letting go of the fact that Hill-Rod wiped 33,000 emails off a basement server in Chappaqua 'with a cloth or something' and turned \$1,000 into \$100,000 trading Arkansas live-cattle futures in 1978! Two can play the Never-Let-It-Go game!",
+            text = "Oh yeah, Jen?! While you're counting t-shirts, Hill-Rod is in her basement pouring bleach on a hard drive! Let's get to the podium!",
             nextNodeId = "act1_ch1_hub"
         ),
         DialogueNode(
             id = "act1_ch1_media",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Look at the cameras back there! Every single network is broadcasting this live because their ratings without me are deader than Hill-Rod's Chappaqua BlackBerrys!",
+            text = "Look at the cameras back there! Every single network is broadcasting this live because without me, their ratings are deader than a dial-up modem!",
             nextNodeId = "act1_ch1_karoline_note"
         ),
         DialogueNode(
             id = "act1_ch1_speech",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Our country is in serious trouble. We don't win anymore! Barry Teleprompter stood up at the 2011 Correspondents' Dinner, played The Lion King cartoon, and mocked me for firing Gary Busey on Celebrity Apprentice over a stolen meatloaf! Well guess what, folks—nobody laughs at the meatloaf anymore! We are going to bring back our jobs, protect our borders, and put America First!",
+            text = "Our country is in serious trouble! We don't win anymore! Barry Teleprompter spent eight years giving speeches and eating fancy Dijon mustard while our factories closed down! We are going to build the wall, bring back the jobs, and make America win so much you'll get tired of winning!",
             nextNodeId = "act1_ch1_speech_followup"
         ),
         DialogueNode(
             id = "act1_ch1_speech_followup",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "Excuse me, Mr. Trump! I'm Chyron McSpin from Cable Outrage Tonight! Before you talk about trade or jobs, did you or did you not pay that guy behind you \$50 via Extra Mile Casting to hold that 'Make America Great Again' sign?! And while we're at it, didn't you tell People Magazine in 1998 that Republicans are the dumbest group of voters?!",
+            text = "Excuse me, Mr. Trump! I'm Chyron McSpin from Cable Outrage Tonight! The pundits say a billionaire reality star with golden hair can't just ride an escalator into the Oval Office!",
             nextNodeId = "act1_ch1_hub"
         ),
 
@@ -876,12 +876,12 @@ object StoryScript {
             id = "act1_ch1_hub",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Commander America pauses at the golden podium. Chyron McSpin is already recycling viral Facebook memes from 1984, 1995, and 1998. Dismantle all three smears before facing the lobby ambush!",
+            text = "Commander America grips the golden podium. Chyron McSpin is ready with three hostile talking points. Dismantle the media spin before clearing the lobby!",
             choices = listOf(
-                DialogueChoice("a1_hub_deal", "Vindication #1: Debunk the fake 1998 People Magazine 'Dumb Republicans' meme (& roast Oprah's 1988 show)", listOf("deal", "trade", "jobs", "economy", "tariffs", "people magazine", "dumb", "hoax"), "act1_ch1_lore_deal", completionFlag = "a1_lore_deal"),
-                DialogueChoice("a1_hub_border", "Vindication #2: Debunk the 1984 'Fake 7-Year-Old Tax Shelter Kid' & 1995 'Disabled Bus' hoaxes", listOf("wall", "border", "security", "door", "southern", "tax", "kid", "bus"), "act1_ch1_lore_wall", completionFlag = "a1_lore_wall"),
-                DialogueChoice("a1_hub_swamp", "Expose the D.C. Donor Swamp: Why Hill-Rod ate cake at your 2005 Palm Beach wedding", listOf("swamp", "drain", "lobbyist", "corrupt", "bureaucrat", "wedding", "cake"), "act1_ch1_lore_swamp", completionFlag = "a1_lore_swamp"),
-                DialogueChoice("a1_hub_proceed", "Step onto the lobby floor and confront Chyron McSpin's crew", listOf("proceed", "lobby", "advance", "step", "floor"), "act1_ch1_lobby_ambush")
+                DialogueChoice("a1_hub_deal", "Roast the fake news gossip & remind them Oprah begged you to run!", listOf("deal", "trade", "jobs", "economy", "tariffs", "people magazine", "dumb", "hoax"), "act1_ch1_lore_deal", completionFlag = "a1_lore_deal"),
+                DialogueChoice("a1_hub_border", "Lay down the law: The Great Border Wall & zero apologies!", listOf("wall", "border", "security", "door", "southern", "tax", "kid", "bus"), "act1_ch1_lore_wall", completionFlag = "a1_lore_wall"),
+                DialogueChoice("a1_hub_swamp", "Expose the D.C. Swamp: Why Hill-Rod came to your wedding for the cake!", listOf("swamp", "drain", "lobbyist", "corrupt", "bureaucrat", "wedding", "cake"), "act1_ch1_lore_swamp", completionFlag = "a1_lore_swamp"),
+                DialogueChoice("a1_hub_proceed", "Clear the lobby and confront Chyron McSpin's camera crew!", listOf("proceed", "lobby", "advance", "step", "floor"), "act1_ch1_lobby_ambush")
             )
         ),
         DialogueNode(
@@ -889,14 +889,14 @@ object StoryScript {
             setFlagOnEnter = "a1_lore_deal",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "VINDICATION WIN! You're still repeating that fake 1998 People Magazine quote, Chyron?! Time & Meredith Corp checked every single issue of People Magazine ever printed—I wasn't even interviewed in 1998! Some troll slapped fake text onto a screenshot of my 1988 interview on The Oprah Winfrey Show—where Oprah Free-Car herself asked me if I'd ever run for president! Isn't that right, Oprah?!",
+            text = "You want to talk about gossip, Chyron?! Back in 1988, Oprah Winfrey sat me on her couch and begged me on live television to run for president! She said: 'Donald, you'd win!' And she was right! Isn't that right, Oprah?!",
             nextNodeId = "act1_ch1_lore_deal_oprah"
         ),
         DialogueNode(
             id = "act1_ch1_lore_deal_oprah",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "*Sweats in 1988 archival footage* OKAY, YES, IT'S TRUE, HONEY! In 1988 I did ask him on my show if he'd run for office, and he never said that People Magazine quote! BUT WHAT ABOUT PAYING THOSE ESCALATOR ACTORS FIFTY DOLLARS A HEAD, DONALD?! WE'RE STILL NOT LETTING THAT GO!",
+            text = "*Sweats under 1988 studio lights* OKAY, YES, HONEY, IT'S TRUE! I did ask him in 1988! BUT WHAT ABOUT PAYING THOSE ACTORS FIFTY BUCKS TO CHEER FOR YOUR GOLDEN HAIR, DONALD?!",
             nextNodeId = "act1_ch1_hub"
         ),
         DialogueNode(
@@ -904,14 +904,14 @@ object StoryScript {
             setFlagOnEnter = "a1_lore_wall",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "DOUBLE VINDICATION WIN! First, your viral blog claims I got caught by the IRS in 1984 inventing a fictional 7-year-old boy named 'Donald John Trump' as a tax shelter—folks, my son Donald John Trump Jr. was born on December 31, 1977! He literally WAS seven years old in 1984! Second, you shared an article claiming I sued a bus full of disabled boys in 1995 for using my name—that was a Connecticut bus company named 'Trumpold' (T-R-U-M-P-O-L-D), a guy's last name that happened to start with the letters T-R-U-M-P!",
+            text = "We are going to build a Great Wall across the southern border! A beautiful, tremendous wall made of steel and concrete, with a big, beautiful golden door right in the middle! And nobody builds walls better than Trump, believe me!",
             nextNodeId = "act1_ch1_lore_wall_callback"
         ),
         DialogueNode(
             id = "act1_ch1_lore_wall_callback",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "Okay fine, 'Trumpold' was a bus company in Connecticut and Don Jr. was born in 1977—but speaking of buses, we just got a tip about a 2005 Access Hollywood bus tape that we are going to play on a loop for the next eleven years! And what about the \$50 escalator actors?!",
+            text = "A wall?! With a gold door?! Our fact-checkers are having an aneurysm on live television! And we still haven't let go of the fifty-dollar escalator actors!",
             nextNodeId = "act1_ch1_hub"
         ),
         DialogueNode(
@@ -919,14 +919,14 @@ object StoryScript {
             setFlagOnEnter = "a1_lore_swamp",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "You want to talk about \$50 actors?! Let's talk about \$675,000 actors! Hill-Rod charged Goldman Sachs \$675,000 for three speeches, wiped 33,000 emails in Chappaqua 'with a cloth,' and when I gave a donation to her Senate campaign and invited her to my 2005 wedding in Palm Beach, she sat in the front row and ate two slices of wedding cake! Ask her about the cloth and the cake!",
+            text = "You want to talk about corrupt politicians?! When I invited Hill-Rod to my wedding in Palm Beach, she showed up in the front row, ate two giant slices of my gold-foil wedding cake, and said: 'Donald, you throw the greatest parties in the world!' Now she pretends she doesn't know me! Total swamp behavior!",
             nextNodeId = "act1_ch1_hub"
         ),
         DialogueNode(
             id = "act1_ch1_lobby_ambush",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "Enough fact-checking our viral Facebook memes! We still have the \$50 Extra Mile Casting invoice on our teleprompter, and our K-Street Retainer Lobbyists are seizing this golden escalator right now!",
+            text = "Stop talking about wedding cake! Our K-Street lobbyists and cable news anchors are seizing the golden escalator right now!",
             nextNodeId = "act1_ch1_battle_trigger"
         ),
         DialogueNode(
@@ -1028,9 +1028,9 @@ object StoryScript {
         ),
         DialogueNode(
             id = "act1_ch2_mumbai_vindication",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "CROSS-AISLE VINDICATION CHECK! While we're roasting Barry's real-life tan suit, Dijon mustard, latte salute, and mom jeans, let's credit his Vindication Win too: when a 2010 viral chain email claimed Barry spent '\$200 million a day' in Mumbai with 34 warships, the Pentagon confirmed the entire story was fabricated—the US military didn't even spend \$200 million a day on the entire war in Afghanistan! We only fight over 100% verified ridiculousness here!",
+            speaker = DialogueSpeaker.OBAMA,
+            side = SpeakerSide.RIGHT,
+            text = "Look, folks on the internet claimed I spent two hundred million dollars a day visiting India with thirty-four aircraft carriers! Thirty-four warships?! I was giving a speech, not invading the subcontinent! You can tease the tan suit, but leave the fictional naval armada out of it!",
             nextNodeId = "act1_ch2_barry_battle_trigger"
         ),
         DialogueNode(
@@ -1180,40 +1180,40 @@ object StoryScript {
             changeSceneId = SCENE_ACT1_TB_CH1_SERVER.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Welcome to Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, joined at the desk by Karine Hatch-Act and Oprah Free-Car! You are playing all four chapters of Act I (2015–2016) as Hill-Rod! We begin in a suburban basement in Chappaqua, New York, where a private email server (`clintonemail.com`) is blinking beside a stack of 1978 Arkansas live-cattle futures receipts!",
+            text = "Live from Chappaqua, New York! A beige 1990s server tower in the basement is smoking, spark plugs are flying, and Hill-Rod is standing over the motherboard with a microfiber cloth and a bottle of Lysol!",
             nextNodeId = "act1_tb_ch1_kjp_oprah"
         ),
         DialogueNode(
             id = "act1_tb_ch1_kjp_oprah",
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "And I'm Karine Hatch-Act! Flipping to Tab 1 of my historic binder: Republicans have been bringing up Hill-Rod's 1978 cattle futures for thirty-seven straight years, and now they're adding 33,000 deleted yoga emails to the list! Wait—Oprah Free-Car has the megaphone!",
+            text = "According to my binder, thirty-three thousand emails just evaporated into thin air! But don't panic, folks—Oprah is in the driveway with the megaphone!",
             nextNodeId = "act1_tb_ch1_oprah_hype"
         ),
         DialogueNode(
             id = "act1_tb_ch1_oprah_hype",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "YOU GET A SUBPOENA! YOU GET A MICROFIBER CLOTH! EVERYBODY LOOK UNDER YOUR SEATS FOR A 1978 WALL STREET JOURNAL COMMODITIES SECTION AND A BOTTLE OF BLEACHBIT, HONEY!",
+            text = "YOU GET A LAWYER! YOU GET A MICROFIBER CLOTH! EVERYBODY LOOK UNDER YOUR SEATS FOR A CLAW HAMMER AND A BOTTLE OF BLEACHBIT!",
             nextNodeId = "act1_tb_ch1_spicer_heckles"
         ),
         DialogueNode(
             id = "act1_tb_ch1_spicer_heckles",
             speaker = DialogueSpeaker.SPICY_SEAN,
             side = SpeakerSide.RIGHT,
-            text = "*Pops his head through the Chappaqua basement window while chewing 35 pieces of Orbit Cinnamon gum at once* EXCUSE ME, MADAM SECRETARY! Before you even plug in that router, the RNC would like to ask about October 1978 when you put \$1,000 into a Refco live-cattle futures account and walked out ten months later with \$99,537! And also—did you wipe that server?!",
+            text = "*Pops his head through the basement window, chewing 35 pieces of cinnamon gum at once* EXCUSE ME, MADAM SECRETARY! The press corps saw smoke coming out of your dryer vent! Did you or did you not just wash that hard drive in the kitchen sink?!",
             nextNodeId = "act1_tb_ch1_server_hub"
         ),
         DialogueNode(
             id = "act1_tb_ch1_server_hub",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "Unbelievable—they're still screaming about 1978 cows while I'm trying to configure Microsoft Exchange in 2015! And Ed Henry from Fox News is right behind Spicy Sean with a boom mic. Let's handle every single talking point before we head to the Bronx and Hollywood!",
+            text = "Will somebody please close that basement window?! I'm trying to delete my yoga schedule before the FBI knocks on the front door! Team, what's our spin?!",
             choices = listOf(
-                DialogueChoice("tb1_cloth", "Deliver the verbatim Aug 18, 2015 classic: 'What, like with a cloth or something?' (+ check on 'stonetear')", listOf("cloth", "wipe", "server", "shrug", "stonetear"), "act1_tb_ch1_cloth_joke", completionFlag = "tb1_cloth_done"),
-                DialogueChoice("tb1_cattle", "Defend the 1978 \$1,000-to-\$100,000 Cattle Futures miracle & fire back with the 2005 Tic-Tac Bus!", listOf("cattle", "futures", "wall street journal", "thousand", "tic tac"), "act1_tb_ch1_cattle_joke", completionFlag = "tb1_cattle_done"),
-                DialogueChoice("tb1_vindication", "DOUBLE VINDICATION: Debunk 'Acid-Washed Hard Drives' & 'Benghazi Stand-Down' + 11-Hour Hearing Shrug!", listOf("vindication", "acid", "bleachbit", "benghazi", "eleven hours"), "act1_tb_ch1_vindication", completionFlag = "tb1_vind_done"),
-                DialogueChoice("tb1_proceed", "Advance to Chapter 2: The 5-Swipe Bronx Subway Turnstile & Zach Two-Ferns!", listOf("proceed", "advance", "bronx", "ferns", "zach"), "act1_tb_ch2_intro")
+                DialogueChoice("tb1_cloth", "What, like with a cloth or something?!", listOf("cloth", "wipe", "server", "shrug", "stonetear"), "act1_tb_ch1_cloth_joke", completionFlag = "tb1_cloth_done"),
+                DialogueChoice("tb1_cattle", "Remind them I made a fortune trading cows in 1978!", listOf("cattle", "futures", "wall street journal", "thousand", "tic tac"), "act1_tb_ch1_cattle_joke", completionFlag = "tb1_cattle_done"),
+                DialogueChoice("tb1_vindication", "Smash the Blackberries with a hammer & do the 11-hour shrug!", listOf("vindication", "acid", "bleachbit", "benghazi", "eleven hours"), "act1_tb_ch1_vindication", completionFlag = "tb1_vind_done"),
+                DialogueChoice("tb1_proceed", "Grab the pantsuits—we're heading to the Bronx subway!", listOf("proceed", "advance", "bronx", "ferns", "zach"), "act1_tb_ch2_intro")
             )
         ),
         DialogueNode(
@@ -1221,14 +1221,14 @@ object StoryScript {
             setFlagOnEnter = "tb1_cloth_done",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "*Shrugs at Ed Henry with a bright smile (Aug 18, 2015)* 'What, like with a cloth or something?! Well, no, we didn't wipe it—I don't know how it works digitally at all!' Meanwhile, my Platte River Networks IT specialist Paul Combetta literally logged onto Reddit under his gaming handle 'stonetear' on July 24, 2014 asking strangers: 'I may be facing a very interesting situation where I need to strip out a VIP's (VERY VIP) email address from a bunch of archived emails'—right before running BleachBit so 'even God can't read them!'",
+            text = "I looked the reporter dead in the eye, smiled, and said: 'What, like with a cloth or something?!' I don't know how computers work! I thought you just sprayed Windex on the monitor and the emails went to heaven!",
             nextNodeId = "act1_tb_ch1_cloth_callback"
         ),
         DialogueNode(
             id = "act1_tb_ch1_cloth_callback",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "*Leans over from the Track A booth* Just so you know, Hill-Rod, we are going to bring up 'with a cloth or something' and 'stonetear' in every single chapter of this game until 2026!",
+            text = "Just so you know, Hill-Rod, the internet is going to replay 'with a cloth or something' until the heat death of the universe!",
             nextNodeId = "act1_tb_ch1_server_hub"
         ),
         DialogueNode(
@@ -1236,7 +1236,7 @@ object StoryScript {
             setFlagOnEnter = "tb1_cattle_done",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "You're still bringing up 1978 live-cattle futures, Spicy Sean?! Look, the Journal of Economics and Finance calculated the odds of a first-time trader turning \$1,000 into \$99,537 in ten months at 1 in 31 trillion—and my story since 1994 is that I achieved those 1-in-31-trillion odds by reading the Wall Street Journal! Besides, if you can bring up 1978 cows, I'm bringing up Donald paying escalator actors \$50 a head and popping Tic-Tacs before striking out at a furniture store on the 2005 Access Hollywood bus!",
+            text = "Spicy Sean is screaming about 1978 cattle futures! Look, I turned a thousand bucks into a hundred grand trading cows! That wasn't luck—that was pure cow instinct! If Donald can ride a golden escalator, I can ride a golden steer!",
             nextNodeId = "act1_tb_ch1_server_hub"
         ),
         DialogueNode(
@@ -1244,7 +1244,7 @@ object StoryScript {
             setFlagOnEnter = "tb1_vind_done",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "DOUBLE VINDICATION WIN! First, opponents keep claiming I poured 'expensive chemical acid' on my server and smashed 13 phones AFTER a subpoena—FBI 302 notes proved 'BleachBit' is a free open-source software utility (not hydrochloric acid!) and two old phones were retired back in 2009–2013 years before any subpoena! Second, ten separate congressional investigations (including six Republican-led committees) confirmed no 'personal stand-down order' was ever given in Benghazi—culminating in my 11-hour live hearing on October 22, 2015 where I hit the iconic Shoulder Shrug!",
+            text = "Donald claims I used 'expensive acid' on my hard drives! Honey, it's called BleachBit, and my tech guy downloaded it off Reddit at 3 AM! I testified before Congress for eleven straight hours without a single bathroom break, hit the shoulder shrug, and walked out in my pastel pantsuit. Untouchable!",
             nextNodeId = "act1_tb_ch1_server_hub"
         ),
 
@@ -1326,12 +1326,12 @@ object StoryScript {
             id = "act1_tb_ch3_breakfast_club",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "When DJ Envy asks what's always in my bag, I say: 'Hot sauce! Ninja Squirrel!' And when Charlamagne looks me dead in the eye and says 'Wait—people are going to see this as you pandering to Black people,' how do we respond—and how do we crush the two wildest 2016 conspiracy theories flying at our campaign?",
+            text = "The Breakfast Club host just looked me dead in the eye and asked why I keep hot sauce in my purse. Should I give him the focus-grouped answer, or dismantle the wildest rumors on the internet?!",
             choices = listOf(
-                DialogueChoice("tb2_working", "Deliver the verbatim radio quote: 'Okay... is it working?' + Pitch 'Pokémon Go-to-the-Polls!'", listOf("is it working", "okay", "hot sauce", "pandering", "pokemon"), "act1_tb_ch3_pokemon_rally", completionFlag = "tb3_hot_done"),
-                DialogueChoice("tb2_pizzeria", "Vindication #1: Prove with D.C. building blueprints that Comet Ping Pong pizzeria has NO BASEMENT!", listOf("pizza", "basement", "comet", "vindication", "blueprint"), "act1_tb_ch3_pizzeria_vindication", completionFlag = "tb3_pizza_done"),
-                DialogueChoice("tb3_uranium", "Vindication #2: Debunk the 'Sold 20% of US Uranium to Russia' myth with CFIUS & NRC records!", listOf("uranium", "russia", "cfius", "bribe"), "act1_tb_ch3_uranium_vindication", completionFlag = "tb3_uranium_done"),
-                DialogueChoice("tb3_proceed", "Step outside the studio where Spicy Sean and Director Jim-Tall are waiting in the bushes!", listOf("proceed", "advance", "spicer", "comey", "bushes"), "act1_tb_ch3_spicer_comey_ambush")
+                DialogueChoice("tb2_working", "Hot sauce in my purse & 'Pokémon Go-to-the-Polls!'", listOf("is it working", "okay", "hot sauce", "pandering", "pokemon"), "act1_tb_ch3_pokemon_rally", completionFlag = "tb3_hot_done"),
+                DialogueChoice("tb2_pizzeria", "Debunk the pizza parlor secret basement rumor!", listOf("pizza", "basement", "comet", "vindication", "blueprint"), "act1_tb_ch3_pizzeria_vindication", completionFlag = "tb3_pizza_done"),
+                DialogueChoice("tb3_uranium", "Laugh off the wild uranium smuggling conspiracy!", listOf("uranium", "russia", "cfius", "bribe"), "act1_tb_ch3_uranium_vindication", completionFlag = "tb3_uranium_done"),
+                DialogueChoice("tb3_proceed", "Step outside where Spicy Sean & Director Jim-Tall are waiting!", listOf("proceed", "advance", "spicer", "comey", "bushes"), "act1_tb_ch3_spicer_comey_ambush")
             )
         ),
         DialogueNode(
@@ -1339,7 +1339,7 @@ object StoryScript {
             setFlagOnEnter = "tb3_pizza_done",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "VINDICATION WIN! Internet trolls are claiming my campaign manager's risotto emails are secret code for a dungeon in the basement of Comet Ping Pong pizzeria on Connecticut Avenue in D.C.! Here are the official D.C. municipal building blueprints and local police inspection reports: Comet Ping Pong is built on a poured concrete slab foundation and LITERALLY DOES NOT HAVE A BASEMENT! You cannot run a basement cabal in a building with zero basement!",
+            text = "They claimed my campaign was running a secret cabal in the basement of a D.C. pizza parlor! Folks, that pizza parlor is built on flat concrete! It doesn't even have a crawlspace! I can't even get a pizza delivered to Chappaqua without a motorcade, and they think I have a pizza dungeon?!",
             nextNodeId = "act1_tb_ch3_breakfast_club"
         ),
         DialogueNode(
@@ -1347,7 +1347,7 @@ object StoryScript {
             setFlagOnEnter = "tb3_uranium_done",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "VINDICATION WIN! And what about the claim that I 'personally approved selling 20% of US uranium to Russia for a \$145 million bribe'?! First, over 90% of that \$145 million came from Canadian mining mogul Frank Giustra in 2007—two years BEFORE I became Secretary of State, after he had already sold his stake! Second, the Uranium One deal required unanimous approval from NINE independent federal agencies on CFIUS (including the Defense, Energy, and Treasury Departments), and the Nuclear Regulatory Commission confirmed Rosatom had no export license—zero uranium left the US!",
+            text = "They said I personally sold twenty percent of America's uranium to Russia in a handbag! I can barely figure out how to attach a PDF to an email, and you think I'm running an international nuclear smuggling ring?! Get real!",
             nextNodeId = "act1_tb_ch3_breakfast_club"
         ),
         DialogueNode(
@@ -1355,7 +1355,7 @@ object StoryScript {
             setFlagOnEnter = "tb3_hot_done",
             speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "Yes, I really did carry 100 bottles of hot sauce in the White House back in the 1990s—and yes, I really did look at Charlamagne tha God and say: 'Okay... is it working?' Right before flying to Annandale, Virginia on July 14, 2016 to declare: 'I don't know who created Pokémon Go, but I'm trying to figure out how we get them to have... Pokémon Go-to-the-Polls!'",
+            text = "Charlamagne looked at me and said: 'People are gonna think you're pandering.' And I leaned in and smiled: 'Okay... is it working?!' Then I flew straight to Virginia and told a room of bored teenagers: 'I don't know who made Pokémon Go, but I want them to... Pokémon Go-to-the-Polls!' Absolute comedy gold!",
             nextNodeId = "act1_tb_ch3_breakfast_club"
         ),
         DialogueNode(
@@ -1422,7 +1422,7 @@ object StoryScript {
             id = "act1_tb_ch3_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT I TRACK B GRAND FINALE, EVERYBODY! Hill-Rod vs. Commander America, Billy Access-Bus, and the \$50 FEC Casting Extra! Unleash Pokémon Go-To-The-Polls, Purse Ninja Hot Sauce, and the 11-Hour Marathon Shield!",
+            text = "IT'S THE ACT I TRACK B GRAND FINALE, EVERYBODY! Hill-Rod vs. Commander America, Billy Access-Bus, and the \$50 Casting Extra! Unleash Pokémon Go-To-The-Polls, Purse Ninja Hot Sauce, and the 11-Hour Marathon Shield!",
             triggerBattleEncounterId = "act1_track_b_commander_finale",
             nextNodeId = "act1_tb_ch3_post_battle"
         ),
@@ -1430,7 +1430,7 @@ object StoryScript {
             id = "act1_tb_ch3_post_battle",
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "And that concludes all four chapters of Act I on Track B! Now the calendar flips to 2017–2020 for Act II! On Track B, the Standard-Bearer Relay Baton passes to Speaker Nancy Palooza—armed with her 45-degree sideways seal clap, pre-scored SOTU pages, twin \$24,000 Sub-Zero ice-cream freezers, and her \$341,365 pre-CHIPS Act Nvidia loss Vindication! Which side of Act II would you like to play first?",
+            text = "And that concludes all four chapters of Act I on Track B! Now the calendar flips to 2017–2020 for Act II! On Track B, the Standard-Bearer Relay Baton passes to Speaker Nancy Palooza—armed with her 45-degree sideways seal clap, pre-scored SOTU pages, twin \$24,000 Sub-Zero ice-cream freezers, and Paul's ill-timed Nvidia stock trade loss! Which side of Act II would you like to play first?",
             choices = listOf(
                 DialogueChoice("tb3_to_act2_tb", "Play Act II Track B (5 Chapters as Speaker Nancy Palooza)!", listOf("track b", "nancy", "baton", "pelosi", "freezers"), "act2_tb_ch1_intro"),
                 DialogueChoice("tb3_to_act2_ta", "Play Act II Track A (5 Chapters as Commander America & Kash Subpoena)!", listOf("act 2", "track a", "commander", "advance", "continue"), "act2_ch1_intro"),
@@ -1471,7 +1471,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("a2c1_bushes", "Inspect Spicy Sean hiding in the White House bushes on May 9, 2017 ('Turn the lights off!')", listOf("bushes", "shrubs", "spicer", "lights", "comey"), "act2_ch1_spicer_bushes", completionFlag = "a2c1_bushes_done"),
                 DialogueChoice("a2c1_mooch", "Listen to The 11-Day Mooch explain his New Yorker phone call & 11-day tenure", listOf("mooch", "scaramucci", "eleven days", "new yorker", "bannon"), "act2_ch1_mooch_rant", completionFlag = "a2c1_mooch_done"),
-                DialogueChoice("a2c1_gorilla", "VINDICATION WIN #1: Debunk the viral '17-Hour Gorilla Channel' Fire and Fury parody hoax!", listOf("gorilla", "channel", "vindication", "hoax", "tv"), "act2_ch1_gorilla_vindication", completionFlag = "a2c1_gorilla_done"),
+                DialogueChoice("a2c1_gorilla", "Laugh off the fake 17-hour 'Gorilla Channel' White House hoax!", listOf("gorilla", "channel", "vindication", "hoax", "tv"), "act2_ch1_gorilla_vindication", completionFlag = "a2c1_gorilla_done"),
                 DialogueChoice("a2c1_battle", "Charge into the Briefing Room Battle against the Crowd-Size Fact-Checkers!", listOf("battle", "fight", "briefing", "proceed", "advance"), "act2_ch1_battle_trigger")
             )
         ),
@@ -1495,9 +1495,9 @@ object StoryScript {
         DialogueNode(
             id = "act2_ch1_gorilla_vindication",
             setFlagOnEnter = "a2c1_gorilla_done",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #1! In December 2017, verified journalists, pundits, and university professors shared a screenshot tens of thousands of times claiming Michael Wolff's book Fire and Fury revealed White House staffers built a fake 17-hour 'Gorilla Channel' because Donald complained the Discovery Channel wasn't showing enough gorilla fights! The screenshot was actually an obvious comedy parody written by Twitter humorist @pixelatedboat—who had to change his display name to 'The Gorilla Channel Thing Is A Joke' because blue-check Twitter actually believed it!",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The fake news claimed I demanded a special White House TV broadcast of seventeen straight hours of fighting gorillas! Major anchors were nodding gravely on air: 'Yes, sources confirm the President watches gorilla combat.' It was an internet troll making fun of them! Although honestly, a 24-hour Gorilla Channel would blow CNN's ratings out of the water!",
             nextNodeId = "act2_ch1_mall_hub"
         ),
         DialogueNode(
@@ -1552,7 +1552,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("a2c2_covfefe", "Type the 12:06 AM May 31, 2017 'Despite the constant negative press covfefe' tweet!", listOf("covfefe", "tweet", "midnight", "press"), "act2_ch2_covfefe_node", completionFlag = "a2c2_covfefe_done"),
                 DialogueChoice("a2c2_eclipse", "Step onto the Truman Balcony and stare bare-eyed straight into the Aug 21, 2017 Solar Eclipse!", listOf("eclipse", "sun", "glasses", "stare", "balcony"), "act2_ch2_eclipse_node", completionFlag = "a2c2_eclipse_done"),
-                DialogueChoice("a2c2_koi", "VINDICATION WIN #2: Play the wide-angle AFP video of the Nov 2017 Japanese Koi Fish Feeding!", listOf("koi", "fish", "japan", "shinzo abe", "vindication"), "act2_ch2_koi_vindication", completionFlag = "a2c2_koi_done"),
+                DialogueChoice("a2c2_koi", "Show how Abe emptied his Koi fish food box first in Tokyo!", listOf("koi", "fish", "japan", "shinzo abe", "vindication"), "act2_ch2_koi_vindication", completionFlag = "a2c2_koi_done"),
                 DialogueChoice("a2c2_proceed", "Grab a box of Bounty paper towels & a black Sharpie for Chapter 3!", listOf("proceed", "advance", "sharpie", "towels", "chapter 3"), "act2_ch3_sharpie_intro")
             )
         ),
@@ -1575,9 +1575,9 @@ object StoryScript {
         DialogueNode(
             id = "act2_ch2_koi_vindication",
             setFlagOnEnter = "a2c2_koi_done",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #2! On November 6, 2017 at the Akasaka Palace in Tokyo, cable news and major outlets ran headlines claiming Commander America 'impatiently dumped his entire box of koi fish food into the pond ahead of Japanese Prime Minister Shinzo Abe,' airing a tightly cropped zoom cut! Look at the unedited wide-angle Agence France-Presse (AFP) footage: Prime Minister Abe finished spooning and dumped his entire box in FIRST with a laugh, and Commander America smiled and followed his host's exact lead a second later!",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Remember when the press had a four-day meltdown claiming I rudely dumped an entire wooden box of fish food into a Tokyo pond? Prime Minister Abe dumped his box in first, folks! He smiled, flipped the box, so I flipped my box! The media cropped out Abe and acted like I committed a war crime against ornamental carp!",
             nextNodeId = "act2_ch2_oval_hub"
         ),
 
@@ -1684,7 +1684,7 @@ object StoryScript {
             text = "Hold on, Kash—you wrote a children's bedtime book where I'm King Donald and you're a wizard in a pointy robe?! Let's inspect your kit and drop our biggest Vindication receipts of the term!",
             choices = listOf(
                 DialogueChoice("a2c4_wizard", "Inspect Kash's \$19.99 'Wizard Kash' children's book & his exaggerated Benghazi resume!", listOf("wizard", "book", "king donald", "benghazi", "kash"), "act2_ch4_wizard_book_node", completionFlag = "a2c4_wizard_done"),
-                DialogueChoice("a2c4_vindication", "VINDICATION WIN #3: Slam down Mueller Report Volume I Exoneration & the full Charlottesville transcript!", listOf("mueller", "vindication", "charlottesville", "transcript", "volume 1"), "act2_ch4_mueller_vindication", completionFlag = "a2c4_mueller_done"),
+                DialogueChoice("a2c4_vindication", "Review the Mueller report findings & Charlottesville clip!", listOf("mueller", "vindication", "charlottesville", "transcript", "volume 1"), "act2_ch4_mueller_vindication", completionFlag = "a2c4_mueller_done"),
                 DialogueChoice("a2c4_battle", "Test Kash Subpoena in combat against the SCIF Subpoena Bureaucrats!", listOf("battle", "fight", "scif", "proceed", "advance"), "act2_ch4_scif_battle_trigger")
             )
         ),
@@ -1708,7 +1708,7 @@ object StoryScript {
             setFlagOnEnter = "a2c4_mueller_done",
             speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
-            text = "DOUBLE VINDICATION WIN! First, after 22 months, 2,800 subpoenas, and 500 witnesses, Special Counsel Robert Mueller's March 2019 report (Volume I, Page 2) stated verbatim: 'The investigation did not establish that members of the Trump Campaign conspired or coordinated with the Russian government in its election interference activities.' Second, when critics cropped the August 15, 2017 Charlottesville press conference to 'very fine people on both sides,' the official transcript proves 35 seconds later Commander America stated explicitly: 'I'm not talking about the neo-Nazis and the white nationalists, because they should be condemned totally!'",
+            text = "Two full years! Twenty-eight hundred subpoenas! Bob Mueller spent thirty million dollars digging through every single receipt, and what did he find? Zero! Absolute goose egg! And while we're at it, cable news spent seven years looping a six-second Charlottesville clip while deleting the part where the Boss condemned the extremists thirty seconds later! Complete media stitch-up!",
             nextNodeId = "act2_ch4_scif_hub"
         ),
         DialogueNode(
@@ -1860,7 +1860,7 @@ object StoryScript {
             text = "*Tests the thickness of the State of the Union speech pages between her fingers* Wait a minute—the White House printed this speech on heavy-gauge archival cardstock! If I try to rip thirty pages of this cold at the end of the speech, my hands might get stuck on live television! How do we prepare the grand finale and crush the doctored video smear against us?",
             choices = listOf(
                 DialogueChoice("tb2_prescore", "Secretly pre-score starter notches into the pages under the desk before ripping them on live TV!", listOf("pre score", "rip", "tear", "speech", "notches"), "act2_tb_ch2_prescore_node", completionFlag = "tb2_prescore_done"),
-                DialogueChoice("tb2_vindication1", "VINDICATION WIN #1: Debunk the viral May 2019 'Drunk Slurring' video (slowed to 75% speed)!", listOf("drunk", "slurring", "slowed", "video", "vindication"), "act2_tb_ch2_slur_vindication", completionFlag = "tb2_slur_done"),
+                DialogueChoice("tb2_vindication1", "Expose the slowed-down 'slurring' video smear!", listOf("drunk", "slurring", "slowed", "video", "vindication"), "act2_tb_ch2_slur_vindication", completionFlag = "tb2_slur_done"),
                 DialogueChoice("tb2_meta", "Watch Commander America get mad at the speech rip & randomly bring up 2015 Chappaqua emails in 2020!", listOf("meta", "callback", "cloth", "let it go", "donald"), "act2_tb_ch2_meta_callback", completionFlag = "tb2_meta_done"),
                 DialogueChoice("tb2_proceed", "Head home to San Francisco for Chapter 3: The \$24,000 Sub-Zero Freezers & eSalon!", listOf("proceed", "advance", "freezers", "ice cream", "salon"), "act2_tb_ch3_intro")
             )
@@ -1878,7 +1878,7 @@ object StoryScript {
             setFlagOnEnter = "tb2_slur_done",
             speaker = DialogueSpeaker.PELOSI,
             side = SpeakerSide.LEFT,
-            text = "VINDICATION WIN #1! In May 2019, after a Center for American Progress event, a video went viral across social media with millions of views claiming I was 'visibly intoxicated and slurring my words' on stage! Forensic audio analysts and the original C-SPAN broadcast proved the clip had been maliciously slowed down to 75% of its original speed and pitch-adjusted to fabricate a slur—and as everyone on Capitol Hill knows, I don't even drink alcohol; my only vice is dark chocolate ice cream!",
+            text = "Someone slowed down my press conference video by twenty-five percent and put it on Facebook claiming I was three martinis deep! Honey, I have never had a sip of alcohol in my entire life! My only high is dark chocolate and crushing rebellions on the House floor!",
             nextNodeId = "act2_tb_ch2_sotu_hub"
         ),
         DialogueNode(
@@ -1916,7 +1916,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("tb3_icecream", "Open the twin \$24,000 Sub-Zero freezers & show off the \$12 pints of Jeni's Splendid Ice Cream!", listOf("freezers", "sub zero", "ice cream", "jenis", "corden"), "act2_tb_ch3_icecream_node", completionFlag = "tb3_icecream_done"),
                 DialogueChoice("tb3_salon", "Explain the Aug 31, 2020 unmasked San Francisco eSalon blowout ('It was a setup! They owe ME an apology!')", listOf("salon", "setup", "hair", "mask", "apology"), "act2_tb_ch3_salon_node", completionFlag = "tb3_salon_done"),
-                DialogueChoice("tb3_vind23", "VINDICATION WINS #2 & #3: Debunk the '\$2.4B Social Security Impeachment' & '\$25M Florida Mansion' hoaxes!", listOf("social security", "mansion", "florida", "impeachment", "vindication"), "act2_tb_ch3_vindication_node", completionFlag = "tb3_vind23_done"),
+                DialogueChoice("tb3_vind23", "Laugh off the fake 'Social Security Impeachment' & Florida mansion rumors!", listOf("social security", "mansion", "florida", "impeachment", "vindication"), "act2_tb_ch3_vindication_node", completionFlag = "tb3_vind23_done"),
                 DialogueChoice("tb3_proceed", "Head to the House Clerk Stock Disclosure Vault for Chapter 4!", listOf("proceed", "advance", "stocks", "options", "nvidia"), "act2_tb_ch4_intro")
             )
         ),
@@ -1941,7 +1941,7 @@ object StoryScript {
             setFlagOnEnter = "tb3_vind23_done",
             speaker = DialogueSpeaker.PELOSI,
             side = SpeakerSide.LEFT,
-            text = "DOUBLE VINDICATION WIN! First, viral posts claimed I 'illegally diverted \$2.4 billion from the Social Security Trust Fund to pay for impeachment'—under Title II of the Social Security Act, the Trust Fund is a statutory account that the Speaker has zero legal authority to touch, and committee staff are paid from regular annual House salaries! Second, viral memes claimed I hypocritically bought a '\$25 million beachfront mansion on Jupiter Island, Florida' while warning of lockdowns—Martin County, Florida property appraiser deeds proved neither Paul nor I ever bought or owned a single square foot of that property!",
+            text = "They claimed I raided the Social Security trust fund to pay for impeachment, and bought a twenty-five million dollar beachfront mansion in Florida! As if I would ever move to Florida! I get hives just looking at a golf cart!",
             nextNodeId = "act2_tb_ch3_subzero_hub"
         ),
 
@@ -1970,7 +1970,7 @@ object StoryScript {
             text = "While the stock ticker flashes green on 2008 Visa IPO shares and \$5.3 million in Alphabet call options exercised a week before a House Judiciary antitrust vote, critics are accusing the Pelosis of two specific insider trades that actually never happened! Let's review the receipts before Wizard Kash attacks!",
             choices = listOf(
                 DialogueChoice("tb4_options", "Review the real-life Visa IPO, Alphabet (\$5.3M), and Palo Alto Networks LEAPS call options!", listOf("options", "visa", "alphabet", "google", "nanc"), "act2_tb_ch4_options_node", completionFlag = "tb4_options_done"),
-                DialogueChoice("tb4_nvidia_vind", "VINDICATION WINS #4 & #5: Slam down the \$341,365 Pre-CHIPS Act Nvidia LOSS receipt & debunk the 3M Mask Stock hoax!", listOf("nvidia", "chips act", "loss", "3m", "vindication"), "act2_tb_ch4_nvidia_vindication", completionFlag = "tb4_nvidia_done"),
+                DialogueChoice("tb4_nvidia_vind", "Review Paul's disastrous Nvidia loss & the fake 3M mask stock hoax!", listOf("nvidia", "chips act", "loss", "3m", "vindication"), "act2_tb_ch4_nvidia_vindication", completionFlag = "tb4_nvidia_done"),
                 DialogueChoice("tb4_kash_battle", "Confront Kash Subpoena ('Wizard Kash') storming the vault with his \$19.99 children's book!", listOf("kash", "wizard", "battle", "fight", "proceed"), "act2_tb_ch4_kash_ambush")
             )
         ),
@@ -1987,7 +1987,7 @@ object StoryScript {
             setFlagOnEnter = "tb4_nvidia_done",
             speaker = DialogueSpeaker.PELOSI,
             side = SpeakerSide.LEFT,
-            text = "DOUBLE VINDICATION WIN! Everyone on cable news screamed that Paul 'made a fortune buying Nvidia right before Congress passed the \$52 billion CHIPS Act in July 2022'! Here is the official July 26, 2022 House Clerk Periodic Transaction Report: Paul actually SOLD all 25,000 shares of Nvidia on July 26 BEFORE the CHIPS Act vote at an average price of \$165.05—locking in a realized LOSS of \$341,365 specifically to avoid the appearance of a conflict of interest! And as for the viral 2020 rumor that I 'bought \$10 million in 3M mask stock before lockdowns'—House disclosures prove we owned zero shares of 3M!",
+            text = "Everyone on the internet treats my husband Paul like an omniscient stock wizard. They screamed that he bought Nvidia right before the CHIPS Act. Look at the disclosure filing: he panicked under media pressure, sold it early, and lost three hundred and forty thousand dollars! The worst trade in tech history! If he was insider trading, he's the worst criminal on Wall Street!",
             nextNodeId = "act2_tb_ch4_stocks_hub"
         ),
         DialogueNode(
@@ -2239,7 +2239,7 @@ object StoryScript {
             text = "Well, Commander, it looks like both of y'all treated the National Archives like a U-Haul self-storage unit! How are we handling the Subpoena Archivists?",
             choices = listOf(
                 DialogueChoice("a3c3_corvette", "Play Joe Naptime's verbatim Jan 12, 2023 excuse: 'My Corvette's in a locked garage, okay?!'", listOf("corvette", "garage", "locked", "stingray", "delaware"), "act3_ch3_corvette_node", completionFlag = "a3c3_corvette_done"),
-                DialogueChoice("a3c3_vindication", "VINDICATION WIN #1: Debunk the 'Mar-a-Lago Nuclear Launch Codes Sold to Spies' cable-news hoax!", listOf("nuclear", "codes", "vindication", "mar a lago", "spies"), "act3_ch3_nuclear_vindication", completionFlag = "a3c3_nuclear_done"),
+                DialogueChoice("a3c3_vindication", "Laugh off the 'Mar-a-Lago Nuclear Codes' headline hoax!", listOf("nuclear", "codes", "vindication", "mar a lago", "spies"), "act3_ch3_nuclear_vindication", completionFlag = "a3c3_nuclear_done"),
                 DialogueChoice("a3c3_battle", "Battle the Bathroom Chandelier Box Inspector & Corvette Garage Sentinel!", listOf("battle", "fight", "chandelier", "proceed", "advance"), "act3_ch3_battle_trigger")
             )
         ),
@@ -2254,9 +2254,9 @@ object StoryScript {
         DialogueNode(
             id = "act3_ch3_nuclear_vindication",
             setFlagOnEnter = "a3c3_nuclear_done",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #1! In August 2022, anonymous cable-news pundits breathlessly claimed the FBI raided Mar-a-Lago because Commander America was 'hiding US nuclear launch codes to sell to foreign adversaries at the buffet!' When the unsealed 49-page indictment was actually filed, it contained ZERO allegations of nuclear launch codes and ZERO allegations of selling secrets to foreign powers—just a monumental stubborn argument with the National Archives over returning boxes of letters, newspaper clippings, and agency briefings!",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The fake news swore I had nuclear launch codes hidden behind the golden shower curtain at Mar-a-Lago! Selling warheads at the brunch omelet station! The indictment comes out: it's old magazine covers, autographed golf pictures, and newspaper clippings I refused to give back to the National Archives because they had my face on them!",
             nextNodeId = "act3_ch3_box_hub"
         ),
         DialogueNode(
@@ -2469,8 +2469,8 @@ object StoryScript {
             text = "*Squints at the glowing teleprompter glass while holding a spoonful of Jeni's Splendid Chocolate Chip* Look, if they put words on the glass, I'm reading every single one of 'em! Let's handle our teleprompter moments and drop our first two verified Vindication Wins!",
             choices = listOf(
                 DialogueChoice("tb3c2_repeat", "Read the bracketed stage directions verbatim: 'End of quote. Repeat the line.' (+ Andrews Wind Stairs!)", listOf("repeat the line", "end of quote", "teleprompter", "stairs", "wind"), "act3_tb_ch2_repeat_node", completionFlag = "tb3c2_rep_done"),
-                DialogueChoice("tb3c2_vatican", "VINDICATION WIN #1: Debunk the viral Oct 2021 'Pooped His Pants at the Vatican' rumor!", listOf("vatican", "pope", "pants", "rumor", "vindication"), "act3_tb_ch2_vatican_vindication", completionFlag = "tb3c2_vat_done"),
-                DialogueChoice("tb3c2_israel", "VINDICATION WIN #2: Play the uncropped C-SPAN video debunking the 'Fell Asleep With Israel's PM' clip!", listOf("asleep", "israel", "naftali bennett", "cspan", "cropped"), "act3_tb_ch2_israel_vindication", completionFlag = "tb3c2_isr_done"),
+                DialogueChoice("tb3c2_vatican", "Laugh off the fake Vatican bathroom rumors!", listOf("vatican", "pope", "pants", "rumor", "vindication"), "act3_tb_ch2_vatican_vindication", completionFlag = "tb3c2_vat_done"),
+                DialogueChoice("tb3c2_israel", "Expose the cropped 'Asleep with Israel's PM' clip!", listOf("asleep", "israel", "naftali bennett", "cspan", "cropped"), "act3_tb_ch2_israel_vindication", completionFlag = "tb3c2_isr_done"),
                 DialogueChoice("tb3c2_proceed", "Head to Portland's Baskin-Robbins for Chapter 3 against Senator Foghorn Kennedy!", listOf("proceed", "advance", "baskin robbins", "kennedy", "ice cream"), "act3_tb_ch3_intro")
             )
         ),
@@ -2487,7 +2487,7 @@ object StoryScript {
             setFlagOnEnter = "tb3c2_vat_done",
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #1! In October 2021 during Joe's visit to the Vatican, a bizarre hashtag ('#PoopyPantsBiden') trended worldwide based on a zero-evidence tweet claiming his meeting with Pope Francis ran long because of a 'bathroom accident.' International pool reporters on the ground and Snopes confirmed there was zero truth to the rumor—the meeting ran 75 minutes because he and Pope Francis were having an extended, warm conversation and exchanging gifts on camera!",
+            text = "Look, folks on Twitter started a rumor that Joe had a bathroom emergency with the Pope because their meeting went seventy-five minutes! The man was having tea with the Holy Father, discussing world peace and looking at rosaries! You think the Bishop of Rome is timing bathroom breaks with a stopwatch?! Malarkey!",
             nextNodeId = "act3_tb_ch2_prompter_hub"
         ),
         DialogueNode(
@@ -2495,7 +2495,7 @@ object StoryScript {
             setFlagOnEnter = "tb3c2_isr_done",
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #2! In August 2021, a tightly cropped 15-second clip went viral claiming Joe 'fell fast asleep on live television' while Israeli Prime Minister Naftali Bennett was speaking in the Oval Office. Reuters and the full uncropped C-SPAN broadcast proved that Joe was looking down at his hands while listening, his fingers were moving, and the exact second Prime Minister Bennett finished his sentence, Joe immediately looked up and replied directly to Bennett's point without waking up or being startled!",
+            text = "Cable channels cropped a ten-second video of Joe looking down at his notepad and claimed he fell fast asleep on live television next to the Prime Minister of Israel! The second Bennett stopped talking, Joe looked up and answered him! Joe rests his eyes, folks, but the radar is always spinning!",
             nextNodeId = "act3_tb_ch2_prompter_hub"
         ),
 
@@ -2517,7 +2517,7 @@ object StoryScript {
             text = "*Holds up a towering double-scoop chocolate chip waffle cone* As I told the crowd in Cleveland on May 27, 2021: 'My name is Joe Biden. I'm Dr. Jill Biden's husband. And I eat Jeni's Chocolate Chip ice cream! I came down because I heard there was chocolate chip ice cream! By the way, I have a whole refrigerator full upstairs!' How do we handle the reporters and our next two Vindication Wins before Foghorn Kennedy walks in?",
             choices = listOf(
                 DialogueChoice("tb3c3_strong", "Lick the waffle cone & tell reporters: 'Our economy is strong as hell, man!'", listOf("economy", "strong as hell", "baskin robbins", "lick", "inflation"), "act3_tb_ch3_strong_node", completionFlag = "tb3c3_str_done"),
-                DialogueChoice("tb3c3_vind34", "VINDICATION WINS #3 & #4: Debunk the 'Two Beers a Week / Red Meat Ban' hoax & the cropped G7 Skydiver video!", listOf("two beers", "red meat", "skydiver", "g7", "vindication"), "act3_tb_ch3_vindications_node", completionFlag = "tb3c3_vind_done"),
+                DialogueChoice("tb3c3_vind34", "Laugh off the 'Two Beers a Week' red meat ban & G7 skydiver rumors!", listOf("two beers", "red meat", "skydiver", "g7", "vindication"), "act3_tb_ch3_vindications_node", completionFlag = "tb3c3_vind_done"),
                 DialogueChoice("tb3c3_kennedy", "Confront Senator Foghorn Kennedy strolling into the ice-cream shop!", listOf("kennedy", "foghorn", "battle", "fight", "proceed"), "act3_tb_ch3_kennedy_ambush")
             )
         ),
@@ -2534,7 +2534,7 @@ object StoryScript {
             setFlagOnEnter = "tb3c3_vind_done",
             speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.LEFT,
-            text = "DOUBLE VINDICATION WIN! First, cable hosts screamed in April 2021 that my climate plan was going to 'ban 90% of red meat and limit Americans to one burger a month and two beers a week!' Agriculture Secretary Tom Vilsack confirmed zero red meat limits existed—a tabloid had misread an independent University of Michigan academic paper that had nothing to do with the government! Second, in June 2024 a narrowly cropped vertical video claimed I 'wandered off into empty space' at the G7 summit in Italy—wide-angle pool footage and UK Prime Minister Rishi Sunak confirmed I had turned to applaud a skydiver who landed right next to us outside the cropped frame!",
+            text = "First, cable news screamed that my climate plan was going to ban red meat and limit every American to one hamburger a month and two beers a week! Two beers a week?! Folks in Scranton would throw me in the river! Second, they cropped a video at the G7 summit to make it look like I was wandering off into the woods—I was walking over to give a thumbs-up to an Italian skydiver who just dropped out of an airplane! Give me a break!",
             nextNodeId = "act3_tb_ch3_baskin_hub"
         ),
         DialogueNode(
@@ -2580,7 +2580,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("tb3c4_corvette", "Deliver the verbatim Jan 12, 2023 quote: 'My Corvette's in a locked garage, okay? So it's not like they're sitting out on the street!'", listOf("corvette", "locked garage", "street", "doocy", "classified"), "act3_tb_ch4_corvette_node", completionFlag = "tb3c4_corv_done"),
                 DialogueChoice("tb3c4_gibberish", "Test the 10-Clip Real-Audio Gibberish Move: Truinanashabbadepressure, Badakathcare & foothills of the Himalayas!", listOf("gibberish", "truinanashabbadepressure", "badakathcare", "himalayas", "audio"), "act3_tb_ch4_gibberish_node", completionFlag = "tb3c4_gib_done"),
-                DialogueChoice("tb3c4_vind5", "VINDICATION WIN #5: Debunk the 'Ordered the FBI to Assassinate Trump' standard DOJ boilerplate distortion!", listOf("fbi", "boilerplate", "mar a lago", "vindication", "warrant"), "act3_tb_ch4_vindication5_node", completionFlag = "tb3c4_vind5_done"),
+                DialogueChoice("tb3c4_vind5", "Expose the 'Mar-a-Lago Hit Squad' paperwork hysteria!", listOf("fbi", "boilerplate", "mar a lago", "vindication", "warrant"), "act3_tb_ch4_vindication5_node", completionFlag = "tb3c4_vind5_done"),
                 DialogueChoice("tb3c4_meta", "Watch Kash Subpoena peek into the garage & try to bring up Hillary's 2015 cloth wipe in 2023!", listOf("kash", "cloth", "let it go", "meta", "proceed"), "act3_tb_ch4_meta_callback")
             )
         ),
@@ -2603,9 +2603,9 @@ object StoryScript {
         DialogueNode(
             id = "act3_tb_ch4_vindication5_node",
             setFlagOnEnter = "tb3c4_vind5_done",
-            speaker = DialogueSpeaker.NARRATOR_PSAKI,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #5! In May 2024, viral fundraising emails claimed Joe 'personally authorized the FBI to assassinate Commander America' during the August 2022 Mar-a-Lago search based on a routine attachment in the operations order. The FBI and legal scholars across the spectrum proved the paragraph was the standard, mandatory DOJ Justice Manual deadly-force policy statement attached to ALL federal search warrants—in fact, the exact same boilerplate page was attached to the FBI's consensual search of Joe's own Wilmington Corvette garage, and the Mar-a-Lago search was specifically scheduled when Donald was 1,000 miles away in New York!",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "They sent out emergency fundraising emails claiming I dispatched an FBI hit squad to Mar-a-Lago! It was standard DOJ paperwork! They put the exact same form on the warrant for my own garage in Delaware! If that was a hit squad, they were sent to take out my lawn mower!",
             nextNodeId = "act3_tb_ch4_garage_hub"
         ),
         DialogueNode(
@@ -2710,7 +2710,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("a4c1_swiss", "Replay the Aug 19, 2024 South Philly Pat's King of Steaks 'Why do you hate Swiss cheese?!' moment!", listOf("swiss cheese", "cheesesteak", "philly", "pats", "diet mountain dew"), "act4_ch1_swiss_node", completionFlag = "a4c1_swiss_done"),
                 DialogueChoice("a4c1_rules", "Deliver the Oct 1, 2024 CBS VP Debate classic: 'The rules were that you guys weren't going to fact-check!'", listOf("rules", "fact check", "debate", "cbs", "moderators"), "act4_ch1_rules_node", completionFlag = "a4c1_rules_done"),
-                DialogueChoice("a4c1_couch", "VINDICATION WIN #1: Debunk the fabricated 'Couch in Hillbilly Elegy pp. 179–181' hoax (& AP retraction)!", listOf("couch", "hillbilly elegy", "vindication", "associated press", "hoax"), "act4_ch1_couch_vindication", completionFlag = "a4c1_couch_done"),
+                DialogueChoice("a4c1_couch", "Laugh off the fake 'Couch Cushion' memoir rumor!", listOf("couch", "hillbilly elegy", "vindication", "associated press", "hoax"), "act4_ch1_couch_vindication", completionFlag = "a4c1_couch_done"),
                 DialogueChoice("a4c1_battle", "Test JD Pants in combat against the 'Whatever Makes Sense' Glazed Case & Swiss-Cheese Heckler!", listOf("battle", "fight", "donuts", "proceed", "advance"), "act4_ch1_battle_trigger")
             )
         ),
@@ -2733,9 +2733,9 @@ object StoryScript {
         DialogueNode(
             id = "act4_ch1_couch_vindication",
             setFlagOnEnter = "a4c1_couch_done",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #1! In July 2024, a prankster posted a viral tweet claiming JD Pants wrote on pages 179–181 of his 2016 memoir Hillbilly Elegy about a 'couch cushion.' The fake citation went so viral that Minnesota Governor Tim Walz referenced it at a rally and the Associated Press published an official fact-check headline—'No, JD Vance did not say he had sex with a couch'—before pulling the article! Digital text searches of every edition of Hillbilly Elegy proved pages 179–181 are actually about working at a textbook store in Ohio and the story was 100% fabricated!",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "An internet prankster claimed I confessed to romantic relations with a living room sofa in my book! It went so viral that the Associated Press had to publish an official bulletin: 'No, JD Vance did not touch the couch.' Pages 179 to 181 are about working in an Ohio textbook warehouse, folks! I like a comfortable sectional, but strictly for sitting!",
             nextNodeId = "act4_ch1_donut_hub"
         ),
         DialogueNode(
@@ -2819,7 +2819,7 @@ object StoryScript {
             text = "*Raises both hands in front of a bright yellow school bus in Seattle (Oct 2022)* 'Who doesn't love a yellow school bus, right?! Can you raise your hand if you love a yellow school bus, right?! Just, there's something about the—and most of us, many of us, went to school on the yellow school bus, right?! And it's part of our experience growing up!'",
             choices = listOf(
                 DialogueChoice("a4c3_venn", "Listen to Kamala's verbatim tribute to Three-Circle Venn Diagrams & the Flint '32 Days!' Teleprompter Freeze!", listOf("venn", "three circles", "32 days", "teleprompter", "flint"), "act4_ch3_venn_node", completionFlag = "a4c3_venn_done"),
-                DialogueChoice("a4c3_bloodbath", "VINDICATION WIN #2: Debunk the March 2024 'Bloodbath for the Country' Chinese EV Tariff Distortion!", listOf("bloodbath", "auto industry", "tariffs", "vindication", "mexico"), "act4_ch3_bloodbath_vindication", completionFlag = "a4c3_blood_done"),
+                DialogueChoice("a4c3_bloodbath", "Roast the 'Bloodbath' auto tariff headline panic!", listOf("bloodbath", "auto industry", "tariffs", "vindication", "mexico"), "act4_ch3_bloodbath_vindication", completionFlag = "a4c3_blood_done"),
                 DialogueChoice("a4c3_battle", "Battle the Yellow School Bus Evangelist & 32-Day Teleprompter Glitch!", listOf("battle", "fight", "bus", "proceed", "advance"), "act4_ch3_battle_trigger")
             )
         ),
@@ -2834,9 +2834,9 @@ object StoryScript {
         DialogueNode(
             id = "act4_ch3_bloodbath_vindication",
             setFlagOnEnter = "a4c3_blood_done",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #2! On March 16, 2024 in Vandalia, Ohio, news outlets and campaign ads ran emergency headlines claiming Commander America threatened a violent 'bloodbath for the country' if he lost the election! Look at the full unedited C-SPAN transcript: he was explicitly addressing the United Auto Workers and Chinese car factories being built in Mexico, stating: 'We're going to put a 100% tariff on every single car that comes across the line, and you're not going to be able to sell those cars if I get elected. Now, if I don't get elected, it's going to be a bloodbath for the whole—that's gonna be the least of it, it's going to be a bloodbath for the country!' Even Merriam-Webster's dictionary defines 'bloodbath' secondarily as 'a major economic disaster'!",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "I told an auto rally in Ohio that if we don't put tariffs on foreign cars, the auto industry is going to suffer an economic bloodbath! The next morning, the fake news had red sirens flashing: 'TRUMP THREATENS CIVIL WAR WITH TANKS!' I was talking about hatchbacks, folks! Subcompact sedans! They lost their minds for forty-eight hours over a Dodge Dart!",
             nextNodeId = "act4_ch3_bus_venn_hub"
         ),
         DialogueNode(
@@ -2978,7 +2978,7 @@ object StoryScript {
             text = "*Stands beneath a swaying coconut palm holding a yellow school bus model and three glowing Venn diagram rings* Ha-ha-ha! Look, everything exists in the context of all in which you live and what came before you! How should we open our 107-day sprint and drop our first Vindication Win?",
             choices = listOf(
                 DialogueChoice("tb4c1_coconut", "Deliver the verbatim May 10, 2023 'You think you just fell out of a coconut tree?!' & 'Unburdened' combo!", listOf("coconut tree", "unburdened", "context", "mother", "what can be"), "act4_tb_ch1_coconut_node", completionFlag = "tb4c1_coco_done"),
-                DialogueChoice("tb4c1_montel", "VINDICATION WIN #1: Debunk the viral 'Montel Williams \$400k Bribe / Escort' fabrication!", listOf("montel", "williams", "vindication", "red carpet", "2001"), "act4_tb_ch1_montel_vindication", completionFlag = "tb4c1_mon_done"),
+                DialogueChoice("tb4c1_montel", "Laugh off the Montel Williams red-carpet rumors!", listOf("montel", "williams", "vindication", "red carpet", "2001"), "act4_tb_ch1_montel_vindication", completionFlag = "tb4c1_mon_done"),
                 DialogueChoice("tb4c1_battle", "Unleash Coconut Tree Context Drop & Venn Diagrams on the Uncontextualized Pundits!", listOf("battle", "fight", "proceed", "advance"), "act4_tb_ch1_battle_trigger")
             )
         ),
@@ -2993,9 +2993,9 @@ object StoryScript {
         DialogueNode(
             id = "act4_tb_ch1_montel_vindication",
             setFlagOnEnter = "tb4c1_mon_done",
-            speaker = DialogueSpeaker.NARRATOR_KJP,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #1! Viral social-media posts in 2024 claimed Kamala 'secretly acted as an escort for talk-show host Montel Williams in exchange for a \$400,000 political appointment.' In reality, Kamala and Montel Williams briefly and openly dated as two single adults in 2001, walked red carpets together in Los Angeles years before she ever ran for District Attorney, and Montel Williams himself publicly confirmed there was zero money, zero appointments, and zero scandal!",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "Conspiracy accounts claimed I got a political appointment from Montel Williams in 2001! Honey, Montel and I dated twenty-three years ago, walked a red carpet in Hollywood, and broke up like normal adults! There was no secret payoff, no scandal—just good old-fashioned early-2000s red carpet fashion!",
             nextNodeId = "act4_tb_ch1_coconut_hub"
         ),
         DialogueNode(
@@ -3033,7 +3033,7 @@ object StoryScript {
             text = "*Watches JD Pants awkwardly point at cinnamon rolls while holding a wedge of Swiss cheese outside Pat's King of Steaks* Let's roast JD's retail tour and drop Vindication Wins #2 and #3 before we battle him at the donut counter!",
             choices = listOf(
                 DialogueChoice("tb4c2_roast_jd", "Roast JD Pants's 'How long have you worked here? Okay, good' donut order & his CBS fact-check complaint!", listOf("donuts", "how long", "okay good", "whatever makes sense", "fact check"), "act4_tb_ch2_roast_jd_node", completionFlag = "tb4c2_jd_done"),
-                DialogueChoice("tb4c2_vind23", "VINDICATION WINS #2 & #3: Address the 'Tupac Best Alive Rapper' laugh & debunk the fake 'KBSF-TV Hit-and-Run' hoax!", listOf("tupac", "hit and run", "kbsf", "vindication", "hoax"), "act4_tb_ch2_vindications_node", completionFlag = "tb4c2_vind_done"),
+                DialogueChoice("tb4c2_vind23", "Address the 'Tupac Alive' radio laugh & fake hit-and-run video!", listOf("tupac", "hit and run", "kbsf", "vindication", "hoax"), "act4_tb_ch2_vindications_node", completionFlag = "tb4c2_vind_done"),
                 DialogueChoice("tb4c2_battle", "Confront JD Pants & his 'Some Sprinkle Stuff' Donut Box in combat!", listOf("battle", "fight", "vance", "proceed", "advance"), "act4_tb_ch2_battle_trigger")
             )
         ),
@@ -3048,9 +3048,9 @@ object StoryScript {
         DialogueNode(
             id = "act4_tb_ch2_vindications_node",
             setFlagOnEnter = "tb4c2_vind_done",
-            speaker = DialogueSpeaker.NARRATOR_PSAKI,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "DOUBLE VINDICATION WIN! First, when critics mocked Kamala's September 2020 NAACP interview where she was asked 'Who's the best rapper alive?' and immediately answered 'Tupac!'—she caught herself two seconds later laughing 'Not alive, I know, I keep doing that!' because West Coast legend Tupac was simply her favorite rapper! Second, in September 2024 a viral video claimed a San Francisco television station ('KBSF-TV') uncovered a 2011 hit-and-run by Kamala—the Microsoft Threat Analysis Center proved 'KBSF-TV' does not exist and a foreign disinformation group paid an actress to read a completely fictional script!",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "First, when they asked me who the best rapper alive was and I said Tupac, I laughed because West Coast loyalty runs deep! Pac's spirit is alive in California! Second, someone made up a fake TV station in San Francisco claiming I did a hit-and-run in 2011! Microsoft investigated and found a foreign troll farm hired an actress! I don't even drive—the Secret Service won't let me touch a steering wheel!",
             nextNodeId = "act4_tb_ch2_donut_hub"
         ),
         DialogueNode(
@@ -3088,7 +3088,7 @@ object StoryScript {
             text = "*Touches her Tiffany & Co. South Sea Pearl earrings while gesturing toward a clock* When we think about the significance of the passage of time, right, there is great significance to the passage of time! Let's review our circular rhetoric and crush our final two viral smears!",
             choices = listOf(
                 DialogueChoice("tb4c3_time", "Deliver the 'Significance of the Passage of Time' (4x), 'Haven't Been to Europe!' & 'Ukraine is a Country in Europe'!", listOf("passage of time", "europe", "ukraine", "lester holt", "four times"), "act4_tb_ch3_time_node", completionFlag = "tb4c3_time_done"),
-                DialogueChoice("tb4c3_vind45", "VINDICATION WINS #4 & #5: Debunk the 'Bluetooth Earpiece Earrings' conspiracy & the '1,500 Marijuana Prison' distortion!", listOf("earrings", "bluetooth", "tiffany", "marijuana", "cdcr", "vindication"), "act4_tb_ch3_vind45_node", completionFlag = "tb4c3_vind_done"),
+                DialogueChoice("tb4c3_vind45", "Debunk the 'Bluetooth Pearl Earring' & prison stats rumors!", listOf("earrings", "bluetooth", "tiffany", "marijuana", "cdcr", "vindication"), "act4_tb_ch3_vind45_node", completionFlag = "tb4c3_vind_done"),
                 DialogueChoice("tb4c3_meta", "Watch Kash Subpoena crash the seminar in 2024 & try to complain about Barack's 2014 Tan Suit!", listOf("kash", "tan suit", "meta", "let it go", "proceed"), "act4_tb_ch3_meta_callback")
             )
         ),
@@ -3105,7 +3105,7 @@ object StoryScript {
             setFlagOnEnter = "tb4c3_vind_done",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.LEFT,
-            text = "DOUBLE VINDICATION WIN! First, after the September 10, 2024 debate in Philadelphia, conspiracy accounts claimed my earrings were secret 'Nova H1 Bluetooth audio earpieces' feeding me answers—high-resolution Associated Press photos proved they were my exact Tiffany & Co. South Sea Pearl Double HardWear earrings that I had worn publicly for months (and the Nova H1 Kickstarter never even shipped!). Second, when critics claimed I 'sent over 1,500 people to state prison for simple marijuana possession' as California Attorney General, official California Department of Corrections and Rehabilitation (CDCR) admission records proved only 45 individuals were actually admitted to state prison on marijuana charges during my entire tenure!",
+            text = "First, conspiracy theorists zoomed in on my debate earrings and claimed they were high-tech Bluetooth earpieces broadcasting debate answers from the Pentagon! Honey, they're Tiffany pearl earrings! I've worn them for ten years! Second, opponents claimed I locked up thousands of people for weed in California—state records showed forty-five! If you're going to come for my record, at least get the math right!",
             nextNodeId = "act4_tb_ch3_passage_hub"
         ),
         DialogueNode(
@@ -3254,7 +3254,7 @@ object StoryScript {
             text = "Nobody jumps into the shape of a giant letter X in mid-air like Elon, folks! Before we battle the Shattered Cybertruck & Porcelain Sink QA Testers, what part of Musk-X's tech-support arsenal are we inspecting?",
             choices = listOf(
                 DialogueChoice("a5c1_cybertruck", "Replay the Nov 2019 Cybertruck 'Armor Glass' steel-ball window smash & Don Lemon Ketamine Rx interview!", listOf("cybertruck", "armor glass", "window", "ketamine", "don lemon", "420"), "act5_ch1_cybertruck_node", completionFlag = "a5c1_cyb_done"),
-                DialogueChoice("a5c1_vind", "VINDICATION WIN #1: Debunk the 'Apartheid Emerald Mine Heir' & 'Stranded Astronauts' myths!", listOf("vindication", "emerald mine", "astronauts", "spacex", "boeing"), "act5_ch1_musk_vindication", completionFlag = "a5c1_vind_done"),
+                DialogueChoice("a5c1_vind", "Laugh off the 'Emerald Mine Heir' & 'Stranded Astronauts' rumors!", listOf("vindication", "emerald mine", "astronauts", "spacex", "boeing"), "act5_ch1_musk_vindication", completionFlag = "a5c1_vind_done"),
                 DialogueChoice("a5c1_battle", "Test Musk-X's Dark Gothic MAGA Star-Jump in combat against the Shattered Cybertruck & Porcelain Sink!", listOf("battle", "fight", "sink", "proceed", "advance"), "act5_ch1_battle_trigger"),
                 DialogueChoice("a5c1_switch_tb", "Switch to Act V Track B: Play as Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger in Queens!", listOf("track b", "zohran", "mamdani", "cardamom", "swagger", "other side"), "act5_tb_ch1_intro")
             )
@@ -3270,9 +3270,9 @@ object StoryScript {
         DialogueNode(
             id = "act5_ch1_musk_vindication",
             setFlagOnEnter = "a5c1_vind_done",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "DOUBLE VINDICATION WIN FOR MUSK-X! First, viral posts claimed Elon 'inherited billions from an apartheid South African emerald mine and never worked a day in his life'—biographer Walter Isaacson and financial records proved Elon arrived in North America at age 17 with \$2,000, worked manual-labor jobs cleaning boiler rooms in Saskatchewan, graduated with \$100,000 in student debt, and slept on his office couch building Zip2 from scratch! Second, when critics claimed he 'ignored stranded astronauts,' NASA officially selected SpaceX's Crew Dragon (Crew-9) in August 2024 to rescue astronauts Butch Wilmore and Suni Williams after Boeing's Starliner capsule failed!",
+            speaker = DialogueSpeaker.ELON,
+            side = SpeakerSide.LEFT,
+            text = "People on Twitter love claiming I inherited a billionaire emerald mine! I moved to Canada with two grand in my pocket, cleaned boilers in Saskatchewan, graduated with a mountain of student debt, and slept on the floor of my server room eating cold pizza! And when Boeing's capsule left astronauts stranded in orbit, guess whose Dragon capsule NASA booked to bring them home?! SpaceX, baby!",
             nextNodeId = "act5_ch1_musk_hub"
         ),
         DialogueNode(
@@ -3540,7 +3540,7 @@ object StoryScript {
             text = "*Adjusts his thrifted bespoke suit and ties on his 'Nani' rap apron beside the Astoria chapati truck* Yo, let's keep it 100% real before we battle the Luxury Condo Rent-Hike Lobbyists: I rap in an apron with Madhur Jaffrey, I grew up the son of an Oscar-nominated Hollywood director and a Columbia professor, and I have the official MTA receipt proving my free-bus pilot actually worked! What are we dropping first?",
             choices = listOf(
                 DialogueChoice("tb5c1_nani", "Perform the 2019 'Mr. Cardamom – Nani' rap verse & self-roast the Bank Street / Bowdoin trust-fund résumé!", listOf("nani", "cardamom", "madhur jaffrey", "bowdoin", "bank street", "rap"), "act5_tb_ch1_nani_node", completionFlag = "tb5c1_nani_done"),
-                DialogueChoice("tb5c1_mta_vind", "VINDICATION WIN #1: Present the official MTA Fare-Free Bus Pilot Report (30–38% ridership surge & 38.9% drop in assaults)!", listOf("vindication", "mta", "bus", "q70", "pilot", "grocery"), "act5_tb_ch1_mta_vindication", completionFlag = "tb5c1_mta_done"),
+                DialogueChoice("tb5c1_mta_vind", "Show the MTA Free-Bus results & transparent background!", listOf("vindication", "mta", "bus", "q70", "pilot", "grocery"), "act5_tb_ch1_mta_vindication", completionFlag = "tb5c1_mta_done"),
                 DialogueChoice("tb5c1_battle", "Unleash 'Mr. Cardamom' Nani Chapati Drop & Mayor Swagger on the Luxury Condo Rent-Hike Lobbyists!", listOf("battle", "fight", "lobbyists", "proceed", "advance"), "act5_tb_ch1_battle_trigger")
             )
         ),
@@ -3562,9 +3562,9 @@ object StoryScript {
         DialogueNode(
             id = "act5_tb_ch1_mta_vindication",
             setFlagOnEnter = "tb5c1_mta_done",
-            speaker = DialogueSpeaker.NARRATOR_PSAKI,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VINDICATION WIN #1 & #3! When critics claimed Zohran's fare-free bus pilot on the Q4, B60, Bx18, M116, and S46 routes was a 'complete failure that caused violent crime on buses to skyrocket,' the official August 2024 MTA Evaluation Report proved the exact opposite: weekday ridership jumped 30% to 38%, boarding speeds improved at every stop, and assaults/harassment against bus operators DROPPED by 38.9%! Plus, Zohran's dual-citizenship timeline was 100% transparent—born in Kampala, Uganda in 1991, naturalized as a U.S. citizen in 2018 before ever running for the NY State Assembly!",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "Pundits said my fare-free bus pilot in New York was going to cause subway chaos and bus brawls. Guess what the official MTA report showed? Ridership shot up thirty-eight percent, and bus driver assaults dropped by nearly forty percent! Turns out when you make the bus free, people just want to get to work on time!",
             nextNodeId = "act5_tb_ch1_zohran_hub"
         ),
         DialogueNode(
@@ -3602,7 +3602,7 @@ object StoryScript {
             text = "*Adjusts his collar with maximum swagger* Listen, Zohran—nobody survives New York politics without a little swagger, a glass of rat-free New York tap water, and a preliminary review of your planning that preludes the pre-planning! What are we showing the voters before we battle the Subpoena Auditors?",
             choices = listOf(
                 DialogueChoice("tb5c2_swagger_hits", "Demonstrate the Contraband Baby-Doll search, 'Strictly Vegan' Midnight Sea Bass & 6-Digit iPhone Passcode!", listOf("baby doll", "sea bass", "vegan", "passcode", "turkish"), "act5_tb_ch2_swagger_hits_node", completionFlag = "tb5c2_swag_done"),
-                DialogueChoice("tb5c2_vind245", "VINDICATION WINS #2, #4 & #5: Debunk the 'Secret Billionaire Penthouse,' 'Banned All Bodegas' & 'Defund Quotes' smears!", listOf("vindication", "penthouse", "bodegas", "grocery", "astoria"), "act5_tb_ch2_vindications_node", completionFlag = "tb5c2_vind_done"),
+                DialogueChoice("tb5c2_vind245", "Debunk the 'Secret Penthouse' & 'Banned Bodegas' tabloid flyers!", listOf("vindication", "penthouse", "bodegas", "grocery", "astoria"), "act5_tb_ch2_vindications_node", completionFlag = "tb5c2_vind_done"),
                 DialogueChoice("tb5c2_battle", "Team up to battle the Subpoena Passcode Cracker & Midnight Sea Bass Waiter!", listOf("battle", "fight", "auditor", "proceed", "advance"), "act5_tb_ch2_battle_trigger")
             )
         ),
@@ -3619,7 +3619,7 @@ object StoryScript {
             setFlagOnEnter = "tb5c2_vind_done",
             speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
             side = SpeakerSide.LEFT,
-            text = "TRIPLE VINDICATION WIN! First, tabloid flyers claimed I 'secretly owned a \$5 million billionaire penthouse in Tribeca while pretending to rent in Queens'—NYC ACRIS property records and ethics disclosures proved I lived in a standard Astoria apartment while my parents' longtime Morningside Heights apartment was faculty housing tied to Columbia University! Second, my 5 City-Owned Grocery Stores proposal is a \$60M pilot (one store per borough on city-owned land) that doesn't ban a single private bodega! Third, my public safety plan explicitly invests in dedicated mental-health crisis responders so NYPD officers can focus on violent crime!",
+            text = "The tabloids printed flyers claiming I live in a five-million-dollar Tribeca penthouse! I live in a rent-stabilized apartment in Astoria where the radiator sounds like a haunted percussion section! And no, my city grocery pilot isn't banning bodegas—bodegas are sacred NYC culture! I just want people to be able to afford milk and fresh vegetables!",
             nextNodeId = "act5_tb_ch2_swagger_hub"
         ),
         DialogueNode(
