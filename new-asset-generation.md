@@ -7,67 +7,67 @@ Each prompt below is a single, self-contained paragraph with all style, lighting
 
 ## 1. Character Portraits (1:1 Aspect Ratio)
 
-### 01. Commander America
+### 01. Commander America — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Commander America, an imposing, charismatic political warrior caricature inspired by Donald Trump. Stylized 90s SNES RPG visual novel aesthetic with crisp pixel art dithering, sharp outlines, and rich color palette. Close-up chest-up bust portrait facing slightly three-quarters right with a confident, defiant grin and raised eyebrow. He features iconic, voluminous golden blonde swooping hair with glowing metallic highlights, a sun-kissed tanned complexion with lighter tone around the eyes, wearing a sharp navy blue executive presidential suit with structured shoulder pads, a crisp white collared shirt, and an extra-long signature bright scarlet red silk necktie with pixel satin sheen. A tiny gold American flag lapel pin gleams on his left lapel. Dramatic heroic side-key rim lighting in warm gold and deep royal blue, set against a dark textured navy-blue vignette background with faint golden sparkles. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid saturated colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 02. Musk-X (Elon)
+### 02. Musk-X (Elon) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Musk-X, a tech visionary and cybernetic disruptor caricature inspired by Elon Musk. Stylized 90s SNES RPG visual novel aesthetic with fine pixel art dithering, crisp edges, and futuristic cyberpunk touches. Close-up chest-up bust portrait facing forward with a sly, enigmatic smirk and sharp analytical gaze. He has dark brown combed-back hair with slight temple graying, light five-o'clock shadow along his jaw, wearing a high-tech matte black SpaceX flight bomber jacket over a black t-shirt printed with a glowing neon cyan stylized 'X' logo. In his right hand, he effortlessly hoists a miniature heavy white porcelain bathroom sink resting casually on his shoulder with playful triumph. Dramatic cyan and neon violet dual rim lighting illuminating his features, set against a dark starry orbital spacecraft background with distant electric blue circuit grids. High-resolution pixel art, retro video game UI portrait, vivid cyberpunk palette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 03. Tulsi
+### 03. Tulsi — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Tulsi, a serene martial-arts diplomat and populist defender caricature inspired by Tulsi Gabbard. Stylized 90s SNES RPG visual novel aesthetic with exquisite pixel art dithering, clean contour lines, and balanced tropical colors. Close-up chest-up bust portrait facing forward with a calm, resolute expression and warm focused eyes. She features flowing dark brunette hair with her signature prominent silver-white streak gracefully accenting the right front wing of her hair. She wears a pristine tailored white pantsuit jacket with sharp lapels, accented with a vibrant fresh Hawaiian orchid lei draped gracefully over her shoulders with soft magenta and amber petals. Soft golden Pacific sunrise lighting from the left complemented by cool teal rim lighting on the right, set against a deep indigo and ocean-blue textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid saturated colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 04. RFK Jr. (Bobby MAHA)
+### 04. RFK Jr. (Bobby MAHA) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Bobby MAHA, a rugged outdoorsman alchemist and health crusader caricature inspired by Robert F. Kennedy Jr. Stylized 90s SNES RPG visual novel aesthetic with expressive pixel art dithering, rustic Earth tones, and sharp highlights. Close-up chest-up bust portrait facing slightly left with an intense, impassioned, gravel-voiced expression, piercing blue eyes, and weathered, sun-bronzed skin with distinguished facial character lines. He has tousled silver-gray hair, a lean muscular build, wearing an unbuttoned rugged brown leather safari-style vest over a gray athletic shirt, with a leather falconer's glove visible resting on his left shoulder bearing a small perched golden eagle with sharp talons. On his chest hangs a small glass vial filled with radiant golden raw milk and medicinal herbs. Warm forest canopy amber lighting and deep herbal green rim glow, set against a dark moss-green textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 05. Vivek
+### 05. Vivek — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Vivek, an electrifying, ultra-fast tech debater caricature inspired by Vivek Ramaswamy. Stylized 90s SNES RPG visual novel aesthetic with dynamic pixel art dithering, sharp energetic lines, and bright electric accents. Close-up chest-up bust portrait facing slightly left with a radiant, fast-talking grin, sparkling ambitious eyes, and prominent high cheekbones. He features his signature high-volume, impeccably styled voluminous pompadour dark hair, wearing a sleek bespoke midnight-blue slim-fit executive suit, white spread-collar dress shirt, and a slender royal purple necktie. In his hand he holds up a glowing, holographic 10-point scroll inscribed with shimmering runic constitutional clauses. Electric yellow and neon violet kinetic lighting tracing the edges of his silhouette, set against a deep plum and midnight-blue textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid saturated colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 06. Little Marco
+### 06. Little Marco — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Little Marco, a disciplined foreign-affairs sanctions sorcerer caricature inspired by Marco Rubio. Stylized 90s SNES RPG visual novel aesthetic with clean pixel art dithering and diplomatic blue tones. Close-up chest-up bust portrait facing slightly right with an earnest, hyper-vigilant expression and smooth youthful facial features. He has neatly parted dark brown hair, wearing a classic charcoal Senate suit, white dress shirt, and a rich ocean-blue patterned tie. In his right hand, he raises a miniature plastic Poland Spring water bottle toward his lips in a comical reference to his iconic 2013 SOTU response, with crystal-blue water droplets shimmering with enchanted mana sparkles. Crisp cool daylight studio lighting with ice-blue rim highlights, set against a dark slate-gray and navy textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 07. JD Pants (JD Vance)
+### 07. JD Pants (JD Vance) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of JD Pants, a sturdy Appalachian debater and Midwest champion caricature inspired by JD Vance. Stylized 90s SNES RPG visual novel aesthetic with grounded pixel art dithering and rich autumnal colors. Close-up chest-up bust portrait facing forward with a calm, unbothered, deadpan smile and piercing sharp blue eyes. He features neatly groomed thick brown hair with a full, trim, meticulously sculpted beard, wearing a tailored navy-blue blazer over a white oxford shirt with an unbuttoned collar (or a slim crimson tie), and holding a small wax bakery paper bag labeled 'WHATEVER MAKES SENSE' containing a frosted sprinkle donut. Warm golden-hour factory hearth lighting from the left and subtle deep crimson rim lighting on the right, set against an industrial steel-blue and brick-red textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 08. Kash Subpoena (Kash Patel)
+### 08. Kash Subpoena (Kash Patel) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Kash Subpoena, a tenacious intelligence investigator and declassification wizard caricature inspired by Kash Patel. Stylized 90s SNES RPG visual novel aesthetic with sharp shadowy pixel art dithering and investigative neon tones. Close-up chest-up bust portrait facing forward with an intense, determined, unyielding glare and confident smirk. He features close-cropped dark hair, trimmed dark goatee, wearing a dark steel-gray tailored suit with an open white shirt, clutching a massive crimson three-ring binder labeled 'DECLASSIFIED RECEIPTS' stamped with a bold golden official seal emitting magical investigative light rays. High-contrast forensic white key lighting paired with deep magenta and ultraviolet rim glows, set against a dark obsidian-purple textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 09. Foghorn Kennedy (Senator John Kennedy)
+### 09. Foghorn Kennedy (Senator John Kennedy) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Foghorn Kennedy, a folksy, razor-tongued Southern cross-examiner caricature inspired by Senator John Kennedy of Louisiana. Stylized 90s SNES RPG visual novel aesthetic with expressive pixel art dithering and warm bayou tones. Close-up chest-up bust portrait facing slightly right with a wry, skeptical, country-lawyer chuckle and arched white eyebrows. He features neat silver-white hair, distinguished southern gentleman smile, wearing a traditional beige seersucker or navy houndstooth suit jacket, pale blue dress shirt, and an antique gold patterned tie. He gestures playfully with an old-fashioned yellow legal pad and horn-rimmed reading glasses perched down on his nose. Warm amber chandelier courtroom lighting with cool steel-blue shadows, set against a dark mahogany and leather-brown textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 10. Hill-Rod (Hillary Clinton)
+### 10. Hill-Rod (Hillary Clinton) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Hill-Rod, an entitled technocratic sorceress caricature inspired by Hillary Clinton. Stylized 90s SNES RPG visual novel aesthetic with intricate pixel art dithering and regal establishment colors. Close-up chest-up bust portrait facing forward with a wide, strained, practiced theatrical campaign smile and wide unblinking eyes. She features feathered golden-blonde bob hair, wearing an iconic bright teal-turquoise monochromatic high-collar pantsuit, pearl necklace, and oversized round pearl earrings. In her right hand, she brandishes a damp yellow microfiber dusting cloth with a comical quizzical shrug, referencing 'Like with a cloth or something?', with magical blue static sparks dancing off the cloth fibers. Dramatic, cool sapphire-blue overhead spotlighting with icy cyan rim light, set against an ornate dark midnight-blue and gold-trimmed textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid saturated colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 11. Joe Naptime (Joe Biden)
+### 11. Joe Naptime (Joe Biden) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Joe Naptime, a sleepy, wandering cryomancer boss caricature inspired by Joe Biden. Stylized 90s SNES RPG visual novel aesthetic with delicate pixel art dithering and nostalgic pastel ice cream tones. Close-up chest-up bust portrait facing slightly left with a bewildered, squinting, grandfatherly grin and dreamy wandering eyes. He features thin wispy silver-white hair, wearing sleek black aviator sunglasses perched slightly down on his nose, a classic navy blue presidential suit, and pale blue tie. In his right hand, he happily clutches a towering, dripping double-scoop chocolate chip waffle cone emitting frosty cryomancy mist and freezing ice sparkles. Soft pale-blue television studio key lighting with warm amber rim highlights, set against a dark Delaware-blue and muted cream textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 12. Madame Vice (Kamala Harris)
+### 12. Madame Vice (Kamala Harris) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Madame Vice, an eccentric cosmic philosopher and word-salad weaver caricature inspired by Kamala Harris. Stylized 90s SNES RPG visual novel aesthetic with ethereal pixel art dithering and vivid tropical violet tones. Close-up chest-up bust portrait facing forward with a booming, wide-mouthed theatrical laugh and expressive arched eyebrows. She features shoulder-length wavy chestnut-brown hair, wearing an elegant plum-purple silk suit jacket, double-strand white pearl necklace, and matching pearl stud earrings. Hovering beside her shoulder are three translucent glowing yellow, cyan, and magenta overlapping Venn diagram rings floating like mystical orbital shields, with a small tropical coconut icon hovering in the center overlap. Vibrant neon purple and radiant golden yellow dual lighting illuminating her face, set against a deep cosmic violet and starlight textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 13. Barry Teleprompter (Barack Obama)
+### 13. Barry Teleprompter (Barack Obama) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Barry Teleprompter, a calm, detached celestial orator caricature inspired by Barack Obama. Stylized 90s SNES RPG visual novel aesthetic with smooth pixel art dithering and prestigious earth tones. Close-up chest-up bust portrait facing slightly right with an amused, knowing, half-smirk, chin tilted slightly upward with relaxed supreme confidence. He features closely cropped salt-and-pepper hair, prominent expressive ears, wearing his legendary, controversial light tan presidential suit, white dress shirt, and a striped gray-and-gold silk tie. Two floating translucent glass teleprompter screens flank his shoulders with glowing green scrolling script text. Warm golden library key lighting with cool azure rim glow, set against a deep navy-blue and mahogany textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid saturated colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
