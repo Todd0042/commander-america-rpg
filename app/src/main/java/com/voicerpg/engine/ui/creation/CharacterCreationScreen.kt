@@ -188,13 +188,13 @@ fun CharacterCreationScreen(
         if (lower.isBlank()) return
 
         // 1. Candidate selection
-        if (lower.contains("trump") || lower.contains("commander") || lower.contains("track a") || lower == "one" || lower.contains("america")) {
+        if (lower.contains("trump") || lower.contains("commander") || lower.contains("track a") || lower.contains("paint it red") || lower.contains("red") || lower == "one" || lower.contains("america")) {
             selectedCandidate = ArcadeCandidate.COMMANDER_AMERICA
             combatNarrator?.speak("Commander America selected. The Golden Sovereign.", force = true)
             return
-        } else if (lower.contains("hillary") || lower.contains("hill rod") || lower.contains("hillrod") || lower.contains("track b") || lower == "two" || lower.contains("relay")) {
+        } else if (lower.contains("hillary") || lower.contains("hill rod") || lower.contains("hillrod") || lower.contains("track b") || lower.contains("bewilder with blue") || lower.contains("blue") || lower == "two" || lower.contains("relay")) {
             selectedCandidate = ArcadeCandidate.HILL_ROD
-            combatNarrator?.speak("Hill-Rod selected. The Standard-Bearer Relay.", force = true)
+            combatNarrator?.speak("Hill-Rod selected. Bewilder with Blue.", force = true)
             return
         }
 
@@ -478,7 +478,7 @@ private fun ArcadeCandidateCard(
                     .padding(horizontal = 6.dp, vertical = 2.dp)
             ) {
                 Text(
-                    text = if (candidate.track == CampaignTrack.TRACK_A) "TRACK A • 1P" else "TRACK B • 2P",
+                    text = if (candidate.track == CampaignTrack.TRACK_A) "PAINT IT RED • 1P" else "BEWILDER WITH BLUE • 2P",
                     color = if (isSelected) Color.Black else Color.LightGray,
                     fontSize = 9.sp,
                     fontWeight = FontWeight.Black,

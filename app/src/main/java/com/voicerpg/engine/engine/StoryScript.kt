@@ -805,7 +805,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("a1_speech", "Drop the speech notes & fire from the hip!", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
                 DialogueChoice("a1_swagger", "Flex the escalator swagger & magnificent hair!", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
-                DialogueChoice("a1_media", "Roast the fake news camera crews in the lobby!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
+                DialogueChoice("a1_media", "Roast the fake news camera crews in the lobby!", listOf("media", "camera", "fake news", "press", "dishonest"), "act1_ch1_media")
             )
         ),
         // Legacy alias for Act I intro
@@ -817,7 +817,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("a1_speech", "Drop the speech notes & fire from the hip!", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
                 DialogueChoice("a1_swagger", "Flex the escalator swagger & magnificent hair!", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
-                DialogueChoice("a1_media", "Roast the fake news camera crews in the lobby!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
+                DialogueChoice("a1_media", "Roast the fake news camera crews in the lobby!", listOf("media", "camera", "fake news", "press", "dishonest"), "act1_ch1_media")
             )
         ),
 
@@ -1165,11 +1165,8 @@ object StoryScript {
             id = "act1_ch3_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "270 Electoral Votes certified! Commander America takes the win! Would you like to experience the other side of 2016 with Hill-Rod (the Chappaqua server basement, the 5-swipe Bronx subway turnstile, Zach Two-Ferns, and The Breakfast Club hot sauce), or charge forward to Act II (2017–2020)?",
-            choices = listOf(
-                DialogueChoice("a1_play_track_b", "Experience 2016 as Hill-Rod (Chappaqua Basement, Subway Turnstiles & Hot Sauce)", listOf("hill rod", "hillary", "other side", "server", "track b"), "act1_tb_ch1_intro"),
-                DialogueChoice("a1_to_act2", "Advance to Act II (2017–2020): Spicy Sean's Bushes, Covfefe & Nancy Palooza's \$24k Freezers", listOf("act 2", "next act", "advance", "inauguration", "continue"), "act2_ch1_intro")
-            )
+            text = "270 Electoral Votes certified! Commander America takes the win! Next stop: Washington, D.C. for four years of executive chaos!",
+            nextNodeId = "act2_ch1_intro"
         ),
 
         // =========================================================================
@@ -1430,12 +1427,8 @@ object StoryScript {
             id = "act1_tb_ch3_post_battle",
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "And that wraps up the 2016 race! Now the calendar flips to 2017–2020 for Act II! In Washington, Speaker Nancy Palooza takes the spotlight—armed with her 45-degree sideways seal clap, pre-scored SOTU pages, twin \$24,000 Sub-Zero ice-cream freezers, and Paul's ill-timed Nvidia stock trade loss! Where do you want to head next?",
-            choices = listOf(
-                DialogueChoice("tb3_to_act2_tb", "Play Act II as Speaker Nancy Palooza (\$24k Freezers & SOTU Tear)!", listOf("nancy", "pelosi", "freezers", "track b", "baton"), "act2_tb_ch1_intro"),
-                DialogueChoice("tb3_to_act2_ta", "Play Act II as Commander America & Kash Subpoena!", listOf("commander", "act 2", "track a", "advance", "continue"), "act2_ch1_intro"),
-                DialogueChoice("tb3_replay_track_a", "Replay Act I as Commander America", listOf("act 1", "escalator", "replay"), "act1_ch1_intro")
-            )
+            text = "And that wraps up the 2016 race! The calendar flips to 2017, and in Washington, Speaker Nancy Palooza takes the spotlight!",
+            nextNodeId = "act2_tb_ch1_intro"
         ),
 
         // =========================================================================
@@ -1772,11 +1765,8 @@ object StoryScript {
             id = "act2_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Victory in the House Chamber! Would you like to experience Act II through the eyes of Speaker Nancy Palooza (Spicy Sean's neon salsa shirt, the pre-scored SOTU speech, the \$24,000 Sub-Zero freezers, and Rudy Ghoul's melting hair dye at Four Seasons Total Landscaping), or advance to Act III (2020–2023)?",
-            choices = listOf(
-                DialogueChoice("a2_play_track_b", "Experience Act II as Speaker Nancy Palooza (\$24k Freezers & Four Seasons)", listOf("nancy", "pelosi", "freezers", "other side", "track b"), "act2_tb_ch1_intro"),
-                DialogueChoice("a2_to_act3", "Advance to Act III (2020–2023): Joe Naptime's Ice-Cream Bunker & Real-Audio Gibberish", listOf("act 3", "next act", "advance", "biden", "continue"), "act3_ch1_intro")
-            )
+            text = "Victory in the House Chamber! The gavel falls on the 2020 State of the Union as the journey marches onward to Act III!",
+            nextNodeId = "act3_ch1_intro"
         ),
 
         // =========================================================================
@@ -2065,12 +2055,8 @@ object StoryScript {
             id = "act2_tb_ch5_biden_handoff",
             speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.LEFT,
-            text = "*Steps up wearing Ray-Ban aviators and takes the double-scoop waffle cone* Folks, my name is Joe Biden. I'm Dr. Jill Biden's husband, and I came down because I heard there was chocolate chip ice cream! In Act III, we're unleashing Corn Pop, Badakathcare, Truinanashabbadepressure, and 'End of quote, repeat the line!' Which side of Act III would you like to play first?",
-            choices = listOf(
-                DialogueChoice("tb2_to_act3_tb", "Play Act III as Joe Naptime (Ice Cream & Real-Audio Gibberish)!", listOf("biden", "joe", "ice cream", "corn pop", "track b"), "act3_tb_ch1_intro"),
-                DialogueChoice("tb2_to_act3_ta", "Play Act III as Commander America & Foghorn Kennedy!", listOf("act 3", "commander", "kennedy", "advance", "continue", "track a"), "act3_ch1_intro"),
-                DialogueChoice("tb2_play_track_a", "Replay Act II as Commander America & Kash Subpoena", listOf("act 2", "spicer", "sharpie"), "act2_ch1_intro")
-            )
+            text = "*Steps up wearing Ray-Ban aviators and takes the double-scoop waffle cone* Folks, my name is Joe Biden. I'm Dr. Jill Biden's husband, and I came down because I heard there was chocolate chip ice cream! In Act III, we're unleashing Corn Pop, Badakathcare, Truinanashabbadepressure, and 'End of quote, repeat the line!' Let's hit the road!",
+            nextNodeId = "act3_tb_ch1_intro"
         ),
 
         // =========================================================================
@@ -2373,11 +2359,8 @@ object StoryScript {
             id = "act3_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Baskin-Robbins counter is secured! Would you like to experience Act III through the eyes of Joe Naptime (Corn Pop's Wilmington pool, the Rehoboth toe-cage bike, the 1967 Corvette garage, and his 10-clip Real-Audio Gibberish), or advance to Act IV (2024)?",
-            choices = listOf(
-                DialogueChoice("a3_play_track_b", "Experience Act III as Joe Naptime (Ice Cream & Real-Audio Gibberish)", listOf("joe", "biden", "ice cream", "gibberish", "corn pop", "track b", "other side"), "act3_tb_ch1_intro"),
-                DialogueChoice("a3_to_act4", "Advance to Act IV (2024): Kamala Coconut, JD Pants's Donut Shop & The Torch Pass", listOf("act 4", "next act", "advance", "kamala", "continue"), "act4_ch1_intro")
-            )
+            text = "The Baskin-Robbins counter is secured! The waffle cone has been conquered as the journey marches onward to Act IV!",
+            nextNodeId = "act4_ch1_intro"
         ),
 
         // =========================================================================
@@ -2668,12 +2651,8 @@ object StoryScript {
             id = "act3_tb_ch5_kamala_handoff",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.LEFT,
-            text = "*Steps onto the stage laughing uproariously while gesturing with three overlapping circles* Ha-ha-ha-ha! Thank you, Joe! You think you just fell out of a coconut tree?! You exist in the context of all in which you live and what came before you! In Act IV, get ready for Venn diagrams, yellow school buses, 'The significance of the passage of time,' and JD Pants ordering 'whatever makes sense' at a Georgia donut shop! Which side of Act IV are we playing first?",
-            choices = listOf(
-                DialogueChoice("tb3_to_act4_tb", "Play Act IV as Kamala Coconut (Coconut Trees & Venn Diagrams)!", listOf("kamala", "coconut", "venn", "unburdened", "track b"), "act4_tb_ch1_intro"),
-                DialogueChoice("tb3_to_act4_ta", "Play Act IV as Commander America & JD Pants!", listOf("act 4", "commander", "vance", "donuts", "advance", "continue", "track a"), "act4_ch1_intro"),
-                DialogueChoice("tb3_play_track_a", "Replay Act III as Commander America & Foghorn Kennedy", listOf("act 3", "kennedy", "mugshot"), "act3_ch1_intro")
-            )
+            text = "*Steps onto the stage laughing uproariously while gesturing with three overlapping circles* Ha-ha-ha-ha! Thank you, Joe! You think you just fell out of a coconut tree?! You exist in the context of all in which you live and what came before you! In Act IV, get ready for Venn diagrams, yellow school buses, 'The significance of the passage of time,' and JD Pants ordering 'whatever makes sense' at a Georgia donut shop! Let's get to work!",
+            nextNodeId = "act4_tb_ch1_intro"
         ),
 
         // =========================================================================
@@ -2946,11 +2925,8 @@ object StoryScript {
             id = "act4_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Coconut Grove is cleared! Would you like to experience 2024 through the eyes of Kamala Coconut (Coconut Tree Context, Venn Diagrams, Tiffany Pearls, and battling Commander America's McDonald's fry apron), or advance to the Grand Finale Act V (2025–2026)?",
-            choices = listOf(
-                DialogueChoice("a4_play_track_b", "Experience Act IV as Kamala Coconut (Coconut Tree & Venn Diagrams)", listOf("kamala", "coconut", "venn", "other side", "track b"), "act4_tb_ch1_intro"),
-                DialogueChoice("a4_to_act5", "Advance to Act V (2024–2026 Grand Finale): Musk-X's Star-Jump, Zohran Cardamom & Mayor Swagger!", listOf("act 5", "next act", "advance", "musk", "mamdani", "continue"), "act5_ch1_intro")
-            )
+            text = "The Coconut Grove is cleared! The stage is set for the Grand Finale of Act V!",
+            nextNodeId = "act5_ch1_intro"
         ),
 
         // =========================================================================
@@ -3217,11 +3193,8 @@ object StoryScript {
             id = "act4_tb_ch5_zohran_handoff",
             speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
             side = SpeakerSide.LEFT,
-            text = "*Steps out of an Astoria food truck wearing a bespoke suit and an apron, slapping a sizzling chapati onto the grill while 'Nani' plays on the speakers* Yo, peace everybody—it's Zohran Cardamom, aka Young Cardamom, aka Mr. Cardamom! In Act V (2025–2026), we're taking on Musk-X's Dark Gothic MAGA Mid-Air Star-Jump, Mayor Swagger's Turkish 'rat-free table water,' and Commander America in the Bipartisan Grand Finale! Which side of Act V are you playing first?",
-            choices = listOf(
-                DialogueChoice("tb4_to_act5", "Advance to Act V (2025–2026 Grand Finale): Musk-X's Star-Jump, Zohran Cardamom & Mayor Swagger!", listOf("act 5", "zohran", "mamdani", "musk", "advance", "continue"), "act5_ch1_intro"),
-                DialogueChoice("tb4_play_track_a", "Play Act IV as Commander America & JD Pants", listOf("commander", "vance", "donuts", "track a"), "act4_ch1_intro")
-            )
+            text = "*Steps out of an Astoria food truck wearing a bespoke suit and an apron, slapping a sizzling chapati onto the grill while 'Nani' plays on the speakers* Yo, peace everybody—it's Zohran Cardamom, aka Young Cardamom, aka Mr. Cardamom! In Act V (2025–2026), we're taking on Musk-X's Dark Gothic MAGA Mid-Air Star-Jump, Mayor Swagger's Turkish 'rat-free table water,' and Commander America in the Bipartisan Grand Finale! Let's roll!",
+            nextNodeId = "act5_tb_ch1_intro"
         ),
         // =========================================================================
         // EXPANDED ACT V DUAL-CAMPAIGN DIALOGUE GRAPH (5 Deep Chapters Per Track)
@@ -3255,8 +3228,7 @@ object StoryScript {
             choices = listOf(
                 DialogueChoice("a5c1_cybertruck", "Replay the Nov 2019 Cybertruck 'Armor Glass' steel-ball window smash & Don Lemon Ketamine Rx interview!", listOf("cybertruck", "armor glass", "window", "ketamine", "don lemon", "420"), "act5_ch1_cybertruck_node", completionFlag = "a5c1_cyb_done"),
                 DialogueChoice("a5c1_vind", "Laugh off the 'Emerald Mine Heir' & 'Stranded Astronauts' rumors!", listOf("vindication", "emerald mine", "astronauts", "spacex", "boeing"), "act5_ch1_musk_vindication", completionFlag = "a5c1_vind_done"),
-                DialogueChoice("a5c1_battle", "Test Musk-X's Dark Gothic MAGA Star-Jump in combat against the Shattered Cybertruck & Porcelain Sink!", listOf("battle", "fight", "sink", "proceed", "advance"), "act5_ch1_battle_trigger"),
-                DialogueChoice("a5c1_switch_tb", "Switch to Act V: Play as Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger in Queens!", listOf("track b", "zohran", "mamdani", "cardamom", "swagger", "other side"), "act5_tb_ch1_intro")
+                DialogueChoice("a5c1_battle", "Test Musk-X's Dark Gothic MAGA Star-Jump in combat against the Shattered Cybertruck & Porcelain Sink!", listOf("battle", "fight", "sink", "proceed", "advance"), "act5_ch1_battle_trigger")
             )
         ),
         DialogueNode(
@@ -3508,11 +3480,8 @@ object StoryScript {
             id = "act5_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "CONGRATULATIONS! You have conquered the campaign! Before we raise the curtain on the Unified Bipartisan Curtain-Call Epilogue, would you like to experience Act V through the eyes of Zohran Cardamom ('Mr. Cardamom') and Mayor Swagger?",
-            choices = listOf(
-                DialogueChoice("a5_play_track_b", "Experience Act V as Zohran Cardamom & Mayor Swagger", listOf("zohran", "mamdani", "cardamom", "swagger", "other side", "track b"), "act5_tb_ch1_intro"),
-                DialogueChoice("a5_curtain_call", "Enter the Unified 2026 Bipartisan Curtain-Call Finale & Epilogue!", listOf("epilogue", "curtain call", "finale", "end", "credits"), "act5_bipartisan_curtain_call")
-            )
+            text = "CONGRATULATIONS! You have conquered the campaign! The stage is set for the Grand Finale Curtain Call!",
+            nextNodeId = "act5_bipartisan_curtain_call"
         ),
 
         // =========================================================================

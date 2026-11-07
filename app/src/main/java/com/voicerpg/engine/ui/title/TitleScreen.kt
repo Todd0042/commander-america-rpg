@@ -829,14 +829,14 @@ fun TitleScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = "🇺🇸 TRACK A: COMMANDER'S COALITION",
+                                    text = "🇺🇸 PAINT IT RED",
                                     color = LogosGold,
                                     fontSize = 11.sp,
                                     fontWeight = FontWeight.Black,
                                     fontFamily = FontFamily.Monospace
                                 )
                                 Text(
-                                    text = "Trump • Rubio • Vance • Patel • Kennedy",
+                                    text = "Trump • Rubio • Vance • Patel • Kennedy • Musk",
                                     color = Color.LightGray,
                                     fontSize = 9.sp,
                                     fontFamily = FontFamily.Monospace
@@ -861,14 +861,14 @@ fun TitleScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = "📜 TRACK B: THE STANDARD-BEARER RELAY",
+                                    text = "🌊 BEWILDER WITH BLUE",
                                     color = Color(0xFF00E5FF),
                                     fontSize = 11.sp,
                                     fontWeight = FontWeight.Black,
                                     fontFamily = FontFamily.Monospace
                                 )
                                 Text(
-                                    text = "Hill-Rod ➔ Joe Naptime ➔ Kamala ➔ Barry",
+                                    text = "Hill-Rod ➔ Nancy ➔ Joe ➔ Kamala ➔ Zohran",
                                     color = Color.LightGray,
                                     fontSize = 9.sp,
                                     fontFamily = FontFamily.Monospace

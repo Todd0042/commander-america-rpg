@@ -99,14 +99,14 @@ enum class CampaignTrack(
 ) {
     TRACK_A(
         id = "track_a",
-        displayName = "Track A: Commander's Coalition",
+        displayName = "Paint it Red",
         subtitle = "Commander America + Little Marco + Wizard Kash + Foghorn Kennedy + JD Pants + Musk-X",
         startNodeId = "act1_intro",
         startSceneId = "scene_act1_ch1_escalator"
     ),
     TRACK_B(
         id = "track_b",
-        displayName = "Track B: Standard-Bearer Relay",
+        displayName = "Bewilder with Blue",
         subtitle = "Hill-Rod ➔ Nancy Palooza ➔ Joe Naptime ➔ Kamala Coconut ➔ Zohran Cardamom & Mayor Swagger",
         startNodeId = "act1_tb_ch1_intro",
         startSceneId = "scene_act1_tb_ch1_server"
