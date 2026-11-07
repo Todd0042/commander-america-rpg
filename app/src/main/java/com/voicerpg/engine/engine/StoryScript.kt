@@ -14,7 +14,7 @@ object StoryScript {
     val SCENE_ACT1_CH1_ESCALATOR = StoryScene(
         id = "scene_act1_ch1_escalator",
         name = "Trump Tower Atrium & Golden Escalator",
-        chapterTitle = "Act I (Track A) - Ch 1: The \$50 Escalator & The Lion King Roast (2015)",
+        chapterTitle = "Act I - Ch 1: The \$50 Escalator & The Lion King Roast (2015)",
         backgroundAsset = "story/golden_escalator.jpg",
         initialNodeId = "act1_ch1_intro",
         ambientDescription = "Polished brass escalators gleam in Manhattan while fifty-dollar Extra Mile Casting actors adjust their campaign T-shirts under blinding news cameras."
@@ -26,7 +26,7 @@ object StoryScript {
     val SCENE_ACT1_CH2_DEBATE = StoryScene(
         id = "scene_act1_ch2_debate",
         name = "Cleveland Debate Stage & Tan Suit VIP Box",
-        chapterTitle = "Act I (Track A) - Ch 2: Guacamole Bowls, Tan Suits & Dijon Mustard (2015–2016)",
+        chapterTitle = "Act I - Ch 2: Guacamole Bowls, Tan Suits & Dijon Mustard (2015–2016)",
         backgroundAsset = "story/primary_debate.jpg",
         initialNodeId = "act1_ch2_intro",
         ambientDescription = "Sixteen focus-grouped podiums line the arena while a 2014 summer tan suit, a styrofoam latte, and a jar of Grey Poupon Dijon mustard gleam under the spotlights."
@@ -35,7 +35,7 @@ object StoryScript {
     val SCENE_ACT1_CH3_TACO_BUS = StoryScene(
         id = "scene_act1_ch3_taco_bus",
         name = "Trump Tower Grill & The 2005 Access Bus Lot",
-        chapterTitle = "Act I (Track A) - Ch 3: Taco Bowls & The Tic-Tac Bus That Never Dies (2016)",
+        chapterTitle = "Act I - Ch 3: Taco Bowls & The Tic-Tac Bus That Never Dies (2016)",
         backgroundAsset = "story/template/taco_bowl_bus_template.jpg",
         initialNodeId = "act1_ch3_intro",
         ambientDescription = "A fiesta taco bowl sits atop a 1990s newspaper photo of Marla Maples while an Access Hollywood tour bus idles outside with a crate of Tic-Tacs."
@@ -44,7 +44,7 @@ object StoryScript {
     val SCENE_ACT1_CH3_RALLY = StoryScene(
         id = "scene_act1_ch3_rally",
         name = "The Final 2016 Debate Arena",
-        chapterTitle = "Act I (Track A) - Ch 4: BleachBit, Pokémon Go & Election Night (Nov 2016)",
+        chapterTitle = "Act I - Ch 4: BleachBit, Pokémon Go & Election Night (Nov 2016)",
         backgroundAsset = "story/airport_rally.jpg",
         initialNodeId = "act1_ch4_intro",
         ambientDescription = "Chappaqua server racks, microfiber cloths, and boxes of Tic-Tacs collide on the final 2016 debate stage."
@@ -54,7 +54,7 @@ object StoryScript {
     val SCENE_ACT1_TB_CH1_SERVER = StoryScene(
         id = "scene_act1_tb_ch1_server",
         name = "Chappaqua Basement Server Room",
-        chapterTitle = "Act I (Track B) - Ch 1: With A Cloth & 1978 Cattle Futures (2015)",
+        chapterTitle = "Act I - Ch 1: With A Cloth & 1978 Cattle Futures (2015)",
         backgroundAsset = "story/template/chappaqua_server_template.jpg",
         initialNodeId = "act1_tb_ch1_intro",
         ambientDescription = "An off-the-books email server blinks in a Chappaqua basement beside 1978 Refco live-cattle futures receipts and a microfiber cloth."
@@ -63,7 +63,7 @@ object StoryScript {
     val SCENE_ACT1_TB_CH2_FERNS = StoryScene(
         id = "scene_act1_tb_ch2_ferns",
         name = "170th St. Bronx Subway Turnstile & Between Two Ferns Set",
-        chapterTitle = "Act I (Track B) - Ch 2: Five MetroCard Swipes & Two Potted Ferns (2016)",
+        chapterTitle = "Act I - Ch 2: Five MetroCard Swipes & Two Potted Ferns (2016)",
         backgroundAsset = "story/template/bronx_turnstile_template.jpg",
         initialNodeId = "act1_tb_ch2_intro",
         ambientDescription = "A stubborn MTA subway turnstile flashes 'SWIPE AGAIN AT THIS TURNSTILE' next to two dusty plastic studio ferns."
@@ -72,7 +72,7 @@ object StoryScript {
     val SCENE_ACT1_TB_CH3_BREAKFAST = StoryScene(
         id = "scene_act1_tb_ch3_breakfast",
         name = "The Breakfast Club Radio Booth & Virginia Pokémon Rally",
-        chapterTitle = "Act I (Track B) - Ch 3: Purse Hot Sauce, Pokémon Go & No Basement (2016)",
+        chapterTitle = "Act I - Ch 3: Purse Hot Sauce, Pokémon Go & No Basement (2016)",
         backgroundAsset = "story/template/breakfast_club_template.jpg",
         initialNodeId = "act1_tb_ch3_intro",
         ambientDescription = "A bottle of Ninja Squirrel hot sauce sits beside a smartphone running Pokémon Go and blueprints of a slab-foundation pizzeria."
@@ -81,7 +81,7 @@ object StoryScript {
     val SCENE_ACT1_TB_CH4_JAVITS = StoryScene(
         id = "scene_act1_tb_ch4_javits",
         name = "Javits Center Glass Ceiling & Final Debate Stage",
-        chapterTitle = "Act I (Track B) - Ch 4: The Blue-Curtain Director & Election Night (Nov 2016)",
+        chapterTitle = "Act I - Ch 4: The Blue-Curtain Director & Election Night (Nov 2016)",
         backgroundAsset = "story/template/javits_glass_ceiling_template.jpg",
         initialNodeId = "act1_tb_ch4_intro",
         ambientDescription = "Beneath the literal glass ceiling of the Javits Center, a 6-foot-8 FBI Director tries to blend into a blue curtain."
@@ -96,7 +96,7 @@ object StoryScript {
     val SCENE_ACT2_CH1_MALL = StoryScene(
         id = "scene_act2_ch1_mall",
         name = "National Mall & White House Bushes",
-        chapterTitle = "Act II (Track A) - Ch 1: Bushes, Cinnamon Gum & The 11-Day Mooch (2017)",
+        chapterTitle = "Act II - Ch 1: Bushes, Cinnamon Gum & The 11-Day Mooch (2017)",
         backgroundAsset = "story/national_mall.jpg",
         initialNodeId = "act2_ch1_intro",
         ambientDescription = "The Capitol steps gleam under a January sky while Spicy Sean hides in the White House bushes chewing 35 pieces of Orbit Cinnamon gum.",
@@ -106,7 +106,7 @@ object StoryScript {
     val SCENE_ACT2_CH2_OVAL = StoryScene(
         id = "scene_act2_ch2_oval",
         name = "The Oval Office & Truman Balcony",
-        chapterTitle = "Act II (Track A) - Ch 2: The Diet Coke Button, Covfefe & The Eclipse (2017)",
+        chapterTitle = "Act II - Ch 2: The Diet Coke Button, Covfefe & The Eclipse (2017)",
         backgroundAsset = "story/oval_citadel.jpg",
         initialNodeId = "act2_ch2_intro",
         ambientDescription = "A red wooden valet button sits on the Resolute Desk for Diet Coke emergencies while a solar eclipse darkens the Truman Balcony.",
@@ -116,7 +116,7 @@ object StoryScript {
     val SCENE_ACT2_CH3_SHARPIE = StoryScene(
         id = "scene_act2_ch3_sharpie",
         name = "San Juan Supply Gym & Oval Sharpie Easel",
-        chapterTitle = "Act II (Track A) - Ch 3: Paper-Towel Free Throws, Hurricane Sharpie & 15 Flushes (2017–2019)",
+        chapterTitle = "Act II - Ch 3: Paper-Towel Free Throws, Hurricane Sharpie & 15 Flushes (2017–2019)",
         backgroundAsset = "story/template/sharpie_puerto_rico_template.jpg",
         initialNodeId = "act2_ch3_sharpie_intro",
         ambientDescription = "Rolls of Bounty paper towels arc through the air beside an official NOAA hurricane poster extended into Alabama with a black Sharpie.",
@@ -126,7 +126,7 @@ object StoryScript {
     val SCENE_ACT2_CH4_SCIF = StoryScene(
         id = "scene_act2_ch4_scif",
         name = "House Intelligence Secure Vault (SCIF)",
-        chapterTitle = "Act II (Track A) - Ch 4: Enter Kash Subpoena, The Nunes Memo & Wizard Kash (2018–2019)",
+        chapterTitle = "Act II - Ch 4: Enter Kash Subpoena, The Nunes Memo & Wizard Kash (2018–2019)",
         backgroundAsset = "story/scif_vault.jpg",
         initialNodeId = "act2_ch4_scif_intro",
         ambientDescription = "Acoustic vault doors seal the room as Kash Subpoena unrolls his four-page FISA memo alongside his 'Wizard Kash' children's book.",
@@ -136,7 +136,7 @@ object StoryScript {
     val SCENE_ACT2_CH3_ROTUNDA = StoryScene(
         id = "scene_act2_ch3_rotunda",
         name = "House Chamber & Sub-Zero Freezer Vault",
-        chapterTitle = "Act II (Track A) - Ch 5: Sideways Claps, Pre-Scored Speeches & \$24k Freezers (2020 Finale)",
+        chapterTitle = "Act II - Ch 5: Sideways Claps, Pre-Scored Speeches & \$24k Freezers (2020 Finale)",
         backgroundAsset = "story/capitol_rotunda.jpg",
         initialNodeId = "act2_ch3_intro",
         ambientDescription = "Marble columns tower above as Nancy Palooza pre-scores State of the Union pages beside twin \$24,000 Sub-Zero freezers.",
@@ -157,7 +157,7 @@ object StoryScript {
     val SCENE_ACT2_TB_CH1_BUSHES = StoryScene(
         id = "scene_act2_tb_ch1_bushes",
         name = "Speaker's Rostrum & White House Shrubbery",
-        chapterTitle = "Act II (Track B) - Ch 1: Sideways Seal Claps vs. Neon Salsa Ruffles (2017–2019)",
+        chapterTitle = "Act II - Ch 1: Sideways Seal Claps vs. Neon Salsa Ruffles (2017–2019)",
         backgroundAsset = "story/template/spicer_bushes_template.jpg",
         initialNodeId = "act2_tb_ch1_intro",
         ambientDescription = "Speaker Nancy Palooza's gavel gleams while Spicy Sean rustles inside the White House bushes wearing a neon-green ruffled salsa shirt.",
@@ -167,7 +167,7 @@ object StoryScript {
     val SCENE_ACT2_TB_CH2_SOTU = StoryScene(
         id = "scene_act2_tb_ch2_sotu",
         name = "House Rostrum — State of the Union Dais",
-        chapterTitle = "Act II (Track B) - Ch 2: Pre-Scoring the Speech & The 75%-Speed Video (2019–2020)",
+        chapterTitle = "Act II - Ch 2: Pre-Scoring the Speech & The 75%-Speed Video (2019–2020)",
         backgroundAsset = "story/capitol_rotunda.jpg",
         initialNodeId = "act2_tb_ch2_intro",
         ambientDescription = "A thick stack of State of the Union cardstock pages sits on the Speaker's desk with discreet starter notches pre-ripped into the margin.",
@@ -177,7 +177,7 @@ object StoryScript {
     val SCENE_ACT2_TB_CH3_SUBZERO = StoryScene(
         id = "scene_act2_tb_ch3_subzero",
         name = "San Francisco Sub-Zero Kitchen & eSalon",
-        chapterTitle = "Act II (Track B) - Ch 3: Twin \$24,000 Freezers & The Salon 'Setup' (April–Aug 2020)",
+        chapterTitle = "Act II - Ch 3: Twin \$24,000 Freezers & The Salon 'Setup' (April–Aug 2020)",
         backgroundAsset = "story/template/subzero_kitchen_template.jpg",
         initialNodeId = "act2_tb_ch3_intro",
         ambientDescription = "Twin \$24,000 stainless-steel Sub-Zero freezers hum with \$12 pints of Jeni's Splendid Ice Cream next to a neighborhood hair salon.",
@@ -187,7 +187,7 @@ object StoryScript {
     val SCENE_ACT2_TB_CH4_STOCKS = StoryScene(
         id = "scene_act2_tb_ch4_stocks",
         name = "House Clerk Periodic Transaction Report Vault",
-        chapterTitle = "Act II (Track B) - Ch 4: Deep-ITM Call Options & The \$341k Nvidia Loss (2020–2022)",
+        chapterTitle = "Act II - Ch 4: Deep-ITM Call Options & The \$341k Nvidia Loss (2020–2022)",
         backgroundAsset = "story/hearing_room.jpg",
         initialNodeId = "act2_tb_ch4_intro",
         ambientDescription = "Stock tickers flash alongside a July 26, 2022 House Clerk filing documenting a \$341,365 pre-CHIPS Act Nvidia loss.",
@@ -197,7 +197,7 @@ object StoryScript {
     val SCENE_ACT2_TB_CH5_FOUR_SEASONS = StoryScene(
         id = "scene_act2_tb_ch5_four_seasons",
         name = "Four Seasons Total Landscaping — Philadelphia",
-        chapterTitle = "Act II (Track B) - Ch 5: Between a Crematorium and an Adult Bookshop (Nov 2020 Finale)",
+        chapterTitle = "Act II - Ch 5: Between a Crematorium and an Adult Bookshop (Nov 2020 Finale)",
         backgroundAsset = "story/template/four_seasons_landscaping_template.jpg",
         initialNodeId = "act2_tb_ch5_intro",
         ambientDescription = "A garage door plastered with campaign signs stands wedged between the Delaware Valley Crematorium and Fantasy Island Adult Books.",
@@ -210,7 +210,7 @@ object StoryScript {
     val SCENE_ACT3_CH1_STEEL_MILL = StoryScene(
         id = "scene_act3_ch1_steel_mill",
         name = "Andrews Tarmac Stairs & Rehoboth Bike Path",
-        chapterTitle = "Act III (Track A) - Ch 1: Three Stumbles Up the Stairs & Toe-Cage Bikes (2021–2022)",
+        chapterTitle = "Act III - Ch 1: Three Stumbles Up the Stairs & Toe-Cage Bikes (2021–2022)",
         backgroundAsset = "story/air_force_one.jpg",
         initialNodeId = "act3_ch1_intro",
         ambientDescription = "Wind gusts sweep across the Air Force One staircase beside a stationary Trek bicycle equipped with treacherous metal toe-cages.",
@@ -220,7 +220,7 @@ object StoryScript {
     val SCENE_ACT3_CH2_USMCA = StoryScene(
         id = "scene_act3_ch2_usmca",
         name = "Senate Judiciary Committee Chamber",
-        chapterTitle = "Act III (Track A) - Ch 2: Enter Foghorn Kennedy & 'Call A Crackhead!' (2021–2023)",
+        chapterTitle = "Act III - Ch 2: Enter Foghorn Kennedy & 'Call A Crackhead!' (2021–2023)",
         backgroundAsset = "story/senate_hearing.jpg",
         initialNodeId = "act3_ch2_intro",
         ambientDescription = "Senator Foghorn Kennedy hides an Oxford First-Class law degree behind a folksy Louisiana drawl as judicial nominees sweat under the lights.",
@@ -230,7 +230,7 @@ object StoryScript {
     val SCENE_ACT3_CH3_AF1 = StoryScene(
         id = "scene_act3_ch3_af1",
         name = "Mar-a-Lago Bathroom Chandelier & Corvette Garage",
-        chapterTitle = "Act III (Track A) - Ch 3: Bathroom Chandeliers vs. The 1967 Corvette Garage (2022–2023)",
+        chapterTitle = "Act III - Ch 3: Bathroom Chandeliers vs. The 1967 Corvette Garage (2022–2023)",
         backgroundAsset = "story/storage_vault.jpg",
         initialNodeId = "act3_ch3_intro",
         ambientDescription = "Cardboard bankers boxes tower beneath a gilded Mar-a-Lago bathroom chandelier across from a locked Wilmington Corvette garage.",
@@ -240,7 +240,7 @@ object StoryScript {
     val SCENE_ACT3_CH4_SUMMIT = StoryScene(
         id = "scene_act3_ch4_summit",
         name = "Fulton County Booking Desk & Trump Force One",
-        chapterTitle = "Act III (Track A) - Ch 4: The '215-Pound' Mugshot & \$7.1M 'Never Surrender' Merch (Aug 2023)",
+        chapterTitle = "Act III - Ch 4: The '215-Pound' Mugshot & \$7.1M 'Never Surrender' Merch (Aug 2023)",
         backgroundAsset = "story/template/fulton_mugshot_template.jpg",
         initialNodeId = "act3_ch4_intro",
         ambientDescription = "Booking cameras flash as a 6-foot-3, 215-pound mugshot is immediately printed onto 'NEVER SURRENDER!' T-shirts and coffee mugs.",
@@ -250,7 +250,7 @@ object StoryScript {
     val SCENE_ACT3_CH5_BASKIN = StoryScene(
         id = "scene_act3_ch5_baskin",
         name = "Portland Baskin-Robbins & Teleprompter Stage",
-        chapterTitle = "Act III (Track A) - Ch 5: 'Economy Strong As Hell' & 'Repeat the Line' (2022–2023 Finale)",
+        chapterTitle = "Act III - Ch 5: 'Economy Strong As Hell' & 'Repeat the Line' (2022–2023 Finale)",
         backgroundAsset = "story/template/baskin_robbins_portland_template.jpg",
         initialNodeId = "act3_ch5_baskin_intro",
         ambientDescription = "Joe Naptime licks a double-scoop chocolate chip waffle cone at Baskin-Robbins beside a teleprompter flashing 'End of quote. Repeat the line.'",
@@ -270,7 +270,7 @@ object StoryScript {
     val SCENE_ACT3_TB_CH1_POOL = StoryScene(
         id = "scene_act3_tb_ch1_pool",
         name = "Wilmington Swimming Pool & Rehoboth Bike Trail",
-        chapterTitle = "Act III (Track B) - Ch 1: Corn Pop's Rusty Razor, Blonde Leg Hair & Toe Cages (2019–2022)",
+        chapterTitle = "Act III - Ch 1: Corn Pop's Rusty Razor, Blonde Leg Hair & Toe Cages (2019–2022)",
         backgroundAsset = "story/template/rehoboth_bike_pool_template.jpg",
         initialNodeId = "act3_tb_ch1_intro",
         ambientDescription = "A 6-foot poolside chain and a rainwater barrel of rusty razors sit beside a Rehoboth Beach bicycle trail.",
@@ -280,7 +280,7 @@ object StoryScript {
     val SCENE_ACT3_TB_CH2_TELEPROMPTER = StoryScene(
         id = "scene_act3_tb_ch2_teleprompter",
         name = "White House Teleprompter & Andrews Staircase",
-        chapterTitle = "Act III (Track B) - Ch 2: 'End of Quote, Repeat the Line' & Two Vindications (2021–2022)",
+        chapterTitle = "Act III - Ch 2: 'End of Quote, Repeat the Line' & Two Vindications (2021–2022)",
         backgroundAsset = "story/scranton_platform.jpg",
         initialNodeId = "act3_tb_ch2_intro",
         ambientDescription = "A giant glass teleprompter displays bracketed stage directions in 72-point font while wind gusts rattle the tarmac stairs.",
@@ -290,7 +290,7 @@ object StoryScript {
     val SCENE_ACT3_TB_CH3_BASKIN = StoryScene(
         id = "scene_act3_tb_ch3_baskin",
         name = "Portland Baskin-Robbins Ice-Cream Counter",
-        chapterTitle = "Act III (Track B) - Ch 3: 'Economy Strong As Hell' vs. Foghorn Kennedy (2022–2023)",
+        chapterTitle = "Act III - Ch 3: 'Economy Strong As Hell' vs. Foghorn Kennedy (2022–2023)",
         backgroundAsset = "story/template/baskin_robbins_portland_template.jpg",
         initialNodeId = "act3_tb_ch3_intro",
         ambientDescription = "Thirty-one flavors of ice cream gleam under neon lights as Joe Naptime orders a double-scoop chocolate chip waffle cone.",
@@ -300,7 +300,7 @@ object StoryScript {
     val SCENE_ACT3_TB_CH4_GARAGE = StoryScene(
         id = "scene_act3_tb_ch4_garage",
         name = "Wilmington Locked 1967 Corvette Garage",
-        chapterTitle = "Act III (Track B) - Ch 4: The Corvette Garage & Real-Audio Gibberish Symphony (2023–2024)",
+        chapterTitle = "Act III - Ch 4: The Corvette Garage & Real-Audio Gibberish Symphony (2023–2024)",
         backgroundAsset = "story/basement_bunker.jpg",
         initialNodeId = "act3_tb_ch4_intro",
         ambientDescription = "A green 1967 Chevrolet Corvette Stingray sits parked beside a crushed cardboard box of classified folders and a freezer of Jeni's pints.",
@@ -310,7 +310,7 @@ object StoryScript {
     val SCENE_ACT3_TB_CH5_MUGSHOT = StoryScene(
         id = "scene_act3_tb_ch5_mugshot",
         name = "Mar-a-Lago Chandelier Bathroom & Fulton Booking Desk",
-        chapterTitle = "Act III (Track B) - Ch 5: The '215-Lb' Mugshot & Passing the Coconut to Kamala (2023–2024 Finale)",
+        chapterTitle = "Act III - Ch 5: The '215-Lb' Mugshot & Passing the Coconut to Kamala (2023–2024 Finale)",
         backgroundAsset = "story/template/fulton_mugshot_template.jpg",
         initialNodeId = "act3_tb_ch5_intro",
         ambientDescription = "A gilded bathroom chandelier illuminates stacks of bankers boxes beside a 'NEVER SURRENDER!' mugshot T-shirt press.",
@@ -323,7 +323,7 @@ object StoryScript {
     val SCENE_ACT4_CH1_FISA = StoryScene(
         id = "scene_act4_ch1_fisa",
         name = "Holt's Sweet Shoppe — Valdosta, Georgia",
-        chapterTitle = "Act IV (Track A) - Ch 1: Enter JD Pants & 'Whatever Makes Sense' Donuts (Aug 2024)",
+        chapterTitle = "Act IV - Ch 1: Enter JD Pants & 'Whatever Makes Sense' Donuts (Aug 2024)",
         backgroundAsset = "story/template/holt_donut_shop_template.jpg",
         initialNodeId = "act4_ch1_intro",
         ambientDescription = "Fluorescent bakery lights buzz as JD Pants asks 'How long have you worked here? Okay, good' over a tray of sprinkle donuts.",
@@ -333,7 +333,7 @@ object StoryScript {
     val SCENE_ACT4_CH2_BINDER = StoryScene(
         id = "scene_act4_ch2_binder",
         name = "Lester Holt Interview Set & Border Wall Gap",
-        chapterTitle = "Act IV (Track A) - Ch 2: 'And I Haven't Been to Europe!' & Ukraine Preschool (2021–2024)",
+        chapterTitle = "Act IV - Ch 2: 'And I Haven't Been to Europe!' & Ukraine Preschool (2021–2024)",
         backgroundAsset = "story/border_wall.jpg",
         initialNodeId = "act4_ch2_intro",
         ambientDescription = "Lester Holt asks why nobody has visited the southern border while a globe highlights Europe and Ukraine.",
@@ -343,7 +343,7 @@ object StoryScript {
     val SCENE_ACT4_CH3_COURT = StoryScene(
         id = "scene_act4_ch3_court",
         name = "Electric Yellow School Bus Depot & Venn Mirage",
-        chapterTitle = "Act IV (Track A) - Ch 3: Venn Diagrams, Yellow School Buses & '32 Days!' (2022–2024)",
+        chapterTitle = "Act IV - Ch 3: Venn Diagrams, Yellow School Buses & '32 Days!' (2022–2024)",
         backgroundAsset = "story/electric_bus.jpg",
         initialNodeId = "act4_ch3_intro",
         ambientDescription = "Three glowing Venn diagram circles hover above a yellow electric school bus and a glitching Flint teleprompter.",
@@ -353,7 +353,7 @@ object StoryScript {
     val SCENE_ACT4_CH4_HEARING = StoryScene(
         id = "scene_act4_ch4_hearing",
         name = "Feasterville McDonald's Fry Station & Green Bay Garbage Truck",
-        chapterTitle = "Act IV (Track A) - Ch 4: The McDonald's Fry Apron & Orange Garbage Vest (Oct 2024)",
+        chapterTitle = "Act IV - Ch 4: The McDonald's Fry Apron & Orange Garbage Vest (Oct 2024)",
         backgroundAsset = "story/template/mcdonalds_fry_apron_template.jpg",
         initialNodeId = "act4_ch4_intro",
         ambientDescription = "Golden French-fry baskets sizzle beside a white Mack garbage truck and a high-visibility neon-orange safety vest.",
@@ -363,7 +363,7 @@ object StoryScript {
     val SCENE_ACT4_CH5_COCONUT_FINALE = StoryScene(
         id = "scene_act4_ch5_coconut_finale",
         name = "The Coconut Grove & Unburdened Throne",
-        chapterTitle = "Act IV (Track A) - Ch 5: Falling Out of a Coconut Tree & 'Unburdened' (Nov 2024 Finale)",
+        chapterTitle = "Act IV - Ch 5: Falling Out of a Coconut Tree & 'Unburdened' (Nov 2024 Finale)",
         backgroundAsset = "story/coconut_grove.jpg",
         initialNodeId = "act4_ch5_coconut_intro",
         ambientDescription = "Coconuts drop in the context of all in which you live and what came before you.",
@@ -383,7 +383,7 @@ object StoryScript {
     val SCENE_ACT4_TB_CH1_COCONUT = StoryScene(
         id = "scene_act4_tb_ch1_coconut",
         name = "The Context of the Coconut Grove",
-        chapterTitle = "Act IV (Track B) - Ch 1: Falling Out of a Coconut Tree & Venn Diagrams (2023–July 2024)",
+        chapterTitle = "Act IV - Ch 1: Falling Out of a Coconut Tree & Venn Diagrams (2023–July 2024)",
         backgroundAsset = "story/coconut_grove.jpg",
         initialNodeId = "act4_tb_ch1_intro",
         ambientDescription = "Towering coconut palms sway in the context of all in which you live and what came before you.",
@@ -393,7 +393,7 @@ object StoryScript {
     val SCENE_ACT4_TB_CH2_DONUTS = StoryScene(
         id = "scene_act4_tb_ch2_donuts",
         name = "Valdosta Donut Counter & South Philly Cheesesteak Window",
-        chapterTitle = "Act IV (Track B) - Ch 2: 'I'm Speaking!' vs. JD Pants's Donut Interrogation (Aug–Oct 2024)",
+        chapterTitle = "Act IV - Ch 2: 'I'm Speaking!' vs. JD Pants's Donut Interrogation (Aug–Oct 2024)",
         backgroundAsset = "story/template/holt_donut_shop_template.jpg",
         initialNodeId = "act4_tb_ch2_intro",
         ambientDescription = "A box of 'some sprinkle stuff, whatever makes sense' glazed donuts sits next to a wedge of outlawed Philly Swiss cheese.",
@@ -403,7 +403,7 @@ object StoryScript {
     val SCENE_ACT4_TB_CH3_PASSAGE = StoryScene(
         id = "scene_act4_tb_ch3_passage",
         name = "The Unburdened Dais of the Passage of Time",
-        chapterTitle = "Act IV (Track B) - Ch 3: 'The Significance of the Passage of Time' & Tiffany Pearls (2022–2024)",
+        chapterTitle = "Act IV - Ch 3: 'The Significance of the Passage of Time' & Tiffany Pearls (2022–2024)",
         backgroundAsset = "story/unburdened_throne.jpg",
         initialNodeId = "act4_tb_ch3_intro",
         ambientDescription = "Clocks tick four times in thirty-two seconds to mark the significance of the passage of time.",
@@ -413,7 +413,7 @@ object StoryScript {
     val SCENE_ACT4_TB_CH4_DEBATE = StoryScene(
         id = "scene_act4_tb_ch4_debate",
         name = "Philadelphia Debate Stage — National Constitution Center",
-        chapterTitle = "Act IV (Track B) - Ch 4: 'Concepts of a Plan' & 'I Saw It on Television!' (Sept 10, 2024)",
+        chapterTitle = "Act IV - Ch 4: 'Concepts of a Plan' & 'I Saw It on Television!' (Sept 10, 2024)",
         backgroundAsset = "story/primary_debate.jpg",
         initialNodeId = "act4_tb_ch4_intro",
         ambientDescription = "Split-screen cameras capture a hand-on-chin courtroom expression as 'Concepts of a Plan' echoes across the stage.",
@@ -423,7 +423,7 @@ object StoryScript {
     val SCENE_ACT4_TB_CH5_MCDONALDS = StoryScene(
         id = "scene_act4_tb_ch5_mcdonalds",
         name = "Closed-Set Drive-Thru Window & Garbage Truck Tarmac",
-        chapterTitle = "Act IV (Track B) - Ch 5: The Fry Apron, The Garbage Vest & Passing the Chapati (Nov 2024 Finale)",
+        chapterTitle = "Act IV - Ch 5: The Fry Apron, The Garbage Vest & Passing the Chapati (Nov 2024 Finale)",
         backgroundAsset = "story/template/mcdonalds_fry_apron_template.jpg",
         initialNodeId = "act4_tb_ch5_intro",
         ambientDescription = "A closed-set McDonald's drive-thru window gleams beside a neon-orange garbage truck vest and a Queens chapati food truck.",
@@ -436,7 +436,7 @@ object StoryScript {
     val SCENE_ACT5_CH1_ARENA = StoryScene(
         id = "scene_act5_ch1_arena",
         name = "Butler Fairgrounds & Cybertruck Demo Stage",
-        chapterTitle = "Act V (Track A) - Ch 1: Dark Gothic MAGA Star-Jump & The Porcelain Sink (2024–2025)",
+        chapterTitle = "Act V - Ch 1: Dark Gothic MAGA Star-Jump & The Porcelain Sink (2024–2025)",
         backgroundAsset = "story/butler_fairgrounds.jpg",
         initialNodeId = "act5_ch1_intro",
         ambientDescription = "Musk-X leaps into a mid-air X-shape exposing four inches of midriff beside a porcelain bathroom sink and two shattered Cybertruck windows.",
@@ -446,7 +446,7 @@ object StoryScript {
     val SCENE_ACT5_CH2_SENATE = StoryScene(
         id = "scene_act5_ch2_senate",
         name = "Milwaukee Convention Floor & DOGE Command",
-        chapterTitle = "Act V (Track A) - Ch 2: Hulkster's Shirt-Rip, 'Hey Bob!' & DOGE (2024–2025)",
+        chapterTitle = "Act V - Ch 2: Hulkster's Shirt-Rip, 'Hey Bob!' & DOGE (2024–2025)",
         backgroundAsset = "story/rnc_milwaukee.jpg",
         initialNodeId = "act5_ch2_intro",
         ambientDescription = "Hulkster 24-Pythons rips two shirts in half on stage while a Shiba Inu DOGE banner gleams over federal budget spreadsheets.",
@@ -456,7 +456,7 @@ object StoryScript {
     val SCENE_ACT5_CH3_TERRACE = StoryScene(
         id = "scene_act5_ch3_terrace",
         name = "Turkish Airlines Lounge & Osteria La Baia",
-        chapterTitle = "Act V (Track A) - Ch 3: Mayor Swagger's Turkish Upgrades & 'Vegan' Sea Bass (2024–2025)",
+        chapterTitle = "Act V - Ch 3: Mayor Swagger's Turkish Upgrades & 'Vegan' Sea Bass (2024–2025)",
         backgroundAsset = "story/maralago_terrace.jpg",
         initialNodeId = "act5_ch3_intro",
         ambientDescription = "Mayor Swagger sips New York tap water next to a Turkish Airlines lie-flat seat, a plate of midnight Chilean sea bass, and a marble-jar baby doll.",
@@ -466,7 +466,7 @@ object StoryScript {
     val SCENE_ACT5_CH4_CLOSETS = StoryScene(
         id = "scene_act5_ch4_closets",
         name = "Astoria Chapati Food Truck & Municipal Grocery",
-        chapterTitle = "Act V (Track A) - Ch 4: Enter 'Mr. Cardamom,' Nani's Apron & City-Owned Groceries (2025–2026)",
+        chapterTitle = "Act V - Ch 4: Enter 'Mr. Cardamom,' Nani's Apron & City-Owned Groceries (2025–2026)",
         backgroundAsset = "story/template/chapati_food_truck_template.jpg",
         initialNodeId = "act5_ch4_intro",
         ambientDescription = "Zohran Cardamom ('Mr. Cardamom') flips chapatis in an apron beside a 'FREEZE THE RENT & FREE Q70 BUS' sign and five city-owned grocery blueprints.",
@@ -476,7 +476,7 @@ object StoryScript {
     val SCENE_ACT5_CH5_FINALE = StoryScene(
         id = "scene_act5_ch5_finale",
         name = "The 2026 Bipartisan Grand Finale Arena",
-        chapterTitle = "Act V (Track A) - Ch 5: The 2026 Bipartisan Roast Finale (Grand Climax)",
+        chapterTitle = "Act V - Ch 5: The 2026 Bipartisan Roast Finale (Grand Climax)",
         backgroundAsset = "story/golden_inauguration.jpg",
         initialNodeId = "act5_ch5_finale_intro",
         ambientDescription = "Confetti, chapatis, waffle cones, and Cybertruck steel balls rain across the Grand Finale stage.",
@@ -497,7 +497,7 @@ object StoryScript {
     val SCENE_ACT5_TB_CH1_CHAPATI = StoryScene(
         id = "scene_act5_tb_ch1_chapati",
         name = "Astoria Chapati Truck & Free Q70 Bus Stop",
-        chapterTitle = "Act V (Track B) - Ch 1: 'Mr. Cardamom,' Nani's Apron & 5 City Grocery Stores (2025)",
+        chapterTitle = "Act V - Ch 1: 'Mr. Cardamom,' Nani's Apron & 5 City Grocery Stores (2025)",
         backgroundAsset = "story/template/chapati_food_truck_template.jpg",
         initialNodeId = "act5_tb_ch1_intro",
         ambientDescription = "Sizzling chapatis, a bespoke thrifted suit, Madhur Jaffrey's apron, and an MTA Fare-Free Bus Pilot report.",
@@ -507,7 +507,7 @@ object StoryScript {
     val SCENE_ACT5_TB_CH2_SWAGGER = StoryScene(
         id = "scene_act5_tb_ch2_swagger",
         name = "Gracie Mansion Kitchen & Turkish Business Class",
-        chapterTitle = "Act V (Track B) - Ch 2: Mayor Swagger's Contraband Baby-Doll & Midnight Sea Bass (2025)",
+        chapterTitle = "Act V - Ch 2: Mayor Swagger's Contraband Baby-Doll & Midnight Sea Bass (2025)",
         backgroundAsset = "story/gag_hearing.jpg",
         initialNodeId = "act5_tb_ch2_intro",
         ambientDescription = "Mayor Swagger inspects a plastic baby doll and glass marble jar beside a locked 6-digit iPhone and Turkish Airlines boarding passes.",
@@ -517,7 +517,7 @@ object StoryScript {
     val SCENE_ACT5_TB_CH3_CYBERTRUCK = StoryScene(
         id = "scene_act5_tb_ch3_cybertruck",
         name = "Butler Star-Jump Stage & Shattered Cybertruck Lab",
-        chapterTitle = "Act V (Track B) - Ch 3: Roasting Musk-X's Mid-Air 'X' Jump & Porcelain Sink (2025–2026)",
+        chapterTitle = "Act V - Ch 3: Roasting Musk-X's Mid-Air 'X' Jump & Porcelain Sink (2025–2026)",
         backgroundAsset = "story/butler_fairgrounds.jpg",
         initialNodeId = "act5_tb_ch3_intro",
         ambientDescription = "A porcelain bathroom sink sits next to a Cybertruck with two steel-ball-shattered 'Armor Glass' windows.",
@@ -527,7 +527,7 @@ object StoryScript {
     val SCENE_ACT5_TB_CH4_DOGE = StoryScene(
         id = "scene_act5_tb_ch4_doge",
         name = "Department of Government Efficiency (DOGE) Vault",
-        chapterTitle = "Act V (Track B) - Ch 4: Shiba Inu Bureaucracy vs. Sprinkle Donuts & Wizard Books (2026)",
+        chapterTitle = "Act V - Ch 4: Shiba Inu Bureaucracy vs. Sprinkle Donuts & Wizard Books (2026)",
         backgroundAsset = "story/senate_hearing.jpg",
         initialNodeId = "act5_tb_ch4_intro",
         ambientDescription = "A giant Shiba Inu meme coin logo hangs over JD Pants's donut box, Wizard Kash's children's book, and Foghorn Kennedy's gavel.",
@@ -537,7 +537,7 @@ object StoryScript {
     val SCENE_ACT5_TB_CH5_FINALE = StoryScene(
         id = "scene_act5_tb_ch5_finale",
         name = "The 2026 Bipartisan Grand Finale Stage",
-        chapterTitle = "Act V (Track B) - Ch 5: Chapatis vs. Diet Coke Buttons — The Bipartisan Curtain Call (2026 Finale)",
+        chapterTitle = "Act V - Ch 5: Chapatis vs. Diet Coke Buttons — The Bipartisan Curtain Call (2026 Finale)",
         backgroundAsset = "story/golden_inauguration.jpg",
         initialNodeId = "act5_tb_ch5_intro",
         ambientDescription = "All six narrators and the entire bipartisan cast gather under golden spotlights for the final showdown.",
@@ -977,7 +977,7 @@ object StoryScript {
             id = "act1_ch2_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 (Track A): Inside the primary debate arena, Low-Energy Jeb! and Little Marco are rehearsing their focus-grouped soundbites while Barry Teleprompter watches from the VIP box wearing his infamous August 28, 2014 summer tan suit and sipping a 2014 Marine One styrofoam latte!",
+            text = "Inside the primary debate arena, Low-Energy Jeb! and Little Marco are rehearsing their focus-grouped soundbites while Barry Teleprompter watches from the VIP box wearing his infamous August 28, 2014 summer tan suit and sipping a 2014 Marine One styrofoam latte!",
             nextNodeId = "act1_ch2_jeb_opens"
         ),
         DialogueNode(
@@ -1129,7 +1129,7 @@ object StoryScript {
             id = "act1_ch4_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 (Track A Finale): It is Election Eve, November 2016! Hill-Rod arrives on the debate stage fresh off taking five swipes to get through a Bronx subway turnstile, pulling Ninja Squirrel hot sauce out of her purse on The Breakfast Club, and telling Virginia voters to 'Pokémon Go-to-the-Polls'!",
+            text = "It is Election Eve, November 2016! Hill-Rod arrives on the debate stage fresh off taking five swipes to get through a Bronx subway turnstile, pulling Ninja Squirrel hot sauce out of her purse on The Breakfast Club, and telling Virginia voters to 'Pokémon Go-to-the-Polls'!",
             nextNodeId = "act1_ch4_hill_rod_arrives"
         ),
         DialogueNode(
@@ -1165,9 +1165,9 @@ object StoryScript {
             id = "act1_ch3_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "270 Electoral Votes certified! Commander America triumphs in the expanded 4-Chapter Act I on Track A! Would you like to play the expanded 4-Chapter Track B campaign as Hill-Rod (featuring the Chappaqua server basement, the 5-swipe Bronx subway turnstile, Zach Two-Ferns, The Breakfast Club hot sauce, and the slab-foundation pizzeria Vindication), or advance to Act II (2017–2020)?",
+            text = "270 Electoral Votes certified! Commander America takes the win! Would you like to experience the other side of 2016 with Hill-Rod (the Chappaqua server basement, the 5-swipe Bronx subway turnstile, Zach Two-Ferns, and The Breakfast Club hot sauce), or charge forward to Act II (2017–2020)?",
             choices = listOf(
-                DialogueChoice("a1_play_track_b", "Play Act I Track B: Experience all 4 Chapters as Hill-Rod!", listOf("track b", "hill rod", "hillary", "other side", "server"), "act1_tb_ch1_intro"),
+                DialogueChoice("a1_play_track_b", "Experience 2016 as Hill-Rod (Chappaqua Basement, Subway Turnstiles & Hot Sauce)", listOf("hill rod", "hillary", "other side", "server", "track b"), "act1_tb_ch1_intro"),
                 DialogueChoice("a1_to_act2", "Advance to Act II (2017–2020): Spicy Sean's Bushes, Covfefe & Nancy Palooza's \$24k Freezers", listOf("act 2", "next act", "advance", "inauguration", "continue"), "act2_ch1_intro")
             )
         ),
@@ -1256,7 +1256,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT1_TB_CH2_FERNS.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 (Track B): To prove to voters that Hill-Rod hasn't been riding purely in armored Secret Service Suburbans since 1992, her campaign has scheduled three 'Everyday Normal Person' moments: a Snapchat video in Iowa, a subway ride at the 170th Street station in the Bronx, and an interview with Zach Two-Ferns!",
+            text = "To prove to voters that Hill-Rod hasn't been riding purely in armored Secret Service Suburbans since 1992, her campaign has scheduled three 'Everyday Normal Person' moments: a Snapchat video in Iowa, a subway ride at the 170th Street station in the Bronx, and an interview with Zach Two-Ferns!",
             nextNodeId = "act1_tb_ch2_cedar_rapids"
         ),
         DialogueNode(
@@ -1319,7 +1319,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT1_TB_CH3_BREAKFAST.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 (Track B): It is April 18, 2016 inside The Breakfast Club radio booth in New York! DJ Envy and Charlamagne tha God ask Hill-Rod what one item she always carries in her handbag—right after Beyoncé dropped the lyric 'I got hot sauce in my bag, swag' in Formation!",
+            text = "It is April 18, 2016 inside The Breakfast Club radio booth in New York! DJ Envy and Charlamagne tha God ask Hill-Rod what one item she always carries in her handbag—right after Beyoncé dropped the lyric 'I got hot sauce in my bag, swag' in Formation!",
             nextNodeId = "act1_tb_ch3_breakfast_club"
         ),
         DialogueNode(
@@ -1422,7 +1422,7 @@ object StoryScript {
             id = "act1_tb_ch3_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT I TRACK B GRAND FINALE, EVERYBODY! Hill-Rod vs. Commander America, Billy Access-Bus, and the \$50 Casting Extra! Unleash Pokémon Go-To-The-Polls, Purse Ninja Hot Sauce, and the 11-Hour Marathon Shield!",
+            text = "IT'S THE 2016 ELECTION NIGHT SHOWDOWN, EVERYBODY! Hill-Rod vs. Commander America, Billy Access-Bus, and the \$50 Casting Extra! Unleash Pokémon Go-To-The-Polls, Purse Ninja Hot Sauce, and the 11-Hour Marathon Shield!",
             triggerBattleEncounterId = "act1_track_b_commander_finale",
             nextNodeId = "act1_tb_ch3_post_battle"
         ),
@@ -1430,11 +1430,11 @@ object StoryScript {
             id = "act1_tb_ch3_post_battle",
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "And that concludes all four chapters of Act I on Track B! Now the calendar flips to 2017–2020 for Act II! On Track B, the Standard-Bearer Relay Baton passes to Speaker Nancy Palooza—armed with her 45-degree sideways seal clap, pre-scored SOTU pages, twin \$24,000 Sub-Zero ice-cream freezers, and Paul's ill-timed Nvidia stock trade loss! Which side of Act II would you like to play first?",
+            text = "And that wraps up the 2016 race! Now the calendar flips to 2017–2020 for Act II! In Washington, Speaker Nancy Palooza takes the spotlight—armed with her 45-degree sideways seal clap, pre-scored SOTU pages, twin \$24,000 Sub-Zero ice-cream freezers, and Paul's ill-timed Nvidia stock trade loss! Where do you want to head next?",
             choices = listOf(
-                DialogueChoice("tb3_to_act2_tb", "Play Act II Track B (5 Chapters as Speaker Nancy Palooza)!", listOf("track b", "nancy", "baton", "pelosi", "freezers"), "act2_tb_ch1_intro"),
-                DialogueChoice("tb3_to_act2_ta", "Play Act II Track A (5 Chapters as Commander America & Kash Subpoena)!", listOf("act 2", "track a", "commander", "advance", "continue"), "act2_ch1_intro"),
-                DialogueChoice("tb3_replay_track_a", "Replay Act I Track A (4 Chapters as Commander America)", listOf("act 1", "escalator", "replay"), "act1_ch1_intro")
+                DialogueChoice("tb3_to_act2_tb", "Play Act II as Speaker Nancy Palooza (\$24k Freezers & SOTU Tear)!", listOf("nancy", "pelosi", "freezers", "track b", "baton"), "act2_tb_ch1_intro"),
+                DialogueChoice("tb3_to_act2_ta", "Play Act II as Commander America & Kash Subpoena!", listOf("commander", "act 2", "track a", "advance", "continue"), "act2_ch1_intro"),
+                DialogueChoice("tb3_replay_track_a", "Replay Act I as Commander America", listOf("act 1", "escalator", "replay"), "act1_ch1_intro")
             )
         ),
 
@@ -1534,7 +1534,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_CH2_OVAL.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 of Act II! We are inside the Oval Office in the summer of 2017. Sitting on the historic Resolute Desk is a polished red wooden box with a brass button on top, while outside on the Truman Balcony the August 21, 2017 total solar eclipse is beginning to darken the sky!",
+            text = "We are inside the Oval Office in the summer of 2017. Sitting on the historic Resolute Desk is a polished red wooden box with a brass button on top, while outside on the Truman Balcony the August 21, 2017 total solar eclipse is beginning to darken the sky!",
             nextNodeId = "act2_ch2_diet_coke_button"
         ),
         DialogueNode(
@@ -1667,7 +1667,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_CH4_SCIF.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 of Act II! We are inside the House Intelligence Secure Compartmented Information Facility (SCIF). Kicking open the acoustic vault door is your new party companion: Kash Subpoena—carrying his four-page February 2018 Nunes FISA Memo under one arm and a stack of \$19.99 illustrated children's books under the other!",
+            text = "We are inside the House Intelligence Secure Compartmented Information Facility (SCIF). Kicking open the acoustic vault door is your new party companion: Kash Subpoena—carrying his four-page February 2018 Nunes FISA Memo under one arm and a stack of \$19.99 illustrated children's books under the other!",
             nextNodeId = "act2_ch4_kash_recruitment"
         ),
         DialogueNode(
@@ -1736,7 +1736,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_CH3_ROTUNDA.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act II Track A Finale): We are inside the House Chamber in 2020! Standing on the Speaker's dais behind Commander America is Speaker Nancy Palooza—flanked by two \$24,000 stainless-steel Sub-Zero freezers stuffed with \$12 pints of Jeni's Splendid Ice Cream, a stack of pre-scored State of the Union pages, and a fresh blowout from an unmasked visit to a locked-down San Francisco hair salon!",
+            text = "We are inside the House Chamber in 2020! Standing on the Speaker's dais behind Commander America is Speaker Nancy Palooza—flanked by two \$24,000 stainless-steel Sub-Zero freezers stuffed with \$12 pints of Jeni's Splendid Ice Cream, a stack of pre-scored State of the Union pages, and a fresh blowout from an unmasked visit to a locked-down San Francisco hair salon!",
             nextNodeId = "act2_ch5_nancy_greeting"
         ),
         DialogueNode(
@@ -1764,7 +1764,7 @@ object StoryScript {
             id = "act2_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT II TRACK A MAIN EVENT, BROTHER! Commander America, Little Marco, and Wizard Kash vs. Speaker Nancy Palooza's Pre-Scored Speech Rip, 45-Degree Sideways Seal Clap, and Twin \$24,000 Sub-Zero Freezers! RING THE BELL!",
+            text = "IT'S THE 2020 STATE OF THE UNION SHOWDOWN, BROTHER! Commander America, Little Marco, and Wizard Kash vs. Speaker Nancy Palooza's Pre-Scored Speech Rip, 45-Degree Sideways Seal Clap, and Twin \$24,000 Sub-Zero Freezers! RING THE BELL!",
             triggerBattleEncounterId = "act2_media_battle",
             nextNodeId = "act2_ch5_post_battle"
         ),
@@ -1772,9 +1772,9 @@ object StoryScript {
             id = "act2_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Victory in the House Chamber! You have completed all 5 Chapters of Act II on Track A! Would you like to take the Track B Baton Pass and play all 5 Chapters of Act II as Speaker Nancy Palooza (featuring Spicy Sean's neon-green Dancing with the Stars salsa shirt, the pre-scored SOTU speech, the \$24,000 Sub-Zero freezers, the \$341,365 pre-CHIPS Act Nvidia loss Vindication, and Rudy Ghoul's melting hair dye at Four Seasons Total Landscaping), or advance to Act III?",
+            text = "Victory in the House Chamber! Would you like to experience Act II through the eyes of Speaker Nancy Palooza (Spicy Sean's neon salsa shirt, the pre-scored SOTU speech, the \$24,000 Sub-Zero freezers, and Rudy Ghoul's melting hair dye at Four Seasons Total Landscaping), or advance to Act III (2020–2023)?",
             choices = listOf(
-                DialogueChoice("a2_play_track_b", "Play Act II Track B: Experience all 5 Chapters as Speaker Nancy Palooza!", listOf("track b", "nancy", "pelosi", "freezers", "other side"), "act2_tb_ch1_intro"),
+                DialogueChoice("a2_play_track_b", "Experience Act II as Speaker Nancy Palooza (\$24k Freezers & Four Seasons)", listOf("nancy", "pelosi", "freezers", "other side", "track b"), "act2_tb_ch1_intro"),
                 DialogueChoice("a2_to_act3", "Advance to Act III (2020–2023): Joe Naptime's Ice-Cream Bunker & Real-Audio Gibberish", listOf("act 3", "next act", "advance", "biden", "continue"), "act3_ch1_intro")
             )
         ),
@@ -1787,7 +1787,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_TB_CH1_BUSHES.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Welcome back to Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, alongside Karine Hatch-Act and Oprah Free-Car! For all five chapters of Act II (2017–2020), the baton passes to Speaker Nancy Palooza—with 100% full HP/MP and her complete Sub-Zero & Call-Option spell kit unlocked from turn one!",
+            text = "Washington, D.C., 2017 to 2020! Speaker Nancy Palooza strides down the Capitol hallways, power-heels clicking, armed with a fresh blowout, a killer gavel, and an eye for high-stakes tech stock options!",
             nextNodeId = "act2_tb_ch1_kjp_oprah"
         ),
         DialogueNode(
@@ -1850,7 +1850,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_TB_CH2_SOTU.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 (Track B): It is February 4, 2020 on the raised rostrum of the House Chamber! Commander America just handed Nancy Palooza his printed State of the Union address, snubbed her outstretched handshake, and is currently holding forth about hurricane markers and bathroom water pressure!",
+            text = "It is February 4, 2020 on the raised rostrum of the House Chamber! Commander America just handed Nancy Palooza his printed State of the Union address, snubbed her outstretched handshake, and is currently holding forth about hurricane markers and bathroom water pressure!",
             nextNodeId = "act2_tb_ch2_sotu_hub"
         ),
         DialogueNode(
@@ -1905,7 +1905,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_TB_CH3_SUBZERO.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 (Track B): It is April 14, 2020 in San Francisco! While the entire country is locked indoors baking sourdough bread during quarantine, Speaker Nancy Palooza has invited James Corden's Late Late Show cameras into her gourmet kitchen to show off how she's surviving lockdown!",
+            text = "It is April 14, 2020 in San Francisco! While the entire country is locked indoors baking sourdough bread during quarantine, Speaker Nancy Palooza has invited James Corden's Late Late Show cameras into her gourmet kitchen to show off how she's surviving lockdown!",
             nextNodeId = "act2_tb_ch3_subzero_hub"
         ),
         DialogueNode(
@@ -1953,7 +1953,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_TB_CH4_STOCKS.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 (Track B): We are inside the House Clerk's Periodic Transaction Report (PTR) Vault! On the wall, retail traders have launched an actual exchange-traded fund ticker—'NANC'—just to copy Paul and Nancy's deep-in-the-money tech call options on Alphabet, Visa, and Palo Alto Networks!",
+            text = "We are inside the House Clerk's Periodic Transaction Report (PTR) Vault! On the wall, retail traders have launched an actual exchange-traded fund ticker—'NANC'—just to copy Paul and Nancy's deep-in-the-money tech call options on Alphabet, Visa, and Palo Alto Networks!",
             nextNodeId = "act2_tb_ch4_free_market"
         ),
         DialogueNode(
@@ -2022,7 +2022,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT2_TB_CH5_FOUR_SEASONS.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act II Track B Finale): It is 11:30 AM on November 7, 2020 at 7339 State Road in an industrial strip of northeast Philadelphia! After Commander America tweeted 'Big press conference today in Philadelphia at Four Seasons, 11:00am' and then corrected it to 'Four Seasons Total Landscaping,' reporters have gathered in front of a beige garage door wedged directly between the Delaware Valley Crematorium and Fantasy Island Adult Books!",
+            text = "It is 11:30 AM on November 7, 2020 at 7339 State Road in an industrial strip of northeast Philadelphia! After Commander America tweeted 'Big press conference today in Philadelphia at Four Seasons, 11:00am' and then corrected it to 'Four Seasons Total Landscaping,' reporters have gathered in front of a beige garage door wedged directly between the Delaware Valley Crematorium and Fantasy Island Adult Books!",
             nextNodeId = "act2_tb_ch5_rudy_arrives"
         ),
         DialogueNode(
@@ -2050,7 +2050,7 @@ object StoryScript {
             id = "act2_tb_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT II TRACK B GRAND FINALE AT FOUR SEASONS TOTAL LANDSCAPING, EVERYBODY! Speaker Nancy Palooza vs. Rudy Ghoul, the Riding-Mower Mechanic, and the Melting Hair-Dye Blob! Unleash the Pre-Scored SOTU Speech Rip and Deep-ITM Call Options!",
+            text = "IT'S THE GRAND FINALE AT FOUR SEASONS TOTAL LANDSCAPING, EVERYBODY! Speaker Nancy Palooza vs. Rudy Ghoul, the Riding-Mower Mechanic, and the Melting Hair-Dye Blob! Unleash the Pre-Scored SOTU Speech Rip and Deep-ITM Call Options!",
             triggerBattleEncounterId = "act2_track_b_rudy_finale",
             nextNodeId = "act2_tb_ch5_post_battle"
         ),
@@ -2058,7 +2058,7 @@ object StoryScript {
             id = "act2_tb_ch5_post_battle",
             speaker = DialogueSpeaker.PELOSI,
             side = SpeakerSide.LEFT,
-            text = "*Reaches into her portable \$24,000 Sub-Zero freezer and pulls out a fresh double-scoop chocolate chip waffle cone* That wraps up all five chapters of Act II on Track B! Now it's January 2021, and it's time to pass the Track B Standard-Bearer Baton—and this chocolate chip waffle cone—to our Act III protagonist: Joe Naptime!",
+            text = "*Reaches into her portable \$24,000 Sub-Zero freezer and pulls out a fresh double-scoop chocolate chip waffle cone* That wraps up 2020! Now it's January 2021, and it's time to pass this chocolate chip waffle cone to our next protagonist: Joe Naptime!",
             nextNodeId = "act2_tb_ch5_biden_handoff"
         ),
         DialogueNode(
@@ -2067,9 +2067,9 @@ object StoryScript {
             side = SpeakerSide.LEFT,
             text = "*Steps up wearing Ray-Ban aviators and takes the double-scoop waffle cone* Folks, my name is Joe Biden. I'm Dr. Jill Biden's husband, and I came down because I heard there was chocolate chip ice cream! In Act III, we're unleashing Corn Pop, Badakathcare, Truinanashabbadepressure, and 'End of quote, repeat the line!' Which side of Act III would you like to play first?",
             choices = listOf(
-                DialogueChoice("tb2_to_act3_tb", "Play Act III Track B (5 Chapters as Joe Naptime: Ice Cream & Real-Audio Gibberish)!", listOf("track b", "biden", "joe", "ice cream", "corn pop"), "act3_tb_ch1_intro"),
-                DialogueChoice("tb2_to_act3_ta", "Play Act III Track A (5 Chapters as Commander America & Foghorn Kennedy)!", listOf("act 3", "track a", "commander", "kennedy", "advance", "continue"), "act3_ch1_intro"),
-                DialogueChoice("tb2_play_track_a", "Replay Act II Track A (5 Chapters as Commander America & Kash Subpoena)", listOf("act 2", "spicer", "sharpie"), "act2_ch1_intro")
+                DialogueChoice("tb2_to_act3_tb", "Play Act III as Joe Naptime (Ice Cream & Real-Audio Gibberish)!", listOf("biden", "joe", "ice cream", "corn pop", "track b"), "act3_tb_ch1_intro"),
+                DialogueChoice("tb2_to_act3_ta", "Play Act III as Commander America & Foghorn Kennedy!", listOf("act 3", "commander", "kennedy", "advance", "continue", "track a"), "act3_ch1_intro"),
+                DialogueChoice("tb2_play_track_a", "Replay Act II as Commander America & Kash Subpoena", listOf("act 2", "spicer", "sharpie"), "act2_ch1_intro")
             )
         ),
 
@@ -2104,7 +2104,7 @@ object StoryScript {
             id = "act3_ch1_kjp_wind_excuse",
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "*Pops up from the Track B desk holding an anemometer* Excuse me! As I told reporters aboard Air Force One on March 19, 2021: 'It's pretty windy outside! It's very windy. I almost fell coming up the steps myself! He is doing 100 percent fine!'",
+            text = "*Pops up holding an anemometer* Excuse me! As I told reporters aboard Air Force One on March 19, 2021: 'It's pretty windy outside! It's very windy. I almost fell coming up the steps myself! He is doing 100 percent fine!'",
             nextNodeId = "act3_ch1_tarmac_hub"
         ),
         DialogueNode(
@@ -2159,7 +2159,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_CH2_USMCA.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 of Act III! We are inside the wood-paneled Senate Judiciary Committee Chamber. Leaning into his microphone with a slow, syrupy Louisiana drawl is your newest party member: Senator Foghorn Kennedy!",
+            text = "We are inside the wood-paneled Senate Judiciary Committee Chamber. Leaning into his microphone with a slow, syrupy Louisiana drawl is your newest party member: Senator Foghorn Kennedy!",
             nextNodeId = "act3_ch2_kennedy_joins"
         ),
         DialogueNode(
@@ -2222,7 +2222,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_CH3_AF1.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 of Act III! It is 2022–2023: The Great Classified Cardboard Box War! On the left side of the screen is the gilded Lake Room bathroom at Mar-a-Lago, where dozens of cardboard bankers boxes are stacked next to the toilet beneath a crystal chandelier; on the right side is Joe Naptime's Wilmington garage, where classified Ukraine and Iran folders sit in a crushed box on the floor next to his green 1967 Chevrolet Corvette Stingray!",
+            text = "It is 2022–2023: The Great Classified Cardboard Box War! On the left side of the screen is the gilded Lake Room bathroom at Mar-a-Lago, where dozens of cardboard bankers boxes are stacked next to the toilet beneath a crystal chandelier; on the right side is Joe Naptime's Wilmington garage, where classified Ukraine and Iran folders sit in a crushed box on the floor next to his green 1967 Chevrolet Corvette Stingray!",
             nextNodeId = "act3_ch3_chandelier_defense"
         ),
         DialogueNode(
@@ -2284,7 +2284,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_CH4_SUMMIT.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 of Act III! It is August 24, 2023 at the Fulton County Jail on Rice Street in Atlanta, Georgia. Commander America has just stepped up to the booking camera for Booking #P01135809—after filling out his own height and weight form in advance!",
+            text = "It is August 24, 2023 at the Fulton County Jail on Rice Street in Atlanta, Georgia. Commander America has just stepped up to the booking camera for Booking #P01135809—after filling out his own height and weight form in advance!",
             nextNodeId = "act3_ch4_mugshot_pose"
         ),
         DialogueNode(
@@ -2337,7 +2337,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_CH5_BASKIN.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act III Track A Finale): We are inside a Baskin-Robbins ice-cream parlor in Portland, Oregon! Standing at the counter while Consumer Price Index inflation sits at a 40-year high of 8.2% is Joe Naptime—holding a double-scoop chocolate chip waffle cone in one hand and reading straight off a giant glass teleprompter!",
+            text = "We are inside a Baskin-Robbins ice-cream parlor in Portland, Oregon! Standing at the counter while Consumer Price Index inflation sits at a 40-year high of 8.2% is Joe Naptime—holding a double-scoop chocolate chip waffle cone in one hand and reading straight off a giant glass teleprompter!",
             nextNodeId = "act3_ch5_biden_cone_lick"
         ),
         DialogueNode(
@@ -2365,7 +2365,7 @@ object StoryScript {
             id = "act3_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT III TRACK A MAIN EVENT AT BASKIN-ROBBINS, BROTHER! Commander America, Little Marco, Wizard Kash, and Foghorn Kennedy vs. Joe Naptime's Real-Audio Gibberish, Double-Scoop Waffle Cone Blitz, and the 'Repeat the Line' Teleprompter! RING THE BELL!",
+            text = "IT'S THE SHOWDOWN AT BASKIN-ROBBINS, BROTHER! Commander America, Little Marco, Wizard Kash, and Foghorn Kennedy vs. Joe Naptime's Real-Audio Gibberish, Double-Scoop Waffle Cone Blitz, and the 'Repeat the Line' Teleprompter! RING THE BELL!",
             triggerBattleEncounterId = "act3_track_a_biden_ice_cream_finale",
             nextNodeId = "act3_ch5_post_battle"
         ),
@@ -2373,9 +2373,9 @@ object StoryScript {
             id = "act3_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Baskin-Robbins counter is secured and all 5 Chapters of Act III on Track A are complete! Would you like to switch to Track B and play all 5 Chapters of Act III as Joe Naptime (wielding his 10-clip Real-Audio Gibberish move and 5 Ice-Cream Cryomancy spells across Corn Pop's Wilmington pool, the Rehoboth toe-cage bike, his 5 Vindication Wins, and the 1967 Corvette garage), or advance to Act IV?",
+            text = "The Baskin-Robbins counter is secured! Would you like to experience Act III through the eyes of Joe Naptime (Corn Pop's Wilmington pool, the Rehoboth toe-cage bike, the 1967 Corvette garage, and his 10-clip Real-Audio Gibberish), or advance to Act IV (2024)?",
             choices = listOf(
-                DialogueChoice("a3_play_track_b", "Play Act III Track B: Experience all 5 Chapters as Joe Naptime (Ice Cream & Real-Audio Gibberish)!", listOf("track b", "joe", "biden", "ice cream", "gibberish", "corn pop"), "act3_tb_ch1_intro"),
+                DialogueChoice("a3_play_track_b", "Experience Act III as Joe Naptime (Ice Cream & Real-Audio Gibberish)", listOf("joe", "biden", "ice cream", "gibberish", "corn pop", "track b", "other side"), "act3_tb_ch1_intro"),
                 DialogueChoice("a3_to_act4", "Advance to Act IV (2024): Kamala Coconut, JD Pants's Donut Shop & The Torch Pass", listOf("act 4", "next act", "advance", "kamala", "continue"), "act4_ch1_intro")
             )
         ),
@@ -2388,7 +2388,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_TB_CH1_POOL.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Welcome to Act III on Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, joined by Karine Hatch-Act and Oprah Free-Car! Taking the baton—and a fresh Jeni's Chocolate Chip waffle cone—for all five chapters of Act III is Standard-Bearer #3: Joe Naptime! His spellbook features his signature Real-Audio Gibberish attack plus five 100% ice-cream-powered Cryomancy moves!",
+            text = "Summer 2021! Joe Naptime slides into the Oval Office behind a pair of dark aviators, gripping a fresh double-scoop waffle cone of Jeni's Chocolate Chip ice cream and ready to take on the world!",
             nextNodeId = "act3_tb_ch1_oprah_cones"
         ),
         DialogueNode(
@@ -2459,7 +2459,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_TB_CH2_TELEPROMPTER.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 (Track B): It is July 8, 2022 inside the Roosevelt Room! The speechwriting staff typed bracketed stage directions onto the teleprompter glass—'[End of quote. Repeat the line.]'—assuming nobody would ever read the brackets out loud!",
+            text = "It is July 8, 2022 inside the Roosevelt Room! The speechwriting staff typed bracketed stage directions onto the teleprompter glass—'[End of quote. Repeat the line.]'—assuming nobody would ever read the brackets out loud!",
             nextNodeId = "act3_tb_ch2_prompter_hub"
         ),
         DialogueNode(
@@ -2507,7 +2507,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_TB_CH3_BASKIN.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 (Track B): It is October 15, 2022 inside a Baskin-Robbins in Portland, Oregon! Inflation just hit a 40-year high of 8.2%, and Joe Naptime has stepped up to the glass freezer case to order his signature double-scoop chocolate chip waffle cone!",
+            text = "It is October 15, 2022 inside a Baskin-Robbins in Portland, Oregon! Inflation just hit a 40-year high of 8.2%, and Joe Naptime has stepped up to the glass freezer case to order his signature double-scoop chocolate chip waffle cone!",
             nextNodeId = "act3_tb_ch3_baskin_hub"
         ),
         DialogueNode(
@@ -2569,7 +2569,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_TB_CH4_GARAGE.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 (Track B): It is January 12, 2023 inside Joe Naptime's Wilmington, Delaware garage! Parked in the center is his prized green 1967 Chevrolet Corvette Stingray, and sitting on the concrete floor right beside the rear tire is a crushed cardboard box containing classified documents from his Vice Presidential days!",
+            text = "It is January 12, 2023 inside Joe Naptime's Wilmington, Delaware garage! Parked in the center is his prized green 1967 Chevrolet Corvette Stingray, and sitting on the concrete floor right beside the rear tire is a crushed cardboard box containing classified documents from his Vice Presidential days!",
             nextNodeId = "act3_tb_ch4_garage_hub"
         ),
         DialogueNode(
@@ -2619,7 +2619,7 @@ object StoryScript {
             id = "act3_tb_ch4_oprah_roasts_meta",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "*Speaks into her golden megaphone* BOY, IT IS 2023 AND YOU ARE STANDING IN JOE BIDEN'S GARAGE IN DELAWARE! Hillary hasn't been on a ballot in seven years and you STILL brought a microfiber cloth to a Corvette inspection! Now let's head to Chapter 5 for the Act III Track B Finale!",
+            text = "*Speaks into her golden megaphone* BOY, IT IS 2023 AND YOU ARE STANDING IN JOE BIDEN'S GARAGE IN DELAWARE! Hillary hasn't been on a ballot in seven years and you STILL brought a microfiber cloth to a Corvette inspection! Now let's head to the grand finale!",
             changeSceneId = SCENE_ACT3_TB_CH5_MUGSHOT.id,
             nextNodeId = "act3_tb_ch5_intro"
         ),
@@ -2632,7 +2632,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT3_TB_CH5_MUGSHOT.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act III Track B Finale): We are at the intersection of the Mar-a-Lago Bathroom Chandelier Vault and the Fulton County Booking Desk! Commander America is standing in front of thirty cardboard bankers boxes stacked in a gilded shower stall while handing out 'NEVER SURRENDER!' mugshot coffee mugs and claiming he weighs 215 pounds!",
+            text = "We are at the intersection of the Mar-a-Lago Bathroom Chandelier Vault and the Fulton County Booking Desk! Commander America is standing in front of thirty cardboard bankers boxes stacked in a gilded shower stall while handing out 'NEVER SURRENDER!' mugshot coffee mugs and claiming he weighs 215 pounds!",
             nextNodeId = "act3_tb_ch5_confrontation"
         ),
         DialogueNode(
@@ -2653,7 +2653,7 @@ object StoryScript {
             id = "act3_tb_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT III TRACK B GRAND FINALE, EVERYBODY! Joe Naptime's Real-Audio Gibberish & Double-Scoop Ice-Cream Cryomancy vs. Commander America's 215-Pound Mugshot, the Mar-a-Lago Bathroom Chandelier Golem, and the \$7.1M Merch Press! RING THE BELL!",
+            text = "IT'S THE GRAND FINALE, EVERYBODY! Joe Naptime's Real-Audio Gibberish & Double-Scoop Ice-Cream Cryomancy vs. Commander America's 215-Pound Mugshot, the Mar-a-Lago Bathroom Chandelier Golem, and the \$7.1M Merch Press! RING THE BELL!",
             triggerBattleEncounterId = "act3_track_b_mugshot_finale",
             nextNodeId = "act3_tb_ch5_post_battle"
         ),
@@ -2661,7 +2661,7 @@ object StoryScript {
             id = "act3_tb_ch5_post_battle",
             speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.LEFT,
-            text = "*Finishes his double-scoop chocolate chip waffle cone in Rehoboth Beach on Sunday afternoon, July 21, 2024, and taps 'Post' on X at 1:46 PM* Folks, after we finally beat Medicare on that June 27 debate stage—and George Clooney wrote an op-ed three weeks after I raised \$28 million at his Hollywood gala—it's time to pass the Track B Standard-Bearer Baton for Act IV to Vice President Kamala Coconut!",
+            text = "*Finishes his double-scoop chocolate chip waffle cone in Rehoboth Beach on Sunday afternoon, July 21, 2024, and taps 'Post' on X at 1:46 PM* Folks, after we finally beat Medicare on that June 27 debate stage—and George Clooney wrote an op-ed three weeks after I raised \$28 million at his Hollywood gala—it's time to pass the torch for Act IV to Vice President Kamala Coconut!",
             nextNodeId = "act3_tb_ch5_kamala_handoff"
         ),
         DialogueNode(
@@ -2670,9 +2670,9 @@ object StoryScript {
             side = SpeakerSide.LEFT,
             text = "*Steps onto the stage laughing uproariously while gesturing with three overlapping circles* Ha-ha-ha-ha! Thank you, Joe! You think you just fell out of a coconut tree?! You exist in the context of all in which you live and what came before you! In Act IV, get ready for Venn diagrams, yellow school buses, 'The significance of the passage of time,' and JD Pants ordering 'whatever makes sense' at a Georgia donut shop! Which side of Act IV are we playing first?",
             choices = listOf(
-                DialogueChoice("tb3_to_act4_tb", "Play Act IV Track B (5 Chapters as Kamala Coconut: Coconut Trees & Venn Diagrams)!", listOf("track b", "kamala", "coconut", "venn", "unburdened"), "act4_tb_ch1_intro"),
-                DialogueChoice("tb3_to_act4_ta", "Play Act IV Track A (5 Chapters as Commander America & JD Pants)!", listOf("act 4", "track a", "commander", "vance", "donuts", "advance", "continue"), "act4_ch1_intro"),
-                DialogueChoice("tb3_play_track_a", "Replay Act III Track A (5 Chapters as Commander America & Foghorn Kennedy)", listOf("act 3", "kennedy", "mugshot"), "act3_ch1_intro")
+                DialogueChoice("tb3_to_act4_tb", "Play Act IV as Kamala Coconut (Coconut Trees & Venn Diagrams)!", listOf("kamala", "coconut", "venn", "unburdened", "track b"), "act4_tb_ch1_intro"),
+                DialogueChoice("tb3_to_act4_ta", "Play Act IV as Commander America & JD Pants!", listOf("act 4", "commander", "vance", "donuts", "advance", "continue", "track a"), "act4_ch1_intro"),
+                DialogueChoice("tb3_play_track_a", "Replay Act III as Commander America & Foghorn Kennedy", listOf("act 3", "kennedy", "mugshot"), "act3_ch1_intro")
             )
         ),
 
@@ -2763,7 +2763,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_CH2_BINDER.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 of Act IV! After Sunday afternoon July 21, 2024—when Joe Naptime dropped out via a 1:46 PM X post from Rehoboth Beach—Vice President Kamala Coconut inherited the top of the ticket! Let's review her greatest geographic and chronological masterpieces!",
+            text = "After Sunday afternoon July 21, 2024—when Joe Naptime dropped out via a 1:46 PM X post from Rehoboth Beach—Vice President Kamala Coconut inherited the top of the ticket! Let's review her greatest geographic and chronological masterpieces!",
             nextNodeId = "act4_ch2_lester_holt"
         ),
         DialogueNode(
@@ -2809,7 +2809,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_CH3_COURT.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 of Act IV! We are at the Electric Yellow School Bus Depot, where three glowing Venn diagram circles are intersecting above a teleprompter in Flint, Michigan that just froze on the words '32 Days!'",
+            text = "We are at the Electric Yellow School Bus Depot, where three glowing Venn diagram circles are intersecting above a teleprompter in Flint, Michigan that just froze on the words '32 Days!'",
             nextNodeId = "act4_ch3_bus_venn_hub"
         ),
         DialogueNode(
@@ -2864,7 +2864,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_CH4_HEARING.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 of Act IV! It is October 2024—the peak of campaign photo-op theater! First, on October 20 in Feasterville-Trevose, Pennsylvania, Commander America takes off his suit jacket, ties a yellow-trimmed McDonald's apron over his white dress shirt and red silk tie, and steps up to the deep fryer!",
+            text = "It is October 2024—the peak of campaign photo-op theater! First, on October 20 in Feasterville-Trevose, Pennsylvania, Commander America takes off his suit jacket, ties a yellow-trimmed McDonald's apron over his white dress shirt and red silk tie, and steps up to the deep fryer!",
             nextNodeId = "act4_ch4_fry_station"
         ),
         DialogueNode(
@@ -2917,7 +2917,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_CH5_COCONUT_FINALE.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act IV Track A Finale): We have reached the heart of the Coconut Grove! Standing atop the Unburdened Dais is Vice President Kamala Coconut—ready to drop the full philosophical weight of what can be, unburdened by what has been!",
+            text = "We have reached the heart of the Coconut Grove! Standing atop the Unburdened Dais is Vice President Kamala Coconut—ready to drop the full philosophical weight of what can be, unburdened by what has been!",
             nextNodeId = "act4_ch5_kamala_speech"
         ),
         DialogueNode(
@@ -2938,7 +2938,7 @@ object StoryScript {
             id = "act4_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT IV TRACK A MAIN EVENT, BROTHER! The Full 5-Hero Commander America Party vs. Kamala Coconut's Coconut Tree Context Drop, Triple-Circle Venn Diagram, and 'Unburdened By What Has Been'! RING THE BELL!",
+            text = "IT'S THE MAIN EVENT, BROTHER! The Full 5-Hero Commander America Party vs. Kamala Coconut's Coconut Tree Context Drop, Triple-Circle Venn Diagram, and 'Unburdened By What Has Been'! RING THE BELL!",
             triggerBattleEncounterId = "act6_kamala_battle",
             nextNodeId = "act4_ch5_post_battle"
         ),
@@ -2946,9 +2946,9 @@ object StoryScript {
             id = "act4_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Coconut Grove is cleared and all 5 Chapters of Act IV on Track A are complete! Would you like to switch to Track B and play all 5 Chapters of Act IV as Kamala Coconut (featuring her Coconut Tree Context, Venn Diagrams, Tiffany Pearl & CDCR Vindications, roasting JD Pants's donut shop & Philly Swiss cheese, and battling Commander America's 'Concepts of a Plan' and McDonald's Fry Apron), or advance to the Grand Finale Act V?",
+            text = "The Coconut Grove is cleared! Would you like to experience 2024 through the eyes of Kamala Coconut (Coconut Tree Context, Venn Diagrams, Tiffany Pearls, and battling Commander America's McDonald's fry apron), or advance to the Grand Finale Act V (2025–2026)?",
             choices = listOf(
-                DialogueChoice("a4_play_track_b", "Play Act IV Track B: Experience all 5 Chapters as Kamala Coconut!", listOf("track b", "kamala", "coconut", "venn", "other side"), "act4_tb_ch1_intro"),
+                DialogueChoice("a4_play_track_b", "Experience Act IV as Kamala Coconut (Coconut Tree & Venn Diagrams)", listOf("kamala", "coconut", "venn", "other side", "track b"), "act4_tb_ch1_intro"),
                 DialogueChoice("a4_to_act5", "Advance to Act V (2024–2026 Grand Finale): Musk-X's Star-Jump, Zohran Cardamom & Mayor Swagger!", listOf("act 5", "next act", "advance", "musk", "mamdani", "continue"), "act5_ch1_intro")
             )
         ),
@@ -2961,7 +2961,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_TB_CH1_COCONUT.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Welcome to Act IV on Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, with Karine Hatch-Act and Oprah Free-Car! On Sunday afternoon, July 21, 2024, the baton passed to Standard-Bearer #4: Kamala Coconut—entering at 100% HP/MP with her complete Venn-Diagram & Coconut Context spellbook unlocked!",
+            text = "Sunday afternoon, July 21, 2024! Joe Naptime drops out from Rehoboth Beach, and Vice President Kamala Coconut takes the mic, completely unburdened by what has been!",
             nextNodeId = "act4_tb_ch1_oprah_townhall"
         ),
         DialogueNode(
@@ -3023,7 +3023,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_TB_CH2_DONUTS.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 (Track B): We are inside Holt's Sweet Shoppe in Valdosta, Georgia on August 22, 2024! Standing at the pastry counter is Republican VP nominee JD Pants—asking every employee how long the building has existed before ordering 'some sprinkle stuff, whatever makes sense'!",
+            text = "We are inside Holt's Sweet Shoppe in Valdosta, Georgia on August 22, 2024! Standing at the pastry counter is Republican VP nominee JD Pants—asking every employee how long the building has existed before ordering 'some sprinkle stuff, whatever makes sense'!",
             nextNodeId = "act4_tb_ch2_donut_hub"
         ),
         DialogueNode(
@@ -3078,7 +3078,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_TB_CH3_PASSAGE.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 (Track B): We are inside the Hall of the Passage of Time! Here, every speech loops back into itself like an infinity symbol while internet sleuths zoom in 4,000% on Kamala's pearl earrings!",
+            text = "We are inside the Hall of the Passage of Time! Here, every speech loops back into itself like an infinity symbol while internet sleuths zoom in 4,000% on Kamala's pearl earrings!",
             nextNodeId = "act4_tb_ch3_passage_hub"
         ),
         DialogueNode(
@@ -3132,7 +3132,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_TB_CH4_DEBATE.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 (Track B): It is September 10, 2024 at the National Constitution Center in Philadelphia! Kamala Coconut walks all the way behind Commander America's podium to force the first presidential debate handshake since 2016—and then drops the ultimate bait about his rally crowd sizes!",
+            text = "It is September 10, 2024 at the National Constitution Center in Philadelphia! Kamala Coconut walks all the way behind Commander America's podium to force the first presidential debate handshake since 2016—and then drops the ultimate bait about his rally crowd sizes!",
             nextNodeId = "act4_tb_ch4_rally_bait"
         ),
         DialogueNode(
@@ -3181,7 +3181,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT4_TB_CH5_MCDONALDS.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act IV Track B Finale): It is late October 2024! Commander America is leaning out of a closed-to-the-public McDonald's drive-thru window wearing a yellow-trimmed fry apron over his silk tie—right beside a white Green Bay garbage truck and a neon-orange reflective safety vest!",
+            text = "It is late October 2024! Commander America is leaning out of a closed-to-the-public McDonald's drive-thru window wearing a yellow-trimmed fry apron over his silk tie—right beside a white Green Bay garbage truck and a neon-orange reflective safety vest!",
             nextNodeId = "act4_tb_ch5_kamala_confronts"
         ),
         DialogueNode(
@@ -3202,7 +3202,7 @@ object StoryScript {
             id = "act4_tb_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT IV TRACK B GRAND FINALE, EVERYBODY! Kamala Coconut vs. Commander America's McDonald's Fry-Cook Apron, the Neon-Orange Mack Garbage Truck, and JD Pants's Diet Mountain Dew! RING THE BELL!",
+            text = "IT'S THE 2024 SHOWDOWN, EVERYBODY! Kamala Coconut vs. Commander America's McDonald's Fry-Cook Apron, the Neon-Orange Mack Garbage Truck, and JD Pants's Diet Mountain Dew! RING THE BELL!",
             triggerBattleEncounterId = "act4_track_b_mcdonalds_finale",
             nextNodeId = "act4_tb_ch5_post_battle"
         ),
@@ -3210,7 +3210,7 @@ object StoryScript {
             id = "act4_tb_ch5_post_battle",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.LEFT,
-            text = "*Closes her three-circle Venn diagram binder as the calendar flips to 2025–2026* That completes all five chapters of Act IV on Track B! And now, for the Grand Finale Act V (2025–2026), the Track B Standard-Bearer Relay Baton heads straight up I-95 to New York City—where Ugandan-born rap producer turned democratic socialist Mayor Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger are taking the stage!",
+            text = "*Closes her three-circle Venn diagram binder as the calendar flips to 2025–2026* That wraps up 2024! And now, for the Grand Finale Act V (2025–2026), the story heads straight up I-95 to New York City—where democratic socialist Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger are taking the stage!",
             nextNodeId = "act4_tb_ch5_zohran_handoff"
         ),
         DialogueNode(
@@ -3220,7 +3220,7 @@ object StoryScript {
             text = "*Steps out of an Astoria food truck wearing a bespoke suit and an apron, slapping a sizzling chapati onto the grill while 'Nani' plays on the speakers* Yo, peace everybody—it's Zohran Cardamom, aka Young Cardamom, aka Mr. Cardamom! In Act V (2025–2026), we're taking on Musk-X's Dark Gothic MAGA Mid-Air Star-Jump, Mayor Swagger's Turkish 'rat-free table water,' and Commander America in the Bipartisan Grand Finale! Which side of Act V are you playing first?",
             choices = listOf(
                 DialogueChoice("tb4_to_act5", "Advance to Act V (2025–2026 Grand Finale): Musk-X's Star-Jump, Zohran Cardamom & Mayor Swagger!", listOf("act 5", "zohran", "mamdani", "musk", "advance", "continue"), "act5_ch1_intro"),
-                DialogueChoice("tb4_play_track_a", "Switch to Act IV Track A (Play all 5 Chapters as Commander America & JD Pants)", listOf("track a", "commander", "vance", "donuts"), "act4_ch1_intro")
+                DialogueChoice("tb4_play_track_a", "Play Act IV as Commander America & JD Pants", listOf("commander", "vance", "donuts", "track a"), "act4_ch1_intro")
             )
         ),
         // =========================================================================
@@ -3256,7 +3256,7 @@ object StoryScript {
                 DialogueChoice("a5c1_cybertruck", "Replay the Nov 2019 Cybertruck 'Armor Glass' steel-ball window smash & Don Lemon Ketamine Rx interview!", listOf("cybertruck", "armor glass", "window", "ketamine", "don lemon", "420"), "act5_ch1_cybertruck_node", completionFlag = "a5c1_cyb_done"),
                 DialogueChoice("a5c1_vind", "Laugh off the 'Emerald Mine Heir' & 'Stranded Astronauts' rumors!", listOf("vindication", "emerald mine", "astronauts", "spacex", "boeing"), "act5_ch1_musk_vindication", completionFlag = "a5c1_vind_done"),
                 DialogueChoice("a5c1_battle", "Test Musk-X's Dark Gothic MAGA Star-Jump in combat against the Shattered Cybertruck & Porcelain Sink!", listOf("battle", "fight", "sink", "proceed", "advance"), "act5_ch1_battle_trigger"),
-                DialogueChoice("a5c1_switch_tb", "Switch to Act V Track B: Play as Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger in Queens!", listOf("track b", "zohran", "mamdani", "cardamom", "swagger", "other side"), "act5_tb_ch1_intro")
+                DialogueChoice("a5c1_switch_tb", "Switch to Act V: Play as Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger in Queens!", listOf("track b", "zohran", "mamdani", "cardamom", "swagger", "other side"), "act5_tb_ch1_intro")
             )
         ),
         DialogueNode(
@@ -3300,7 +3300,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_CH2_SENATE.id,
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 (Track A): WELCOME TO JULY 18, 2024 AT THE FISERV FORUM IN MILWAUKEE AND THE 'DOGE' HEADQUARTERS, BROTHER! Watch me step up to the convention podium in a black blazer, rip off my outer shirt to reveal a Trump-Vance shirt, and then rip THAT shirt in half too—LET TRUMPAMANIA RUN WILD, BROTHER!",
+            text = "WELCOME TO JULY 18, 2024 AT THE FISERV FORUM IN MILWAUKEE AND THE 'DOGE' HEADQUARTERS, BROTHER! Watch me step up to the convention podium in a black blazer, rip off my outer shirt to reveal a Trump-Vance shirt, and then rip THAT shirt in half too—LET TRUMPAMANIA RUN WILD, BROTHER!",
             nextNodeId = "act5_ch2_doge_hub"
         ),
         DialogueNode(
@@ -3355,7 +3355,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_CH3_TERRACE.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 (Track A): Welcome to New York City—the 'Istanbul of America'! Reclining in a \$15,000 Turkish Airlines lie-flat business-class suite while eating a late-night fillet of 'strictly vegan' Chilean sea bass at Osteria La Baia is New York's self-proclaimed 'Swagger Man,' Mayor Swagger!",
+            text = "Welcome to New York City—the 'Istanbul of America'! Reclining in a \$15,000 Turkish Airlines lie-flat business-class suite while eating a late-night fillet of 'strictly vegan' Chilean sea bass at Osteria La Baia is New York's self-proclaimed 'Swagger Man,' Mayor Swagger!",
             nextNodeId = "act5_ch3_swagger_speech"
         ),
         DialogueNode(
@@ -3417,7 +3417,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_CH4_CLOSETS.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 (Track A): We have arrived in Astoria, Queens! Standing in front of a chapati food truck wearing a bespoke thrifted suit under a floral kitchen apron is Standard-Bearer #5: Zohran Cardamom—formerly known in the 2016–2019 rap scene as 'Young Cardamom' and 'Mr. Cardamom'!",
+            text = "We have arrived in Astoria, Queens! Standing in front of a chapati food truck wearing a bespoke thrifted suit under a floral kitchen apron is Zohran Cardamom—formerly known in the 2016–2019 rap scene as 'Young Cardamom' and 'Mr. Cardamom'!",
             nextNodeId = "act5_ch4_zohran_speech"
         ),
         DialogueNode(
@@ -3479,7 +3479,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_CH5_FINALE.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act V Track A Grand Finale): We have arrived at the 2026 Bipartisan Roast Arena! Across the stage stand Standard-Bearers past and present—Zohran Cardamom ('Mr. Cardamom') in his Nani rap apron, Kamala Coconut with her Three-Circle Venn Diagram, and Joe Naptime with his 10-clip Real-Audio Gibberish Megaphone and Double-Scoop Chocolate Chip Waffle Cone!",
+            text = "We have arrived at the 2026 Bipartisan Roast Arena! Across the stage stand Zohran Cardamom ('Mr. Cardamom') in his Nani rap apron, Kamala Coconut with her Three-Circle Venn Diagram, and Joe Naptime with his 10-clip Real-Audio Gibberish Megaphone and Double-Scoop Chocolate Chip Waffle Cone!",
             nextNodeId = "act5_ch5_boss_banter"
         ),
         DialogueNode(
@@ -3493,14 +3493,14 @@ object StoryScript {
             id = "act5_ch5_commander_banter",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "We've been through eleven years of escalators, Chappaqua servers, Covfefe tweets, \$24,000 freezers, Corn Pop chains, coconut trees, donut shops, and mid-air X-jumps, folks! Musk-X, JD Pants, Wizard Kash, Foghorn Kennedy, Little Marco—let's win the Track A Grand Finale!",
+            text = "We've been through eleven years of escalators, Chappaqua servers, Covfefe tweets, \$24,000 freezers, Corn Pop chains, coconut trees, donut shops, and mid-air X-jumps, folks! Musk-X, JD Pants, Wizard Kash, Foghorn Kennedy, Little Marco—let's take home the Grand Finale!",
             nextNodeId = "act5_ch5_finale_battle_trigger"
         ),
         DialogueNode(
             id = "act5_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "THIS IS IT, BROTHER—THE ACT V TRACK A GRAND FINALE! Commander America & Musk-X vs. Zohran Cardamom ('Mr. Cardamom'), Kamala Coconut, and Joe Naptime! LET EQUAL-OPPORTUNITY SATIRE RUN WILD!",
+            text = "THIS IS IT, BROTHER—THE GRAND FINALE! Commander America & Musk-X vs. Zohran Cardamom ('Mr. Cardamom'), Kamala Coconut, and Joe Naptime! LET EQUAL-OPPORTUNITY SATIRE RUN WILD!",
             triggerBattleEncounterId = "act5_track_a_grand_finale",
             nextNodeId = "act5_ch5_post_battle"
         ),
@@ -3508,9 +3508,9 @@ object StoryScript {
             id = "act5_ch5_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "CONGRATULATIONS! You have conquered all 5 Acts on Track A! Before we raise the curtain on the Unified Bipartisan Curtain-Call Epilogue, would you like to switch to Track B and play the 5 hilarious chapters of Act V as Zohran Cardamom ('Mr. Cardamom') and Mayor Swagger?",
+            text = "CONGRATULATIONS! You have conquered the campaign! Before we raise the curtain on the Unified Bipartisan Curtain-Call Epilogue, would you like to experience Act V through the eyes of Zohran Cardamom ('Mr. Cardamom') and Mayor Swagger?",
             choices = listOf(
-                DialogueChoice("a5_play_track_b", "Play Act V Track B: Experience all 5 Chapters as Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger!", listOf("track b", "zohran", "mamdani", "cardamom", "swagger", "other side"), "act5_tb_ch1_intro"),
+                DialogueChoice("a5_play_track_b", "Experience Act V as Zohran Cardamom & Mayor Swagger", listOf("zohran", "mamdani", "cardamom", "swagger", "other side", "track b"), "act5_tb_ch1_intro"),
                 DialogueChoice("a5_curtain_call", "Enter the Unified 2026 Bipartisan Curtain-Call Finale & Epilogue!", listOf("epilogue", "curtain call", "finale", "end", "credits"), "act5_bipartisan_curtain_call")
             )
         ),
@@ -3523,7 +3523,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_TB_CH1_CHAPATI.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Welcome to Act V on Track B: The 2025–2026 Standard-Bearer Finale! I'm Jen Circle-Back, alongside Karine Hatch-Act and Oprah Free-Car! Kamala Coconut has passed the baton to Standard-Bearer #5: Ugandan-born rap producer turned New York City democratic socialist Zohran Cardamom ('Mr. Cardamom'), teamed up with swaggering table-water connoisseur Mayor Swagger—both at 100% HP and MP!",
+            text = "Welcome to 2025 and 2026! Up in New York City, Ugandan-born rap producer turned democratic socialist Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger take the stage!",
             nextNodeId = "act5_tb_ch1_oprah_welcome"
         ),
         DialogueNode(
@@ -3592,7 +3592,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_TB_CH2_SWAGGER.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 2 (Track B): We are inside Gracie Mansion with Mayor Swagger! On the table sit a plastic baby doll, a glass jar of marbles, a plate of midnight Chilean sea bass from Osteria La Baia, a locked 6-digit iPhone, and a stack of Turkish Airlines lie-flat boarding passes!",
+            text = "We are inside Gracie Mansion with Mayor Swagger! On the table sit a plastic baby doll, a glass jar of marbles, a plate of midnight Chilean sea bass from Osteria La Baia, a locked 6-digit iPhone, and a stack of Turkish Airlines lie-flat boarding passes!",
             nextNodeId = "act5_tb_ch2_swagger_hub"
         ),
         DialogueNode(
@@ -3647,7 +3647,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_TB_CH3_CYBERTRUCK.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 3 (Track B): We are at the Cybertruck Demo Stage! Across from us stands billionaire Guest Summon Musk-X—wearing his black 'Dark Gothic MAGA' hat, clutching a porcelain bathroom sink, and standing beside a Cybertruck with two steel-ball-shattered windows!",
+            text = "We are at the Cybertruck Demo Stage! Across from us stands billionaire Guest Summon Musk-X—wearing his black 'Dark Gothic MAGA' hat, clutching a porcelain bathroom sink, and standing beside a Cybertruck with two steel-ball-shattered windows!",
             nextNodeId = "act5_tb_ch3_musk_hub"
         ),
         DialogueNode(
@@ -3709,7 +3709,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_TB_CH4_DOGE.id,
             speaker = DialogueSpeaker.NARRATOR_KJP,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 4 (Track B): We are inside the Department of Government Efficiency ('DOGE') hearing chamber! Beneath a giant Shiba Inu meme banner stand JD Pants with a box of 'whatever makes sense' glazed donuts, Wizard Kash with his \$19.99 'Plot Against the King' children's book, and Senator Foghorn Kennedy with his Oxford law degree disguised as a Louisiana porch drawl!",
+            text = "We are inside the Department of Government Efficiency ('DOGE') hearing chamber! Beneath a giant Shiba Inu meme banner stand JD Pants with a box of 'whatever makes sense' glazed donuts, Wizard Kash with his \$19.99 'Plot Against the King' children's book, and Senator Foghorn Kennedy with his Oxford law degree disguised as a Louisiana porch drawl!",
             nextNodeId = "act5_tb_ch4_vance_banter"
         ),
         DialogueNode(
@@ -3751,7 +3751,7 @@ object StoryScript {
             changeSceneId = SCENE_ACT5_TB_CH5_FINALE.id,
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Chapter 5 (Act V Track B Grand Finale): Welcome to the 2026 Bipartisan Grand Finale Stage! Across the golden arena stand Commander America in his McDonald's Fry Apron and Neon-Orange Garbage Vest, Musk-X in his Dark Gothic MAGA hat, and the Red Wooden Diet Coke Valet Box!",
+            text = "Welcome to the 2026 Bipartisan Grand Finale Stage! Across the golden arena stand Commander America in his McDonald's Fry Apron and Neon-Orange Garbage Vest, Musk-X in his Dark Gothic MAGA hat, and the Red Wooden Diet Coke Valet Box!",
             nextNodeId = "act5_tb_ch5_commander_challenge"
         ),
         DialogueNode(
@@ -3765,14 +3765,14 @@ object StoryScript {
             id = "act5_tb_ch5_zohran_response",
             speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
             side = SpeakerSide.LEFT,
-            text = "For Hill-Rod's Chappaqua server, Nancy's \$24,000 Sub-Zero ice-cream freezers, Joe's 10-clip Badakathcare megaphone, Kamala's Coconut Tree context, Mayor Swagger's Contraband Baby-Doll, and my Astoria chapati truck—let's finish the Track B Relay!",
+            text = "For Hill-Rod's Chappaqua server, Nancy's \$24,000 Sub-Zero ice-cream freezers, Joe's 10-clip Badakathcare megaphone, Kamala's Coconut Tree context, Mayor Swagger's Contraband Baby-Doll, and my Astoria chapati truck—let's bring this house down!",
             nextNodeId = "act5_tb_ch5_finale_battle_trigger"
         ),
         DialogueNode(
             id = "act5_tb_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "IT'S THE ACT V TRACK B GRAND FINALE, EVERYBODY! Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger vs. Commander America, Musk-X & the Diet Coke Valet Turret! RING THE FINAL BELL!",
+            text = "IT'S THE 2026 GRAND FINALE SHOWDOWN, EVERYBODY! Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger vs. Commander America, Musk-X & the Diet Coke Valet Turret! RING THE FINAL BELL!",
             triggerBattleEncounterId = "act5_track_b_grand_finale",
             nextNodeId = "act5_bipartisan_curtain_call"
         ),
@@ -3792,7 +3792,7 @@ object StoryScript {
             id = "act5_curtain_call_psaki",
             speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Over 48 chapters across Track A and Track B, we proved two immutable laws of American politics: first, every single politician on both sides of the aisle generates better comedy in real life than fiction could ever invent; and second, neither side will EVER let a 10-, 20-, or 48-year-old talking point go!",
+            text = "Over forty-eight chapters of political history, we proved two immutable laws of American politics: first, every single politician on both sides of the aisle generates better comedy in real life than fiction could ever invent; and second, neither side will EVER let a 10-, 20-, or 48-year-old talking point go!",
             nextNodeId = "act5_curtain_call_oprah"
         ),
         DialogueNode(
@@ -3972,7 +3972,7 @@ object StoryScript {
             id = "act8_ch5_hulk_finale",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "THAT'S A WRAP ON ALL FIVE ACTS (2015–2026) ACROSS BOTH TRACK A AND TRACK B, BROTHER! 48 CHAPTERS OF 100% FACT-CHECKED, EQUAL-OPPORTUNITY BIPARTISAN SATIRE—THANK YOU FOR PLAYING COMMANDER AMERICA RPG!"
+            text = "THAT'S A WRAP ON ALL FIVE ACTS (2015–2026), BROTHER! 48 CHAPTERS OF 100% FACT-CHECKED, EQUAL-OPPORTUNITY BIPARTISAN SATIRE—THANK YOU FOR PLAYING COMMANDER AMERICA RPG!"
         ),
         DialogueNode(
             id = "act8_intro",
