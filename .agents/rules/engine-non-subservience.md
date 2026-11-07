@@ -18,5 +18,6 @@
 * Game content (characters, storylines, enemies, spell books, visual palettes, sprite matrices, music, and sound effects) belongs entirely to *Commander America*.
 
 ## 3. Strict Verification & Deployment Protocol
-* Before finishing any task, always compile with `./gradlew assembleDebug` and verify exit code 0.
+* Run `./gradlew testDebugUnitTest` and ensure all 219+ unit tests pass cleanly.
+* Compile and package with `./gradlew assembleDebug` and verify exit code 0.
 * Deploy updated builds to connected ADB devices.

@@ -93,3 +93,8 @@ signing.properties
 # Environment variables
 .env
 .env.*
+
+# Internal AI handoff notes and scratch plans
+*HANDOFF*.md
+*handoff*.md
+PROJECT_HANDOFF_PLAN.md
