@@ -313,7 +313,7 @@ private fun BattleConclusionOverlay(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = if (isVictory) "The Logos resonates through the sanctum." else "Your voice fades into the Blight.",
+                text = if (isVictory) "Political victory! All HP & MP restored to 100%." else "Defeated! Regroup and try again.",
                 color = Color.LightGray,
                 fontSize = 12.sp,
                 fontFamily = FontFamily.Monospace

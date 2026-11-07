@@ -84,39 +84,64 @@ class StoryViewModel(
 
     companion object {
         val DEBUG_CHAPTER_TARGETS: List<DebugChapterTarget> = listOf(
-            DebugChapterTarget("Act I - Ch 1: Escalator", "act1_ch1_intro", 1),
-            DebugChapterTarget("Act I - Ch 2: Primary Debate", "act1_ch2_intro", 2),
-            DebugChapterTarget("Act I - Ch 3: Primary Sweep", "act1_ch3_intro", 3),
-            DebugChapterTarget("Act II - Ch 1: Inaugural Address", "act2_ch1_intro", 4),
-            DebugChapterTarget("Act II - Ch 2: The Oval Citadel", "act2_ch2_intro", 5),
-            DebugChapterTarget("Act II - Ch 3: The Stock-Trading Lich", "act2_ch3_intro", 5),
-            DebugChapterTarget("Act III - Ch 1: Ohio Steel Mill", "act3_ch1_intro", 6),
-            DebugChapterTarget("Act III - Ch 2: USMCA Trade War", "act3_ch2_intro", 6),
-            DebugChapterTarget("Act III - Ch 3: Air Force One", "act3_ch3_intro", 6),
-            DebugChapterTarget("Act III - Ch 4: Crimson Summit", "act3_ch4_intro", 6),
-            DebugChapterTarget("Act III: The Summit of Peace", "act3_intro", 6),
-            DebugChapterTarget("Act IV - Ch 1: FISA Labyrinth", "act4_ch1_intro", 7),
-            DebugChapterTarget("Act IV - Ch 2: Unredacted Vault", "act4_ch2_intro", 7),
-            DebugChapterTarget("Act IV - Ch 3: Subpoena Swarm", "act4_ch3_intro", 7),
-            DebugChapterTarget("Act IV - Ch 4: Nothingburger Climax", "act4_ch4_intro", 7),
-            DebugChapterTarget("Act IV: The Mueller Hoax", "act4_intro", 7),
-            DebugChapterTarget("Act V - Ch 1: 3 AM Water Pipe", "act5_ch1_intro", 7),
-            DebugChapterTarget("Act V - Ch 2: Senate Inquest", "act5_ch2_intro", 8),
-            DebugChapterTarget("Act V - Ch 3: Southern White House", "act5_ch3_intro", 8),
-            DebugChapterTarget("Act V - Ch 4: Golden Closets", "act5_ch4_intro", 8),
-            DebugChapterTarget("Act V: The Mar-a-Lago Fortress", "act5_intro", 8),
+            DebugChapterTarget("Act I (Track A) - Ch 1: Escalator", "act1_ch1_intro", 1),
+            DebugChapterTarget("Act I (Track A) - Ch 2: Primary Debate", "act1_ch2_intro", 2),
+            DebugChapterTarget("Act I (Track A) - Ch 3: Taco Bowls & Bus", "act1_ch3_intro", 3),
+            DebugChapterTarget("Act I (Track A) - Ch 4: Election Finale", "act1_ch4_intro", 3),
+            DebugChapterTarget("Act I (Track B) - Ch 1: Chappaqua Server", "act1_tb_ch1_intro", 1),
+            DebugChapterTarget("Act I (Track B) - Ch 2: Two Ferns & MetroCard", "act1_tb_ch2_intro", 2),
+            DebugChapterTarget("Act I (Track B) - Ch 3: Purse Hot Sauce", "act1_tb_ch3_intro", 3),
+            DebugChapterTarget("Act I (Track B) - Ch 4: Javits Ceiling", "act1_tb_ch4_intro", 3),
+            DebugChapterTarget("Act II (Track A) - Ch 1: Bushes & Mooch", "act2_ch1_intro", 4),
+            DebugChapterTarget("Act II (Track A) - Ch 2: Covfefe & Diet Coke", "act2_ch2_intro", 5),
+            DebugChapterTarget("Act II (Track A) - Ch 3: Sharpie Map & Space Force", "act2_ch3_sharpie_intro", 5),
+            DebugChapterTarget("Act II (Track A) - Ch 4: Nunes Memo & Wizard Kash", "act2_ch4_scif_intro", 7),
+            DebugChapterTarget("Act II (Track A) - Ch 5: Sub-Zero Freezers Finale", "act2_ch3_intro", 5),
+            DebugChapterTarget("Act II (Track B) - Ch 1: Sideways Clap", "act2_tb_ch1_intro", 5),
+            DebugChapterTarget("Act II (Track B) - Ch 2: Pre-Scored SOTU", "act2_tb_ch2_intro", 5),
+            DebugChapterTarget("Act II (Track B) - Ch 3: \$24k Freezers", "act2_tb_ch3_intro", 5),
+            DebugChapterTarget("Act II (Track B) - Ch 4: \$341k Nvidia Loss", "act2_tb_ch4_intro", 5),
+            DebugChapterTarget("Act II (Track B) - Ch 5: Four Seasons Total Landscaping", "act2_tb_ch5_intro", 5),
+            DebugChapterTarget("Act III (Track A) - Ch 1: AF1 Stairs & Bike", "act3_ch1_intro", 6),
+            DebugChapterTarget("Act III (Track A) - Ch 2: Foghorn Kennedy", "act3_ch2_intro", 6),
+            DebugChapterTarget("Act III (Track A) - Ch 3: Bathroom Chandelier", "act3_ch3_intro", 6),
+            DebugChapterTarget("Act III (Track A) - Ch 4: 215-Lb Mugshot", "act3_ch4_intro", 6),
+            DebugChapterTarget("Act III (Track A) - Ch 5: Baskin-Robbins Finale", "act3_ch5_baskin_intro", 6),
+            DebugChapterTarget("Act III (Track B) - Ch 1: Corn Pop's Pool", "act3_tb_ch1_intro", 6),
+            DebugChapterTarget("Act III (Track B) - Ch 2: End of Quote", "act3_tb_ch2_intro", 6),
+            DebugChapterTarget("Act III (Track B) - Ch 3: Baskin-Robbins", "act3_tb_ch3_intro", 6),
+            DebugChapterTarget("Act III (Track B) - Ch 4: Corvette Garage", "act3_tb_ch4_intro", 6),
+            DebugChapterTarget("Act III (Track B) - Ch 5: Mugshot & Coconut Pass", "act3_tb_ch5_intro", 6),
+            DebugChapterTarget("Act IV (Track A) - Ch 1: Whatever Makes Sense Donuts", "act4_ch1_intro", 7),
+            DebugChapterTarget("Act IV (Track A) - Ch 2: Haven't Been to Europe", "act4_ch2_intro", 7),
+            DebugChapterTarget("Act IV (Track A) - Ch 3: Venn Diagrams & Buses", "act4_ch3_intro", 7),
+            DebugChapterTarget("Act IV (Track A) - Ch 4: McDonald's Fry Apron", "act4_ch4_intro", 7),
+            DebugChapterTarget("Act IV (Track A) - Ch 5: Coconut Grove Finale", "act4_ch5_coconut_intro", 7),
+            DebugChapterTarget("Act IV (Track B) - Ch 1: Coconut Tree Context", "act4_tb_ch1_intro", 7),
+            DebugChapterTarget("Act IV (Track B) - Ch 2: JD's Donut Shop", "act4_tb_ch2_intro", 7),
+            DebugChapterTarget("Act IV (Track B) - Ch 3: Passage of Time", "act4_tb_ch3_intro", 7),
+            DebugChapterTarget("Act IV (Track B) - Ch 4: Concepts of a Plan", "act4_tb_ch4_intro", 7),
+            DebugChapterTarget("Act IV (Track B) - Ch 5: Fry Apron & Chapati Pass", "act4_tb_ch5_intro", 7),
+            DebugChapterTarget("Act V (Track A) - Ch 1: Dark Gothic MAGA Star-Jump", "act5_ch1_intro", 7),
+            DebugChapterTarget("Act V (Track A) - Ch 2: Hulkster & DOGE", "act5_ch2_intro", 8),
+            DebugChapterTarget("Act V (Track A) - Ch 3: Mayor Swagger's Upgrades", "act5_ch3_intro", 8),
+            DebugChapterTarget("Act V (Track A) - Ch 4: Mr. Cardamom's Chapati Truck", "act5_ch4_intro", 8),
+            DebugChapterTarget("Act V (Track A) - Ch 5: 2026 Grand Finale", "act5_ch5_finale_intro", 8),
+            DebugChapterTarget("Act V (Track B) - Ch 1: Mr. Cardamom & Free Buses", "act5_tb_ch1_intro", 8),
+            DebugChapterTarget("Act V (Track B) - Ch 2: Contraband Baby-Doll & Sea Bass", "act5_tb_ch2_intro", 8),
+            DebugChapterTarget("Act V (Track B) - Ch 3: Shattered Cybertruck", "act5_tb_ch3_intro", 8),
+            DebugChapterTarget("Act V (Track B) - Ch 4: DOGE Vanguard", "act5_tb_ch4_intro", 8),
+            DebugChapterTarget("Act V (Track B) - Ch 5: Bipartisan Curtain Call", "act5_tb_ch5_intro", 8),
             DebugChapterTarget("Act VI - Ch 1: Border Czar Inspection", "act6_ch1_intro", 9),
             DebugChapterTarget("Act VI - Ch 2: Venn Diagram Fog", "act6_ch2_intro", 9),
             DebugChapterTarget("Act VI - Ch 3: Electric Bus Mire", "act6_ch3_intro", 9),
             DebugChapterTarget("Act VI - Ch 4: Coconut Tree Grove", "act6_ch4_intro", 9),
             DebugChapterTarget("Act VI - Ch 5: Unburdened Climax", "act6_ch5_intro", 9),
-            DebugChapterTarget("Act VI: The Word-Salad Wasteland", "act6_intro", 9),
             DebugChapterTarget("Act VII - Ch 1: 91 Indictment Gauntlet", "act7_ch1_intro", 10),
             DebugChapterTarget("Act VII - Ch 2: Gag Order Guillotine", "act7_ch2_intro", 10),
             DebugChapterTarget("Act VII - Ch 3: Butler PA Fairgrounds", "act7_ch3_intro", 10),
             DebugChapterTarget("Act VII - Ch 4: Steel Ear Miracle", "act7_ch4_intro", 10),
             DebugChapterTarget("Act VII - Ch 5: Milwaukee Coronation", "act7_ch5_intro", 10),
-            DebugChapterTarget("Act VII: The Sands of Resolve", "act7_intro", 10),
             DebugChapterTarget("Act VIII - Ch 1: Basement Bunker", "act8_ch1_intro", 11),
             DebugChapterTarget("Act VIII - Ch 2: Teleprompter Jammer", "act8_ch2_intro", 11),
             DebugChapterTarget("Act VIII - Ch 3: Auto-Pen Phantoms", "act8_ch3_intro", 11),
@@ -701,8 +726,8 @@ class StoryViewModel(
         val targetSlot = if (slot == SaveManager.STORY_MODE_SLOT) SaveManager.STORY_MODE_SLOT else (slot ?: _state.value.currentSlot).coerceIn(1, SaveManager.MAX_SLOTS)
         saveManager.currentSlot = targetSlot
         val initialSave = saveManager.createInitialSave(customization, targetSlot)
-        val initialNode = StoryScript.ALL_NODES["act1_intro"]!!
-        val initialScene = StoryScript.SCENE_ACT1_ESCALATOR
+        val initialNode = StoryScript.ALL_NODES[initialSave.currentNodeId] ?: StoryScript.ALL_NODES["act1_intro"]!!
+        val initialScene = StoryScript.ALL_SCENES[initialSave.currentSceneId] ?: StoryScript.SCENE_ACT1_ESCALATOR
 
         val initialEntry = DialogueLogEntry(
             speakerId = initialNode.speaker.id,
@@ -1383,61 +1408,48 @@ class StoryViewModel(
         val encounterId = lastNode.triggerBattleEncounterId ?: _state.value.activeEncounter?.id ?: "unknown"
         val postBattleNodeId = when (encounterId) {
             "act1_lobby_battle", "act1_ch1_press_battle" -> "act1_ch1_post_battle"
-            "act1_ch2_debate_battle" -> "act1_ch2_post_battle"
-            "act1_ch3_machine_battle" -> "act1_ch3_post_battle"
+            "act1_track_a_barry_battle" -> "act1_ch2_post_battle"
+            "act1_ch2_debate_battle" -> "act1_ch3_bus_post_battle"
+            "act1_ch3_machine_battle", "act1_track_a_hill_rod_finale" -> "act1_ch3_post_battle"
+            "act1_track_b_ferns_battle" -> "act1_tb_ch2_post_battle"
+            "act1_track_b_spicy_sean_battle" -> "act1_tb_ch4_intro"
+            "act1_track_b_commander_finale" -> "act1_tb_ch3_post_battle"
             "act2_ch1_inauguration_battle" -> "act2_ch1_post_battle"
-            "act2_media_battle" -> "act2_ch3_post_battle"
-            "act3_ch1_mill_battle" -> "act3_ch1_post_battle"
-            "act3_ch3_intercept_battle" -> "act3_ch3_post_battle"
-            "act3_summit_battle" -> "act3_ch4_post_battle"
-            "act4_ch1_fisa_battle" -> "act4_ch1_post_battle"
-            "act4_ch3_subpoena_battle" -> "act4_ch3_post_battle"
-            "act4_hoax_battle" -> "act4_ch4_post_battle"
-            "act5_ch1_pipe_battle" -> "act5_ch1_post_battle"
-            "act5_ch2_inquest_battle" -> "act5_ch2_post_battle"
-            "act5_golem_battle" -> "act5_ch4_post_battle"
-            "act6_ch1_border_battle" -> "act6_ch1_post_battle"
-            "act6_ch3_bus_battle" -> "act6_ch3_post_battle"
-            "act6_kamala_battle" -> "act6_ch5_post_battle"
-            "act7_ch1_indictment_battle" -> "act7_ch1_post_battle"
-            "act7_ch2_contempt_battle" -> "act7_ch2_post_battle"
-            "act7_lawfare_battle" -> "act7_ch5_post_battle"
-            "act8_ch1_bunker_battle" -> "act8_ch1_post_battle"
-            "act8_ch2_teleprompter_battle" -> "act8_ch2_post_battle"
-            "act8_ch3_autopen_battle" -> "act8_ch3_post_battle"
-            "act8_biden_final_battle" -> if (lastNode.id == "act8_battle_trigger") "act8_post_battle" else "act8_ch4_post_battle"
-            "prologue_solo" -> "village_post_battle"
-            "forest_ambush" -> "crossroads_post_battle"
-            "blight_trackers" -> "camp_scout_victory"
-            "ch3_sentinels" -> "ch3_sentinels_victory"
-            "cave_broodmother" -> "ch3_boss_victory"
-            "dungeon_descent" -> "ch4_crypt_victory"
-            "castle_horde" -> "ch4_tower_victory"
-            "marsh_rescue" -> "ch5_rescue_victory"
-            "swamp_behemoth" -> "ch6_willow_purified"
-            "ch7_mire_wyrm" -> "ch7_wyrm_victory"
-            "ch8_executioner_ambush" -> "ch8_executioner_victory"
-            "ch9_galahault_trial" -> "ch9_galahault_victory"
-            "ch10_broodmother_trial" -> "ch10_broodmother_victory"
-            "ch11_nocturne_trial" -> "ch11_nocturne_victory"
-            "ch12_warmaster_ouros" -> "ch12_warmaster_victory"
-            "ch13_commander_vaelor" -> "ch13_vaelor_victory"
-            "ch14_abyssal_leviathan" -> "ch14_leviathan_victory"
-            "ch15_archon_custodians" -> "ch15_custodians_victory"
-            "ch16_malakor_finale" -> "ch16_malakor_victory"
-            "ch9_penitent_gate" -> "ch9_penitent_victory"
-            "ch10_thicket_guardians" -> "ch10_thicket_victory"
-            "ch11_gorge_stalkers" -> "ch11_first_strike_victory"
-            "ch11_archive_enforcers" -> "ch11_archive_victory"
-            "ch12_automaton_patrol" -> "ch12_patrol_victory"
-            "ch13_plaza_legion" -> "ch13_plaza_victory"
-            "ch14_shallows_husks" -> "ch14_shallows_victory"
-            "ch14_trench_leeches" -> "ch14_trench_victory"
-            "ch15_trial_gold" -> "ch15_trial_gold_victory"
-            "ch15_trial_grove" -> "ch15_trial_grove_victory"
-            "ch15_trial_shadow" -> "ch15_trial_shadow_victory"
-            "ch16_nullifier_gate" -> "ch16_vest_victory"
-            "ch16_mirror_gauntlet" -> "ch16_mirror_victory"
+            "act2_track_a_sharpie_battle" -> "act2_ch3_sharpie_post_battle"
+            "act2_media_battle" -> "act2_ch5_post_battle"
+            "act2_track_b_spicer_salsa_battle" -> "act2_tb_ch1_post_battle"
+            "act2_track_b_kash_battle" -> "act2_tb_ch4_post_battle"
+            "act2_track_b_rudy_finale" -> "act2_tb_ch5_post_battle"
+            "act3_ch1_mill_battle", "act3_track_a_stairs_bike_battle" -> "act3_ch1_post_battle"
+            "act3_ch3_intercept_battle", "act3_track_a_chandelier_battle" -> "act3_ch3_post_battle"
+            "act3_summit_battle", "act3_track_a_biden_ice_cream_finale" -> "act3_ch5_post_battle"
+            "act3_track_b_corn_pop_battle" -> "act3_tb_ch1_post_battle"
+            "act3_track_b_foghorn_battle" -> "act3_tb_ch3_post_battle"
+            "act3_track_b_mugshot_finale" -> "act3_tb_ch5_post_battle"
+            "act4_ch1_fisa_battle", "act4_track_a_donut_battle" -> "act4_ch1_post_battle"
+            "act4_ch3_subpoena_battle", "act6_ch3_bus_battle" -> "act4_ch3_post_battle"
+            "act4_hoax_battle", "act6_kamala_battle" -> "act4_ch5_post_battle"
+            "act4_track_b_venn_critics_battle" -> "act4_tb_ch1_post_battle"
+            "act4_track_b_vance_donut_battle" -> "act4_tb_ch2_post_battle"
+            "act4_track_b_concepts_debate_battle" -> "act4_tb_ch4_post_battle"
+            "act4_track_b_mcdonalds_finale" -> "act4_tb_ch5_post_battle"
+            "act5_ch1_pipe_battle", "act5_track_a_cybertruck_sink_battle" -> "act5_ch1_post_battle"
+            "act5_ch2_inquest_battle", "act5_track_a_doge_bureaucrats_battle" -> "act5_ch2_post_battle"
+            "act5_track_a_swagger_turkish_battle" -> "act5_ch3_post_battle"
+            "act5_golem_battle", "act5_track_a_grand_finale" -> "act5_ch5_post_battle"
+            "act5_track_b_landlord_lobby_battle" -> "act5_tb_ch1_post_battle"
+            "act5_track_b_turkish_auditor_battle" -> "act5_tb_ch2_post_battle"
+            "act5_track_b_musk_starjump_battle" -> "act5_tb_ch3_post_battle"
+            "act5_track_b_doge_squad_battle" -> "act5_tb_ch4_post_battle"
+            "act5_track_b_grand_finale" -> "act5_bipartisan_curtain_call"
+            "act6_ch1_border_battle" -> "act4_ch2_intro"
+            "act7_ch1_indictment_battle" -> "act7_ch1_intro"
+            "act7_ch2_contempt_battle" -> "act7_ch2_intro"
+            "act7_lawfare_battle" -> "act7_ch5_intro"
+            "act8_ch1_bunker_battle" -> "act8_ch1_intro"
+            "act8_ch2_teleprompter_battle" -> "act8_ch2_intro"
+            "act8_ch3_autopen_battle" -> "act8_ch3_intro"
+            "act8_biden_final_battle" -> "act8_ch5_intro"
             else -> null
         }
 
@@ -1447,7 +1459,8 @@ class StoryViewModel(
             _state.value.defeatedEncounters
         }
 
-        val targetNode = (if (postBattleNodeId != null) StoryScript.ALL_NODES[postBattleNodeId] else null)
+        val targetNode = (if (lastNode.triggerBattleEncounterId == encounterId && lastNode.nextNodeId != null) StoryScript.ALL_NODES[lastNode.nextNodeId] else null)
+            ?: (if (postBattleNodeId != null) StoryScript.ALL_NODES[postBattleNodeId] else null)
             ?: (if (lastNode.nextNodeId != null) StoryScript.ALL_NODES[lastNode.nextNodeId] else null)
             ?: lastNode
 

@@ -77,6 +77,7 @@ fun CharacterCreationScreen(
     var name by remember { mutableStateOf(initialCustomization.name) }
     var selectedTitle by remember { mutableStateOf(initialCustomization.title) }
     var selectedAura by remember { mutableStateOf(initialCustomization.auraColor) }
+    var selectedTrack by remember { mutableStateOf(initialCustomization.campaignTrack) }
 
     val isAutoListen = speechManager?.isAutoListen?.collectAsState()?.value ?: false
     val speechState = speechManager?.speechState?.collectAsState()?.value ?: SpeechState.Idle
@@ -104,7 +105,8 @@ fun CharacterCreationScreen(
             heroClass = HeroClass.COMMANDER,
             title = selectedTitle,
             auraColor = selectedAura,
-            voiceAffinityBonusSchool = SpellSchool.PHYSICAL
+            voiceAffinityBonusSchool = SpellSchool.PHYSICAL,
+            campaignTrack = selectedTrack
         )
         onConfirmCharacter(finalCustomization)
     }
@@ -112,6 +114,17 @@ fun CharacterCreationScreen(
     fun processCreationVoiceInput(utterance: String) {
         val lower = utterance.lowercase().trim()
         if (lower.isBlank()) return
+
+        // Track selection voice commands
+        if (lower.contains("track b") || lower.contains("standard bearer") || lower.contains("relay") || lower.contains("hill rod")) {
+            selectedTrack = com.voicerpg.engine.model.CampaignTrack.TRACK_B
+            combatNarrator?.speak("Track B selected: The Standard-Bearer Relay.", force = true)
+            return
+        } else if (lower.contains("track a") || lower.contains("commander") || lower.contains("coalition")) {
+            selectedTrack = com.voicerpg.engine.model.CampaignTrack.TRACK_A
+            combatNarrator?.speak("Track A selected: Commander's Coalition.", force = true)
+            return
+        }
 
         // 1. Embark / Start command
         val embarkKeywords = listOf(
@@ -477,6 +490,67 @@ fun CharacterCreationScreen(
                 }
             }
 
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Section 5: Campaign Track Selector
+            Text(
+                text = "5. CHOOSE YOUR CAMPAIGN TRACK",
+                color = LogosGold,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Monospace,
+                modifier = Modifier.align(Alignment.Start)
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                com.voicerpg.engine.model.CampaignTrack.entries.forEach { track ->
+                    val isSelected = track == selectedTrack
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(if (isSelected) LogosGold.copy(alpha = 0.2f) else RetroPanel)
+                            .border(
+                                width = if (isSelected) 2.dp else 1.dp,
+                                color = if (isSelected) LogosGold else RetroBorder,
+                                shape = RoundedCornerShape(8.dp)
+                            )
+                            .clickable { selectedTrack = track }
+                            .padding(10.dp)
+                    ) {
+                        Column {
+                            Text(
+                                text = if (track == com.voicerpg.engine.model.CampaignTrack.TRACK_A) "🇺🇸 TRACK A" else "📜 TRACK B",
+                                color = if (isSelected) LogosGold else Color.White,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Black,
+                                fontFamily = FontFamily.Monospace
+                            )
+                            Text(
+                                text = track.displayName.substringAfter(": "),
+                                color = if (isSelected) LogosGlow else Color.LightGray,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = FontFamily.Monospace
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = track.subtitle,
+                                color = Color.Gray,
+                                fontSize = 8.sp,
+                                lineHeight = 11.sp,
+                                fontFamily = FontFamily.Monospace
+                            )
+                        }
+                    }
+                }
+            }
+
             Spacer(modifier = Modifier.height(24.dp))
 
             // Confirm & Enter Adventure Button
@@ -492,7 +566,7 @@ fun CharacterCreationScreen(
                     .height(48.dp)
             ) {
                 Text(
-                    text = "DESCEND GOLDEN ESCALATOR ➔",
+                    text = if (selectedTrack == com.voicerpg.engine.model.CampaignTrack.TRACK_B) "ENTER CHAPPAQUA BASEMENT ➔" else "DESCEND GOLDEN ESCALATOR ➔",
                     fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Black,
                     fontSize = 14.sp

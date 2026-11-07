@@ -90,12 +90,36 @@ enum class AuraColor(
     AMETHYST_VOID("shadow", "Amethyst Void", "#E040FB", "Mysterious umbral frequency")
 }
 
+enum class CampaignTrack(
+    val id: String,
+    val displayName: String,
+    val subtitle: String,
+    val startNodeId: String,
+    val startSceneId: String
+) {
+    TRACK_A(
+        id = "track_a",
+        displayName = "Track A: Commander's Coalition",
+        subtitle = "Commander America + Little Marco + Wizard Kash + Foghorn Kennedy + JD Pants + Musk-X",
+        startNodeId = "act1_intro",
+        startSceneId = "scene_act1_ch1_escalator"
+    ),
+    TRACK_B(
+        id = "track_b",
+        displayName = "Track B: Standard-Bearer Relay",
+        subtitle = "Hill-Rod ➔ Nancy Palooza ➔ Joe Naptime ➔ Kamala Coconut ➔ Zohran Cardamom & Mayor Swagger",
+        startNodeId = "act1_tb_ch1_intro",
+        startSceneId = "scene_act1_tb_ch1_server"
+    )
+}
+
 data class PlayerCustomization(
     val name: String = "Commander America",
     val heroClass: HeroClass = HeroClass.COMMANDER,
     val title: String = "Commander-in-Chief",
     val auraColor: AuraColor = AuraColor.SOLAR_GOLD,
-    val voiceAffinityBonusSchool: SpellSchool = SpellSchool.PHYSICAL
+    val voiceAffinityBonusSchool: SpellSchool = SpellSchool.PHYSICAL,
+    val campaignTrack: CampaignTrack = CampaignTrack.TRACK_A
 )
 
 data class SavedCharacterStats(

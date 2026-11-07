@@ -85,10 +85,13 @@ class MainActivity : ComponentActivity() {
         musicManager = MusicManager(this)
         saveManager = SaveManager(this)
 
+        val sfxManager = com.voicerpg.engine.audio.SfxManager(this)
+
         combatViewModel = CombatViewModel(
             speechManager = speechManager,
             combatNarrator = combatNarrator,
-            musicManager = musicManager
+            musicManager = musicManager,
+            sfxManager = sfxManager
         )
         storyViewModel = StoryViewModel(
             speechManager = speechManager,

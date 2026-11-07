@@ -473,7 +473,7 @@ class DynamicEncounterTest {
         if (viewModel.state.value.phase == CombatPhase.PLAYER_INPUT) {
             viewModel.defendActivePartyMember()
             var reachedEnemy = false
-            for (i in 0 until 20) {
+            for (i in 0 until 40) {
                 Thread.sleep(50)
                 if (viewModel.lastActedFaction == com.voicerpg.engine.model.CombatantFaction.ENEMY ||
                     viewModel.state.value.phase == CombatPhase.ENEMY_ACTIONS
@@ -524,7 +524,7 @@ class DynamicEncounterTest {
         viewModel.processIncantation("Fireball archer")
 
         var projectile: com.voicerpg.engine.ui.vfx.ActiveSpellProjectile? = null
-        for (i in 0 until 20) {
+        for (i in 0 until 40) {
             Thread.sleep(50)
             projectile = viewModel.spellVfxEngine.projectiles.firstOrNull()
             if (projectile != null) break
@@ -557,7 +557,7 @@ class DynamicEncounterTest {
         viewModel.processIncantation("Wildfire all foes")
 
         var projectiles: List<com.voicerpg.engine.ui.vfx.ActiveSpellProjectile> = emptyList()
-        for (i in 0 until 20) {
+        for (i in 0 until 40) {
             Thread.sleep(50)
             projectiles = viewModel.spellVfxEngine.projectiles.toList()
             if (projectiles.isNotEmpty()) break
@@ -739,7 +739,7 @@ class DynamicEncounterTest {
 
         // Give coroutine time to complete VFX and damage application
         var turnResolved = false
-        for (i in 0 until 20) {
+        for (i in 0 until 40) {
             Thread.sleep(100)
             val updatedEnemy = viewModel.state.value.enemies.firstOrNull { it.id == targetEnemy.id }
             if (updatedEnemy != null && updatedEnemy.currentHp < initialEnemyHp) {

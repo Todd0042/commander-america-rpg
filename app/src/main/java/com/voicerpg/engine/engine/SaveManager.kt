@@ -196,10 +196,22 @@ class SaveManager(private val context: Context? = null) {
             spellIds = starterSpells.map { it.id }
         )
 
+        val track = customization.campaignTrack
+        val initialSceneId = if (track == com.voicerpg.engine.model.CampaignTrack.TRACK_B) {
+            StoryScript.SCENE_ACT1_TB_CH1_SERVER.id
+        } else {
+            StoryScript.SCENE_ACT1_ESCALATOR.id
+        }
+        val initialNodeId = if (track == com.voicerpg.engine.model.CampaignTrack.TRACK_B) {
+            "act1_tb_ch1_intro"
+        } else {
+            "act1_intro"
+        }
+
         val newSave = GameSaveData(
             player = customization,
-            currentSceneId = StoryScript.SCENE_ACT1_ESCALATOR.id,
-            currentNodeId = "act1_intro",
+            currentSceneId = initialSceneId,
+            currentNodeId = initialNodeId,
             decisionsMade = emptyList(),
             partyStats = listOf(initialHeroStats),
             defeatedEncounters = emptyList(),

@@ -663,6 +663,9 @@ class CombatViewModel(
 
             delay(if (isBossUltimate) 550 else 350)
             sfxManager.playHitImpact()
+            if (enemy.id.contains("joe") || enemy.id.contains("biden") || move.name.contains("Gibberish") || move.name.contains("Truinana") || move.name.contains("Badakathcare")) {
+                sfxManager.playBidenGibberish()
+            }
             if (isBossUltimate) {
                 triggerScreenShake(18f)
             }
@@ -874,21 +877,6 @@ class CombatViewModel(
                 )
             }
         )
-        val levelUps = outcomes.filter { it.levelsGained > 0 }
-        if (levelUps.isNotEmpty()) {
-            val lines = levelUps.joinToString(" ") { "${it.memberId} ascends to level ${it.newLevel}!" }
-            levelUps.forEach { o ->
-                val hero = _state.value.party.firstOrNull { it.id == o.memberId }
-                val (lx, ly) = partyFloatSlot(o.memberId)
-                val fct = FloatingCombatText(text = "LEVEL ${hero?.level ?: o.newLevel}!", color = Color(0xFFFFD700), startX = lx, startY = ly, isCrit = true)
-                _state.value = _state.value.copy(floatingTexts = _state.value.floatingTexts + fct)
-                activeScope.launch {
-                    delay(1600)
-                    _state.value = _state.value.copy(floatingTexts = _state.value.floatingTexts.filterNot { f -> f.id == fct.id })
-                }
-            }
-            combatNarrator.speak("Victory! ${lines}", force = false)
-        }
     }
 
     private fun checkAndTransitionNextTurn() {
@@ -1873,6 +1861,9 @@ class CombatViewModel(
 
             // Audio & Feedback
             sfxManager.playSpellCast()
+            if (parsed.spell.id == "biden_gibberish_audio" || parsed.spell.id.contains("gibberish")) {
+                sfxManager.playBidenGibberish()
+            }
             if (isSuperLogos) {
                 sfxManager.playLogosFanfare()
                 triggerScreenShake(if (isTranscendental) 30f else 18f)

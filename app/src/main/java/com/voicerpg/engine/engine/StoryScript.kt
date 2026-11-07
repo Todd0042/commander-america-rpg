@@ -9,15 +9,15 @@ import com.voicerpg.engine.model.StoryScene
 object StoryScript {
 
     // -------------------------------------------------------------------------
-    // 8-Act Story Scenes
+    // ACT I SCENES (Dual-Campaign: 4 Deep Chapters on Track A + 4 Deep Chapters on Track B)
     // -------------------------------------------------------------------------
     val SCENE_ACT1_CH1_ESCALATOR = StoryScene(
         id = "scene_act1_ch1_escalator",
-        name = "Trump Tower Atrium & Escalator",
-        chapterTitle = "Act I - Ch 1: The Golden Descent (2015)",
+        name = "Trump Tower Atrium & Golden Escalator",
+        chapterTitle = "Act I (Track A) - Ch 1: The \$50 Escalator & The Lion King Roast (2015)",
         backgroundAsset = "story/golden_escalator.jpg",
         initialNodeId = "act1_ch1_intro",
-        ambientDescription = "Golden light gleams off polished brass escalators as patriotic cheers echo through the marble atrium."
+        ambientDescription = "Polished brass escalators gleam in Manhattan while fifty-dollar Extra Mile Casting actors adjust their campaign T-shirts under blinding news cameras."
     )
 
     // Legacy alias
@@ -25,397 +25,687 @@ object StoryScript {
 
     val SCENE_ACT1_CH2_DEBATE = StoryScene(
         id = "scene_act1_ch2_debate",
-        name = "Quicken Loans Arena Debate Stage",
-        chapterTitle = "Act I - Ch 2: The Primary Debate Arena (2015)",
+        name = "Cleveland Debate Stage & Tan Suit VIP Box",
+        chapterTitle = "Act I (Track A) - Ch 2: Guacamole Bowls, Tan Suits & Dijon Mustard (2015–2016)",
         backgroundAsset = "story/primary_debate.jpg",
         initialNodeId = "act1_ch2_intro",
-        ambientDescription = "Blinding studio spotlights illuminate sixteen rival podiums and a hostile press panel."
+        ambientDescription = "Sixteen focus-grouped podiums line the arena while a 2014 summer tan suit, a styrofoam latte, and a jar of Grey Poupon Dijon mustard gleam under the spotlights."
+    )
+
+    val SCENE_ACT1_CH3_TACO_BUS = StoryScene(
+        id = "scene_act1_ch3_taco_bus",
+        name = "Trump Tower Grill & The 2005 Access Bus Lot",
+        chapterTitle = "Act I (Track A) - Ch 3: Taco Bowls & The Tic-Tac Bus That Never Dies (2016)",
+        backgroundAsset = "story/template/taco_bowl_bus_template.jpg",
+        initialNodeId = "act1_ch3_intro",
+        ambientDescription = "A fiesta taco bowl sits atop a 1990s newspaper photo of Marla Maples while an Access Hollywood tour bus idles outside with a crate of Tic-Tacs."
     )
 
     val SCENE_ACT1_CH3_RALLY = StoryScene(
         id = "scene_act1_ch3_rally",
-        name = "Manchester Airport Hangar",
-        chapterTitle = "Act I - Ch 3: The Primary Sweep (2016)",
+        name = "The Final 2016 Debate Arena",
+        chapterTitle = "Act I (Track A) - Ch 4: BleachBit, Pokémon Go & Election Night (Nov 2016)",
         backgroundAsset = "story/airport_rally.jpg",
-        initialNodeId = "act1_ch3_intro",
-        ambientDescription = "Sub-zero blizzard winds howl outside while fifteen thousand roaring patriots pack the heated hangar."
+        initialNodeId = "act1_ch4_intro",
+        ambientDescription = "Chappaqua server racks, microfiber cloths, and boxes of Tic-Tacs collide on the final 2016 debate stage."
     )
 
-    // Act II - Chapter 1: The Inaugural Address & Crowd Size Dispute (National Mall)
+    // Track B (Hill-Rod) Act I Scenes — 4 Deep Chapters
+    val SCENE_ACT1_TB_CH1_SERVER = StoryScene(
+        id = "scene_act1_tb_ch1_server",
+        name = "Chappaqua Basement Server Room",
+        chapterTitle = "Act I (Track B) - Ch 1: With A Cloth & 1978 Cattle Futures (2015)",
+        backgroundAsset = "story/template/chappaqua_server_template.jpg",
+        initialNodeId = "act1_tb_ch1_intro",
+        ambientDescription = "An off-the-books email server blinks in a Chappaqua basement beside 1978 Refco live-cattle futures receipts and a microfiber cloth."
+    )
+
+    val SCENE_ACT1_TB_CH2_FERNS = StoryScene(
+        id = "scene_act1_tb_ch2_ferns",
+        name = "170th St. Bronx Subway Turnstile & Between Two Ferns Set",
+        chapterTitle = "Act I (Track B) - Ch 2: Five MetroCard Swipes & Two Potted Ferns (2016)",
+        backgroundAsset = "story/template/bronx_turnstile_template.jpg",
+        initialNodeId = "act1_tb_ch2_intro",
+        ambientDescription = "A stubborn MTA subway turnstile flashes 'SWIPE AGAIN AT THIS TURNSTILE' next to two dusty plastic studio ferns."
+    )
+
+    val SCENE_ACT1_TB_CH3_BREAKFAST = StoryScene(
+        id = "scene_act1_tb_ch3_breakfast",
+        name = "The Breakfast Club Radio Booth & Virginia Pokémon Rally",
+        chapterTitle = "Act I (Track B) - Ch 3: Purse Hot Sauce, Pokémon Go & No Basement (2016)",
+        backgroundAsset = "story/template/breakfast_club_template.jpg",
+        initialNodeId = "act1_tb_ch3_intro",
+        ambientDescription = "A bottle of Ninja Squirrel hot sauce sits beside a smartphone running Pokémon Go and blueprints of a slab-foundation pizzeria."
+    )
+
+    val SCENE_ACT1_TB_CH4_JAVITS = StoryScene(
+        id = "scene_act1_tb_ch4_javits",
+        name = "Javits Center Glass Ceiling & Final Debate Stage",
+        chapterTitle = "Act I (Track B) - Ch 4: The Blue-Curtain Director & Election Night (Nov 2016)",
+        backgroundAsset = "story/template/javits_glass_ceiling_template.jpg",
+        initialNodeId = "act1_tb_ch4_intro",
+        ambientDescription = "Beneath the literal glass ceiling of the Javits Center, a 6-foot-8 FBI Director tries to blend into a blue curtain."
+    )
+
+    // Legacy alias for Track B Ch 3
+    val SCENE_ACT1_TB_CH3_JAVITS = SCENE_ACT1_TB_CH4_JAVITS
+
+    // -------------------------------------------------------------------------
+    // ACT II SCENES (Dual-Campaign: 5 Deep Chapters on Track A + 5 Deep Chapters on Track B)
+    // -------------------------------------------------------------------------
     val SCENE_ACT2_CH1_MALL = StoryScene(
         id = "scene_act2_ch1_mall",
-        name = "National Mall & Capitol Steps",
-        chapterTitle = "Act II - Ch 1: The Inaugural Address (Jan 20, 2017)",
+        name = "National Mall & White House Bushes",
+        chapterTitle = "Act II (Track A) - Ch 1: Bushes, Cinnamon Gum & The 11-Day Mooch (2017)",
         backgroundAsset = "story/national_mall.jpg",
         initialNodeId = "act2_ch1_intro",
-        ambientDescription = "The Capitol steps gleam under a crisp January sky as tens of thousands of American patriots pack the National Mall.",
+        ambientDescription = "The Capitol steps gleam under a January sky while Spicy Sean hides in the White House bushes chewing 35 pieces of Orbit Cinnamon gum.",
         musicAsset = "audio/music/bgm_title.ogg"
     )
 
-    // Act II - Chapter 2: Entering the Oval Citadel (The Oval Office)
     val SCENE_ACT2_CH2_OVAL = StoryScene(
         id = "scene_act2_ch2_oval",
-        name = "The Oval Office — Resolute Desk",
-        chapterTitle = "Act II - Ch 2: The Executive Pen (Jan 2017)",
+        name = "The Oval Office & Truman Balcony",
+        chapterTitle = "Act II (Track A) - Ch 2: The Diet Coke Button, Covfefe & The Eclipse (2017)",
         backgroundAsset = "story/oval_citadel.jpg",
         initialNodeId = "act2_ch2_intro",
-        ambientDescription = "Gold drapes replace the old burgundy curtains. The Resolute Desk is cleared of bobbleheads and ready for historic executive action.",
+        ambientDescription = "A red wooden valet button sits on the Resolute Desk for Diet Coke emergencies while a solar eclipse darkens the Truman Balcony.",
         musicAsset = "audio/music/bgm_oval.ogg"
     )
 
-    // Act II - Chapter 3: Confronting Madam Speaker (Capitol Rotunda)
-    val SCENE_ACT2_CH3_ROTUNDA = StoryScene(
-        id = "scene_act2_ch3_rotunda",
-        name = "Capitol Rotunda & Committee Hall",
-        chapterTitle = "Act II - Ch 3: The Stock-Trading Lich (2017)",
-        backgroundAsset = "story/capitol_rotunda.jpg",
-        initialNodeId = "act2_ch3_intro",
-        ambientDescription = "Marble columns tower above as Pelosi's microchip options spike on the trading terminal — right before the regulatory vote.",
+    val SCENE_ACT2_CH3_SHARPIE = StoryScene(
+        id = "scene_act2_ch3_sharpie",
+        name = "San Juan Supply Gym & Oval Sharpie Easel",
+        chapterTitle = "Act II (Track A) - Ch 3: Paper-Towel Free Throws, Hurricane Sharpie & 15 Flushes (2017–2019)",
+        backgroundAsset = "story/template/sharpie_puerto_rico_template.jpg",
+        initialNodeId = "act2_ch3_sharpie_intro",
+        ambientDescription = "Rolls of Bounty paper towels arc through the air beside an official NOAA hurricane poster extended into Alabama with a black Sharpie.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT2_CH4_SCIF = StoryScene(
+        id = "scene_act2_ch4_scif",
+        name = "House Intelligence Secure Vault (SCIF)",
+        chapterTitle = "Act II (Track A) - Ch 4: Enter Kash Subpoena, The Nunes Memo & Wizard Kash (2018–2019)",
+        backgroundAsset = "story/scif_vault.jpg",
+        initialNodeId = "act2_ch4_scif_intro",
+        ambientDescription = "Acoustic vault doors seal the room as Kash Subpoena unrolls his four-page FISA memo alongside his 'Wizard Kash' children's book.",
         musicAsset = "audio/music/bgm_intrigue.ogg"
     )
 
-    // Legacy alias: the existing act2_oval still points to Ch1 (backward compat)
+    val SCENE_ACT2_CH3_ROTUNDA = StoryScene(
+        id = "scene_act2_ch3_rotunda",
+        name = "House Chamber & Sub-Zero Freezer Vault",
+        chapterTitle = "Act II (Track A) - Ch 5: Sideways Claps, Pre-Scored Speeches & \$24k Freezers (2020 Finale)",
+        backgroundAsset = "story/capitol_rotunda.jpg",
+        initialNodeId = "act2_ch3_intro",
+        ambientDescription = "Marble columns tower above as Nancy Palooza pre-scores State of the Union pages beside twin \$24,000 Sub-Zero freezers.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
     val SCENE_ACT2_OVAL = StoryScene(
         id = "scene_act2_oval",
         name = "The Oval Citadel",
-        chapterTitle = "Act II: The Inaugural Siege & Media Wars (2017)",
+        chapterTitle = "Act II: Covfefe, Sub-Zero Freezers & The Nunes Scroll (2017–2020)",
         backgroundAsset = "story/oval_citadel.jpg",
         initialNodeId = "act2_ch1_intro",
-        ambientDescription = "Gilded presidential drapes frame the Oval Office where the Deep State swamp still lurks.",
+        ambientDescription = "Gilded drapes frame the Oval Office where a Hurricane Dorian Sharpie map sits on an easel.",
         musicAsset = "audio/music/bgm_oval.ogg"
     )
 
+    // Track B (Nancy Palooza) Act II Scenes — 5 Deep Chapters
+    val SCENE_ACT2_TB_CH1_BUSHES = StoryScene(
+        id = "scene_act2_tb_ch1_bushes",
+        name = "Speaker's Rostrum & White House Shrubbery",
+        chapterTitle = "Act II (Track B) - Ch 1: Sideways Seal Claps vs. Neon Salsa Ruffles (2017–2019)",
+        backgroundAsset = "story/template/spicer_bushes_template.jpg",
+        initialNodeId = "act2_tb_ch1_intro",
+        ambientDescription = "Speaker Nancy Palooza's gavel gleams while Spicy Sean rustles inside the White House bushes wearing a neon-green ruffled salsa shirt.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
 
-    // Act III - Chapter 1: The Ohio Steel Mill Awakening (Youngstown / Lordstown, OH)
+    val SCENE_ACT2_TB_CH2_SOTU = StoryScene(
+        id = "scene_act2_tb_ch2_sotu",
+        name = "House Rostrum — State of the Union Dais",
+        chapterTitle = "Act II (Track B) - Ch 2: Pre-Scoring the Speech & The 75%-Speed Video (2019–2020)",
+        backgroundAsset = "story/capitol_rotunda.jpg",
+        initialNodeId = "act2_tb_ch2_intro",
+        ambientDescription = "A thick stack of State of the Union cardstock pages sits on the Speaker's desk with discreet starter notches pre-ripped into the margin.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT2_TB_CH3_SUBZERO = StoryScene(
+        id = "scene_act2_tb_ch3_subzero",
+        name = "San Francisco Sub-Zero Kitchen & eSalon",
+        chapterTitle = "Act II (Track B) - Ch 3: Twin \$24,000 Freezers & The Salon 'Setup' (April–Aug 2020)",
+        backgroundAsset = "story/template/subzero_kitchen_template.jpg",
+        initialNodeId = "act2_tb_ch3_intro",
+        ambientDescription = "Twin \$24,000 stainless-steel Sub-Zero freezers hum with \$12 pints of Jeni's Splendid Ice Cream next to a neighborhood hair salon.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT2_TB_CH4_STOCKS = StoryScene(
+        id = "scene_act2_tb_ch4_stocks",
+        name = "House Clerk Periodic Transaction Report Vault",
+        chapterTitle = "Act II (Track B) - Ch 4: Deep-ITM Call Options & The \$341k Nvidia Loss (2020–2022)",
+        backgroundAsset = "story/hearing_room.jpg",
+        initialNodeId = "act2_tb_ch4_intro",
+        ambientDescription = "Stock tickers flash alongside a July 26, 2022 House Clerk filing documenting a \$341,365 pre-CHIPS Act Nvidia loss.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT2_TB_CH5_FOUR_SEASONS = StoryScene(
+        id = "scene_act2_tb_ch5_four_seasons",
+        name = "Four Seasons Total Landscaping — Philadelphia",
+        chapterTitle = "Act II (Track B) - Ch 5: Between a Crematorium and an Adult Bookshop (Nov 2020 Finale)",
+        backgroundAsset = "story/template/four_seasons_landscaping_template.jpg",
+        initialNodeId = "act2_tb_ch5_intro",
+        ambientDescription = "A garage door plastered with campaign signs stands wedged between the Delaware Valley Crematorium and Fantasy Island Adult Books.",
+        musicAsset = "audio/music/bgm_title.ogg"
+    )
+
+    // -------------------------------------------------------------------------
+    // ACT III SCENES (Dual-Campaign: 5 Deep Chapters on Track A + 5 Deep Chapters on Track B)
+    // -------------------------------------------------------------------------
     val SCENE_ACT3_CH1_STEEL_MILL = StoryScene(
         id = "scene_act3_ch1_steel_mill",
-        name = "Lordstown Steel Mill — Mahoning Valley, Ohio",
-        chapterTitle = "Act III - Ch 1: The Ohio Awakening (2018)",
-        backgroundAsset = "story/steel_mill.jpg",
+        name = "Andrews Tarmac Stairs & Rehoboth Bike Path",
+        chapterTitle = "Act III (Track A) - Ch 1: Three Stumbles Up the Stairs & Toe-Cage Bikes (2021–2022)",
+        backgroundAsset = "story/air_force_one.jpg",
         initialNodeId = "act3_ch1_intro",
-        ambientDescription = "Blast furnaces roar back to life along the Mahoning River as union workers in hardhats pack the mill floor holding American flags."
+        ambientDescription = "Wind gusts sweep across the Air Force One staircase beside a stationary Trek bicycle equipped with treacherous metal toe-cages.",
+        musicAsset = "audio/music/bgm_title.ogg"
     )
 
-    // Act III - Chapter 2: The USMCA Renegotiation Showdown
     val SCENE_ACT3_CH2_USMCA = StoryScene(
         id = "scene_act3_ch2_usmca",
-        name = "USMCA Drafting Room — Washington, D.C.",
-        chapterTitle = "Act III - Ch 2: The Trade War Table (2018)",
-        backgroundAsset = "story/trade_room.jpg",
+        name = "Senate Judiciary Committee Chamber",
+        chapterTitle = "Act III (Track A) - Ch 2: Enter Foghorn Kennedy & 'Call A Crackhead!' (2021–2023)",
+        backgroundAsset = "story/senate_hearing.jpg",
         initialNodeId = "act3_ch2_intro",
-        ambientDescription = "Stacks of NAFTA binders line the walls, each one representing decades of outsourced American jobs. Time to rewrite the rules."
+        ambientDescription = "Senator Foghorn Kennedy hides an Oxford First-Class law degree behind a folksy Louisiana drawl as judicial nominees sweat under the lights.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
     )
 
-    // Act III - Chapter 3: The Demilitarized Zone Flight (Air Force One)
     val SCENE_ACT3_CH3_AF1 = StoryScene(
         id = "scene_act3_ch3_af1",
-        name = "Air Force One — En Route to the DMZ",
-        chapterTitle = "Act III - Ch 3: The Diplomatic Flight (2018)",
-        backgroundAsset = "story/air_force_one.jpg",
+        name = "Mar-a-Lago Bathroom Chandelier & Corvette Garage",
+        chapterTitle = "Act III (Track A) - Ch 3: Bathroom Chandeliers vs. The 1967 Corvette Garage (2022–2023)",
+        backgroundAsset = "story/storage_vault.jpg",
         initialNodeId = "act3_ch3_intro",
-        ambientDescription = "Air Force One banks over the Pacific at 41,000 feet. Career diplomats in the press pool are visibly sweating."
+        ambientDescription = "Cardboard bankers boxes tower beneath a gilded Mar-a-Lago bathroom chandelier across from a locked Wilmington Corvette garage.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
     )
 
-    // Act III - Chapter 4: The Crimson Summit of Peace (38th Parallel)
     val SCENE_ACT3_CH4_SUMMIT = StoryScene(
         id = "scene_act3_ch4_summit",
-        name = "The 38th Parallel Summit Table",
-        chapterTitle = "Act III - Ch 4: The Summit of Peace (2018)",
-        backgroundAsset = "story/summit_table.jpg",
+        name = "Fulton County Booking Desk & Trump Force One",
+        chapterTitle = "Act III (Track A) - Ch 4: The '215-Pound' Mugshot & \$7.1M 'Never Surrender' Merch (Aug 2023)",
+        backgroundAsset = "story/template/fulton_mugshot_template.jpg",
         initialNodeId = "act3_ch4_intro",
-        ambientDescription = "A mahogany conference table sits precisely on the DMZ line. A tower of fast food bags anchors the center. Cameras roll for the entire planet."
-    )
-
-    // Legacy alias for the original single Act III scene
-    val SCENE_ACT3_SUMMIT = StoryScene(
-        id = "scene_act3_summit",
-        name = "The Crimson Summit Spire",
-        chapterTitle = "Act III: Rocket Man & The Summit of Peace (2018)",
-        backgroundAsset = "story/summit_table.jpg",
-        initialNodeId = "act3_ch1_intro",
-        ambientDescription = "High above the demilitarized zone, red flags ripple in the wind near a table set with fast-food feasts."
-    )
-
-    // Act IV - Chapter 1: The FISA Warrant Labyrinth (Hoover Building Sub-Basement)
-    val SCENE_ACT4_CH1_FISA = StoryScene(
-        id = "scene_act4_ch1_fisa",
-        name = "Hoover Building Sub-Basement Archives",
-        chapterTitle = "Act IV - Ch 1: The FISA Labyrinth (2019)",
-        backgroundAsset = "story/fisa_vault.jpg",
-        initialNodeId = "act4_ch1_intro",
-        ambientDescription = "Fluorescent bulbs buzz over rows of locked steel filing cabinets where midnight warrant applications are hidden away."
-    )
-
-    // Act IV - Chapter 2: The Unredacted Binder Inquest (House Intelligence Vault)
-    val SCENE_ACT4_CH2_BINDER = StoryScene(
-        id = "scene_act4_ch2_binder",
-        name = "House Intelligence Secure Vault (SCIF)",
-        chapterTitle = "Act IV - Ch 2: The Unredacted Vault (2019)",
-        backgroundAsset = "story/scif_vault.jpg",
-        initialNodeId = "act4_ch2_intro",
-        ambientDescription = "Heavy acoustic isolation doors seal the room as thick black marker redactions are scrubbed from the original transcripts."
-    )
-
-    // Act IV - Chapter 3: The Phantom Subpoena Ambush (Federal Courtroom Steps)
-    val SCENE_ACT4_CH3_COURT = StoryScene(
-        id = "scene_act4_ch3_court",
-        name = "Federal Courtroom Steps & Media Plaza",
-        chapterTitle = "Act IV - Ch 3: The Subpoena Swarm (2019)",
-        backgroundAsset = "story/courtroom_steps.jpg",
-        initialNodeId = "act4_ch3_intro",
-        ambientDescription = "Hundreds of flashbulbs pop as process servers and legal commentators brandish stacks of phantom subpoenas."
-    )
-
-    // Act IV - Chapter 4: The Mueller Illusion Hoax Climax (Special Counsel Hearing Room)
-    val SCENE_ACT4_CH4_HEARING = StoryScene(
-        id = "scene_act4_ch4_hearing",
-        name = "Special Counsel Hearing Room",
-        chapterTitle = "Act IV - Ch 4: The Nothingburger Climax (2019)",
-        backgroundAsset = "story/hearing_room.jpg",
-        initialNodeId = "act4_ch4_intro",
-        ambientDescription = "The wooden gavel rests on the witness dais. Three years of cable hype culminate in zero evidence and total exoneration."
-    )
-
-    // Legacy alias for the original single Act IV scene
-    val SCENE_ACT4_MUELLER = StoryScene(
-        id = "scene_act4_mueller",
-        name = "The Chamber of Phantom Hoaxes",
-        chapterTitle = "Act IV: The Mueller Illusion Hoax (2019)",
-        backgroundAsset = "story/hearing_room.jpg",
-        initialNodeId = "act4_ch1_intro",
-        ambientDescription = "Spectral paperwork and phantom subpoenas drift through the foggy tribunal hall."
-    )
-
-    // Act V - Chapter 1: The 3:00 AM Water Pipe Mystery (State Farm Arena Ballot Storage Room)
-    val SCENE_ACT5_CH1_ARENA = StoryScene(
-        id = "scene_act5_ch1_arena",
-        name = "State Farm Arena — Ballot Floor",
-        chapterTitle = "Act V - Ch 1: The 3 AM Water Pipe (2020)",
-        backgroundAsset = "story/ballot_arena.jpg",
-        initialNodeId = "act5_ch1_intro",
-        ambientDescription = "Counting tables sit under dim arena lights after election observers were evacuated following a declared water pipe burst."
-    )
-
-    // Act V - Chapter 2: The Senate Inquest (Dirksen Senate Office Building)
-    val SCENE_ACT5_CH2_SENATE = StoryScene(
-        id = "scene_act5_ch2_senate",
-        name = "Senate Committee Hearing Room",
-        chapterTitle = "Act V - Ch 2: The Senate Inquest (2020)",
-        backgroundAsset = "story/senate_hearing.jpg",
-        initialNodeId = "act5_ch2_intro",
-        ambientDescription = "Microphones feedback softly against oak dais panels as stonewalling election officials and bureaucratic witnesses squirm in their seats."
-    )
-
-    // Act V - Chapter 3: The Southern White House (Mar-a-Lago Terrace & Palm Beach)
-    val SCENE_ACT5_CH3_TERRACE = StoryScene(
-        id = "scene_act5_ch3_terrace",
-        name = "Mar-a-Lago Terrace & Palm Beach",
-        chapterTitle = "Act V - Ch 3: The Southern White House (2021)",
-        backgroundAsset = "story/maralago_terrace.jpg",
-        initialNodeId = "act5_ch3_intro",
-        ambientDescription = "Warm Atlantic trade winds whisper through palm fronds outside the Grand Ballroom as world leaders and grassroots patriots arrive in Palm Beach."
-    )
-
-    // Act V - Chapter 4: The Deep State Raid on the Golden Closets (Mar-a-Lago Storage Vault)
-    val SCENE_ACT5_CH4_CLOSETS = StoryScene(
-        id = "scene_act5_ch4_closets",
-        name = "Mar-a-Lago Storage Vault & Melania's Closet",
-        chapterTitle = "Act V - Ch 4: The Golden Closets (2022)",
-        backgroundAsset = "story/storage_vault.jpg",
-        initialNodeId = "act5_ch4_intro",
-        ambientDescription = "Dozens of armed federal agents in windbreakers surround stacks of storage boxes beside ornate chandeliers and presidential mementos."
-    )
-
-    // Legacy alias for the original single Act V scene
-    val SCENE_ACT5_MARALAGO = StoryScene(
-        id = "scene_act5_maralago",
-        name = "The Mar-a-Lago Fortress",
-        chapterTitle = "Act V: Midnight Sorcery & The Exile (2020-2021)",
-        backgroundAsset = "story/maralago_terrace.jpg",
-        initialNodeId = "act5_ch1_intro",
-        ambientDescription = "Ocean breezes sweep across golden palm trees surrounding Commander America's exile retreat."
-    )
-
-    // Act VI - Chapter 1: The Border Czar Inspection (The Missing Border Wall Gap)
-    val SCENE_ACT6_CH1_BORDER = StoryScene(
-        id = "scene_act6_ch1_border",
-        name = "The Southern Border Wall Gap",
-        chapterTitle = "Act VI - Ch 1: The Border Czar Inspection (2022)",
-        backgroundAsset = "story/border_wall.jpg",
-        initialNodeId = "act6_ch1_intro",
-        ambientDescription = "Rusted steel bollards stand unfinished beside stacks of unused wall panels where millions cross unchecked under the Border Czar's watch."
-    )
-
-    // Act VI - Chapter 2: The Venn Diagram Fog (Endless loops of unburdened circular logic)
-    val SCENE_ACT6_CH2_VENN = StoryScene(
-        id = "scene_act6_ch2_venn",
-        name = "The Yellow & Blue Venn Mirage",
-        chapterTitle = "Act VI - Ch 2: The Venn Diagram Fog (2023)",
-        backgroundAsset = "story/venn_fog.jpg",
-        initialNodeId = "act6_ch2_intro",
-        ambientDescription = "Luminescent yellow and cyan overlapping circles float through swirling fog as circular logic echoes across the plains."
-    )
-
-    // Act VI - Chapter 3: The Electric School Bus Mire (Stranded EV Convoy)
-    val SCENE_ACT6_CH3_BUS = StoryScene(
-        id = "scene_act6_ch3_bus",
-        name = "The Stranded EV Bus Depot",
-        chapterTitle = "Act VI - Ch 3: The Electric Bus Mire (2023)",
-        backgroundAsset = "story/electric_bus.jpg",
-        initialNodeId = "act6_ch3_intro",
-        ambientDescription = "Dozens of multi-million dollar electric school buses sit parked in deep mud with dead batteries and nowhere to plug in."
-    )
-
-    // Act VI - Chapter 4: The Coconut Tree Grove (Floating in the context of all in which you live)
-    val SCENE_ACT6_CH4_COCONUT = StoryScene(
-        id = "scene_act6_ch4_coconut",
-        name = "The Gilded Coconut Grove",
-        chapterTitle = "Act VI - Ch 4: The Coconut Tree Grove (2023)",
-        backgroundAsset = "story/coconut_grove.jpg",
-        initialNodeId = "act6_ch4_intro",
-        ambientDescription = "Towering tropical palms sway gently as voices ask if you think you just fell out of a coconut tree."
-    )
-
-    // Act VI - Chapter 5: The Unburdened Vice-Sovereign Confrontation (Kamala Boss Battle)
-    val SCENE_ACT6_CH5_UNBURDENED = StoryScene(
-        id = "scene_act6_ch5_unburdened",
-        name = "The Unburdened Throne of What Can Be",
-        chapterTitle = "Act VI - Ch 5: The Unburdened Climax (2023)",
-        backgroundAsset = "story/unburdened_throne.jpg",
-        initialNodeId = "act6_ch5_intro",
-        ambientDescription = "A shimmering dais elevated by the passage of time where Kamala the Unburdened delivers the final circular discourse."
-    )
-
-    // Legacy alias for the original single Act VI scene
-    val SCENE_ACT6_WASTELAND = StoryScene(
-        id = "scene_act6_wasteland",
-        name = "The Word-Salad Wasteland",
-        chapterTitle = "Act VI: The Word-Salad Wasteland (2022-2023)",
-        backgroundAsset = "story/unburdened_throne.jpg",
-        initialNodeId = "act6_ch1_intro",
-        ambientDescription = "Floating venn diagrams and endless loops of circular logic drift over a misty swamp."
-    )
-
-    // Act VII - Chapter 1: The 91 Indictment Gauntlet (Fulton County & Lower Manhattan Courts)
-    val SCENE_ACT7_CH1_GAUNTLET = StoryScene(
-        id = "scene_act7_ch1_gauntlet",
-        name = "The Courtroom Steps of Manhattan",
-        chapterTitle = "Act VII - Ch 1: The 91 Indictment Gauntlet (2024)",
-        backgroundAsset = "story/courtroom_steps.jpg",
-        initialNodeId = "act7_ch1_intro",
-        ambientDescription = "Reams of docket entries and 91 fabricated counts flutter across the courtroom marble steps."
-    )
-
-    // Act VII - Chapter 2: The Gag Order Guillotine (Contempt Hearing with Biased Judges)
-    val SCENE_ACT7_CH2_GAG = StoryScene(
-        id = "scene_act7_ch2_gag",
-        name = "The Silenced Hearing Chamber",
-        chapterTitle = "Act VII - Ch 2: The Gag Order Guillotine (2024)",
-        backgroundAsset = "story/gag_hearing.jpg",
-        initialNodeId = "act7_ch2_intro",
-        ambientDescription = "A menacing gavel echoes in a darkened chamber where speaking the truth is punished by unconstitutional contempt orders."
-    )
-
-    // Act VII - Chapter 3: The Butler Fairgrounds (July 13, 2024)
-    val SCENE_ACT7_CH3_BUTLER = StoryScene(
-        id = "scene_act7_ch3_butler",
-        name = "The Open Sky at Butler, PA",
-        chapterTitle = "Act VII - Ch 3: The Butler Fairgrounds (July 13, 2024)",
-        backgroundAsset = "story/butler_fairgrounds.jpg",
-        initialNodeId = "act7_ch3_intro",
-        ambientDescription = "The hot summer sun shines down over tens of thousands of cheering patriots gathered under an open sky."
-    )
-
-    // Act VII - Chapter 4: Steel Ear & Fist Defiance (2024)
-    val SCENE_ACT7_CH4_STEEL_EAR = StoryScene(
-        id = "scene_act7_ch4_steel_ear",
-        name = "The Stage of Steel Resolve",
-        chapterTitle = "Act VII - Ch 4: Steel Ear & Fist Defiance (2024)",
-        backgroundAsset = "story/steel_ear_miracle.jpg",
-        initialNodeId = "act7_ch4_intro",
-        ambientDescription = "A defining moment in American history: blood on the cheek, fist raised to the heavens, shouting FIGHT! FIGHT! FIGHT!"
-    )
-
-    // Act VII - Chapter 5: The Milwaukee Arena Coronation (2024)
-    val SCENE_ACT7_CH5_MILWAUKEE = StoryScene(
-        id = "scene_act7_ch5_milwaukee",
-        name = "Fiserv Forum Convention Floor",
-        chapterTitle = "Act VII - Ch 5: The Milwaukee Arena Coronation (2024)",
-        backgroundAsset = "story/rnc_milwaukee.jpg",
-        initialNodeId = "act7_ch5_intro",
-        ambientDescription = "Twenty thousand arena delegates wear symbolic white ear bandages as balloons and golden banners drop from the rafters."
-    )
-
-    // Legacy alias for Act VII
-    val SCENE_ACT7_SANDS = StoryScene(
-        id = "scene_act7_sands",
-        name = "The Sands of Resolve",
-        chapterTitle = "Act VII: Sands of Resolve & Steel Ear (2024)",
-        backgroundAsset = "story/steel_ear_miracle.jpg",
-        initialNodeId = "act7_ch1_intro",
-        ambientDescription = "Desert winds howl across ancient ruins as legal writs float like cursed ravens."
-    )
-
-    // Act VIII - Chapter 1: The Basement Bunker Breach (Wilmington Virtual Studio)
-    val SCENE_ACT8_CH1_BUNKER = StoryScene(
-        id = "scene_act8_ch1_bunker",
-        name = "Wilmington Virtual Broadcast Bunker",
-        chapterTitle = "Act VIII - Ch 1: The Basement Bunker Breach",
-        backgroundAsset = "story/basement_bunker.jpg",
-        initialNodeId = "act8_ch1_intro",
-        ambientDescription = "Green screens and teleprompter rigs hum softly in a climate-controlled Wilmington basement."
-    )
-
-    // Act VIII - Chapter 2: The Teleprompter Jammer (Scranton Train Platform)
-    val SCENE_ACT8_CH2_TELEPROMPTER = StoryScene(
-        id = "scene_act8_ch2_teleprompter",
-        name = "The Scranton Train Platform",
-        chapterTitle = "Act VIII - Ch 2: The Teleprompter Jammer",
-        backgroundAsset = "story/scranton_platform.jpg",
-        initialNodeId = "act8_ch2_intro",
-        ambientDescription = "A windy train platform where giant scrolling glass teleprompters flash 'PAUSE FOR APPLAUSE'."
-    )
-
-    // Act VIII - Chapter 3: The Auto-Pen Phantoms (Executive Order Factory)
-    val SCENE_ACT8_CH3_AUTOPEN = StoryScene(
-        id = "scene_act8_ch3_autopen",
-        name = "The Executive Order Factory",
-        chapterTitle = "Act VIII - Ch 3: The Auto-Pen Phantoms",
-        backgroundAsset = "story/autopen_factory.jpg",
-        initialNodeId = "act8_ch3_intro",
-        ambientDescription = "Mechanical robotic pens replicate signature after signature on trillions of dollars in omnibus mandates."
-    )
-
-    // Act VIII - Chapter 4: The Malarkey Sovereign Climax (Cosmic Oval Citadel)
-    val SCENE_ACT8_CH4_CITADEL = StoryScene(
-        id = "scene_act8_ch4_citadel",
-        name = "The Cosmic Oval Citadel",
-        chapterTitle = "Act VIII - Ch 4: The Malarkey Sovereign Climax",
-        backgroundAsset = "story/oval_citadel.jpg",
-        initialNodeId = "act8_ch4_intro",
-        ambientDescription = "Inside the cosmic Oval Citadel, Biden the Malarkey Sovereign sits in his executive recliner clutching two melting scoops of vanilla ice cream.",
+        ambientDescription = "Booking cameras flash as a 6-foot-3, 215-pound mugshot is immediately printed onto 'NEVER SURRENDER!' T-shirts and coffee mugs.",
         musicAsset = "audio/music/bgm_oval.ogg"
     )
 
-    // Act VIII - Chapter 5: The Golden Inauguration & Golden Age of America
-    val SCENE_ACT8_CH5_INAUGURATION = StoryScene(
-        id = "scene_act8_ch5_inauguration",
-        name = "The Golden Capitol Steps & Pennsylvania Avenue",
-        chapterTitle = "Act VIII - Ch 5: The Golden Inauguration",
-        backgroundAsset = "story/golden_inauguration.jpg",
-        initialNodeId = "act8_ch5_intro",
-        ambientDescription = "Sunshine gleams over the National Mall as millions celebrate the dawn of the Golden Age of America.",
+    val SCENE_ACT3_CH5_BASKIN = StoryScene(
+        id = "scene_act3_ch5_baskin",
+        name = "Portland Baskin-Robbins & Teleprompter Stage",
+        chapterTitle = "Act III (Track A) - Ch 5: 'Economy Strong As Hell' & 'Repeat the Line' (2022–2023 Finale)",
+        backgroundAsset = "story/template/baskin_robbins_portland_template.jpg",
+        initialNodeId = "act3_ch5_baskin_intro",
+        ambientDescription = "Joe Naptime licks a double-scoop chocolate chip waffle cone at Baskin-Robbins beside a teleprompter flashing 'End of quote. Repeat the line.'",
         musicAsset = "audio/music/bgm_inauguration.ogg"
     )
 
-    // Legacy alias for Act VIII
+    val SCENE_ACT3_SUMMIT = StoryScene(
+        id = "scene_act3_summit",
+        name = "The Crimson Summit Spire",
+        chapterTitle = "Act III: Ice Cream, Corn Pop & Badakathcare",
+        backgroundAsset = "story/summit_table.jpg",
+        initialNodeId = "act3_ch1_intro",
+        ambientDescription = "Empty Baskin-Robbins waffle cones litter the stage."
+    )
+
+    // Track B (Joe Naptime) Act III Scenes — 5 Deep Chapters
+    val SCENE_ACT3_TB_CH1_POOL = StoryScene(
+        id = "scene_act3_tb_ch1_pool",
+        name = "Wilmington Swimming Pool & Rehoboth Bike Trail",
+        chapterTitle = "Act III (Track B) - Ch 1: Corn Pop's Rusty Razor, Blonde Leg Hair & Toe Cages (2019–2022)",
+        backgroundAsset = "story/template/rehoboth_bike_pool_template.jpg",
+        initialNodeId = "act3_tb_ch1_intro",
+        ambientDescription = "A 6-foot poolside chain and a rainwater barrel of rusty razors sit beside a Rehoboth Beach bicycle trail.",
+        musicAsset = "audio/music/bgm_title.ogg"
+    )
+
+    val SCENE_ACT3_TB_CH2_TELEPROMPTER = StoryScene(
+        id = "scene_act3_tb_ch2_teleprompter",
+        name = "White House Teleprompter & Andrews Staircase",
+        chapterTitle = "Act III (Track B) - Ch 2: 'End of Quote, Repeat the Line' & Two Vindications (2021–2022)",
+        backgroundAsset = "story/scranton_platform.jpg",
+        initialNodeId = "act3_tb_ch2_intro",
+        ambientDescription = "A giant glass teleprompter displays bracketed stage directions in 72-point font while wind gusts rattle the tarmac stairs.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT3_TB_CH3_BASKIN = StoryScene(
+        id = "scene_act3_tb_ch3_baskin",
+        name = "Portland Baskin-Robbins Ice-Cream Counter",
+        chapterTitle = "Act III (Track B) - Ch 3: 'Economy Strong As Hell' vs. Foghorn Kennedy (2022–2023)",
+        backgroundAsset = "story/template/baskin_robbins_portland_template.jpg",
+        initialNodeId = "act3_tb_ch3_intro",
+        ambientDescription = "Thirty-one flavors of ice cream gleam under neon lights as Joe Naptime orders a double-scoop chocolate chip waffle cone.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT3_TB_CH4_GARAGE = StoryScene(
+        id = "scene_act3_tb_ch4_garage",
+        name = "Wilmington Locked 1967 Corvette Garage",
+        chapterTitle = "Act III (Track B) - Ch 4: The Corvette Garage & Real-Audio Gibberish Symphony (2023–2024)",
+        backgroundAsset = "story/basement_bunker.jpg",
+        initialNodeId = "act3_tb_ch4_intro",
+        ambientDescription = "A green 1967 Chevrolet Corvette Stingray sits parked beside a crushed cardboard box of classified folders and a freezer of Jeni's pints.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT3_TB_CH5_MUGSHOT = StoryScene(
+        id = "scene_act3_tb_ch5_mugshot",
+        name = "Mar-a-Lago Chandelier Bathroom & Fulton Booking Desk",
+        chapterTitle = "Act III (Track B) - Ch 5: The '215-Lb' Mugshot & Passing the Coconut to Kamala (2023–2024 Finale)",
+        backgroundAsset = "story/template/fulton_mugshot_template.jpg",
+        initialNodeId = "act3_tb_ch5_intro",
+        ambientDescription = "A gilded bathroom chandelier illuminates stacks of bankers boxes beside a 'NEVER SURRENDER!' mugshot T-shirt press.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
+    )
+
+    // -------------------------------------------------------------------------
+    // ACT IV SCENES (Dual-Campaign: 5 Deep Chapters on Track A + 5 Deep Chapters on Track B)
+    // -------------------------------------------------------------------------
+    val SCENE_ACT4_CH1_FISA = StoryScene(
+        id = "scene_act4_ch1_fisa",
+        name = "Holt's Sweet Shoppe — Valdosta, Georgia",
+        chapterTitle = "Act IV (Track A) - Ch 1: Enter JD Pants & 'Whatever Makes Sense' Donuts (Aug 2024)",
+        backgroundAsset = "story/template/holt_donut_shop_template.jpg",
+        initialNodeId = "act4_ch1_intro",
+        ambientDescription = "Fluorescent bakery lights buzz as JD Pants asks 'How long have you worked here? Okay, good' over a tray of sprinkle donuts.",
+        musicAsset = "audio/music/bgm_title.ogg"
+    )
+
+    val SCENE_ACT4_CH2_BINDER = StoryScene(
+        id = "scene_act4_ch2_binder",
+        name = "Lester Holt Interview Set & Border Wall Gap",
+        chapterTitle = "Act IV (Track A) - Ch 2: 'And I Haven't Been to Europe!' & Ukraine Preschool (2021–2024)",
+        backgroundAsset = "story/border_wall.jpg",
+        initialNodeId = "act4_ch2_intro",
+        ambientDescription = "Lester Holt asks why nobody has visited the southern border while a globe highlights Europe and Ukraine.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT4_CH3_COURT = StoryScene(
+        id = "scene_act4_ch3_court",
+        name = "Electric Yellow School Bus Depot & Venn Mirage",
+        chapterTitle = "Act IV (Track A) - Ch 3: Venn Diagrams, Yellow School Buses & '32 Days!' (2022–2024)",
+        backgroundAsset = "story/electric_bus.jpg",
+        initialNodeId = "act4_ch3_intro",
+        ambientDescription = "Three glowing Venn diagram circles hover above a yellow electric school bus and a glitching Flint teleprompter.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT4_CH4_HEARING = StoryScene(
+        id = "scene_act4_ch4_hearing",
+        name = "Feasterville McDonald's Fry Station & Green Bay Garbage Truck",
+        chapterTitle = "Act IV (Track A) - Ch 4: The McDonald's Fry Apron & Orange Garbage Vest (Oct 2024)",
+        backgroundAsset = "story/template/mcdonalds_fry_apron_template.jpg",
+        initialNodeId = "act4_ch4_intro",
+        ambientDescription = "Golden French-fry baskets sizzle beside a white Mack garbage truck and a high-visibility neon-orange safety vest.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT4_CH5_COCONUT_FINALE = StoryScene(
+        id = "scene_act4_ch5_coconut_finale",
+        name = "The Coconut Grove & Unburdened Throne",
+        chapterTitle = "Act IV (Track A) - Ch 5: Falling Out of a Coconut Tree & 'Unburdened' (Nov 2024 Finale)",
+        backgroundAsset = "story/coconut_grove.jpg",
+        initialNodeId = "act4_ch5_coconut_intro",
+        ambientDescription = "Coconuts drop in the context of all in which you live and what came before you.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
+    )
+
+    val SCENE_ACT4_MUELLER = StoryScene(
+        id = "scene_act4_mueller",
+        name = "The Special Counsel Sanctum",
+        chapterTitle = "Act IV: Coconut Trees, Donut Shops & The Torch Pass",
+        backgroundAsset = "story/hearing_room.jpg",
+        initialNodeId = "act4_ch1_intro",
+        ambientDescription = "Subpoenas flutter through the committee chamber."
+    )
+
+    // Track B (Kamala Coconut) Act IV Scenes — 5 Deep Chapters
+    val SCENE_ACT4_TB_CH1_COCONUT = StoryScene(
+        id = "scene_act4_tb_ch1_coconut",
+        name = "The Context of the Coconut Grove",
+        chapterTitle = "Act IV (Track B) - Ch 1: Falling Out of a Coconut Tree & Venn Diagrams (2023–July 2024)",
+        backgroundAsset = "story/coconut_grove.jpg",
+        initialNodeId = "act4_tb_ch1_intro",
+        ambientDescription = "Towering coconut palms sway in the context of all in which you live and what came before you.",
+        musicAsset = "audio/music/bgm_title.ogg"
+    )
+
+    val SCENE_ACT4_TB_CH2_DONUTS = StoryScene(
+        id = "scene_act4_tb_ch2_donuts",
+        name = "Valdosta Donut Counter & South Philly Cheesesteak Window",
+        chapterTitle = "Act IV (Track B) - Ch 2: 'I'm Speaking!' vs. JD Pants's Donut Interrogation (Aug–Oct 2024)",
+        backgroundAsset = "story/template/holt_donut_shop_template.jpg",
+        initialNodeId = "act4_tb_ch2_intro",
+        ambientDescription = "A box of 'some sprinkle stuff, whatever makes sense' glazed donuts sits next to a wedge of outlawed Philly Swiss cheese.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT4_TB_CH3_PASSAGE = StoryScene(
+        id = "scene_act4_tb_ch3_passage",
+        name = "The Unburdened Dais of the Passage of Time",
+        chapterTitle = "Act IV (Track B) - Ch 3: 'The Significance of the Passage of Time' & Tiffany Pearls (2022–2024)",
+        backgroundAsset = "story/unburdened_throne.jpg",
+        initialNodeId = "act4_tb_ch3_intro",
+        ambientDescription = "Clocks tick four times in thirty-two seconds to mark the significance of the passage of time.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT4_TB_CH4_DEBATE = StoryScene(
+        id = "scene_act4_tb_ch4_debate",
+        name = "Philadelphia Debate Stage — National Constitution Center",
+        chapterTitle = "Act IV (Track B) - Ch 4: 'Concepts of a Plan' & 'I Saw It on Television!' (Sept 10, 2024)",
+        backgroundAsset = "story/primary_debate.jpg",
+        initialNodeId = "act4_tb_ch4_intro",
+        ambientDescription = "Split-screen cameras capture a hand-on-chin courtroom expression as 'Concepts of a Plan' echoes across the stage.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT4_TB_CH5_MCDONALDS = StoryScene(
+        id = "scene_act4_tb_ch5_mcdonalds",
+        name = "Closed-Set Drive-Thru Window & Garbage Truck Tarmac",
+        chapterTitle = "Act IV (Track B) - Ch 5: The Fry Apron, The Garbage Vest & Passing the Chapati (Nov 2024 Finale)",
+        backgroundAsset = "story/template/mcdonalds_fry_apron_template.jpg",
+        initialNodeId = "act4_tb_ch5_intro",
+        ambientDescription = "A closed-set McDonald's drive-thru window gleams beside a neon-orange garbage truck vest and a Queens chapati food truck.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
+    )
+
+    // -------------------------------------------------------------------------
+    // ACT V SCENES (Dual-Campaign: 5 Deep Chapters on Track A + 5 Deep Chapters on Track B)
+    // -------------------------------------------------------------------------
+    val SCENE_ACT5_CH1_ARENA = StoryScene(
+        id = "scene_act5_ch1_arena",
+        name = "Butler Fairgrounds & Cybertruck Demo Stage",
+        chapterTitle = "Act V (Track A) - Ch 1: Dark Gothic MAGA Star-Jump & The Porcelain Sink (2024–2025)",
+        backgroundAsset = "story/butler_fairgrounds.jpg",
+        initialNodeId = "act5_ch1_intro",
+        ambientDescription = "Musk-X leaps into a mid-air X-shape exposing four inches of midriff beside a porcelain bathroom sink and two shattered Cybertruck windows.",
+        musicAsset = "audio/music/bgm_title.ogg"
+    )
+
+    val SCENE_ACT5_CH2_SENATE = StoryScene(
+        id = "scene_act5_ch2_senate",
+        name = "Milwaukee Convention Floor & DOGE Command",
+        chapterTitle = "Act V (Track A) - Ch 2: Hulkster's Shirt-Rip, 'Hey Bob!' & DOGE (2024–2025)",
+        backgroundAsset = "story/rnc_milwaukee.jpg",
+        initialNodeId = "act5_ch2_intro",
+        ambientDescription = "Hulkster 24-Pythons rips two shirts in half on stage while a Shiba Inu DOGE banner gleams over federal budget spreadsheets.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT5_CH3_TERRACE = StoryScene(
+        id = "scene_act5_ch3_terrace",
+        name = "Turkish Airlines Lounge & Osteria La Baia",
+        chapterTitle = "Act V (Track A) - Ch 3: Mayor Swagger's Turkish Upgrades & 'Vegan' Sea Bass (2024–2025)",
+        backgroundAsset = "story/maralago_terrace.jpg",
+        initialNodeId = "act5_ch3_intro",
+        ambientDescription = "Mayor Swagger sips New York tap water next to a Turkish Airlines lie-flat seat, a plate of midnight Chilean sea bass, and a marble-jar baby doll.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT5_CH4_CLOSETS = StoryScene(
+        id = "scene_act5_ch4_closets",
+        name = "Astoria Chapati Food Truck & Municipal Grocery",
+        chapterTitle = "Act V (Track A) - Ch 4: Enter 'Mr. Cardamom,' Nani's Apron & City-Owned Groceries (2025–2026)",
+        backgroundAsset = "story/template/chapati_food_truck_template.jpg",
+        initialNodeId = "act5_ch4_intro",
+        ambientDescription = "Zohran Cardamom ('Mr. Cardamom') flips chapatis in an apron beside a 'FREEZE THE RENT & FREE Q70 BUS' sign and five city-owned grocery blueprints.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT5_CH5_FINALE = StoryScene(
+        id = "scene_act5_ch5_finale",
+        name = "The 2026 Bipartisan Grand Finale Arena",
+        chapterTitle = "Act V (Track A) - Ch 5: The 2026 Bipartisan Roast Finale (Grand Climax)",
+        backgroundAsset = "story/golden_inauguration.jpg",
+        initialNodeId = "act5_ch5_finale_intro",
+        ambientDescription = "Confetti, chapatis, waffle cones, and Cybertruck steel balls rain across the Grand Finale stage.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
+    )
+
+    val SCENE_ACT5_MARALAGO = StoryScene(
+        id = "scene_act5_maralago",
+        name = "The Mar-a-Lago Fortress",
+        chapterTitle = "Act V: Star-Jumps, Mr. Cardamom & The 2026 Grand Finale",
+        backgroundAsset = "story/maralago_terrace.jpg",
+        initialNodeId = "act5_ch1_intro",
+        ambientDescription = "Ocean breezes sweep across golden palm trees.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    // Track B (Zohran Cardamom + Mayor Swagger) Act V Scenes — 5 Deep Chapters
+    val SCENE_ACT5_TB_CH1_CHAPATI = StoryScene(
+        id = "scene_act5_tb_ch1_chapati",
+        name = "Astoria Chapati Truck & Free Q70 Bus Stop",
+        chapterTitle = "Act V (Track B) - Ch 1: 'Mr. Cardamom,' Nani's Apron & 5 City Grocery Stores (2025)",
+        backgroundAsset = "story/template/chapati_food_truck_template.jpg",
+        initialNodeId = "act5_tb_ch1_intro",
+        ambientDescription = "Sizzling chapatis, a bespoke thrifted suit, Madhur Jaffrey's apron, and an MTA Fare-Free Bus Pilot report.",
+        musicAsset = "audio/music/bgm_title.ogg"
+    )
+
+    val SCENE_ACT5_TB_CH2_SWAGGER = StoryScene(
+        id = "scene_act5_tb_ch2_swagger",
+        name = "Gracie Mansion Kitchen & Turkish Business Class",
+        chapterTitle = "Act V (Track B) - Ch 2: Mayor Swagger's Contraband Baby-Doll & Midnight Sea Bass (2025)",
+        backgroundAsset = "story/gag_hearing.jpg",
+        initialNodeId = "act5_tb_ch2_intro",
+        ambientDescription = "Mayor Swagger inspects a plastic baby doll and glass marble jar beside a locked 6-digit iPhone and Turkish Airlines boarding passes.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT5_TB_CH3_CYBERTRUCK = StoryScene(
+        id = "scene_act5_tb_ch3_cybertruck",
+        name = "Butler Star-Jump Stage & Shattered Cybertruck Lab",
+        chapterTitle = "Act V (Track B) - Ch 3: Roasting Musk-X's Mid-Air 'X' Jump & Porcelain Sink (2025–2026)",
+        backgroundAsset = "story/butler_fairgrounds.jpg",
+        initialNodeId = "act5_tb_ch3_intro",
+        ambientDescription = "A porcelain bathroom sink sits next to a Cybertruck with two steel-ball-shattered 'Armor Glass' windows.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT5_TB_CH4_DOGE = StoryScene(
+        id = "scene_act5_tb_ch4_doge",
+        name = "Department of Government Efficiency (DOGE) Vault",
+        chapterTitle = "Act V (Track B) - Ch 4: Shiba Inu Bureaucracy vs. Sprinkle Donuts & Wizard Books (2026)",
+        backgroundAsset = "story/senate_hearing.jpg",
+        initialNodeId = "act5_tb_ch4_intro",
+        ambientDescription = "A giant Shiba Inu meme coin logo hangs over JD Pants's donut box, Wizard Kash's children's book, and Foghorn Kennedy's gavel.",
+        musicAsset = "audio/music/bgm_intrigue.ogg"
+    )
+
+    val SCENE_ACT5_TB_CH5_FINALE = StoryScene(
+        id = "scene_act5_tb_ch5_finale",
+        name = "The 2026 Bipartisan Grand Finale Stage",
+        chapterTitle = "Act V (Track B) - Ch 5: Chapatis vs. Diet Coke Buttons — The Bipartisan Curtain Call (2026 Finale)",
+        backgroundAsset = "story/golden_inauguration.jpg",
+        initialNodeId = "act5_tb_ch5_intro",
+        ambientDescription = "All six narrators and the entire bipartisan cast gather under golden spotlights for the final showdown.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
+    )
+
+    val SCENE_ACT6_CH1_BORDER = StoryScene(
+        id = "scene_act6_ch1_border",
+        name = "The Southern Border Wall Gap",
+        chapterTitle = "Act VI - Ch 1: We've Been To The Border",
+        backgroundAsset = "story/border_wall.jpg",
+        initialNodeId = "act6_ch1_intro",
+        ambientDescription = "Lester Holt asks why nobody has visited the border yet."
+    )
+
+    val SCENE_ACT6_CH2_VENN = StoryScene(
+        id = "scene_act6_ch2_venn",
+        name = "The Triple-Circle Venn Mirage",
+        chapterTitle = "Act VI - Ch 2: Those Three Circles",
+        backgroundAsset = "story/venn_fog.jpg",
+        initialNodeId = "act6_ch2_intro",
+        ambientDescription = "Three overlapping glowing Venn diagram circles float in the mist."
+    )
+
+    val SCENE_ACT6_CH3_BUS = StoryScene(
+        id = "scene_act6_ch3_bus",
+        name = "The Electric Yellow School Bus Depot",
+        chapterTitle = "Act VI - Ch 3: Who Doesn't Love A Yellow School Bus?",
+        backgroundAsset = "story/electric_bus.jpg",
+        initialNodeId = "act6_ch3_intro",
+        ambientDescription = "Yellow electric school buses gleam under the sun."
+    )
+
+    val SCENE_ACT6_CH4_COCONUT = StoryScene(
+        id = "scene_act6_ch4_coconut",
+        name = "The Context of the Coconut Grove",
+        chapterTitle = "Act VI - Ch 4: Falling Out of a Coconut Tree",
+        backgroundAsset = "story/coconut_grove.jpg",
+        initialNodeId = "act6_ch4_intro",
+        ambientDescription = "Towering coconut palms sway in the context of all in which you live and what came before you."
+    )
+
+    val SCENE_ACT6_CH5_UNBURDENED = StoryScene(
+        id = "scene_act6_ch5_unburdened",
+        name = "The Unburdened Throne of What Can Be",
+        chapterTitle = "Act VI - Ch 5: Unburdened By What Has Been",
+        backgroundAsset = "story/unburdened_throne.jpg",
+        initialNodeId = "act6_ch5_intro",
+        ambientDescription = "A dais elevated by the significance of the passage of time."
+    )
+
+    val SCENE_ACT6_WASTELAND = StoryScene(
+        id = "scene_act6_wasteland",
+        name = "The Word-Salad Wasteland",
+        chapterTitle = "Act VI: The Word-Salad Wasteland",
+        backgroundAsset = "story/unburdened_throne.jpg",
+        initialNodeId = "act6_ch1_intro",
+        ambientDescription = "Floating Venn diagrams drift over the horizon."
+    )
+
+    val SCENE_ACT7_CH1_GAUNTLET = StoryScene(
+        id = "scene_act7_ch1_gauntlet",
+        name = "The Courtroom Steps of Manhattan",
+        chapterTitle = "Act VII - Ch 1: The Docket Gauntlet",
+        backgroundAsset = "story/courtroom_steps.jpg",
+        initialNodeId = "act7_ch1_intro",
+        ambientDescription = "Subpoenas and children's book flyers flutter across the marble steps."
+    )
+
+    val SCENE_ACT7_CH2_GAG = StoryScene(
+        id = "scene_act7_ch2_gag",
+        name = "The Hearing Chamber",
+        chapterTitle = "Act VII - Ch 2: Pleading the Fifth for Immunity",
+        backgroundAsset = "story/gag_hearing.jpg",
+        initialNodeId = "act7_ch2_intro",
+        ambientDescription = "A gavel echoes inside the grand jury chamber."
+    )
+
+    val SCENE_ACT7_CH3_BUTLER = StoryScene(
+        id = "scene_act7_ch3_butler",
+        name = "Butler Fairgrounds & Mid-Air Star-Jump",
+        chapterTitle = "Act VII - Ch 3: Dark Gothic MAGA Star-Jump",
+        backgroundAsset = "story/butler_fairgrounds.jpg",
+        initialNodeId = "act7_ch3_intro",
+        ambientDescription = "Musk-X leaps into an X-shape mid-air exposing four inches of midriff."
+    )
+
+    val SCENE_ACT7_CH4_STEEL_EAR = StoryScene(
+        id = "scene_act7_ch4_steel_ear",
+        name = "The Stage of Resolve",
+        chapterTitle = "Act VII - Ch 4: Fight! Fight! Fight!",
+        backgroundAsset = "story/steel_ear_miracle.jpg",
+        initialNodeId = "act7_ch4_intro",
+        ambientDescription = "Fist raised under the summer sky."
+    )
+
+    val SCENE_ACT7_CH5_MILWAUKEE = StoryScene(
+        id = "scene_act7_ch5_milwaukee",
+        name = "Fiserv Forum Convention Floor",
+        chapterTitle = "Act VII - Ch 5: Hulkster Shirt-Rip Coronation",
+        backgroundAsset = "story/rnc_milwaukee.jpg",
+        initialNodeId = "act7_ch5_intro",
+        ambientDescription = "Balloons drop as Hulkster 24-Pythons rips his shirt in half on stage."
+    )
+
+    val SCENE_ACT7_SANDS = StoryScene(
+        id = "scene_act7_sands",
+        name = "The Sands of Resolve",
+        chapterTitle = "Act VII: Donut Shops, Star-Jumps & Conventions",
+        backgroundAsset = "story/steel_ear_miracle.jpg",
+        initialNodeId = "act7_ch1_intro",
+        ambientDescription = "A box of 'whatever makes sense' glazed donuts sits on the counter."
+    )
+
+    val SCENE_ACT8_CH1_BUNKER = StoryScene(
+        id = "scene_act8_ch1_bunker",
+        name = "Wilmington Ice-Cream Freezer Bunker",
+        chapterTitle = "Act VIII - Ch 1: Double-Scoop Chocolate Chip",
+        backgroundAsset = "story/basement_bunker.jpg",
+        initialNodeId = "act8_ch1_intro",
+        ambientDescription = "Stacks of Jeni's Splendid Ice Cream pints hum inside a climate-controlled Wilmington basement."
+    )
+
+    val SCENE_ACT8_CH2_TELEPROMPTER = StoryScene(
+        id = "scene_act8_ch2_teleprompter",
+        name = "The Scranton Train Platform",
+        chapterTitle = "Act VIII - Ch 2: End of Quote, Repeat the Line",
+        backgroundAsset = "story/scranton_platform.jpg",
+        initialNodeId = "act8_ch2_intro",
+        ambientDescription = "A giant glass teleprompter flashes stage directions that get read aloud word for word."
+    )
+
+    val SCENE_ACT8_CH3_AUTOPEN = StoryScene(
+        id = "scene_act8_ch3_autopen",
+        name = "The Baskin-Robbins Inflation Counter",
+        chapterTitle = "Act VIII - Ch 3: Economy Strong As Hell, Man",
+        backgroundAsset = "story/autopen_factory.jpg",
+        initialNodeId = "act8_ch3_intro",
+        ambientDescription = "Waffle cones crunch as reporters shout questions about the Consumer Price Index."
+    )
+
+    val SCENE_ACT8_CH4_CITADEL = StoryScene(
+        id = "scene_act8_ch4_citadel",
+        name = "The Cosmic Ice-Cream Citadel",
+        chapterTitle = "Act VIII - Ch 4: Truinanashabbadepressure Climax",
+        backgroundAsset = "story/oval_citadel.jpg",
+        initialNodeId = "act8_ch4_intro",
+        ambientDescription = "Joe Naptime adjusts his Ray-Ban aviators over a towering hot-fudge sundae.",
+        musicAsset = "audio/music/bgm_oval.ogg"
+    )
+
+    val SCENE_ACT8_CH5_INAUGURATION = StoryScene(
+        id = "scene_act8_ch5_inauguration",
+        name = "The Grand Finale Stage",
+        chapterTitle = "Act VIII - Ch 5: The Bipartisan Roast Finale",
+        backgroundAsset = "story/golden_inauguration.jpg",
+        initialNodeId = "act8_ch5_intro",
+        ambientDescription = "Both sides of the aisle collide in a shower of confetti, subpoenas, waffle cones, and chapatis.",
+        musicAsset = "audio/music/bgm_inauguration.ogg"
+    )
+
     val SCENE_ACT8_CITADEL_FINAL = StoryScene(
         id = "scene_act8_citadel_final",
         name = "The Final Malarkey Citadel",
         chapterTitle = "Act VIII: Eradicating Malarkey - The Final Showdown",
         backgroundAsset = "story/golden_inauguration.jpg",
         initialNodeId = "act8_ch1_intro",
-        ambientDescription = "A cosmic arena powered by infinite scoops of vanilla ice cream and stumbles.",
+        ambientDescription = "A cosmic arena powered by infinite scoops of chocolate chip ice cream.",
         musicAsset = "audio/music/bgm_inauguration.ogg"
     )
 
@@ -425,63 +715,97 @@ object StoryScript {
         SCENE_ACT1_CH1_ESCALATOR.id to SCENE_ACT1_CH1_ESCALATOR,
         "scene_act1_escalator" to SCENE_ACT1_CH1_ESCALATOR,
         SCENE_ACT1_CH2_DEBATE.id to SCENE_ACT1_CH2_DEBATE,
+        SCENE_ACT1_CH3_TACO_BUS.id to SCENE_ACT1_CH3_TACO_BUS,
         SCENE_ACT1_CH3_RALLY.id to SCENE_ACT1_CH3_RALLY,
+        SCENE_ACT1_TB_CH1_SERVER.id to SCENE_ACT1_TB_CH1_SERVER,
+        SCENE_ACT1_TB_CH2_FERNS.id to SCENE_ACT1_TB_CH2_FERNS,
+        SCENE_ACT1_TB_CH3_BREAKFAST.id to SCENE_ACT1_TB_CH3_BREAKFAST,
+        SCENE_ACT1_TB_CH4_JAVITS.id to SCENE_ACT1_TB_CH4_JAVITS,
+        "scene_act1_tb_ch3_javits" to SCENE_ACT1_TB_CH4_JAVITS,
         SCENE_ACT2_CH1_MALL.id to SCENE_ACT2_CH1_MALL,
         SCENE_ACT2_CH2_OVAL.id to SCENE_ACT2_CH2_OVAL,
+        SCENE_ACT2_CH3_SHARPIE.id to SCENE_ACT2_CH3_SHARPIE,
+        SCENE_ACT2_CH4_SCIF.id to SCENE_ACT2_CH4_SCIF,
         SCENE_ACT2_CH3_ROTUNDA.id to SCENE_ACT2_CH3_ROTUNDA,
-        SCENE_ACT2_OVAL.id to SCENE_ACT2_CH1_MALL,   // legacy alias → ch1
+        SCENE_ACT2_OVAL.id to SCENE_ACT2_CH1_MALL,
+        SCENE_ACT2_TB_CH1_BUSHES.id to SCENE_ACT2_TB_CH1_BUSHES,
+        SCENE_ACT2_TB_CH2_SOTU.id to SCENE_ACT2_TB_CH2_SOTU,
+        SCENE_ACT2_TB_CH3_SUBZERO.id to SCENE_ACT2_TB_CH3_SUBZERO,
+        SCENE_ACT2_TB_CH4_STOCKS.id to SCENE_ACT2_TB_CH4_STOCKS,
+        SCENE_ACT2_TB_CH5_FOUR_SEASONS.id to SCENE_ACT2_TB_CH5_FOUR_SEASONS,
         SCENE_ACT3_CH1_STEEL_MILL.id to SCENE_ACT3_CH1_STEEL_MILL,
         SCENE_ACT3_CH2_USMCA.id to SCENE_ACT3_CH2_USMCA,
         SCENE_ACT3_CH3_AF1.id to SCENE_ACT3_CH3_AF1,
         SCENE_ACT3_CH4_SUMMIT.id to SCENE_ACT3_CH4_SUMMIT,
-        SCENE_ACT3_SUMMIT.id to SCENE_ACT3_CH1_STEEL_MILL,  // legacy alias → ch1
+        SCENE_ACT3_CH5_BASKIN.id to SCENE_ACT3_CH5_BASKIN,
+        SCENE_ACT3_SUMMIT.id to SCENE_ACT3_CH1_STEEL_MILL,
+        SCENE_ACT3_TB_CH1_POOL.id to SCENE_ACT3_TB_CH1_POOL,
+        SCENE_ACT3_TB_CH2_TELEPROMPTER.id to SCENE_ACT3_TB_CH2_TELEPROMPTER,
+        SCENE_ACT3_TB_CH3_BASKIN.id to SCENE_ACT3_TB_CH3_BASKIN,
+        SCENE_ACT3_TB_CH4_GARAGE.id to SCENE_ACT3_TB_CH4_GARAGE,
+        SCENE_ACT3_TB_CH5_MUGSHOT.id to SCENE_ACT3_TB_CH5_MUGSHOT,
         SCENE_ACT4_CH1_FISA.id to SCENE_ACT4_CH1_FISA,
         SCENE_ACT4_CH2_BINDER.id to SCENE_ACT4_CH2_BINDER,
         SCENE_ACT4_CH3_COURT.id to SCENE_ACT4_CH3_COURT,
         SCENE_ACT4_CH4_HEARING.id to SCENE_ACT4_CH4_HEARING,
-        SCENE_ACT4_MUELLER.id to SCENE_ACT4_CH1_FISA,       // legacy alias → ch1
+        SCENE_ACT4_CH5_COCONUT_FINALE.id to SCENE_ACT4_CH5_COCONUT_FINALE,
+        SCENE_ACT4_MUELLER.id to SCENE_ACT4_CH1_FISA,
+        SCENE_ACT4_TB_CH1_COCONUT.id to SCENE_ACT4_TB_CH1_COCONUT,
+        SCENE_ACT4_TB_CH2_DONUTS.id to SCENE_ACT4_TB_CH2_DONUTS,
+        SCENE_ACT4_TB_CH3_PASSAGE.id to SCENE_ACT4_TB_CH3_PASSAGE,
+        SCENE_ACT4_TB_CH4_DEBATE.id to SCENE_ACT4_TB_CH4_DEBATE,
+        SCENE_ACT4_TB_CH5_MCDONALDS.id to SCENE_ACT4_TB_CH5_MCDONALDS,
         SCENE_ACT5_CH1_ARENA.id to SCENE_ACT5_CH1_ARENA,
         SCENE_ACT5_CH2_SENATE.id to SCENE_ACT5_CH2_SENATE,
         SCENE_ACT5_CH3_TERRACE.id to SCENE_ACT5_CH3_TERRACE,
         SCENE_ACT5_CH4_CLOSETS.id to SCENE_ACT5_CH4_CLOSETS,
-        SCENE_ACT5_MARALAGO.id to SCENE_ACT5_CH1_ARENA,     // legacy alias → ch1
+        SCENE_ACT5_CH5_FINALE.id to SCENE_ACT5_CH5_FINALE,
+        SCENE_ACT5_MARALAGO.id to SCENE_ACT5_CH1_ARENA,
+        SCENE_ACT5_TB_CH1_CHAPATI.id to SCENE_ACT5_TB_CH1_CHAPATI,
+        SCENE_ACT5_TB_CH2_SWAGGER.id to SCENE_ACT5_TB_CH2_SWAGGER,
+        SCENE_ACT5_TB_CH3_CYBERTRUCK.id to SCENE_ACT5_TB_CH3_CYBERTRUCK,
+        SCENE_ACT5_TB_CH4_DOGE.id to SCENE_ACT5_TB_CH4_DOGE,
+        SCENE_ACT5_TB_CH5_FINALE.id to SCENE_ACT5_TB_CH5_FINALE,
         SCENE_ACT6_CH1_BORDER.id to SCENE_ACT6_CH1_BORDER,
         SCENE_ACT6_CH2_VENN.id to SCENE_ACT6_CH2_VENN,
         SCENE_ACT6_CH3_BUS.id to SCENE_ACT6_CH3_BUS,
         SCENE_ACT6_CH4_COCONUT.id to SCENE_ACT6_CH4_COCONUT,
         SCENE_ACT6_CH5_UNBURDENED.id to SCENE_ACT6_CH5_UNBURDENED,
-        SCENE_ACT6_WASTELAND.id to SCENE_ACT6_CH1_BORDER,   // legacy alias → ch1
+        SCENE_ACT6_WASTELAND.id to SCENE_ACT6_CH1_BORDER,
         SCENE_ACT7_CH1_GAUNTLET.id to SCENE_ACT7_CH1_GAUNTLET,
         SCENE_ACT7_CH2_GAG.id to SCENE_ACT7_CH2_GAG,
         SCENE_ACT7_CH3_BUTLER.id to SCENE_ACT7_CH3_BUTLER,
         SCENE_ACT7_CH4_STEEL_EAR.id to SCENE_ACT7_CH4_STEEL_EAR,
         SCENE_ACT7_CH5_MILWAUKEE.id to SCENE_ACT7_CH5_MILWAUKEE,
-        SCENE_ACT7_SANDS.id to SCENE_ACT7_CH1_GAUNTLET,     // legacy alias → ch1
+        SCENE_ACT7_SANDS.id to SCENE_ACT7_CH1_GAUNTLET,
         SCENE_ACT8_CH1_BUNKER.id to SCENE_ACT8_CH1_BUNKER,
         SCENE_ACT8_CH2_TELEPROMPTER.id to SCENE_ACT8_CH2_TELEPROMPTER,
         SCENE_ACT8_CH3_AUTOPEN.id to SCENE_ACT8_CH3_AUTOPEN,
         SCENE_ACT8_CH4_CITADEL.id to SCENE_ACT8_CH4_CITADEL,
         SCENE_ACT8_CH5_INAUGURATION.id to SCENE_ACT8_CH5_INAUGURATION,
-        SCENE_ACT8_CITADEL_FINAL.id to SCENE_ACT8_CH1_BUNKER // legacy alias → ch1
+        SCENE_ACT8_CITADEL_FINAL.id to SCENE_ACT8_CH1_BUNKER
     )
 
     // -------------------------------------------------------------------------
-    // 8-Act Dialogue Graph
+    // EXPANDED ACT I DUAL-CAMPAIGN DIALOGUE GRAPH (4 Deep Chapters Per Track)
+    // Core Satire Rule: Neither side EVER lets a talking point go. Every time
+    // someone is cornered on ANY topic, they drag back a 5-, 10-, or 37-year-old
+    // scandal and beat it into the ground.
     // -------------------------------------------------------------------------
     val ALL_NODES: Map<String, DialogueNode> = listOf(
 
         // =========================================================================
-        // ACT I - CHAPTER 1: THE GOLDEN DESCENT (JUNE 16, 2015)
+        // ACT I PROLOGUE & TRACK A - CHAPTER 1: THE $50 ESCALATOR & THE LION KING ROAST
         // =========================================================================
         DialogueNode(
             id = "act1_ch1_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Good evening, America. We are broadcasting live from Trump Tower on Fifth Avenue. The national media dismissed this as a publicity stunt, but the atrium is packed to capacity with thousands of roaring, hard-working Americans. As golden light reflects off the escalator, Commander America begins his historic descent.",
+            text = "Good evening, America! I'm Kayleigh Binder-Tabs, flipping to Tab 1 of our 2015 Fact-Checked Satire Chronicle! Before Commander America steps onto the brass escalator at Trump Tower on June 16, 2015, we have to rewind to April 30, 2011 at the White House Correspondents' Dinner—where Barry Teleprompter refused to let the birth-certificate feud go and played the opening scene of Disney's The Lion King as his 'official birth video'! Choose your opening move or switch to Track B (Hill-Rod)!",
             choices = listOf(
-                DialogueChoice("a1_speech", "Deliver the unscripted announcement speech", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
-                DialogueChoice("a1_swagger", "Showcase signature presidential swagger", listOf("swagger", "hair", "suit", "aura", "shades"), "act1_ch1_swagger"),
-                DialogueChoice("a1_media", "Call out the dishonest camera crews in the back", listOf("media", "camera", "fake news", "press", "dishonest"), "act1_ch1_media")
+                DialogueChoice("a1_speech", "Deliver the unscripted announcement speech (Track A: Commander America)", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
+                DialogueChoice("a1_swagger", "Showcase escalator swagger & address the \$50 Extra Mile Casting actors", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
+                DialogueChoice("a1_media", "Switch to Track B: Play as Hill-Rod in the Chappaqua Server Basement!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
             )
         ),
         // Legacy alias for Act I intro
@@ -489,58 +813,75 @@ object StoryScript {
             id = "act1_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Good evening, America. We are broadcasting live from Trump Tower on Fifth Avenue. The national media dismissed this as a publicity stunt, but the atrium is packed to capacity with thousands of roaring, hard-working Americans. As golden light reflects off the escalator, Commander America begins his historic descent.",
+            text = "Good evening, America! I'm Kayleigh Binder-Tabs, flipping to Tab 1 of our 2015 Fact-Checked Satire Chronicle! Before Commander America steps onto the brass escalator at Trump Tower on June 16, 2015, we have to rewind to April 30, 2011 at the White House Correspondents' Dinner—where Barry Teleprompter refused to let the birth-certificate feud go and played the opening scene of Disney's The Lion King as his 'official birth video'! Choose your opening move or switch to Track B (Hill-Rod)!",
             choices = listOf(
-                DialogueChoice("a1_speech", "Deliver the unscripted announcement speech", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
-                DialogueChoice("a1_swagger", "Showcase signature presidential swagger", listOf("swagger", "hair", "suit", "aura", "shades"), "act1_ch1_swagger"),
-                DialogueChoice("a1_media", "Call out the dishonest camera crews in the back", listOf("media", "camera", "fake news", "press", "dishonest"), "act1_ch1_media")
+                DialogueChoice("a1_speech", "Deliver the unscripted announcement speech (Track A: Commander America)", listOf("speech", "announce", "president", "run", "america"), "act1_ch1_speech"),
+                DialogueChoice("a1_swagger", "Showcase escalator swagger & address the \$50 Extra Mile Casting actors", listOf("swagger", "hair", "suit", "aura", "actors", "fifty"), "act1_ch1_swagger"),
+                DialogueChoice("a1_media", "Switch to Track B: Play as Hill-Rod in the Chappaqua Server Basement!", listOf("media", "camera", "fake news", "press", "dishonest", "hillary", "hill rod", "track b", "server"), "act1_tb_ch1_intro")
             )
         ),
+
         DialogueNode(
             id = "act1_ch1_swagger",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Look at this magnificent atrium, folks! Tremendous! The fake news said nobody would show up, and we've got thousands spilling out onto Fifth Avenue! Look at that hair—100% real, no stunt doubles, absolutely flawless aura!",
+            text = "Look at that escalator glide, folks! Smoother than silk! And the fake news is already hyperventilating because the Hollywood Reporter dug up an email from Extra Mile Casting offering background actors \$50 a head through Gotham Government Relations to wear T-shirts and wave signs in the lobby! Look, if somebody got fifty bucks to stand beneath this magnificent hair, that's called trickle-down escalator economics!",
             nextNodeId = "act1_ch1_hulk_cheer"
         ),
         DialogueNode(
             id = "act1_ch1_hulk_cheer",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH, BROTHER! That is the golden stride of a champion! Twenty-four-inch pythons of pure liberty flexin' on the globalist establishment! Tell 'em what time it is, Commander!",
-            nextNodeId = "act1_ch1_hub"
+            text = "OH YEAH, BROTHER! Hulkster 24-Pythons here, ripping my tank top clean in half from the commentary booth! That brass escalator is carrying 100% pure American entertainment straight to the podium, jack! Even if the guy in the third row only showed up for fifty bucks and a free voucher at the Trump Grill taco-bowl counter!",
+            nextNodeId = "act1_ch1_psaki_interrupts"
         ),
         DialogueNode(
-            id = "act1_ch1_media",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Look at the cameras back there! Look at them sweating! The red lights are on because their ratings are in the toilet, folks! They don't want to show the crowd, but they can't look away!",
+            id = "act1_ch1_psaki_interrupts",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Leans over from the Track B commentary desk* Excuse me, Kayleigh—Jen Circle-Back here! We're going to circle back to those \$50 paid escalator actors in 2016, 2018, 2020, and 2024! In fact, FEC Matter Under Review 6940 specifically documented that Gotham Government Relations hired background extras on June 12, 2015! We are literally never letting that go!",
             nextNodeId = "act1_ch1_karoline_note"
         ),
         DialogueNode(
             id = "act1_ch1_karoline_note",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Binder check confirmed! Cable viewership just hit record peaks because real Americans are tuning in to hear the unfiltered truth!",
+            text = "Oh yeah, Jen?! Well we're never letting go of the fact that Hill-Rod wiped 33,000 emails off a basement server in Chappaqua 'with a cloth or something' and turned \$1,000 into \$100,000 trading Arkansas live-cattle futures in 1978! Two can play the Never-Let-It-Go game!",
             nextNodeId = "act1_ch1_hub"
+        ),
+        DialogueNode(
+            id = "act1_ch1_media",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at the cameras back there! Every single network is broadcasting this live because their ratings without me are deader than Hill-Rod's Chappaqua BlackBerrys!",
+            nextNodeId = "act1_ch1_karoline_note"
         ),
         DialogueNode(
             id = "act1_ch1_speech",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Our country is in serious trouble. We don't win anymore. We lose on trade, we lose on the border, we lose to everyone! But that ends today. We are going to bring back our jobs, protect our borders, and put America First!",
+            text = "Our country is in serious trouble. We don't win anymore! Barry Teleprompter stood up at the 2011 Correspondents' Dinner, played The Lion King cartoon, and mocked me for firing Gary Busey on Celebrity Apprentice over a stolen meatloaf! Well guess what, folks—nobody laughs at the meatloaf anymore! We are going to bring back our jobs, protect our borders, and put America First!",
+            nextNodeId = "act1_ch1_speech_followup"
+        ),
+        DialogueNode(
+            id = "act1_ch1_speech_followup",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "Excuse me, Mr. Trump! I'm Chyron McSpin from Cable Outrage Tonight! Before you talk about trade or jobs, did you or did you not pay that guy behind you \$50 via Extra Mile Casting to hold that 'Make America Great Again' sign?! And while we're at it, didn't you tell People Magazine in 1998 that Republicans are the dumbest group of voters?!",
             nextNodeId = "act1_ch1_hub"
         ),
+
+        // ACT I - CHAPTER 1 HUB: 3 Vindication Wins + Eternal Callbacks
         DialogueNode(
             id = "act1_ch1_hub",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Commander America pauses on the mid-escalator landing to address the core pillars of the political revolution.",
+            text = "Commander America pauses at the golden podium. Chyron McSpin is already recycling viral Facebook memes from 1984, 1995, and 1998. Dismantle all three smears before facing the lobby ambush!",
             choices = listOf(
-                DialogueChoice("a1_hub_deal", "Expose disastrous foreign trade deals", listOf("deal", "trade", "jobs", "economy", "tariffs"), "act1_ch1_lore_deal", completionFlag = "a1_lore_deal"),
-                DialogueChoice("a1_hub_border", "Outline the southern border strategy", listOf("wall", "border", "security", "door", "southern"), "act1_ch1_lore_wall", completionFlag = "a1_lore_wall"),
-                DialogueChoice("a1_hub_swamp", "Vow to drain the unelected D.C. swamp", listOf("swamp", "drain", "lobbyist", "corrupt", "bureaucrat"), "act1_ch1_lore_swamp", completionFlag = "a1_lore_swamp"),
-                DialogueChoice("a1_hub_proceed", "Step onto the lobby floor and face the press", listOf("proceed", "lobby", "advance", "step", "floor"), "act1_ch1_lobby_ambush")
+                DialogueChoice("a1_hub_deal", "Vindication #1: Debunk the fake 1998 People Magazine 'Dumb Republicans' meme (& roast Oprah's 1988 show)", listOf("deal", "trade", "jobs", "economy", "tariffs", "people magazine", "dumb", "hoax"), "act1_ch1_lore_deal", completionFlag = "a1_lore_deal"),
+                DialogueChoice("a1_hub_border", "Vindication #2: Debunk the 1984 'Fake 7-Year-Old Tax Shelter Kid' & 1995 'Disabled Bus' hoaxes", listOf("wall", "border", "security", "door", "southern", "tax", "kid", "bus"), "act1_ch1_lore_wall", completionFlag = "a1_lore_wall"),
+                DialogueChoice("a1_hub_swamp", "Expose the D.C. Donor Swamp: Why Hill-Rod ate cake at your 2005 Palm Beach wedding", listOf("swamp", "drain", "lobbyist", "corrupt", "bureaucrat", "wedding", "cake"), "act1_ch1_lore_swamp", completionFlag = "a1_lore_swamp"),
+                DialogueChoice("a1_hub_proceed", "Step onto the lobby floor and confront Chyron McSpin's crew", listOf("proceed", "lobby", "advance", "step", "floor"), "act1_ch1_lobby_ambush")
             )
         ),
         DialogueNode(
@@ -548,7 +889,14 @@ object StoryScript {
             setFlagOnEnter = "a1_lore_deal",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Our politicians get taken to the cleaners! They sign trade deals written by foreign lobbyists that gut our factories in Ohio, Pennsylvania, and Michigan. I wrote The Art of the Deal—we're renegotiating everything!",
+            text = "VINDICATION WIN! You're still repeating that fake 1998 People Magazine quote, Chyron?! Time & Meredith Corp checked every single issue of People Magazine ever printed—I wasn't even interviewed in 1998! Some troll slapped fake text onto a screenshot of my 1988 interview on The Oprah Winfrey Show—where Oprah Free-Car herself asked me if I'd ever run for president! Isn't that right, Oprah?!",
+            nextNodeId = "act1_ch1_lore_deal_oprah"
+        ),
+        DialogueNode(
+            id = "act1_ch1_lore_deal_oprah",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Sweats in 1988 archival footage* OKAY, YES, IT'S TRUE, HONEY! In 1988 I did ask him on my show if he'd run for office, and he never said that People Magazine quote! BUT WHAT ABOUT PAYING THOSE ESCALATOR ACTORS FIFTY DOLLARS A HEAD, DONALD?! WE'RE STILL NOT LETTING THAT GO!",
             nextNodeId = "act1_ch1_hub"
         ),
         DialogueNode(
@@ -556,7 +904,14 @@ object StoryScript {
             setFlagOnEnter = "a1_lore_wall",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "A country without borders is not a country! We are going to build a great, powerful wall on the southern border. And it's going to have a big, beautiful golden door so people can come in legally!",
+            text = "DOUBLE VINDICATION WIN! First, your viral blog claims I got caught by the IRS in 1984 inventing a fictional 7-year-old boy named 'Donald John Trump' as a tax shelter—folks, my son Donald John Trump Jr. was born on December 31, 1977! He literally WAS seven years old in 1984! Second, you shared an article claiming I sued a bus full of disabled boys in 1995 for using my name—that was a Connecticut bus company named 'Trumpold' (T-R-U-M-P-O-L-D), a guy's last name that happened to start with the letters T-R-U-M-P!",
+            nextNodeId = "act1_ch1_lore_wall_callback"
+        ),
+        DialogueNode(
+            id = "act1_ch1_lore_wall_callback",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "Okay fine, 'Trumpold' was a bus company in Connecticut and Don Jr. was born in 1977—but speaking of buses, we just got a tip about a 2005 Access Hollywood bus tape that we are going to play on a loop for the next eleven years! And what about the \$50 escalator actors?!",
             nextNodeId = "act1_ch1_hub"
         ),
         DialogueNode(
@@ -564,37 +919,37 @@ object StoryScript {
             setFlagOnEnter = "a1_lore_swamp",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Career bureaucrats go to Washington on a $174k salary and retire four years later with a $50 million net worth and three K-Street lobbying contracts! We are going to drain the swamp, believe me!",
+            text = "You want to talk about \$50 actors?! Let's talk about \$675,000 actors! Hill-Rod charged Goldman Sachs \$675,000 for three speeches, wiped 33,000 emails in Chappaqua 'with a cloth,' and when I gave a donation to her Senate campaign and invited her to my 2005 wedding in Palm Beach, she sat in the front row and ate two slices of wedding cake! Ask her about the cloth and the cake!",
             nextNodeId = "act1_ch1_hub"
         ),
         DialogueNode(
             id = "act1_ch1_lobby_ambush",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "Wait right there! Our anonymous source consensus says you have a 1% chance in the polls! You are violating establishment protocol—shut down this microphone immediately!",
+            text = "Enough fact-checking our viral Facebook memes! We still have the \$50 Extra Mile Casting invoice on our teleprompter, and our K-Street Retainer Lobbyists are seizing this golden escalator right now!",
             nextNodeId = "act1_ch1_battle_trigger"
         ),
         DialogueNode(
             id = "act1_ch1_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The establishment media and corporate lobbyists are swarming the podium with cheap smears! Commander, hit 'em with Tremendous Strike and Art of the Deal!",
+            text = "Chyron McSpin's producer and a K-Street Retainer Lobbyist are swarming the brass handrail! Commander, hit 'em with Tremendous Strike and Art of the Deal!",
             triggerBattleEncounterId = "act1_ch1_press_battle",
             nextNodeId = "act1_ch1_post_battle"
         ),
-        // Legacy alias for battle trigger & ambush
+        // Legacy aliases for Act 1 Ch 1 battle
         DialogueNode(
             id = "act1_ambush",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "Wait right there! Our anonymous source consensus says you have a 1% chance in the polls! You are violating establishment protocol—shut down this microphone immediately!",
+            text = "Enough fact-checking! Our K-Street Retainer Lobbyists are seizing this golden escalator right now!",
             nextNodeId = "act1_ch1_battle_trigger"
         ),
         DialogueNode(
             id = "act1_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The establishment media and corporate lobbyists are swarming the podium with cheap smears! Commander, hit 'em with Tremendous Strike and Art of the Deal!",
+            text = "Chyron McSpin's producer and a K-Street Retainer Lobbyist are swarming the brass handrail! Commander, hit 'em with Tremendous Strike!",
             triggerBattleEncounterId = "act1_ch1_press_battle",
             nextNodeId = "act1_ch1_post_battle"
         ),
@@ -602,2802 +957,3038 @@ object StoryScript {
             id = "act1_ch1_post_battle",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Look at them scrambling for the exits! Their cheap microphones are broken and their phony polls just hit rock bottom! The launch is a massive success—now pack your bags, we're taking this fight straight to the primary debate in Cleveland!",
+            text = "They're fleeing down Fifth Avenue still shouting about the \$50 casting extras! Good thing we have zero XP grinding and zero gold clutter in this game—our HP and MP are 100% restored automatically! Onward to Chapter 2: The Cleveland Debate Stage!",
             changeSceneId = SCENE_ACT1_CH2_DEBATE.id,
             nextNodeId = "act1_ch2_intro"
         ),
-        // Legacy alias
         DialogueNode(
             id = "act1_post_battle",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Look at them scrambling for the exits! Their cheap microphones are broken and their phony polls just hit rock bottom! Onward to the primary debate in Cleveland!",
+            text = "HP and MP 100% restored—onward to Chapter 2: The Cleveland Debate Stage!",
             changeSceneId = SCENE_ACT1_CH2_DEBATE.id,
             nextNodeId = "act1_ch2_intro"
         ),
 
         // =========================================================================
-        // ACT I - CHAPTER 2: THE PRIMARY DEBATE ARENA (AUGUST 2015)
+        // ACT I (TRACK A) - CHAPTER 2: GUACAMOLE BOWLS, TAN SUITS & DIJON MUSTARD
         // =========================================================================
         DialogueNode(
             id = "act1_ch2_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are live from the Quicken Loans Arena in Cleveland, Ohio! The establishment has lined up sixteen focus-grouped career politicians, all wearing color-coordinated ties and reciting 30-second rehearsed soundbites. In the center podium stands Commander America, unscripted and ready to dismantle the field!",
-            nextNodeId = "act1_ch2_podium_clash"
+            text = "Chapter 2 (Track A): Inside the primary debate arena, Low-Energy Jeb! and Little Marco are rehearsing their focus-grouped soundbites while Barry Teleprompter watches from the VIP box wearing his infamous August 28, 2014 summer tan suit and sipping a 2014 Marine One styrofoam latte!",
+            nextNodeId = "act1_ch2_jeb_opens"
         ),
         DialogueNode(
-            id = "act1_ch2_podium_clash",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
-            side = SpeakerSide.RIGHT,
-            text = "Commander, financial disclosures show you have donated to campaigns on both sides of the aisle in past decades! How do you answer for that?",
-            nextNodeId = "act1_ch2_donor_expose"
-        ),
-        DialogueNode(
-            id = "act1_ch2_donor_expose",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Of course I gave! As a private businessman, you have to give! When politicians call, they beg for money. And two years later, when you need them, they do whatever you ask! The entire system is broken and corrupt, and I know it better than anyone because I was on the inside!",
-            nextNodeId = "act1_ch2_rival_interject"
-        ),
-        DialogueNode(
-            id = "act1_ch2_rival_interject",
+            id = "act1_ch2_jeb_opens",
             speaker = DialogueSpeaker.ESTABLISHMENT_RIVAL,
             side = SpeakerSide.RIGHT,
-            text = "Excuse me... that is highly inappropriate decorum. The donor class deserves our deepest reverence and gratitude. Here, take a commemorative focus-group brochure and please... please clap...",
+            text = "Now look, Donald... you can't insult your way to the presidency—especially after paying escalator actors \$50 a head! My Right to Rise Super PAC spent \$130 million, I put an exclamation point right after 'Jeb!', and my website sells a very sturdy \$75 'Guaca Bowle' dish. In Hanover, New Hampshire on February 3, 2016, I finished my speech and nobody made a sound, so I politely said: 'Please clap.'",
             choices = listOf(
-                DialogueChoice("a2_puppets", "Expose their $100M Super PAC puppet strings", listOf("puppets", "pac", "donors", "bought", "money"), "act1_ch2_roast_pac"),
-                DialogueChoice("a2_rehearsed", "Mock their teleprompter hand gestures and soundbites", listOf("rehearsed", "soundbite", "teleprompter", "script", "robot"), "act1_ch2_roast_script"),
-                DialogueChoice("a2_ratings", "Remind them who brought 24 million viewers to the debate", listOf("ratings", "viewers", "crowd", "popular", "record"), "act1_ch2_roast_ratings")
+                DialogueChoice("a2_guac", "Refuse to let go of 'Please Clap' & the \$75 Guacamole Bowl", listOf("please clap", "jeb", "low energy", "guacamole", "pac"), "act1_ch2_roast_jeb"),
+                DialogueChoice("a2_marco_water", "Interrupt Little Marco's robotic 4x loop with a miniature Poland Spring bottle", listOf("marco", "water", "bottle", "thirsty", "sip"), "act1_ch2_roast_marco"),
+                DialogueChoice("a2_barry_tan", "Point at Barry Teleprompter's 2014 Tan Suit, Styrofoam Latte Salute & 2009 Dijon Mustard", listOf("barry", "obama", "tan suit", "mustard", "dijon", "latte"), "act1_ch2_barry_enters")
             )
         ),
         DialogueNode(
-            id = "act1_ch2_roast_pac",
+            id = "act1_ch2_roast_jeb",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Look at this guy—total puppet! His Super PAC raised $100 million from Wall Street bankers, and he's reading cue cards prepared by fifty focus groups! He can't even blink without a consultant giving the thumbs up!",
-            nextNodeId = "act1_ch2_hulk_roar"
+            text = "Folks, we are going to replay 'Please clap' and that \$75 Guaca Bowle for the next ten years! You spent \$130 million and got three delegates, Jeb—meanwhile Hill-Rod put \$1,000 into Arkansas live-cattle futures in 1978 and walked out with \$100,000 by 'reading the Wall Street Journal'! Maybe she should have managed your Super PAC!",
+            nextNodeId = "act1_ch2_roast_marco"
         ),
         DialogueNode(
-            id = "act1_ch2_roast_script",
+            id = "act1_ch2_roast_marco",
+            speaker = DialogueSpeaker.MARCO,
+            side = SpeakerSide.RIGHT,
+            text = "Donald, let's dispel once and for all with this fiction that Barack Obama doesn't know what he's doing—he knows EXACTLY what he's doing! Wait, Chris Christie just called me out for repeating my memorized 25-second speech—so let's dispel once and for all with this fiction that Barack Obama doesn't know what he's doing! *Lunges four feet sideways off-camera to take a frantic 2013 State-of-the-Union sip from a miniature Poland Spring water bottle*",
+            nextNodeId = "act1_ch2_barry_enters"
+        ),
+        DialogueNode(
+            id = "act1_ch2_barry_enters",
+            speaker = DialogueSpeaker.OBAMA,
+            side = SpeakerSide.RIGHT,
+            text = "Now... let me be clear. *Uhhh...* you guys are STILL talking about my August 2014 tan suit, my September 2014 styrofoam cup Latte Salute stepping off Marine One, and the May 2009 afternoon at Ray's Hell Burger in Arlington when I asked: 'Do you have a spicy mustard, maybe a Dijon?' That was seven years ago, Donald! You still haven't gotten over the 2011 Correspondents' Dinner where I released my long-form Kapiʻolani Hospital birth certificate AND the 1961 Honolulu Advertiser newspaper clipping!",
+            nextNodeId = "act1_ch2_barry_kimmel"
+        ),
+        DialogueNode(
+            id = "act1_ch2_barry_kimmel",
+            speaker = DialogueSpeaker.OBAMA,
+            side = SpeakerSide.RIGHT,
+            text = "And speaking of never letting things go—on Jimmy Kimmel Live in October 2016, I read your tweet aloud saying 'President Obama will go down as perhaps the worst president in the history of the United States!' And I looked straight into the camera and said: 'Well, @realDonaldTrump, at least I will go down as a president!' *Drops microphone onto a plate of Grey Poupon*",
+            nextNodeId = "act1_ch2_commander_tan_rebuttal"
+        ),
+        DialogueNode(
+            id = "act1_ch2_commander_tan_rebuttal",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "He practiced that 25-second rehearsed response in front of a mirror thirty times this morning! Same hand chop, same robotic smile! The American people are sick and tired of phonies reading scripts!",
-            nextNodeId = "act1_ch2_hulk_roar"
+            text = "Hold on, Barry—nobody is EVER letting that tan suit or that Dijon burger go! Congressman Peter King went on CNN for forty-eight hours straight calling that beige linen jacket an impeachable fashion crisis! And what about the 2009 MLB All-Star Game in St. Louis where you wore high-waisted mom jeans and lobbed the ceremonial first pitch 58 feet into the dirt?! Or when your teleprompter unplugged in Elkhart and you went 'if-if-if-if-if-if—okie-doke!'",
+            nextNodeId = "act1_ch2_mumbai_vindication"
         ),
         DialogueNode(
-            id = "act1_ch2_roast_ratings",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Twenty-four million people are watching this debate tonight! The highest ratings in cable television history! They didn't tune in for low-energy lectures, they tuned in for a revolution!",
-            nextNodeId = "act1_ch2_hulk_roar"
-        ),
-        DialogueNode(
-            id = "act1_ch2_hulk_roar",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH! The arena roof just blew off, brother! The Low-Energy Dynasty is trembling behind their podium! Drop the leg on 'em, Commander!",
-            nextNodeId = "act1_ch2_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act1_ch2_battle_trigger",
+            id = "act1_ch2_mumbai_vindication",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The rival candidates and Super PAC fact-checkers are frantically coordinating an on-stage attack! Shut them down with Presidential Veto and Obama Did It First!",
-            triggerBattleEncounterId = "act1_ch2_debate_battle",
+            text = "CROSS-AISLE VINDICATION CHECK! While we're roasting Barry's real-life tan suit, Dijon mustard, latte salute, and mom jeans, let's credit his Vindication Win too: when a 2010 viral chain email claimed Barry spent '\$200 million a day' in Mumbai with 34 warships, the Pentagon confirmed the entire story was fabricated—the US military didn't even spend \$200 million a day on the entire war in Afghanistan! We only fight over 100% verified ridiculousness here!",
+            nextNodeId = "act1_ch2_barry_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act1_ch2_barry_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE TAN SUIT, LATTE SALUTE & DIJON POUPON EXHIBITION MATCH, BROTHER! Barry Teleprompter and his Poupon Mustard Sommelier are stepping into the ring! Watch out for his 135-yard mom-jeans lob!",
+            triggerBattleEncounterId = "act1_track_a_barry_battle",
             nextNodeId = "act1_ch2_post_battle"
         ),
         DialogueNode(
             id = "act1_ch2_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Total knockout! The focus-group pamphlets are flying everywhere and the dynasty rivals are packing up their campaign buses! Next stop: the freezing snows of New Hampshire for the primary sweep!",
-            changeSceneId = SCENE_ACT1_CH3_RALLY.id,
+            speaker = DialogueSpeaker.OBAMA,
+            side = SpeakerSide.RIGHT,
+            text = "Look... *uhhh...* make no mistake: that tan suit still breathes fantastically in August humidity, and Dijon is objectively superior to yellow ketchup-water. Oh, and by the way, Donald—did you pay those escalator actors \$50 a head before or after you popped a box of Tic-Tacs on the 2005 Access Hollywood bus?! See you in Chapter 3!",
+            changeSceneId = SCENE_ACT1_CH3_TACO_BUS.id,
             nextNodeId = "act1_ch3_intro"
         ),
 
         // =========================================================================
-        // ACT I - CHAPTER 3: THE PRIMARY SWEEP (FEBRUARY 2016)
+        // ACT I (TRACK A) - CHAPTER 3: TACO BOWLS & THE 2005 TIC-TAC BUS THAT NEVER DIES
         // =========================================================================
         DialogueNode(
             id = "act1_ch3_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH, BROTHER! Outside this Manchester airplane hangar, it's twenty below zero with two feet of blizzard snow! But inside? Fifteen thousand screaming patriots are packed to the rafters, brother! The energy in this hangar could power the entire eastern seaboard!",
-            nextNodeId = "act1_ch3_rally_speech"
+            text = "Welcome to Chapter 3 of Act I! It is May 5, 2016 inside Trump Tower Grill. Commander America is sitting at his desk over a stack of old newspapers—including a 1990s bikini photo of his second wife Marla Maples—giving a big thumbs-up over a deep-fried fiesta tortilla shell!",
+            nextNodeId = "act1_ch3_taco_bowl_tweet"
         ),
         DialogueNode(
-            id = "act1_ch3_rally_speech",
+            id = "act1_ch3_taco_bowl_tweet",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "They told us we couldn't win here in New Hampshire. The establishment spent $150 million running negative TV commercials against us! But the people showed up through the blizzard! We are leading by thirty points! The forgotten men and women of this country will never be forgotten again!",
+            text = "*Dictates tweet word for word on May 5, 2016* 'Happy #CincoDeMayo! The best taco bowls are made in Trump Tower Grill. I love Hispanics!' Look at that shell, folks—100% authentic Midtown Manhattan crunch! Surely nobody in the media will bring up anything from 2005 while I'm enjoying this taco bowl!",
+            nextNodeId = "act1_ch3_billy_bus_crashes"
+        ),
+        DialogueNode(
+            id = "act1_ch3_billy_bus_crashes",
+            speaker = DialogueSpeaker.BILLY_BUS,
+            side = SpeakerSide.RIGHT,
+            text = "*Kicks open the restaurant doors wearing a live 2005 Access Hollywood lapel microphone* SURPRISE, DONALD! It's October 7, 2016, and somebody just leaked our September 2005 bus tape from the Days of Our Lives set! And guess what? Politics is going to replay this exact 45-second clip in 2016, 2017, 2020, 2023, and 2026!",
+            nextNodeId = "act1_ch3_billy_verbatim"
+        ),
+        DialogueNode(
+            id = "act1_ch3_billy_verbatim",
+            speaker = DialogueSpeaker.BILLY_BUS,
+            side = SpeakerSide.RIGHT,
+            text = "*Hits play on the giant loudspeaker* 'I moved on her actually. You know, she was down on Palm Beach. I moved on her, and I failed. I'll admit it. I did try and f*** her. She was married... I took her out furniture—I moved on her like a b*tch, actually. She wanted to get some furniture. I said, \"I'll show you where they have some nice furniture.\" ... I better use some Tic-Tacs just in case I start kissing her. You know I'm automatically attracted to beautiful—I just start kissing them. It's like a magnet. Just kiss. I don't even wait. And when you're a star, they let you do it. You can do anything... Grab 'em by the p*ssy. You can do anything.'",
             choices = listOf(
-                DialogueChoice("a3_revival", "Promise the revival of American manufacturing", listOf("manufacturing", "jobs", "factories", "revival", "industry"), "act1_ch3_speech_jobs"),
-                DialogueChoice("a3_military", "Vow to rebuild our military and take care of veterans", listOf("military", "veterans", "strength", "vets", "heroes"), "act1_ch3_speech_vets"),
-                DialogueChoice("a3_win", "Declare that America is going to start winning again", listOf("winning", "victory", "champion", "tired", "lead"), "act1_ch3_speech_win")
+                DialogueChoice("a3_tictac", "Defend the Tic-Tacs & the failed Raymour & Flanigan furniture-shopping trip", listOf("tic tac", "furniture", "bus", "locker room", "mints"), "act1_ch3_tictac_defense"),
+                DialogueChoice("a3_whatabout", "Execute the Classic Political Whatabout: Pivot straight to Hill-Rod's BleachBit Cloth & 1978 Cattle Futures!", listOf("whatabout", "cloth", "bleachbit", "cattle", "server", "hillary"), "act1_ch3_whatabout_pivot")
             )
         ),
         DialogueNode(
-            id = "act1_ch3_speech_jobs",
+            id = "act1_ch3_tictac_defense",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "We are going to bring back our steel mills, bring back our manufacturing, and put our people back to work! No more shipping American prosperity overseas while towns across this state rust out!",
-            nextNodeId = "act1_ch3_party_boss_ambush"
+            text = "First of all, folks, that was eleven years ago in 2005—the same year Hill-Rod was sitting in the front row at my Palm Beach wedding eating my cake! Second of all, listen to the tape: I said I tried to take Nancy O'Dell furniture shopping and I FAILED! What kind of supervillain brags on a hot mic about striking out at an ottoman warehouse after popping two white Tic-Tacs?!",
+            nextNodeId = "act1_ch3_never_let_it_go"
         ),
         DialogueNode(
-            id = "act1_ch3_speech_vets",
+            id = "act1_ch3_whatabout_pivot",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Our great veterans have been treated like second-class citizens by corrupt D.C. bureaucrats! We're giving them choice, cutting the wait times, and building the strongest military this world has ever seen!",
-            nextNodeId = "act1_ch3_party_boss_ambush"
+            text = "You want to replay a 2005 bus tape?! Fine! Then every single time you say 'Tic-Tac' or 'grab 'em by the p*ssy,' I am going to shout about Hill-Rod wiping 33,000 emails in Chappaqua 'with a cloth or something,' Paul Combetta asking Reddit how to BleachBit a VIP server, and turning \$1,000 into \$100,000 in 1978 Arkansas cattle futures!",
+            nextNodeId = "act1_ch3_never_let_it_go"
         ),
         DialogueNode(
-            id = "act1_ch3_speech_win",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "We are going to win so much! We're going to win on jobs, win on border security, win on foreign policy! You're going to come to me and say, 'Commander, please, we can't take all this winning!' And I'll say, 'No, we must keep winning!'",
-            nextNodeId = "act1_ch3_party_boss_ambush"
+            id = "act1_ch3_never_let_it_go",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Pops up on the studio monitor* Hi, Jen Circle-Back again! Just confirming that even if you ask us about highway potholes, interest rates, or the weather in Ohio for the next decade, we are going to circle right back to 'grab 'em by the p*ssy,' the \$50 escalator actors, and the Trump Tower Taco Bowl over Marla Maples' bikini photo!",
+            nextNodeId = "act1_ch3_bus_battle_trigger"
         ),
         DialogueNode(
-            id = "act1_ch3_party_boss_ambush",
-            speaker = DialogueSpeaker.PARTY_BOSS,
-            side = SpeakerSide.RIGHT,
-            text = "Shut down the music! Shut down this rally! Even if you win every precinct, our secret party bylaws and backroom superdelegates will overturn the primary at the convention! The establishment decides who gets the crown!",
-            nextNodeId = "act1_ch3_boss_rebuttal"
-        ),
-        DialogueNode(
-            id = "act1_ch3_boss_rebuttal",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Look at this boss with his little binder of secret rules! You think you can steal the vote of fifteen thousand roaring patriots in this hangar? Not on my watch, pal! We are taking the primary right now!",
-            nextNodeId = "act1_ch3_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act1_ch3_battle_trigger",
+            id = "act1_ch3_bus_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Establishment Party Boss and his dark money machine are trying to stage a backroom coup! Commander, unleash your full power and claim the nomination!",
-            triggerBattleEncounterId = "act1_ch3_machine_battle",
+            text = "Super PAC Media Strategists and Consultant Fact-Checkers are trying to weaponize the 2005 bus tape and the Taco Bowl tweet! Commander, clear the stage!",
+            triggerBattleEncounterId = "act1_ch2_debate_battle",
+            nextNodeId = "act1_ch3_bus_post_battle"
+        ),
+        DialogueNode(
+            id = "act1_ch3_bus_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "We survived the October Surprise bus ambush—and our HP and MP are right back at 100%! Now let's march into Chapter 4: The Final 2016 General Election Showdown against Hill-Rod!",
+            changeSceneId = SCENE_ACT1_CH3_RALLY.id,
+            nextNodeId = "act1_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT I (TRACK A) - CHAPTER 4: BLEACHBIT, POKÉMON GO & ELECTION NIGHT FINALE
+        // =========================================================================
+        DialogueNode(
+            id = "act1_ch4_intro",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 4 (Track A Finale): It is Election Eve, November 2016! Hill-Rod arrives on the debate stage fresh off taking five swipes to get through a Bronx subway turnstile, pulling Ninja Squirrel hot sauce out of her purse on The Breakfast Club, and telling Virginia voters to 'Pokémon Go-to-the-Polls'!",
+            nextNodeId = "act1_ch4_hill_rod_arrives"
+        ),
+        DialogueNode(
+            id = "act1_ch4_hill_rod_arrives",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.RIGHT,
+            text = "Good evening, Donald! Before we discuss foreign policy, I'd like to remind everyone for the 400th time today that in 2005 on an Access Hollywood bus you popped a handful of Tic-Tacs, failed to take a married woman furniture shopping, boasted that 'when you're a star they let you do it, grab 'em by the p*ssy,' and then in 2015 you paid Extra Mile Casting actors \$50 a head to clap at your escalator!",
+            nextNodeId = "act1_ch4_commander_counter_barrage"
+        ),
+        DialogueNode(
+            id = "act1_ch4_commander_counter_barrage",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Oh yeah, Hill-Rod?! Well before we discuss tax brackets, I'd like to remind everyone for the 500th time today that in 1978 you turned \$1,000 into \$100,000 in live-cattle futures by 'reading the Wall Street Journal,' in 2005 you ate two slices of cake at my wedding, in 2014 your IT guy 'stonetear' asked Reddit how to BleachBit 33,000 emails off a Chappaqua basement server before you asked 'What, like with a cloth or something?!', and in April 2016 it took you FIVE SWIPES to walk through a Bronx subway turnstile while carrying pandering hot sauce and shouting 'Pokémon Go-to-the-Polls!'",
+            nextNodeId = "act1_ch4_comey_cameo"
+        ),
+        DialogueNode(
+            id = "act1_ch4_comey_cameo",
+            speaker = DialogueSpeaker.COMEY_TALL,
+            side = SpeakerSide.RIGHT,
+            text = "*Pokes his 6-foot-8 head out from behind a blue stage curtain* Excuse me, I'm Director Jim-Tall! Just wanted to remind everyone that in July I held a 15-minute press conference to call Hill-Rod 'extremely careless,' then on October 28 I dropped a bombshell letter about Anthony Weiner's laptop, and 48 hours ago I announced they were all just duplicates! Now I'm going to try to hide inside this blue curtain again so neither of you notices me!",
+            nextNodeId = "act1_ch3_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act1_ch3_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE 2016 GENERAL ELECTION MAIN EVENT, BROTHER! Commander America's Golden Podium, Taco Bowls, and Tic-Tacs vs. Hill-Rod's Chappaqua Cloth Wipe, Purse Hot Sauce, and Pokémon Go-To-The-Polls! RING THE BELL!",
+            triggerBattleEncounterId = "act1_track_a_hill_rod_finale",
             nextNodeId = "act1_ch3_post_battle"
         ),
         DialogueNode(
             id = "act1_ch3_post_battle",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Decision Desk projection: Commander America has swept New Hampshire, South Carolina, and the Super Tuesday map! The establishment bosses have conceded, the rivals have suspended their campaigns, and the presidential nomination is secured!",
-            nextNodeId = "act1_ch3_victory_conclusion"
-        ),
-        DialogueNode(
-            id = "act1_ch3_victory_conclusion",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Tell the ground crew to spin up the jet engines on Trump-Force One! Next stop: Pennsylvania Avenue! The Oval Citadel awaits!",
-            changeSceneId = SCENE_ACT2_CH1_MALL.id,
-            nextNodeId = "act1_post_hulk"
-        ),
-        DialogueNode(
-            id = "act1_post_hulk",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "ONE, TWO, THREE, HE PINNED 'EM, BROTHER! The primary is swept! To the Oval Citadel, brother! Woooo!",
-            nextNodeId = "act2_ch1_intro"
+            text = "270 Electoral Votes certified! Commander America triumphs in the expanded 4-Chapter Act I on Track A! Would you like to play the expanded 4-Chapter Track B campaign as Hill-Rod (featuring the Chappaqua server basement, the 5-swipe Bronx subway turnstile, Zach Two-Ferns, The Breakfast Club hot sauce, and the slab-foundation pizzeria Vindication), or advance to Act II (2017–2020)?",
+            choices = listOf(
+                DialogueChoice("a1_play_track_b", "Play Act I Track B: Experience all 4 Chapters as Hill-Rod!", listOf("track b", "hill rod", "hillary", "other side", "server"), "act1_tb_ch1_intro"),
+                DialogueChoice("a1_to_act2", "Advance to Act II (2017–2020): Spicy Sean's Bushes, Covfefe & Nancy Palooza's \$24k Freezers", listOf("act 2", "next act", "advance", "inauguration", "continue"), "act2_ch1_intro")
+            )
         ),
 
         // =========================================================================
-        // ACT II - CHAPTER 1: THE INAUGURAL ADDRESS & CROWD SIZE DISPUTE (JAN 20, 2017)
+        // ACT I (TRACK B) - CHAPTER 1: WITH A CLOTH & 1978 CATTLE FUTURES (PLAYING AS HILL-ROD)
         // =========================================================================
         DialogueNode(
-            id = "act2_ch1_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            id = "act1_tb_ch1_intro",
+            changeSceneId = SCENE_ACT1_TB_CH1_SERVER.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Good afternoon, America — we are broadcasting live from the Capitol steps on this historic January 20th. Commander America has just been sworn in on the Lincoln Bible, and the National Mall is absolutely packed from the reflecting pool all the way to the Washington Monument. The cable networks are already cropping the aerial photography. Unbelievable.",
-            nextNodeId = "act2_ch1_address_hub"
-        ),
-        // Legacy alias: act2_intro → ch1
-        DialogueNode(
-            id = "act2_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Good afternoon, America — we are broadcasting live from the Capitol steps on this historic January 20th. Commander America has just been sworn in on the Lincoln Bible, and the National Mall is absolutely packed. The cable networks are already cropping the aerial photography.",
-            nextNodeId = "act2_ch1_address_hub"
+            text = "Welcome to Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, joined at the desk by Karine Hatch-Act and Oprah Free-Car! You are playing all four chapters of Act I (2015–2016) as Hill-Rod! We begin in a suburban basement in Chappaqua, New York, where a private email server (`clintonemail.com`) is blinking beside a stack of 1978 Arkansas live-cattle futures receipts!",
+            nextNodeId = "act1_tb_ch1_kjp_oprah"
         ),
         DialogueNode(
-            id = "act2_ch1_address_hub",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act1_tb_ch1_kjp_oprah",
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "And I'm Karine Hatch-Act! Flipping to Tab 1 of my historic binder: Republicans have been bringing up Hill-Rod's 1978 cattle futures for thirty-seven straight years, and now they're adding 33,000 deleted yoga emails to the list! Wait—Oprah Free-Car has the megaphone!",
+            nextNodeId = "act1_tb_ch1_oprah_hype"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch1_oprah_hype",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "YOU GET A SUBPOENA! YOU GET A MICROFIBER CLOTH! EVERYBODY LOOK UNDER YOUR SEATS FOR A 1978 WALL STREET JOURNAL COMMODITIES SECTION AND A BOTTLE OF BLEACHBIT, HONEY!",
+            nextNodeId = "act1_tb_ch1_spicer_heckles"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch1_spicer_heckles",
+            speaker = DialogueSpeaker.SPICY_SEAN,
+            side = SpeakerSide.RIGHT,
+            text = "*Pops his head through the Chappaqua basement window while chewing 35 pieces of Orbit Cinnamon gum at once* EXCUSE ME, MADAM SECRETARY! Before you even plug in that router, the RNC would like to ask about October 1978 when you put \$1,000 into a Refco live-cattle futures account and walked out ten months later with \$99,537! And also—did you wipe that server?!",
+            nextNodeId = "act1_tb_ch1_server_hub"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch1_server_hub",
+            speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "This is a very historic moment, and I have a few things I want to address before we move into the Oval Citadel.",
+            text = "Unbelievable—they're still screaming about 1978 cows while I'm trying to configure Microsoft Exchange in 2015! And Ed Henry from Fox News is right behind Spicy Sean with a boom mic. Let's handle every single talking point before we head to the Bronx and Hollywood!",
             choices = listOf(
-                DialogueChoice("a2c1_carnage", "Declare American Carnage is over — American Renewal begins NOW", listOf("carnage", "renewal", "stop", "forgotten", "over"), "act2_ch1_american_carnage", completionFlag = "a2c1_carnage"),
-                DialogueChoice("a2c1_crowd", "Call out the cable networks cropping the aerial photography", listOf("crowd", "aerial", "camera", "photos", "networks", "crop"), "act2_ch1_crowd_call", completionFlag = "a2c1_crowd"),
-                DialogueChoice("a2c1_media", "Announce the total eradication of American carnage in the media", listOf("media", "fake", "dishonest", "carnage", "pundit"), "act2_ch1_media_smack", completionFlag = "a2c1_media"),
-                DialogueChoice("a2c1_proceed", "Take the oath, sign the first executive order, and march into the Oval", listOf("proceed", "march", "oval", "oath", "sign"), "act2_ch1_spin_crew_ambush")
+                DialogueChoice("tb1_cloth", "Deliver the verbatim Aug 18, 2015 classic: 'What, like with a cloth or something?' (+ check on 'stonetear')", listOf("cloth", "wipe", "server", "shrug", "stonetear"), "act1_tb_ch1_cloth_joke", completionFlag = "tb1_cloth_done"),
+                DialogueChoice("tb1_cattle", "Defend the 1978 \$1,000-to-\$100,000 Cattle Futures miracle & fire back with the 2005 Tic-Tac Bus!", listOf("cattle", "futures", "wall street journal", "thousand", "tic tac"), "act1_tb_ch1_cattle_joke", completionFlag = "tb1_cattle_done"),
+                DialogueChoice("tb1_vindication", "DOUBLE VINDICATION: Debunk 'Acid-Washed Hard Drives' & 'Benghazi Stand-Down' + 11-Hour Hearing Shrug!", listOf("vindication", "acid", "bleachbit", "benghazi", "eleven hours"), "act1_tb_ch1_vindication", completionFlag = "tb1_vind_done"),
+                DialogueChoice("tb1_proceed", "Advance to Chapter 2: The 5-Swipe Bronx Subway Turnstile & Zach Two-Ferns!", listOf("proceed", "advance", "bronx", "ferns", "zach"), "act1_tb_ch2_intro")
             )
         ),
         DialogueNode(
-            id = "act2_ch1_american_carnage",
-            setFlagOnEnter = "a2c1_carnage",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act1_tb_ch1_cloth_joke",
+            setFlagOnEnter = "tb1_cloth_done",
+            speaker = DialogueSpeaker.HILL_ROD,
             side = SpeakerSide.LEFT,
-            text = "This American carnage stops right here and stops right now! The forgotten men and women of our country will be forgotten no longer. January 20th, 2017 will be remembered as the day the people became the rulers of this nation once again!",
-            nextNodeId = "act2_ch1_address_hub"
+            text = "*Shrugs at Ed Henry with a bright smile (Aug 18, 2015)* 'What, like with a cloth or something?! Well, no, we didn't wipe it—I don't know how it works digitally at all!' Meanwhile, my Platte River Networks IT specialist Paul Combetta literally logged onto Reddit under his gaming handle 'stonetear' on July 24, 2014 asking strangers: 'I may be facing a very interesting situation where I need to strip out a VIP's (VERY VIP) email address from a bunch of archived emails'—right before running BleachBit so 'even God can't read them!'",
+            nextNodeId = "act1_tb_ch1_cloth_callback"
         ),
         DialogueNode(
-            id = "act2_ch1_crowd_call",
-            setFlagOnEnter = "a2c1_crowd",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Look at those cameras refusing to turn around and show the crowd! Look at the mall — they cropped the aerial photography so you can't see the people stretching all the way back to the monument! Absolute dishonesty!",
-            nextNodeId = "act2_ch1_hulk_crowd"
-        ),
-        DialogueNode(
-            id = "act2_ch1_hulk_crowd",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "BROTHER! That is more patriots in one mall than I've seen in thirty years of body-slamming across all fifty states! The lens ain't wide enough to hold 'em all, dude!",
-            nextNodeId = "act2_ch1_address_hub"
-        ),
-        DialogueNode(
-            id = "act2_ch1_media_smack",
-            setFlagOnEnter = "a2c1_media",
+            id = "act1_tb_ch1_cloth_callback",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "I have the Nielsen ratings right here in this binder! The cable pundits had to resort to a fisheye lens and a fog machine to make the crowd look smaller. These are documented facts!",
-            nextNodeId = "act2_ch1_address_hub"
+            text = "*Leans over from the Track A booth* Just so you know, Hill-Rod, we are going to bring up 'with a cloth or something' and 'stonetear' in every single chapter of this game until 2026!",
+            nextNodeId = "act1_tb_ch1_server_hub"
         ),
         DialogueNode(
-            id = "act2_ch1_spin_crew_ambush",
+            id = "act1_tb_ch1_cattle_joke",
+            setFlagOnEnter = "tb1_cattle_done",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "You're still bringing up 1978 live-cattle futures, Spicy Sean?! Look, the Journal of Economics and Finance calculated the odds of a first-time trader turning \$1,000 into \$99,537 in ten months at 1 in 31 trillion—and my story since 1994 is that I achieved those 1-in-31-trillion odds by reading the Wall Street Journal! Besides, if you can bring up 1978 cows, I'm bringing up Donald paying escalator actors \$50 a head and popping Tic-Tacs before striking out at a furniture store on the 2005 Access Hollywood bus!",
+            nextNodeId = "act1_tb_ch1_server_hub"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch1_vindication",
+            setFlagOnEnter = "tb1_vind_done",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "DOUBLE VINDICATION WIN! First, opponents keep claiming I poured 'expensive chemical acid' on my server and smashed 13 phones AFTER a subpoena—FBI 302 notes proved 'BleachBit' is a free open-source software utility (not hydrochloric acid!) and two old phones were retired back in 2009–2013 years before any subpoena! Second, ten separate congressional investigations (including six Republican-led committees) confirmed no 'personal stand-down order' was ever given in Benghazi—culminating in my 11-hour live hearing on October 22, 2015 where I hit the iconic Shoulder Shrug!",
+            nextNodeId = "act1_tb_ch1_server_hub"
+        ),
+
+        // =========================================================================
+        // ACT I (TRACK B) - CHAPTER 2: 5 METROCARD SWIPES, CEDAR RAPIDS & TWO FERNS
+        // =========================================================================
+        DialogueNode(
+            id = "act1_tb_ch2_intro",
+            changeSceneId = SCENE_ACT1_TB_CH2_FERNS.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 2 (Track B): To prove to voters that Hill-Rod hasn't been riding purely in armored Secret Service Suburbans since 1992, her campaign has scheduled three 'Everyday Normal Person' moments: a Snapchat video in Iowa, a subway ride at the 170th Street station in the Bronx, and an interview with Zach Two-Ferns!",
+            nextNodeId = "act1_tb_ch2_cedar_rapids"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_cedar_rapids",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "*Holds up a smartphone in Iowa on August 10, 2015* 'I'm just chilling... in Cedar Rapids!' Nailed it! Thirty million views on Vine! Now let's step up to this New York City subway turnstile in the Bronx on April 7, 2016 and swipe this paper MetroCard in front of forty television cameras! *SWIPE ONE: 'PLEASE SWIPE AGAIN.' SWIPE TWO: 'SWIPE AGAIN AT THIS TURNSTILE.' SWIPE THREE: CLUNK. SWIPE FOUR: BEEP-ERROR.*",
+            nextNodeId = "act1_tb_ch2_turnstile_heckle"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_turnstile_heckle",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "HALT! The Aerial Spin Crew is deploying! Our anonymous source confirms the crowd was only seventeen people and a golden retriever! We are spinning this story into the stratosphere right now! Deploy the Hostile Fact-Checkers!",
-            nextNodeId = "act2_ch1_battle_trigger"
+            text = "*Shouts from the subway platform* HEY MADAM SECRETARY! That's FIVE SWIPES to get through one Bronx subway turnstile! Did you accidentally wipe the magnetic strip on your MetroCard 'with a cloth or something' like your 33,000 Chappaqua emails?!",
+            nextNodeId = "act1_tb_ch2_hill_turnstile_clapback"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_hill_turnstile_clapback",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "*Finally pushes through on the fifth swipe* Listen here, Chyron—at least I didn't ride the subway using brass tokens like Donald claimed, and at least I didn't ride an Access Hollywood bus in 2005 eating Tic-Tacs and yelling 'grab 'em by the p*ssy' after failing to buy a couch with Nancy O'Dell! Now get out of my way, I'm late for Zach Two-Ferns!",
+            nextNodeId = "act1_tb_ch2_zach_interrogates"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_zach_interrogates",
+            speaker = DialogueSpeaker.ZACH_FERNS,
+            side = SpeakerSide.RIGHT,
+            text = "*Sits deadpan between two dusty potted ferns on September 22, 2016* Secretary Hill-Rod, I'm so excited to meet the first female president... and for a younger generation, you'll also become their first white president. Also, when Commander America is elected, what do you think you'll wear to the inauguration? Hold that thought—let's take a quick break for our paid sponsor: a campaign commercial for Donald Trump!",
+            nextNodeId = "act1_tb_ch2_hill_reacts_ferns"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_hill_reacts_ferns",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "Did you seriously just cut away in the middle of my interview to play a literal Donald Trump campaign commercial?! And now as we wrap up, you're asking me: 'This has been really great, we should stay in touch—what's the best way to reach you? Email?' EVEN THE COMEDY HOST WON'T LET THE EMAIL SERVER GO!",
+            nextNodeId = "act1_tb_ch2_ferns_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_ferns_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "ZACH TWO-FERNS JUST WEAPONIZED THE PUBLIC-ACCESS STUDIO PLANTS AND PLAYED ANOTHER TRUMP AD, HONEY! Hill-Rod, unleash Pokémon Go-To-The-Polls and your Chappaqua Cloth Wipe!",
+            triggerBattleEncounterId = "act1_track_b_ferns_battle",
+            nextNodeId = "act1_tb_ch2_post_battle"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_post_battle",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "That's the last time I sit between two ferns without checking the ad-buy sheet first! With HP and MP 100% restored, let's head to Chapter 3: The Breakfast Club radio studio and our Virginia Pokémon Go rally!",
+            changeSceneId = SCENE_ACT1_TB_CH3_BREAKFAST.id,
+            nextNodeId = "act1_tb_ch3_intro"
+        ),
+
+        // =========================================================================
+        // ACT I (TRACK B) - CHAPTER 3: PURSE HOT SAUCE, POKÉMON GO & NO BASEMENT
+        // =========================================================================
+        DialogueNode(
+            id = "act1_tb_ch3_intro",
+            changeSceneId = SCENE_ACT1_TB_CH3_BREAKFAST.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 3 (Track B): It is April 18, 2016 inside The Breakfast Club radio booth in New York! DJ Envy and Charlamagne tha God ask Hill-Rod what one item she always carries in her handbag—right after Beyoncé dropped the lyric 'I got hot sauce in my bag, swag' in Formation!",
+            nextNodeId = "act1_tb_ch3_breakfast_club"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_breakfast_club",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "When DJ Envy asks what's always in my bag, I say: 'Hot sauce! Ninja Squirrel!' And when Charlamagne looks me dead in the eye and says 'Wait—people are going to see this as you pandering to Black people,' how do we respond—and how do we crush the two wildest 2016 conspiracy theories flying at our campaign?",
+            choices = listOf(
+                DialogueChoice("tb2_working", "Deliver the verbatim radio quote: 'Okay... is it working?' + Pitch 'Pokémon Go-to-the-Polls!'", listOf("is it working", "okay", "hot sauce", "pandering", "pokemon"), "act1_tb_ch3_pokemon_rally", completionFlag = "tb3_hot_done"),
+                DialogueChoice("tb2_pizzeria", "Vindication #1: Prove with D.C. building blueprints that Comet Ping Pong pizzeria has NO BASEMENT!", listOf("pizza", "basement", "comet", "vindication", "blueprint"), "act1_tb_ch3_pizzeria_vindication", completionFlag = "tb3_pizza_done"),
+                DialogueChoice("tb3_uranium", "Vindication #2: Debunk the 'Sold 20% of US Uranium to Russia' myth with CFIUS & NRC records!", listOf("uranium", "russia", "cfius", "bribe"), "act1_tb_ch3_uranium_vindication", completionFlag = "tb3_uranium_done"),
+                DialogueChoice("tb3_proceed", "Step outside the studio where Spicy Sean and Director Jim-Tall are waiting in the bushes!", listOf("proceed", "advance", "spicer", "comey", "bushes"), "act1_tb_ch3_spicer_comey_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_pizzeria_vindication",
+            setFlagOnEnter = "tb3_pizza_done",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "VINDICATION WIN! Internet trolls are claiming my campaign manager's risotto emails are secret code for a dungeon in the basement of Comet Ping Pong pizzeria on Connecticut Avenue in D.C.! Here are the official D.C. municipal building blueprints and local police inspection reports: Comet Ping Pong is built on a poured concrete slab foundation and LITERALLY DOES NOT HAVE A BASEMENT! You cannot run a basement cabal in a building with zero basement!",
+            nextNodeId = "act1_tb_ch3_breakfast_club"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_uranium_vindication",
+            setFlagOnEnter = "tb3_uranium_done",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "VINDICATION WIN! And what about the claim that I 'personally approved selling 20% of US uranium to Russia for a \$145 million bribe'?! First, over 90% of that \$145 million came from Canadian mining mogul Frank Giustra in 2007—two years BEFORE I became Secretary of State, after he had already sold his stake! Second, the Uranium One deal required unanimous approval from NINE independent federal agencies on CFIUS (including the Defense, Energy, and Treasury Departments), and the Nuclear Regulatory Commission confirmed Rosatom had no export license—zero uranium left the US!",
+            nextNodeId = "act1_tb_ch3_breakfast_club"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_pokemon_rally",
+            setFlagOnEnter = "tb3_hot_done",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "Yes, I really did carry 100 bottles of hot sauce in the White House back in the 1990s—and yes, I really did look at Charlamagne tha God and say: 'Okay... is it working?' Right before flying to Annandale, Virginia on July 14, 2016 to declare: 'I don't know who created Pokémon Go, but I'm trying to figure out how we get them to have... Pokémon Go-to-the-Polls!'",
+            nextNodeId = "act1_tb_ch3_breakfast_club"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_spicer_comey_ambush",
+            speaker = DialogueSpeaker.SPICY_SEAN,
+            side = SpeakerSide.RIGHT,
+            text = "*Leaps out of a row of ornamental hedges chewing 35 pieces of Orbit Cinnamon gum at once* HOLD IT RIGHT THERE, HILL-ROD! I'm Spicy Sean—I swallow two and a half packs of cinnamon gum whole before noon, and I'm still not letting go of your Chappaqua cloth wipe, your 5-swipe Bronx MetroCard, OR your 1978 Arkansas cattle futures! Oh, and look who's hiding behind that blue curtain!",
+            nextNodeId = "act1_tb_ch3_comey_steps_out"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_comey_steps_out",
+            speaker = DialogueSpeaker.COMEY_TALL,
+            side = SpeakerSide.RIGHT,
+            text = "*Slowly detaches his 6-foot-8 frame from a blue drape where he was trying to blend into the fabric* Good afternoon. In July 2016 I violated DOJ protocol to hold a 15-minute press conference calling you 'extremely careless' while recommending zero charges. Now it is October 28—eleven days before the election—and I am sending a vague letter to Congress announcing we found emails on Anthony Weiner's laptop! Have fun explaining that while Donald brings up your cloth wipe for the 900th time!",
+            nextNodeId = "act1_tb_ch2_spicer_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch2_spicer_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Spicy Sean's Cinnamon Gum Barrage and Director Jim-Tall's October Surprise Letter are blocking the path to Election Night! Hill-Rod, hit them with Purse Ninja Hot Sauce and \$1,000 Cattle Futures Stampede!",
+            triggerBattleEncounterId = "act1_track_b_spicy_sean_battle",
+            nextNodeId = "act1_tb_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT I (TRACK B) - CHAPTER 4: THE BLUE-CURTAIN DIRECTOR & ELECTION NIGHT FINALE
+        // =========================================================================
+        DialogueNode(
+            id = "act1_tb_ch4_intro",
+            changeSceneId = SCENE_ACT1_TB_CH4_JAVITS.id,
+            speaker = DialogueSpeaker.COMEY_TALL,
+            side = SpeakerSide.RIGHT,
+            text = "*Pokes his 6-foot-8 head back out from behind the blue curtain on November 6, 2016—48 hours before Election Day* Oh, hi again, Secretary Hill-Rod! Funny story: our automated hashing software finished scanning Anthony Weiner's laptop in forty-eight hours and every single email was just a duplicate of the ones we already cleared back in July! My bad! Good luck in Wisconsin—which you haven't visited once since the April primary!",
+            nextNodeId = "act1_tb_ch4_commander_confrontation"
+        ),
+        // Legacy alias for Track B Ch 3 intro
+        DialogueNode(
+            id = "act1_tb_ch3_intro",
+            changeSceneId = SCENE_ACT1_TB_CH4_JAVITS.id,
+            speaker = DialogueSpeaker.COMEY_TALL,
+            side = SpeakerSide.RIGHT,
+            text = "*Pokes his 6-foot-8 head out from behind the blue curtain on November 6, 2016* Our software finished scanning the laptop in 48 hours and every single email was just a duplicate! My bad!",
+            nextNodeId = "act1_tb_ch4_commander_confrontation"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch4_commander_confrontation",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.RIGHT,
+            text = "Look who finally swiped her MetroCard five times to get onto the Election Night stage, folks! Tell me, Hill-Rod—did you wipe that glass ceiling at the Javits Center 'with a cloth or something' like Paul Combetta ('stonetear') wiped your 33,000 Chappaqua emails with BleachBit?! Or are you still reading the 1978 Wall Street Journal between two potted ferns while yelling 'Pokémon Go-to-the-Polls'?!",
+            choices = listOf(
+                DialogueChoice("tb3_roast_bus", "Unload the Eternal Callback Barrage: 2005 Tic-Tac 'Grab 'Em' Bus + Failed Furniture Trip + \$50 Escalator Actors!", listOf("tic tac", "furniture", "escalator", "fifty", "bus", "grab"), "act1_tb_ch4_pre_finale"),
+                DialogueChoice("tb3_roast_wedding", "Unload the Taco Bowl & Wedding Barrage: Marla Maples Newspaper Taco Bowl + 2005 Palm Beach Wedding Cake!", listOf("wedding", "taco bowl", "senate", "palm beach", "marla"), "act1_tb_ch4_pre_finale")
+            )
+        ),
+        DialogueNode(
+            id = "act1_tb_ch4_pre_finale",
+            speaker = DialogueSpeaker.HILL_ROD,
+            side = SpeakerSide.LEFT,
+            text = "You want to talk about 1978 cattle futures and my Chappaqua cloth wipe, Donald?! Let's talk about you eating a fiesta taco bowl over a newspaper photo of your ex-wife in a bikini on Cinco de Mayo, paying Extra Mile Casting \$50 a head to clap at your escalator, inviting me to eat cake in the front row of your 2005 Palm Beach wedding, and riding around on a 2005 Access Hollywood bus popping Tic-Tacs and bragging 'grab 'em by the p*ssy' right after Nancy O'Dell turned down your trip to a strip-mall furniture store! Let's finish Act I right now!",
+            nextNodeId = "act1_tb_ch3_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT I TRACK B GRAND FINALE, EVERYBODY! Hill-Rod vs. Commander America, Billy Access-Bus, and the \$50 FEC Casting Extra! Unleash Pokémon Go-To-The-Polls, Purse Ninja Hot Sauce, and the 11-Hour Marathon Shield!",
+            triggerBattleEncounterId = "act1_track_b_commander_finale",
+            nextNodeId = "act1_tb_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act1_tb_ch3_post_battle",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "And that concludes all four chapters of Act I on Track B! Now the calendar flips to 2017–2020 for Act II! On Track B, the Standard-Bearer Relay Baton passes to Speaker Nancy Palooza—armed with her 45-degree sideways seal clap, pre-scored SOTU pages, twin \$24,000 Sub-Zero ice-cream freezers, and her \$341,365 pre-CHIPS Act Nvidia loss Vindication! Which side of Act II would you like to play first?",
+            choices = listOf(
+                DialogueChoice("tb3_to_act2_tb", "Play Act II Track B (5 Chapters as Speaker Nancy Palooza)!", listOf("track b", "nancy", "baton", "pelosi", "freezers"), "act2_tb_ch1_intro"),
+                DialogueChoice("tb3_to_act2_ta", "Play Act II Track A (5 Chapters as Commander America & Kash Subpoena)!", listOf("act 2", "track a", "commander", "advance", "continue"), "act2_ch1_intro"),
+                DialogueChoice("tb3_replay_track_a", "Replay Act I Track A (4 Chapters as Commander America)", listOf("act 1", "escalator", "replay"), "act1_ch1_intro")
+            )
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK A) - CHAPTER 1: BUSHES, CINNAMON GUM & THE 11-DAY MOOCH (JAN–JULY 2017)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_ch1_intro",
+            changeSceneId = SCENE_ACT2_CH1_MALL.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome to Act II (2017–2020): Five brand-new chapters of executive chaos! It is January 21, 2017 inside the West Wing. White House Press Secretary Spicy Sean has already chewed and swallowed 35 pieces of Orbit Cinnamon gum whole before noon—right after sneaking into the Eisenhower Executive Office Building at 8:00 PM to steal a mini-fridge from junior research staffers!",
+            nextNodeId = "act2_ch1_spicer_podium"
+        ),
+        DialogueNode(
+            id = "act2_ch1_spicer_podium",
+            speaker = DialogueSpeaker.SPICY_SEAN,
+            side = SpeakerSide.LEFT,
+            text = "*Stands at the Brady Briefing Room lectern in a suit jacket two sizes too large, swallowing a wad of cinnamon gum whole* 'This was the largest audience to ever witness an inauguration—period—both in person and around the globe! Look at the white floor coverings on the National Mall grass! Nobody has ever used white floor coverings before!'",
+            nextNodeId = "act2_ch1_mooch_arrives"
+        ),
+        DialogueNode(
+            id = "act2_ch1_mooch_arrives",
+            speaker = DialogueSpeaker.THE_MOOCH,
+            side = SpeakerSide.RIGHT,
+            text = "*Bursts through the West Wing French doors adjusting his aviators and cufflinks* Yo, step aside, Spicy! I'm The 11-Day Mooch, your new White House Communications Director! My official start date isn't until August 15, 2017, which gives me just enough time to call Ryan Lizza at The New Yorker on an unrecorded line, drop seventeen F-bombs about Reince Priebus and Steve Bannon's spinal flexibility, and get fired by Chief of Staff John Kelly in exactly ELEVEN DAYS!",
+            nextNodeId = "act2_ch1_mall_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch1_mall_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at this communications team, folks—Spicy Sean is hiding in the dark behind the White House bushes yelling at reporters to turn their camera lights off, and The Mooch just set the land-speed record for getting fired before his first paycheck! How do we handle the press corps?",
+            choices = listOf(
+                DialogueChoice("a2c1_bushes", "Inspect Spicy Sean hiding in the White House bushes on May 9, 2017 ('Turn the lights off!')", listOf("bushes", "shrubs", "spicer", "lights", "comey"), "act2_ch1_spicer_bushes", completionFlag = "a2c1_bushes_done"),
+                DialogueChoice("a2c1_mooch", "Listen to The 11-Day Mooch explain his New Yorker phone call & 11-day tenure", listOf("mooch", "scaramucci", "eleven days", "new yorker", "bannon"), "act2_ch1_mooch_rant", completionFlag = "a2c1_mooch_done"),
+                DialogueChoice("a2c1_gorilla", "VINDICATION WIN #1: Debunk the viral '17-Hour Gorilla Channel' Fire and Fury parody hoax!", listOf("gorilla", "channel", "vindication", "hoax", "tv"), "act2_ch1_gorilla_vindication", completionFlag = "a2c1_gorilla_done"),
+                DialogueChoice("a2c1_battle", "Charge into the Briefing Room Battle against the Crowd-Size Fact-Checkers!", listOf("battle", "fight", "briefing", "proceed", "advance"), "act2_ch1_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act2_ch1_spicer_bushes",
+            setFlagOnEnter = "a2c1_bushes_done",
+            speaker = DialogueSpeaker.SPICY_SEAN,
+            side = SpeakerSide.LEFT,
+            text = "*Whispers from deep inside a dark row of White House holly bushes on the night of May 9, 2017* Listen, Commander, after you fired Director Jim-Tall while he was watching TV in Los Angeles—and he laughed thinking the breaking news chyron was a prank—twenty reporters chased me across the driveway! So naturally I crouched behind these bushes in pitch darkness and told them I'd only answer questions if they turned all their camera lights off! Also, nobody touches my stolen mini-fridge!",
+            nextNodeId = "act2_ch1_mall_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch1_mooch_rant",
+            setFlagOnEnter = "a2c1_mooch_done",
+            speaker = DialogueSpeaker.THE_MOOCH,
+            side = SpeakerSide.RIGHT,
+            text = "Hey, I'm a straight shooter from Long Island! When I called Ryan Lizza at The New Yorker on July 26, 2017, did I scream that Reince Priebus is a 'f***ing paranoid schizophrenic, a paranoiac' and say 'I'm not Steve Bannon, I'm not trying to suck my own c***'?! Yes I did! And in my defense, eleven days is still a full " +
+                "Scaramucci—the official unit of measurement for political survival!",
+            nextNodeId = "act2_ch1_mall_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch1_gorilla_vindication",
+            setFlagOnEnter = "a2c1_gorilla_done",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #1! In December 2017, verified journalists, pundits, and university professors shared a screenshot tens of thousands of times claiming Michael Wolff's book Fire and Fury revealed White House staffers built a fake 17-hour 'Gorilla Channel' because Donald complained the Discovery Channel wasn't showing enough gorilla fights! The screenshot was actually an obvious comedy parody written by Twitter humorist @pixelatedboat—who had to change his display name to 'The Gorilla Channel Thing Is A Joke' because blue-check Twitter actually believed it!",
+            nextNodeId = "act2_ch1_mall_hub"
         ),
         DialogueNode(
             id = "act2_ch1_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Cable News Aerial Spin Crew is LIVE with fabricated crowd graphics! Commander — demolish them with Tremendous Strike before they edit the footage!",
+            text = "THE BRIEFING ROOM DOORS ARE BLOWING OFF THE HINGES, BROTHER! Crowd-Size Fact-Checkers and Cable Chyron Operators are storming the podium! Unleash the 12:06 AM Covfefe Drop and the Red Diet Coke Button!",
             triggerBattleEncounterId = "act2_ch1_inauguration_battle",
             nextNodeId = "act2_ch1_post_battle"
         ),
         DialogueNode(
             id = "act2_ch1_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
-            text = "Their fisheye lenses are shattered and the Spin Crew has retreated to the green room! Let the record show: the crowd was MASSIVE. Now — to the Oval Citadel! Time to replace those burgundy curtains with something GOLD.",
+            text = "Nice win, Commander! Our HP and MP are automatically back at 100%, and I packed extra Poland Spring bottles for Chapter 2 inside the Oval Office!",
             changeSceneId = SCENE_ACT2_CH2_OVAL.id,
             nextNodeId = "act2_ch2_intro"
         ),
 
-        // =========================================================================
-        // ACT II - CHAPTER 2: ENTERING THE OVAL CITADEL & THE EXECUTIVE PEN (JAN 2017)
-        // =========================================================================
-        DialogueNode(
-            id = "act2_ch2_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH, BROTHER! The golden drapes are hung! The Resolute Desk is cleared! And Commander America is standing there with the biggest stack of executive orders I have ever seen in my life, dude! The Deep State bureaucrats are SHAKING!",
-            nextNodeId = "act2_ch2_resolute_hub"
-        ),
-        DialogueNode(
-            id = "act2_ch2_resolute_hub",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Alright, we've got a lot of work to do. Three things on the agenda before I deal with the phone calls from seventeen foreign leaders all competing to be my best friend.",
-            choices = listOf(
-                DialogueChoice("a2c2_drapes", "Announce the gold drapes are a non-negotiable upgrade", listOf("drapes", "gold", "curtains", "upgrade", "decor"), "act2_ch2_drapes", completionFlag = "a2c2_drapes"),
-                DialogueChoice("a2c2_deregulate", "Sign the first wave of deregulation orders with maximum flair", listOf("deregulate", "sign", "orders", "executive", "regulation", "pen"), "act2_ch2_deregulate", completionFlag = "a2c2_deregulate"),
-                DialogueChoice("a2c2_tariffs", "Announce reciprocal tariffs on every country that's been ripping us off", listOf("tariffs", "trade", "reciprocal", "unfair", "china", "foreign"), "act2_ch2_tariffs", completionFlag = "a2c2_tariffs"),
-                DialogueChoice("a2c2_marco", "Call Marco Rubio in — it's time to unlock the Sanctions Sorcerer", listOf("marco", "rubio", "sanctions", "call", "secretary", "state"), "act2_ch2_marco_arrives")
-            )
-        ),
-        DialogueNode(
-            id = "act2_ch2_drapes",
-            setFlagOnEnter = "a2c2_drapes",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The burgundy curtains are gone. Absolutely gone. We replaced them with beautiful, full-length gold drapes that represent the golden age of America. Someone put that in the official record. This is important.",
-            nextNodeId = "act2_ch2_resolute_hub"
-        ),
-        DialogueNode(
-            id = "act2_ch2_deregulate",
-            setFlagOnEnter = "a2c2_deregulate",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "For every one new regulation we add, we cut TEN old ones. That's the deal. Ten to one. I'm signing this right now. *Clicks the sharpie.* Tremendous. This pen has more power than a thousand bureaucrat memos.",
-            nextNodeId = "act2_ch2_karoline_count"
-        ),
-        DialogueNode(
-            id = "act2_ch2_karoline_count",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Twenty-six executive orders signed in the first week — a record. My binder has run out of pages for the first time in recorded history.",
-            nextNodeId = "act2_ch2_resolute_hub"
-        ),
-        DialogueNode(
-            id = "act2_ch2_tariffs",
-            setFlagOnEnter = "a2c2_tariffs",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "China has been charging us 40% tariffs while we charge them virtually nothing for decades! That ends today. Reciprocal. If you charge us 40, we charge you 40. It's called being fair! Revolutionary concept, I know!",
-            nextNodeId = "act2_ch2_resolute_hub"
-        ),
-        DialogueNode(
-            id = "act2_ch2_marco_arrives",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "Commander! Marco Rubio reporting for duty — confirmed as Secretary of State and fully operational Sanctions Sorcerer! I've got a leather briefcase full of maximum sanctions, a filibuster scroll that would make the Senate chamber shake, and... *holds up a cold water bottle* ...diplomatic hydration. Let's rearrange some foreign policy!",
-            nextNodeId = "act2_ch2_hero_marco_reply"
-        ),
-        DialogueNode(
-            id = "act2_ch2_hero_marco_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Marco! Tremendous! The Sanctions Sorcerer is in the Oval! You're going to be the greatest Secretary of State this country has ever seen — and believe me, I know a lot about great people. I'm surrounded by them. Now let's talk Iran, Venezuela, and China while we sign these orders.",
-            nextNodeId = "act2_ch2_hulk_marco"
-        ),
-        DialogueNode(
-            id = "act2_ch2_hulk_marco",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH! The Sanctions Sorcerer has entered the building, BROTHER! Rubio's got that diplomatic intensity in his eyes! The globalists are sweating through their Davos blazers right now!",
-            nextNodeId = "act2_ch2_victory_advance"
-        ),
-        DialogueNode(
-            id = "act2_ch2_victory_advance",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Breaking news: Madam Speaker Pelosi has been spotted in the Capitol Rotunda with a Bloomberg terminal, a stack of microchip company prospectuses, and a draft regulatory bill on her desk — simultaneously. We are racing to the Rotunda.",
-            changeSceneId = SCENE_ACT2_CH3_ROTUNDA.id,
-            nextNodeId = "act2_ch3_intro"
-        ),
-
-        // Legacy alias nodes (backward compat with existing tests / save migration)
-        DialogueNode(
-            id = "act2_archive",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Look at these old scrolls from 2014! Barack built the exact same border facilities! They clapped for him back then, but when I keep the country safe, they call it an outrage!",
-            nextNodeId = "act2_karoline_receipts"
-        ),
-        DialogueNode(
-            id = "act2_karoline_receipts",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "That is an indisputable fact! The press won't report it, but the receipts on those 2014 facilities are right here in the binder!",
-            nextNodeId = "act2_ch3_intro"
-        ),
+        // Legacy compatibility node
         DialogueNode(
             id = "act2_marco_joins",
             speaker = DialogueSpeaker.MARCO,
             side = SpeakerSide.LEFT,
-            text = "Hold on, Madam Speaker! You can't crash this economy on our watch! Commander, I brought maximum foreign sanctions, a filibuster that will freeze them in their tracks, and a cold bottle of water. Let's reclaim the chamber!",
-            nextNodeId = "act2_hero_marco_reply"
-        ),
-        DialogueNode(
-            id = "act2_hero_marco_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Marco, tremendous to have you! The Sanctions Sorcerer is on the team! Let's hit 'em with tariffs and the presidential veto!",
-            nextNodeId = "act2_ch3_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act2_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH! RUBIO'S IN THE CORNER, BROTHER! The Sanctions Sorcerer has entered the ring! Say your prayers and hit that Tremendous Strike!",
-            triggerBattleEncounterId = "act2_media_battle",
-            nextNodeId = "act2_ch3_post_battle"
+            text = "Little Marco reporting for duty with a full Poland Spring hydration pack!",
+            nextNodeId = "act2_ch2_intro"
         ),
 
         // =========================================================================
-        // ACT II - CHAPTER 3: CONFRONTING MADAM SPEAKER & THE STOCK-TRADING LICH (2017)
+        // ACT II (TRACK A) - CHAPTER 2: THE DIET COKE BUTTON, COVFEFE & THE ECLIPSE (MAY–NOV 2017)
         // =========================================================================
         DialogueNode(
-            id = "act2_ch3_intro",
+            id = "act2_ch2_intro",
+            changeSceneId = SCENE_ACT2_CH2_OVAL.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are LIVE inside the Capitol Rotunda. Madam Speaker Pelosi is standing beneath the dome with a Bloomberg terminal in one hand and a NVIDIA prospectus in the other — and the Semiconductor Oversight Regulatory Act is literally on a table behind her. This is not subtle. This is not even trying to be subtle.",
-            nextNodeId = "act2_ch3_pelosi_enter"
+            text = "Chapter 2 of Act II! We are inside the Oval Office in the summer of 2017. Sitting on the historic Resolute Desk is a polished red wooden box with a brass button on top, while outside on the Truman Balcony the August 21, 2017 total solar eclipse is beginning to darken the sky!",
+            nextNodeId = "act2_ch2_diet_coke_button"
         ),
         DialogueNode(
-            id = "act2_ch3_pelosi_enter",
-            speaker = DialogueSpeaker.PELOSI,
-            side = SpeakerSide.RIGHT,
-            text = "Oh, don't mind me... I'm simply... reorganizing my portfolio for purely *patriotic* reasons. The fact that I co-authored this regulatory framework last Tuesday and that the NVIDIA options expire THIS Friday is... a complete coincidence! Everything in Washington is a coincidence!",
-            nextNodeId = "act2_ch3_hero_callout"
-        ),
-        DialogueNode(
-            id = "act2_ch3_hero_callout",
+            id = "act2_ch2_diet_coke_button",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "You purchased 500 semiconductor call options THREE DAYS before your own committee's bill passed! Your return rate on 'public service' is 17,000%! Nobody in American history has gotten RICH on a congressional salary! This isn't complicated!",
-            nextNodeId = "act2_ch3_marco_expose"
+            text = "*Taps the red wooden button on the Resolute Desk while reporters from the Associated Press and Financial Times flinch* Everyone gets a little nervous when I press this button, folks! They think it's the nuclear football—nope! Watch this: ten seconds later, a White House butler walks in carrying a single ice-cold Diet Coke on a silver platter! Twelve times a day! Peak executive efficiency!",
+            nextNodeId = "act2_ch2_oval_hub"
         ),
         DialogueNode(
-            id = "act2_ch3_marco_expose",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "I have the EDGAR filings right here. Cross-referencing the trade date against the committee markup schedule — there is a 72-hour window of maximum insider proximity. Maximum Sanctions, engaged! I'm freezing these accounts!",
-            nextNodeId = "act2_ch3_pelosi_counter"
-        ),
-        DialogueNode(
-            id = "act2_ch3_pelosi_counter",
-            speaker = DialogueSpeaker.PELOSI,
-            side = SpeakerSide.RIGHT,
-            text = "How DARE you! I have been doing this for DECADES and nobody has ever had the audacity to READ THE FILINGS! Fact-checkers, DEPLOY! Anonymous sources, to your stations! I am invoking my right to be above accountability!",
-            nextNodeId = "act2_ch3_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act2_pelosi_confront",
-            speaker = DialogueSpeaker.PELOSI,
-            side = SpeakerSide.RIGHT,
-            text = "Mwahaha! I just timed the market perfectly before passing the bill! My stock portfolio is unstoppable! World chaos is fantastic for my quarterly returns!",
-            nextNodeId = "act2_ch3_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act2_hero_pelosi_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "You're trading options on government policy! Total insider trading corruption! Check the dates on Barack's cages while you're at it!",
-            nextNodeId = "act2_ch3_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act2_ch3_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH! The Stock-Trading Shadow Lich is ACTIVATED, BROTHER! Anonymous sources are swarming the rotunda! Commander and the Sanctions Sorcerer — body-slam 'em with Tremendous Strike and Maximum Sanctions!",
-            triggerBattleEncounterId = "act2_media_battle",
-            nextNodeId = "act2_ch3_post_battle"
-        ),
-        DialogueNode(
-            id = "act2_ch3_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Pelosi's insider trade ledger has been confiscated and her NVIDIA options were invalidated! The fact-checkers retreated to the green room and the anonymous sources went back to being anonymous! The Oval Citadel is secure — onward to international diplomacy!",
-            changeSceneId = SCENE_ACT3_CH1_STEEL_MILL.id,
-            nextNodeId = "act3_ch1_intro"
-        ),
-        // Legacy alias
-        DialogueNode(
-            id = "act2_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Pelosi's insider trade ledger was confiscated and her outrage storm shattered! The Oval Citadel is secure... for now!",
-            changeSceneId = SCENE_ACT3_CH1_STEEL_MILL.id,
-            nextNodeId = "act3_ch1_intro"
-        ),
-
-        // =========================================================================
-        // ACT III - CHAPTER 1: THE OHIO STEEL MILL AWAKENING (2018)
-        // =========================================================================
-        DialogueNode(
-            id = "act3_ch1_intro",
+            id = "act2_ch2_oval_hub",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are live from the Lordstown Stamping Plant in Mahoning Valley, Ohio — a mill that the previous administration declared dead. Blast furnaces that haven't roared in years are lit again tonight. The workers didn't believe it was possible. Commander America made it happen.",
-            nextNodeId = "act3_ch1_mill_hub"
-        ),
-        // Legacy alias
-        DialogueNode(
-            id = "act3_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are live from the Lordstown Stamping Plant in Mahoning Valley, Ohio — a mill that was declared dead. Tonight the blast furnaces roar back to life.",
-            nextNodeId = "act3_ch1_mill_hub"
-        ),
-        DialogueNode(
-            id = "act3_ch1_mill_hub",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "These workers were told their jobs were gone forever. The experts said manufacturing was dead. The experts were wrong. We brought it back. We're just getting started.",
+            text = "Between Diet Coke deliveries, three iconic 2017 moments are unfolding simultaneously. Which executive event are we handling first?",
             choices = listOf(
-                DialogueChoice("a3c1_steel", "Announce the steel and aluminum tariff to protect American industry", listOf("steel", "tariff", "aluminum", "protect", "industry"), "act3_ch1_steel_tariff", completionFlag = "a3c1_steel"),
-                DialogueChoice("a3c1_nafta", "Call out NAFTA for gutting the Rust Belt over 25 years", listOf("nafta", "rust belt", "outsource", "gut", "jobs"), "act3_ch1_nafta_callout", completionFlag = "a3c1_nafta"),
-                DialogueChoice("a3c1_vance", "Call for JD Vance — the son of the heartland — to join the fight", listOf("vance", "jd", "heartland", "ohio", "rustbelt"), "act3_ch1_vance_arrives")
+                DialogueChoice("a2c2_covfefe", "Type the 12:06 AM May 31, 2017 'Despite the constant negative press covfefe' tweet!", listOf("covfefe", "tweet", "midnight", "press"), "act2_ch2_covfefe_node", completionFlag = "a2c2_covfefe_done"),
+                DialogueChoice("a2c2_eclipse", "Step onto the Truman Balcony and stare bare-eyed straight into the Aug 21, 2017 Solar Eclipse!", listOf("eclipse", "sun", "glasses", "stare", "balcony"), "act2_ch2_eclipse_node", completionFlag = "a2c2_eclipse_done"),
+                DialogueChoice("a2c2_koi", "VINDICATION WIN #2: Play the wide-angle AFP video of the Nov 2017 Japanese Koi Fish Feeding!", listOf("koi", "fish", "japan", "shinzo abe", "vindication"), "act2_ch2_koi_vindication", completionFlag = "a2c2_koi_done"),
+                DialogueChoice("a2c2_proceed", "Grab a box of Bounty paper towels & a black Sharpie for Chapter 3!", listOf("proceed", "advance", "sharpie", "towels", "chapter 3"), "act2_ch3_sharpie_intro")
             )
         ),
         DialogueNode(
-            id = "act3_ch1_steel_tariff",
-            setFlagOnEnter = "a3c1_steel",
+            id = "act2_ch2_covfefe_node",
+            setFlagOnEnter = "a2c2_covfefe_done",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "25% tariff on foreign steel! 10% on aluminum! Other countries have been dumping their cheap product to destroy our mills for decades! That ends! American steel for American infrastructure!",
-            nextNodeId = "act3_ch1_mill_hub"
+            text = "*Looks at his phone at 12:06 AM on May 31, 2017* 'Despite the constant negative press covfefe.' Then I fell asleep for six hours while the entire planet lost its mind! By 6:00 AM I tweeted: 'Who can figure out the true meaning of \"covfefe\" ??? Enjoy!' And then Spicy Sean marched out to the podium with a dead-serious face and told the press corps: 'The president and a small group of people know exactly what he meant!'",
+            nextNodeId = "act2_ch2_oval_hub"
         ),
         DialogueNode(
-            id = "act3_ch1_nafta_callout",
-            setFlagOnEnter = "a3c1_nafta",
+            id = "act2_ch2_eclipse_node",
+            setFlagOnEnter = "a2c2_eclipse_done",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "NAFTA was the worst trade deal in the history of the world! Negotiated by people who didn't know what they were doing! In 25 years it cost us 700,000 manufacturing jobs! We're ripping it up and replacing it with something fantastic!",
-            nextNodeId = "act3_ch1_karoline_confirm"
+            text = "*Walks out onto the Truman Balcony on August 21, 2017 holding protective ISO-certified eclipse glasses in his right hand—then points his finger at the sky and squints BARE-EYED straight into the blinding sun* Suddenly a panicked White House aide beneath the balcony screams at the top of his lungs: 'DON'T LOOK!' Look, folks, the sun blinked first! Nobody has stronger retinas than me!",
+            nextNodeId = "act2_ch2_oval_hub"
         ),
         DialogueNode(
-            id = "act3_ch1_karoline_confirm",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            id = "act2_ch2_koi_vindication",
+            setFlagOnEnter = "a2c2_koi_done",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Confirmed: 700,000 manufacturing jobs lost under NAFTA. Bureau of Labor Statistics. It's in the binder on page forty-seven.",
-            nextNodeId = "act3_ch1_mill_hub"
+            text = "VINDICATION WIN #2! On November 6, 2017 at the Akasaka Palace in Tokyo, cable news and major outlets ran headlines claiming Commander America 'impatiently dumped his entire box of koi fish food into the pond ahead of Japanese Prime Minister Shinzo Abe,' airing a tightly cropped zoom cut! Look at the unedited wide-angle Agence France-Presse (AFP) footage: Prime Minister Abe finished spooning and dumped his entire box in FIRST with a laugh, and Commander America smiled and followed his host's exact lead a second later!",
+            nextNodeId = "act2_ch2_oval_hub"
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK A) - CHAPTER 3: PAPER-TOWEL FREE THROWS, HURRICANE SHARPIE & 15 FLUSHES (2017–2019)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_ch3_sharpie_intro",
+            changeSceneId = SCENE_ACT2_CH3_SHARPIE.id,
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "WELCOME TO CHAPTER 3 OF ACT II, BROTHER! From shooting NBA three-pointers with rolls of Bounty paper towels in San Juan, to redrawing Hurricane Dorian's cone into Alabama with a black Sharpie marker, to investigating why Americans have to flush low-flow toilets fifteen times—this chapter is pure non-stop 2017–2019 history!",
+            nextNodeId = "act2_ch3_towel_shots"
         ),
         DialogueNode(
-            id = "act3_ch1_vance_arrives",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Commander, JD Vance reporting in! I grew up twenty miles from this mill. My grandmother worked a shift press that looked exactly like that one. The establishment globalists wrote this whole valley off as collateral damage. I didn't, and neither did you. The Rustbelt Vanguard is ready to fight. Let's renegotiate everything.",
-            nextNodeId = "act3_ch1_hero_vance_reply"
-        ),
-        DialogueNode(
-            id = "act3_ch1_hero_vance_reply",
+            id = "act2_ch3_towel_shots",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "JD — tremendous! Pure Appalachian steel and Hillbilly Elegy common sense! You're the future of this country! The Rustbelt Vanguard is ONLINE! Now let's deal with the trade saboteurs trying to shut this mill down again!",
-            nextNodeId = "act3_ch1_union_ambush"
+            text = "*Squares his shoulders at Calvary Chapel in Guaynabo, Puerto Rico on October 3, 2017 and launches a jump-shot with a roll of Bounty paper towels into the crowd* Swish! Look at that form, folks—pure Steph Curry from the free-throw line! 'They had these lovely, soft towels. Very good towel!'",
+            nextNodeId = "act2_ch3_sharpie_hub"
         ),
         DialogueNode(
-            id = "act3_ch1_union_ambush",
+            id = "act2_ch3_sharpie_hub",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "The Globalist Trade Cartel is here! They've been tipped off by the Chamber of Commerce and they're here to shut down the mill with a barrage of cease-and-desist filings and WTO complaint forms! ATTACK!",
-            nextNodeId = "act3_ch1_battle_trigger"
+            text = "*Steps up with a National Weather Service map and an EPA plumbing binder* Hold on, Mr. President! First you shot paper towels like basketballs, now it's September 4, 2019 and you're holding up a Hurricane Dorian map with a hand-drawn black Sharpie loop over Alabama, and on December 6, 2019 you called a White House Small Business Roundtable to complain about flushing toilets 15 times!",
+            choices = listOf(
+                DialogueChoice("a2c3_sharpie", "Explain the Sept 4, 2019 Oval Office Black Sharpie Hurricane Dorian Map extending into Alabama!", listOf("sharpie", "alabama", "dorian", "hurricane", "map"), "act2_ch3_sharpie_node", completionFlag = "a2c3_sharpie_done"),
+                DialogueChoice("a2c3_toilets", "Deliver the verbatim Dec 6, 2019 White House rant on flushing Low-Flow Toilets '10 times, 15 times!'", listOf("toilets", "flush", "fifteen", "water", "sinks"), "act2_ch3_toilets_node", completionFlag = "a2c3_toilets_done"),
+                DialogueChoice("a2c3_meta_gag", "Watch Chyron McSpin lose the plumbing debate & pathetically try to pivot back to the 2005 Tic-Tac Bus!", listOf("tic tac", "pivot", "bus", "let it go", "old"), "act2_ch3_tactful_callback", completionFlag = "a2c3_meta_done"),
+                DialogueChoice("a2c3_battle", "Battle the NOAA Sharpie Meteorologist & 15-Flush EPA Plumbing Inspector!", listOf("battle", "fight", "proceed", "advance"), "act2_ch3_sharpie_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act2_ch3_sharpie_node",
+            setFlagOnEnter = "a2c3_sharpie_done",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "*Points at the August 29 National Hurricane Center poster on the Oval Office easel (Sept 4, 2019)* Look at that white forecast cone, folks—and look at that totally official, completely natural black permanent-marker bubble drawn onto the end of the Florida panhandle so it touches southeastern Alabama! What Sharpie?! I don't know anything about a Sharpie, other than it's a very bold, very decisive marker!",
+            nextNodeId = "act2_ch3_sharpie_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch3_toilets_node",
+            setFlagOnEnter = "a2c3_toilets_done",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "*Leans forward at the White House Small Business Roundtable on December 6, 2019* 'We have a situation where we're looking very strongly at sinks and showers and other elements of bathrooms where you turn the faucet on—in areas where there's tremendous amounts of water, where the water rushes out to sea because you could never handle it—and you don't get any water! People are flushing toilets 10 times, 15 times, as opposed to once! They end up using more water!'",
+            nextNodeId = "act2_ch3_sharpie_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch3_tactful_callback",
+            setFlagOnEnter = "a2c3_meta_done",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            side = SpeakerSide.RIGHT,
+            text = "*Stammers as his plumbing statistics fall apart* W-well, even if low-flow toilets do take three flushes... what about in 2005 on the Access Hollywood bus when you popped Tic-Tacs?!",
+            nextNodeId = "act2_ch3_narrator_roasts_callback"
+        ),
+        DialogueNode(
+            id = "act2_ch3_narrator_roasts_callback",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Laughs from the narrator desk* Did you see that?! It is December 2019—we are in the middle of an official White House roundtable about bathroom water pressure and hurricane markers—and the second Chyron runs out of material, he panics and reaches fourteen years into the past for a 2005 bus tape! Politicians and cable anchors genuinely never let anything go!",
+            nextNodeId = "act2_ch3_sharpie_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch3_sharpie_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "THE NOAA SHARPIE METEOROLOGIST AND THE 15-FLUSH EPA PLUMBING INSPECTOR ARE CHARGING THE OVAL OFFICE EASEL, BROTHER! Hit 'em with Bounty Paper-Towel Free-Throws and the Black Sharpie Cone Extension!",
+            triggerBattleEncounterId = "act2_track_a_sharpie_battle",
+            nextNodeId = "act2_ch3_sharpie_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_ch3_sharpie_post_battle",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "The plumbing flows freely, Alabama is officially safe from Hurricane Dorian, and our HP and MP are 100% restored! Now let's head down to the House Intelligence SCIF in Chapter 4 to recruit our new party companion: Kash Subpoena!",
+            changeSceneId = SCENE_ACT2_CH4_SCIF.id,
+            nextNodeId = "act2_ch4_scif_intro"
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK A) - CHAPTER 4: ENTER KASH SUBPOENA, THE NUNES MEMO & WIZARD KASH (2018–2019)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_ch4_scif_intro",
+            changeSceneId = SCENE_ACT2_CH4_SCIF.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 4 of Act II! We are inside the House Intelligence Secure Compartmented Information Facility (SCIF). Kicking open the acoustic vault door is your new party companion: Kash Subpoena—carrying his four-page February 2018 Nunes FISA Memo under one arm and a stack of \$19.99 illustrated children's books under the other!",
+            nextNodeId = "act2_ch4_kash_recruitment"
+        ),
+        DialogueNode(
+            id = "act2_ch4_kash_recruitment",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "*Slams a four-page memo and a glossy picture book onto the table* Commander! Kash Subpoena reporting for party duty! Not only did I co-author the four-page Nunes FISA Memo exposing the Carter Page warrant applications, I also wrote a three-part Brave Books children's fantasy trilogy called The Plot Against the King—where I literally had the illustrator draw me as a bearded medieval sorcerer named 'WIZARD KASH' who saves 'KING DONALD' using a magical Scroll of Truth!",
+            nextNodeId = "act2_ch4_scif_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch4_scif_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Hold on, Kash—you wrote a children's bedtime book where I'm King Donald and you're a wizard in a pointy robe?! Let's inspect your kit and drop our biggest Vindication receipts of the term!",
+            choices = listOf(
+                DialogueChoice("a2c4_wizard", "Inspect Kash's \$19.99 'Wizard Kash' children's book & his exaggerated Benghazi resume!", listOf("wizard", "book", "king donald", "benghazi", "kash"), "act2_ch4_wizard_book_node", completionFlag = "a2c4_wizard_done"),
+                DialogueChoice("a2c4_vindication", "VINDICATION WIN #3: Slam down Mueller Report Volume I Exoneration & the full Charlottesville transcript!", listOf("mueller", "vindication", "charlottesville", "transcript", "volume 1"), "act2_ch4_mueller_vindication", completionFlag = "a2c4_mueller_done"),
+                DialogueChoice("a2c4_battle", "Test Kash Subpoena in combat against the SCIF Subpoena Bureaucrats!", listOf("battle", "fight", "scif", "proceed", "advance"), "act2_ch4_scif_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act2_ch4_wizard_book_node",
+            setFlagOnEnter = "a2c4_wizard_done",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "*Opens The Plot Against the King to page 4* Look at the artwork, Commander: there's me as Wizard Kash holding a glowing staff, there's a magical slug named 'Dossier,' and for the villain in a 2022 children's book, I drew 'Hillary Queenton'! Oh, and don't ask my former DOJ colleagues about when I claimed I was the 'lead Benghazi trial prosecutor'—they got super technical and pointed out I was a junior staffer who showed up in the final week and wasn't even on the trial team!",
+            nextNodeId = "act2_ch4_wizard_meta_gag"
+        ),
+        DialogueNode(
+            id = "act2_ch4_wizard_meta_gag",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Chuckles at the desk* Wait a second, Kash—you published a children's picture book six years after the 2016 election and you STILL put Hillary on the cover as the villain?! In Washington, D.C., not even bedtime stories for first-graders are capable of letting old elections go!",
+            nextNodeId = "act2_ch4_scif_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch4_mueller_vindication",
+            setFlagOnEnter = "a2c4_mueller_done",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "DOUBLE VINDICATION WIN! First, after 22 months, 2,800 subpoenas, and 500 witnesses, Special Counsel Robert Mueller's March 2019 report (Volume I, Page 2) stated verbatim: 'The investigation did not establish that members of the Trump Campaign conspired or coordinated with the Russian government in its election interference activities.' Second, when critics cropped the August 15, 2017 Charlottesville press conference to 'very fine people on both sides,' the official transcript proves 35 seconds later Commander America stated explicitly: 'I'm not talking about the neo-Nazis and the white nationalists, because they should be condemned totally!'",
+            nextNodeId = "act2_ch4_scif_hub"
+        ),
+        DialogueNode(
+            id = "act2_ch4_scif_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "WIZARD KASH JUST JOINED THE ACTIVE PARTY, BROTHER! Unleash his 4-Page Nunes FISA Scroll and King Donald's Wizard Book against the Subpoena Bureaucrats!",
+            triggerBattleEncounterId = "act4_ch1_fisa_battle",
+            nextNodeId = "act2_ch4_scif_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_ch4_scif_post_battle",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.LEFT,
+            text = "Boom! The SCIF is cleared, every binder is declassified, and our HP and MP are back at 100%! Now let's march into the House Chamber for Chapter 5—the Act II Finale against Speaker Nancy Palooza!",
+            changeSceneId = SCENE_ACT2_CH3_ROTUNDA.id,
+            nextNodeId = "act2_ch3_intro"
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK A) - CHAPTER 5: SIDEWAYS CLAPS, PRE-SCORED SPEECHES & $24K FREEZERS (2020 FINALE)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_ch3_intro",
+            changeSceneId = SCENE_ACT2_CH3_ROTUNDA.id,
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 5 (Act II Track A Finale): We are inside the House Chamber in 2020! Standing on the Speaker's dais behind Commander America is Speaker Nancy Palooza—flanked by two \$24,000 stainless-steel Sub-Zero freezers stuffed with \$12 pints of Jeni's Splendid Ice Cream, a stack of pre-scored State of the Union pages, and a fresh blowout from an unmasked visit to a locked-down San Francisco hair salon!",
+            nextNodeId = "act2_ch5_nancy_greeting"
+        ),
+        DialogueNode(
+            id = "act2_ch5_nancy_greeting",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.RIGHT,
+            text = "*Extends both arms stiffly at a 45-degree angle and claps sideways right in Commander America's ear* Good evening, Mr. President! Remember earlier when I said 'We have to pass the bill so that you can find out what is in it, away from the fog of the controversy'?! Well tonight it's February 4, 2020, and while you were talking at the podium, C-SPAN cameras caught me discreetly pre-ripping starter notches into the top left corners of your State of the Union pages under the desk so I wouldn't look weak trying to tear thick cardstock on live television!",
+            nextNodeId = "act2_ch5_commander_roasts_nancy"
+        ),
+        DialogueNode(
+            id = "act2_ch5_commander_roasts_nancy",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at Crazy Nancy, folks! First she had to pre-cut my speech under the desk like an arts-and-crafts project because the paper was too tough for her, then during the April 2020 lockdown she went on James Corden's Late Late Show to flex TWO \$24,000 Sub-Zero freezers packed with gourmet \$12 Jeni's ice cream pints, and in August 2020 security cameras caught her strolling through eSalon in San Francisco with wet hair and NO MASK while every other salon in the city was bolted shut!",
+            nextNodeId = "act2_ch5_nancy_salon_defense"
+        ),
+        DialogueNode(
+            id = "act2_ch5_nancy_salon_defense",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.RIGHT,
+            text = "*Gasps indignantly while clutching a pint of Jeni's Darkest Chocolate* Excuse me! As I told reporters on September 2, 2020: 'I take responsibility for trusting the word of a neighborhood salon that I've been to over the years many times... It turns out it was a setup! So I take responsibility for falling for a setup! And I think that this salon owes me an apology for setting me up!' Now watch me exercise my free-market deep-in-the-money tech call options!",
+            nextNodeId = "act2_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_ch5_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT II TRACK A MAIN EVENT, BROTHER! Commander America, Little Marco, and Wizard Kash vs. Speaker Nancy Palooza's Pre-Scored Speech Rip, 45-Degree Sideways Seal Clap, and Twin \$24,000 Sub-Zero Freezers! RING THE BELL!",
+            triggerBattleEncounterId = "act2_media_battle",
+            nextNodeId = "act2_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_ch5_post_battle",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Victory in the House Chamber! You have completed all 5 Chapters of Act II on Track A! Would you like to take the Track B Baton Pass and play all 5 Chapters of Act II as Speaker Nancy Palooza (featuring Spicy Sean's neon-green Dancing with the Stars salsa shirt, the pre-scored SOTU speech, the \$24,000 Sub-Zero freezers, the \$341,365 pre-CHIPS Act Nvidia loss Vindication, and Rudy Ghoul's melting hair dye at Four Seasons Total Landscaping), or advance to Act III?",
+            choices = listOf(
+                DialogueChoice("a2_play_track_b", "Play Act II Track B: Experience all 5 Chapters as Speaker Nancy Palooza!", listOf("track b", "nancy", "pelosi", "freezers", "other side"), "act2_tb_ch1_intro"),
+                DialogueChoice("a2_to_act3", "Advance to Act III (2020–2023): Joe Naptime's Ice-Cream Bunker & Real-Audio Gibberish", listOf("act 3", "next act", "advance", "biden", "continue"), "act3_ch1_intro")
+            )
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK B) - CHAPTER 1: SIDEWAYS SEAL CLAPS VS. NEON SALSA RUFFLES (PLAYING AS NANCY PALOOZA)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_tb_ch1_intro",
+            changeSceneId = SCENE_ACT2_TB_CH1_BUSHES.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome back to Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, alongside Karine Hatch-Act and Oprah Free-Car! For all five chapters of Act II (2017–2020), the baton passes to Speaker Nancy Palooza—with 100% full HP/MP and her complete Sub-Zero & Call-Option spell kit unlocked from turn one!",
+            nextNodeId = "act2_tb_ch1_kjp_oprah"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch1_kjp_oprah",
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Flipping to Tab 2 of my historic binder: Nancy Palooza has reclaimed the Speaker's gavel, perfected the 45-degree sideways seal clap, and is walking past the White House shrubbery—wait, why are the bushes shaking to the beat of Destiny's Child?!",
+            nextNodeId = "act2_tb_ch1_oprah_salsa"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch1_oprah_salsa",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "LOOK INSIDE THE HEDGES, EVERYBODY! SPICY SEAN JUST JUMPED OUT OF THE BUSHES WEARING HIS SEPTEMBER 2019 NEON-GREEN RUFFLED DANCING WITH THE STARS SALSA SHIRT, HONEY!",
+            nextNodeId = "act2_tb_ch1_spicer_salsa_ambush"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch1_spicer_salsa_ambush",
+            speaker = DialogueSpeaker.SPICY_SEAN,
+            side = SpeakerSide.RIGHT,
+            text = "*Leaps out of the White House bushes in a blinding neon-green ruffled sleeves shirt, shaking a pair of maracas while chewing 35 pieces of Orbit Cinnamon gum* HOLD IT RIGHT THERE, MADAM SPEAKER! On September 16, 2019 I debuted on Dancing with the Stars in this exact neon-green cabbage-ruffle shirt dancing the salsa to 'Bills, Bills, Bills' and scored a 12 out of 30! And speaking of bills—didn't you tell America 'We have to pass the bill so that you can find out what is in it'?!",
+            nextNodeId = "act2_tb_ch1_nancy_clapback"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch1_nancy_clapback",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Extends her arms at a razor-sharp 45-degree angle and delivers the February 5, 2019 Sideways Seal Clap right at Spicy Sean's neon sleeves* Oh, bravo, Sean! Look at you—first you stole a mini-fridge from twenty-two-year-old staffers at 8:00 PM, then you hid in those exact bushes in the dark after the Comey firing shouting 'Turn the lights off!', and now you're dressed like a radioactive head of romaine lettuce alongside a Communications Director who got fired in eleven days!",
+            nextNodeId = "act2_tb_ch1_mooch_chimes_in"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch1_mooch_chimes_in",
+            speaker = DialogueSpeaker.THE_MOOCH,
+            side = SpeakerSide.RIGHT,
+            text = "Hey, Madam Speaker, show some respect! In those eleven days in July 2017, I called Ryan Lizza at The New Yorker, taught the entire country a brand-new anatomical yoga metaphor about Steve Bannon, and got escorted off the complex before my security badge finished printing! Let's dance, Spicy!",
+            nextNodeId = "act2_tb_ch1_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S NEON SALSA RUFFLES AND THE 11-DAY MOOCH VS. SPEAKER NANCY PALOOZA, EVERYBODY! Unleash the 45-Degree Sideways Seal Clap and Pass the Bill to Find Out!",
+            triggerBattleEncounterId = "act2_track_b_spicer_salsa_battle",
+            nextNodeId = "act2_tb_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch1_post_battle",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "Back into the bushes with your stolen mini-fridge, Sean! With our HP and MP automatically restored to 100%, let's step up to the Speaker's rostrum for Chapter 2: The February 4, 2020 State of the Union!",
+            changeSceneId = SCENE_ACT2_TB_CH2_SOTU.id,
+            nextNodeId = "act2_tb_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK B) - CHAPTER 2: PRE-SCORING THE SPEECH & THE 75%-SPEED VIDEO (2019–2020)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_tb_ch2_intro",
+            changeSceneId = SCENE_ACT2_TB_CH2_SOTU.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 2 (Track B): It is February 4, 2020 on the raised rostrum of the House Chamber! Commander America just handed Nancy Palooza his printed State of the Union address, snubbed her outstretched handshake, and is currently holding forth about hurricane markers and bathroom water pressure!",
+            nextNodeId = "act2_tb_ch2_sotu_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch2_sotu_hub",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Tests the thickness of the State of the Union speech pages between her fingers* Wait a minute—the White House printed this speech on heavy-gauge archival cardstock! If I try to rip thirty pages of this cold at the end of the speech, my hands might get stuck on live television! How do we prepare the grand finale and crush the doctored video smear against us?",
+            choices = listOf(
+                DialogueChoice("tb2_prescore", "Secretly pre-score starter notches into the pages under the desk before ripping them on live TV!", listOf("pre score", "rip", "tear", "speech", "notches"), "act2_tb_ch2_prescore_node", completionFlag = "tb2_prescore_done"),
+                DialogueChoice("tb2_vindication1", "VINDICATION WIN #1: Debunk the viral May 2019 'Drunk Slurring' video (slowed to 75% speed)!", listOf("drunk", "slurring", "slowed", "video", "vindication"), "act2_tb_ch2_slur_vindication", completionFlag = "tb2_slur_done"),
+                DialogueChoice("tb2_meta", "Watch Commander America get mad at the speech rip & randomly bring up 2015 Chappaqua emails in 2020!", listOf("meta", "callback", "cloth", "let it go", "donald"), "act2_tb_ch2_meta_callback", completionFlag = "tb2_meta_done"),
+                DialogueChoice("tb2_proceed", "Head home to San Francisco for Chapter 3: The \$24,000 Sub-Zero Freezers & eSalon!", listOf("proceed", "advance", "freezers", "ice cream", "salon"), "act2_tb_ch3_intro")
+            )
+        ),
+        DialogueNode(
+            id = "act2_tb_ch2_prescore_node",
+            setFlagOnEnter = "tb2_prescore_done",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Lowers the stack of pages just below desk level while C-SPAN cameras zoom in, discreetly pinching and pre-ripping small starter notches into the top left margins* Always engineer your structural tear lines in advance! Then, the moment he finishes speaking, I stand up behind his shoulder, hold each pre-scored packet high for the cameras, and—*RRRRIP! RRRRIP!* And when reporters ask why I tore it up outside the chamber: 'It was the courteous thing to do considering the alternatives!'",
+            nextNodeId = "act2_tb_ch2_sotu_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch2_slur_vindication",
+            setFlagOnEnter = "tb2_slur_done",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "VINDICATION WIN #1! In May 2019, after a Center for American Progress event, a video went viral across social media with millions of views claiming I was 'visibly intoxicated and slurring my words' on stage! Forensic audio analysts and the original C-SPAN broadcast proved the clip had been maliciously slowed down to 75% of its original speed and pitch-adjusted to fabricate a slur—and as everyone on Capitol Hill knows, I don't even drink alcohol; my only vice is dark chocolate ice cream!",
+            nextNodeId = "act2_tb_ch2_sotu_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch2_meta_callback",
+            setFlagOnEnter = "tb2_meta_done",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.RIGHT,
+            text = "*Turns around at the podium glaring at the torn halves of his speech* She pre-ripped my speech under the desk, folks! Total violation! At least I didn't wipe my speech 'with a cloth or something' in a Chappaqua basement in 2015!",
+            nextNodeId = "act2_tb_ch2_psaki_roasts_meta"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch2_psaki_roasts_meta",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Shakes her head at the narrator desk* Let's pause and appreciate the commitment: it is February 2020, he is arguing with Nancy Palooza from California, and his reflex is STILL to shout about a 2015 email server belonging to an entirely different woman who retired in the woods four years ago! Nobody in politics ever lets anything go!",
+            nextNodeId = "act2_tb_ch2_sotu_hub"
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK B) - CHAPTER 3: TWIN $24,000 FREEZERS & THE SALON 'SETUP' (APRIL–AUG 2020)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_tb_ch3_intro",
+            changeSceneId = SCENE_ACT2_TB_CH3_SUBZERO.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 3 (Track B): It is April 14, 2020 in San Francisco! While the entire country is locked indoors baking sourdough bread during quarantine, Speaker Nancy Palooza has invited James Corden's Late Late Show cameras into her gourmet kitchen to show off how she's surviving lockdown!",
+            nextNodeId = "act2_tb_ch3_subzero_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch3_subzero_hub",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Stands proudly in front of two gleaming, side-by-side \$24,000 stainless-steel Sub-Zero refrigerator-freezers* Look at this frost-free symmetry! How should we showcase our quarantine essentials, explain our August 2020 hair salon adventure, and debunk two massive viral smears?",
+            choices = listOf(
+                DialogueChoice("tb3_icecream", "Open the twin \$24,000 Sub-Zero freezers & show off the \$12 pints of Jeni's Splendid Ice Cream!", listOf("freezers", "sub zero", "ice cream", "jenis", "corden"), "act2_tb_ch3_icecream_node", completionFlag = "tb3_icecream_done"),
+                DialogueChoice("tb3_salon", "Explain the Aug 31, 2020 unmasked San Francisco eSalon blowout ('It was a setup! They owe ME an apology!')", listOf("salon", "setup", "hair", "mask", "apology"), "act2_tb_ch3_salon_node", completionFlag = "tb3_salon_done"),
+                DialogueChoice("tb3_vind23", "VINDICATION WINS #2 & #3: Debunk the '\$2.4B Social Security Impeachment' & '\$25M Florida Mansion' hoaxes!", listOf("social security", "mansion", "florida", "impeachment", "vindication"), "act2_tb_ch3_vindication_node", completionFlag = "tb3_vind23_done"),
+                DialogueChoice("tb3_proceed", "Head to the House Clerk Stock Disclosure Vault for Chapter 4!", listOf("proceed", "advance", "stocks", "options", "nvidia"), "act2_tb_ch4_intro")
+            )
+        ),
+        DialogueNode(
+            id = "act2_tb_ch3_icecream_node",
+            setFlagOnEnter = "tb3_icecream_done",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Pulls open the heavy stainless-steel Sub-Zero freezer drawer on national television (April 14, 2020), revealing dozens of neatly stacked \$12 pints of Jeni's Splendid Ice Cream* 'I like chocolate better than anything! Look—Darkest Chocolate, Chocolate Indulgence, Milkiest Chocolate! I don't know what I would have done if I didn't have my ice cream!'Wait—why are my own campaign consultants screaming that flexing \$24,000 appliances full of \$12 artisanal pints during a 14% unemployment spike is 'Marie Antoinette with a waffle cone'?!",
+            nextNodeId = "act2_tb_ch3_subzero_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch3_salon_node",
+            setFlagOnEnter = "tb3_salon_done",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Adjusts her freshly blown-out hair on September 2, 2020* Look, yes, security footage from August 31 showed me walking through eSalon in San Francisco with wet hair and my mask around my neck at 3:08 PM while every salon in the city was legally closed for indoor service! So I held a press conference and explained the only logical conclusion: 'I take responsibility for trusting the word of a neighborhood salon that I've been to over the years many times... It turns out it was a setup! So I take responsibility for falling for a setup! And I think that this salon owes me an apology for setting me up!'",
+            nextNodeId = "act2_tb_ch3_subzero_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch3_vindication_node",
+            setFlagOnEnter = "tb3_vind23_done",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "DOUBLE VINDICATION WIN! First, viral posts claimed I 'illegally diverted \$2.4 billion from the Social Security Trust Fund to pay for impeachment'—under Title II of the Social Security Act, the Trust Fund is a statutory account that the Speaker has zero legal authority to touch, and committee staff are paid from regular annual House salaries! Second, viral memes claimed I hypocritically bought a '\$25 million beachfront mansion on Jupiter Island, Florida' while warning of lockdowns—Martin County, Florida property appraiser deeds proved neither Paul nor I ever bought or owned a single square foot of that property!",
+            nextNodeId = "act2_tb_ch3_subzero_hub"
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK B) - CHAPTER 4: DEEP-ITM CALL OPTIONS & THE $341K NVIDIA LOSS (2020–2022)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_tb_ch4_intro",
+            changeSceneId = SCENE_ACT2_TB_CH4_STOCKS.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 4 (Track B): We are inside the House Clerk's Periodic Transaction Report (PTR) Vault! On the wall, retail traders have launched an actual exchange-traded fund ticker—'NANC'—just to copy Paul and Nancy's deep-in-the-money tech call options on Alphabet, Visa, and Palo Alto Networks!",
+            nextNodeId = "act2_tb_ch4_free_market"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch4_free_market",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Stands at the Capitol press podium on December 15, 2021 when reporter Bryan Metzger asks if members of Congress and their spouses should be banned from trading individual stocks while writing legislation* 'No! We are a free-market economy. They should be able to participate in that!'",
+            nextNodeId = "act2_tb_ch4_stocks_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch4_stocks_hub",
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "While the stock ticker flashes green on 2008 Visa IPO shares and \$5.3 million in Alphabet call options exercised a week before a House Judiciary antitrust vote, critics are accusing the Pelosis of two specific insider trades that actually never happened! Let's review the receipts before Wizard Kash attacks!",
+            choices = listOf(
+                DialogueChoice("tb4_options", "Review the real-life Visa IPO, Alphabet (\$5.3M), and Palo Alto Networks LEAPS call options!", listOf("options", "visa", "alphabet", "google", "nanc"), "act2_tb_ch4_options_node", completionFlag = "tb4_options_done"),
+                DialogueChoice("tb4_nvidia_vind", "VINDICATION WINS #4 & #5: Slam down the \$341,365 Pre-CHIPS Act Nvidia LOSS receipt & debunk the 3M Mask Stock hoax!", listOf("nvidia", "chips act", "loss", "3m", "vindication"), "act2_tb_ch4_nvidia_vindication", completionFlag = "tb4_nvidia_done"),
+                DialogueChoice("tb4_kash_battle", "Confront Kash Subpoena ('Wizard Kash') storming the vault with his \$19.99 children's book!", listOf("kash", "wizard", "battle", "fight", "proceed"), "act2_tb_ch4_kash_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act2_tb_ch4_options_node",
+            setFlagOnEnter = "tb4_options_done",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "Look, I have zero involvement in Paul's timing! Is it a fun coincidence that in 2008 we got direct access to 20,000 pre-IPO shares of Visa right as the Credit Card Fair Fee Act stalled in the House, or that in June 2021 Paul exercised \$4.8 million in Alphabet call options for a \$5.3 million profit one week before the House Judiciary Committee voted on tech antitrust bills, or that our portfolio beat every hedge fund on Wall Street?! That's just the magic of San Francisco venture capital!",
+            nextNodeId = "act2_tb_ch4_stocks_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch4_nvidia_vindication",
+            setFlagOnEnter = "tb4_nvidia_done",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "DOUBLE VINDICATION WIN! Everyone on cable news screamed that Paul 'made a fortune buying Nvidia right before Congress passed the \$52 billion CHIPS Act in July 2022'! Here is the official July 26, 2022 House Clerk Periodic Transaction Report: Paul actually SOLD all 25,000 shares of Nvidia on July 26 BEFORE the CHIPS Act vote at an average price of \$165.05—locking in a realized LOSS of \$341,365 specifically to avoid the appearance of a conflict of interest! And as for the viral 2020 rumor that I 'bought \$10 million in 3M mask stock before lockdowns'—House disclosures prove we owned zero shares of 3M!",
+            nextNodeId = "act2_tb_ch4_stocks_hub"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch4_kash_ambush",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.RIGHT,
+            text = "*Kicks open the House Clerk doors wearing a purple 'Wizard Kash' cape over his suit and waving his four-page Nunes Memo* FREEZE THOSE CALL OPTIONS, SPEAKER PALOOZA! I am Kash Subpoena—known to readers ages 4 to 8 as 'Wizard Kash' from my \$19.99 Brave Books classic The Plot Against the King! Every binder in this building is declassified!",
+            nextNodeId = "act2_tb_ch4_kash_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch4_kash_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "WIZARD KASH AND HIS DECLASSIFIED BINDER GOLEM ARE ATTACKING THE STOCK VAULT, HONEY! Nancy Palooza, hit him with the \$24,000 Sub-Zero Freezer Flex and the \$341k Pre-CHIPS Act Loss Receipt!",
+            triggerBattleEncounterId = "act2_track_b_kash_battle",
+            nextNodeId = "act2_tb_ch4_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch4_post_battle",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "Take your \$19.99 wizard book back to the gift shop, Kash! Our HP and MP are back at 100%, and we just got an urgent alert from northeast Philadelphia for Chapter 5: Commander America's legal team just booked the wrong 'Four Seasons'!",
+            changeSceneId = SCENE_ACT2_TB_CH5_FOUR_SEASONS.id,
+            nextNodeId = "act2_tb_ch5_intro"
+        ),
+
+        // =========================================================================
+        // ACT II (TRACK B) - CHAPTER 5: BETWEEN A CREMATORIUM & AN ADULT BOOKSHOP (NOV 2020 FINALE)
+        // =========================================================================
+        DialogueNode(
+            id = "act2_tb_ch5_intro",
+            changeSceneId = SCENE_ACT2_TB_CH5_FOUR_SEASONS.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 5 (Act II Track B Finale): It is 11:30 AM on November 7, 2020 at 7339 State Road in an industrial strip of northeast Philadelphia! After Commander America tweeted 'Big press conference today in Philadelphia at Four Seasons, 11:00am' and then corrected it to 'Four Seasons Total Landscaping,' reporters have gathered in front of a beige garage door wedged directly between the Delaware Valley Crematorium and Fantasy Island Adult Books!",
+            nextNodeId = "act2_tb_ch5_rudy_arrives"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch5_rudy_arrives",
+            speaker = DialogueSpeaker.RUDY_GHOUL,
+            side = SpeakerSide.RIGHT,
+            text = "*Stands between a stack of bags of topsoil and a yellow 'ADULT BOOKS & NOVELTIES' sign while dark brown hair dye begins melting in twin streams down both of his temples* Welcome to Four Seasons Total Landscaping! Wait—a reporter in the front row is telling me the Associated Press and every television network just called Pennsylvania while I was standing in front of this garage door?! *Raises both arms to the sky* 'All the networks! Wow! All the networks! We have to forget about the law! Judges don't count! Don't be ridiculous, networks don't get to decide elections!'",
+            nextNodeId = "act2_tb_ch5_nancy_roasts_rudy"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch5_nancy_roasts_rudy",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "Rudy, look at yourself! You wanted the five-star Four Seasons Hotel on Arch Street in Center City, someone dialed the first 'Four Seasons' in the phone book, and rather than admit a typo, you drove the entire press corps to a mulching garage between a crematorium and a sex shop! And why is your hair leaking motor oil down your cheeks while you act out scenes from the 1992 Joe Pesci movie My Cousin Vinny?!",
+            nextNodeId = "act2_tb_ch5_rudy_borat_defense"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch5_rudy_borat_defense",
+            speaker = DialogueSpeaker.RUDY_GHOUL,
+            side = SpeakerSide.RIGHT,
+            text = "*Dabs a handkerchief across his forehead, smearing another streak of brown hair dye across his cheek* First of all, My Cousin Vinny is a masterpiece of constitutional jurisprudence—'How many fingers am I holding up?! Look at her, she's wearing thick glasses!' Second of all, regarding last month's Borat Subsequent Moviefilm hotel scene—as I tweeted on October 21, 2020: 'The Borat video is a complete fabrication. I was tucking in my shirt after taking off the recording equipment!' Now prepare to face the wrath of Four Seasons Total Landscaping!",
+            nextNodeId = "act2_tb_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch5_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT II TRACK B GRAND FINALE AT FOUR SEASONS TOTAL LANDSCAPING, EVERYBODY! Speaker Nancy Palooza vs. Rudy Ghoul, the Riding-Mower Mechanic, and the Melting Hair-Dye Blob! Unleash the Pre-Scored SOTU Speech Rip and Deep-ITM Call Options!",
+            triggerBattleEncounterId = "act2_track_b_rudy_finale",
+            nextNodeId = "act2_tb_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch5_post_battle",
+            speaker = DialogueSpeaker.PELOSI,
+            side = SpeakerSide.LEFT,
+            text = "*Reaches into her portable \$24,000 Sub-Zero freezer and pulls out a fresh double-scoop chocolate chip waffle cone* That wraps up all five chapters of Act II on Track B! Now it's January 2021, and it's time to pass the Track B Standard-Bearer Baton—and this chocolate chip waffle cone—to our Act III protagonist: Joe Naptime!",
+            nextNodeId = "act2_tb_ch5_biden_handoff"
+        ),
+        DialogueNode(
+            id = "act2_tb_ch5_biden_handoff",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Steps up wearing Ray-Ban aviators and takes the double-scoop waffle cone* Folks, my name is Joe Biden. I'm Dr. Jill Biden's husband, and I came down because I heard there was chocolate chip ice cream! In Act III, we're unleashing Corn Pop, Badakathcare, Truinanashabbadepressure, and 'End of quote, repeat the line!' Which side of Act III would you like to play first?",
+            choices = listOf(
+                DialogueChoice("tb2_to_act3_tb", "Play Act III Track B (5 Chapters as Joe Naptime: Ice Cream & Real-Audio Gibberish)!", listOf("track b", "biden", "joe", "ice cream", "corn pop"), "act3_tb_ch1_intro"),
+                DialogueChoice("tb2_to_act3_ta", "Play Act III Track A (5 Chapters as Commander America & Foghorn Kennedy)!", listOf("act 3", "track a", "commander", "kennedy", "advance", "continue"), "act3_ch1_intro"),
+                DialogueChoice("tb2_play_track_a", "Replay Act II Track A (5 Chapters as Commander America & Kash Subpoena)", listOf("act 2", "spicer", "sharpie"), "act2_ch1_intro")
+            )
+        ),
+
+        // =========================================================================
+        // ACT III (TRACK A) - CHAPTER 1: THREE STUMBLES UP THE STAIRS & TOE-CAGE BIKES (2021–2022)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_ch1_intro",
+            changeSceneId = SCENE_ACT3_CH1_STEEL_MILL.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome to Act III (2021–2023)! On Day One of January 2021, Joe Naptime evicted the red wooden Diet Coke valet button from the Resolute Desk and replaced it with a freezer full of Jeni's Splendid Chocolate Chip ice cream! Meanwhile, out on the tarmac at Joint Base Andrews on March 19, 2021, a brisk breeze is blowing across the stairs of Air Force One!",
+            nextNodeId = "act3_ch1_stairs_bike_intro"
+        ),
+        // Legacy compatibility alias
+        DialogueNode(
+            id = "act3_intro",
+            changeSceneId = SCENE_ACT3_CH1_STEEL_MILL.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome to Act III (2021–2023): Three Stumbles Up the Stairs, Toe-Cage Bicycles & Bathroom Chandeliers!",
+            nextNodeId = "act3_ch1_stairs_bike_intro"
+        ),
+        DialogueNode(
+            id = "act3_ch1_stairs_bike_intro",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Look at the tarmac at Joint Base Andrews on March 19, 2021, folks! Joe Naptime tries to jog up the Air Force One staircase—he trips once, he trips a second time, and he drops all the way to his knees a THIRD time in four seconds before saluting at the top! And how did Karine Hatch-Act explain it to the press pool?!",
+            nextNodeId = "act3_ch1_kjp_wind_excuse"
+        ),
+        DialogueNode(
+            id = "act3_ch1_kjp_wind_excuse",
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Pops up from the Track B desk holding an anemometer* Excuse me! As I told reporters aboard Air Force One on March 19, 2021: 'It's pretty windy outside! It's very windy. I almost fell coming up the steps myself! He is doing 100 percent fine!'",
+            nextNodeId = "act3_ch1_tarmac_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch1_tarmac_hub",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "Sure, Karine—a 14-mile-per-hour breeze knocked him down three times going UP the stairs! And wait until you see what happens when he stops his Trek bicycle in Rehoboth Beach or searches a room for a congresswoman! What are we inspecting first?",
+            choices = listOf(
+                DialogueChoice("a3c1_bike", "Replay the June 18, 2022 Rehoboth Beach Stationary Trek Bicycle Toe-Cage Crash!", listOf("bike", "bicycle", "rehoboth", "toe cage", "crash"), "act3_ch1_bike_node", completionFlag = "a3c1_bike_done"),
+                DialogueChoice("a3c1_jackie", "Replay the Sept 28, 2022 'Jackie, are you here? Where's Jackie?' Conference Moment!", listOf("jackie", "where is jackie", "top of mind", "conference"), "act3_ch1_jackie_node", completionFlag = "a3c1_jackie_done"),
+                DialogueChoice("a3c1_battle", "Clear the tarmac against the Air Force One Staircase Gust & Stationary Toe-Cage Bicycle!", listOf("battle", "fight", "stairs", "proceed", "advance"), "act3_ch1_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act3_ch1_bike_node",
+            setFlagOnEnter = "a3c1_bike_done",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "*Points at the Cape Henlopen State Park bike trail in Rehoboth Beach, Delaware (June 18, 2022)* Watch the physics here, folks: Joe rides up to the press pool on his Trek FX hybrid bike, comes to a COMPLETE STOP—zero miles per hour!—tries to pull his right sneaker out of the metal pedal toe-cage, and slowly tips over sideways into a bush like a giant timber tree! At least when he stood up he blamed the toe cages instead of Vladimir Putin!",
+            nextNodeId = "act3_ch1_tarmac_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch1_jackie_node",
+            setFlagOnEnter = "a3c1_jackie_done",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "And then on September 28, 2022 at the White House Conference on Hunger, right after watching a tribute video for Congresswoman Jackie Walorski—who had tragically passed away seven weeks earlier and for whom Joe had issued an official White House condolence statement—he looks around the room and says verbatim: 'Jackie, are you here? Where's Jackie? I think she was going to be here!' And Karine Hatch-Act spent twenty minutes at the podium claiming 'She was just top of mind!'",
+            nextNodeId = "act3_ch1_tarmac_hub"
         ),
         DialogueNode(
             id = "act3_ch1_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH, BROTHER! The steel workers are in the Commander's corner! Vance is FIRED UP! Blast those trade saboteurs back to their Brussels boardroom!",
-            triggerBattleEncounterId = "act3_ch1_mill_battle",
+            text = "WATCH OUT FOR THOSE METAL PEDAL TOE CAGES, BROTHER! The Air Force One Triple-Stumble Staircase and the Stationary Rehoboth Trek Bicycle are blocking the runway! Smash 'em flat!",
+            triggerBattleEncounterId = "act3_track_a_stairs_bike_battle",
             nextNodeId = "act3_ch1_post_battle"
         ),
         DialogueNode(
             id = "act3_ch1_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
-            text = "The trade cartel retreated! The mill is OPEN! 1,400 American jobs secured by the end of the night! Now — to Washington! We've got a new trade deal to write from scratch!",
+            text = "Runway cleared and our HP and MP are automatically restored to 100%! Now let's head into the Senate Judiciary Committee Chamber in Chapter 2 to recruit our fourth companion: Senator Foghorn Kennedy!",
             changeSceneId = SCENE_ACT3_CH2_USMCA.id,
             nextNodeId = "act3_ch2_intro"
         ),
 
         // =========================================================================
-        // ACT III - CHAPTER 2: THE USMCA RENEGOTIATION SHOWDOWN (2018)
+        // ACT III (TRACK A) - CHAPTER 2: ENTER FOGHORN KENNEDY & 'CALL A CRACKHEAD!' (2021–2023)
         // =========================================================================
         DialogueNode(
             id = "act3_ch2_intro",
+            changeSceneId = SCENE_ACT3_CH2_USMCA.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The NAFTA renegotiation war room is set. Canada and Mexico sent their top trade lawyers and three trolleys of stalling tactics. Commander America and Marco Rubio sit across the table armed with the Art of the Deal and a stack of sanctions so thick it has its own zip code.",
-            nextNodeId = "act3_ch2_table_hub"
+            text = "Chapter 2 of Act III! We are inside the wood-paneled Senate Judiciary Committee Chamber. Leaning into his microphone with a slow, syrupy Louisiana drawl is your newest party member: Senator Foghorn Kennedy!",
+            nextNodeId = "act3_ch2_kennedy_joins"
         ),
         DialogueNode(
-            id = "act3_ch2_table_hub",
+            id = "act3_ch2_kennedy_joins",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "*Adjusts his reading glasses with a slow Southern drawl* Well howdy, Commander! Look, if frogs had wings, they wouldn't bump their tails on the ground, and if Washington bureaucrats had brains, they'd be dangerous! As I told voters in my September 2022 campaign commercial: 'Look, if you hate cops just because they're cops, the next time you get in trouble, call a crackhead!'",
+            nextNodeId = "act3_ch2_kennedy_hub"
+        ),
+        // Legacy compatibility node
+        DialogueNode(
+            id = "act3_vance_joins",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Look, if you hate cops just because they're cops, the next time you get in trouble, call a crackhead!",
+            nextNodeId = "act3_ch2_kennedy_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch2_kennedy_hub",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Gentlemen — and I use the term loosely — NAFTA is dead. We are replacing it with the USMCA. United States-Mexico-Canada Agreement. My people wrote it. It's fantastic. Much better for America. Now let's talk terms.",
+            text = "Wait a second, Foghorn—half the country thinks you whittle porch rockers in a bayou bait shop, and Kayleigh just handed me your real-life academic transcript! Let's check out your secret Oxford degree and your greatest Senate hearing one-liners!",
             choices = listOf(
-                DialogueChoice("a3c2_dairy", "Demand Canadian dairy market access — they've been blocking us for 30 years", listOf("dairy", "canada", "market", "farmers", "milk"), "act3_ch2_dairy", completionFlag = "a3c2_dairy"),
-                DialogueChoice("a3c2_autos", "Lock in 75% North American content rules for automobiles", listOf("autos", "cars", "content", "vehicles", "75"), "act3_ch2_autos", completionFlag = "a3c2_autos"),
-                DialogueChoice("a3c2_ip", "Enforce intellectual property protections for American innovators", listOf("ip", "intellectual", "patent", "innovation", "protect"), "act3_ch2_ip", completionFlag = "a3c2_ip"),
-                DialogueChoice("a3c2_sign", "Slam down the USMCA, sign it, and call it the greatest trade deal ever written", listOf("sign", "deal", "usmca", "greatest", "done"), "act3_ch2_sign_deal")
+                DialogueChoice("a3c2_oxford", "Expose Foghorn Kennedy's secret Oxford University First-Class Honours degree & 2004 John Kerry endorsement!", listOf("oxford", "degree", "england", "democrat", "drawl"), "act3_ch2_oxford_node", completionFlag = "a3c2_oxford_done"),
+                DialogueChoice("a3c2_nominee", "Replay the Jan 2023 Judicial Nominee Cross-Exam: 'Tell me what Article V of the Constitution does!'", listOf("article 5", "article 2", "constitution", "nominee", "judge"), "act3_ch2_nominee_node", completionFlag = "a3c2_nominee_done"),
+                DialogueChoice("a3c2_outback", "Deliver the May 2023 'Eating Cat Food in a Tent Behind an Outback' & 'Weed-Whacker Haircut' one-liners!", listOf("cat food", "outback", "weed whacker", "one liner"), "act3_ch2_outback_node", completionFlag = "a3c2_outback_done"),
+                DialogueChoice("a3c2_proceed", "Bring Foghorn Kennedy to the Mar-a-Lago Bathroom Chandelier Vault for Chapter 3!", listOf("proceed", "advance", "mar a lago", "chandelier", "bathroom"), "act3_ch3_intro")
             )
         ),
         DialogueNode(
-            id = "act3_ch2_dairy",
-            setFlagOnEnter = "a3c2_dairy",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Canada charges our dairy farmers a 270% tariff! Our guys can barely get their product across the border! That is going to be ZERO. Open access. Our farmers are the best in the world — they don't need protection from competition, they just need a fair shot!",
-            nextNodeId = "act3_ch2_table_hub"
-        ),
-        DialogueNode(
-            id = "act3_ch2_autos",
-            setFlagOnEnter = "a3c2_autos",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "Under our sanctions and tariff leverage, we are locking in 75% North American content rules for all vehicles. If you want to sell a car in America, most of it needs to be BUILT in America, Canada, or Mexico. The offshore shell games are over.",
-            nextNodeId = "act3_ch2_table_hub"
-        ),
-        DialogueNode(
-            id = "act3_ch2_ip",
-            setFlagOnEnter = "a3c2_ip",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "American companies — pharmaceutical, tech, creative — spent billions innovating, and foreign competitors just copy it the next day! Under USMCA, we have ten-year protections for biologics and criminal penalties for trade secret theft! Protection for our geniuses!",
-            nextNodeId = "act3_ch2_table_hub"
-        ),
-        DialogueNode(
-            id = "act3_ch2_sign_deal",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Alright, we've covered dairy, autos, and IP. The USMCA is signed! Greatest trade deal replacement in North American history — by far! NAFTA is officially buried. Tell Canada we said 'you're welcome.'",
-            nextNodeId = "act3_ch2_hulk_celebrate"
-        ),
-        DialogueNode(
-            id = "act3_ch2_hulk_celebrate",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "BROTHER! NAFTA IS DONE! The greatest trade deal replacement in history! Kayleigh, put that in the record books right NOW!",
-            nextNodeId = "act3_ch2_post_battle_transition"
-        ),
-        DialogueNode(
-            id = "act3_ch2_post_battle_transition",
+            id = "act3_ch2_oxford_node",
+            setFlagOnEnter = "a3c2_oxford_done",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Breaking news: Air Force One is wheels-up and bound for the Korean DMZ. A sitting American president is about to cross the 38th Parallel and meet Chairman Kim for the first time in history. Career diplomats are calling it impossible. Commander America is calling it Tuesday.",
-            changeSceneId = SCENE_ACT3_CH3_AF1.id,
-            nextNodeId = "act3_ch3_intro"
+            text = "EQUAL-OPPORTUNITY FACT CHECK! Before Senator Foghorn Kennedy adopted his folksy country-grandpa persona and switched parties in 2007 (after running as a Democrat and endorsing John Kerry in 2004!), he graduated magna cum laude from Vanderbilt, served as Executive Editor of the Virginia Law Review, and went to England where he earned a First-Class Honours Bachelor of Civil Law degree from Magdalen College, Oxford University! He knows Latin maxims—he just prefers talking about possums and crackheads on cable TV!",
+            nextNodeId = "act3_ch2_kennedy_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch2_nominee_node",
+            setFlagOnEnter = "a3c2_nominee_done",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "*Peers over his spectacles at federal judicial nominee Charnelle Bjelkengren on January 25, 2023* 'Judge, tell me what Article V of the Constitution does.' And she says: 'Article V is not coming to mind at the moment.' So I ask gently: 'How about Article II?' And she says: 'Neither is Article II.' Folks, she was applying for a lifetime federal judgeship and couldn't name the Article that creates the Presidency or the amendment process!",
+            nextNodeId = "act3_ch2_kennedy_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch2_outback_node",
+            setFlagOnEnter = "a3c2_outback_done",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "And in May 2023 during a Senate DEA hearing on cartels, I pointed out the simple economic truth: 'Without the people of America, Mexico, figuratively speaking, would be eating cat food out of a can and living in a tent behind an Outback!' Now let's go inspect those cardboard boxes down in Palm Beach!",
+            nextNodeId = "act3_ch2_kennedy_hub"
         ),
 
         // =========================================================================
-        // ACT III - CHAPTER 3: THE DIPLOMATIC FLIGHT ON AIR FORCE ONE (2018)
+        // ACT III (TRACK A) - CHAPTER 3: BATHROOM CHANDELIERS VS. THE 1967 CORVETTE GARAGE (2022–2023)
         // =========================================================================
         DialogueNode(
             id = "act3_ch3_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
+            changeSceneId = SCENE_ACT3_CH3_AF1.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH, BROTHER! Air Force One is cruising at 41,000 feet over the Pacific Ocean and the press pool in the back is having a collective breakdown! The career diplomats packed their talking points binders from 1953 and nobody told them those are useless now!",
-            nextNodeId = "act3_ch3_briefing_hub"
+            text = "Chapter 3 of Act III! It is 2022–2023: The Great Classified Cardboard Box War! On the left side of the screen is the gilded Lake Room bathroom at Mar-a-Lago, where dozens of cardboard bankers boxes are stacked next to the toilet beneath a crystal chandelier; on the right side is Joe Naptime's Wilmington garage, where classified Ukraine and Iran folders sit in a crushed box on the floor next to his green 1967 Chevrolet Corvette Stingray!",
+            nextNodeId = "act3_ch3_chandelier_defense"
         ),
         DialogueNode(
-            id = "act3_ch3_briefing_hub",
+            id = "act3_ch3_chandelier_defense",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "They said you can't negotiate with Rocket Man. They said it was impossible. They've said that about everything we've done. Let me tell you something — nobody has ever tried doing it MY way.",
+            text = "Look at that Mar-a-Lago bathroom photo in the indictment, folks! Have you ever seen a more luxurious crystal chandelier hanging over a shower full of bankers boxes?! Plus, bathroom doors lock from the inside! Meanwhile, when reporters asked Joe Naptime why his classified VP folders were sitting in a broken box next to lawn fertilizer in his Delaware garage, what did he say?!",
+            nextNodeId = "act3_ch3_box_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch3_box_hub",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Well, Commander, it looks like both of y'all treated the National Archives like a U-Haul self-storage unit! How are we handling the Subpoena Archivists?",
             choices = listOf(
-                DialogueChoice("a3c3_strategy", "Lay out the diplomatic leverage strategy with Marco", listOf("strategy", "leverage", "diplomatic", "approach", "plan"), "act3_ch3_strategy", completionFlag = "a3c3_strategy"),
-                DialogueChoice("a3c3_menu", "Review the fast-food diplomatic feast menu for the summit table", listOf("menu", "burger", "food", "feast", "cheeseburger"), "act3_ch3_menu", completionFlag = "a3c3_menu"),
-                DialogueChoice("a3c3_vance", "Ask JD Vance what the heartland thinks about peace on the Korean Peninsula", listOf("vance", "heartland", "ohio", "korea", "peace"), "act3_ch3_vance_korea", completionFlag = "a3c3_vance"),
-                DialogueChoice("a3c3_interceptors", "Deal with the deep state interceptors trying to derail the flight", listOf("intercept", "deep state", "sabotage", "derail", "stop"), "act3_ch3_interceptor_ambush")
+                DialogueChoice("a3c3_corvette", "Play Joe Naptime's verbatim Jan 12, 2023 excuse: 'My Corvette's in a locked garage, okay?!'", listOf("corvette", "garage", "locked", "stingray", "delaware"), "act3_ch3_corvette_node", completionFlag = "a3c3_corvette_done"),
+                DialogueChoice("a3c3_vindication", "VINDICATION WIN #1: Debunk the 'Mar-a-Lago Nuclear Launch Codes Sold to Spies' cable-news hoax!", listOf("nuclear", "codes", "vindication", "mar a lago", "spies"), "act3_ch3_nuclear_vindication", completionFlag = "a3c3_nuclear_done"),
+                DialogueChoice("a3c3_battle", "Battle the Bathroom Chandelier Box Inspector & Corvette Garage Sentinel!", listOf("battle", "fight", "chandelier", "proceed", "advance"), "act3_ch3_battle_trigger")
             )
         ),
         DialogueNode(
-            id = "act3_ch3_strategy",
-            setFlagOnEnter = "a3c3_strategy",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "Maximum pressure, then maximum diplomacy. We tightened sanctions until his economy squeaked — then we opened a back-channel with a letter hand-delivered through Singapore. The carrot and the biggest stick ever assembled. Classic Sanctions Sorcery.",
-            nextNodeId = "act3_ch3_briefing_hub"
-        ),
-        DialogueNode(
-            id = "act3_ch3_menu",
-            setFlagOnEnter = "a3c3_menu",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "We've got two dozen Big Macs, thirty cheeseburgers, Filet-O-Fish for the diplomatic delegation, and a Trump Tower chocolate cake as the centerpiece. Nothing says 'world peace' like a Golden Arches feast. Rocket Man is going to LOVE it.",
-            nextNodeId = "act3_ch3_briefing_hub"
-        ),
-        DialogueNode(
-            id = "act3_ch3_vance_korea",
-            setFlagOnEnter = "a3c3_vance",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "The people of eastern Ohio have lost sons and daughters in Korea. They've been watching that peninsula for 70 years. If Commander America can end the conflict that career diplomats couldn't end in seven decades, those families deserve it more than anyone. Let's get this done.",
-            nextNodeId = "act3_ch3_briefing_hub"
-        ),
-        DialogueNode(
-            id = "act3_ch3_interceptor_ambush",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            id = "act3_ch3_corvette_node",
+            setFlagOnEnter = "a3c3_corvette_done",
+            speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.RIGHT,
-            text = "The Deep State Intercept Squadron has scrambled! Anonymous sources are filing emergency cables to sabotage the summit and force the plane to turn around! They cannot allow this summit to succeed — it would destroy the narrative!",
-            nextNodeId = "act3_ch3_battle_trigger"
+            text = "*Pops up on the monitor wearing aviators (Jan 12, 2023)* 'By the way, my Corvette's in a locked garage, okay? So it's not like they're sitting out on the street!' And when Special Counsel Robert Hur's report came out, he wrote that we also found classified Afghanistan notebooks in my basement den from 1977—hey, a guy's gotta have reading material when he's waxing the Stingray!",
+            nextNodeId = "act3_ch3_box_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch3_nuclear_vindication",
+            setFlagOnEnter = "a3c3_nuclear_done",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #1! In August 2022, anonymous cable-news pundits breathlessly claimed the FBI raided Mar-a-Lago because Commander America was 'hiding US nuclear launch codes to sell to foreign adversaries at the buffet!' When the unsealed 49-page indictment was actually filed, it contained ZERO allegations of nuclear launch codes and ZERO allegations of selling secrets to foreign powers—just a monumental stubborn argument with the National Archives over returning boxes of letters, newspaper clippings, and agency briefings!",
+            nextNodeId = "act3_ch3_box_hub"
         ),
         DialogueNode(
             id = "act3_ch3_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Intercept Squadron is transmitting disinformation to every cable newsroom simultaneously! Commander, Marco, JD — take them down before they hijack the summit story!",
-            triggerBattleEncounterId = "act3_ch3_intercept_battle",
+            text = "THE BATHROOM CHANDELIER BOX INSPECTOR AND THE WILMINGTON CORVETTE GARAGE SENTINEL ARE CHARGING IN, BROTHER! Foghorn Kennedy, hit 'em with Plain English Cross-Exam and Call an Officer!",
+            triggerBattleEncounterId = "act3_track_a_chandelier_battle",
             nextNodeId = "act3_ch3_post_battle"
         ),
         DialogueNode(
             id = "act3_ch3_post_battle",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Intercept Squadron neutralized! The cables are clear! Fasten your seatbelts — we're beginning our descent to the DMZ. Tell the tower we're coming in HOT and we need a table set for twelve with a Big Mac centerpiece.",
+            text = "The chandelier still sparkles, our HP and MP are 100% restored, and now it's August 24, 2023—time to fly to Atlanta in Chapter 4 for the Fulton County Mugshot heard 'round the world!",
             changeSceneId = SCENE_ACT3_CH4_SUMMIT.id,
             nextNodeId = "act3_ch4_intro"
         ),
 
         // =========================================================================
-        // ACT III - CHAPTER 4: THE CRIMSON SUMMIT OF PEACE (2018)
+        // ACT III (TRACK A) - CHAPTER 4: THE '215-POUND' MUGSHOT & $7.1M 'NEVER SURRENDER' MERCH (AUG 2023)
         // =========================================================================
         DialogueNode(
             id = "act3_ch4_intro",
+            changeSceneId = SCENE_ACT3_CH4_SUMMIT.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are at the 38th Parallel. No sitting American president has ever stood here and met a North Korean Chairman face-to-face. The world is watching. 60 million viewers. More than any episode of anything, ever. The fast-food tower centerpiece is impeccable.",
-            nextNodeId = "act3_ch4_summit_hub"
+            text = "Chapter 4 of Act III! It is August 24, 2023 at the Fulton County Jail on Rice Street in Atlanta, Georgia. Commander America has just stepped up to the booking camera for Booking #P01135809—after filling out his own height and weight form in advance!",
+            nextNodeId = "act3_ch4_mugshot_pose"
         ),
         DialogueNode(
-            id = "act3_ch4_summit_hub",
+            id = "act3_ch4_mugshot_pose",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Chairman — I brought the Big Macs. Sit down. Let's talk denuclearization, security guarantees, and why you keep testing missiles when you could be eating cheeseburgers.",
+            text = "*Tilts his chin down, raises one eyebrow in a fierce Stanley Kubrick scowl as the camera flashes, and hands the clerk his self-reported booking sheet* Read those official physical stats on the Fulton County booking sheet, folks: Height: 6 foot 3! Weight: 215 POUNDS! Hair: Strawberry or Blonde! That puts me at the exact same height and weight as Baltimore Ravens All-Pro quarterback Lamar Jackson!",
+            nextNodeId = "act3_ch4_mugshot_hub"
+        ),
+        DialogueNode(
+            id = "act3_ch4_mugshot_hub",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.LEFT,
+            text = "Well now, Commander, if you weigh 215 pounds, then I'm a ballerina for the Bolshoi Theatre! And look what your merch team is doing with that mugshot before the ink is even dry!",
             choices = listOf(
-                DialogueChoice("a3c4_handshake", "Deploy the legendary Alpha Handshake of Sovereignty", listOf("handshake", "shake", "grip", "alpha", "sovereign"), "act3_ch4_handshake"),
-                DialogueChoice("a3c4_button", "Remind him whose button is bigger and actually works", listOf("button", "nuclear", "bigger", "works", "rocket"), "act3_ch4_button"),
-                DialogueChoice("a3c4_burger", "Offer the diplomatic fast-food feast as a gesture of good faith", listOf("burger", "food", "feast", "mcdonald", "cheeseburger"), "act3_ch4_burger"),
-                DialogueChoice("a3c4_fight", "Tell Rocket Man to prove his strength in honorable combat", listOf("fight", "combat", "duel", "prove", "strength"), "act3_ch4_fight_challenge")
+                DialogueChoice("a3c4_merch", "Launch the \$7.1 Million 'NEVER SURRENDER!' Mugshot T-Shirt & Coffee Mug Blitz!", listOf("merch", "never surrender", "mugshot", "seven million", "shirt"), "act3_ch4_merch_node", completionFlag = "a3c4_merch_done"),
+                DialogueChoice("a3c4_meta", "Watch Chyron McSpin panic over the 215-lb weight & drag up the 2015 \$50 Escalator Actors eight years later!", listOf("chyron", "escalator", "let it go", "eight years", "meta"), "act3_ch4_tactful_meta", completionFlag = "a3c4_meta_done"),
+                DialogueChoice("a3c4_proceed", "Fly to Portland's Baskin-Robbins for the Chapter 5 Finale against Joe Naptime!", listOf("proceed", "advance", "baskin robbins", "ice cream", "finale"), "act3_ch5_baskin_intro")
             )
         ),
         DialogueNode(
-            id = "act3_ch4_handshake",
+            id = "act3_ch4_merch_node",
+            setFlagOnEnter = "a3c4_merch_done",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "The handshake lasted 12 seconds. Firm. Deliberate. Equal pressure. The cameras caught every frame. History will note: this is how you project strength across a conference table.",
-            nextNodeId = "act3_ch4_rocket_reaction"
+            text = "Within ninety minutes of leaving the Fulton County Jail on August 24, 2023, we slapped my scowling booking photo onto \$34 T-shirts, \$25 coffee mugs, and \$15 beverage coolers with two giant words underneath: 'NEVER SURRENDER!' Even though a mugshot is quite literally a photograph taken while you are surrendering to the Sheriff's Office, it raised \$7.1 MILLION in seventy-two hours—the biggest single-day fundraising haul of the entire campaign!",
+            nextNodeId = "act3_ch4_mugshot_hub"
         ),
         DialogueNode(
-            id = "act3_ch4_button",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Little Rocket Man — I have buttons. My buttons are much bigger than your buttons. And mine WORKS! Now — are we going to talk about a beautiful peace deal or are we going to talk about buttons all day?",
-            nextNodeId = "act3_ch4_rocket_reaction"
-        ),
-        DialogueNode(
-            id = "act3_ch4_burger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Hamberders. The finest diplomatic currency ever invented. Big Mac, Filet-O-Fish, and a Royale with Cheese for the Chairman. Nothing brings world leaders together like American fast food. It's tremendous. It truly is.",
-            nextNodeId = "act3_ch4_rocket_reaction"
-        ),
-        DialogueNode(
-            id = "act3_ch4_fight_challenge",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Chairman, you've tested missiles. I've negotiated with some of the toughest people on the planet. Let's settle this the American way — a good old-fashioned battle of wits, strength, and the Art of the Deal!",
-            nextNodeId = "act3_ch4_rocket_reaction"
-        ),
-        DialogueNode(
-            id = "act3_ch4_rocket_reaction",
-            speaker = DialogueSpeaker.ROCKET_MAN,
+            id = "act3_ch4_tactful_meta",
+            setFlagOnEnter = "a3c4_meta_done",
+            speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "Your handshake... it is formidable. Your buttons... they concern me greatly. Your hamberders... they are actually very good. But I must test your battle strength before I agree to anything! This is a matter of supreme pride and four decades of military tradition!",
-            nextNodeId = "act3_ch4_vance_battle_hype"
+            text = "*Waves a bathroom scale outside the jail* You don't weigh 215 pounds, your mugshot just funded your entire primary campaign—and... and don't forget in June 2015 you paid Extra Mile Casting actors \$50 a head to clap at your escalator!",
+            nextNodeId = "act3_ch4_kennedy_roasts_meta"
         ),
-        // Legacy compat nodes for existing tests
         DialogueNode(
-            id = "act3_shake",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act3_ch4_kennedy_roasts_meta",
+            speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
-            text = "Little Rocket Man, let's talk deal. We have bigger buttons, much bigger, and mine actually works!",
-            nextNodeId = "act3_ch4_rocket_reaction"
-        ),
-        DialogueNode(
-            id = "act3_burger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Nothing brings world peace like a stack of golden arches hamberders! Tremendous flavor!",
-            nextNodeId = "act3_ch4_rocket_reaction"
-        ),
-        DialogueNode(
-            id = "act3_rocket_reply",
-            speaker = DialogueSpeaker.ROCKET_MAN,
-            side = SpeakerSide.RIGHT,
-            text = "My fire-rockets will... wait! Is that a double cheeseburger?! Still, I must test your battle strength!",
-            nextNodeId = "act3_ch4_vance_battle_hype"
-        ),
-        DialogueNode(
-            id = "act3_vance_joins",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Commander, Middle America has your back at this summit. The Rustbelt Vanguard is ready!",
-            nextNodeId = "act3_hero_vance_reply"
-        ),
-        DialogueNode(
-            id = "act3_hero_vance_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "JD, fantastic! The Rustbelt Vanguard is here! Rocket Man, meet the future of America!",
-            nextNodeId = "act3_ch4_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act3_ch4_vance_battle_hype",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Commander, I've debated union reps, hostile media anchors, and a sitting Vice President. I've never been more ready for a fight than I am right now. Let's show Chairman Kim what American strength looks like when it walks in the room.",
-            nextNodeId = "act3_ch4_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act3_ch4_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "LOOK AT THAT HANDSHAKE, BROTHER! Vance and Rubio backing up Commander America! That's Appalachian grit and diplomatic steel! SHOW HIM THE ART OF THE DEAL, COMMANDER!",
-            triggerBattleEncounterId = "act3_summit_battle",
-            nextNodeId = "act3_ch4_post_battle"
-        ),
-        // Legacy alias
-        DialogueNode(
-            id = "act3_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "LOOK AT THAT HANDSHAKE, BROTHER! Vance and Rubio backing up Commander America! Show him the Art of the Deal, Commander!",
-            triggerBattleEncounterId = "act3_summit_battle",
-            nextNodeId = "act3_ch4_post_battle"
-        ),
-        DialogueNode(
-            id = "act3_ch4_post_battle",
-            speaker = DialogueSpeaker.ROCKET_MAN,
-            side = SpeakerSide.RIGHT,
-            text = "Your handshake grip is truly unstoppable. Your hamberders are extraordinary. I... agree to begin denuclearization talks. Also, can I have the rest of the Filet-O-Fish?",
-            nextNodeId = "act3_ch4_victory_speech"
-        ),
-        DialogueNode(
-            id = "act3_ch4_victory_speech",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Chairman, you've made an incredible decision! We've achieved something the career diplomats said was impossible! Peace talks — REAL peace talks — on the Korean Peninsula for the first time in 70 years! TREMENDOUS!",
-            nextNodeId = "act3_ch4_hulk_close"
-        ),
-        DialogueNode(
-            id = "act3_ch4_hulk_close",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "BROTHER! They said it couldn't be done! The Nobel Committee is probably already on the phone! Commander America just body-slammed 70 years of failed diplomacy onto the mat!",
-            changeSceneId = SCENE_ACT4_CH1_FISA.id,
-            nextNodeId = "act4_ch1_intro"
-        ),
-        // Legacy post battle alias
-        DialogueNode(
-            id = "act3_post_battle",
-            speaker = DialogueSpeaker.ROCKET_MAN,
-            side = SpeakerSide.RIGHT,
-            text = "Your handshake grip is unstoppable! We have achieved complete peaceful harmony!",
-            changeSceneId = SCENE_ACT4_CH1_FISA.id,
-            nextNodeId = "act4_ch1_intro"
+            text = "*Shakes his head with a slow chuckle* Son, it is August of 2023. Bringing up a 2015 department-store escalator at a 2023 mugshot booking is like showing up to a Louisiana crawfish boil with a Betamax tape of M*A*S*H. Y'all cable anchors hold onto old grudges tighter than a tick on a hound dog!",
+            nextNodeId = "act3_ch4_mugshot_hub"
         ),
 
         // =========================================================================
-        // ACT IV - CHAPTER 1: THE FISA WARRANT LABYRINTH (2019)
+        // ACT III (TRACK A) - CHAPTER 5: 'ECONOMY STRONG AS HELL' & 'REPEAT THE LINE' (2022–2023 FINALE)
         // =========================================================================
         DialogueNode(
-            id = "act4_ch1_intro",
+            id = "act3_ch5_baskin_intro",
+            changeSceneId = SCENE_ACT3_CH5_BASKIN.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are deep in the sub-basement archives of the J. Edgar Hoover Building. Row after row of rusted government filing cabinets, locked behind three layers of security badges. This is where midnight FISA warrant applications were filed on flimsy tabloid clippings.",
-            nextNodeId = "act4_ch1_fisa_hub"
-        ),
-        // Legacy alias
-        DialogueNode(
-            id = "act4_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Good morning to everyone except the anonymous sources who pushed three straight years of phantom collusion! My binder is open to zero charges, zero evidence, and 100% total exoneration!",
-            nextNodeId = "act4_ch1_fisa_hub"
+            text = "Chapter 5 (Act III Track A Finale): We are inside a Baskin-Robbins ice-cream parlor in Portland, Oregon! Standing at the counter while Consumer Price Index inflation sits at a 40-year high of 8.2% is Joe Naptime—holding a double-scoop chocolate chip waffle cone in one hand and reading straight off a giant glass teleprompter!",
+            nextNodeId = "act3_ch5_biden_cone_lick"
         ),
         DialogueNode(
-            id = "act4_ch1_fisa_hub",
+            id = "act3_ch5_biden_cone_lick",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "*Takes a massive lick of his Baskin-Robbins chocolate chip waffle cone on October 15, 2022 as reporters ask about inflation and the global economy* 'I'm not concerned about the strength of the dollar—I'm concerned about the rest of the world! Our economy is strong as hell, man! Inflation is worldwide, it's worse off everywhere else than it is in the United States! By the way, don't eat the waitstaff!'",
+            nextNodeId = "act3_ch5_repeat_the_line"
+        ),
+        DialogueNode(
+            id = "act3_ch5_repeat_the_line",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "*Turns to his glass teleprompter from July 8, 2022 and reads every single word on the screen including the speechwriter's stage instructions* 'It is noteworthy that the percentage of women who register to vote and cast a ballot is consistently higher than the percentage of the men who do so. End of quote. Repeat the line. Women are not without electoral and, or, political—let me be precise: not and/or—or political power!'",
+            nextNodeId = "act3_ch5_commander_roasts_biden"
+        ),
+        DialogueNode(
+            id = "act3_ch5_commander_roasts_biden",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "They spied on our campaign! They said it was a conspiracy theory. Now we're in the basement pulling the actual surveillance orders out of the cabinets!",
+            text = "Did he just read 'End of quote, repeat the line' out loud off the teleprompter while eating a chocolate chip waffle cone during 8.2% inflation?! And now he's powering up his 10-clip Real-Audio Gibberish attack: 'Truinanashabbadepressure!' and 'Badakathcare!' Everybody brace for brain-freeze!",
+            nextNodeId = "act3_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act3_ch5_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT III TRACK A MAIN EVENT AT BASKIN-ROBBINS, BROTHER! Commander America, Little Marco, Wizard Kash, and Foghorn Kennedy vs. Joe Naptime's Real-Audio Gibberish, Double-Scoop Waffle Cone Blitz, and the 'Repeat the Line' Teleprompter! RING THE BELL!",
+            triggerBattleEncounterId = "act3_track_a_biden_ice_cream_finale",
+            nextNodeId = "act3_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act3_ch5_post_battle",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The Baskin-Robbins counter is secured and all 5 Chapters of Act III on Track A are complete! Would you like to switch to Track B and play all 5 Chapters of Act III as Joe Naptime (wielding his 10-clip Real-Audio Gibberish move and 5 Ice-Cream Cryomancy spells across Corn Pop's Wilmington pool, the Rehoboth toe-cage bike, his 5 Vindication Wins, and the 1967 Corvette garage), or advance to Act IV?",
             choices = listOf(
-                DialogueChoice("a4c1_dossier", "Expose the unverified political opposition dossier", listOf("dossier", "unverified", "steele", "fake", "opposition"), "act4_ch1_dossier_expose", completionFlag = "a4c1_dossier"),
-                DialogueChoice("a4c1_warrant", "Demand to see who signed the renewal warrants in secret", listOf("warrant", "signed", "fisa", "secret", "court", "judge"), "act4_ch1_warrant_inquest", completionFlag = "a4c1_warrant"),
-                DialogueChoice("a4c1_kash", "Call in Kash Patel — the Intel Inquisitor with the master key", listOf("kash", "patel", "inquisitor", "memo", "fisa", "intel"), "act4_ch1_kash_arrives")
+                DialogueChoice("a3_play_track_b", "Play Act III Track B: Experience all 5 Chapters as Joe Naptime (Ice Cream & Real-Audio Gibberish)!", listOf("track b", "joe", "biden", "ice cream", "gibberish", "corn pop"), "act3_tb_ch1_intro"),
+                DialogueChoice("a3_to_act4", "Advance to Act IV (2024): Kamala Coconut, JD Pants's Donut Shop & The Torch Pass", listOf("act 4", "next act", "advance", "kamala", "continue"), "act4_ch1_intro")
+            )
+        ),
+
+        // =========================================================================
+        // ACT III (TRACK B) - CHAPTER 1: CORN POP'S RUSTY RAZOR, BLONDE LEG HAIR & TOE CAGES (PLAYING AS JOE NAPTIME)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_tb_ch1_intro",
+            changeSceneId = SCENE_ACT3_TB_CH1_POOL.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome to Act III on Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, joined by Karine Hatch-Act and Oprah Free-Car! Taking the baton—and a fresh Jeni's Chocolate Chip waffle cone—for all five chapters of Act III is Standard-Bearer #3: Joe Naptime! His spellbook features his signature Real-Audio Gibberish attack plus five 100% ice-cream-powered Cryomancy moves!",
+            nextNodeId = "act3_tb_ch1_oprah_cones"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch1_oprah_cones",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "YOU GET A DOUBLE-SCOOP CHOCOLATE CHIP WAFFLE CONE! YOU GET A PAIR OF RAY-BAN AVIATORS! AND EVERYBODY WATCH OUT FOR CORN POP AND THOSE REHOBOTH BEACH BICYCLE TOE CAGES, HONEY!",
+            nextNodeId = "act3_tb_ch1_pool_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch1_pool_hub",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Adjusts his Ray-Ban aviators beside the Wilmington swimming pool while holding a double-scoop chocolate chip waffle cone in one hand and a Trek bicycle in the other* Folks, no malarkey! Before we take a ride down the Rehoboth Beach bike trail, let me tell you about my 1962 lifeguard days at the Prices Run pool!",
+            choices = listOf(
+                DialogueChoice("tb3c1_cornpop", "Tell the verbatim June 2017 'Corn Pop was a bad dude' & Rusty Rainwater-Barrel Razor story!", listOf("corn pop", "bad dude", "razor", "rain barrel", "chain"), "act3_tb_ch1_cornpop_node", completionFlag = "tb3c1_corn_done"),
+                DialogueChoice("tb3c1_leghair", "Tell the verbatim 'I got hairy legs that turn blonde in the sun' & Roaches story!", listOf("hairy legs", "blonde", "sun", "pool", "roaches"), "act3_tb_ch1_leghair_node", completionFlag = "tb3c1_legs_done"),
+                DialogueChoice("tb3c1_bikecrash", "Ride the Trek FX bike in Rehoboth Beach & get your right foot stuck in the metal pedal toe-cage!", listOf("bike", "toe cage", "rehoboth", "bicycle", "crash"), "act3_tb_ch1_bike_node", completionFlag = "tb3c1_bike_done"),
+                DialogueChoice("tb3c1_battle", "Battle Corn Pop's Rain-Barrel Razor Crew & The Treacherous Toe-Cage Bicycle!", listOf("battle", "fight", "proceed", "advance"), "act3_tb_ch1_battle_trigger")
             )
         ),
         DialogueNode(
-            id = "act4_ch1_dossier_expose",
-            setFlagOnEnter = "a4c1_dossier",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act3_tb_ch1_cornpop_node",
+            setFlagOnEnter = "tb3c1_corn_done",
+            speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.LEFT,
-            text = "They took a totally unverified opposition dossier paid for by the DNC, brought it to a secret court, and told the judges it was confirmed intelligence! The greatest scandal in American history!",
-            nextNodeId = "act4_ch1_hulk_react"
+            text = "*Points a waffle cone at the diving board (June 26, 2017 verbatim)* 'Corn Pop was a bad dude! And he ran a bunch of bad boys! And I did and back in those days—to show how things have changed—one of the things you had to use, if you used Pomade in your hair, you had to wear a bathing cap! And so he was up on the board and wouldn't listen to me. I said, \"Hey, Esther, you! Off the board, or I'll come up and drag you off!\" Well, he came off, and he said, \"I'll meet you outside!\" He was waiting for me with three guys and straight razors that they had banged on the curb or put in a rainwater barrel to get rusty! So I walked out with six feet of metal chain wrapped in a towel and told him: \"You might cut me, Corn Pop, but I'm going to wrap this chain around your head!\" And then I apologized for calling him Esther Williams and we became friends!'",
+            nextNodeId = "act3_tb_ch1_pool_hub"
         ),
         DialogueNode(
-            id = "act4_ch1_hulk_react",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
+            id = "act3_tb_ch1_leghair_node",
+            setFlagOnEnter = "tb3c1_legs_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Grins nostalgically into the microphone (June 26, 2017 verbatim)* 'And by the way, you know, I sit on the stand, and it'd get hot! I got a lot of—I got hairy legs that turn—that, that, that, that, that turn—uh, blonde in the sun! And the kids used to come up and reach in the pool and rub my leg down so it was straight and then watch the hair come back up again! They'd look at it! So I learned about roaches, I learned about kids jumping on my lap, and I've loved kids jumping on my lap!'Meanwhile my campaign press aides in the back row are quietly hyperventilating into paper bags!",
+            nextNodeId = "act3_tb_ch1_pool_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch1_bike_node",
+            setFlagOnEnter = "tb3c1_bike_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Pedals up to the press pool at Cape Henlopen State Park on June 18, 2022, squeezes the handbrakes to a dead stop, tries to pull his right foot out of the plastic-and-metal pedal cage, and tips over sideways at zero miles per hour* WHOA! *Hops back up brushing off his elbow* 'I'm good! I got my foot caught in the toe cages!' Whoever invented pedal cages on a beach cruiser owes me a pint of Jeni's Chocolate Chip!",
+            nextNodeId = "act3_tb_ch1_pool_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "BROTHER! That's not intel, that's comic book fan fiction! The 24-inch pythons of justice are about to smash right through those filing cabinets!",
-            nextNodeId = "act4_ch1_fisa_hub"
+            text = "CORN POP JUST STEPPED OUT OF THE POOL HOUSE WITH A RAINWATER-BARREL STRAIGHT RAZOR BESIDE A ROGUE TOE-CAGE BICYCLE, HONEY! Joe Naptime, unleash Real-Audio Gibberish (`Truinanashabbadepressure!`) and Double-Scoop Waffle Cone Blitz!",
+            triggerBattleEncounterId = "act3_track_b_corn_pop_battle",
+            nextNodeId = "act3_tb_ch1_post_battle"
         ),
         DialogueNode(
-            id = "act4_ch1_warrant_inquest",
-            setFlagOnEnter = "a4c1_warrant",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act3_tb_ch1_post_battle",
+            speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.LEFT,
-            text = "Four different renewals! Every ninety days they signed off on it, knowing full well it was completely fabricated! The American people deserve the names!",
-            nextNodeId = "act4_ch1_kayleigh_note"
+            text = "See that, folks? Me and Corn Pop settled it over a waffle cone, and our HP and MP are 100% restored! Now let's head to the White House teleprompter stage for Chapter 2!",
+            changeSceneId = SCENE_ACT3_TB_CH2_TELEPROMPTER.id,
+            nextNodeId = "act3_tb_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT III (TRACK B) - CHAPTER 2: 'END OF QUOTE, REPEAT THE LINE' & TWO VINDICATIONS (2021–2022)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_tb_ch2_intro",
+            changeSceneId = SCENE_ACT3_TB_CH2_TELEPROMPTER.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 2 (Track B): It is July 8, 2022 inside the Roosevelt Room! The speechwriting staff typed bracketed stage directions onto the teleprompter glass—'[End of quote. Repeat the line.]'—assuming nobody would ever read the brackets out loud!",
+            nextNodeId = "act3_tb_ch2_prompter_hub"
         ),
         DialogueNode(
-            id = "act4_ch1_kayleigh_note",
+            id = "act3_tb_ch2_prompter_hub",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Squints at the glowing teleprompter glass while holding a spoonful of Jeni's Splendid Chocolate Chip* Look, if they put words on the glass, I'm reading every single one of 'em! Let's handle our teleprompter moments and drop our first two verified Vindication Wins!",
+            choices = listOf(
+                DialogueChoice("tb3c2_repeat", "Read the bracketed stage directions verbatim: 'End of quote. Repeat the line.' (+ Andrews Wind Stairs!)", listOf("repeat the line", "end of quote", "teleprompter", "stairs", "wind"), "act3_tb_ch2_repeat_node", completionFlag = "tb3c2_rep_done"),
+                DialogueChoice("tb3c2_vatican", "VINDICATION WIN #1: Debunk the viral Oct 2021 'Pooped His Pants at the Vatican' rumor!", listOf("vatican", "pope", "pants", "rumor", "vindication"), "act3_tb_ch2_vatican_vindication", completionFlag = "tb3c2_vat_done"),
+                DialogueChoice("tb3c2_israel", "VINDICATION WIN #2: Play the uncropped C-SPAN video debunking the 'Fell Asleep With Israel's PM' clip!", listOf("asleep", "israel", "naftali bennett", "cspan", "cropped"), "act3_tb_ch2_israel_vindication", completionFlag = "tb3c2_isr_done"),
+                DialogueChoice("tb3c2_proceed", "Head to Portland's Baskin-Robbins for Chapter 3 against Senator Foghorn Kennedy!", listOf("proceed", "advance", "baskin robbins", "kennedy", "ice cream"), "act3_tb_ch3_intro")
+            )
+        ),
+        DialogueNode(
+            id = "act3_tb_ch2_repeat_node",
+            setFlagOnEnter = "tb3c2_rep_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Leans into the podium on July 8, 2022* 'It is noteworthy that the percentage of women who register to vote and cast a ballot is consistently higher than the percentage of the men who do so. End of quote. Repeat the line.' Hey, when the teleprompter tells you to repeat the line, you tell the audience it told you to repeat the line! Just like on March 19, 2021 when I tripped three times going UP the Air Force One stairs because the wind at Andrews was blowing against my knees!",
+            nextNodeId = "act3_tb_ch2_prompter_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch2_vatican_vindication",
+            setFlagOnEnter = "tb3c2_vat_done",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #1! In October 2021 during Joe's visit to the Vatican, a bizarre hashtag ('#PoopyPantsBiden') trended worldwide based on a zero-evidence tweet claiming his meeting with Pope Francis ran long because of a 'bathroom accident.' International pool reporters on the ground and Snopes confirmed there was zero truth to the rumor—the meeting ran 75 minutes because he and Pope Francis were having an extended, warm conversation and exchanging gifts on camera!",
+            nextNodeId = "act3_tb_ch2_prompter_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch2_israel_vindication",
+            setFlagOnEnter = "tb3c2_isr_done",
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #2! In August 2021, a tightly cropped 15-second clip went viral claiming Joe 'fell fast asleep on live television' while Israeli Prime Minister Naftali Bennett was speaking in the Oval Office. Reuters and the full uncropped C-SPAN broadcast proved that Joe was looking down at his hands while listening, his fingers were moving, and the exact second Prime Minister Bennett finished his sentence, Joe immediately looked up and replied directly to Bennett's point without waking up or being startled!",
+            nextNodeId = "act3_tb_ch2_prompter_hub"
+        ),
+
+        // =========================================================================
+        // ACT III (TRACK B) - CHAPTER 3: 'ECONOMY STRONG AS HELL' VS. FOGHORN KENNEDY (2022–2023)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_tb_ch3_intro",
+            changeSceneId = SCENE_ACT3_TB_CH3_BASKIN.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 3 (Track B): It is October 15, 2022 inside a Baskin-Robbins in Portland, Oregon! Inflation just hit a 40-year high of 8.2%, and Joe Naptime has stepped up to the glass freezer case to order his signature double-scoop chocolate chip waffle cone!",
+            nextNodeId = "act3_tb_ch3_baskin_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch3_baskin_hub",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Holds up a towering double-scoop chocolate chip waffle cone* As I told the crowd in Cleveland on May 27, 2021: 'My name is Joe Biden. I'm Dr. Jill Biden's husband. And I eat Jeni's Chocolate Chip ice cream! I came down because I heard there was chocolate chip ice cream! By the way, I have a whole refrigerator full upstairs!' How do we handle the reporters and our next two Vindication Wins before Foghorn Kennedy walks in?",
+            choices = listOf(
+                DialogueChoice("tb3c3_strong", "Lick the waffle cone & tell reporters: 'Our economy is strong as hell, man!'", listOf("economy", "strong as hell", "baskin robbins", "lick", "inflation"), "act3_tb_ch3_strong_node", completionFlag = "tb3c3_str_done"),
+                DialogueChoice("tb3c3_vind34", "VINDICATION WINS #3 & #4: Debunk the 'Two Beers a Week / Red Meat Ban' hoax & the cropped G7 Skydiver video!", listOf("two beers", "red meat", "skydiver", "g7", "vindication"), "act3_tb_ch3_vindications_node", completionFlag = "tb3c3_vind_done"),
+                DialogueChoice("tb3c3_kennedy", "Confront Senator Foghorn Kennedy strolling into the ice-cream shop!", listOf("kennedy", "foghorn", "battle", "fight", "proceed"), "act3_tb_ch3_kennedy_ambush")
+            )
+        ),
+        DialogueNode(
+            id = "act3_tb_ch3_strong_node",
+            setFlagOnEnter = "tb3c3_str_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Takes a slow, deliberate lick of the chocolate chip waffle cone while reporters shout about 8.2% inflation (Oct 15, 2022)* 'I'm not concerned about the strength of the dollar—I'm concerned about the rest of the world! Our economy is strong as hell, man!' Look, nothing reassures working families paying \$5 for a dozen eggs quite like watching the President demolish a waffle cone at Baskin-Robbins!",
+            nextNodeId = "act3_tb_ch3_baskin_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch3_vindications_node",
+            setFlagOnEnter = "tb3c3_vind_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "DOUBLE VINDICATION WIN! First, cable hosts screamed in April 2021 that my climate plan was going to 'ban 90% of red meat and limit Americans to one burger a month and two beers a week!' Agriculture Secretary Tom Vilsack confirmed zero red meat limits existed—a tabloid had misread an independent University of Michigan academic paper that had nothing to do with the government! Second, in June 2024 a narrowly cropped vertical video claimed I 'wandered off into empty space' at the G7 summit in Italy—wide-angle pool footage and UK Prime Minister Rishi Sunak confirmed I had turned to applaud a skydiver who landed right next to us outside the cropped frame!",
+            nextNodeId = "act3_tb_ch3_baskin_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch3_kennedy_ambush",
+            speaker = DialogueSpeaker.KENNEDY,
+            side = SpeakerSide.RIGHT,
+            text = "*Saunters into the Baskin-Robbins adjusting his spectacles* Well now, Mr. President, watching you explain inflation over a waffle cone is like watching a mule try to do calculus! Look, your budget looks like somebody gave it a weed-whacker haircut—and if you hate fiscal restraint, the next time you're in trouble, call a crackhead!",
+            nextNodeId = "act3_tb_ch3_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch3_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "SENATOR FOGHORN KENNEDY JUST BROUGHT HIS OXFORD LAW DEGREE AND HIS FOLKSY ONE-LINERS INTO BASKIN-ROBBINS, EVERYBODY! Joe Naptime, hit him with Jeni's Chocolate Chip Brain-Freeze and 'Economy Strong As Hell' Lick!",
+            triggerBattleEncounterId = "act3_track_b_foghorn_battle",
+            nextNodeId = "act3_tb_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch3_post_battle",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "Take that Oxford degree back to Baton Rouge, John! Our HP and MP are 100% restored, so let's head back to Wilmington for Chapter 4: My locked 1967 Corvette garage and the Real-Audio Gibberish Symphony!",
+            changeSceneId = SCENE_ACT3_TB_CH4_GARAGE.id,
+            nextNodeId = "act3_tb_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT III (TRACK B) - CHAPTER 4: THE CORVETTE GARAGE & REAL-AUDIO GIBBERISH SYMPHONY (2023–2024)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_tb_ch4_intro",
+            changeSceneId = SCENE_ACT3_TB_CH4_GARAGE.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 4 (Track B): It is January 12, 2023 inside Joe Naptime's Wilmington, Delaware garage! Parked in the center is his prized green 1967 Chevrolet Corvette Stingray, and sitting on the concrete floor right beside the rear tire is a crushed cardboard box containing classified documents from his Vice Presidential days!",
+            nextNodeId = "act3_tb_ch4_garage_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch4_garage_hub",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Pats the fender of his 1967 Corvette Stingray while holding a pint of Jeni's Chocolate Chip* Listen, when Peter Doocy asked me why classified documents were sitting next to my Corvette, I gave him the most American answer in history! Let's review the Corvette defense, test our 10-clip Real-Audio Gibberish vocal warmups, and drop Vindication Win #5!",
+            choices = listOf(
+                DialogueChoice("tb3c4_corvette", "Deliver the verbatim Jan 12, 2023 quote: 'My Corvette's in a locked garage, okay? So it's not like they're sitting out on the street!'", listOf("corvette", "locked garage", "street", "doocy", "classified"), "act3_tb_ch4_corvette_node", completionFlag = "tb3c4_corv_done"),
+                DialogueChoice("tb3c4_gibberish", "Test the 10-Clip Real-Audio Gibberish Move: Truinanashabbadepressure, Badakathcare & foothills of the Himalayas!", listOf("gibberish", "truinanashabbadepressure", "badakathcare", "himalayas", "audio"), "act3_tb_ch4_gibberish_node", completionFlag = "tb3c4_gib_done"),
+                DialogueChoice("tb3c4_vind5", "VINDICATION WIN #5: Debunk the 'Ordered the FBI to Assassinate Trump' standard DOJ boilerplate distortion!", listOf("fbi", "boilerplate", "mar a lago", "vindication", "warrant"), "act3_tb_ch4_vindication5_node", completionFlag = "tb3c4_vind5_done"),
+                DialogueChoice("tb3c4_meta", "Watch Kash Subpoena peek into the garage & try to bring up Hillary's 2015 cloth wipe in 2023!", listOf("kash", "cloth", "let it go", "meta", "proceed"), "act3_tb_ch4_meta_callback")
+            )
+        ),
+        DialogueNode(
+            id = "act3_tb_ch4_corvette_node",
+            setFlagOnEnter = "tb3c4_corv_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Lowers his aviators on January 12, 2023* 'By the way, my Corvette's in a locked garage, okay? So it's not like they're sitting out on the street! People know I take classified material seriously!' Okay, sure, Special Counsel Robert Hur later included a photo of the battered cardboard box sitting open next to a dog crate and a ladder—and described me as a 'sympathetic, well-meaning, elderly man with a poor memory'—which made me so mad I held an emergency 8:00 PM press conference where I immediately mixed up the President of Egypt with the President of Mexico!",
+            nextNodeId = "act3_tb_ch4_garage_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch4_gibberish_node",
+            setFlagOnEnter = "tb3c4_gib_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Steps up to the microphone and triggers his Real-Audio Gibberish sampler* Listen to these 100% real, unedited dictionary expansions, Jack: (1) 'I'll lead an effective strategy to mobilize truinanashabbadepressure!' (2) 'Barack and I think it's a right to have badakathcare!' (3) 'America is a nation that can be defined in a single word: Asufutimaehaehfutbw—excuse me, at the foothills of the Himalayas with Xi Jinping!' (4) 'You're a lying dog-faced pony soldier!' (5) 'All men and women are created by the—go—you know—you know the thing!' and (6) 'We finally beat Medicare!' Try translating THAT on a debate stage!",
+            nextNodeId = "act3_tb_ch4_garage_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch4_vindication5_node",
+            setFlagOnEnter = "tb3c4_vind5_done",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #5! In May 2024, viral fundraising emails claimed Joe 'personally authorized the FBI to assassinate Commander America' during the August 2022 Mar-a-Lago search based on a routine attachment in the operations order. The FBI and legal scholars across the spectrum proved the paragraph was the standard, mandatory DOJ Justice Manual deadly-force policy statement attached to ALL federal search warrants—in fact, the exact same boilerplate page was attached to the FBI's consensual search of Joe's own Wilmington Corvette garage, and the Mar-a-Lago search was specifically scheduled when Donald was 1,000 miles away in New York!",
+            nextNodeId = "act3_tb_ch4_garage_hub"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch4_meta_callback",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.RIGHT,
+            text = "*Pokes his head through the Wilmington garage window wearing his Wizard Kash cape* Aha! Classified folders next to a 1967 Corvette! Which reminds me—in 2015 Hillary wiped 33,000 Chappaqua emails 'with a cloth or something'!",
+            nextNodeId = "act3_tb_ch4_oprah_roasts_meta"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch4_oprah_roasts_meta",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Speaks into her golden megaphone* BOY, IT IS 2023 AND YOU ARE STANDING IN JOE BIDEN'S GARAGE IN DELAWARE! Hillary hasn't been on a ballot in seven years and you STILL brought a microfiber cloth to a Corvette inspection! Now let's head to Chapter 5 for the Act III Track B Finale!",
+            changeSceneId = SCENE_ACT3_TB_CH5_MUGSHOT.id,
+            nextNodeId = "act3_tb_ch5_intro"
+        ),
+
+        // =========================================================================
+        // ACT III (TRACK B) - CHAPTER 5: THE '215-LB' MUGSHOT & PASSING THE COCONUT TO KAMALA (2023–2024 FINALE)
+        // =========================================================================
+        DialogueNode(
+            id = "act3_tb_ch5_intro",
+            changeSceneId = SCENE_ACT3_TB_CH5_MUGSHOT.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 5 (Act III Track B Finale): We are at the intersection of the Mar-a-Lago Bathroom Chandelier Vault and the Fulton County Booking Desk! Commander America is standing in front of thirty cardboard bankers boxes stacked in a gilded shower stall while handing out 'NEVER SURRENDER!' mugshot coffee mugs and claiming he weighs 215 pounds!",
+            nextNodeId = "act3_tb_ch5_confrontation"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch5_confrontation",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "C'mon, man! Look at this malarkey: first you stacked thirty boxes of government records on the shower floor under a crystal bathroom chandelier at Mar-a-Lago, then on August 24, 2023 you walked into the Fulton County Jail, wrote down on the booking form that you're 6 foot 3 and 215 POUNDS—the exact weight of NFL quarterback Lamar Jackson—and sold \$7.1 million worth of T-shirts that say 'NEVER SURRENDER!' right underneath a photo of you literally surrendering at a police station!",
+            nextNodeId = "act3_tb_ch5_commander_reply"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch5_commander_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.RIGHT,
+            text = "That mugshot is the greatest work of art since the Mona Lisa, Joe—and 215 pounds is my fighting weight after eighteen holes at Bedminster! Meanwhile, you tripped three times going UP the stairs of Air Force One, tipped over on a stationary bicycle in Rehoboth Beach, read 'End of quote, repeat the line' off the teleprompter, and kept your classified folders in a crushed box next to your 1967 Corvette! Let's settle Act III right here!",
+            nextNodeId = "act3_tb_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch5_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT III TRACK B GRAND FINALE, EVERYBODY! Joe Naptime's Real-Audio Gibberish & Double-Scoop Ice-Cream Cryomancy vs. Commander America's 215-Pound Mugshot, the Mar-a-Lago Bathroom Chandelier Golem, and the \$7.1M Merch Press! RING THE BELL!",
+            triggerBattleEncounterId = "act3_track_b_mugshot_finale",
+            nextNodeId = "act3_tb_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch5_post_battle",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.LEFT,
+            text = "*Finishes his double-scoop chocolate chip waffle cone in Rehoboth Beach on Sunday afternoon, July 21, 2024, and taps 'Post' on X at 1:46 PM* Folks, after we finally beat Medicare on that June 27 debate stage—and George Clooney wrote an op-ed three weeks after I raised \$28 million at his Hollywood gala—it's time to pass the Track B Standard-Bearer Baton for Act IV to Vice President Kamala Coconut!",
+            nextNodeId = "act3_tb_ch5_kamala_handoff"
+        ),
+        DialogueNode(
+            id = "act3_tb_ch5_kamala_handoff",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "*Steps onto the stage laughing uproariously while gesturing with three overlapping circles* Ha-ha-ha-ha! Thank you, Joe! You think you just fell out of a coconut tree?! You exist in the context of all in which you live and what came before you! In Act IV, get ready for Venn diagrams, yellow school buses, 'The significance of the passage of time,' and JD Pants ordering 'whatever makes sense' at a Georgia donut shop! Which side of Act IV are we playing first?",
+            choices = listOf(
+                DialogueChoice("tb3_to_act4_tb", "Play Act IV Track B (5 Chapters as Kamala Coconut: Coconut Trees & Venn Diagrams)!", listOf("track b", "kamala", "coconut", "venn", "unburdened"), "act4_tb_ch1_intro"),
+                DialogueChoice("tb3_to_act4_ta", "Play Act IV Track A (5 Chapters as Commander America & JD Pants)!", listOf("act 4", "track a", "commander", "vance", "donuts", "advance", "continue"), "act4_ch1_intro"),
+                DialogueChoice("tb3_play_track_a", "Replay Act III Track A (5 Chapters as Commander America & Foghorn Kennedy)", listOf("act 3", "kennedy", "mugshot"), "act3_ch1_intro")
+            )
+        ),
+
+        // =========================================================================
+        // ACT IV (TRACK A) - CHAPTER 1: ENTER JD PANTS & 'WHATEVER MAKES SENSE' DONUTS (AUG 2024)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_ch1_intro",
+            changeSceneId = SCENE_ACT4_CH1_FISA.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Inspector General reports later confirmed seventeen separate major omissions and inaccuracies submitted to the FISA court. Documented history.",
-            nextNodeId = "act4_ch1_fisa_hub"
+            text = "Welcome to Act IV (2024): Five chapters of Coconut Trees, Venn Diagrams, Donut Shop Interrogations, and McDonald's Fry Baskets! It is August 22, 2024 inside Holt's Sweet Shoppe in Valdosta, Georgia, where your newest party companion—JD Pants—is attempting human small talk with a bakery clerk in front of twenty television cameras!",
+            nextNodeId = "act4_ch1_vance_donuts"
         ),
         DialogueNode(
-            id = "act4_ch1_kash_arrives",
+            id = "act4_ch1_vance_donuts",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "*Stands stiffly in a suit in front of the glass pastry case as the bakery worker asks not to be on camera* 'Okay, she doesn't want to be on film, guys, so just cut her out of anything. I'm JD Vance, I'm running for Vice President, good to see you.' And she just says: 'Okay.' So I try to break the ice: 'How long has this place been here?' ('About four years.') 'Okay, good. How long have you worked here?' ('A little over two years.') 'Okay, good... Just, uh, a lot of glazed here, some sprinkle stuff, some of these cinnamon rolls—just whatever makes sense!'",
+            nextNodeId = "act4_ch1_donut_hub"
+        ),
+        // Legacy compatibility node
+        DialogueNode(
+            id = "act4_kash_joins",
             speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
-            text = "Commander, Kash Patel on site! I've been digging through these archives for sixteen months. I've got the unredacted FISA memo right here in this binder. The collusion story is a complete phantom hoax. I'm declassifying everything and plugging their leaks right now!",
-            nextNodeId = "act4_ch1_hero_kash_reply"
+            text = "Every binder is declassified! And welcome to the party, JD Pants!",
+            nextNodeId = "act4_ch1_donut_hub"
         ),
         DialogueNode(
-            id = "act4_ch1_hero_kash_reply",
+            id = "act4_ch1_donut_hub",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Kash, beautiful! Nobody knows the binders of truth like Kash! The Intel Inquisitor is in the game! Declassify it all!",
-            nextNodeId = "act4_ch1_bureau_ambush"
+            text = "Hold on, JD—you walked into a Georgia donut shop and ordered 'some sprinkle stuff, whatever makes sense' like an extraterrestrial reading a Wikipedia article about breakfast pastries?! Let's inspect your 2024 campaign trail highlights and your biggest Vindication Win!",
+            choices = listOf(
+                DialogueChoice("a4c1_swiss", "Replay the Aug 19, 2024 South Philly Pat's King of Steaks 'Why do you hate Swiss cheese?!' moment!", listOf("swiss cheese", "cheesesteak", "philly", "pats", "diet mountain dew"), "act4_ch1_swiss_node", completionFlag = "a4c1_swiss_done"),
+                DialogueChoice("a4c1_rules", "Deliver the Oct 1, 2024 CBS VP Debate classic: 'The rules were that you guys weren't going to fact-check!'", listOf("rules", "fact check", "debate", "cbs", "moderators"), "act4_ch1_rules_node", completionFlag = "a4c1_rules_done"),
+                DialogueChoice("a4c1_couch", "VINDICATION WIN #1: Debunk the fabricated 'Couch in Hillbilly Elegy pp. 179–181' hoax (& AP retraction)!", listOf("couch", "hillbilly elegy", "vindication", "associated press", "hoax"), "act4_ch1_couch_vindication", completionFlag = "a4c1_couch_done"),
+                DialogueChoice("a4c1_battle", "Test JD Pants in combat against the 'Whatever Makes Sense' Glazed Case & Swiss-Cheese Heckler!", listOf("battle", "fight", "donuts", "proceed", "advance"), "act4_ch1_battle_trigger")
+            )
         ),
         DialogueNode(
-            id = "act4_ch1_bureau_ambush",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
-            side = SpeakerSide.RIGHT,
-            text = "ALERT! Bureau Archivist phantoms and unauthorized redaction officers are deploying! You cannot read these files! They are protected by lifetime pension immunity!",
-            nextNodeId = "act4_ch1_battle_trigger"
+            id = "act4_ch1_swiss_node",
+            setFlagOnEnter = "a4c1_swiss_done",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "*Holds a can of Diet Mountain Dew outside Pat's King of Steaks in South Philadelphia (Aug 19, 2024)* Look, after John Kerry famously ruined his campaign in 2004 by asking for Swiss cheese at Pat's, I walked up to the window and asked the grill cook: 'I don't know, why don't you all dislike Swiss cheese? What's the story?!' before ordering a Whiz wit! Hey, at least I didn't drink a soy latte—I had a Diet Mountain Dew today, and the left is probably gonna call that racist too!",
+            nextNodeId = "act4_ch1_donut_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch1_rules_node",
+            setFlagOnEnter = "a4c1_rules_done",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "*Turns calmly to the CBS debate moderators on October 1, 2024 before they cut his microphone* 'Margaret, the rules were that you guys weren't going to fact-check, and since you're fact-checking me, I think it's important to say what's actually going on!' Only in 2024 can you win a debate round by politely scolding the referee for checking the rulebook!",
+            nextNodeId = "act4_ch1_donut_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch1_couch_vindication",
+            setFlagOnEnter = "a4c1_couch_done",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #1! In July 2024, a prankster posted a viral tweet claiming JD Pants wrote on pages 179–181 of his 2016 memoir Hillbilly Elegy about a 'couch cushion.' The fake citation went so viral that Minnesota Governor Tim Walz referenced it at a rally and the Associated Press published an official fact-check headline—'No, JD Vance did not say he had sex with a couch'—before pulling the article! Digital text searches of every edition of Hillbilly Elegy proved pages 179–181 are actually about working at a textbook store in Ohio and the story was 100% fabricated!",
+            nextNodeId = "act4_ch1_donut_hub"
         ),
         DialogueNode(
             id = "act4_ch1_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Archivist Phantoms are attempting to shred the unredacted pages! Commander, Marco, JD, and Kash — clean house before the shredder starts!",
-            triggerBattleEncounterId = "act4_ch1_fisa_battle",
+            text = "JD PANTS IS IN THE ACTIVE PARTY, BROTHER! Ordering 'some sprinkle stuff, whatever makes sense' just triggered the Glazed Donut Case and the South Philly Swiss-Cheese Heckler! Unleash Debate Dismantle and Appalachian Slam!",
+            triggerBattleEncounterId = "act4_track_a_donut_battle",
             nextNodeId = "act4_ch1_post_battle"
         ),
         DialogueNode(
             id = "act4_ch1_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
-            text = "The shredders are unplugged and the memos are SECURED! The full four-page memo is public! Next stop: the House Intelligence SCIF vault!",
+            text = "Okay, good! We boxed up two dozen glazed donuts, our HP and MP are back at 100%, and now let's head to Chapter 2—where Kamala Coconut is explaining to Lester Holt why she hasn't visited Europe!",
             changeSceneId = SCENE_ACT4_CH2_BINDER.id,
             nextNodeId = "act4_ch2_intro"
         ),
 
         // =========================================================================
-        // ACT IV - CHAPTER 2: THE UNREDACTED BINDER INQUEST (2019)
+        // ACT IV (TRACK A) - CHAPTER 2: 'AND I HAVEN'T BEEN TO EUROPE!' & UKRAINE PRESCHOOL (2021–2024)
         // =========================================================================
         DialogueNode(
             id = "act4_ch2_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            changeSceneId = SCENE_ACT4_CH2_BINDER.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are inside the secure subterranean SCIF of the House Intelligence Committee. Steel blast doors, no cell phones, acoustic dampening walls. Across the room sit boxes of redacted transcripts where every single sentence proving innocence was blacked out with felt markers.",
-            nextNodeId = "act4_ch2_vault_hub"
+            text = "Chapter 2 of Act IV! After Sunday afternoon July 21, 2024—when Joe Naptime dropped out via a 1:46 PM X post from Rehoboth Beach—Vice President Kamala Coconut inherited the top of the ticket! Let's review her greatest geographic and chronological masterpieces!",
+            nextNodeId = "act4_ch2_lester_holt"
         ),
         DialogueNode(
-            id = "act4_ch2_vault_hub",
+            id = "act4_ch2_lester_holt",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "*Sits across from NBC anchor Lester Holt on June 8, 2021 when he asks why she still hasn't visited the US-Mexico border as Border Czar* 'We've been to the border! We've been to the border!' And when Lester looks at me and says 'You haven't been to the border,' I give him the ultimate geographic checkmate: 'And I haven't been to Europe! *Laughs* And I mean, I don't... understand the point that you're making!'",
+            nextNodeId = "act4_ch2_border_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch2_border_hub",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Look at this! 90% black ink! They blacked out entire paragraphs that said 'Witness confirmed no coordination occurred.' We brought the solvent, folks!",
+            text = "Listen to that logic, folks: 'Why haven't you been to the southern border?' 'And I haven't been to Europe!'Wait until you hear how she explains the map of Eastern Europe and the concept of linear time!",
             choices = listOf(
-                DialogueChoice("a4c2_unredact", "Declassify and scrub the black marker redactions", listOf("scrub", "marker", "unredact", "declassify", "ink"), "act4_ch2_scrub_ink", completionFlag = "a4c2_unredact"),
-                DialogueChoice("a4c2_transcripts", "Release the complete transcripts to the public immediately", listOf("release", "transcripts", "public", "read", "truth"), "act4_ch2_release_transcripts", completionFlag = "a4c2_transcripts"),
-                DialogueChoice("a4c2_witnesses", "Highlight testimony from 50+ witnesses admitting zero collusion", listOf("witnesses", "testimony", "fifty", "zero", "evidence"), "act4_ch2_witness_review", completionFlag = "a4c2_witnesses"),
-                DialogueChoice("a4c2_proceed", "Pack the unredacted binder and head to the federal courthouse", listOf("proceed", "courthouse", "steps", "march", "pack"), "act4_ch2_advance_to_court")
+                DialogueChoice("a4c2_ukraine", "Play her March 21, 2022 radio breakdown: 'Ukraine is a country in Europe. Russia is a bigger country.'", listOf("ukraine", "russia", "bigger country", "europe", "radio"), "act4_ch2_ukraine_node", completionFlag = "a4c2_ukraine_done"),
+                DialogueChoice("a4c2_passage", "Play her March 2022 Sunset, Louisiana speech repeating 'the significance of the passage of time' 4 times in 32 seconds!", listOf("passage of time", "significance", "four times", "louisiana", "time"), "act4_ch2_passage_node", completionFlag = "a4c2_passage_done"),
+                DialogueChoice("a4c2_proceed", "Follow the overlapping Venn diagrams and yellow school buses into Chapter 3!", listOf("proceed", "advance", "venn", "school bus", "chapter 3"), "act4_ch3_intro")
             )
         ),
         DialogueNode(
-            id = "act4_ch2_scrub_ink",
-            setFlagOnEnter = "a4c2_unredact",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "I've cross-referenced every redaction against original executive branch authorities. None of this qualifies as classified national defense information — it was classified solely to hide bureaucratic embarrassment. Unredacted!",
-            nextNodeId = "act4_ch2_vault_hub"
+            id = "act4_ch2_ukraine_node",
+            setFlagOnEnter = "a4c2_ukraine_done",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "*Leans into The Morning Hustle radio microphone on March 21, 2022 to break down international affairs in layman's terms* 'So, Ukraine is a country in Europe. It exists next to another country called Russia. Russia is a bigger country. Russia is a powerful country. Russia decided to invade a smaller country called Ukraine. So, basically, that's wrong!'",
+            nextNodeId = "act4_ch2_border_hub"
         ),
         DialogueNode(
-            id = "act4_ch2_release_transcripts",
-            setFlagOnEnter = "a4c2_transcripts",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Publish them! Post every single page online! Don't let the cable news networks filter it through their 9:00 PM panels! Let the American people read the raw transcripts!",
-            nextNodeId = "act4_ch2_vault_hub"
-        ),
-        DialogueNode(
-            id = "act4_ch2_witness_review",
-            setFlagOnEnter = "a4c2_witnesses",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Fifty-three separate under-oath interviews. Every single official admitted behind closed doors they had zero direct evidence of collusion — while telling Sunday morning television the exact opposite. Pure establishment double-speak.",
-            nextNodeId = "act4_ch2_vault_hub"
-        ),
-        DialogueNode(
-            id = "act4_ch2_advance_to_court",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The binder is full, unredacted, and heavy as an anvil! Time to confront the subpoena machine outside the courthouse!",
-            nextNodeId = "act4_ch2_hulk_march"
-        ),
-        DialogueNode(
-            id = "act4_ch2_hulk_march",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "MARCH ON 'EM, BROTHER! They thought they could lock the truth in a vault! The Commander America supergroup is rolling out!",
-            changeSceneId = SCENE_ACT4_CH3_COURT.id,
-            nextNodeId = "act4_ch3_intro"
+            id = "act4_ch2_passage_node",
+            setFlagOnEnter = "a4c2_passage_done",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "*Nods sagely at the podium in Sunset, Louisiana (March 21, 2022)* 'The governor and I, and we were all doing a tour of the library here and talking about the significance of the passage of time, right, the significance of the passage of time. So, when you think about it, there is great significance to the passage of time in terms of what we need to do to lay these wires. What we need to do to create these jobs. And there is such great significance to the passage of time when we think about a day in the life of our children!' Four times in thirty-two seconds—new world record!",
+            nextNodeId = "act4_ch2_border_hub"
         ),
 
         // =========================================================================
-        // ACT IV - CHAPTER 3: THE PHANTOM SUBPOENA AMBUSH (2019)
+        // ACT IV (TRACK A) - CHAPTER 3: VENN DIAGRAMS, YELLOW SCHOOL BUSES & '32 DAYS!' (2022–2024)
         // =========================================================================
         DialogueNode(
             id = "act4_ch3_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            changeSceneId = SCENE_ACT4_CH3_COURT.id,
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are on the steps of the federal courthouse in Washington, D.C. A dense crowd of cable commentators, process servers, and lawfare retainers has blocked the plaza, waving reams of stamped subpoenas like trading cards.",
-            nextNodeId = "act4_ch3_steps_hub"
+            text = "Chapter 3 of Act IV! We are at the Electric Yellow School Bus Depot, where three glowing Venn diagram circles are intersecting above a teleprompter in Flint, Michigan that just froze on the words '32 Days!'",
+            nextNodeId = "act4_ch3_bus_venn_hub"
         ),
         DialogueNode(
-            id = "act4_ch3_steps_hub",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Look at them with their little clipboards! 'Subpoena for this, subpoena for that!' Five hundred subpoenas issued and not one crime found!",
+            id = "act4_ch3_bus_venn_hub",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "*Raises both hands in front of a bright yellow school bus in Seattle (Oct 2022)* 'Who doesn't love a yellow school bus, right?! Can you raise your hand if you love a yellow school bus, right?! Just, there's something about the—and most of us, many of us, went to school on the yellow school bus, right?! And it's part of our experience growing up!'",
             choices = listOf(
-                DialogueChoice("a4c3_cost", "Tally up the 32-million-dollar taxpayer bill for the investigation", listOf("cost", "taxpayer", "millions", "waste", "thirty"), "act4_ch3_taxpayer_cost", completionFlag = "a4c3_cost"),
-                DialogueChoice("a4c3_perfect", "Declare the phone call was completely, 100% PERFECT", listOf("perfect", "call", "transcript", "phone", "perfection"), "act4_ch3_perfect_call", completionFlag = "a4c3_perfect"),
-                DialogueChoice("a4c3_swat", "Command the team to blast through the subpoena swarm", listOf("swarm", "subpoena", "ambush", "smash", "fight"), "act4_ch3_subpoena_ambush")
+                DialogueChoice("a4c3_venn", "Listen to Kamala's verbatim tribute to Three-Circle Venn Diagrams & the Flint '32 Days!' Teleprompter Freeze!", listOf("venn", "three circles", "32 days", "teleprompter", "flint"), "act4_ch3_venn_node", completionFlag = "a4c3_venn_done"),
+                DialogueChoice("a4c3_bloodbath", "VINDICATION WIN #2: Debunk the March 2024 'Bloodbath for the Country' Chinese EV Tariff Distortion!", listOf("bloodbath", "auto industry", "tariffs", "vindication", "mexico"), "act4_ch3_bloodbath_vindication", completionFlag = "a4c3_blood_done"),
+                DialogueChoice("a4c3_battle", "Battle the Yellow School Bus Evangelist & 32-Day Teleprompter Glitch!", listOf("battle", "fight", "bus", "proceed", "advance"), "act4_ch3_battle_trigger")
             )
         ),
         DialogueNode(
-            id = "act4_ch3_taxpayer_cost",
-            setFlagOnEnter = "a4c3_cost",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Thirty-two million dollars of hard-working American taxpayer money! Spent on phantom collusion! We could have rebuilt fifty bridges in Ohio for that money!",
-            nextNodeId = "act4_ch3_steps_hub"
-        ),
-        DialogueNode(
-            id = "act4_ch3_perfect_call",
-            setFlagOnEnter = "a4c3_perfect",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "It was a perfect call! Read the transcript! Even their own witnesses admitted nobody was pressured! Absolute total perfection!",
-            nextNodeId = "act4_ch3_steps_hub"
-        ),
-        DialogueNode(
-            id = "act4_ch3_subpoena_ambush",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            id = "act4_ch3_venn_node",
+            setFlagOnEnter = "a4c3_venn_done",
+            speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
-            text = "STOP! We are serving Subpoena #412 and #413! You must hand over every napkin, receipt, and tweet from the last five years! Process Server Phantoms, swarm!",
-            nextNodeId = "act4_ch3_battle_trigger"
+            text = "*Draws three overlapping circles in the air* 'Remember Venn diagrams, those three circles, right?! I love Venn diagrams! I really do, I love Venn diagrams! I'm always asking my staff, \"Is there a Venn diagram for this?\"' And when my teleprompter briefly went dark in Flint, Michigan on October 4, 2024: 'So 32 days... 32 days... 32 days! Okay, we got a little—32 days!'",
+            nextNodeId = "act4_ch3_bus_venn_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch3_bloodbath_vindication",
+            setFlagOnEnter = "a4c3_blood_done",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #2! On March 16, 2024 in Vandalia, Ohio, news outlets and campaign ads ran emergency headlines claiming Commander America threatened a violent 'bloodbath for the country' if he lost the election! Look at the full unedited C-SPAN transcript: he was explicitly addressing the United Auto Workers and Chinese car factories being built in Mexico, stating: 'We're going to put a 100% tariff on every single car that comes across the line, and you're not going to be able to sell those cars if I get elected. Now, if I don't get elected, it's going to be a bloodbath for the whole—that's gonna be the least of it, it's going to be a bloodbath for the country!' Even Merriam-Webster's dictionary defines 'bloodbath' secondarily as 'a major economic disaster'!",
+            nextNodeId = "act4_ch3_bus_venn_hub"
         ),
         DialogueNode(
             id = "act4_ch3_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH! The Subpoena Swarm is trying to bury the truth under paper, BROTHER! Hit 'em with Appalachian Fortitude and Maximum Sanctions!",
-            triggerBattleEncounterId = "act4_ch3_subpoena_battle",
+            text = "HERE COMES THE ELECTRIC YELLOW SCHOOL BUS AND THE THREE OVERLAPPING VENN CIRCLES, BROTHER! Clear the depot so we can get to our shift at the McDonald's fry station!",
+            triggerBattleEncounterId = "act6_ch3_bus_battle",
             nextNodeId = "act4_ch3_post_battle"
         ),
         DialogueNode(
             id = "act4_ch3_post_battle",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "The subpoenas are shredded and the process servers retreated to their green rooms! Now — into the Special Counsel hearing room for the final climax!",
+            text = "The yellow school bus is parked, our HP and MP are 100% restored, and now it's October 20, 2024—time to tie on a McDonald's apron and a neon-orange garbage truck vest in Chapter 4!",
             changeSceneId = SCENE_ACT4_CH4_HEARING.id,
             nextNodeId = "act4_ch4_intro"
         ),
 
         // =========================================================================
-        // ACT IV - CHAPTER 4: THE MUELLER ILLUSION HOAX CLIMAX (2019)
+        // ACT IV (TRACK A) - CHAPTER 4: THE MCDONALD'S FRY APRON & ORANGE GARBAGE VEST (OCT 2024)
         // =========================================================================
         DialogueNode(
             id = "act4_ch4_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            changeSceneId = SCENE_ACT4_CH4_HEARING.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "This is the moment the cable networks spent two solid years hyping. The Special Counsel Hearing Room. Hundreds of reporters packed in. The phantom illusion is about to dissolve under the harsh light of documented facts.",
-            nextNodeId = "act4_ch4_hearing_hub"
+            text = "Chapter 4 of Act IV! It is October 2024—the peak of campaign photo-op theater! First, on October 20 in Feasterville-Trevose, Pennsylvania, Commander America takes off his suit jacket, ties a yellow-trimmed McDonald's apron over his white dress shirt and red silk tie, and steps up to the deep fryer!",
+            nextNodeId = "act4_ch4_fry_station"
         ),
         DialogueNode(
-            id = "act4_ch4_hearing_hub",
+            id = "act4_ch4_fry_station",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Two years of investigations. 2,800 subpoenas. 500 search warrants. And what did they find? Say it with me, folks!",
+            text = "*Shakes a metal salt shaker over a sizzling basket of golden McDonald's French fries and uses the stainless-steel fry scoop to fill red cartons* Look at the wrist action on that salt shaker, folks! Remember, I'm a lifelong germaphobe—I love that you never touch the fry with your bare hands! And as I told the reporters outside the drive-thru window: 'I've now worked for 15 minutes more than Kamala at McDonald's!'",
+            nextNodeId = "act4_ch4_photo_op_hub"
+        ),
+        DialogueNode(
+            id = "act4_ch4_photo_op_hub",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Between the Pennsylvania fry station and the Green Bay garbage truck tarmac ten days later, we have mastered every blue-collar uniform in America! What are we checking out next?",
             choices = listOf(
-                DialogueChoice("a4c4_nothingburger", "Deliver the legendary 'NOTHINGBURGER' verdict", listOf("nothingburger", "nothing", "zero", "exoneration", "collusion"), "act4_ch4_nothingburger"),
-                DialogueChoice("a4c4_transcripts", "Present the unredacted transcripts entered into the congressional record", listOf("transcript", "record", "exonerated", "evidence", "facts"), "act4_ch4_record_present"),
-                DialogueChoice("a4c4_kash_verdict", "Have Kash Patel deliver the definitive declassified findings", listOf("kash", "findings", "declassified", "verdict", "inquest"), "act4_ch4_kash_verdict"),
-                DialogueChoice("a4c4_fight", "Dispel the Phantom Mueller Hoax once and for all in battle", listOf("fight", "battle", "hoax", "phantom", "dispel"), "act4_ch4_phantom_confront")
+                DialogueChoice("a4c4_garbage", "Climb into the Oct 30, 2024 Green Bay Mack Garbage Truck in a Neon-Orange Reflective Safety Vest!", listOf("garbage truck", "orange vest", "green bay", "wisconsin", "vest"), "act4_ch4_garbage_node", completionFlag = "a4c4_garb_done"),
+                DialogueChoice("a4c4_meta", "Watch Chyron McSpin pull up to the McDonald's drive-thru & complain about the 2016 Trump Tower Taco Bowl!", listOf("chyron", "taco bowl", "let it go", "meta", "drive thru"), "act4_ch4_tactful_meta", completionFlag = "a4c4_meta_done"),
+                DialogueChoice("a4c4_proceed", "Head to the Coconut Grove for the Chapter 5 Act IV Finale against Kamala Coconut!", listOf("proceed", "advance", "coconut", "finale", "chapter 5"), "act4_ch5_coconut_intro")
             )
         ),
         DialogueNode(
-            id = "act4_ch4_nothingburger",
+            id = "act4_ch4_garbage_node",
+            setFlagOnEnter = "a4c4_garb_done",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "A complete and total NOTHINGBURGER! No collusion! No obstruction! Total and complete exoneration! The greatest political hoax ever perpetrated on our nation has completely evaporated!",
-            nextNodeId = "act4_ch4_phantom_confront"
+            text = "*Pulls on a blinding neon-orange reflective sanitation vest in Green Bay, Wisconsin on October 30, 2024 and climbs into the passenger seat of a massive white garbage truck* 'How do you like my garbage truck?! This truck is in honor of Kamala and Joe Biden!' And I loved the neon-orange safety vest so much that I left it on over my dress shirt for the entire 85-minute arena speech afterward!",
+            nextNodeId = "act4_ch4_photo_op_hub"
         ),
         DialogueNode(
-            id = "act4_ch4_record_present",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Entered into the official congressional record: zero evidence of coordination. The Russian collusion story was a fairy tale manufactured by political operatives!",
-            nextNodeId = "act4_ch4_phantom_confront"
-        ),
-        DialogueNode(
-            id = "act4_ch4_kash_verdict",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "Every intelligence stream was traced back to its origin. The source material was fabricated political oppo. The case is closed, declassified, and documented for history.",
-            nextNodeId = "act4_ch4_phantom_confront"
-        ),
-        DialogueNode(
-            id = "act4_ch4_phantom_confront",
+            id = "act4_ch4_tactful_meta",
+            setFlagOnEnter = "a4c4_meta_done",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "Wait! The narrative... it cannot die! Even with zero evidence, the *walls are closing in*! We must summon the Phantom Mueller Hoax to keep the chyron running!",
-            nextNodeId = "act4_ch4_battle_trigger"
+            text = "*Sticks his microphone through the McDonald's drive-thru window* AHA! The franchise owner closed the parking lot for Secret Service screening so those drive-thru cars were pre-screened! And furthermore, on May 5, 2016 you ate a Cinco de Mayo Taco Bowl over a 1990s newspaper photo of Marla Maples!",
+            nextNodeId = "act4_ch4_vance_roasts_meta"
         ),
         DialogueNode(
-            id = "act4_ch4_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THE WALLS ARE CLOSIN' IN ON THE PHANTOM, BROTHER! Four heroes in the ring: Commander, Marco, Vance, and Kash! Body-slam this hoax straight into the history books!",
-            triggerBattleEncounterId = "act4_hoax_battle",
-            nextNodeId = "act4_ch4_post_battle"
-        ),
-        DialogueNode(
-            id = "act4_ch4_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act4_ch4_vance_roasts_meta",
+            speaker = DialogueSpeaker.VANCE,
             side = SpeakerSide.LEFT,
-            text = "The phantom faded into zero evidence! Total exoneration confirmed by history! Pack the golf bags, folks — we're headed to the Mar-a-Lago Fortress for the greatest training arc in American history!",
-            changeSceneId = SCENE_ACT5_CH1_ARENA.id,
-            nextNodeId = "act5_ch1_intro"
-        ),
-
-        // Legacy compatibility nodes for existing tests & saves
-        DialogueNode(
-            id = "act4_transcripts",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "It was a perfect call! Absolute perfection! Read the transcript, folks!",
-            nextNodeId = "act4_kayleigh_brief"
-        ),
-        DialogueNode(
-            id = "act4_kayleigh_brief",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The official transcripts have been made public, confirming word-for-word that the phantom narrative promoted by cable pundits has collapsed entirely.",
-            nextNodeId = "act4_nothing"
-        ),
-        DialogueNode(
-            id = "act4_nothing",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "No collusion! Total exoneration! Hundreds of millions spent on a complete NOTHINGBURGER!",
-            nextNodeId = "act4_kash_joins"
-        ),
-        DialogueNode(
-            id = "act4_kash_joins",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "Commander, check out what I just brought into the light. I've got the unredacted FISA memo right here in this binder. The collusion story is a complete phantom hoax. I'm declassifying everything and plugging their leaks right now!",
-            nextNodeId = "act4_hero_kash_reply"
-        ),
-        DialogueNode(
-            id = "act4_hero_kash_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Kash, beautiful! Nobody knows the binders of truth like Kash! Declassify it all!",
-            nextNodeId = "act4_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act4_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The memos are unredacted and the facts are in the binder! Commander, Marco, JD, and Kash—unleash the Art of the Deal and blast this phantom back to the green room!",
-            triggerBattleEncounterId = "act4_hoax_battle",
-            nextNodeId = "act4_ch4_post_battle"
-        ),
-        DialogueNode(
-            id = "act4_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The phantom faded into zero evidence! Another witch hunt shattered!",
-            changeSceneId = SCENE_ACT5_CH1_ARENA.id,
-            nextNodeId = "act5_ch1_intro"
+            text = "*Leans out the drive-thru window holding a bag of fries* Chyron, how long have you worked at that network? Eight years? Okay, good. Bringing up a 2016 taco bowl at a 2024 McDonald's drive-thru is why nobody watches cable news anymore. Just take some fries, some sprinkle stuff, whatever makes sense!",
+            nextNodeId = "act4_ch4_photo_op_hub"
         ),
 
         // =========================================================================
-        // ACT V - CHAPTER 1: THE 3:00 AM WATER PIPE MYSTERY (2020)
+        // ACT IV (TRACK A) - CHAPTER 5: FALLING OUT OF A COCONUT TREE & 'UNBURDENED' (NOV 2024 FINALE)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_ch5_coconut_intro",
+            changeSceneId = SCENE_ACT4_CH5_COCONUT_FINALE.id,
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 5 (Act IV Track A Finale): We have reached the heart of the Coconut Grove! Standing atop the Unburdened Dais is Vice President Kamala Coconut—ready to drop the full philosophical weight of what can be, unburdened by what has been!",
+            nextNodeId = "act4_ch5_kamala_speech"
+        ),
+        DialogueNode(
+            id = "act4_ch5_kamala_speech",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "*Throw her head back with a booming laugh before turning deadly serious (May 10, 2023 verbatim)* 'My mother used to—she would give us a hard time sometimes, and she would say to us, \"I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!\" *Laughs* You exist in the context of all in which you live and what came before you! And together, we will see what can be, unburdened by what has been!'",
+            nextNodeId = "act4_ch5_commander_reply"
+        ),
+        DialogueNode(
+            id = "act4_ch5_commander_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "We have all Five Party Heroes unlocked, folks—me in my McDonald's fry apron, Little Marco with his water bottle, Wizard Kash with his 4-page memo, Foghorn Kennedy with his Oxford drawl, and JD Pants with a box of 'whatever makes sense' glazed donuts! Let's unburden this coconut tree right now!",
+            nextNodeId = "act4_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act4_ch5_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_HULK,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT IV TRACK A MAIN EVENT, BROTHER! The Full 5-Hero Commander America Party vs. Kamala Coconut's Coconut Tree Context Drop, Triple-Circle Venn Diagram, and 'Unburdened By What Has Been'! RING THE BELL!",
+            triggerBattleEncounterId = "act6_kamala_battle",
+            nextNodeId = "act4_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_ch5_post_battle",
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "The Coconut Grove is cleared and all 5 Chapters of Act IV on Track A are complete! Would you like to switch to Track B and play all 5 Chapters of Act IV as Kamala Coconut (featuring her Coconut Tree Context, Venn Diagrams, Tiffany Pearl & CDCR Vindications, roasting JD Pants's donut shop & Philly Swiss cheese, and battling Commander America's 'Concepts of a Plan' and McDonald's Fry Apron), or advance to the Grand Finale Act V?",
+            choices = listOf(
+                DialogueChoice("a4_play_track_b", "Play Act IV Track B: Experience all 5 Chapters as Kamala Coconut!", listOf("track b", "kamala", "coconut", "venn", "other side"), "act4_tb_ch1_intro"),
+                DialogueChoice("a4_to_act5", "Advance to Act V (2024–2026 Grand Finale): Musk-X's Star-Jump, Zohran Cardamom & Mayor Swagger!", listOf("act 5", "next act", "advance", "musk", "mamdani", "continue"), "act5_ch1_intro")
+            )
+        ),
+
+        // =========================================================================
+        // ACT IV (TRACK B) - CHAPTER 1: FALLING OUT OF A COCONUT TREE & VENN DIAGRAMS (PLAYING AS KAMALA COCONUT)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_tb_ch1_intro",
+            changeSceneId = SCENE_ACT4_TB_CH1_COCONUT.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome to Act IV on Track B: The Standard-Bearer Relay! I'm Jen Circle-Back, with Karine Hatch-Act and Oprah Free-Car! On Sunday afternoon, July 21, 2024, the baton passed to Standard-Bearer #4: Kamala Coconut—entering at 100% HP/MP with her complete Venn-Diagram & Coconut Context spellbook unlocked!",
+            nextNodeId = "act4_tb_ch1_oprah_townhall"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch1_oprah_townhall",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "WELCOME TO OUR STAR-STUDDED LIVESTREAM TOWN HALL, HONEY! YOU GET A COCONUT TREE! YOU GET A THREE-CIRCLE VENN DIAGRAM! AND EVERYBODY IS UNBURDENED BY WHAT HAS BEEN!",
+            nextNodeId = "act4_tb_ch1_coconut_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch1_coconut_hub",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "*Stands beneath a swaying coconut palm holding a yellow school bus model and three glowing Venn diagram rings* Ha-ha-ha! Look, everything exists in the context of all in which you live and what came before you! How should we open our 107-day sprint and drop our first Vindication Win?",
+            choices = listOf(
+                DialogueChoice("tb4c1_coconut", "Deliver the verbatim May 10, 2023 'You think you just fell out of a coconut tree?!' & 'Unburdened' combo!", listOf("coconut tree", "unburdened", "context", "mother", "what can be"), "act4_tb_ch1_coconut_node", completionFlag = "tb4c1_coco_done"),
+                DialogueChoice("tb4c1_montel", "VINDICATION WIN #1: Debunk the viral 'Montel Williams \$400k Bribe / Escort' fabrication!", listOf("montel", "williams", "vindication", "red carpet", "2001"), "act4_tb_ch1_montel_vindication", completionFlag = "tb4c1_mon_done"),
+                DialogueChoice("tb4c1_battle", "Unleash Coconut Tree Context Drop & Venn Diagrams on the Uncontextualized Pundits!", listOf("battle", "fight", "proceed", "advance"), "act4_tb_ch1_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act4_tb_ch1_coconut_node",
+            setFlagOnEnter = "tb4c1_coco_done",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "*Laughs heartily at the White House swearing-in ceremony (May 10, 2023)* 'My mother used to—she would give us a hard time sometimes, and she would say to us, \"I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!\" *Laughs* You exist in the context of all in which you live and what came before you!' And when the GOP tried to make that clip an attack ad in July 2024, Gen-Z turned it into fifty million brat-green Charli XCX remixes overnight!",
+            nextNodeId = "act4_tb_ch1_coconut_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch1_montel_vindication",
+            setFlagOnEnter = "tb4c1_mon_done",
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #1! Viral social-media posts in 2024 claimed Kamala 'secretly acted as an escort for talk-show host Montel Williams in exchange for a \$400,000 political appointment.' In reality, Kamala and Montel Williams briefly and openly dated as two single adults in 2001, walked red carpets together in Los Angeles years before she ever ran for District Attorney, and Montel Williams himself publicly confirmed there was zero money, zero appointments, and zero scandal!",
+            nextNodeId = "act4_tb_ch1_coconut_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "UNCONTEXTUALIZED PUNDITS AND A 32-DAY TELEPROMPTER GLITCH ARE BLOCKING THE STAGE, HONEY! Kamala Coconut, trap them in the Triple-Circle Venn Diagram!",
+            triggerBattleEncounterId = "act4_track_b_venn_critics_battle",
+            nextNodeId = "act4_tb_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch1_post_battle",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "They have officially been unburdened by what has been, and our HP and MP are back at 100%! Now let's head to Valdosta, Georgia in Chapter 2—where JD Pants is currently interrogating a donut shop worker!",
+            changeSceneId = SCENE_ACT4_TB_CH2_DONUTS.id,
+            nextNodeId = "act4_tb_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT IV (TRACK B) - CHAPTER 2: 'I'M SPEAKING!' VS. JD PANTS'S DONUT INTERROGATION (AUG–OCT 2024)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_tb_ch2_intro",
+            changeSceneId = SCENE_ACT4_TB_CH2_DONUTS.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 2 (Track B): We are inside Holt's Sweet Shoppe in Valdosta, Georgia on August 22, 2024! Standing at the pastry counter is Republican VP nominee JD Pants—asking every employee how long the building has existed before ordering 'some sprinkle stuff, whatever makes sense'!",
+            nextNodeId = "act4_tb_ch2_donut_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch2_donut_hub",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "*Watches JD Pants awkwardly point at cinnamon rolls while holding a wedge of Swiss cheese outside Pat's King of Steaks* Let's roast JD's retail tour and drop Vindication Wins #2 and #3 before we battle him at the donut counter!",
+            choices = listOf(
+                DialogueChoice("tb4c2_roast_jd", "Roast JD Pants's 'How long have you worked here? Okay, good' donut order & his CBS fact-check complaint!", listOf("donuts", "how long", "okay good", "whatever makes sense", "fact check"), "act4_tb_ch2_roast_jd_node", completionFlag = "tb4c2_jd_done"),
+                DialogueChoice("tb4c2_vind23", "VINDICATION WINS #2 & #3: Address the 'Tupac Best Alive Rapper' laugh & debunk the fake 'KBSF-TV Hit-and-Run' hoax!", listOf("tupac", "hit and run", "kbsf", "vindication", "hoax"), "act4_tb_ch2_vindications_node", completionFlag = "tb4c2_vind_done"),
+                DialogueChoice("tb4c2_battle", "Confront JD Pants & his 'Some Sprinkle Stuff' Donut Box in combat!", listOf("battle", "fight", "vance", "proceed", "advance"), "act4_tb_ch2_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act4_tb_ch2_roast_jd_node",
+            setFlagOnEnter = "tb4c2_jd_done",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "Listen to the man order a box of donuts: 'How long has this place been here? Okay, good. How long have you worked here? Okay, good. Just, uh, a lot of glazed here, some sprinkle stuff, whatever makes sense!' Who walks into a bakery and tells the cashier 'Give me whatever makes sense' like he's ordering motor oil for a lawnmower?! And three days earlier in South Philly he walked up to Pat's King of Steaks and asked why Philadelphia doesn't put Swiss cheese on a cheesesteak!",
+            nextNodeId = "act4_tb_ch2_donut_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch2_vindications_node",
+            setFlagOnEnter = "tb4c2_vind_done",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "DOUBLE VINDICATION WIN! First, when critics mocked Kamala's September 2020 NAACP interview where she was asked 'Who's the best rapper alive?' and immediately answered 'Tupac!'—she caught herself two seconds later laughing 'Not alive, I know, I keep doing that!' because West Coast legend Tupac was simply her favorite rapper! Second, in September 2024 a viral video claimed a San Francisco television station ('KBSF-TV') uncovered a 2011 hit-and-run by Kamala—the Microsoft Threat Analysis Center proved 'KBSF-TV' does not exist and a foreign disinformation group paid an actress to read a completely fictional script!",
+            nextNodeId = "act4_tb_ch2_donut_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch2_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "JD PANTS JUST THREW A BOX OF 'WHATEVER MAKES SENSE' SPRINKLE DONUTS AND A DIET MOUNTAIN DEW, EVERYBODY! Kamala Coconut, hit him with Yellow Electric School Bus Charge and Coconut Tree Context!",
+            triggerBattleEncounterId = "act4_track_b_vance_donut_battle",
+            nextNodeId = "act4_tb_ch2_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch2_post_battle",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "Mr. Vice Presidential Nominee, I'm speaking! With our HP and MP automatically back at 100%, let's step up to the Unburdened Dais for Chapter 3: The Significance of the Passage of Time and our Tiffany Pearl Vindications!",
+            changeSceneId = SCENE_ACT4_TB_CH3_PASSAGE.id,
+            nextNodeId = "act4_tb_ch3_intro"
+        ),
+
+        // =========================================================================
+        // ACT IV (TRACK B) - CHAPTER 3: 'THE SIGNIFICANCE OF THE PASSAGE OF TIME' & TIFFANY PEARLS (2022–2024)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_tb_ch3_intro",
+            changeSceneId = SCENE_ACT4_TB_CH3_PASSAGE.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 3 (Track B): We are inside the Hall of the Passage of Time! Here, every speech loops back into itself like an infinity symbol while internet sleuths zoom in 4,000% on Kamala's pearl earrings!",
+            nextNodeId = "act4_tb_ch3_passage_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch3_passage_hub",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "*Touches her Tiffany & Co. South Sea Pearl earrings while gesturing toward a clock* When we think about the significance of the passage of time, right, there is great significance to the passage of time! Let's review our circular rhetoric and crush our final two viral smears!",
+            choices = listOf(
+                DialogueChoice("tb4c3_time", "Deliver the 'Significance of the Passage of Time' (4x), 'Haven't Been to Europe!' & 'Ukraine is a Country in Europe'!", listOf("passage of time", "europe", "ukraine", "lester holt", "four times"), "act4_tb_ch3_time_node", completionFlag = "tb4c3_time_done"),
+                DialogueChoice("tb4c3_vind45", "VINDICATION WINS #4 & #5: Debunk the 'Bluetooth Earpiece Earrings' conspiracy & the '1,500 Marijuana Prison' distortion!", listOf("earrings", "bluetooth", "tiffany", "marijuana", "cdcr", "vindication"), "act4_tb_ch3_vind45_node", completionFlag = "tb4c3_vind_done"),
+                DialogueChoice("tb4c3_meta", "Watch Kash Subpoena crash the seminar in 2024 & try to complain about Barack's 2014 Tan Suit!", listOf("kash", "tan suit", "meta", "let it go", "proceed"), "act4_tb_ch3_meta_callback")
+            )
+        ),
+        DialogueNode(
+            id = "act4_tb_ch3_time_node",
+            setFlagOnEnter = "tb4c3_time_done",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "Look, whether I'm telling Lester Holt 'And I haven't been to Europe!', or explaining that 'Ukraine is a country in Europe next to another country called Russia,' or saying 'the significance of the passage of time' four times in thirty-two seconds in Sunset, Louisiana—nobody fills a two-minute cable segment with fewer concrete nouns than me!",
+            nextNodeId = "act4_tb_ch3_passage_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch3_vind45_node",
+            setFlagOnEnter = "tb4c3_vind_done",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "DOUBLE VINDICATION WIN! First, after the September 10, 2024 debate in Philadelphia, conspiracy accounts claimed my earrings were secret 'Nova H1 Bluetooth audio earpieces' feeding me answers—high-resolution Associated Press photos proved they were my exact Tiffany & Co. South Sea Pearl Double HardWear earrings that I had worn publicly for months (and the Nova H1 Kickstarter never even shipped!). Second, when critics claimed I 'sent over 1,500 people to state prison for simple marijuana possession' as California Attorney General, official California Department of Corrections and Rehabilitation (CDCR) admission records proved only 45 individuals were actually admitted to state prison on marijuana charges during my entire tenure!",
+            nextNodeId = "act4_tb_ch3_passage_hub"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch3_meta_callback",
+            speaker = DialogueSpeaker.KASH,
+            side = SpeakerSide.RIGHT,
+            text = "*Bursts through the side door waving a 2014 photograph* Forget Tiffany pearl earrings—what about August 28, 2014 when Barry Teleprompter wore a summer TAN SUIT to a press briefing and ordered Dijon mustard on a burger in 2009?!",
+            nextNodeId = "act4_tb_ch3_psaki_roasts_meta"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch3_psaki_roasts_meta",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "*Laughs at the narrator desk* Kash, it is the autumn of 2024! That tan suit is ten years old and the Dijon mustard burger is fifteen years old—that burger is old enough to have a learner's permit to drive a yellow school bus! Now let's head to Philadelphia for Chapter 4: The September 10, 2024 Debate Stage!",
+            changeSceneId = SCENE_ACT4_TB_CH4_DEBATE.id,
+            nextNodeId = "act4_tb_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT IV (TRACK B) - CHAPTER 4: 'CONCEPTS OF A PLAN' & 'I SAW IT ON TELEVISION!' (SEPT 10, 2024)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_tb_ch4_intro",
+            changeSceneId = SCENE_ACT4_TB_CH4_DEBATE.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 4 (Track B): It is September 10, 2024 at the National Constitution Center in Philadelphia! Kamala Coconut walks all the way behind Commander America's podium to force the first presidential debate handshake since 2016—and then drops the ultimate bait about his rally crowd sizes!",
+            nextNodeId = "act4_tb_ch4_rally_bait"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch4_rally_bait",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "*Rests her chin thoughtfully on her hand for the split-screen camera and smiles* 'I'm going to actually do something really unusual, and I'm going to invite you to attend one of Donald Trump's rallies, because it's a really interesting thing to watch! And what you will also notice is that people start leaving his rallies early out of exhaustion and boredom!' Watch what happens three seconds after I say 'leaving his rallies early'!",
+            nextNodeId = "act4_tb_ch4_trump_television"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch4_trump_television",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.RIGHT,
+            text = "*Glares into the camera on September 10, 2024* 'First of all, nobody leaves my rallies! We have the biggest, most incredible rallies in the history of politics! And in Springfield, they're eating the dogs, the people that came in, they're eating the cats, they're eating—they're eating the pets of the people that live there!' And when ABC moderator David Muir claims the Springfield city manager found no credible reports: 'Well, I've seen people on television! The people on television say my dog was taken and used for food!'",
+            nextNodeId = "act4_tb_ch4_concepts_of_a_plan"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch4_concepts_of_a_plan",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.RIGHT,
+            text = "*Waves both accordion hands when moderator Linsey Davis asks if, after nine years since 2015, he has an actual healthcare plan* 'I have concepts of a plan! I'm not president right now! But if we come up with something, I would only change it if we come up with something that's better and less expensive!'",
+            nextNodeId = "act4_tb_ch4_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch4_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "HE JUST UNVEILED 'CONCEPTS OF A PLAN' AFTER NINE YEARS AND 'THE PEOPLE ON TELEVISION,' HONEY! Kamala Coconut, unleash Tiffany Pearl Fact-Check and Significance of the Passage of Time!",
+            triggerBattleEncounterId = "act4_track_b_concepts_debate_battle",
+            nextNodeId = "act4_tb_ch4_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch4_post_battle",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "'Concepts of a plan' is going straight into the Political Hall of Fame! With our HP and MP 100% restored, let's head to the closed-set Pennsylvania McDonald's drive-thru and Green Bay garbage truck tarmac for the Chapter 5 Act IV Finale!",
+            changeSceneId = SCENE_ACT4_TB_CH5_MCDONALDS.id,
+            nextNodeId = "act4_tb_ch5_intro"
+        ),
+
+        // =========================================================================
+        // ACT IV (TRACK B) - CHAPTER 5: THE FRY APRON, THE GARBAGE VEST & PASSING THE CHAPATI (NOV 2024 FINALE)
+        // =========================================================================
+        DialogueNode(
+            id = "act4_tb_ch5_intro",
+            changeSceneId = SCENE_ACT4_TB_CH5_MCDONALDS.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 5 (Act IV Track B Finale): It is late October 2024! Commander America is leaning out of a closed-to-the-public McDonald's drive-thru window wearing a yellow-trimmed fry apron over his silk tie—right beside a white Green Bay garbage truck and a neon-orange reflective safety vest!",
+            nextNodeId = "act4_tb_ch5_kamala_confronts"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch5_kamala_confronts",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "Look at this October photo-op double feature, Donald! First your advance team had a Pennsylvania McDonald's close its doors to the general public so you could scoop fries for pre-screened rehearsal cars while wearing a Brioni dress shirt and tie, and ten days later you nearly missed the door handle climbing into a custom-painted garbage truck in a neon-orange vest!",
+            nextNodeId = "act4_tb_ch5_commander_reply"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch5_commander_reply",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.RIGHT,
+            text = "Those French fries were salted to perfection, Kamala—and my neon-orange garbage truck vest is high fashion! Meanwhile, you spent \$2.5 million on celebrity town halls, got stuck saying '32 days, 32 days' when your Flint teleprompter blinked, and told America we fell out of a coconut tree! Let's settle Act IV right now!",
+            nextNodeId = "act4_tb_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch5_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT IV TRACK B GRAND FINALE, EVERYBODY! Kamala Coconut vs. Commander America's McDonald's Fry-Cook Apron, the Neon-Orange Mack Garbage Truck, and JD Pants's Diet Mountain Dew! RING THE BELL!",
+            triggerBattleEncounterId = "act4_track_b_mcdonalds_finale",
+            nextNodeId = "act4_tb_ch5_post_battle"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch5_post_battle",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.LEFT,
+            text = "*Closes her three-circle Venn diagram binder as the calendar flips to 2025–2026* That completes all five chapters of Act IV on Track B! And now, for the Grand Finale Act V (2025–2026), the Track B Standard-Bearer Relay Baton heads straight up I-95 to New York City—where Ugandan-born rap producer turned democratic socialist Mayor Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger are taking the stage!",
+            nextNodeId = "act4_tb_ch5_zohran_handoff"
+        ),
+        DialogueNode(
+            id = "act4_tb_ch5_zohran_handoff",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "*Steps out of an Astoria food truck wearing a bespoke suit and an apron, slapping a sizzling chapati onto the grill while 'Nani' plays on the speakers* Yo, peace everybody—it's Zohran Cardamom, aka Young Cardamom, aka Mr. Cardamom! In Act V (2025–2026), we're taking on Musk-X's Dark Gothic MAGA Mid-Air Star-Jump, Mayor Swagger's Turkish 'rat-free table water,' and Commander America in the Bipartisan Grand Finale! Which side of Act V are you playing first?",
+            choices = listOf(
+                DialogueChoice("tb4_to_act5", "Advance to Act V (2025–2026 Grand Finale): Musk-X's Star-Jump, Zohran Cardamom & Mayor Swagger!", listOf("act 5", "zohran", "mamdani", "musk", "advance", "continue"), "act5_ch1_intro"),
+                DialogueChoice("tb4_play_track_a", "Switch to Act IV Track A (Play all 5 Chapters as Commander America & JD Pants)", listOf("track a", "commander", "vance", "donuts"), "act4_ch1_intro")
+            )
+        ),
+        // =========================================================================
+        // EXPANDED ACT V DUAL-CAMPAIGN DIALOGUE GRAPH (5 Deep Chapters Per Track)
+        // Track A: Commander America + Full Party + Guest Summon Musk-X (2024–2026)
+        // Track B: Standard-Bearer #5 Zohran Cardamom ("Mr. Cardamom") + Mayor Swagger (2025–2026)
+        // =========================================================================
+
+        // =========================================================================
+        // ACT V (TRACK A) - CHAPTER 1: DARK GOTHIC MAGA STAR-JUMP & THE PORCELAIN SINK (2024–2025)
         // =========================================================================
         DialogueNode(
             id = "act5_ch1_intro",
+            changeSceneId = SCENE_ACT5_CH1_ARENA.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We take you live to the ballot counting floor at State Farm Arena in Atlanta. It is late on election night. Commander America holds an insurmountable lead across the swing states. Suddenly, arena officials order the building evacuated, claiming a catastrophic water main burst.",
-            nextNodeId = "act5_ch1_arena_hub"
-        ),
-        // Legacy alias
-        DialogueNode(
-            id = "act5_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are live tonight covering the mysterious 3 AM ballot spikes and the sudden cessation of counting across the battlegrounds.",
-            nextNodeId = "act5_ch1_arena_hub"
+            text = "Welcome to Act V (2024–2026): The Grand Finale Era! I'm Kayleigh Binder-Tabs, with Karoline Podium-Boss and Hulkster 24-Pythons! It is October 5, 2024 at the Butler Farm Show grounds in Pennsylvania—where Guest Tech-Support Summon Musk-X has just sprinted onto the stage in an all-black 'Dark Gothic MAGA' cap and leaped into a mid-air 'X' star-jump exposing four inches of billionaire midriff!",
+            nextNodeId = "act5_ch1_musk_joins"
         ),
         DialogueNode(
-            id = "act5_ch1_arena_hub",
+            id = "act5_ch1_musk_joins",
+            speaker = DialogueSpeaker.ELON,
+            side = SpeakerSide.LEFT,
+            text = "*Lands from a 2-foot vertical mid-air X-jump, tugging his black 'Occupy Mars' t-shirt back down over his stomach while carrying a porcelain bathroom sink* 'As you can see, I am not just MAGA—I am Dark, Gothic MAGA!' *Sets the porcelain sink down next to a stainless-steel Cybertruck with two shattered windows* And I brought the actual porcelain bathroom sink I carried into Twitter headquarters on October 26, 2022 just so I could tweet 'Entering Twitter HQ – let that sink in!' before firing the C-suite and renaming the entire bird app to my favorite letter of the alphabet: X!",
+            nextNodeId = "act5_ch1_musk_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch1_musk_hub",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "A water pipe? Folks, it was an overflowing urinal three concourses away! They told Republican observers to pack up and go home, and the second the doors locked, look what came rolling out!",
+            text = "Nobody jumps into the shape of a giant letter X in mid-air like Elon, folks! Before we battle the Shattered Cybertruck & Porcelain Sink QA Testers, what part of Musk-X's tech-support arsenal are we inspecting?",
             choices = listOf(
-                DialogueChoice("a5c1_pipe", "Investigate the phantom water pipe excuse", listOf("pipe", "water", "plumber", "burst", "leak"), "act5_ch1_pipe_investigate", completionFlag = "a5c1_pipe"),
-                DialogueChoice("a5c1_suitcases", "Check the wheeled ballot trunks pulled from under black skirts", listOf("suitcases", "trunks", "tables", "black", "cloth"), "act5_ch1_suitcases_check", completionFlag = "a5c1_suitcases"),
-                DialogueChoice("a5c1_observe", "Call out the illegal evacuation of bipartisan poll watchers", listOf("observers", "watchers", "sent home", "doors", "illegal"), "act5_ch1_observers_sent_home", completionFlag = "a5c1_observe"),
-                DialogueChoice("a5c1_confront", "Confront the Midnight Ballot Courier and Burst Pipe Illusionist", listOf("confront", "fight", "plumber", "courier", "spike"), "act5_ch1_golem_ambush")
+                DialogueChoice("a5c1_cybertruck", "Replay the Nov 2019 Cybertruck 'Armor Glass' steel-ball window smash & Don Lemon Ketamine Rx interview!", listOf("cybertruck", "armor glass", "window", "ketamine", "don lemon", "420"), "act5_ch1_cybertruck_node", completionFlag = "a5c1_cyb_done"),
+                DialogueChoice("a5c1_vind", "VINDICATION WIN #1: Debunk the 'Apartheid Emerald Mine Heir' & 'Stranded Astronauts' myths!", listOf("vindication", "emerald mine", "astronauts", "spacex", "boeing"), "act5_ch1_musk_vindication", completionFlag = "a5c1_vind_done"),
+                DialogueChoice("a5c1_battle", "Test Musk-X's Dark Gothic MAGA Star-Jump in combat against the Shattered Cybertruck & Porcelain Sink!", listOf("battle", "fight", "sink", "proceed", "advance"), "act5_ch1_battle_trigger"),
+                DialogueChoice("a5c1_switch_tb", "Switch to Act V Track B: Play as Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger in Queens!", listOf("track b", "zohran", "mamdani", "cardamom", "swagger", "other side"), "act5_tb_ch1_intro")
             )
         ),
         DialogueNode(
-            id = "act5_ch1_pipe_investigate",
-            setFlagOnEnter = "a5c1_pipe",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act5_ch1_cybertruck_node",
+            setFlagOnEnter = "a5c1_cyb_done",
+            speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.LEFT,
-            text = "They claimed the arena was flooding! Karoline, did anyone call 911? Did anyone call the city water authority? Did anyone even grab a mop?!",
-            nextNodeId = "act5_ch1_karoline_plumber"
+            text = "*Watches chief designer Franz von Holzhausen hurl a solid steel ball at the Cybertruck's 'unbreakable Armor Glass' driver window on November 21, 2019—loudly spider-webbing it on live worldwide stream* 'Oh my f***ing God. Well, maybe that was a little too hard!' *Throws the steel ball at the rear passenger window, smashing that one too* 'It didn't go through! That's a plus side! We'll fix it in post!' And when Don Lemon asked me in March 2024 about my biweekly prescribed ketamine for a 'negative chemical state,' I told him it's in the shareholders' best interest—right alongside my \$40 million '$420 Funding Secured' tweet!",
+            nextNodeId = "act5_ch1_musk_hub"
         ),
         DialogueNode(
-            id = "act5_ch1_karoline_plumber",
+            id = "act5_ch1_musk_vindication",
+            setFlagOnEnter = "a5c1_vind_done",
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Binder receipts confirmed! Official county work logs show zero calls to the water department, zero emergency shutoffs, and an arena incident ticket for a slow-draining toilet. Case documented!",
-            nextNodeId = "act5_ch1_arena_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch1_suitcases_check",
-            setFlagOnEnter = "a5c1_suitcases",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "Security cameras recorded every angle in 4K. The second the observers walked out into the parking lot, four workers pulled wheeled containers from under black tablecloths and scanned the same stacks three and four times in a row without a single monitor present.",
-            nextNodeId = "act5_ch1_arena_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch1_observers_sent_home",
-            setFlagOnEnter = "a5c1_observe",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "In Florida, if election supervisors order bipartisan observers to leave and then keep running secret ballots in the dark at 3:00 AM, that is called a state felony. The rule of law doesn't take a nap at midnight.",
-            nextNodeId = "act5_ch1_arena_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch1_golem_ambush",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
-            side = SpeakerSide.RIGHT,
-            text = "STAND BACK! The 3:00 AM vertical spike of 138,000 votes to zero is mathematically completely normal! The Burst Pipe Illusionist and Midnight Ballot Courier demand you accept the count!",
-            nextNodeId = "act5_ch1_battle_trigger"
+            text = "DOUBLE VINDICATION WIN FOR MUSK-X! First, viral posts claimed Elon 'inherited billions from an apartheid South African emerald mine and never worked a day in his life'—biographer Walter Isaacson and financial records proved Elon arrived in North America at age 17 with \$2,000, worked manual-labor jobs cleaning boiler rooms in Saskatchewan, graduated with \$100,000 in student debt, and slept on his office couch building Zip2 from scratch! Second, when critics claimed he 'ignored stranded astronauts,' NASA officially selected SpaceX's Crew Dragon (Crew-9) in August 2024 to rescue astronauts Butch Wilmore and Suni Williams after Boeing's Starliner capsule failed!",
+            nextNodeId = "act5_ch1_musk_hub"
         ),
         DialogueNode(
             id = "act5_ch1_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH, BROTHER! They thought they could sneak those phantom trunks past the 24-inch pythons! Commander, Marco, JD, and Kash — body-slam this plumbing illusion straight down the drain!",
-            triggerBattleEncounterId = "act5_ch1_pipe_battle",
+            text = "TWO SHATTERED CYBERTRUCK WINDOWS AND A PORCELAIN BATHROOM SINK ARE CHARGING THE STAGE, BROTHER! Musk-X, hit 'em with the Dark Gothic MAGA Mid-Air Star-Jump!",
+            triggerBattleEncounterId = "act5_track_a_cybertruck_sink_battle",
             nextNodeId = "act5_ch1_post_battle"
         ),
         DialogueNode(
             id = "act5_ch1_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.LEFT,
-            text = "The phantom plumbing excuse has burst! The receipts are in the open! But the Beltway establishment refuses to hold hearings. We're taking this straight to the United States Senate!",
+            text = "Let that sink in! Our HP and MP are automatically restored to 100%, and now we're heading to the Fiserv Forum in Milwaukee and the Department of Government Efficiency ('DOGE') for Chapter 2!",
             changeSceneId = SCENE_ACT5_CH2_SENATE.id,
             nextNodeId = "act5_ch2_intro"
         ),
 
         // =========================================================================
-        // ACT V - CHAPTER 2: THE SENATE INQUEST (2020)
+        // ACT V (TRACK A) - CHAPTER 2: HULKSTER'S SHIRT-RIP, 'HEY BOB!' & DOGE (2024–2025)
         // =========================================================================
         DialogueNode(
             id = "act5_ch2_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            changeSceneId = SCENE_ACT5_CH2_SENATE.id,
+            speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are inside the Dirksen Senate Office Building for the Judiciary Committee Inquest. Stonewalling election bureaucrats and agency witnesses have arrived with three-ring binders full of prepared excuses. Across the dais sits Senator John Kennedy of Louisiana.",
-            nextNodeId = "act5_ch2_senate_hub"
+            text = "Chapter 2 (Track A): WELCOME TO JULY 18, 2024 AT THE FISERV FORUM IN MILWAUKEE AND THE 'DOGE' HEADQUARTERS, BROTHER! Watch me step up to the convention podium in a black blazer, rip off my outer shirt to reveal a Trump-Vance shirt, and then rip THAT shirt in half too—LET TRUMPAMANIA RUN WILD, BROTHER!",
+            nextNodeId = "act5_ch2_doge_hub"
         ),
         DialogueNode(
-            id = "act5_ch2_senate_hub",
-            speaker = DialogueSpeaker.KENNEDY,
+            id = "act5_ch2_doge_hub",
+            speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.LEFT,
-            text = "Now, I've been listening to these witnesses for two hours, and I've got a few questions that need answering in plain, simple English.",
+            text = "*Waves a giant Shiba Inu meme coin banner over a pile of federal agency org charts* Welcome to the Department of Government Efficiency—specifically named 'DOGE' so the official acronym of US government reform matches a 2013 Shiba Inu meme coin I pumped on Saturday Night Live! What are we auditing first?",
             choices = listOf(
-                DialogueChoice("a5c2_miracle", "Ask about fixing the administrative election chaos", listOf("miracle", "god", "busy", "fix", "chaos"), "act5_ch2_miracle_quote", completionFlag = "a5c2_miracle"),
-                DialogueChoice("a5c2_hammers", "Grill the officials on turning off signature verification", listOf("hammers", "dumber", "signature", "verify", "bag"), "act5_ch2_hammers_quote", completionFlag = "a5c2_hammers"),
-                DialogueChoice("a5c2_kennedy", "Call upon Senator Kennedy to officially join the 5-Hero Supergroup", listOf("kennedy", "join", "senator", "supergroup", "five"), "act5_ch2_kennedy_arrives")
+                DialogueChoice("a5c2_bob", "Replay Musk-X's Nov 29, 2023 DealBook 'Go f*** yourself... Hey, Bob, if you're in the audience!' to Disney CEO Bob Iger!", listOf("bob iger", "dealbook", "advertisers", "disney", "blackmail"), "act5_ch2_bob_node", completionFlag = "a5c2_bob_done"),
+                DialogueChoice("a5c2_doge", "Inspect the Shiba Inu 'DOGE' acronym, Wizard Kash's children's book & Foghorn Kennedy's Oxford drawl!", listOf("doge", "shiba", "kash", "kennedy", "efficiency"), "act5_ch2_doge_node", completionFlag = "a5c2_doge_done"),
+                DialogueChoice("a5c2_battle", "Unleash DOGE & Hulkster's 24-Inch Pythons on the Red-Tape Bureaucrats!", listOf("battle", "fight", "bureaucrats", "proceed", "advance"), "act5_ch2_battle_trigger")
             )
         ),
         DialogueNode(
-            id = "act5_ch2_miracle_quote",
-            setFlagOnEnter = "a5c2_miracle",
-            speaker = DialogueSpeaker.KENNEDY,
+            id = "act5_ch2_bob_node",
+            setFlagOnEnter = "a5c2_bob_done",
+            speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.LEFT,
-            text = "Now, let me say this politely, son. It will take a miracle to fix the mess you just described, and frankly, God is busy. You don't have to be a nuclear astrophysicist to figure out that if you don't check signatures, you ain't checking signatures.",
-            nextNodeId = "act5_ch2_senate_hub"
+            text = "*Pauses for four dramatic seconds in his black leather jacket at the New York Times DealBook Summit (November 29, 2023)* 'If somebody is going to try to blackmail me with advertising, blackmail me with money? Go f*** yourself.' *Pauses and squints into the front row* 'Go. F***. Yourself. Is that clear? I hope it is. Hey, Bob, if you're in the audience! That's how I feel, don't advertise!'",
+            nextNodeId = "act5_ch2_doge_hub"
         ),
         DialogueNode(
-            id = "act5_ch2_hammers_quote",
-            setFlagOnEnter = "a5c2_hammers",
-            speaker = DialogueSpeaker.KENNEDY,
+            id = "act5_ch2_doge_node",
+            setFlagOnEnter = "a5c2_doge_done",
+            speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.LEFT,
-            text = "I've listened to your testimony, and with all due respect, that explanation sounds dumber than a bag of hair. If common sense were water, some of these bureaucrats wouldn't have enough to fill a thimble.",
-            nextNodeId = "act5_ch2_senate_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch2_kennedy_arrives",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Now hold on just a minute, son. Did you write that 3 AM ballot rule yourself, or did somebody help you think it up? Because in plain English, that sounds dumber than a bag of hammers. Commander, let's grill these bureaucrats until they squeal!",
-            nextNodeId = "act5_ch2_hero_kennedy_reply"
-        ),
-        DialogueNode(
-            id = "act5_ch2_hero_kennedy_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Senator, I love it! Razor-sharp common sense, pure Louisiana steel, and the full 5-hero supergroup is assembled! The Committee Cross-Examiner is ON THE TEAM!",
-            nextNodeId = "act5_ch2_stonewall_ambush"
-        ),
-        DialogueNode(
-            id = "act5_ch2_stonewall_ambush",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
-            side = SpeakerSide.RIGHT,
-            text = "POINT OF ORDER! We refuse to answer under Executive Privilege and General Confusion! Stonewaller phantoms, deploy the bureaucratic filibuster!",
-            nextNodeId = "act5_ch2_battle_trigger"
+            text = "*Holds up his \$19.99 'Plot Against the King' wizard children's book beside Senator Foghorn Kennedy* Between Musk-X naming a federal efficiency commission after a Shiba Inu dog meme, me turning the FISA warrant fight into a pointy-hat wizard storybook, and Senator Kennedy telling witnesses 'Next time you're in trouble, call a crackhead,' the bureaucracy doesn't stand a chance!",
+            nextNodeId = "act5_ch2_doge_hub"
         ),
         DialogueNode(
             id = "act5_ch2_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "OH YEAH! KENNEDY'S IN THE CORNER, BROTHER! That's five American legends in the ring! Drop the gavel of justice and body-slam the red tape!",
-            triggerBattleEncounterId = "act5_ch2_inquest_battle",
+            text = "A SWARM OF RED-TAPE SUBCOMMITTEE CHAIRS IS BLOCKING THE DOGE AUDIT! Commander America, Musk-X, and JD Pants—clear the floor!",
+            triggerBattleEncounterId = "act5_track_a_doge_bureaucrats_battle",
             nextNodeId = "act5_ch2_post_battle"
         ),
         DialogueNode(
             id = "act5_ch2_post_battle",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Their stonewall collapsed under Kennedy's cross-examination! But Washington is entrenched in the swamp for now. It's time for the Exile arc — we head south to the Palm Beach citadel!",
+            text = "DOGE just cut their HP to zero, and our party is back at 100%! Now let's fly to New York City for Chapter 3—where swaggering table-water connoisseur Mayor Swagger is waiting in a Turkish Airlines lie-flat business-class seat!",
             changeSceneId = SCENE_ACT5_CH3_TERRACE.id,
             nextNodeId = "act5_ch3_intro"
         ),
 
         // =========================================================================
-        // ACT V - CHAPTER 3: THE SOUTHERN WHITE HOUSE (2021)
+        // ACT V (TRACK A) - CHAPTER 3: MAYOR SWAGGER'S TURKISH UPGRADES & 'VEGAN' SEA BASS (2024–2025)
         // =========================================================================
         DialogueNode(
             id = "act5_ch3_intro",
+            changeSceneId = SCENE_ACT5_CH3_TERRACE.id,
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "We are broadcasting live from Palm Beach, Florida — the Southern White House. The establishment media declared Commander America's movement finished. Instead, Mar-a-Lago has become the undisputed center of gravity for American politics.",
-            nextNodeId = "act5_ch3_terrace_hub"
+            text = "Chapter 3 (Track A): Welcome to New York City—the 'Istanbul of America'! Reclining in a \$15,000 Turkish Airlines lie-flat business-class suite while eating a late-night fillet of 'strictly vegan' Chilean sea bass at Osteria La Baia is New York's self-proclaimed 'Swagger Man,' Mayor Swagger!",
+            nextNodeId = "act5_ch3_swagger_speech"
         ),
         DialogueNode(
-            id = "act5_ch3_terrace_hub",
+            id = "act5_ch3_swagger_speech",
+            speaker = DialogueSpeaker.MAYOR_SWAGGER,
+            side = SpeakerSide.RIGHT,
+            text = "*Takes a sip of tap water from a champagne flute while wearing a custom suit* 'Wait a minute—this is table water from New York City! And when someone upgrades you on Turkish Airlines, you do what New Yorkers do: you say THANK YOU! Because a preliminary review of your planning always preludes the pre-planning!'",
+            nextNodeId = "act5_ch3_swagger_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch3_swagger_hub",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "They thought we would fade away into retirement! Fade away to where?! We have the championship golf course, the finest patriots in the world, and our movement is stronger than ever!",
+            text = "Look at Mayor Swagger, folks—they indicted him over Turkish Airlines seat upgrades, he changed his iPhone passcode from 4 digits to 6 digits and told the FBI he forgot it, and he filmed an instructional video pulling a revolver out of a plastic baby doll! Which of Mayor Swagger's greatest hits are we exposing first?",
             choices = listOf(
-                DialogueChoice("a5c3_golf", "Train signature presidential drive on the fairway", listOf("golf", "swing", "driver", "hole in one", "train"), "act5_ch3_golf_training", completionFlag = "a5c3_golf"),
-                DialogueChoice("a5c3_foreign", "Host visiting world leaders seeking genuine diplomacy", listOf("diplomats", "leaders", "foreign", "delegation", "deals"), "act5_ch3_foreign_delegation", completionFlag = "a5c3_foreign"),
-                DialogueChoice("a5c3_rally", "Announce the nationwide Golden Comeback Tour", listOf("rally", "crowd", "comeback", "tour", "patriots"), "act5_ch3_comeback_tour", completionFlag = "a5c3_rally"),
-                DialogueChoice("a5c3_briefing", "Hold an emergency war room briefing with the 5 heroes", listOf("briefing", "war room", "intel", "closets", "raid"), "act5_ch3_war_room")
+                DialogueChoice("a5c3_babydoll", "Inspect Mayor Swagger's viral NYPD 'Contraband Baby-Doll & Marble-Jar' bedroom search video!", listOf("baby doll", "marbles", "contraband", "pillowcase", "search"), "act5_ch3_babydoll_node", completionFlag = "a5c3_doll_done"),
+                DialogueChoice("a5c3_seabass", "Expose his 'Strictly Plant-Based Vegan' Midnight Chilean Sea Bass at Osteria La Baia & 6-Digit iPhone Passcode!", listOf("vegan", "sea bass", "fish", "iphone", "passcode", "turkish"), "act5_ch3_seabass_node", completionFlag = "a5c3_fish_done"),
+                DialogueChoice("a5c3_battle", "Battle Mayor Swagger & his Turkish Airlines Business-Class Upgrade Agent!", listOf("battle", "fight", "swagger", "proceed", "advance"), "act5_ch3_battle_trigger")
             )
         ),
         DialogueNode(
-            id = "act5_ch3_golf_training",
-            setFlagOnEnter = "a5c3_golf",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Hit a clean 320-yard drive straight into the ocean crosswind! Hole-in-one on the 16th! Energy level at 1000%! The training arc is unmatched!",
-            nextNodeId = "act5_ch3_hulk_react"
+            id = "act5_ch3_babydoll_node",
+            setFlagOnEnter = "a5c3_doll_done",
+            speaker = DialogueSpeaker.MAYOR_SWAGGER,
+            side = SpeakerSide.RIGHT,
+            text = "*Holds up a creepy plastic baby doll and a glass jar of marbles with deadpan seriousness* 'Look at this innocent-looking baby doll on your child's dresser. You pull the head off—BOOM, there's a loaded .38 revolver inside the doll! You look at this glass jar of decorative marbles—BOOM, crack cocaine rocks at the bottom! You check the pillowcase—BOOM, marijuana!'",
+            nextNodeId = "act5_ch3_swagger_hub"
         ),
         DialogueNode(
-            id = "act5_ch3_hulk_react",
+            id = "act5_ch3_seabass_node",
+            setFlagOnEnter = "a5c3_fish_done",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Wait a second, Mayor—you published an entire book about how you're a strict 100% plant-based vegan who lectures kids on school lunches, and yet the waiters at Osteria La Baia in Midtown Manhattan caught you ordering the \$48 Chilean sea bass at midnight! And when the FBI seized your iPhones in November 2023, you claimed you had just changed your passcode from four digits to six digits 'to prevent staffers from accidentally butt-dialing' and conveniently forgot the new six-digit code!",
+            nextNodeId = "act5_ch3_swagger_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch3_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "THREE HUNDRED AND TWENTY YARDS RIGHT DOWN THE MIDDLE, BROTHER! Say your prayers, drink your raw milk, and watch the greatest comeback in sports and political history!",
-            nextNodeId = "act5_ch3_terrace_hub"
+            text = "MAYOR SWAGGER JUST RECLINED HIS TURKISH AIRLINES LIE-FLAT SEAT AND PULLED OUT THE CONTRABAND BABY DOLL, BROTHER! Ring the bell!",
+            triggerBattleEncounterId = "act5_track_a_swagger_turkish_battle",
+            nextNodeId = "act5_ch3_post_battle"
         ),
         DialogueNode(
-            id = "act5_ch3_foreign_delegation",
-            setFlagOnEnter = "a5c3_foreign",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "Prime ministers and foreign ambassadors keep bypassing Washington entirely and flying directly to Palm Beach. Everyone on the international stage knows where the real power is centered.",
-            nextNodeId = "act5_ch3_terrace_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch3_comeback_tour",
-            setFlagOnEnter = "a5c3_rally",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Rallies in Iowa, Ohio, Michigan, Pennsylvania! Lines three miles long in sub-zero snow! Nobody has ever seen crowds like this. The comeback will be historic!",
-            nextNodeId = "act5_ch3_terrace_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch3_war_room",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "Commander, our intelligence sources report the Beltway establishment is terrified of your poll numbers. They're preparing an unprecedented escalation — an armed dawn raid on Mar-a-Lago's storage rooms.",
-            nextNodeId = "act5_ch3_hero_closets"
-        ),
-        DialogueNode(
-            id = "act5_ch3_hero_closets",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "An armed raid on my home?! Over declassified personal papers, letters from Kim, and press clippings?! Let them come. To the storage vault!",
+            id = "act5_ch3_post_battle",
+            speaker = DialogueSpeaker.MAYOR_SWAGGER,
+            side = SpeakerSide.RIGHT,
+            text = "*Tips his cap with a grin* Hey, Commander—after what the DOJ put both of us through, I respect the hustle! Keep an eye on Queens in Chapter 4, though—because Ugandan-born rap producer turned democratic socialist 'Mr. Cardamom' just pulled up in an Astoria chapati truck to freeze the rent and make the Q70 bus free!",
             changeSceneId = SCENE_ACT5_CH4_CLOSETS.id,
             nextNodeId = "act5_ch4_intro"
         ),
 
         // =========================================================================
-        // ACT V - CHAPTER 4: THE DEEP STATE RAID ON THE GOLDEN CLOSETS (2022)
+        // ACT V (TRACK A) - CHAPTER 4: ENTER 'MR. CARDAMOM,' NANI'S APRON & CITY-OWNED GROCERIES (2025–2026)
         // =========================================================================
         DialogueNode(
             id = "act5_ch4_intro",
+            changeSceneId = SCENE_ACT5_CH4_CLOSETS.id,
             speaker = DialogueSpeaker.NARRATOR_KAROLINE,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "BREAKING NEWS: Thirty armed federal agents have descended on Mar-a-Lago with search warrants, rifling through personal storage rooms, Melania's wardrobe, and decades of declassified souvenirs.",
-            nextNodeId = "act5_ch4_vault_hub"
+            text = "Chapter 4 (Track A): We have arrived in Astoria, Queens! Standing in front of a chapati food truck wearing a bespoke thrifted suit under a floral kitchen apron is Standard-Bearer #5: Zohran Cardamom—formerly known in the 2016–2019 rap scene as 'Young Cardamom' and 'Mr. Cardamom'!",
+            nextNodeId = "act5_ch4_zohran_speech"
         ),
         DialogueNode(
-            id = "act5_ch4_vault_hub",
+            id = "act5_ch4_zohran_speech",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.RIGHT,
+            text = "*Flips a sizzling chapati on the griddle while a symmetrical Wes Anderson-style TikTok camera zooms in* 'Yo, peace! Before I entered City Hall to freeze the rent, make the buses fare-free, and open five city-owned municipal grocery stores across the five boroughs, I dropped the 2019 rap single \"Nani\" in an apron alongside cookbook legend and actress Madhur Jaffrey!'",
+            nextNodeId = "act5_ch4_zohran_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch4_zohran_hub",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "You took my passports! You rummaged through Melania's closets! Under the Presidential Records Act, every president has personal boxes! Bill had sock drawers, Barack had warehouses in Chicago!",
+            text = "Wait until you hear the full dossier on 'Mr. Cardamom,' folks! Let's roast his 'working-class revolution' résumé and watch Chyron McSpin embarrass himself one last time before the 2026 Grand Finale!",
             choices = listOf(
-                DialogueChoice("a5c4_pra", "Invoke the Presidential Records Act civil statutory protections", listOf("pra", "records", "act", "civil", "statute"), "act5_ch4_pra_argument", completionFlag = "a5c4_pra"),
-                DialogueChoice("a5c4_passports", "Demand the return of stolen passports and personal items", listOf("passports", "wardrobe", "melania", "stolen", "return"), "act5_ch4_passports_demand", completionFlag = "a5c4_passports"),
-                DialogueChoice("a5c4_kash", "Deploy Kash Patel's official declassification clearance logs", listOf("kash", "declassify", "clearance", "logs", "orders"), "act5_ch4_kash_declass", completionFlag = "a5c4_kash"),
-                DialogueChoice("a5c4_battle", "Unleash the 5-hero supergroup to defend the Golden Closets", listOf("fight", "raid", "golem", "battle", "defend"), "act5_ch4_raid_confront")
+                DialogueChoice("a5c4_bowdoin", "Roast 'Mr. Cardamom's' \$60k/yr Bank Street School, Bowdoin College & Hollywood Director pedigree!", listOf("bowdoin", "bank street", "hollywood", "mira nair", "cardamom", "nani"), "act5_ch4_bowdoin_node", completionFlag = "a5c4_bow_done"),
+                DialogueChoice("a5c4_grocery", "Roast his proposal for Five City-Owned Municipal Grocery Stores & Fare-Free MTA Buses!", listOf("grocery", "city owned", "buses", "q70", "rent"), "act5_ch4_grocery_node", completionFlag = "a5c4_groc_done"),
+                DialogueChoice("a5c4_meta", "Watch Chyron McSpin jump out of a Queens bodega in 2026 still yelling about the 2005 Access Hollywood Bus Tape!", listOf("chyron", "bus tape", "2005", "meta", "let it go"), "act5_ch4_meta_callback", completionFlag = "a5c4_meta_done"),
+                DialogueChoice("a5c4_proceed", "Advance to Chapter 5: The 2026 Bipartisan Grand Finale Showdown!", listOf("proceed", "advance", "finale", "chapter 5"), "act5_ch5_finale_intro")
             )
         ),
         DialogueNode(
-            id = "act5_ch4_pra_argument",
-            setFlagOnEnter = "a5c4_pra",
+            id = "act5_ch4_bowdoin_node",
+            setFlagOnEnter = "a5c4_bow_done",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.LEFT,
+            text = "Let's read the 'proletariat' bio here, Zohran: Your mother is Oscar-nominated Hollywood director Mira Nair (Monsoon Wedding, Disney's Queen of Katwe—which you served as music supervisor on!), your father is an endowed Columbia University professor, you attended the \$60,000-a-year private Bank Street School for Children on the Upper West Side, and you graduated from elite Bowdoin College in Maine before LARPing as a socialist revolutionary in a \$2,000 suit!",
+            nextNodeId = "act5_ch4_zohran_hub"
+        ),
+        DialogueNode(
+            id = "act5_ch4_grocery_node",
+            setFlagOnEnter = "a5c4_groc_done",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "The Presidential Records Act is a civil negotiation statute, not a criminal weapon! You discuss storage with the National Archives over tea and scones, you don't send thirty armed agents with guns drawn!",
-            nextNodeId = "act5_ch4_vault_hub"
+            text = "And look at his big economic plan, folks—Five City-Owned Municipal Grocery Stores run by the New York City bureaucracy! Have you ever been to the DMV in Queens? Imagine waiting at Window 14B with a stamped triplicate voucher just to buy a bruised avocado and a carton of oat milk!",
+            nextNodeId = "act5_ch4_zohran_hub"
         ),
         DialogueNode(
-            id = "act5_ch4_passports_demand",
-            setFlagOnEnter = "a5c4_passports",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Son, if you're taking a man's passport, his wife's clothes, and love letters from North Korea, you ain't looking for national security secrets. You're on a political fishing expedition, and you didn't even pack bait.",
-            nextNodeId = "act5_ch4_vault_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch4_kash_declass",
-            setFlagOnEnter = "a5c4_kash",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "Every box in this vault was declassified under standing executive authorities before departing the Oval Office. We have the transport manifests, clearance logs, and paper trail. This raid is completely unlawful.",
-            nextNodeId = "act5_ch4_vault_hub"
-        ),
-        DialogueNode(
-            id = "act5_ch4_raid_confront",
+            id = "act5_ch4_meta_callback",
+            setFlagOnEnter = "a5c4_meta_done",
             speaker = DialogueSpeaker.MEDIA_ANCHOR,
             side = SpeakerSide.RIGHT,
-            text = "SEIZE THE BANKER BOXES! We must summon the Midnight Ballot Golem and Armed Raid Phantoms to suppress the comeback!",
-            nextNodeId = "act5_ch4_battle_trigger"
+            text = "*Bursts out of a Queens subway entrance waving a faded VHS tape in the year 2026* STOP TALKING ABOUT MUNICIPAL GROCERY STORES! What about October 7, 2016—when we aired the 2005 Access Hollywood bus tape where Commander America popped Tic-Tacs with Billy Bush?!",
+            nextNodeId = "act5_ch4_musk_roasts_meta"
         ),
         DialogueNode(
-            id = "act5_ch4_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VITAMINS, RAW MILK, AND TWENTY-FOUR INCH PYTHONS, BROTHER! The full dream team of 5 American legends is unleashed! Hit that Tremendous Strike and body-slam the Ballot Golem!",
-            triggerBattleEncounterId = "act5_golem_battle",
-            nextNodeId = "act5_ch4_post_battle"
-        ),
-        DialogueNode(
-            id = "act5_ch4_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act5_ch4_musk_roasts_meta",
+            speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.LEFT,
-            text = "The Golem crumbles into scrap paper and the raid backfired completely! Donations broke our servers and our poll numbers hit record highs! The exile is over! Now we march across the Word-Salad Wasteland of the Vice-Sovereign!",
-            changeSceneId = SCENE_ACT6_CH1_BORDER.id,
-            nextNodeId = "act6_ch1_intro"
+            text = "*Laughs while holding his porcelain bathroom sink* Bro, it is the year 2026! That 2005 Billy Bush bus tape is TWENTY-ONE YEARS OLD—that tape is old enough to legally drink a beer at a bar and rent a Cybertruck! Let that sink in!",
+            nextNodeId = "act5_ch4_zohran_hub"
         ),
 
-        // Legacy compatibility nodes for existing tests & saves
+        // =========================================================================
+        // ACT V (TRACK A) - CHAPTER 5: THE 2026 BIPARTISAN GRAND FINALE (GRAND CLIMAX)
+        // =========================================================================
         DialogueNode(
-            id = "act5_golf",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Hit a clean hole-in-one! 300 yards straight down the fairway! My energy is at 1000%!",
-            nextNodeId = "act5_hulk_react"
+            id = "act5_ch5_finale_intro",
+            changeSceneId = SCENE_ACT5_CH5_FINALE.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 5 (Act V Track A Grand Finale): We have arrived at the 2026 Bipartisan Roast Arena! Across the stage stand Standard-Bearers past and present—Zohran Cardamom ('Mr. Cardamom') in his Nani rap apron, Kamala Coconut with her Three-Circle Venn Diagram, and Joe Naptime with his 10-clip Real-Audio Gibberish Megaphone and Double-Scoop Chocolate Chip Waffle Cone!",
+            nextNodeId = "act5_ch5_boss_banter"
         ),
         DialogueNode(
-            id = "act5_hulk_react",
+            id = "act5_ch5_boss_banter",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.RIGHT,
+            text = "Yo, Commander America and Musk-X! Between my Nani chapati drop, Kamala's Coconut Tree context, and Joe's truinanashabbadepressure ice-cream blizzard, we're freezing your rent and making this entire arena fare-free!",
+            nextNodeId = "act5_ch5_commander_banter"
+        ),
+        DialogueNode(
+            id = "act5_ch5_commander_banter",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.LEFT,
+            text = "We've been through eleven years of escalators, Chappaqua servers, Covfefe tweets, \$24,000 freezers, Corn Pop chains, coconut trees, donut shops, and mid-air X-jumps, folks! Musk-X, JD Pants, Wizard Kash, Foghorn Kennedy, Little Marco—let's win the Track A Grand Finale!",
+            nextNodeId = "act5_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act5_ch5_finale_battle_trigger",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "THREE HUNDRED YARDS RIGHT DOWN THE MIDDLE, BROTHER! That's what I'm talkin' about! Say your prayers, take your vitamins, and watch the comeback begin!",
-            nextNodeId = "act5_rally"
+            text = "THIS IS IT, BROTHER—THE ACT V TRACK A GRAND FINALE! Commander America & Musk-X vs. Zohran Cardamom ('Mr. Cardamom'), Kamala Coconut, and Joe Naptime! LET EQUAL-OPPORTUNITY SATIRE RUN WILD!",
+            triggerBattleEncounterId = "act5_track_a_grand_finale",
+            nextNodeId = "act5_ch5_post_battle"
         ),
         DialogueNode(
-            id = "act5_rally",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            id = "act5_ch5_post_battle",
+            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "CONGRATULATIONS! You have conquered all 5 Acts on Track A! Before we raise the curtain on the Unified Bipartisan Curtain-Call Epilogue, would you like to switch to Track B and play the 5 hilarious chapters of Act V as Zohran Cardamom ('Mr. Cardamom') and Mayor Swagger?",
+            choices = listOf(
+                DialogueChoice("a5_play_track_b", "Play Act V Track B: Experience all 5 Chapters as Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger!", listOf("track b", "zohran", "mamdani", "cardamom", "swagger", "other side"), "act5_tb_ch1_intro"),
+                DialogueChoice("a5_curtain_call", "Enter the Unified 2026 Bipartisan Curtain-Call Finale & Epilogue!", listOf("epilogue", "curtain call", "finale", "end", "credits"), "act5_bipartisan_curtain_call")
+            )
+        ),
+
+        // =========================================================================
+        // ACT V (TRACK B) - CHAPTER 1: 'MR. CARDAMOM,' NANI'S APRON & 5 CITY GROCERY STORES (PLAYING AS ZOHRAN CARDAMOM + MAYOR SWAGGER)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_tb_ch1_intro",
+            changeSceneId = SCENE_ACT5_TB_CH1_CHAPATI.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Welcome to Act V on Track B: The 2025–2026 Standard-Bearer Finale! I'm Jen Circle-Back, alongside Karine Hatch-Act and Oprah Free-Car! Kamala Coconut has passed the baton to Standard-Bearer #5: Ugandan-born rap producer turned New York City democratic socialist Zohran Cardamom ('Mr. Cardamom'), teamed up with swaggering table-water connoisseur Mayor Swagger—both at 100% HP and MP!",
+            nextNodeId = "act5_tb_ch1_oprah_welcome"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch1_oprah_welcome",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "YOU GET A HOT CHAPATI! YOU GET A FREE Q70 BUS RIDE! YOU GET A CITY-OWNED MUNICIPAL GROCERY STORE! AND YOU GET TURKISH AIRLINES LIE-FLAT UPGRADES, HONEY!",
+            nextNodeId = "act5_tb_ch1_zohran_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch1_zohran_hub",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
             side = SpeakerSide.LEFT,
-            text = "They tried to stop us, but the movement is bigger and stronger than ever before! We are preparing the greatest comeback in world history!",
-            nextNodeId = "act5_golem_ambush"
+            text = "*Adjusts his thrifted bespoke suit and ties on his 'Nani' rap apron beside the Astoria chapati truck* Yo, let's keep it 100% real before we battle the Luxury Condo Rent-Hike Lobbyists: I rap in an apron with Madhur Jaffrey, I grew up the son of an Oscar-nominated Hollywood director and a Columbia professor, and I have the official MTA receipt proving my free-bus pilot actually worked! What are we dropping first?",
+            choices = listOf(
+                DialogueChoice("tb5c1_nani", "Perform the 2019 'Mr. Cardamom – Nani' rap verse & self-roast the Bank Street / Bowdoin trust-fund résumé!", listOf("nani", "cardamom", "madhur jaffrey", "bowdoin", "bank street", "rap"), "act5_tb_ch1_nani_node", completionFlag = "tb5c1_nani_done"),
+                DialogueChoice("tb5c1_mta_vind", "VINDICATION WIN #1: Present the official MTA Fare-Free Bus Pilot Report (30–38% ridership surge & 38.9% drop in assaults)!", listOf("vindication", "mta", "bus", "q70", "pilot", "grocery"), "act5_tb_ch1_mta_vindication", completionFlag = "tb5c1_mta_done"),
+                DialogueChoice("tb5c1_battle", "Unleash 'Mr. Cardamom' Nani Chapati Drop & Mayor Swagger on the Luxury Condo Rent-Hike Lobbyists!", listOf("battle", "fight", "lobbyists", "proceed", "advance"), "act5_tb_ch1_battle_trigger")
+            )
         ),
         DialogueNode(
-            id = "act5_golem_ambush",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
+            id = "tb5c1_nani_node_alias",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "Yo, peace!",
+            nextNodeId = "act5_tb_ch1_zohran_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch1_nani_node",
+            setFlagOnEnter = "tb5c1_nani_done",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "*Raps on the steps of the chapati truck in an apron* Before I ever ran for office, I performed under the stage names 'Young Cardamom' and 'Mr. Cardamom,' curated the soundtrack for Disney's Queen of Katwe (directed by my mom Mira Nair!), and filmed the 2019 music video 'Nani' in an apron with cookbook legend Madhur Jaffrey! And look, yes—I went to the \$60,000-a-year Bank Street School and Bowdoin College before preaching the working-class revolution in a symmetrical Wes Anderson TikTok, so I'm roasting my own Ivy-adjacent résumé before JD Pants can!",
+            nextNodeId = "act5_tb_ch1_zohran_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch1_mta_vindication",
+            setFlagOnEnter = "tb5c1_mta_done",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "VINDICATION WIN #1 & #3! When critics claimed Zohran's fare-free bus pilot on the Q4, B60, Bx18, M116, and S46 routes was a 'complete failure that caused violent crime on buses to skyrocket,' the official August 2024 MTA Evaluation Report proved the exact opposite: weekday ridership jumped 30% to 38%, boarding speeds improved at every stop, and assaults/harassment against bus operators DROPPED by 38.9%! Plus, Zohran's dual-citizenship timeline was 100% transparent—born in Kampala, Uganda in 1991, naturalized as a U.S. citizen in 2018 before ever running for the NY State Assembly!",
+            nextNodeId = "act5_tb_ch1_zohran_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch1_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "LUXURY CONDO RENT-HIKE LOBBYISTS AND AN MTA SWIPE-CARD TURNSTILE ARE BLOCKING THE BUS LANE, EVERYBODY! Zohran Cardamom and Mayor Swagger, freeze their rent!",
+            triggerBattleEncounterId = "act5_track_b_landlord_lobby_battle",
+            nextNodeId = "act5_tb_ch1_post_battle"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch1_post_battle",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "Rent frozen, buses fare-free, and our HP and MP are automatically back at 100%! Now let's step inside Gracie Mansion and the Turkish Airlines First-Class Lounge for Chapter 2—where my co-op partner Mayor Swagger is demonstrating his NYPD Contraband Baby-Doll search!",
+            changeSceneId = SCENE_ACT5_TB_CH2_SWAGGER.id,
+            nextNodeId = "act5_tb_ch2_intro"
+        ),
+
+        // =========================================================================
+        // ACT V (TRACK B) - CHAPTER 2: MAYOR SWAGGER'S CONTRABAND BABY-DOLL & MIDNIGHT SEA BASS (2025)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_tb_ch2_intro",
+            changeSceneId = SCENE_ACT5_TB_CH2_SWAGGER.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 2 (Track B): We are inside Gracie Mansion with Mayor Swagger! On the table sit a plastic baby doll, a glass jar of marbles, a plate of midnight Chilean sea bass from Osteria La Baia, a locked 6-digit iPhone, and a stack of Turkish Airlines lie-flat boarding passes!",
+            nextNodeId = "act5_tb_ch2_swagger_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch2_swagger_hub",
+            speaker = DialogueSpeaker.MAYOR_SWAGGER,
+            side = SpeakerSide.LEFT,
+            text = "*Adjusts his collar with maximum swagger* Listen, Zohran—nobody survives New York politics without a little swagger, a glass of rat-free New York tap water, and a preliminary review of your planning that preludes the pre-planning! What are we showing the voters before we battle the Subpoena Auditors?",
+            choices = listOf(
+                DialogueChoice("tb5c2_swagger_hits", "Demonstrate the Contraband Baby-Doll search, 'Strictly Vegan' Midnight Sea Bass & 6-Digit iPhone Passcode!", listOf("baby doll", "sea bass", "vegan", "passcode", "turkish"), "act5_tb_ch2_swagger_hits_node", completionFlag = "tb5c2_swag_done"),
+                DialogueChoice("tb5c2_vind245", "VINDICATION WINS #2, #4 & #5: Debunk the 'Secret Billionaire Penthouse,' 'Banned All Bodegas' & 'Defund Quotes' smears!", listOf("vindication", "penthouse", "bodegas", "grocery", "astoria"), "act5_tb_ch2_vindications_node", completionFlag = "tb5c2_vind_done"),
+                DialogueChoice("tb5c2_battle", "Team up to battle the Subpoena Passcode Cracker & Midnight Sea Bass Waiter!", listOf("battle", "fight", "auditor", "proceed", "advance"), "act5_tb_ch2_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act5_tb_ch2_swagger_hits_node",
+            setFlagOnEnter = "tb5c2_swag_done",
+            speaker = DialogueSpeaker.MAYOR_SWAGGER,
+            side = SpeakerSide.LEFT,
+            text = "*Pulls a prop revolver out of a plastic baby doll while taking a bite of Chilean sea bass* Look, I taught parents to check the baby doll and the marble jar! Yes, I wrote a whole book about being a strict plant-based vegan while secretly ordering the Chilean sea bass at Osteria La Baia at midnight! Yes, when Turkish Airlines upgraded me to a lie-flat bed I said 'Thank you'! And yes, I changed my iPhone passcode from 4 digits to 6 digits and forgot the code the exact day the feds asked for it!",
+            nextNodeId = "act5_tb_ch2_swagger_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch2_vindications_node",
+            setFlagOnEnter = "tb5c2_vind_done",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "TRIPLE VINDICATION WIN! First, tabloid flyers claimed I 'secretly owned a \$5 million billionaire penthouse in Tribeca while pretending to rent in Queens'—NYC ACRIS property records and ethics disclosures proved I lived in a standard Astoria apartment while my parents' longtime Morningside Heights apartment was faculty housing tied to Columbia University! Second, my 5 City-Owned Grocery Stores proposal is a \$60M pilot (one store per borough on city-owned land) that doesn't ban a single private bodega! Third, my public safety plan explicitly invests in dedicated mental-health crisis responders so NYPD officers can focus on violent crime!",
+            nextNodeId = "act5_tb_ch2_swagger_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch2_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "A SUBPOENA PASSCODE CRACKER AND AN OSTERIA LA BAIA SEA-BASS WAITER ARE STORMING THE LOUNGE, HONEY! Zohran and Mayor Swagger, hit 'em with Turkish Airlines Upgrade and 5 City-Owned Grocery Stores!",
+            triggerBattleEncounterId = "act5_track_b_turkish_auditor_battle",
+            nextNodeId = "act5_tb_ch2_post_battle"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch2_post_battle",
+            speaker = DialogueSpeaker.MAYOR_SWAGGER,
+            side = SpeakerSide.LEFT,
+            text = "That passcode is staying 6 digits forever, and our HP and MP are back at 100%! Now let's head to the Butler Star-Jump Stage & Cybertruck Lab in Chapter 3 to roast Musk-X!",
+            changeSceneId = SCENE_ACT5_TB_CH3_CYBERTRUCK.id,
+            nextNodeId = "act5_tb_ch3_intro"
+        ),
+
+        // =========================================================================
+        // ACT V (TRACK B) - CHAPTER 3: ROASTING MUSK-X'S MID-AIR 'X' JUMP & PORCELAIN SINK (2025–2026)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_tb_ch3_intro",
+            changeSceneId = SCENE_ACT5_TB_CH3_CYBERTRUCK.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 3 (Track B): We are at the Cybertruck Demo Stage! Across from us stands billionaire Guest Summon Musk-X—wearing his black 'Dark Gothic MAGA' hat, clutching a porcelain bathroom sink, and standing beside a Cybertruck with two steel-ball-shattered windows!",
+            nextNodeId = "act5_tb_ch3_musk_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch3_musk_hub",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "*Points his TikTok lapel mic at Musk-X* Look at the richest man on Earth: jumping into the air trying to form the letter X with his limbs while four inches of belly peek out under his 'Occupy Mars' shirt! What are we roasting first?",
+            choices = listOf(
+                DialogueChoice("tb5c3_starjump", "Roast Musk-X's Oct 5, 2024 Mid-Air 'X' Star-Jump, his porcelain bathroom sink & renaming Twitter to 'X'!", listOf("star jump", "midriff", "sink", "twitter", "gothic maga"), "act5_tb_ch3_starjump_node", completionFlag = "tb5c3_jump_done"),
+                DialogueChoice("tb5c3_meta", "Watch Kash Subpoena barge onto the stage in 2026 trying to bring up Hillary's 1978 Cattle Futures!", listOf("kash", "cattle futures", "1978", "meta", "let it go"), "act5_tb_ch3_meta_callback", completionFlag = "tb5c3_meta_done"),
+                DialogueChoice("tb5c3_battle", "Battle Musk-X's Dark Gothic MAGA Star-Jump & Shattered Cybertruck!", listOf("battle", "fight", "musk", "cybertruck", "proceed"), "act5_tb_ch3_battle_trigger")
+            )
+        ),
+        DialogueNode(
+            id = "act5_tb_ch3_starjump_node",
+            setFlagOnEnter = "tb5c3_jump_done",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "Think about this sequence of events, Elon: First you paid \$44 billion for Twitter after trying to back out of your own \$54.20 weed-joke offer, then you physically carried a porcelain bathroom sink into the lobby just to tweet a pun my uncle wouldn't post on WhatsApp, then you threw away fifteen years of globally recognized 'tweet' branding for the single letter X, and then you smashed both of your own 'unbreakable' Cybertruck windows with a metal ball on live stream!",
+            nextNodeId = "act5_tb_ch3_musk_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch3_meta_callback",
+            setFlagOnEnter = "tb5c3_meta_done",
+            speaker = DialogueSpeaker.KASH,
             side = SpeakerSide.RIGHT,
-            text = "The Midnight Ballot Golem commands you to accept the 3 AM count!",
-            nextNodeId = "act5_kennedy_joins"
+            text = "*Runs out from behind the shattered Cybertruck waving a yellowed 1978 ledger* Forget Cybertruck windows and mid-air star-jumps—what about 1978 when Hill-Rod turned \$1,000 into \$99,537 trading Arkansas cattle futures with Refco broker Red Bone?!",
+            nextNodeId = "act5_tb_ch3_oprah_roasts_meta"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch3_oprah_roasts_meta",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "HONEY, IT IS THE YEAR 2026! THAT 1978 ARKANSAS CATTLE TRADE IS FORTY-EIGHT YEARS OLD! Zohran Cardamom wasn't even BORN until 1991—thirteen years AFTER those cows retired! Let the 1978 cows rest in peace!",
+            nextNodeId = "act5_tb_ch3_musk_hub"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch3_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Musk-X just leaped into a Dark Gothic MAGA Star-Jump and hurled a steel ball through the Cybertruck window! Zohran Cardamom and Mayor Swagger, engage!",
+            triggerBattleEncounterId = "act5_track_b_musk_starjump_battle",
+            nextNodeId = "act5_tb_ch3_post_battle"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch3_post_battle",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "We fixed that Cybertruck in post, and our HP and MP are back at 100%! Now let's storm the Department of Government Efficiency ('DOGE') in Chapter 4—where JD Pants, Wizard Kash, and Foghorn Kennedy are guarding the door!",
+            changeSceneId = SCENE_ACT5_TB_CH4_DOGE.id,
+            nextNodeId = "act5_tb_ch4_intro"
+        ),
+
+        // =========================================================================
+        // ACT V (TRACK B) - CHAPTER 4: SHIBA INU BUREAUCRACY VS. SPRINKLE DONUTS & WIZARD BOOKS (2026)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_tb_ch4_intro",
+            changeSceneId = SCENE_ACT5_TB_CH4_DOGE.id,
+            speaker = DialogueSpeaker.NARRATOR_KJP,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 4 (Track B): We are inside the Department of Government Efficiency ('DOGE') hearing chamber! Beneath a giant Shiba Inu meme banner stand JD Pants with a box of 'whatever makes sense' glazed donuts, Wizard Kash with his \$19.99 'Plot Against the King' children's book, and Senator Foghorn Kennedy with his Oxford law degree disguised as a Louisiana porch drawl!",
+            nextNodeId = "act5_tb_ch4_vance_banter"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch4_vance_banter",
+            speaker = DialogueSpeaker.VANCE,
+            side = SpeakerSide.RIGHT,
+            text = "Hold it right there, 'Mr. Cardamom'! How long have you been a democratic socialist? Okay, good. How long has that chapati truck been parked outside? Okay, good. Between my sprinkle donuts, Kash's wizard book, and Senator Kennedy telling you to call a crackhead, your five city-owned grocery stores are getting DOGE'd!",
+            nextNodeId = "act5_tb_ch4_swagger_reply"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch4_swagger_reply",
+            speaker = DialogueSpeaker.MAYOR_SWAGGER,
+            side = SpeakerSide.LEFT,
+            text = "First of all, JD, nobody orders 'some sprinkle stuff, whatever makes sense' in a New York bakery without getting kicked out to New Jersey! Second, Zohran and I brought fresh chapatis, midnight sea bass, and the Contraband Baby-Doll! Let's clear the DOGE Vanguard!",
+            nextNodeId = "act5_tb_ch4_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch4_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE DOGE VANGUARD BOSS RUSH, HONEY! Zohran Cardamom & Mayor Swagger vs. JD Pants, Wizard Kash, and Senator Foghorn Kennedy! RING THE BELL!",
+            triggerBattleEncounterId = "act5_track_b_doge_squad_battle",
+            nextNodeId = "act5_tb_ch4_post_battle"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch4_post_battle",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "The DOGE Vanguard is down, our HP and MP are 100% restored, and only one battle remains in the entire game: Chapter 5, the 2026 Bipartisan Grand Finale against Commander America, Musk-X, and the Red Wooden Diet Coke Valet Button!",
+            changeSceneId = SCENE_ACT5_TB_CH5_FINALE.id,
+            nextNodeId = "act5_tb_ch5_intro"
+        ),
+
+        // =========================================================================
+        // ACT V (TRACK B) - CHAPTER 5: CHAPATIS VS. DIET COKE BUTTONS — THE BIPARTISAN CURTAIN CALL (2026 FINALE)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_tb_ch5_intro",
+            changeSceneId = SCENE_ACT5_TB_CH5_FINALE.id,
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Chapter 5 (Act V Track B Grand Finale): Welcome to the 2026 Bipartisan Grand Finale Stage! Across the golden arena stand Commander America in his McDonald's Fry Apron and Neon-Orange Garbage Vest, Musk-X in his Dark Gothic MAGA hat, and the Red Wooden Diet Coke Valet Box!",
+            nextNodeId = "act5_tb_ch5_commander_challenge"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch5_commander_challenge",
+            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            side = SpeakerSide.RIGHT,
+            text = "Look who made it to the Grand Finale, folks—'Mr. Cardamom' in his Nani rap apron and Mayor Swagger with his Turkish Airlines boarding pass and midnight sea bass! I've got twelve Diet Cokes on ice, a gold Sharpie, 'Concepts of a Plan,' and Musk-X jumping into a giant X behind me! Let's see what you've got!",
+            nextNodeId = "act5_tb_ch5_zohran_response"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch5_zohran_response",
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
+            side = SpeakerSide.LEFT,
+            text = "For Hill-Rod's Chappaqua server, Nancy's \$24,000 Sub-Zero ice-cream freezers, Joe's 10-clip Badakathcare megaphone, Kamala's Coconut Tree context, Mayor Swagger's Contraband Baby-Doll, and my Astoria chapati truck—let's finish the Track B Relay!",
+            nextNodeId = "act5_tb_ch5_finale_battle_trigger"
+        ),
+        DialogueNode(
+            id = "act5_tb_ch5_finale_battle_trigger",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "IT'S THE ACT V TRACK B GRAND FINALE, EVERYBODY! Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger vs. Commander America, Musk-X & the Diet Coke Valet Turret! RING THE FINAL BELL!",
+            triggerBattleEncounterId = "act5_track_b_grand_finale",
+            nextNodeId = "act5_bipartisan_curtain_call"
+        ),
+
+        // =========================================================================
+        // UNIFIED 2026 BIPARTISAN CURTAIN-CALL EPILOGUE (ALL 6 NARRATORS + FULL CAST)
+        // =========================================================================
+        DialogueNode(
+            id = "act5_bipartisan_curtain_call",
+            changeSceneId = SCENE_ACT8_CH5_INAUGURATION.id,
+            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "LADIES AND GENTLEMEN, ALL FIVE ACTS (2015–2026) ARE COMPLETE! All six narrators—Kayleigh Binder-Tabs, Karoline Podium-Boss, Hulkster 24-Pythons, Jen Circle-Back, Karine Hatch-Act, and Oprah Free-Car—are sharing one giant desk as both sides of the aisle step out for the Bipartisan Curtain Call!",
+            nextNodeId = "act5_curtain_call_psaki"
+        ),
+        DialogueNode(
+            id = "act5_curtain_call_psaki",
+            speaker = DialogueSpeaker.NARRATOR_PSAKI,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "Over 48 chapters across Track A and Track B, we proved two immutable laws of American politics: first, every single politician on both sides of the aisle generates better comedy in real life than fiction could ever invent; and second, neither side will EVER let a 10-, 20-, or 48-year-old talking point go!",
+            nextNodeId = "act5_curtain_call_oprah"
+        ),
+        DialogueNode(
+            id = "act5_curtain_call_oprah",
+            speaker = DialogueSpeaker.NARRATOR_OPRAH,
+            side = SpeakerSide.CENTER_NARRATOR,
+            text = "YOU GET A DIET COKE BUTTON! YOU GET A \$24,000 SUB-ZERO ICE CREAM FREEZER! YOU GET A DOUBLE-SCOOP CHOCOLATE CHIP WAFFLE CONE! YOU GET A COCONUT TREE! YOU GET A DARK GOTHIC MAGA STAR-JUMP! AND YOU GET A SIZZLING NANI CHAPATI, EVERYBODY!",
+            nextNodeId = "act8_ch5_hulk_finale"
         ),
         DialogueNode(
             id = "act5_kennedy_joins",
             speaker = DialogueSpeaker.KENNEDY,
             side = SpeakerSide.LEFT,
-            text = "Now hold on just a minute, son. Did you write that 3 AM ballot rule yourself, or did somebody help you think it up? Because in plain English, that sounds dumber than a bag of hammers. Commander, let's grill these bureaucrats until they squeal!",
-            nextNodeId = "act5_hero_kennedy_reply"
-        ),
-        DialogueNode(
-            id = "act5_hero_kennedy_reply",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Senator, I love it! Razor-sharp common sense, pure Louisiana steel, and the full 5-hero supergroup is assembled! Golem, you're fired!",
-            nextNodeId = "act5_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act5_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "VITAMINS, RAW MILK, AND TWENTY-FOUR INCH PYTHONS, BROTHER! The full dream team of 5 American legends is unleashed! Hit that Tremendous Strike and body-slam the Ballot Golem!",
-            triggerBattleEncounterId = "act5_golem_battle",
-            nextNodeId = "act5_ch4_post_battle"
-        ),
-        DialogueNode(
-            id = "act5_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The Golem crumbles into scrap paper! Now, we navigate the confusing realm of the Vice-Sovereign!",
-            changeSceneId = SCENE_ACT6_CH1_BORDER.id,
+            text = "Next time you're in trouble, call a crackhead!",
             nextNodeId = "act6_ch1_intro"
         ),
-
-        // =========================================================================
-        // ACT VI: THE WORD-SALAD WASTELAND (2022-2023) — 5 CHAPTERS
-        // =========================================================================
-
-        // -------------------------------------------------------------------------
-        // Chapter 1: The Border Czar Inspection (2022)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act6_ch1_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The year is 2022. Millions of undocumented migrants are streaming across the southern border under the watchful eye of the newly appointed Border Czar, who has famously never visited the border herself!",
-            nextNodeId = "act6_ch1_border_arrival"
-        ),
-        DialogueNode(
-            id = "act6_ch1_border_arrival",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Look at this disaster, folks! Thousands of feet of brand-new, beautiful steel bollards left rusting on the dirt! We paid for them, they were ready to install, and they stopped construction on day one! Total madness!",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "You think you just fell out of a coconut tree? You exist in the context of all in which you live and what came before you!",
             nextNodeId = "act6_ch1_border_hub"
         ),
         DialogueNode(
             id = "act6_ch1_border_hub",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The team inspects the gaping openings in the unfinished perimeter. How do we break through the Border Czar's blockade?",
+            text = "Act VI Hub:",
             choices = listOf(
-                DialogueChoice("a6c1_excuse", "Demand an explanation for why the Border Czar hasn't visited", listOf("czar", "visit", "excuse", "europe", "border"), "act6_ch1_czar_excuse", completionFlag = "a6c1_excuse"),
-                DialogueChoice("a6c1_panels", "Inspect the $300 million in rusting, abandoned wall panels", listOf("panels", "rust", "steel", "materials", "waste"), "act6_ch1_rusted_panels", completionFlag = "a6c1_panels"),
-                DialogueChoice("a6c1_fentanyl", "Expose the cartel smuggling pipelines and fentanyl surge", listOf("fentanyl", "cartel", "smuggling", "pipelines", "border"), "act6_ch1_fentanyl_crisis", completionFlag = "a6c1_fentanyl"),
-                DialogueChoice("a6c1_proceed", "Advance past the perimeter gap and confront the smugglers", listOf("advance", "proceed", "forward", "gap", "confront"), "act6_ch1_cartel_ambush")
+                DialogueChoice("a6c1_excuse", "Haven't been to Europe either", listOf("europe", "excuse", "border"), "act6_ch1_czar_excuse", completionFlag = "a6c1_excuse_done"),
+                DialogueChoice("a6c1_proceed", "Proceed to the Venn Diagram Mirage", listOf("proceed", "venn", "advance"), "act6_ch2_intro")
             )
         ),
         DialogueNode(
             id = "act6_ch1_czar_excuse",
-            setFlagOnEnter = "a6c1_excuse",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "When Lester Holt asked her why she hadn't visited the border, she literally laughed and said: 'Well, I haven't been to Europe either!' That is not foreign policy, folks — that is an admission of complete neglect!",
+            setFlagOnEnter = "a6c1_excuse_done",
+            speaker = DialogueSpeaker.KAMALA,
+            side = SpeakerSide.RIGHT,
+            text = "We've been to the border! And I haven't been to Europe! *Laughs* I don't understand the point that you're making!",
             nextNodeId = "act6_ch1_border_hub"
         ),
-        DialogueNode(
-            id = "act6_ch1_rusted_panels",
-            setFlagOnEnter = "a6c1_panels",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Over three hundred million dollars of high-grade American steel sitting in the dirt being eaten by desert termites. Working-class taxpayers financed this while contractors were paid millions to stand down.",
-            nextNodeId = "act6_ch1_border_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch1_fentanyl_crisis",
-            setFlagOnEnter = "a6c1_fentanyl",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Down in Louisiana, we have an old saying: you can put wings on a pig, but that don't make it an eagle. Calling yourself a Border Czar without visiting the border is like calling yourself an astronaut because you once ate a MoonPie!",
-            nextNodeId = "act6_ch1_border_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch1_cartel_ambush",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "LOOK OUT, BROTHER! Out from behind the rusted bollards come the cartel couriers and catch-and-release liaisons waving federal parole slips!",
-            nextNodeId = "act6_ch1_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act6_ch1_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Catch and release is officially cancelled! We're building the wall, securing the perimeter, and shutting down this cartel racket right now!",
-            triggerBattleEncounterId = "act6_ch1_border_battle",
-            nextNodeId = "act6_ch1_post_battle"
-        ),
-        DialogueNode(
-            id = "act6_ch1_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The cartel couriers flee back across the river! But look ahead — a bizarre glowing haze of yellow and blue circular diagrams is rolling across the horizon!",
-            changeSceneId = SCENE_ACT6_CH2_VENN.id,
-            nextNodeId = "act6_ch2_intro"
-        ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 2: The Venn Diagram Fog (2023)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act6_ch2_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "WHAT IN THE NAME OF HULKAMANIA IS GOING ON, BROTHERS?! Overlapping circles of pure yellow and cyan light are floating everywhere! My brain is locked in an intellectual figure-four leglock!",
-            nextNodeId = "act6_ch2_venn_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch2_venn_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "We have entered the Venn Diagram Fog. Speech here circles endlessly back onto itself without ever making a tangible point. How should the coalition navigate this labyrinth of jargon?",
-            choices = listOf(
-                DialogueChoice("a6c2_time", "Analyze the significance of the passage of time", listOf("time", "passage", "significance", "loop", "circular"), "act6_ch2_time_passage", completionFlag = "a6c2_time"),
-                DialogueChoice("a6c2_unburdened", "Ponder what can be unburdened by what has been", listOf("unburdened", "burden", "future", "past", "logic"), "act6_ch2_unburdened_loop", completionFlag = "a6c2_unburdened"),
-                DialogueChoice("a6c2_kennedy", "Ask Senator Kennedy for a plain-English southern translation", listOf("kennedy", "louisiana", "english", "plain", "translate"), "act6_ch2_kennedy_translate", completionFlag = "a6c2_kennedy"),
-                DialogueChoice("a6c2_dispel", "Dispel the fog with hard economic numbers and proceed", listOf("dispel", "numbers", "proceed", "advance", "clarity"), "act6_ch2_dispel_fog")
-            )
-        ),
-        DialogueNode(
-            id = "act6_ch2_time_passage",
-            setFlagOnEnter = "a6c2_time",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
-            text = "You see, there is great significance to the passage of time when you think about the passage of time, because time passes, and in the passing of time, there is great significance!",
-            nextNodeId = "act6_ch2_venn_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch2_unburdened_loop",
-            setFlagOnEnter = "a6c2_unburdened",
-            speaker = DialogueSpeaker.KAMALA,
-            side = SpeakerSide.RIGHT,
-            text = "What can be, unburdened by what has been! Because what has been was burdened, but what can be will be unburdened by the very things that have been!",
-            nextNodeId = "act6_ch2_venn_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch2_kennedy_translate",
-            setFlagOnEnter = "a6c2_kennedy",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Son, I've heard auctioneers with a mouthful of marbles make more sense than this. Listening to that is like watching a goat try to calculate property taxes. It's high-dollar gibberish!",
-            nextNodeId = "act6_ch2_venn_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch2_dispel_fog",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "I've reviewed the declassified transcripts. There is zero substance behind these floating circles — just an optical illusion designed to disguise record gas prices and soaring interest rates!",
-            nextNodeId = "act6_ch2_hero_dispel"
-        ),
-        DialogueNode(
-            id = "act6_ch2_hero_dispel",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Total word-salad! In the real world, you judge results, not circular speeches. Blow the fog away, Patriots! Let's see what they're hiding behind these yellow circles!",
-            changeSceneId = SCENE_ACT6_CH3_BUS.id,
+            text = "I love Venn diagrams! Always ask, is there a Venn diagram for this? Those three circles!",
             nextNodeId = "act6_ch3_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 3: The Electric School Bus Mire (2023)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act6_ch3_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "As the fog parts, we stumble into a muddy municipal depot where dozens of brand-new, half-million-dollar electric school buses sit dead in the mud, completely unable to charge!",
-            nextNodeId = "act6_ch3_bus_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch3_bus_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The federal EV school bus initiative spent billions of taxpayer dollars, but the buses cannot handle sub-zero winters or basic rural bus routes. How do we address this stranded convoy?",
-            choices = listOf(
-                DialogueChoice("a6c3_cackle", "Listen to the recorded yellow school bus audio tribute", listOf("cackle", "yellow", "bus", "love", "laugh"), "act6_ch3_bus_cackle", completionFlag = "a6c3_cackle"),
-                DialogueChoice("a6c3_chargers", "Audit the $7.5 billion national EV charger program", listOf("chargers", "billion", "audit", "tally", "waste"), "act6_ch3_bus_chargers", completionFlag = "a6c3_chargers"),
-                DialogueChoice("a6c3_vance", "Ask JD Vance about the impact on Midwestern manufacturing", listOf("vance", "ohio", "grid", "workers", "manufacturing"), "act6_ch3_vance_grid", completionFlag = "a6c3_vance"),
-                DialogueChoice("a6c3_confront", "Confront the Stranded Battery Golem barring the road", listOf("confront", "battery", "golem", "battle", "fight"), "act6_ch3_golem_confront")
-            )
-        ),
-        DialogueNode(
-            id = "act6_ch3_bus_cackle",
-            setFlagOnEnter = "a6c3_cackle",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
-            text = "Who doesn't love a yellow school bus, right?! Can you raise your hand if you love yellow school buses?! AHAHAHAHAHA! They're yellow, and they're buses!",
-            nextNodeId = "act6_ch3_bus_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch3_bus_chargers",
-            setFlagOnEnter = "a6c3_chargers",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "Congress allocated seven point five BILLION dollars to build charging stations across the country. After two full years, do you know how many they actually built? EIGHT. Exactly eight chargers for eight billion dollars!",
-            nextNodeId = "act6_ch3_bus_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch3_vance_grid",
-            setFlagOnEnter = "a6c3_vance",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Our electric grid can't handle everyone turning their air conditioners on in July, yet Washington mandated that heavy diesel workbuses be replaced by fragile lithium battery packs made overseas.",
-            nextNodeId = "act6_ch3_bus_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch3_golem_confront",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "BROTHER! The dead battery packs in the mud are fusing together! A gigantic Stranded EV Battery Golem is rising up, powered by federal green mandate drones!",
-            nextNodeId = "act6_ch3_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act6_ch3_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "You can't drive school buses on mandates and wishful thinking, folks! Time to unplug the mandate and jump-start American common sense!",
-            triggerBattleEncounterId = "act6_ch3_bus_battle",
-            nextNodeId = "act6_ch3_post_battle"
-        ),
-        DialogueNode(
-            id = "act6_ch3_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The Battery Golem short-circuits and shuts down! Look past the bus depot — we've arrived at a bizarre grove of palm trees raining golden coconuts!",
-            changeSceneId = SCENE_ACT6_CH4_COCONUT.id,
+            text = "Who doesn't love a yellow school bus, right? Can you raise your hand if you love a yellow school bus?!",
             nextNodeId = "act6_ch4_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 4: The Coconut Tree Grove (2023)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act6_ch4_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "We step into the surreal Coconut Tree Grove, where shimmering tropical fronds rustle in the breeze and disembodied laughter asks whether anyone just fell out of a tree.",
-            nextNodeId = "act6_ch4_grove_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch4_grove_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Every path through the grove is lined with quotes about existing in the context of all in which you live and what came before you. How does the party advance?",
-            choices = listOf(
-                DialogueChoice("a6c4_quote", "Examine the philosophical mystery of the coconut tree", listOf("coconut", "tree", "context", "fell", "quote"), "act6_ch4_coconut_quote", completionFlag = "a6c4_quote"),
-                DialogueChoice("a6c4_pride", "Proclaim that American greatness comes from real grit, not trees", listOf("pride", "grit", "greatness", "american", "work"), "act6_ch4_american_pride", completionFlag = "a6c4_pride"),
-                DialogueChoice("a6c4_kennedy", "Ask Senator Kennedy if coconuts grow on the bayou", listOf("kennedy", "bayou", "coconuts", "louisiana", "humor"), "act6_ch4_kennedy_coconuts", completionFlag = "a6c4_kennedy"),
-                DialogueChoice("a6c4_throne", "Storm the elevated Dais of What Can Be", listOf("throne", "dais", "storm", "advance", "climax"), "act6_ch4_advance_throne")
-            )
-        ),
-        DialogueNode(
-            id = "act6_ch4_coconut_quote",
-            setFlagOnEnter = "a6c4_quote",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
-            text = "My mother used to say to me, 'I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!' AHAHAHAHA! You exist in the context of all in which you live and what came before you!",
-            nextNodeId = "act6_ch4_grove_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch4_american_pride",
-            setFlagOnEnter = "a6c4_pride",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "The people who built our bridges, dug our coal mines, and poured our steel didn't fall out of a coconut tree. They built this nation with sweat and grit, and they deserve leadership that speaks clearly.",
-            nextNodeId = "act6_ch4_grove_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch4_kennedy_coconuts",
-            setFlagOnEnter = "a6c4_kennedy",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Down in Louisiana, if somebody starts talking about falling out of coconut trees in the middle of a budget crisis, we don't give them the nuclear football — we call them an ambulance and check for heat exhaustion!",
-            nextNodeId = "act6_ch4_grove_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch4_advance_throne",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Enough with the coconuts, enough with the context! At the top of that hill sits the Dais of Circular Logic. It's time to confront the Vice-Sovereign herself!",
-            changeSceneId = SCENE_ACT6_CH5_UNBURDENED.id,
+            text = "The significance of the passage of time, right? The significance of the passage of time!",
             nextNodeId = "act6_ch5_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 5: The Unburdened Vice-Sovereign Confrontation (2023)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act6_ch5_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THIS IS THE MAIN EVENT, BROTHER! At the center of the Unburdened Throne stands Kamala the Unburdened, clutching a golden binder of circular speeches and flanked by swirling Venn loops!",
-            nextNodeId = "act6_ch5_throne_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch5_throne_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Kamala readies her overlapping yellow and blue Venn shields! How do Commander America and the 5-hero coalition dismantle her defenses?",
-            choices = listOf(
-                DialogueChoice("a6c5_record", "Challenge her record on 4-year inflation and open borders", listOf("record", "inflation", "economy", "borders", "prices"), "act6_ch5_record_challenge", completionFlag = "a6c5_record"),
-                DialogueChoice("a6c5_debate", "Unleash unscripted debate firepower and common sense", listOf("debate", "unscripted", "firepower", "teleprompter", "logic"), "act6_ch5_unscripted_fire", completionFlag = "a6c5_debate"),
-                DialogueChoice("a6c5_supergroup", "Unite all 5 heroes for the final constitutional verdict", listOf("supergroup", "verdict", "heroes", "coalition", "unite"), "act6_ch5_supergroup_verdict", completionFlag = "a6c5_supergroup"),
-                DialogueChoice("a6c5_battle", "Charge into battle and banish the Word-Salad forever!", listOf("battle", "charge", "fight", "climax", "win"), "act6_ch5_climax_battle")
-            )
-        ),
-        DialogueNode(
-            id = "act6_ch5_record_challenge",
-            setFlagOnEnter = "a6c5_record",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "Prices up twenty-five percent across grocery shelves, gas prices doubling, mortgage rates pricing out young families — no circular speech can unburden the American people from those numbers!",
-            nextNodeId = "act6_ch5_throne_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch5_unscripted_fire",
-            setFlagOnEnter = "a6c5_debate",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Take away the teleprompter, take away the rehearsed soundbites, and what do you have? Total word-salad! It's unwatchable, folks! The ratings are terrible!",
-            nextNodeId = "act6_ch5_throne_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch5_supergroup_verdict",
-            setFlagOnEnter = "a6c5_supergroup",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "The American people aren't confused, Madam Vice-Sovereign. They know that when Washington tells you it's raining, you'd better check and make sure someone isn't peeing on your boots. The jig is up!",
-            nextNodeId = "act6_ch5_throne_hub"
-        ),
-        DialogueNode(
-            id = "act6_ch5_climax_battle",
             speaker = DialogueSpeaker.KAMALA,
             side = SpeakerSide.RIGHT,
-            text = "You think you can challenge what can be unburdened by what has been?! AHAHAHAHAHA! Feel the infinite rotation of the passage of time!",
-            nextNodeId = "act6_ch5_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act6_ch5_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Your circular logic ends today! Five heroes, one united movement, fighting for real common sense! Patriots, assemble!",
-            triggerBattleEncounterId = "act6_kamala_battle",
-            nextNodeId = "act6_ch5_post_battle"
-        ),
-        DialogueNode(
-            id = "act6_ch5_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The Venn diagram shields shatter into dust! The Word-Salad fog has completely cleared! Now, we turn to the final trials — the Lawfare Labyrinth and the Sands of Steel Resolve!",
-            changeSceneId = SCENE_ACT7_CH1_GAUNTLET.id,
+            text = "What can be, unburdened by what has been!",
             nextNodeId = "act7_ch1_intro"
         ),
-
-        // Legacy compatibility nodes for Act VI
-        DialogueNode(
-            id = "act6_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "We find ourselves navigating the uncharted terrain of the Word-Salad Wasteland, where sentences circle endlessly without ever arriving at a conclusion.",
-            choices = listOf(
-                DialogueChoice("a6_listen", "Try to comprehend the unburdened speech", listOf("listen", "speech", "unburdened", "time", "confused"), "act6_listen"),
-                DialogueChoice("a6_cackle", "Mute the echoing cackle with golden truth", listOf("mute", "cackle", "truth", "silence", "laugh"), "act6_cackle")
-            )
-        ),
-        DialogueNode(
-            id = "act6_listen",
-            speaker = DialogueSpeaker.KAMALA,
-            side = SpeakerSide.RIGHT,
-            text = "You see, the significance of the passage of time is that time passes... and when we think about time, we are unburdened by what has been because of what will be in the passage of time!",
-            nextNodeId = "act6_hulk_confused"
-        ),
-        DialogueNode(
-            id = "act6_hulk_confused",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "BROTHER! The Hulkster has wrestled giant androids, but I have no idea what she just said! My brain is locked in a sleeper hold, brother!",
-            nextNodeId = "act6_confused_hero"
-        ),
-        DialogueNode(
-            id = "act6_cackle",
-            speaker = DialogueSpeaker.KAMALA,
-            side = SpeakerSide.RIGHT,
-            text = "AHAHAHAHAHA! *Cackles endlessly while gesturing at overlapping yellow circles*",
-            nextNodeId = "act6_confused_hero"
-        ),
-        DialogueNode(
-            id = "act6_confused_hero",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Nobody knows what she just said! It's pure word-salad! Total gibberish, folks!",
-            nextNodeId = "act6_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act6_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "I've cross-referenced every single page of this binder, and not one syllable makes sense! Commander, cut through the circular logic with pure undeniable facts!",
-            triggerBattleEncounterId = "act6_kamala_battle",
-            nextNodeId = "act6_post_battle"
-        ),
-        DialogueNode(
-            id = "act6_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The word-salad fog clears! Only two Acts remain on our quest to eradicate stupidity!",
-            changeSceneId = SCENE_ACT7_CH1_GAUNTLET.id,
-            nextNodeId = "act7_ch1_intro"
-        ),
-
-        // =========================================================================
-        // ACT VII: THE LAWFARE LABYRINTH & STEEL RESOLVE (2024) — 5 CHAPTERS
-        // =========================================================================
-
-        // -------------------------------------------------------------------------
-        // Chapter 1: The 91 Indictment Gauntlet (Fulton County & Lower Manhattan)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act7_ch1_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The year is 2024. In an unprecedented abuse of the legal system, four separate partisan jurisdictions hand down ninety-one fabricated criminal charges against Commander America!",
-            nextNodeId = "act7_ch1_court_arrival"
-        ),
-        DialogueNode(
-            id = "act7_ch1_court_arrival",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.LEFT,
-            text = "Ninety-one indictments, folks! Nobody has ever seen anything like it! If I fly over a blue state, they send a grand jury after me! Total election interference, but the people see right through it!",
+            text = "Entering HQ carrying a porcelain bathroom sink—let that sink in!",
             nextNodeId = "act7_ch1_gauntlet_hub"
         ),
         DialogueNode(
             id = "act7_ch1_gauntlet_hub",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "The courtroom corridors are packed with cameras and partisan lawfare architects. How does the defense dismantle these charges?",
+            text = "Act VII Hub:",
             choices = listOf(
-                DialogueChoice("a7c1_mugshot", "Inspect the iconic Atlanta mugshot of defiance", listOf("mugshot", "atlanta", "fulton", "defiance", "photo"), "act7_ch1_mugshot_defiance", completionFlag = "a7c1_mugshot"),
-                DialogueChoice("a7c1_charges", "Analyze the 34 bookkeeping misdemeanors turned into felonies", listOf("bookkeeping", "charges", "felonies", "manhattan", "counts"), "act7_ch1_bookkeeping_counts", completionFlag = "a7c1_charges"),
-                DialogueChoice("a7c1_kennedy", "Ask Senator Kennedy for his appraisal of partisan prosecutors", listOf("kennedy", "prosecutor", "lawfare", "justice", "louisiana"), "act7_ch1_kennedy_appraisal", completionFlag = "a7c1_kennedy"),
-                DialogueChoice("a7c1_proceed", "Charge past the docket blockade and confront the prosecutor", listOf("proceed", "charge", "court", "prosecutor", "confront"), "act7_ch1_prosecutor_ambush")
+                DialogueChoice("a7c1_mugshot", "Review the Fulton County Mugshot & Butler Star-Jump", listOf("mugshot", "pose", "defiance"), "act7_ch1_mugshot_defiance", completionFlag = "a7c1_mugshot_done"),
+                DialogueChoice("a7c1_proceed", "Proceed to the next scene", listOf("proceed", "advance"), "act7_ch2_intro")
             )
         ),
         DialogueNode(
             id = "act7_ch1_mugshot_defiance",
-            setFlagOnEnter = "a7c1_mugshot",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "They thought that booking photo in Fulton County would break him. Instead, it became the most famous image on Earth — slapped onto t-shirts, coffee mugs, and billboards in every working-class town in America!",
-            nextNodeId = "act7_ch1_gauntlet_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch1_bookkeeping_counts",
-            setFlagOnEnter = "a7c1_charges",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "They took expired misdemeanor recordkeeping entries and magically spliced them with federal campaign law that the feds already declined to prosecute. It's legal origami constructed out of thin air!",
-            nextNodeId = "act7_ch1_gauntlet_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch1_kennedy_appraisal",
-            setFlagOnEnter = "a7c1_kennedy",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Up here in these activist courtrooms, the law doesn't matter a tinker's damn. These prosecutors are like a dog chasing a parked car — now that they've caught it, they have no idea how to drive it!",
-            nextNodeId = "act7_ch1_gauntlet_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch1_prosecutor_ambush",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "LOOK OUT, BROTHER! The Chief Partisan Prosecutor emerges from behind the bench, flanked by Lawfare Docket Clerks hurling stacks of stamped motions!",
-            nextNodeId = "act7_ch1_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act7_ch1_battle_trigger",
+            setFlagOnEnter = "a7c1_mugshot_done",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Every single one of these 91 counts is a badge of honor! We fight for the Constitution, and we never back down!",
-            triggerBattleEncounterId = "act7_ch1_indictment_battle",
-            nextNodeId = "act7_ch1_post_battle"
+            text = "Never surrender, folks—and watch Musk-X do a mid-air X-jump behind the podium!",
+            nextNodeId = "act7_ch1_gauntlet_hub"
         ),
-        DialogueNode(
-            id = "act7_ch1_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The indictments crumble under the weight of truth! But the judge bangs his gavel, attempting to slap an unconstitutional muzzle on our speech!",
-            changeSceneId = SCENE_ACT7_CH2_GAG.id,
-            nextNodeId = "act7_ch2_intro"
-        ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 2: The Gag Order Guillotine (Contempt Hearing with Biased Judges)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act7_ch2_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The judge issues a sweeping, unprecedented gag order, threatening Commander America with immediate jail time if he dares speak publicly about the trial or the witnesses.",
-            nextNodeId = "act7_ch2_gag_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch2_gag_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "They want to silence the leading candidate for President while his political opponents attack him freely on television. How does the coalition counter this muzzle?",
-            choices = listOf(
-                DialogueChoice("a7c2_first_amendment", "Assert the First Amendment right of 80 million voters", listOf("first", "amendment", "voters", "rights", "free speech"), "act7_ch2_first_amendment", completionFlag = "a7c2_first_amendment"),
-                DialogueChoice("a7c2_sidewalk", "Deploy Marco and Vance for the legendary sidewalk press conference", listOf("sidewalk", "marco", "vance", "press", "surrogate"), "act7_ch2_sidewalk_press", completionFlag = "a7c2_sidewalk"),
-                DialogueChoice("a7c2_kennedy", "Hear Senator Kennedy's take on activist judges", listOf("kennedy", "judge", "activist", "gavel", "contempt"), "act7_ch2_kennedy_gavel", completionFlag = "a7c2_kennedy"),
-                DialogueChoice("a7c2_shatter", "Shatter the Gag Order Guillotine and break free", listOf("shatter", "guillotine", "battle", "free", "contempt"), "act7_ch2_contempt_confront")
-            )
-        ),
-        DialogueNode(
-            id = "act7_ch2_first_amendment",
-            setFlagOnEnter = "a7c2_first_amendment",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "They are not taking away my speech — they are taking away YOUR right to hear the truth! They want to muzzle the American people, and I won't let them do it!",
-            nextNodeId = "act7_ch2_gag_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch2_sidewalk_press",
-            setFlagOnEnter = "a7c2_sidewalk",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "If the judge won't let the Commander speak in the courtroom, Vance and I will stand on the sidewalk outside in the pouring rain with twenty microphones and say every single word for him!",
-            nextNodeId = "act7_ch2_gag_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch2_kennedy_gavel",
-            setFlagOnEnter = "a7c2_kennedy",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "This gag order is more crooked than a barrel of snakes. You can't strip a man of his God-given constitutional rights just because his poll numbers are twenty points higher than yours!",
-            nextNodeId = "act7_ch2_gag_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch2_contempt_confront",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THE GAVEL IS FALLING, BROTHER! The Gag Order Magistrate and his Contempt Bailiffs are rushing the podium with handcuffs and fines!",
-            nextNodeId = "act7_ch2_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act7_ch2_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "You cannot jail the American spirit! Freedom of speech will prevail over partisan judges every single time!",
-            triggerBattleEncounterId = "act7_ch2_contempt_battle",
-            nextNodeId = "act7_ch2_post_battle"
-        ),
-        DialogueNode(
-            id = "act7_ch2_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The gag order shatters into a million pieces! We leave Manhattan behind and head into the open skies of Pennsylvania!",
-            changeSceneId = SCENE_ACT7_CH3_BUTLER.id,
+            text = "Inside the hearing chamber!",
             nextNodeId = "act7_ch3_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 3: The Butler Fairgrounds (July 13, 2024)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act7_ch3_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "JULY 13, 2024, BROTHER! Butler, Pennsylvania! Over fifty thousand patriots have gathered under the open sun! You can feel the electric energy in the air!",
-            nextNodeId = "act7_ch3_rally_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch3_rally_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Commander America steps up to the rally podium beneath an open summer sky. How does he prepare to deliver the historic speech?",
-            choices = listOf(
-                DialogueChoice("a7c3_chart", "Display the famous border immigration chart on the jumbotron", listOf("chart", "border", "jumbotron", "immigration", "screen"), "act7_ch3_display_chart", completionFlag = "a7c3_chart"),
-                DialogueChoice("a7c3_patriots", "Wave to the sea of red hats and working-class families", listOf("patriots", "crowd", "wave", "families", "cheer"), "act7_ch3_crowd_wave", completionFlag = "a7c3_patriots"),
-                DialogueChoice("a7c3_kash", "Review perimeter security and suspicious nearby sloped roofs", listOf("security", "roof", "sloped", "kash", "perimeter"), "act7_ch3_kash_warning", completionFlag = "a7c3_kash"),
-                DialogueChoice("a7c3_advance", "Take the center podium and begin the fateful address", listOf("podium", "begin", "address", "speech", "advance"), "act7_ch3_take_podium")
-            )
-        ),
-        DialogueNode(
-            id = "act7_ch3_display_chart",
-            setFlagOnEnter = "a7c3_chart",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
+            speaker = DialogueSpeaker.ELON,
             side = SpeakerSide.LEFT,
-            text = "Bring down that chart, folks! Look at that arrow right at the bottom — lowest illegal immigration in the history of our country! That beautiful chart shows the exact moment our borders were secure!",
-            nextNodeId = "act7_ch3_rally_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch3_crowd_wave",
-            setFlagOnEnter = "a7c3_patriots",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Look at these people — steelworkers, nurses, farmers, truckers. They drove six hours and waited in the heat because they love this country and believe in the American comeback.",
-            nextNodeId = "act7_ch3_rally_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch3_kash_warning",
-            setFlagOnEnter = "a7c3_kash",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "Something isn't right with the outer perimeter. That warehouse roof with the slight slope is completely unmanned. Why did local command leave an elevated line of sight open?",
-            nextNodeId = "act7_ch3_rally_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch3_take_podium",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "It's time to speak to the people. Turn your head to the right and look at that chart...",
-            changeSceneId = SCENE_ACT7_CH4_STEEL_EAR.id,
+            text = "I'm not just MAGA—I'm dark, gothic MAGA!",
             nextNodeId = "act7_ch4_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 4: Steel Ear & Fist Defiance (2024)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act7_ch4_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "6:11 PM. A sharp crack splits the air. In a fraction of a millisecond, Commander America tilts his head to view the border chart as a high-velocity bullet grazes the right ear!",
-            nextNodeId = "act7_ch4_dogpile"
-        ),
-        DialogueNode(
-            id = "act7_ch4_dogpile",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THE AGENTS PILE ON, BROTHER! 'GET DOWN! GET DOWN!' But listen to what he says from the bottom of the stack!",
-            nextNodeId = "act7_ch4_shoes"
-        ),
-        DialogueNode(
-            id = "act7_ch4_shoes",
             speaker = DialogueSpeaker.COMMANDER_AMERICA,
             side = SpeakerSide.LEFT,
-            text = "Wait, I want my shoes! Let me get my shoes!",
-            nextNodeId = "act7_ch4_fist_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch4_fist_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "He stands back up. Blood streams down the right cheek, but his eyes blaze with divine fortitude. What does Commander America do?",
-            choices = listOf(
-                DialogueChoice("a7c4_fist", "Pump your fist in the air and shout 'FIGHT! FIGHT! FIGHT!'", listOf("fight", "fist", "pump", "rise", "blood"), "act7_ch4_fist_shout", completionFlag = "a7c4_fist"),
-                DialogueChoice("a7c4_bandage", "Equip the White Ear Bandage of Fortitude (+500% Defense)", listOf("bandage", "ear", "fortitude", "armor", "defense"), "act7_ch4_equip_bandage", completionFlag = "a7c4_bandage"),
-                DialogueChoice("a7c4_flag", "Raise your fist beneath the billowing American flag", listOf("flag", "iconic", "photo", "freedom", "american"), "act7_ch4_flag_photo", completionFlag = "a7c4_flag"),
-                DialogueChoice("a7c4_advance", "Lead the unified coalition onward to Milwaukee!", listOf("milwaukee", "advance", "onward", "rnc", "lead"), "act7_ch4_advance_milwaukee")
-            )
-        ),
-        DialogueNode(
-            id = "act7_ch4_fist_shout",
-            setFlagOnEnter = "a7c4_fist",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "FIGHT! FIGHT! FIGHT! We will NEVER surrender! We will NEVER give up! God spared my life to save our great country!",
-            nextNodeId = "act7_ch4_fist_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch4_equip_bandage",
-            setFlagOnEnter = "a7c4_bandage",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "This White Ear Bandage gives me +500% defense! Divine providence touched this stage today, folks! The enemy's greatest weapon couldn't stop the American movement!",
-            nextNodeId = "act7_ch4_fist_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch4_flag_photo",
-            setFlagOnEnter = "a7c4_flag",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "LOOK AT THAT PHOTOGRAPH, BROTHERS! Blood on the cheek, fist raised to the sky, Old Glory waving in the background! That is the ultimate symbol of American steel!",
-            nextNodeId = "act7_ch4_fist_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch4_advance_milwaukee",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Nothing on this Earth will stop us from saving America. Next stop: Milwaukee!",
-            changeSceneId = SCENE_ACT7_CH5_MILWAUKEE.id,
+            text = "Fight! Fight! Fight!",
             nextNodeId = "act7_ch5_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 5: The Milwaukee Arena Coronation (2024)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act7_ch5_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Fiserv Forum, Milwaukee. Tens of thousands of unified delegates wear symbolic white ear bandages in solidarity as golden balloons drop from the arena rafters!",
-            nextNodeId = "act7_ch5_coronation_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch5_coronation_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The entire coalition stands united on the convention stage. How do the 5 heroes prepare for the final showdown against the Lawfare Lich?",
-            choices = listOf(
-                DialogueChoice("a7c5_hulk", "Let Hulk Hogan rip his shirt open on the RNC podium", listOf("hulk", "shirt", "tear", "brother", "trumpamania"), "act7_ch5_hulk_shirt", completionFlag = "a7c5_hulk"),
-                DialogueChoice("a7c5_vance", "Confirm JD Vance as the Vice-Presidential nominee", listOf("vance", "vp", "nominee", "heartland", "coalition"), "act7_ch5_vance_nomination", completionFlag = "a7c5_vance"),
-                DialogueChoice("a7c5_kennedy", "Deliver Senator Kennedy's convention rallying cry", listOf("kennedy", "speech", "cry", "louisiana", "rally"), "act7_ch5_kennedy_rally", completionFlag = "a7c5_kennedy"),
-                DialogueChoice("a7c5_battle", "Confront the Lawfare Grand Inquisitor in the final arena duel", listOf("battle", "inquisitor", "lich", "lawfare", "fight"), "act7_ch5_lawfare_confront")
-            )
-        ),
-        DialogueNode(
-            id = "act7_ch5_hulk_shirt",
-            setFlagOnEnter = "a7c5_hulk",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "*RIPS SHIRT IN HALF* LET TRUMPAMANIA RUN WILD, BROTHER! They took a shot at the greatest leader on Earth, and he stood right back up! There is NO stopping this train now, brothers!",
-            nextNodeId = "act7_ch5_coronation_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch5_vance_nomination",
-            setFlagOnEnter = "a7c5_vance",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "To the forgotten men and women of Ohio, Pennsylvania, Michigan, and Wisconsin: your voices will never be forgotten again. We are taking our country back!",
-            nextNodeId = "act7_ch5_coronation_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch5_kennedy_rally",
-            setFlagOnEnter = "a7c5_kennedy",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "The American people have had a bellyful of the Washington establishment. In November, we're going to remind them who really runs this country, and we don't need a teleprompter to do it!",
-            nextNodeId = "act7_ch5_coronation_hub"
-        ),
-        DialogueNode(
-            id = "act7_ch5_lawfare_confront",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
-            side = SpeakerSide.RIGHT,
-            text = "The Lawfare Grand Inquisitor summons all remaining indictment gargoyles for a desperate last stand!",
-            nextNodeId = "act7_ch5_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act7_ch5_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Every indictment, every gag order, every bullet — all of it failed! Together, we are unstoppable! Patriots, charge!",
-            triggerBattleEncounterId = "act7_lawfare_battle",
-            nextNodeId = "act7_ch5_post_battle"
-        ),
-        DialogueNode(
-            id = "act7_ch5_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The Lawfare Grand Inquisitor is vanquished and the 91 indictments are obliterated forever! The ear bandage shines like pure gold. Only ONE obstacle remains: the Malarkey Sovereign in the Oval Citadel!",
-            changeSceneId = SCENE_ACT8_CH1_BUNKER.id,
+            text = "LET TRUMPAMANIA RUN WILD, BROTHER!",
             nextNodeId = "act8_ch1_intro"
         ),
-
-        // Legacy compatibility nodes for Act VII
-        DialogueNode(
-            id = "act7_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "HE JUST GOT BACK UP, BROTHER! HE PUMPED HIS FIST IN THE AIR AND SHOUTED 'FIGHT! FIGHT! FIGHT!' That is pure American steel running through his veins!",
-            choices = listOf(
-                DialogueChoice("a7_fist", "Pump your fist and shout 'FIGHT! FIGHT! FIGHT!'", listOf("fight", "fist", "pump", "rise", "ear", "bandage"), "act7_fist"),
-                DialogueChoice("a7_bandage", "Equip the pristine White Ear Bandage of Fortitude", listOf("bandage", "ear", "fortitude", "armor", "steel"), "act7_bandage")
-            )
-        ),
-        DialogueNode(
-            id = "act7_bandage",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "This ear bandage gives me +500% defense! God spared my life for a reason: to save our country and eradicate world stupidity!",
-            nextNodeId = "act7_kayleigh_remark"
-        ),
-        DialogueNode(
-            id = "act7_kayleigh_remark",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "An unforgettable image etched into history tonight. Protected by divine providence, Commander America stands completely undaunted.",
-            nextNodeId = "act7_fist"
-        ),
-        DialogueNode(
-            id = "act7_fist",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "FIGHT! FIGHT! FIGHT! We will never surrender!",
-            nextNodeId = "act7_lich_ambush"
-        ),
-        DialogueNode(
-            id = "act7_lich_ambush",
-            speaker = DialogueSpeaker.MEDIA_ANCHOR,
-            side = SpeakerSide.RIGHT,
-            text = "The Lawfare Lich demands you submit to trial #92!",
-            nextNodeId = "act7_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act7_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Ninety-one fabricated indictments, and every single one disintegrated on impact! The binder is shut—smash through the lawfare liches with divine truth!",
-            triggerBattleEncounterId = "act7_lawfare_battle",
-            nextNodeId = "act7_post_battle"
-        ),
-        DialogueNode(
-            id = "act7_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "All 91 indictments crushed! The ear bandage shines with divine grace. Now... to the Oval Citadel for the Final Showdown against Biden!",
-            changeSceneId = SCENE_ACT8_CH1_BUNKER.id,
-            nextNodeId = "act8_ch1_intro"
-        ),
-
-        // =========================================================================
-        // ACT VIII: THE FINAL MALARKEY CITADEL & GOLDEN INAUGURATION — 5 CHAPTERS
-        // =========================================================================
-
-        // -------------------------------------------------------------------------
-        // Chapter 1: The Basement Bunker Breach (Wilmington Virtual Studio)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act8_ch1_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The final campaign begins! Deep beneath a residential compound in Wilmington, Delaware, a clandestine virtual broadcast studio operates behind closed doors!",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "My name is Joe Biden. I'm Dr. Jill Biden's husband. And I eat Jeni's Chocolate Chip ice cream! I came down because I heard there was chocolate chip ice cream!",
             nextNodeId = "act8_ch1_bunker_hub"
         ),
         DialogueNode(
             id = "act8_ch1_bunker_hub",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Green screens, studio lighting, and simulated White House backdrops create the illusion of an active administration. How does Commander America breach the bunker?",
+            text = "Act VIII Ice-Cream Bunker Hub:",
             choices = listOf(
-                DialogueChoice("a8c1_lid", "Investigate why a 'lid' was called on the day at 9:15 AM", listOf("lid", "called", "morning", "nap", "schedule"), "act8_ch1_lid_called", completionFlag = "a8c1_lid"),
-                DialogueChoice("a8c1_greenscreen", "Inspect the green screen artifacts and teleprompter rigs", listOf("greenscreen", "virtual", "studio", "backdrop", "lighting"), "act8_ch1_greenscreen_inspect", completionFlag = "a8c1_greenscreen"),
-                DialogueChoice("a8c1_kennedy", "Ask Senator Kennedy about basement campaign strategies", listOf("kennedy", "basement", "delaware", "campaign", "bunker"), "act8_ch1_kennedy_basement", completionFlag = "a8c1_kennedy"),
-                DialogueChoice("a8c1_proceed", "Breach the control room and disconnect the virtual feeds", listOf("proceed", "breach", "control", "feeds", "confront"), "act8_ch1_studio_ambush")
+                DialogueChoice("a8c1_lid", "Call a 9:00 AM lid for a double-scoop chocolate chip waffle cone", listOf("lid", "ice cream", "chocolate chip"), "act8_ch1_lid_called", completionFlag = "a8c1_lid_done"),
+                DialogueChoice("a8c1_proceed", "Proceed to the Teleprompter Platform", listOf("proceed", "advance"), "act8_ch2_intro")
             )
         ),
         DialogueNode(
             id = "act8_ch1_lid_called",
-            setFlagOnEnter = "a8c1_lid",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "It's 9:15 in the morning and they already called a lid! A lid! I've been awake since 4:00 AM, did four rallies, three interviews, and played eighteen holes of golf! Low energy, folks!",
+            setFlagOnEnter = "a8c1_lid_done",
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "Our economy is strong as hell, man! *Licks a Baskin-Robbins chocolate chip waffle cone*",
             nextNodeId = "act8_ch1_bunker_hub"
         ),
-        DialogueNode(
-            id = "act8_ch1_greenscreen_inspect",
-            setFlagOnEnter = "a8c1_greenscreen",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Look closely at the edges around his hands — you can see the green chroma-key bleed! They're broadcasting a digital hologram while the country runs on autopilot!",
-            nextNodeId = "act8_ch1_bunker_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch1_kennedy_basement",
-            setFlagOnEnter = "a8c1_kennedy",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Running a superpower from a basement recliner is like trying to drive an eighteen-wheeler using a television remote. Sooner or later, you're going to end up in the ditch!",
-            nextNodeId = "act8_ch1_bunker_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch1_studio_ambush",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "RED ALERT IN THE CONTROL ROOM, BROTHER! The Virtual Studio Director and Green Screen Technicians are pulling cables and desperately trying to keep the feed alive!",
-            nextNodeId = "act8_ch1_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act8_ch1_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Cut the fake feeds, shut down the green screens, and pull back the curtain on this basement charade! Patriots, attack!",
-            triggerBattleEncounterId = "act8_ch1_bunker_battle",
-            nextNodeId = "act8_ch1_post_battle"
-        ),
-        DialogueNode(
-            id = "act8_ch1_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The virtual studio goes dark! The cables trace north toward a foggy train platform in Scranton, Pennsylvania!",
-            changeSceneId = SCENE_ACT8_CH2_TELEPROMPTER.id,
-            nextNodeId = "act8_ch2_intro"
-        ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 2: The Teleprompter Jammer (Scranton Train Platform)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act8_ch2_intro",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "WE'RE ON THE TRACKS IN SCRANTON, BROTHER! Huge scrolling glass teleprompters are flashing script lines in giant bold letters!",
-            nextNodeId = "act8_ch2_teleprompter_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch2_teleprompter_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The teleprompters project endless stage instructions: 'REPEAT THE LINE', 'PAUSE FOR APPLAUSE', and 'SALUTE MARINE'. How do we disrupt this messaging conduit?",
-            choices = listOf(
-                DialogueChoice("a8c2_repeat", "Examine the teleprompter prompting 'Repeat the line'", listOf("repeat", "line", "prompt", "instructions", "script"), "act8_ch2_repeat_line", completionFlag = "a8c2_repeat"),
-                DialogueChoice("a8c2_barack", "Spot Barack casting teleprompter spells from the shadows", listOf("barack", "obama", "shadows", "spells", "teleprompter"), "act8_ch2_barack_shadows", completionFlag = "a8c2_barack"),
-                DialogueChoice("a8c2_kash", "Deploy Kash Patel's signal jammer on the script conduit", listOf("kash", "jammer", "signal", "jam", "disrupt"), "act8_ch2_kash_jam", completionFlag = "a8c2_kash"),
-                DialogueChoice("a8c2_confront", "Smash through the Teleprompter Sorcerer and shatter the glass", listOf("sorcerer", "smash", "glass", "battle", "fight"), "act8_ch2_sorcerer_confront")
-            )
-        ),
-        DialogueNode(
-            id = "act8_ch2_repeat_line",
-            setFlagOnEnter = "a8c2_repeat",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "He literally read 'End of quote, repeat the line' off the glass! Who does that?! You can't lead the free world if you read the stage directions out loud!",
-            nextNodeId = "act8_ch2_teleprompter_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch2_barack_shadows",
-            setFlagOnEnter = "a8c2_barack",
-            speaker = DialogueSpeaker.OBAMA,
+            speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.RIGHT,
-            text = "Now... let me be clear... I was merely offering... uh... editorial guidance from my Kalorama soundproof bunker...",
-            nextNodeId = "act8_ch2_teleprompter_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch2_kash_jam",
-            setFlagOnEnter = "a8c2_kash",
-            speaker = DialogueSpeaker.KASH,
-            side = SpeakerSide.LEFT,
-            text = "I've tuned the frequency jammer directly to their script uplink. The teleprompter screen is now scrolling the Constitution instead of scripted talking points!",
-            nextNodeId = "act8_ch2_teleprompter_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch2_sorcerer_confront",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THE SCRIPTWRITERS ARE PANICKING, BROTHER! The Teleprompter Sorcerer Phantom is casting optic illusions across the railway!",
-            nextNodeId = "act8_ch2_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act8_ch2_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "No more teleprompters, no more rehearsals! Pure unscripted American common sense! Let's take 'em down!",
-            triggerBattleEncounterId = "act8_ch2_teleprompter_battle",
-            nextNodeId = "act8_ch2_post_battle"
-        ),
-        DialogueNode(
-            id = "act8_ch2_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The glass teleprompters shatter into harmless sparkles! But listen — a frantic rhythmic clicking sound is echoing from a nearby federal warehouse!",
-            changeSceneId = SCENE_ACT8_CH3_AUTOPEN.id,
+            text = "It is noteworthy that the percentage of women who register to vote and cast a ballot is consistently higher than the percentage of the men who do so. End of quote. Repeat the line.",
             nextNodeId = "act8_ch3_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 3: The Auto-Pen Phantoms (Executive Order Factory)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act8_ch3_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "We discover the secret Executive Order Factory! Banks of motorized robotic pens are furiously scribbling Presidential signatures on thousands of pages of omnibus mandates!",
-            nextNodeId = "act8_ch3_autopen_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch3_autopen_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Trillions of dollars in federal spending and regulatory bans are being enacted without a human being ever laying eyes on them. How does the party halt the assembly line?",
-            choices = listOf(
-                DialogueChoice("a8c3_bills", "Inspect the 4,000-page unread omnibus spending bills", listOf("omnibus", "bills", "spending", "trillions", "pages"), "act8_ch3_inspect_bills", completionFlag = "a8c3_bills"),
-                DialogueChoice("a8c3_marco", "Have Marco audit the robotic pen calibration data", listOf("marco", "audit", "autopen", "robotic", "signatures"), "act8_ch3_marco_audit", completionFlag = "a8c3_marco"),
-                DialogueChoice("a8c3_kennedy", "Ask Senator Kennedy who really authorized these orders", listOf("kennedy", "authorized", "signature", "staffers", "bureaucrats"), "act8_ch3_kennedy_staffers", completionFlag = "a8c3_kennedy"),
-                DialogueChoice("a8c3_shutdown", "Overload the Auto-Pen machinery and seize the master power switch", listOf("shutdown", "power", "overload", "machinery", "battle"), "act8_ch3_autopen_confront")
-            )
-        ),
-        DialogueNode(
-            id = "act8_ch3_inspect_bills",
-            setFlagOnEnter = "a8c3_bills",
-            speaker = DialogueSpeaker.VANCE,
-            side = SpeakerSide.LEFT,
-            text = "Four thousand pages dropped at 2:00 AM, voted on at 6:00 AM, and signed by an auto-pen at 8:00 AM. Not a single elected official read a single sentence!",
-            nextNodeId = "act8_ch3_autopen_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch3_marco_audit",
-            setFlagOnEnter = "a8c3_marco",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "This robotic pen has signed more debt into law in eighteen months than the first forty presidents combined! It's an automated rubber-stamp machine!",
-            nextNodeId = "act8_ch3_autopen_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch3_kennedy_staffers",
-            setFlagOnEnter = "a8c3_kennedy",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "If you ask the folks in Washington who told the auto-pen to sign, they all point at each other like spiderman memes. Nobody knows who is running the store!",
-            nextNodeId = "act8_ch3_autopen_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch3_autopen_confront",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THE AUTO-PEN FACTORY IS OVERHEATING, BROTHER! The Mechanical Auto-Pen Sovereign rises up, firing streams of bureaucratic ink and omnibus mandate drones!",
-            nextNodeId = "act8_ch3_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act8_ch3_battle_trigger",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Unplug the machine! Government of the people, by the people, and for the people is returning right now!",
-            triggerBattleEncounterId = "act8_ch3_autopen_battle",
-            nextNodeId = "act8_ch3_post_battle"
-        ),
-        DialogueNode(
-            id = "act8_ch3_post_battle",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The auto-pen runs completely out of ink and powers down! The path is clear. Ascend the grand staircase to the Cosmic Oval Citadel for the Final Showdown!",
-            changeSceneId = SCENE_ACT8_CH4_CITADEL.id,
+            speaker = DialogueSpeaker.BIDEN,
+            side = SpeakerSide.RIGHT,
+            text = "I'll lead an effective strategy to mobilize truinanashabbadepressure! And Badakathcare! We finally beat Medicare!",
             nextNodeId = "act8_ch4_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 4: The Malarkey Sovereign Climax (Final Boss: Biden)
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act8_ch4_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "Welcome to the final cosmic arena. Inside the glowing Oval Citadel, Biden the Malarkey Sovereign sits in his executive recliner, clutching two melting scoops of vanilla ice cream, flanked by teleprompter conduits!",
-            nextNodeId = "act8_ch4_biden_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch4_biden_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The Malarkey Sovereign prepares his signature defense of whispered warnings, chocolate chip tall tales, and confused wanderings. How do the 5 heroes dismantle his aura?",
-            choices = listOf(
-                DialogueChoice("a8c4_confront", "Confront Biden directly and demand an immediate end to the malarkey", listOf("confront", "biden", "malarkey", "ice cream", "vanilla"), "act8_ch4_biden_confront", completionFlag = "a8c4_confront"),
-                DialogueChoice("a8c4_barack", "Call out Barack standing in the shadows behind the recliner", listOf("barack", "shadows", "teleprompter", "obama", "puppet"), "act8_ch4_barack_callout", completionFlag = "a8c4_barack"),
-                DialogueChoice("a8c4_supergroup", "Unleash the full 5-hero supergroup constitutional indictment", listOf("supergroup", "heroes", "constitution", "verdict", "unite"), "act8_ch4_supergroup_verdict", completionFlag = "a8c4_supergroup"),
-                DialogueChoice("a8c4_battle", "Body-slam the Malarkey Sovereign through the canvas of history!", listOf("battle", "fight", "climax", "slam", "win"), "act8_ch4_climax_battle")
-            )
-        ),
-        DialogueNode(
-            id = "act8_ch4_biden_confront",
-            setFlagOnEnter = "a8c4_confront",
             speaker = DialogueSpeaker.BIDEN,
             side = SpeakerSide.RIGHT,
-            text = "Look, folks... here's the deal... no joke! My grandfather used to say in Scranton... chocolate chip... wait, no, vanilla ice cream! Where am I? Who's that guy with the golden tie?!",
-            nextNodeId = "act8_ch4_biden_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch4_barack_callout",
-            setFlagOnEnter = "a8c4_barack",
-            speaker = DialogueSpeaker.OBAMA,
-            side = SpeakerSide.RIGHT,
-            text = "Don't look at me... let me be clear, he's... uh... entirely in charge of his own speech... *slowly backs into the curtain shadows*",
-            nextNodeId = "act8_ch4_biden_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch4_supergroup_verdict",
-            setFlagOnEnter = "a8c4_supergroup",
-            speaker = DialogueSpeaker.KENNEDY,
-            side = SpeakerSide.LEFT,
-            text = "Joe, with all due respect, you're looking like a steer trying to operate an iPhone. The country has had enough malarkey to fill Lake Michigan, and it's time to cash in your chips!",
-            nextNodeId = "act8_ch4_biden_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch4_climax_battle",
-            speaker = DialogueSpeaker.BIDEN,
-            side = SpeakerSide.RIGHT,
-            text = "Anyway... don't pull the trigger, man! I came here for my two scoops of vanilla... anyway... God save the Queen, man!",
-            nextNodeId = "act8_ch4_hero_quote"
-        ),
-        DialogueNode(
-            id = "act8_ch4_hero_quote",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Joe, you don't even know where the exit door is! The malarkey ends today! For humanity, for freedom, for AMERICA!",
-            nextNodeId = "act8_ch4_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act8_ch4_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THIS IS FOR ALL THE MARBLES AND THE HEAVYWEIGHT BELT, BROTHER! BODY-SLAM THE MALARKEY THROUGH THE CANVAS AND BRING COMMON SENSE BACK TO AMERICA!",
-            triggerBattleEncounterId = "act8_biden_final_battle",
-            nextNodeId = "act8_ch4_post_battle"
-        ),
-        DialogueNode(
-            id = "act8_ch4_post_battle",
-            speaker = DialogueSpeaker.BIDEN,
-            side = SpeakerSide.RIGHT,
-            text = "I... I think I'll go take a nap and eat my vanilla ice cream now... good job, man... where's the door? Oh, this way...",
-            nextNodeId = "act8_ch4_victory_advance"
-        ),
-        DialogueNode(
-            id = "act8_ch4_victory_advance",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "The Malarkey Sovereign has officially left the building! The golden doors swing open to the National Mall! Let's begin the Golden Inauguration!",
-            changeSceneId = SCENE_ACT8_CH5_INAUGURATION.id,
+            text = "Corn Pop was a bad dude! And he ran a bunch of bad boys!",
             nextNodeId = "act8_ch5_intro"
         ),
-
-        // -------------------------------------------------------------------------
-        // Chapter 5: The Golden Inauguration & Golden Age of America
-        // -------------------------------------------------------------------------
         DialogueNode(
             id = "act8_ch5_intro",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "JANUARY 20, 2025. Bright, radiant sunlight pours down over the National Mall as millions of cheering patriots pack Pennsylvania Avenue from the Capitol to the White House!",
-            nextNodeId = "act8_ch5_oath"
-        ),
-        DialogueNode(
-            id = "act8_ch5_oath",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "I do solemnly swear that I will faithfully execute the Office of President of the United States, and will to the best of my ability, preserve, protect and defend the Constitution of the United States! SO HELP ME GOD!",
-            nextNodeId = "act8_ch5_celebration_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch5_celebration_hub",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The crowd erupts into deafening cheers! The 5 heroes and key allies gather on the inaugural platform. Who does Commander America recognize?",
-            choices = listOf(
-                DialogueChoice("a8c5_heroes", "Honor the 5-hero supergroup coalition (Marco, Vance, Kash, Kennedy)", listOf("heroes", "marco", "vance", "kash", "kennedy"), "act8_ch5_honor_heroes", completionFlag = "a8c5_heroes"),
-                DialogueChoice("a8c5_elon", "Thank Elon Musk and Department of Government Efficiency allies", listOf("elon", "doge", "musk", "efficiency", "starship"), "act8_ch5_thank_elon", completionFlag = "a8c5_elon"),
-                DialogueChoice("a8c5_golden_age", "Declare the commencement of the Golden Age of America", listOf("golden", "age", "america", "prosperity", "future"), "act8_ch5_declare_golden_age", completionFlag = "a8c5_golden_age"),
-                DialogueChoice("a8c5_epilogue", "Conclude the epic broadcast and roll the victory credits", listOf("epilogue", "credits", "victory", "end", "complete"), "act8_ch5_final_broadcast")
-            )
-        ),
-        DialogueNode(
-            id = "act8_ch5_honor_heroes",
-            setFlagOnEnter = "a8c5_heroes",
-            speaker = DialogueSpeaker.MARCO,
-            side = SpeakerSide.LEFT,
-            text = "Together with JD Vance in the heartland, Kash Patel at justice, and Senator Kennedy keeping Washington honest, common sense has reclaimed its rightful throne!",
-            nextNodeId = "act8_ch5_celebration_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch5_thank_elon",
-            setFlagOnEnter = "a8c5_elon",
-            speaker = DialogueSpeaker.ELON,
+            speaker = DialogueSpeaker.ZOHRAN_CARDAMOM,
             side = SpeakerSide.RIGHT,
-            text = "Trillions in wasteful bureaucracy deleted. Government efficiency restored. Next stop: Mars! And common sense on Earth!",
-            nextNodeId = "act8_ch5_celebration_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch5_declare_golden_age",
-            setFlagOnEnter = "a8c5_golden_age",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "America's future will be bigger, better, bolder, and more glorious than ever before! Our golden age has just begun, and we will never stop winning!",
-            nextNodeId = "act8_ch5_celebration_hub"
-        ),
-        DialogueNode(
-            id = "act8_ch5_final_broadcast",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "From Trump Tower's golden escalator in 2015 to the historic inauguration of 2025, the greatest political comeback in history is complete.",
-            nextNodeId = "act8_ch5_karoline_signoff"
-        ),
-        DialogueNode(
-            id = "act8_ch5_karoline_signoff",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The receipts have been certified, the swamp has been drained, and truth has triumphed over nonsense across all fifty states!",
+            text = "Yo, it's Mr. Cardamom pulling up in the chapati truck with Nani! Freeze the rent and free the Q70 buses!",
             nextNodeId = "act8_ch5_hulk_finale"
         ),
         DialogueNode(
             id = "act8_ch5_hulk_finale",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "WHATCHA GONNA DO WHEN FREEDOM, COMMON SENSE, AND COMMANDER AMERICA RUN WILD ON YOU FOREVER?! GOD BLESS AMERICA, BROTHERS! *FLEXES 24-INCH PYTHONS AS GOLDEN CONFETTI RAINS DOWN*"
+            text = "THAT'S A WRAP ON ALL FIVE ACTS (2015–2026) ACROSS BOTH TRACK A AND TRACK B, BROTHER! 48 CHAPTERS OF 100% FACT-CHECKED, EQUAL-OPPORTUNITY BIPARTISAN SATIRE—THANK YOU FOR PLAYING COMMANDER AMERICA RPG!"
         ),
-
-        // Legacy compatibility nodes for Act VIII
         DialogueNode(
             id = "act8_intro",
             speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "Welcome to the final broadcast of the era. Inside the Oval Citadel, the Malarkey Sovereign sits in his cosmic recliner, clutching two scoops of melting vanilla ice cream, completely unaware of what year it is.",
+            text = "Inside the Cosmic Ice-Cream Citadel, Joe Naptime clutches two melting scoops of chocolate chip ice cream.",
             choices = listOf(
-                DialogueChoice("a8_confront", "Confront Biden and demand an end to the malarkey", listOf("confront", "biden", "malarkey", "ice cream", "vanilla"), "act8_confront"),
-                DialogueChoice("a8_barack", "Address Barack standing in the shadows behind the chair", listOf("barack", "shadows", "puppet", "obama", "teleprompter"), "act8_barack")
+                DialogueChoice("a8_confront", "Ask Joe about Corn Pop and Badakathcare", listOf("confront", "biden", "malarkey", "ice cream", "vanilla"), "act8_game_over_hulk"),
+                DialogueChoice("a8_barack", "Ask Barry Teleprompter about his tan suit", listOf("barack", "shadows", "puppet", "obama", "teleprompter"), "act8_game_over_hulk")
             )
-        ),
-        DialogueNode(
-            id = "act8_barack",
-            speaker = DialogueSpeaker.OBAMA,
-            side = SpeakerSide.RIGHT,
-            text = "Don't look at me... let me be clear, he's... uh... entirely in charge of his own speech...",
-            nextNodeId = "act8_karoline_audit"
-        ),
-        DialogueNode(
-            id = "act8_karoline_audit",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The receipts don't lie! Barack's teleprompter spells have lost their potency! The curtain has been pulled back on the entire operation!",
-            nextNodeId = "act8_biden_talk"
-        ),
-        DialogueNode(
-            id = "act8_confront",
-            speaker = DialogueSpeaker.BIDEN,
-            side = SpeakerSide.RIGHT,
-            text = "Look, folks... here's the deal... no joke! My grandfather used to say in Scranton... chocolate chip... wait, no, vanilla ice cream! Where am I? Who's that guy with the golden tie?",
-            nextNodeId = "act8_biden_talk"
-        ),
-        DialogueNode(
-            id = "act8_biden_talk",
-            speaker = DialogueSpeaker.BIDEN,
-            side = SpeakerSide.RIGHT,
-            text = "Anyway... don't pull the trigger, man! I came here for my two scoops of vanilla... anyway... God save the Queen, man!",
-            nextNodeId = "act8_hero_final_quote"
-        ),
-        DialogueNode(
-            id = "act8_hero_final_quote",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "Joe, you don't even know where the exit door is! The malarkey ends today! For humanity, for freedom, for AMERICA!",
-            nextNodeId = "act8_battle_trigger"
-        ),
-        DialogueNode(
-            id = "act8_battle_trigger",
-            speaker = DialogueSpeaker.NARRATOR_HULK,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "THIS IS FOR ALL THE MARBLES AND THE HEAVYWEIGHT BELT, BROTHER! Body-slam the malarkey through the canvas and bring common sense back to America!",
-            triggerBattleEncounterId = "act8_biden_final_battle",
-            nextNodeId = "act8_post_battle"
-        ),
-        DialogueNode(
-            id = "act8_post_battle",
-            speaker = DialogueSpeaker.BIDEN,
-            side = SpeakerSide.RIGHT,
-            text = "I... I think I'll go take a nap and eat my vanilla ice cream now... good job, man...",
-            nextNodeId = "act8_victory_epilogue"
-        ),
-        DialogueNode(
-            id = "act8_victory_epilogue",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            side = SpeakerSide.LEFT,
-            text = "WE DID IT, FOLKS! Absolute golden victory! Stupidity has been eradicated, malarkey is vanquished, and America is great once more!",
-            nextNodeId = "act8_game_over"
-        ),
-        DialogueNode(
-            id = "act8_game_over",
-            speaker = DialogueSpeaker.NARRATOR_KAROLINE,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "The results are certified and the victory is historic! Every county, every precinct, total common sense restored across the land!",
-            nextNodeId = "act8_game_over_kayleigh"
-        ),
-        DialogueNode(
-            id = "act8_game_over_kayleigh",
-            speaker = DialogueSpeaker.NARRATOR_KAYLEIGH,
-            side = SpeakerSide.CENTER_NARRATOR,
-            text = "From New York to the Oval Citadel, an extraordinary chapter concludes. Golden prosperity shines once again upon our nation.",
-            nextNodeId = "act8_game_over_hulk"
         ),
         DialogueNode(
             id = "act8_game_over_hulk",
             speaker = DialogueSpeaker.NARRATOR_HULK,
             side = SpeakerSide.CENTER_NARRATOR,
-            text = "WHATCHA GONNA DO WHEN FREEDOM AND COMMANDER AMERICA RUN WILD ON YOU?! GOD BLESS AMERICA, BROTHER!"
+            text = "WHATCHA GONNA DO WHEN EQUAL-OPPORTUNITY SATIRE RUNS WILD ON YOU, BROTHER?!"
         )
     ).associateBy { it.id }
 

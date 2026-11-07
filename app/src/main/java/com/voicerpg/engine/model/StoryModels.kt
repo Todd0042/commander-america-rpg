@@ -42,8 +42,8 @@ data class DialogueSpeaker(
 
         val NARRATOR_KAROLINE = DialogueSpeaker(
             id = "narrator_karoline",
-            name = "Karoline (Press Sec)",
-            title = "Press Secretary of Truth",
+            name = "Karoline Mic-Drop",
+            title = "Gen-Z Briefing Enforcer",
             portraitAsset = "portraits/narrator_karoline.jpg",
             themeColor = Color(0xFFFFD54F),
             ttsPitch = 1.12f
@@ -51,8 +51,8 @@ data class DialogueSpeaker(
 
         val NARRATOR_KAYLEIGH = DialogueSpeaker(
             id = "narrator_kayleigh",
-            name = "Anchor Kayleigh",
-            title = "Primetime Desk Anchor",
+            name = "Kayleigh Binder-Tabs",
+            title = "Color-Coded Receipt Anchor",
             portraitAsset = "portraits/narrator_kayleigh.jpg",
             themeColor = Color(0xFF4FC3F7),
             ttsPitch = 1.02f
@@ -60,11 +60,39 @@ data class DialogueSpeaker(
 
         val NARRATOR_HULK = DialogueSpeaker(
             id = "narrator_hulk",
-            name = "The Hulkster",
-            title = "Legend of the 24-Inch Pythons",
+            name = "Hulkster 24-Pythons",
+            title = "Shirt-Ripping RNC Legend",
             portraitAsset = "portraits/narrator_hulk.jpg",
             themeColor = Color(0xFFFF5252),
             ttsPitch = 0.78f
+        )
+
+        // Track B Counterpart Narrators (Real-life counterparts to Kayleigh, Karoline, and Hulkster)
+        val NARRATOR_PSAKI = DialogueSpeaker(
+            id = "narrator_psaki",
+            name = "Jen Circle-Back",
+            title = "High Priestess of Circling Back",
+            portraitAsset = "portraits/template/narrator_psaki_template.jpg",
+            themeColor = Color(0xFF4FC3F7),
+            ttsPitch = 1.05f
+        )
+
+        val NARRATOR_KJP = DialogueSpeaker(
+            id = "narrator_kjp",
+            name = "Karine Hatch-Act",
+            title = "Historic Binder Guard",
+            portraitAsset = "portraits/template/narrator_kjp_template.jpg",
+            themeColor = Color(0xFFCE93D8),
+            ttsPitch = 1.10f
+        )
+
+        val NARRATOR_OPRAH = DialogueSpeaker(
+            id = "narrator_oprah",
+            name = "Oprah Free-Car",
+            title = "Under-Your-Seat DNC Hypeman",
+            portraitAsset = "portraits/template/narrator_oprah_template.jpg",
+            themeColor = Color(0xFFFFCA28),
+            ttsPitch = 0.92f
         )
 
         val NARRATOR = NARRATOR_KAYLEIGH
@@ -153,7 +181,7 @@ data class DialogueSpeaker(
         val COMMANDER_AMERICA = DialogueSpeaker(
             id = "commander_america",
             name = "Commander America",
-            title = "Commander-in-Chief of Freedom",
+            title = "Golden Escalator Brawler",
             portraitAsset = "portraits/commander_america.jpg",
             themeColor = Color(0xFFFFD700),
             ttsPitch = 0.90f
@@ -161,18 +189,17 @@ data class DialogueSpeaker(
 
         val ELON = DialogueSpeaker(
             id = "elon",
-            name = "Elon Musk",
-            title = "The Chief Doge & Starship Sovereign",
+            name = "Musk-X",
+            title = "Porcelain Sink Technoking",
             portraitAsset = "portraits/elon.jpg",
             themeColor = Color(0xFF00E5FF),
             ttsPitch = 1.05f
         )
 
-
         val BIDEN = DialogueSpeaker(
             id = "biden",
-            name = "Final Boss Biden",
-            title = "The Malarkey Sovereign",
+            name = "Joe Naptime",
+            title = "Two-Scoop Chocolate-Chip Sovereign",
             portraitAsset = "portraits/biden.jpg",
             themeColor = Color(0xFF90CAF9),
             ttsPitch = 0.65f
@@ -180,8 +207,8 @@ data class DialogueSpeaker(
 
         val KAMALA = DialogueSpeaker(
             id = "kamala",
-            name = "Kamala",
-            title = "The Unburdened Vice-Sovereign",
+            name = "Kamala Coconut",
+            title = "Triple-Circle Venn Mystic",
             portraitAsset = "portraits/kamala.jpg",
             themeColor = Color(0xFFCE93D8),
             ttsPitch = 1.25f
@@ -189,8 +216,8 @@ data class DialogueSpeaker(
 
         val OBAMA = DialogueSpeaker(
             id = "obama",
-            name = "Barack",
-            title = "The Teleprompter Sorcerer",
+            name = "Barry Teleprompter",
+            title = "Tan-Suit Dijon Oracle",
             portraitAsset = "portraits/obama.jpg",
             themeColor = Color(0xFF4FC3F7),
             ttsPitch = 0.95f
@@ -207,8 +234,8 @@ data class DialogueSpeaker(
 
         val MEDIA_ANCHOR = DialogueSpeaker(
             id = "media_anchor",
-            name = "Cable News Anchor",
-            title = "Smug Primetime Pundit",
+            name = "Chyron McSpin",
+            title = "Breaking-News Outrage Pundit",
             portraitAsset = "portraits/media_anchor.jpg",
             themeColor = Color(0xFFB0BEC5),
             ttsPitch = 1.10f
@@ -216,8 +243,8 @@ data class DialogueSpeaker(
 
         val ESTABLISHMENT_RIVAL = DialogueSpeaker(
             id = "establishment_rival",
-            name = "Dynasty Rival",
-            title = "Focus-Grouped Candidate",
+            name = "Low-Energy Jeb!",
+            title = "$130M Guacamole Bowl Peddler",
             portraitAsset = "portraits/media_anchor.jpg",
             themeColor = Color(0xFF5C6BC0),
             ttsPitch = 0.85f
@@ -225,8 +252,8 @@ data class DialogueSpeaker(
 
         val PARTY_BOSS = DialogueSpeaker(
             id = "party_boss",
-            name = "Establishment Party Boss",
-            title = "Convention Delegate Broker",
+            name = "Super-Delegate Boss",
+            title = "Smoke-Filled Backroom Broker",
             portraitAsset = "portraits/media_anchor.jpg",
             themeColor = Color(0xFFC62828),
             ttsPitch = 0.70f
@@ -234,8 +261,8 @@ data class DialogueSpeaker(
 
         val PELOSI = DialogueSpeaker(
             id = "pelosi",
-            name = "Madam Speaker Pelosi",
-            title = "The Stock-Trading Shadow Lich",
+            name = "Nancy Palooza",
+            title = "Sub-Zero Call-Option Oracle",
             portraitAsset = "portraits/pelosi.jpg",
             themeColor = Color(0xFF81C784),
             ttsPitch = 0.80f
@@ -243,8 +270,8 @@ data class DialogueSpeaker(
 
         val MARCO = DialogueSpeaker(
             id = "marco",
-            name = "Marco Rubio",
-            title = "Secretary of State",
+            name = "Little Marco",
+            title = "Emergency Water-Bottle Sipper",
             portraitAsset = "portraits/marco.jpg",
             themeColor = Color(0xFF42A5F5),
             ttsPitch = 1.05f
@@ -252,8 +279,8 @@ data class DialogueSpeaker(
 
         val VANCE = DialogueSpeaker(
             id = "vance",
-            name = "JD Vance",
-            title = "The Vice President",
+            name = "JD Pants",
+            title = "Whatever-Makes-Sense Donut Connoisseur",
             portraitAsset = "portraits/vance.jpg",
             themeColor = Color(0xFF5C6BC0),
             ttsPitch = 0.92f
@@ -261,8 +288,8 @@ data class DialogueSpeaker(
 
         val KASH = DialogueSpeaker(
             id = "kash",
-            name = "Kash Patel",
-            title = "FBI Director",
+            name = "Kash Subpoena",
+            title = "Children's-Book Wizard Inquisitor",
             portraitAsset = "portraits/kash.jpg",
             themeColor = Color(0xFFAB47BC),
             ttsPitch = 0.98f
@@ -270,11 +297,93 @@ data class DialogueSpeaker(
 
         val KENNEDY = DialogueSpeaker(
             id = "kennedy",
-            name = "Senator Kennedy",
-            title = "Committee Cross-Examiner",
+            name = "Foghorn Kennedy",
+            title = "Folksy Country-Fried Cross-Examiner",
             portraitAsset = "portraits/kennedy.jpg",
             themeColor = Color(0xFF78909C),
             ttsPitch = 0.88f
+        )
+
+        // New Parody Speakers for Dual-Track Rewrite
+        val HILL_ROD = DialogueSpeaker(
+            id = "hill_rod",
+            name = "Hill-Rod",
+            title = "Chappaqua Cloth-Wipe Technomancer",
+            portraitAsset = "portraits/template/hill_rod_template.jpg",
+            themeColor = Color(0xFF64B5F6),
+            ttsPitch = 1.08f
+        )
+
+        val SPICY_SEAN = DialogueSpeaker(
+            id = "spicy_sean",
+            name = "Spicy Sean",
+            title = "Hedge-Hiding Cinnamon Gum Bard",
+            portraitAsset = "portraits/template/spicy_sean_template.jpg",
+            themeColor = Color(0xFFAED581),
+            ttsPitch = 1.14f
+        )
+
+        val ZACH_FERNS = DialogueSpeaker(
+            id = "zach_ferns",
+            name = "Zach Two-Ferns",
+            title = "Deadpan Potted-Plant Interrogator",
+            portraitAsset = "portraits/template/zach_ferns_template.jpg",
+            themeColor = Color(0xFF81C784),
+            ttsPitch = 0.88f
+        )
+
+        val BILLY_BUS = DialogueSpeaker(
+            id = "billy_bus",
+            name = "Billy Access-Bus",
+            title = "2005 Hot-Mic Bus Giggler",
+            portraitAsset = "portraits/template/billy_bus_template.jpg",
+            themeColor = Color(0xFFFFB74D),
+            ttsPitch = 1.15f
+        )
+
+        val COMEY_TALL = DialogueSpeaker(
+            id = "comey_tall",
+            name = "Director Jim-Tall",
+            title = "6-Foot-8 Blue-Curtain Chameleon",
+            portraitAsset = "portraits/template/comey_template.jpg",
+            themeColor = Color(0xFF90A4AE),
+            ttsPitch = 0.82f
+        )
+
+        val RUDY_GHOUL = DialogueSpeaker(
+            id = "rudy_ghoul",
+            name = "Rudy Ghoul",
+            title = "Four-Seasons Hair-Dye Landscaper",
+            portraitAsset = "portraits/template/rudy_ghoul_template.jpg",
+            themeColor = Color(0xFFBA68C8),
+            ttsPitch = 0.76f
+        )
+
+        val ZOHRAN_CARDAMOM = DialogueSpeaker(
+            id = "zohran_cardamom",
+            name = "Zohran Cardamom",
+            title = "Fare-Free Chapati Rap Mayor",
+            portraitAsset = "portraits/template/mamdani_template.jpg",
+            themeColor = Color(0xFFFF8A65),
+            ttsPitch = 1.02f
+        )
+
+        val MAYOR_SWAGGER = DialogueSpeaker(
+            id = "mayor_swagger",
+            name = "Mayor Swagger",
+            title = "Istanbul-Upgrade Nightlife Czar",
+            portraitAsset = "portraits/template/mayor_swagger_template.jpg",
+            themeColor = Color(0xFF4DD0E1),
+            ttsPitch = 0.90f
+        )
+
+        val THE_MOOCH = DialogueSpeaker(
+            id = "the_mooch",
+            name = "The 11-Day Mooch",
+            title = "Front-Stabbing Wall Street Whirlwind",
+            portraitAsset = "portraits/template/mooch_template.jpg",
+            themeColor = Color(0xFFFF80AB),
+            ttsPitch = 1.16f
         )
     }
 
@@ -410,6 +519,18 @@ data class DialogueLogEntry(
             "narrator_karoline" -> DialogueSpeaker.NARRATOR_KAROLINE.themeColor
             "narrator_kayleigh" -> DialogueSpeaker.NARRATOR_KAYLEIGH.themeColor
             "narrator_hulk" -> DialogueSpeaker.NARRATOR_HULK.themeColor
+            "narrator_psaki" -> DialogueSpeaker.NARRATOR_PSAKI.themeColor
+            "narrator_kjp" -> DialogueSpeaker.NARRATOR_KJP.themeColor
+            "narrator_oprah" -> DialogueSpeaker.NARRATOR_OPRAH.themeColor
+            "hill_rod" -> DialogueSpeaker.HILL_ROD.themeColor
+            "spicy_sean" -> DialogueSpeaker.SPICY_SEAN.themeColor
+            "zach_ferns" -> DialogueSpeaker.ZACH_FERNS.themeColor
+            "billy_bus" -> DialogueSpeaker.BILLY_BUS.themeColor
+            "comey_tall" -> DialogueSpeaker.COMEY_TALL.themeColor
+            "rudy_ghoul" -> DialogueSpeaker.RUDY_GHOUL.themeColor
+            "zohran_cardamom" -> DialogueSpeaker.ZOHRAN_CARDAMOM.themeColor
+            "mayor_swagger" -> DialogueSpeaker.MAYOR_SWAGGER.themeColor
+            "the_mooch" -> DialogueSpeaker.THE_MOOCH.themeColor
             "narrator" -> DialogueSpeaker.NARRATOR.themeColor
             else -> if (isNarrator) LogosGold else Color.White
         }
@@ -445,6 +566,18 @@ data class DialogueLogEntry(
             "narrator_karoline" -> DialogueSpeaker.NARRATOR_KAROLINE.portraitAsset
             "narrator_kayleigh" -> DialogueSpeaker.NARRATOR_KAYLEIGH.portraitAsset
             "narrator_hulk" -> DialogueSpeaker.NARRATOR_HULK.portraitAsset
+            "narrator_psaki" -> DialogueSpeaker.NARRATOR_PSAKI.portraitAsset
+            "narrator_kjp" -> DialogueSpeaker.NARRATOR_KJP.portraitAsset
+            "narrator_oprah" -> DialogueSpeaker.NARRATOR_OPRAH.portraitAsset
+            "hill_rod" -> DialogueSpeaker.HILL_ROD.portraitAsset
+            "spicy_sean" -> DialogueSpeaker.SPICY_SEAN.portraitAsset
+            "zach_ferns" -> DialogueSpeaker.ZACH_FERNS.portraitAsset
+            "billy_bus" -> DialogueSpeaker.BILLY_BUS.portraitAsset
+            "comey_tall" -> DialogueSpeaker.COMEY_TALL.portraitAsset
+            "rudy_ghoul" -> DialogueSpeaker.RUDY_GHOUL.portraitAsset
+            "zohran_cardamom" -> DialogueSpeaker.ZOHRAN_CARDAMOM.portraitAsset
+            "mayor_swagger" -> DialogueSpeaker.MAYOR_SWAGGER.portraitAsset
+            "the_mooch" -> DialogueSpeaker.THE_MOOCH.portraitAsset
             "narrator" -> DialogueSpeaker.NARRATOR.portraitAsset
             else -> null
         }

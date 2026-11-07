@@ -711,31 +711,943 @@ object StoryEncounters {
         initialParty = createAct1Party()
     )
 
+    // -------------------------------------------------------------------------
+    // Dual-Campaign Act I Spells & Encounters (Track A & Track B)
+    // -------------------------------------------------------------------------
+    val hillRodAct1Spells = listOf(
+        Spell(
+            id = "hill_pokemon_go",
+            name = "Pokémon Go-To-The-Polls",
+            school = SpellSchool.ELECTROMANCY,
+            basePower = 65,
+            mpCost = 12,
+            hitsAll = true,
+            status = "OVERLOAD",
+            aliases = listOf("pokemon go", "go to the polls", "pokemon", "polls", "smartphone app"),
+            description = "Pitches a cringe smartphone app to make Pokémon appear in voting booths (July 14, 2016)",
+            exampleChant = "Pokemon Go to the polls"
+        ),
+        Spell(
+            id = "hill_cloth_wipe",
+            name = "Chappaqua Cloth Wipe",
+            school = SpellSchool.SHADOW,
+            basePower = 70,
+            mpCost = 14,
+            status = "CORRODE",
+            lifesteal = true,
+            aliases = listOf("with a cloth", "wipe the server", "cloth wipe", "bleachbit", "server wipe"),
+            description = "\"What, like with a cloth or something?\" Scrubs 33,000 emails and drains enemy buffs",
+            exampleChant = "Wipe the server with a cloth or something"
+        ),
+        Spell(
+            id = "hill_hot_sauce",
+            name = "Purse Ninja Hot Sauce",
+            school = SpellSchool.PYROMANCY,
+            basePower = 78,
+            mpCost = 15,
+            status = "BURN",
+            aliases = listOf("hot sauce", "purse hot sauce", "breakfast club", "red pepper", "pandering"),
+            description = "Pulls Ninja Squirrel hot sauce from her handbag on The Breakfast Club while swearing it isn't pandering",
+            exampleChant = "Hot sauce in my bag right now"
+        ),
+        Spell(
+            id = "hill_cattle_futures",
+            name = "\$1,000 Cattle Futures Stampede",
+            school = SpellSchool.PHYSICAL,
+            basePower = 82,
+            mpCost = 18,
+            hitsAll = true,
+            status = "BLEED",
+            aliases = listOf("cattle futures", "wall street journal", "live cattle", "one thousand dollars", "hundred grand"),
+            description = "Turns \$1,000 into \$100,000 via 1978 Refco live-cattle contracts by reading the Wall Street Journal",
+            exampleChant = "One thousand dollar cattle futures stampede"
+        ),
+        Spell(
+            id = "hill_vindication_11hr",
+            name = "11-Hour Marathon Shield",
+            school = SpellSchool.HOLY,
+            basePower = 110,
+            mpCost = 20,
+            isHeal = true,
+            hitsAll = true,
+            isGuard = true,
+            status = "GUARD",
+            aliases = listOf("eleven hour hearing", "marathon shield", "no basement", "shoulder shrug", "vindication"),
+            description = "Survives an 11-hour committee grilling with a shoulder shrug and debunks the slab-foundation pizzeria basement hoax",
+            exampleChant = "Eleven hour hearing shoulder shrug"
+        ),
+        attuneSpell
+    )
+
+    fun createAct1TrackBParty(): List<PartyMember> = listOf(
+        PartyMember(
+            id = "hill_rod",
+            name = "Hill-Rod",
+            loreClass = "Chappaqua Server Technomancer",
+            currentHp = 340,
+            maxHp = 340,
+            currentMp = 140,
+            maxMp = 140,
+            spells = hillRodAct1Spells,
+            avatarTint = Color(0xFF64B5F6),
+            speed = 72,
+            atbGauge = 0.50f
+        )
+    )
+
+    // Track A — Act I Warmup Exhibition: Barry Teleprompter (Tan Suit & Dijon Burger)
+    val ACT1_TRACK_A_BARRY_BATTLE = EncounterDefinition(
+        id = "act1_track_a_barry_battle",
+        name = "Act I (Track A): Tan Suit & Dijon Exhibition",
+        description = "Barry Teleprompter steps onto the stage in his August 2014 summer tan suit, armed with a Dijon mustard burger and a mic-drop!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("barry_tan_suit", "Barry Teleprompter (Tan Suit)", "Occultist", currentHp = 480, maxHp = 480, baseAttack = 22, isBoss = true, isTargeted = true, spriteTint = Color(0xFFD7CCC8), speed = 58, atbGauge = 0.35f),
+            Enemy("dijon_waiter", "Poupon Mustard Sommelier", "Sniper", currentHp = 250, maxHp = 250, baseAttack = 16, isTargeted = false, spriteTint = Color(0xFFFFD54F), speed = 52, atbGauge = 0.25f)
+        ),
+        initialParty = createAct1Party()
+    )
+
+    // Track A — Act I Finale Boss: Hill-Rod (Chappaqua Server & Pokémon Go-To-The-Polls)
+    val ACT1_TRACK_A_HILL_ROD_FINALE = EncounterDefinition(
+        id = "act1_track_a_hill_rod_finale",
+        name = "Act I Finale (Track A): The Chappaqua Server Sovereign",
+        description = "Hill-Rod deploys BleachBit cloth wipes, Purse Hot Sauce, and Pokémon Go-To-The-Polls on Election Night 2016!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("hill_rod_boss", "Hill-Rod (Server Sovereign)", "Occultist", currentHp = 620, maxHp = 620, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFF64B5F6), speed = 60, atbGauge = 0.35f),
+            Enemy("bleachbit_server", "Chappaqua Basement Server Rack", "Vanguard", currentHp = 320, maxHp = 320, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF90A4AE), speed = 46, atbGauge = 0.20f),
+            Enemy("fern_intern", "Potted Fern Intern", "Sniper", currentHp = 260, maxHp = 260, baseAttack = 17, isTargeted = false, spriteTint = Color(0xFF81C784), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createAct1Party()
+    )
+
+    // Track B — Act I Skirmish 1: Zach Two-Ferns & The Potted Plant Ambush
+    val ACT1_TRACK_B_FERNS_BATTLE = EncounterDefinition(
+        id = "act1_track_b_ferns_battle",
+        name = "Act I (Track B): Between Two Potted Ferns",
+        description = "Zach Two-Ferns rolls a rival campaign commercial mid-interview while weaponized potted ferns close in!",
+        environment = BattleEnvironment.FOREST,
+        enemies = listOf(
+            Enemy("zach_ferns_boss", "Zach Two-Ferns", "Occultist", currentHp = 420, maxHp = 420, baseAttack = 19, isBoss = true, isTargeted = true, spriteTint = Color(0xFF81C784), speed = 54, atbGauge = 0.30f),
+            Enemy("potted_fern_1", "Hostile Studio Fern Left", "Vanguard", currentHp = 230, maxHp = 230, baseAttack = 15, isTargeted = false, spriteTint = Color(0xFF4CAF50), speed = 48, atbGauge = 0.20f)
+        ),
+        initialParty = createAct1TrackBParty()
+    )
+
+    // Track B — Act I Skirmish 2: Spicy Sean & Director Jim-Tall
+    val ACT1_TRACK_B_SPICY_SEAN_BATTLE = EncounterDefinition(
+        id = "act1_track_b_spicy_sean_battle",
+        name = "Act I (Track B): Shrubbery & October Surprise",
+        description = "Spicy Sean leaps out of the bushes chewing 2.5 packs of Orbit Cinnamon gum while Director Jim-Tall drops an October letter!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("spicy_sean_boss", "Spicy Sean (Hedge Brawler)", "Vanguard", currentHp = 460, maxHp = 460, baseAttack = 21, isBoss = true, isTargeted = true, spriteTint = Color(0xFFAED581), speed = 58, atbGauge = 0.35f),
+            Enemy("comey_curtain", "Director Jim-Tall (Blue Curtain)", "Sniper", currentHp = 310, maxHp = 310, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF90A4AE), speed = 52, atbGauge = 0.25f)
+        ),
+        initialParty = createAct1TrackBParty()
+    )
+
+    // Track B — Act I Finale Boss: Commander America (Golden Podium Showdown)
+    val ACT1_TRACK_B_COMMANDER_FINALE = EncounterDefinition(
+        id = "act1_track_b_commander_finale",
+        name = "Act I Finale (Track B): Golden Podium Showdown",
+        description = "Commander America commands the stage with Accordion Hands, Diet Coke Valet Buttons, and Tic-Tac Bus counter-strikes!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("commander_boss_act1", "Commander America (2016)", "Vanguard", currentHp = 640, maxHp = 640, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFD700), speed = 60, atbGauge = 0.35f),
+            Enemy("billy_bus_minion", "Billy Access-Bus Hot Mic", "Sniper", currentHp = 290, maxHp = 290, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFFFFB74D), speed = 56, atbGauge = 0.25f),
+            Enemy("escalator_extra", "\$50 FEC Casting Extra", "Vanguard", currentHp = 270, maxHp = 270, baseAttack = 16, isTargeted = false, spriteTint = Color(0xFFB0BEC5), speed = 48, atbGauge = 0.20f)
+        ),
+        initialParty = createAct1TrackBParty()
+    )
+
     // 2a. Act II - Chapter 1: The Inaugural Address — Aerial Spin Crew Ambush
     val ACT2_CH1_INAUGURATION_BATTLE = EncounterDefinition(
         id = "act2_ch1_inauguration_battle",
-        name = "Act II - Ch 1: The Inaugural Aerial Spin Crew",
-        description = "Cable News Aerial Spin Crew and a Hostile Fact-Checker deploy fabricated crowd-size graphics to undermine the inauguration!",
+        name = "Act II (Track A) - Ch 1: Crowd-Size Spin & The 11-Day Mooch",
+        description = "Cable News Aerial Spin Crew and The 11-Day Mooch tornado collide with Spicy Sean's podium!",
         environment = BattleEnvironment.CASTLE,
         enemies = listOf(
             Enemy("aerial_spin_anchor", "Cable News Aerial Spin Anchor", "Sniper", currentHp = 320, maxHp = 320, baseAttack = 20, isBoss = true, isTargeted = true, spriteTint = Color(0xFFEF5350), speed = 68, atbGauge = 0.40f),
             Enemy("hostile_fact_checker", "Hostile Fisheye Fact-Checker", "Occultist", currentHp = 240, maxHp = 240, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 60, atbGauge = 0.30f)
         ),
-        initialParty = createAct1Party()   // Ch1: solo Commander America before Marco joins
+        initialParty = createAct1Party()
     )
 
-    // 2b. Act II: Media Wars & The Insider Stock Lich (Chapter 3 Boss encounter)
+    // 2b. Act II: Media Wars & The Sub-Zero Call-Option Oracle (Track A Finale Boss)
     val ACT2_MEDIA_BATTLE = EncounterDefinition(
         id = "act2_media_battle",
-        name = "Act II: Media Wars & The Insider Stock Lich",
-        description = "Madam Speaker Pelosi and fact-checker ghouls attempt to crash the economy with insider trading spells!",
+        name = "Act II Finale (Track A): Nancy Palooza & The Sub-Zero Vault",
+        description = "Nancy Palooza unleashes 45-degree sideways seal claps, pre-scored SOTU speech rips, and twin \$24,000 Sub-Zero ice cream freezers!",
         environment = BattleEnvironment.CASTLE,
         enemies = listOf(
-            Enemy("pelosi", "Madam Pelosi (Stock Lich)", "Occultist", currentHp = 450, maxHp = 450, baseAttack = 28, isTargeted = true, spriteTint = Color(0xFFAB47BC), speed = 65, atbGauge = 0.35f),
-            Enemy("fact_checker", "Biased Fact-Checker Ghoul", "Sniper", currentHp = 240, maxHp = 240, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 58, atbGauge = 0.25f),
-            Enemy("anonymous_source", "Anonymous Source Phantom", "Vanguard", currentHp = 260, maxHp = 260, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF7E57C2), speed = 50, atbGauge = 0.20f)
+            Enemy("pelosi", "Nancy Palooza (Sub-Zero Oracle)", "Occultist", currentHp = 520, maxHp = 520, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFFAB47BC), speed = 65, atbGauge = 0.35f),
+            Enemy("fact_checker", "Sub-Zero Jeni's Freezer Golem", "Vanguard", currentHp = 280, maxHp = 280, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 54, atbGauge = 0.25f),
+            Enemy("anonymous_source", "eSalon Blowout Stylist", "Sniper", currentHp = 250, maxHp = 250, baseAttack = 19, isTargeted = false, spriteTint = Color(0xFF7E57C2), speed = 58, atbGauge = 0.20f)
         ),
         initialParty = createAct2Party()
+    )
+
+    // -------------------------------------------------------------------------
+    // Dual-Campaign Act II Spells & Encounters (Track A & Track B: Nancy Palooza)
+    // -------------------------------------------------------------------------
+    val nancyAct2Spells = listOf(
+        Spell(
+            id = "nancy_sotu_shred",
+            name = "Pre-Scored SOTU Speech Rip",
+            school = SpellSchool.PHYSICAL,
+            basePower = 74,
+            mpCost = 12,
+            status = "BLEED",
+            aliases = listOf("rip the speech", "tear pages", "sotu shred", "pre scored", "state of the union"),
+            description = "Secretly pre-scores starter notches under the desk, then stands up to rip the speech in half on live TV (Feb 4, 2020)",
+            exampleChant = "Rip the State of the Union speech in half"
+        ),
+        Spell(
+            id = "nancy_subzero_flex",
+            name = "\$24,000 Dual Sub-Zero Freezer Flex",
+            school = SpellSchool.CRYOMANCY,
+            basePower = 115,
+            mpCost = 16,
+            isHeal = true,
+            hitsAll = true,
+            isGuard = true,
+            status = "GUARD",
+            aliases = listOf("sub zero freezer", "jenis ice cream", "late late show", "ice cream freezer", "twenty four thousand"),
+            description = "Opens twin \$24,000 stainless-steel Sub-Zero freezers stocked with \$12 Jeni's pints on The Late Late Show (April 2020)",
+            exampleChant = "Open the dual Sub Zero ice cream freezers"
+        ),
+        Spell(
+            id = "nancy_sideways_clap",
+            name = "45-Degree Sideways Seal Clap",
+            school = SpellSchool.HOLY,
+            basePower = 68,
+            mpCost = 14,
+            hitsAll = true,
+            status = "OVERLOAD",
+            aliases = listOf("sideways clap", "pelosi clap", "seal clap", "condescending clap"),
+            description = "Extends both arms at a 45-degree angle and claps condescendingly right into the target's face (Feb 5, 2019)",
+            exampleChant = "Condescending sideways applause"
+        ),
+        Spell(
+            id = "nancy_pass_to_find_out",
+            name = "Pass the Bill to Find Out",
+            school = SpellSchool.SHADOW,
+            basePower = 76,
+            mpCost = 15,
+            status = "CORRODE",
+            lifesteal = true,
+            aliases = listOf("pass the bill", "find out whats in it", "fog of controversy", "omnibus"),
+            description = "\"We have to pass the bill so that you can find out what is in it, away from the fog of the controversy!\"",
+            exampleChant = "Pass the bill to find out what is in it"
+        ),
+        Spell(
+            id = "nancy_deep_itm_calls",
+            name = "Deep-ITM Tech Call Option (`NANC`)",
+            school = SpellSchool.ELECTROMANCY,
+            basePower = 88,
+            mpCost = 20,
+            hitsAll = true,
+            status = "BURN",
+            aliases = listOf("call options", "free market economy", "stock trade", "periodic transaction", "nanc"),
+            description = "\"We are a free-market economy. They should be able to participate in that!\" Exercises \$5M in Big Tech LEAPS",
+            exampleChant = "Free market Periodic Transaction Report"
+        ),
+        Spell(
+            id = "nancy_vindication_nvda",
+            name = "\$341k Pre-CHIPS Act Loss Receipt",
+            school = SpellSchool.HOLY,
+            basePower = 95,
+            mpCost = 22,
+            hitsAll = true,
+            status = "WEAKEN",
+            aliases = listOf("chips act loss", "nvidia loss", "unedited cspan", "fact check trade", "three hundred forty one"),
+            description = "Slams down the July 26, 2022 clerk filing proving Paul SOLD 25,000 Nvidia shares at a \$341,365 loss before the CHIPS Act vote!",
+            exampleChant = "Three hundred forty one thousand dollar loss receipt"
+        ),
+        attuneSpell
+    )
+
+    fun createAct2TrackBParty(): List<PartyMember> = listOf(
+        PartyMember(
+            id = "nancy_palooza",
+            name = "Nancy Palooza",
+            loreClass = "Sub-Zero Call-Option Oracle",
+            currentHp = 360,
+            maxHp = 360,
+            currentMp = 150,
+            maxMp = 150,
+            spells = nancyAct2Spells,
+            avatarTint = Color(0xFF81C784),
+            speed = 74,
+            atbGauge = 0.50f
+        )
+    )
+
+    // Track A — Act II Ch 3 Battle: NOAA Sharpie Map & 15-Flush Plumbing Inspectors
+    val ACT2_TRACK_A_SHARPIE_BATTLE = EncounterDefinition(
+        id = "act2_track_a_sharpie_battle",
+        name = "Act II (Track A) - Ch 3: Hurricane Sharpie & 15 Flushes",
+        description = "NOAA Weather-Map Fact-Checkers and Low-Flow Plumbing Inspectors challenge the Alabama Sharpie bubble and Bounty free-throws!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("noaa_meteorologist", "NOAA Cone-of-Uncertainty Chief", "Occultist", currentHp = 440, maxHp = 440, baseAttack = 22, isBoss = true, isTargeted = true, spriteTint = Color(0xFF29B6F6), speed = 60, atbGauge = 0.35f),
+            Enemy("plumbing_inspector", "Low-Flow 15-Flush Regulator", "Vanguard", currentHp = 290, maxHp = 290, baseAttack = 19, isTargeted = false, spriteTint = Color(0xFF78909C), speed = 50, atbGauge = 0.25f)
+        ),
+        initialParty = createAct2Party()
+    )
+
+    // Track B — Act II Ch 1 Battle: Spicy Sean (Neon Salsa Shirt) & The 11-Day Mooch
+    val ACT2_TRACK_B_SPICER_SALSA_BATTLE = EncounterDefinition(
+        id = "act2_track_b_spicer_salsa_battle",
+        name = "Act II (Track B) - Ch 1: White House Bushes & Neon Salsa",
+        description = "Spicy Sean leaps out of the White House hedges in his neon-green Dancing with the Stars ruffled shirt alongside The 11-Day Mooch!",
+        environment = BattleEnvironment.FOREST,
+        enemies = listOf(
+            Enemy("spicy_sean_salsa", "Spicy Sean (Neon Salsa Shirt)", "Vanguard", currentHp = 450, maxHp = 450, baseAttack = 21, isBoss = true, isTargeted = true, spriteTint = Color(0xFF76FF03), speed = 58, atbGauge = 0.35f),
+            Enemy("the_mooch_boss", "The 11-Day Mooch Whirlwind", "Sniper", currentHp = 310, maxHp = 310, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFFFF80AB), speed = 72, atbGauge = 0.40f)
+        ),
+        initialParty = createAct2TrackBParty()
+    )
+
+    // Track B — Act II Ch 4 Battle: Kash Subpoena & Wizard Kash Merch Pitch
+    val ACT2_TRACK_B_KASH_BATTLE = EncounterDefinition(
+        id = "act2_track_b_kash_battle",
+        name = "Act II (Track B) - Ch 4: Wizard Kash & The Nunes Scroll",
+        description = "Kash Subpoena unrolls his 4-page FISA scroll while hawking his \$19.99 illustrated children's book, The Plot Against the King!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("kash_wizard_boss", "Kash Subpoena (Wizard Kash)", "Occultist", currentHp = 520, maxHp = 520, baseAttack = 24, isBoss = true, isTargeted = true, spriteTint = Color(0xFFAB47BC), speed = 64, atbGauge = 0.35f),
+            Enemy("brave_book_golem", "Plot Against the King Merch Box", "Vanguard", currentHp = 300, maxHp = 300, baseAttack = 19, isTargeted = false, spriteTint = Color(0xFFFFCA28), speed = 50, atbGauge = 0.25f)
+        ),
+        initialParty = createAct2TrackBParty()
+    )
+
+    // Track B — Act II Ch 5 Finale Boss: Rudy Ghoul & Commander America at Four Seasons Total Landscaping
+    val ACT2_TRACK_B_RUDY_FINALE = EncounterDefinition(
+        id = "act2_track_b_rudy_finale",
+        name = "Act II Finale (Track B): Four Seasons Total Landscaping",
+        description = "Wedged between a crematorium and Fantasy Island Adult Books, Rudy Ghoul drips hair dye down both cheeks beside Commander America!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("rudy_ghoul_boss", "Rudy Ghoul (Melting Hair Dye)", "Occultist", currentHp = 580, maxHp = 580, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFF8D6E63), speed = 60, atbGauge = 0.35f),
+            Enemy("commander_sharpie", "Commander America (Sharpie Map)", "Vanguard", currentHp = 560, maxHp = 560, baseAttack = 26, isBoss = true, isTargeted = false, spriteTint = Color(0xFFFFD700), speed = 58, atbGauge = 0.30f),
+            Enemy("landscaping_mower", "Four Seasons Riding Mower", "Sniper", currentHp = 260, maxHp = 260, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF66BB6A), speed = 52, atbGauge = 0.20f)
+        ),
+        initialParty = createAct2TrackBParty()
+    )
+
+    // -------------------------------------------------------------------------
+    // Dual-Campaign Act III Spells & Encounters (Track A & Track B: Joe Naptime)
+    // -------------------------------------------------------------------------
+    val bidenAct3Spells = listOf(
+        Spell(
+            id = "biden_gibberish_audio",
+            name = "Real-Audio Gibberish (`Truinanashabbadepressure!`)",
+            school = SpellSchool.ELECTROMANCY,
+            basePower = 94,
+            mpCost = 18,
+            hitsAll = true,
+            status = "OVERLOAD",
+            aliases = listOf("gibberish", "truinanashabbadepressure", "badakathcare", "repeat the line", "corn pop", "beat medicare", "you know the thing"),
+            description = "Plays a random real-life Biden audio quote (Truinanashabbadepressure, Badakathcare, Repeat the Line, Corn Pop, Beat Medicare) to stun all foes!",
+            exampleChant = "Mobilize truinanashabbadepressure and badakathcare"
+        ),
+        Spell(
+            id = "biden_double_scoop_cone",
+            name = "Double-Scoop Waffle Cone Blitz",
+            school = SpellSchool.CRYOMANCY,
+            basePower = 76,
+            mpCost = 12,
+            status = "CHILL",
+            aliases = listOf("double scoop", "waffle cone", "chocolate chip", "ice cream blitz", "two scoops"),
+            description = "\"I came down because I heard there was chocolate chip ice cream!\" Hurls a freezing double-scoop waffle cone (May 27, 2021)",
+            exampleChant = "Double scoop chocolate chip waffle cone"
+        ),
+        Spell(
+            id = "biden_jenis_brain_freeze",
+            name = "Jeni's Chocolate Chip Brain-Freeze",
+            school = SpellSchool.CRYOMANCY,
+            basePower = 86,
+            mpCost = 18,
+            hitsAll = true,
+            status = "CHILL",
+            aliases = listOf("brain freeze", "jenis chocolate chip", "refrigerator upstairs", "ice cream blizzard"),
+            description = "\"I have a whole refrigerator full upstairs!\" Unleashes an AoE blizzard of Jeni's Splendid Chocolate Chip pints",
+            exampleChant = "Whole refrigerator full of chocolate chip ice cream"
+        ),
+        Spell(
+            id = "biden_baskin_robbins_lick",
+            name = "\"Economy Strong As Hell\" Baskin-Robbins Lick",
+            school = SpellSchool.CRYOMANCY,
+            basePower = 120,
+            mpCost = 16,
+            isHeal = true,
+            hitsAll = true,
+            isGuard = true,
+            status = "GUARD",
+            aliases = listOf("economy strong as hell", "baskin robbins", "ice cream lick", "strong as hell", "portland cone"),
+            description = "Licks a Baskin-Robbins chocolate chip waffle cone during 8.2% inflation while declaring \"Our economy is strong as hell, man!\" (Oct 15, 2022)",
+            exampleChant = "Our economy is strong as hell Baskin Robbins cone"
+        ),
+        Spell(
+            id = "biden_9am_lid_sundae",
+            name = "9:00 AM Lid & Sundae Nap",
+            school = SpellSchool.CRYOMANCY,
+            basePower = 90,
+            mpCost = 0,
+            isHeal = true,
+            manaRestorePct = 0.35f,
+            aliases = listOf("call a lid", "sundae nap", "nine am lid", "delaware beach", "ice cream nap"),
+            description = "Calls an early 9:00 AM press lid over a hot-fudge sundae, restoring HP and 35% MP",
+            exampleChant = "Call a nine AM lid for a hot fudge sundae"
+        ),
+        Spell(
+            id = "biden_fudge_ripple_meltdown",
+            name = "Aviator Fudge-Ripple Meltdown",
+            school = SpellSchool.CRYOMANCY,
+            basePower = 90,
+            mpCost = 20,
+            hitsAll = true,
+            status = "WEAKEN",
+            aliases = listOf("fudge ripple", "aviator meltdown", "no malarkey", "melting cone", "two beers"),
+            description = "Adjusts Ray-Ban aviators over a melting fudge-ripple cone while debunking the 'Two Beers a Week & Red Meat Ban' hoax!",
+            exampleChant = "Aviator fudge ripple meltdown no malarkey"
+        ),
+        attuneSpell
+    )
+
+    fun createAct3TrackBParty(): List<PartyMember> = listOf(
+        PartyMember(
+            id = "joe_naptime",
+            name = "Joe Naptime",
+            loreClass = "Grand Ice-Cream Cryomancer",
+            currentHp = 390,
+            maxHp = 390,
+            currentMp = 160,
+            maxMp = 160,
+            spells = bidenAct3Spells,
+            avatarTint = Color(0xFFFFF59D),
+            speed = 70,
+            atbGauge = 0.50f
+        )
+    )
+
+    fun createAct3KennedysParty(): List<PartyMember> = listOf(
+        TemplateHero.createTemplateAdventurer(id = "hero"),
+        TemplateHero.createMarcoRubio(),
+        TemplateHero.createKashPatel(),
+        TemplateHero.createJohnKennedy()
+    )
+
+    // Track A — Act III Ch 1 Battle: Air Force One Stairs & Rehoboth Toe-Cage Bicycle
+    val ACT3_TRACK_A_STAIRS_BIKE_BATTLE = EncounterDefinition(
+        id = "act3_track_a_stairs_bike_battle",
+        name = "Act III (Track A) - Ch 1: Windy Stairs & Toe-Cage Bike",
+        description = "Andrews Air Force Base wind gusts and a stationary Rehoboth Beach Trek bicycle with metal pedal toe-cages block the tarmac!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("af1_staircase_gust", "Air Force One Triple-Stumble Staircase", "Vanguard", currentHp = 480, maxHp = 480, baseAttack = 24, isBoss = true, isTargeted = true, spriteTint = Color(0xFF90CAF9), speed = 60, atbGauge = 0.35f),
+            Enemy("rehoboth_toe_cage_bike", "Stationary Toe-Cage Trek Bicycle", "Sniper", currentHp = 330, maxHp = 330, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF80CBC4), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createAct3KennedysParty()
+    )
+
+    // Track A — Act III Ch 3 Battle: Mar-a-Lago Bathroom Chandelier & Corvette Garage Inspectors
+    val ACT3_TRACK_A_CHANDELIER_BATTLE = EncounterDefinition(
+        id = "act3_track_a_chandelier_battle",
+        name = "Act III (Track A) - Ch 3: Bathroom Chandeliers & Corvette Boxes",
+        description = "Subpoena Archivists inspect the Mar-a-Lago bathroom chandelier bankers boxes while ignoring the 1967 Corvette garage!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("chandelier_archivist", "Bathroom Chandelier Box Inspector", "Occultist", currentHp = 510, maxHp = 510, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFD54F), speed = 62, atbGauge = 0.35f),
+            Enemy("corvette_garage_drone", "Wilmington Corvette Garage Sentinel", "Vanguard", currentHp = 340, maxHp = 340, baseAttack = 21, isTargeted = false, spriteTint = Color(0xFF66BB6A), speed = 54, atbGauge = 0.25f)
+        ),
+        initialParty = createAct3KennedysParty()
+    )
+
+    // Track A — Act III Ch 5 Finale Boss: Joe Naptime at Baskin-Robbins ("Economy Strong As Hell")
+    val ACT3_TRACK_A_BIDEN_ICE_CREAM_FINALE = EncounterDefinition(
+        id = "act3_track_a_biden_ice_cream_finale",
+        name = "Act III Finale (Track A): Baskin-Robbins Waffle Cone Showdown",
+        description = "Joe Naptime licks a double-scoop chocolate chip waffle cone at Baskin-Robbins while reading 'End of quote, repeat the line' off the teleprompter!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("joe_naptime_baskin_boss", "Joe Naptime (Baskin-Robbins Cryomancer)", "Occultist", currentHp = 650, maxHp = 650, baseAttack = 28, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFF59D), speed = 64, atbGauge = 0.35f),
+            Enemy("repeat_line_prompter", "'End of Quote, Repeat the Line' Teleprompter", "Sniper", currentHp = 350, maxHp = 350, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFF4DD0E1), speed = 58, atbGauge = 0.25f),
+            Enemy("two_scoop_golem", "Jeni's Double-Scoop Freezer Golem", "Vanguard", currentHp = 380, maxHp = 380, baseAttack = 21, isTargeted = false, spriteTint = Color(0xFFF48FB1), speed = 50, atbGauge = 0.20f)
+        ),
+        initialParty = createAct3KennedysParty()
+    )
+
+    // Track B — Act III Ch 1 Battle: Corn Pop's Rusty Rainwater Razor & The Rehoboth Toe-Cage Bike
+    val ACT3_TRACK_B_CORN_POP_BATTLE = EncounterDefinition(
+        id = "act3_track_b_corn_pop_battle",
+        name = "Act III (Track B) - Ch 1: Corn Pop & The Toe-Cage Bicycle",
+        description = "Corn Pop ('a bad dude who ran a bunch of bad boys') bangs rusty razors in a rainwater barrel beside a treacherous toe-cage bicycle!",
+        environment = BattleEnvironment.FOREST,
+        enemies = listOf(
+            Enemy("corn_pop_boss", "Corn Pop (Rusty Rain-Barrel Dude)", "Vanguard", currentHp = 460, maxHp = 460, baseAttack = 21, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFB74D), speed = 58, atbGauge = 0.35f),
+            Enemy("toe_cage_pedal", "Rehoboth Metal Toe-Cage Bike", "Sniper", currentHp = 290, maxHp = 290, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFF90A4AE), speed = 54, atbGauge = 0.25f)
+        ),
+        initialParty = createAct3TrackBParty()
+    )
+
+    // Track B — Act III Ch 3 Battle: Senator Foghorn Kennedy ("Call A Crackhead!")
+    val ACT3_TRACK_B_FOGHORN_BATTLE = EncounterDefinition(
+        id = "act3_track_b_foghorn_battle",
+        name = "Act III (Track B) - Ch 3: Foghorn Kennedy's Oxford Drawl",
+        description = "Senator Foghorn Kennedy hides an Oxford First-Class degree behind folksy one-liners while asking judicial nominees about Article V!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("foghorn_kennedy_boss", "Foghorn Kennedy (Oxford Drawl)", "Occultist", currentHp = 520, maxHp = 520, baseAttack = 23, isBoss = true, isTargeted = true, spriteTint = Color(0xFF78909C), speed = 62, atbGauge = 0.35f),
+            Enemy("article_five_binder", "Constitutional Article V Pop-Quiz", "Sniper", currentHp = 310, maxHp = 310, baseAttack = 19, isTargeted = false, spriteTint = Color(0xFFBA68C8), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createAct3TrackBParty()
+    )
+
+    // Track B — Act III Ch 5 Finale Boss: Commander America (215-Pound Mugshot) & The Bathroom Chandelier Box Golem
+    val ACT3_TRACK_B_MUGSHOT_FINALE = EncounterDefinition(
+        id = "act3_track_b_mugshot_finale",
+        name = "Act III Finale (Track B): 215-Pound Mugshot & Bathroom Chandelier",
+        description = "Commander America flashes his 'Never Surrender' Fulton County mugshot beside a gilded Mar-a-Lago bathroom chandelier stacked with bankers boxes!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("commander_mugshot_boss", "Commander America (215-Lb Mugshot)", "Vanguard", currentHp = 610, maxHp = 610, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFD700), speed = 60, atbGauge = 0.35f),
+            Enemy("bathroom_chandelier_golem", "Mar-a-Lago Chandelier Box Stack", "Occultist", currentHp = 350, maxHp = 350, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFFFFF176), speed = 52, atbGauge = 0.25f),
+            Enemy("never_surrender_merch", "\$7.1M 'Never Surrender' Mug Press", "Sniper", currentHp = 290, maxHp = 290, baseAttack = 18, isTargeted = false, spriteTint = Color(0xFFE57373), speed = 56, atbGauge = 0.20f)
+        ),
+        initialParty = createAct3TrackBParty()
+    )
+
+    // -------------------------------------------------------------------------
+    // Dual-Campaign Act IV Spells & Encounters (Track A & Track B: Kamala Coconut)
+    // -------------------------------------------------------------------------
+    val kamalaAct4Spells = listOf(
+        Spell(
+            id = "kamala_coconut_tree",
+            name = "Coconut Tree Context Drop",
+            school = SpellSchool.NATURE,
+            basePower = 78,
+            mpCost = 14,
+            status = "OVERLOAD",
+            aliases = listOf("coconut tree", "fell out of a coconut tree", "context of all", "what came before"),
+            description = "\"You think you just fell out of a coconut tree?! You exist in the context of all in which you live and what came before you!\" (May 10, 2023)",
+            exampleChant = "You think you just fell out of a coconut tree"
+        ),
+        Spell(
+            id = "kamala_unburdened_loop",
+            name = "Unburdened By What Has Been",
+            school = SpellSchool.HOLY,
+            basePower = 120,
+            mpCost = 16,
+            isHeal = true,
+            hitsAll = true,
+            isGuard = true,
+            status = "GUARD",
+            aliases = listOf("unburdened", "what can be", "what has been", "unburdened by what has been"),
+            description = "Repeats her signature philosophical mantra 47 times to unburden the party of damage and raise a rhetorical shield",
+            exampleChant = "What can be unburdened by what has been"
+        ),
+        Spell(
+            id = "kamala_venn_diagram",
+            name = "Triple-Circle Venn Diagram Trap",
+            school = SpellSchool.ELECTROMANCY,
+            basePower = 82,
+            mpCost = 16,
+            hitsAll = true,
+            status = "ROOT",
+            aliases = listOf("venn diagram", "three circles", "love venn diagrams", "intersection"),
+            description = "\"I love Venn diagrams! Always ask, is there a Venn diagram for this? Those three circles!\" Traps all foes in overlapping circles",
+            exampleChant = "I love Venn diagrams and those three circles"
+        ),
+        Spell(
+            id = "kamala_passage_of_time",
+            name = "Significance of the Passage of Time (4x)",
+            school = SpellSchool.SHADOW,
+            basePower = 84,
+            mpCost = 18,
+            hitsAll = true,
+            status = "CHILL",
+            aliases = listOf("passage of time", "significance of the passage", "four times", "time loop"),
+            description = "Repeats \"the significance of the passage of time\" four times in 32 seconds (March 2022), freezing enemy ATB gauges",
+            exampleChant = "The significance of the passage of time"
+        ),
+        Spell(
+            id = "kamala_yellow_school_bus",
+            name = "Yellow Electric School Bus Charge",
+            school = SpellSchool.ELECTROMANCY,
+            basePower = 90,
+            mpCost = 20,
+            hitsAll = true,
+            status = "BURN",
+            aliases = listOf("yellow school bus", "love a yellow school bus", "raise your hand", "electric bus"),
+            description = "\"Who doesn't love a yellow school bus, right?! Can you raise your hand if you love a yellow school bus?!\" (Oct 2022)",
+            exampleChant = "Who does not love a yellow school bus"
+        ),
+        Spell(
+            id = "kamala_vindication_tiffany",
+            name = "Tiffany Pearl & CDCR Fact-Check",
+            school = SpellSchool.HOLY,
+            basePower = 96,
+            mpCost = 22,
+            hitsAll = true,
+            status = "WEAKEN",
+            aliases = listOf("tiffany earrings", "pearl earrings", "cdcr records", "im speaking", "vindication"),
+            description = "Debunks the 'Bluetooth Earpiece' conspiracy with Tiffany South Sea Pearl photos and cites official CDCR records!",
+            exampleChant = "Tiffany pearl earrings and official records"
+        ),
+        attuneSpell
+    )
+
+    fun createAct4TrackBParty(): List<PartyMember> = listOf(
+        PartyMember(
+            id = "kamala_coconut",
+            name = "Kamala Coconut",
+            loreClass = "Venn-Diagram Prosecutor",
+            currentHp = 410,
+            maxHp = 410,
+            currentMp = 165,
+            maxMp = 165,
+            spells = kamalaAct4Spells,
+            avatarTint = Color(0xFFBA68C8),
+            speed = 75,
+            atbGauge = 0.50f
+        )
+    )
+
+    // Track A — Act IV Ch 1 Battle: Awkward Donut-Counter Clerk & Philly Swiss-Cheese Purist
+    val ACT4_TRACK_A_DONUT_BATTLE = EncounterDefinition(
+        id = "act4_track_a_donut_battle",
+        name = "Act IV (Track A) - Ch 1: 'Whatever Makes Sense' Donuts & Swiss Cheese",
+        description = "JD Pants joins the party at Holt's Sweet Shoppe as an unimpressed bakery counter and a Philly Swiss-cheese purist attack!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("donut_shop_case", "'Whatever Makes Sense' Glazed Case", "Vanguard", currentHp = 490, maxHp = 490, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFB74D), speed = 60, atbGauge = 0.35f),
+            Enemy("swiss_cheese_purist", "South Philly Swiss-Cheese Heckler", "Sniper", currentHp = 340, maxHp = 340, baseAttack = 21, isTargeted = false, spriteTint = Color(0xFFFFF176), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // Track B — Act IV Ch 1 Battle: Hostile Rhetoric Critic & Uncontextualized Coconut
+    val ACT4_TRACK_B_VENN_CRITICS_BATTLE = EncounterDefinition(
+        id = "act4_track_b_venn_critics_battle",
+        name = "Act IV (Track B) - Ch 1: Coconut Context & Venn Circles",
+        description = "Kamala Coconut unleashes overlapping Venn diagrams and yellow school buses against skeptical pundits!",
+        environment = BattleEnvironment.FOREST,
+        enemies = listOf(
+            Enemy("word_salad_critic", "Uncontextualized Pundit", "Occultist", currentHp = 470, maxHp = 470, baseAttack = 22, isBoss = true, isTargeted = true, spriteTint = Color(0xFF81C784), speed = 58, atbGauge = 0.35f),
+            Enemy("teleprompter_glitch", "32-Day Teleprompter Glitch", "Sniper", currentHp = 310, maxHp = 310, baseAttack = 19, isTargeted = false, spriteTint = Color(0xFF4FC3F7), speed = 54, atbGauge = 0.25f)
+        ),
+        initialParty = createAct4TrackBParty()
+    )
+
+    // Track B — Act IV Ch 2 Battle: JD Pants at the Valdosta Donut Counter
+    val ACT4_TRACK_B_VANCE_DONUT_BATTLE = EncounterDefinition(
+        id = "act4_track_b_vance_donut_battle",
+        name = "Act IV (Track B) - Ch 2: JD Pants & 'Whatever Makes Sense'",
+        description = "JD Pants asks 'How long have you worked here? Okay, good' while hurling sprinkle donuts and CBS fact-check rules!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("jd_pants_boss", "JD Pants (Donut Interrogator)", "Vanguard", currentHp = 540, maxHp = 540, baseAttack = 24, isBoss = true, isTargeted = true, spriteTint = Color(0xFF5C6BC0), speed = 62, atbGauge = 0.35f),
+            Enemy("sprinkle_stuff_box", "'Some Sprinkle Stuff' Donut Box", "Sniper", currentHp = 320, maxHp = 320, baseAttack = 19, isTargeted = false, spriteTint = Color(0xFFF48FB1), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createAct4TrackBParty()
+    )
+
+    // Track B — Act IV Ch 4 Battle: Philadelphia Debate Stage ("Concepts of a Plan")
+    val ACT4_TRACK_B_CONCEPTS_DEBATE_BATTLE = EncounterDefinition(
+        id = "act4_track_b_concepts_debate_battle",
+        name = "Act IV (Track B) - Ch 4: 'Concepts of a Plan' & 'People on TV'",
+        description = "On the Philadelphia debate stage, Commander America unveils 'Concepts of a Plan' and 'I saw it on television!'",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("concepts_of_plan_boss", "Commander America ('Concepts of a Plan')", "Vanguard", currentHp = 580, maxHp = 580, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFD700), speed = 62, atbGauge = 0.35f),
+            Enemy("people_on_tv_set", "'The People on Television' Monitor", "Occultist", currentHp = 330, maxHp = 330, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createAct4TrackBParty()
+    )
+
+    // Track B — Act IV Ch 5 Finale Boss: McDonald's Fry Apron & Orange Garbage Truck Vest
+    val ACT4_TRACK_B_MCDONALDS_FINALE = EncounterDefinition(
+        id = "act4_track_b_mcdonalds_finale",
+        name = "Act IV Finale (Track B): Drive-Thru Fry Basket & Garbage Vest",
+        description = "Commander America leans out a closed-set McDonald's drive-thru window in a fry apron and neon-orange garbage truck vest beside JD Pants!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("commander_fry_apron", "Commander America (Fry-Cook Apron)", "Vanguard", currentHp = 630, maxHp = 630, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFCA28), speed = 62, atbGauge = 0.35f),
+            Enemy("garbage_truck_vest", "Neon-Orange Mack Garbage Truck", "Vanguard", currentHp = 370, maxHp = 370, baseAttack = 21, isTargeted = false, spriteTint = Color(0xFFFF7043), speed = 52, atbGauge = 0.25f),
+            Enemy("vance_diet_dew", "JD Pants (Diet Mountain Dew)", "Sniper", currentHp = 320, maxHp = 320, baseAttack = 19, isTargeted = false, spriteTint = Color(0xFF66BB6A), speed = 58, atbGauge = 0.20f)
+        ),
+        initialParty = createAct4TrackBParty()
+    )
+
+    // -------------------------------------------------------------------------
+    // Dual-Campaign Act V Spells & Encounters (Track A & Track B: Zohran Cardamom & Mayor Swagger)
+    // -------------------------------------------------------------------------
+    val zohranAct5Spells = listOf(
+        Spell(
+            id = "zohran_nani_chapati",
+            name = "\"Mr. Cardamom\" Nani Chapati Drop",
+            school = SpellSchool.PYROMANCY,
+            basePower = 82,
+            mpCost = 14,
+            status = "BURN",
+            aliases = listOf("mr cardamom", "young cardamom", "nani", "chapati", "madhur jaffrey"),
+            description = "Puts on his 2019 'Mr. Cardamom' rap apron with Madhur Jaffrey and hurls a sizzling chapati from a Queens food truck!",
+            exampleChant = "Mister Cardamom Nani chapati drop"
+        ),
+        Spell(
+            id = "zohran_municipal_grocery",
+            name = "5 City-Owned Grocery Stores",
+            school = SpellSchool.NATURE,
+            basePower = 125,
+            mpCost = 16,
+            isHeal = true,
+            hitsAll = true,
+            isGuard = true,
+            status = "GUARD",
+            aliases = listOf("city owned grocery", "municipal grocery", "five grocery stores", "astoria"),
+            description = "Opens five city-run municipal grocery stores across all five boroughs, healing the party with wholesale milk",
+            exampleChant = "Open five city owned municipal grocery stores"
+        ),
+        Spell(
+            id = "zohran_freeze_the_rent",
+            name = "Freeze the Rent & Free the Q70 Bus",
+            school = SpellSchool.CRYOMANCY,
+            basePower = 88,
+            mpCost = 18,
+            hitsAll = true,
+            status = "CHILL",
+            aliases = listOf("freeze the rent", "free the buses", "q70 bus", "rent stabilized"),
+            description = "Films a symmetrical Wes Anderson TikTok in a thrifted suit to freeze enemy ATB gauges at 0% rent increase!",
+            exampleChant = "Freeze the rent and free the buses"
+        ),
+        Spell(
+            id = "zohran_bowdoin_stipend",
+            name = "Bowdoin & Hollywood Trust-Fund Crit",
+            school = SpellSchool.ELECTROMANCY,
+            basePower = 92,
+            mpCost = 20,
+            hitsAll = true,
+            status = "OVERLOAD",
+            aliases = listOf("bowdoin", "bank street", "monsoon wedding", "faculty club", "trust fund"),
+            description = "Channels \$60k/yr Bank Street prep-school rhetoric and Oscar-nominated family cinema into a high-budget AoE strike!",
+            exampleChant = "Bank Street and Bowdoin campus stipend"
+        ),
+        Spell(
+            id = "zohran_vindication_pilot",
+            name = "MTA Fare-Free Pilot Receipt",
+            school = SpellSchool.HOLY,
+            basePower = 98,
+            mpCost = 22,
+            hitsAll = true,
+            status = "WEAKEN",
+            aliases = listOf("fare free pilot", "mta data", "bus assaults down", "vindication"),
+            description = "Slams down official MTA pilot data showing fare-free routes boosted ridership 30% and cut driver assaults 38.9%!",
+            exampleChant = "Official MTA fare free bus pilot data"
+        ),
+        attuneSpell
+    )
+
+    val mayorSwaggerSpells = listOf(
+        Spell(
+            id = "swagger_turkish_upgrade",
+            name = "Turkish Airlines Lie-Flat Upgrade",
+            school = SpellSchool.HOLY,
+            basePower = 115,
+            mpCost = 16,
+            isHeal = true,
+            hitsAll = true,
+            aliases = listOf("turkish airlines", "business class", "istanbul", "i said thank you", "st regis"),
+            description = "\"When someone upgrades you to a lie-flat suite to Istanbul, you say 'Thank you'!\" Restores party HP in luxury",
+            exampleChant = "Turkish Airlines business class upgrade"
+        ),
+        Spell(
+            id = "swagger_contraband_doll",
+            name = "Contraband Baby-Doll Search",
+            school = SpellSchool.SHADOW,
+            basePower = 84,
+            mpCost = 16,
+            hitsAll = true,
+            status = "OVERLOAD",
+            aliases = listOf("baby doll", "jar of marbles", "contraband", "simple searches", "pillowcase"),
+            description = "Pulls a crack pipe out of a marble jar and weed out of a baby doll's head from his viral NYPD instructional video!",
+            exampleChant = "Search the baby doll and marble jar"
+        ),
+        Spell(
+            id = "swagger_vegan_seabass",
+            name = "\"Strictly Vegan\" Midnight Sea Bass",
+            school = SpellSchool.NATURE,
+            basePower = 86,
+            mpCost = 18,
+            status = "POISON",
+            lifesteal = true,
+            aliases = listOf("sea bass", "vegan", "plant based", "la baia", "fish"),
+            description = "Preaches a strict plant-based diet by day while secretly devouring flaky Chilean sea bass at Osteria La Baia by night!",
+            exampleChant = "Plant based midnight Chilean sea bass"
+        ),
+        Spell(
+            id = "swagger_forgot_passcode",
+            name = "Forgotten 6-Digit iPhone Passcode",
+            school = SpellSchool.ELECTROMANCY,
+            basePower = 0,
+            mpCost = 0,
+            manaRestorePct = 0.35f,
+            aliases = listOf("forgot passcode", "six digits", "iphone lock", "changed password"),
+            description = "Changes his iPhone passcode from 4 digits to 6 digits right before a subpoena and 'accidentally forgets' it, restoring 35% MP!",
+            exampleChant = "Forgot my six digit iPhone passcode"
+        )
+    )
+
+    fun createAct5TrackBParty(): List<PartyMember> = listOf(
+        PartyMember(
+            id = "zohran_cardamom",
+            name = "Zohran Cardamom",
+            loreClass = "Artisanal Chapati Socialist",
+            currentHp = 430,
+            maxHp = 430,
+            currentMp = 175,
+            maxMp = 175,
+            spells = zohranAct5Spells,
+            avatarTint = Color(0xFFFF7043),
+            speed = 76,
+            atbGauge = 0.50f
+        ),
+        PartyMember(
+            id = "mayor_swagger",
+            name = "Mayor Swagger",
+            loreClass = "Istanbul Nightlife Envoy",
+            currentHp = 420,
+            maxHp = 420,
+            currentMp = 150,
+            maxMp = 150,
+            spells = mayorSwaggerSpells,
+            avatarTint = Color(0xFF26A69A),
+            speed = 70,
+            atbGauge = 0.40f
+        )
+    )
+
+    // Track A — Act V Ch 1 Battle: Shattered Cybertruck Glass & SEC $420 Auditor
+    val ACT5_TRACK_A_CYBERTRUCK_SINK_BATTLE = EncounterDefinition(
+        id = "act5_track_a_cybertruck_sink_battle",
+        name = "Act V (Track A) - Ch 1: Mid-Air Star-Jump & Porcelain Sink",
+        description = "Musk-X leaps into an X-shape mid-air with a porcelain bathroom sink while a shattered-window Cybertruck and SEC $420 auditor attack!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("shattered_cybertruck", "Shattered Armor-Glass Cybertruck", "Vanguard", currentHp = 520, maxHp = 520, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFFB0BEC5), speed = 62, atbGauge = 0.35f),
+            Enemy("sec_420_auditor", "SEC '\$420 Funding Secured' Auditor", "Occultist", currentHp = 360, maxHp = 360, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 58, atbGauge = 0.25f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // Track A — Act V Ch 2 Battle: Omnibus Pork-Barrel Golem & Blackmailing Ad-Agency Exec
+    val ACT5_TRACK_A_DOGE_BUREAUCRATS_BATTLE = EncounterDefinition(
+        id = "act5_track_a_doge_bureaucrats_battle",
+        name = "Act V (Track A) - Ch 2: Hulkster Shirt-Rip & DOGE Audit",
+        description = "Hulkster 24-Pythons rips his shirt in half as the Shiba Inu DOGE commission audits an Omnibus Pork-Barrel Golem!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("omnibus_pork_golem", "4,000-Page Omnibus Pork Golem", "Vanguard", currentHp = 550, maxHp = 550, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFFAB47BC), speed = 60, atbGauge = 0.35f),
+            Enemy("dealbook_boycott_exec", "DealBook Ad-Boycott Executive", "Sniper", currentHp = 350, maxHp = 350, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFFEC407A), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // Track A — Act V Ch 3 Battle: Mayor Swagger & The Turkish Airlines Lie-Flat Seat
+    val ACT5_TRACK_A_SWAGGER_TURKISH_BATTLE = EncounterDefinition(
+        id = "act5_track_a_swagger_turkish_battle",
+        name = "Act V (Track A) - Ch 3: Mayor Swagger & Turkish Lie-Flat Suites",
+        description = "Mayor Swagger pulls contraband out of a baby doll's head while sipping rat-free table water in a Turkish Airlines suite!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("mayor_swagger_boss", "Mayor Swagger (Istanbul Envoy)", "Occultist", currentHp = 580, maxHp = 580, baseAttack = 27, isBoss = true, isTargeted = true, spriteTint = Color(0xFF26A69A), speed = 64, atbGauge = 0.35f),
+            Enemy("turkish_lie_flat_seat", "Turkish Airlines Lie-Flat Pod", "Vanguard", currentHp = 370, maxHp = 370, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFFEF5350), speed = 54, atbGauge = 0.25f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // Track A — Act V Ch 5 Grand Finale Boss: Zohran Cardamom ("Mr. Cardamom") & The All-Star Standard-Bearers
+    val ACT5_TRACK_A_GRAND_FINALE = EncounterDefinition(
+        id = "act5_track_a_grand_finale",
+        name = "Act V Grand Finale (Track A): Mr. Cardamom & The All-Star Relay",
+        description = "Zohran Cardamom ('Mr. Cardamom') flips sizzling chapatis alongside Kamala Coconut's Venn Diagrams and Joe Naptime's Double-Scoop Cone!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("zohran_cardamom_boss", "Zohran Cardamom ('Mr. Cardamom')", "Occultist", currentHp = 680, maxHp = 680, baseAttack = 29, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFF7043), speed = 66, atbGauge = 0.40f),
+            Enemy("kamala_venn_ally", "Kamala Coconut (3-Circle Venn)", "Occultist", currentHp = 480, maxHp = 480, baseAttack = 24, isBoss = true, isTargeted = false, spriteTint = Color(0xFFBA68C8), speed = 62, atbGauge = 0.30f),
+            Enemy("joe_naptime_ally", "Joe Naptime (2-Scoop Waffle Cone)", "Vanguard", currentHp = 480, maxHp = 480, baseAttack = 24, isBoss = true, isTargeted = false, spriteTint = Color(0xFFFFF59D), speed = 58, atbGauge = 0.25f)
+        ),
+        initialParty = createFullAmericaParty()
+    )
+
+    // Track B — Act V Ch 1 Battle: Real-Estate Rent-Board Lobbyist & Bodega Price-Tag Inspector
+    val ACT5_TRACK_B_LANDLORD_LOBBY_BATTLE = EncounterDefinition(
+        id = "act5_track_b_landlord_lobby_battle",
+        name = "Act V (Track B) - Ch 1: 'Nani' Chapati Truck & Rent Freeze",
+        description = "Zohran Cardamom ('Mr. Cardamom') and Mayor Swagger defend the Astoria chapati truck against Rent-Board Lobbyists!",
+        environment = BattleEnvironment.FOREST,
+        enemies = listOf(
+            Enemy("rent_board_lobbyist", "Luxury Condo Rent-Hike Lobbyist", "Occultist", currentHp = 490, maxHp = 490, baseAttack = 24, isBoss = true, isTargeted = true, spriteTint = Color(0xFF8D6E63), speed = 60, atbGauge = 0.35f),
+            Enemy("mta_turnstile_drone", "Q70 Bus Fare Inspector", "Sniper", currentHp = 330, maxHp = 330, baseAttack = 20, isTargeted = false, spriteTint = Color(0xFF42A5F5), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createAct5TrackBParty()
+    )
+
+    // Track B — Act V Ch 2 Battle: Subpoena Passcode Cracker & Brooklyn Rat-Summit Inspector
+    val ACT5_TRACK_B_TURKISH_AUDITOR_BATTLE = EncounterDefinition(
+        id = "act5_track_b_turkish_auditor_battle",
+        name = "Act V (Track B) - Ch 2: 6-Digit Passcodes & Chilean Sea Bass",
+        description = "Subpoena Passcode Crackers and Rat-Ticket Inspectors ambush Mayor Swagger outside Osteria La Baia!",
+        environment = BattleEnvironment.DUNGEON,
+        enemies = listOf(
+            Enemy("passcode_cracker", "6-Digit iPhone Passcode Cracker", "Sniper", currentHp = 510, maxHp = 510, baseAttack = 25, isBoss = true, isTargeted = true, spriteTint = Color(0xFF7E57C2), speed = 62, atbGauge = 0.35f),
+            Enemy("rat_summit_inspector", "Brooklyn Townhouse Rat Inspector", "Vanguard", currentHp = 350, maxHp = 350, baseAttack = 21, isTargeted = false, spriteTint = Color(0xFF90A4AE), speed = 54, atbGauge = 0.25f)
+        ),
+        initialParty = createAct5TrackBParty()
+    )
+
+    // Track B — Act V Ch 3 Battle: Musk-X (Dark Gothic MAGA Star-Jump) & The Porcelain Sink
+    val ACT5_TRACK_B_MUSK_STARJUMP_BATTLE = EncounterDefinition(
+        id = "act5_track_b_musk_starjump_battle",
+        name = "Act V (Track B) - Ch 3: Mid-Air 'X' Star-Jump & Porcelain Sink",
+        description = "Musk-X leaps into an X-shape mid-air exposing four inches of midriff while hurling a porcelain bathroom sink!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("musk_x_starjump_boss", "Musk-X (Mid-Air 'X' Star-Jump)", "Occultist", currentHp = 580, maxHp = 580, baseAttack = 26, isBoss = true, isTargeted = true, spriteTint = Color(0xFF26C6DA), speed = 66, atbGauge = 0.40f),
+            Enemy("porcelain_sink_golem", "'Let That Sink In' Porcelain Basin", "Vanguard", currentHp = 360, maxHp = 360, baseAttack = 21, isTargeted = false, spriteTint = Color(0xFFECEFF1), speed = 54, atbGauge = 0.25f)
+        ),
+        initialParty = createAct5TrackBParty()
+    )
+
+    // Track B — Act V Ch 4 Battle: The DOGE Subcommittee Trio (JD Pants, Wizard Kash & Foghorn Kennedy)
+    val ACT5_TRACK_B_DOGE_SQUAD_BATTLE = EncounterDefinition(
+        id = "act5_track_b_doge_squad_battle",
+        name = "Act V (Track B) - Ch 4: Donuts, Wizard Books & Oxford Drawls",
+        description = "JD Pants, Wizard Kash, and Senator Foghorn Kennedy defend the Shiba Inu DOGE hearing room!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("vance_doge_boss", "JD Pants ('Whatever Makes Sense')", "Vanguard", currentHp = 480, maxHp = 480, baseAttack = 24, isBoss = true, isTargeted = true, spriteTint = Color(0xFF5C6BC0), speed = 60, atbGauge = 0.35f),
+            Enemy("kash_doge_boss", "Wizard Kash (\$19.99 King Book)", "Occultist", currentHp = 450, maxHp = 450, baseAttack = 23, isBoss = true, isTargeted = false, spriteTint = Color(0xFFAB47BC), speed = 62, atbGauge = 0.30f),
+            Enemy("kennedy_doge_boss", "Foghorn Kennedy (Oxford Drawl)", "Sniper", currentHp = 450, maxHp = 450, baseAttack = 23, isBoss = true, isTargeted = false, spriteTint = Color(0xFF78909C), speed = 58, atbGauge = 0.25f)
+        ),
+        initialParty = createAct5TrackBParty()
+    )
+
+    // Track B — Act V Ch 5 Grand Finale Boss: Commander America, Musk-X & Hulkster 24-Pythons
+    val ACT5_TRACK_B_GRAND_FINALE = EncounterDefinition(
+        id = "act5_track_b_grand_finale",
+        name = "Act V Grand Finale (Track B): Golden Podium & Dark Gothic MAGA",
+        description = "Zohran Cardamom and Mayor Swagger clash with Commander America, Musk-X's Mid-Air Star-Jump, and the Diet Coke Valet Button!",
+        environment = BattleEnvironment.CASTLE,
+        enemies = listOf(
+            Enemy("commander_finale_boss", "Commander America (Golden Podium)", "Vanguard", currentHp = 680, maxHp = 680, baseAttack = 28, isBoss = true, isTargeted = true, spriteTint = Color(0xFFFFD700), speed = 64, atbGauge = 0.40f),
+            Enemy("musk_x_finale_ally", "Musk-X (Dark Gothic Star-Jump)", "Occultist", currentHp = 490, maxHp = 490, baseAttack = 25, isBoss = true, isTargeted = false, spriteTint = Color(0xFF26C6DA), speed = 66, atbGauge = 0.30f),
+            Enemy("diet_coke_mecha", "Red Wooden Diet Coke Valet Turret", "Sniper", currentHp = 380, maxHp = 380, baseAttack = 22, isTargeted = false, spriteTint = Color(0xFFEF5350), speed = 56, atbGauge = 0.25f)
+        ),
+        initialParty = createAct5TrackBParty()
     )
 
     // 3a. Act III - Chapter 1: The Ohio Steel Mill Awakening
@@ -1013,14 +1925,43 @@ object StoryEncounters {
         ACT1_CH1_PRESS_BATTLE,
         ACT1_CH2_DEBATE_BATTLE,
         ACT1_CH3_MACHINE_BATTLE,
+        ACT1_TRACK_A_BARRY_BATTLE,
+        ACT1_TRACK_A_HILL_ROD_FINALE,
+        ACT1_TRACK_B_FERNS_BATTLE,
+        ACT1_TRACK_B_SPICY_SEAN_BATTLE,
+        ACT1_TRACK_B_COMMANDER_FINALE,
         ACT2_CH1_INAUGURATION_BATTLE,
         ACT2_MEDIA_BATTLE,
+        ACT2_TRACK_A_SHARPIE_BATTLE,
+        ACT2_TRACK_B_SPICER_SALSA_BATTLE,
+        ACT2_TRACK_B_KASH_BATTLE,
+        ACT2_TRACK_B_RUDY_FINALE,
         ACT3_CH1_MILL_BATTLE,
         ACT3_CH3_INTERCEPT_BATTLE,
         ACT3_SUMMIT_BATTLE,
+        ACT3_TRACK_A_STAIRS_BIKE_BATTLE,
+        ACT3_TRACK_A_CHANDELIER_BATTLE,
+        ACT3_TRACK_A_BIDEN_ICE_CREAM_FINALE,
+        ACT3_TRACK_B_CORN_POP_BATTLE,
+        ACT3_TRACK_B_FOGHORN_BATTLE,
+        ACT3_TRACK_B_MUGSHOT_FINALE,
         ACT4_CH1_FISA_BATTLE,
         ACT4_CH3_SUBPOENA_BATTLE,
         ACT4_HOAX_BATTLE,
+        ACT4_TRACK_A_DONUT_BATTLE,
+        ACT4_TRACK_B_VENN_CRITICS_BATTLE,
+        ACT4_TRACK_B_VANCE_DONUT_BATTLE,
+        ACT4_TRACK_B_CONCEPTS_DEBATE_BATTLE,
+        ACT4_TRACK_B_MCDONALDS_FINALE,
+        ACT5_TRACK_A_CYBERTRUCK_SINK_BATTLE,
+        ACT5_TRACK_A_DOGE_BUREAUCRATS_BATTLE,
+        ACT5_TRACK_A_SWAGGER_TURKISH_BATTLE,
+        ACT5_TRACK_A_GRAND_FINALE,
+        ACT5_TRACK_B_LANDLORD_LOBBY_BATTLE,
+        ACT5_TRACK_B_TURKISH_AUDITOR_BATTLE,
+        ACT5_TRACK_B_MUSK_STARJUMP_BATTLE,
+        ACT5_TRACK_B_DOGE_SQUAD_BATTLE,
+        ACT5_TRACK_B_GRAND_FINALE,
         ACT5_CH1_PIPE_BATTLE,
         ACT5_CH2_INQUEST_BATTLE,
         ACT5_GOLEM_BATTLE,

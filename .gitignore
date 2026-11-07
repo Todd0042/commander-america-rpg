@@ -9,3 +9,6 @@
 .cxx
 local.properties
 .kotlin
+
+# Backup story files
+*.bak
