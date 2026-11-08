@@ -180,8 +180,14 @@ fun CharacterCreationScreen(
         onConfirmCharacter(custom)
     }
 
+    val sfxManager = remember { com.voicerpg.engine.audio.SfxManager(context) }
+
     fun playCandidateSoundbite(candidate: ArcadeCandidate) {
-        combatNarrator?.previewSpeakerVoice(candidate.speaker)
+        if (candidate == ArcadeCandidate.COMMANDER_AMERICA) {
+            sfxManager.playTrumpQuote()
+        } else {
+            sfxManager.playHillaryQuote()
+        }
     }
 
     fun processVoiceInput(utterance: String) {

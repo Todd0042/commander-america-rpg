@@ -665,6 +665,18 @@ class CombatViewModel(
             sfxManager.playHitImpact()
             if (enemy.id.contains("joe") || enemy.id.contains("biden") || move.name.contains("Gibberish") || move.name.contains("Truinana") || move.name.contains("Badakathcare")) {
                 sfxManager.playBidenGibberish()
+            } else if (enemy.id.contains("trump") || enemy.id.contains("commander") || move.name.contains("Fight") || move.name.contains("Birthright")) {
+                sfxManager.playTrumpQuote()
+            } else if (enemy.id.contains("obama") || enemy.id.contains("barry") || move.name.contains("Boo") || move.name.contains("Vote")) {
+                sfxManager.playObamaQuote()
+            } else if (enemy.id.contains("spicer") || enemy.id.contains("spicy") || move.name.contains("Period") || move.name.contains("Crowd")) {
+                sfxManager.playSpicerQuote()
+            } else if (enemy.id.contains("hill") || move.name.contains("Concession") || move.name.contains("Cloth")) {
+                sfxManager.playHillaryQuote()
+            } else if (enemy.id.contains("kamala") || enemy.id.contains("vice") || enemy.id.contains("coconut") || move.name.contains("Bus") || move.name.contains("Venn")) {
+                sfxManager.playKamalaQuote()
+            } else if (enemy.id.contains("psaki") || enemy.id.contains("kayleigh") || enemy.id.contains("press")) {
+                sfxManager.playPressBriefingQuote()
             }
             if (isBossUltimate) {
                 triggerScreenShake(18f)
@@ -1863,6 +1875,16 @@ class CombatViewModel(
             sfxManager.playSpellCast()
             if (parsed.spell.id == "biden_gibberish_audio" || parsed.spell.id.contains("gibberish")) {
                 sfxManager.playBidenGibberish()
+            } else if (activeHero.id.contains("trump") || activeHero.id.contains("commander") || parsed.spell.id.contains("trump") || parsed.spell.id.contains("commander")) {
+                sfxManager.playTrumpQuote()
+            } else if (activeHero.id.contains("obama") || activeHero.id.contains("barry") || parsed.spell.id.contains("obama")) {
+                sfxManager.playObamaQuote()
+            } else if (activeHero.id.contains("spicer") || activeHero.id.contains("spicy") || parsed.spell.id.contains("spicer")) {
+                sfxManager.playSpicerQuote()
+            } else if (activeHero.id.contains("hill") || parsed.spell.id.contains("hill")) {
+                sfxManager.playHillaryQuote()
+            } else if (activeHero.id.contains("kamala") || activeHero.id.contains("vice") || activeHero.id.contains("coconut") || parsed.spell.id.contains("kamala") || parsed.spell.id.contains("bus")) {
+                sfxManager.playKamalaQuote()
             }
             if (isSuperLogos) {
                 sfxManager.playLogosFanfare()

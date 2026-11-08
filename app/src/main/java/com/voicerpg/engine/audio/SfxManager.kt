@@ -61,6 +61,72 @@ class SfxManager(private val context: Context? = null) {
         playAssetAudio(selected)
     }
 
+    /**
+     * Plays a real-life Commander America (Donald Trump) audio quote.
+     */
+    fun playTrumpQuote() {
+        val quotes = listOf(
+            "audio/quotes/trump/trump_greatness_birthright.ogg",
+            "audio/quotes/trump/trump_easily_win.ogg"
+        )
+        playAssetAudio(quotes.random())
+    }
+
+    /**
+     * Plays a real-life Barry Teleprompter (Barack Obama) audio quote.
+     */
+    fun playObamaQuote() {
+        playAssetAudio("audio/quotes/obama/obama_dont_boo_vote.ogg")
+    }
+
+    /**
+     * Plays a real-life Spicy Sean (Sean Spicer) audio quote.
+     */
+    fun playSpicerQuote() {
+        playAssetAudio("audio/quotes/spicer/spicer_period.ogg")
+    }
+
+    /**
+     * Plays a real-life Hill-Rod (Hillary Clinton) audio quote.
+     */
+    fun playHillaryQuote() {
+        playAssetAudio("audio/quotes/hillary/hillary_congratulated_trump.ogg")
+    }
+
+    /**
+     * Plays a real-life Madame Vice / Kamala Coconut audio quote.
+     */
+    fun playKamalaQuote() {
+        playAssetAudio("audio/quotes/kamala/kamala_ride_a_bus.ogg")
+    }
+
+    /**
+     * Plays a real-life White House Press Secretary briefing quote (Psaki or Kayleigh).
+     */
+    fun playPressBriefingQuote() {
+        val quotes = listOf(
+            "audio/quotes/press/psaki_legislative_action.ogg",
+            "audio/quotes/press/kayleigh_heroes.ogg"
+        )
+        playAssetAudio(quotes.random())
+    }
+
+    /**
+     * Dispatches the corresponding real audio quote for a character identifier.
+     */
+    fun playCharacterQuote(characterId: String) {
+        val lower = characterId.lowercase()
+        when {
+            lower.contains("biden") || lower.contains("naptime") || lower.contains("joe") -> playBidenGibberish()
+            lower.contains("trump") || lower.contains("commander") -> playTrumpQuote()
+            lower.contains("obama") || lower.contains("barry") -> playObamaQuote()
+            lower.contains("spicer") || lower.contains("spicy") -> playSpicerQuote()
+            lower.contains("hill") -> playHillaryQuote()
+            lower.contains("kamala") || lower.contains("vice") || lower.contains("coconut") -> playKamalaQuote()
+            lower.contains("psaki") || lower.contains("kayleigh") || lower.contains("press") -> playPressBriefingQuote()
+        }
+    }
+
     fun playHitImpact() {
         if (isMuted) return
         scope.launch {

@@ -151,8 +151,26 @@ The story script in [`StoryScript.kt`](app/src/main/java/com/voicerpg/engine/eng
 
 ## 5. Satirical Soundbite Audio Routing
 
-In addition to the engine's Android TTS narrator, Commander America integrates an opt-in soundbite player:
-- Authentic public domain soundbites fire on critical combat events and act conclusions.
+In addition to the engine's Android TTS narrator, Commander America integrates an authentic real-audio soundbite player powered by 100% legally legitimate, public domain official U.S. government recordings (White House archives and official presidential addresses):
+- **Commander America (Donald Trump):**
+  - `"Nothing will sway us... greatness is our birthright, and the future belongs to us."` (`trump_greatness_birthright.ogg`)
+  - `"If you count the legal votes, I easily win."` (`trump_easily_win.ogg`)
+- **Joe Naptime (Joe Biden):**
+  - `"Truinanashabbadepressure"` (`biden_truinanashabbadepressure.ogg`)
+  - `"Badakathcare"` (`biden_badakathcare.ogg`)
+- **Barry Teleprompter (Barack Obama):**
+  - `"Don't boo, vote!"` (`obama_dont_boo_vote.ogg`)
+- **Spicy Sean (Sean Spicer):**
+  - `"This was the largest audience to ever witness an inauguration, period, both in person and around the globe."` (`spicer_period.ogg`)
+- **Hill-Rod (Hillary Clinton):**
+  - `"Last night, I congratulated Donald Trump and offered to work with him on behalf of our country."` (`hillary_congratulated_trump.ogg`)
+- **Madame Vice (Kamala Harris):**
+  - `"When people can ride a bus because it has a lift..."` (`kamala_ride_a_bus.ogg`)
+- **White House Press Secretaries (Jen Psaki & Kayleigh McEnany):**
+  - `"The preference is of course legislative action because it's more permanent, it's more lasting."` (`psaki_legislative_action.ogg`)
+  - `"Our healthcare providers, as President Trump has repeatedly acknowledged, are our heroes..."` (`kayleigh_heroes.ogg`)
+
+- Audio clips are normalized to -16 LUFS (44.1 kHz Vorbis) with automatic graceful fallback in headless test environments.
 - Audio focus arbitration cleanly ducks background music and pauses microphone listening while clips play.
 
 ---
