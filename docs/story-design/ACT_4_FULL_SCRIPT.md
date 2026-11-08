@@ -13,7 +13,7 @@
 ## PART 1: TRACK A — PLAYING AS COMMANDER AMERICA (+ JD PANTS)
 
 ### Chapter 1: Enter JD Pants & "Whatever Makes Sense" Donuts (Aug 2024)
-**Scene:** [`SCENE_ACT4_CH1_FISA`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Holt's Sweet Shoppe — Valdosta, Georgia*)
+**Scene:** [`SCENE_ACT4_CH1_FISA`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Holt's Sweet Shoppe — Valdosta, Georgia*)
 
 - **Companion Recruitment — JD Pants (`VANCE`) Joins the Active Party:**
   > "*Stands stiffly in a suit in front of the glass pastry case as the bakery worker asks not to be on camera* 'Okay, she doesn't want to be on film, guys, so just cut her out of anything. I'm JD Vance, I'm running for Vice President, good to see you.' And she just says: 'Okay.' So I try to break the ice: 'How long has this place been here?' ('About four years.') 'Okay, good. How long have you worked here?' ('A little over two years.') 'Okay, good... Just, uh, a lot of glazed here, some sprinkle stuff, some of these cinnamon rolls—just whatever makes sense!'"
@@ -28,7 +28,7 @@
 ---
 
 ### Chapter 2: "And I Haven't Been to Europe!" & Ukraine Preschool (2021–2024)
-**Scene:** [`SCENE_ACT4_CH2_BINDER`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Lester Holt Interview Set & Border Wall Gap*)
+**Scene:** [`SCENE_ACT4_CH2_BINDER`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Lester Holt Interview Set & Border Wall Gap*)
 
 - **Kamala Coconut (`KAMALA`):**
   > "*Sits across from NBC anchor Lester Holt on June 8, 2021 when he asks why she still hasn't visited the US-Mexico border as Border Czar* 'We've been to the border! We've been to the border!' And when Lester looks at me and says 'You haven't been to the border,' I give him the ultimate geographic checkmate: 'And I haven't been to Europe! *Laughs* And I mean, I don't... understand the point that you're making!'"
@@ -39,7 +39,7 @@
 ---
 
 ### Chapter 3: Venn Diagrams, Yellow School Buses & "32 Days!" (2022–2024)
-**Scene:** [`SCENE_ACT4_CH3_COURT`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Electric Yellow School Bus Depot & Venn Mirage*)
+**Scene:** [`SCENE_ACT4_CH3_COURT`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Electric Yellow School Bus Depot & Venn Mirage*)
 
 - **Kamala Coconut (`KAMALA`):**
   > "*Raises both hands in front of a bright yellow school bus in Seattle (Oct 2022)* 'Who doesn't love a yellow school bus, right?! Can you raise your hand if you love a yellow school bus, right?!'"
@@ -52,7 +52,7 @@
 ---
 
 ### Chapter 4: The McDonald's Fry Apron & Orange Garbage Vest (Oct 2024)
-**Scene:** [`SCENE_ACT4_CH4_HEARING`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Feasterville McDonald's Fry Station & Green Bay Garbage Truck*)
+**Scene:** [`SCENE_ACT4_CH4_HEARING`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Feasterville McDonald's Fry Station & Green Bay Garbage Truck*)
 
 - **Commander America (`COMMANDER_AMERICA`):**
   > "*Shakes a metal salt shaker over a sizzling basket of golden McDonald's French fries and uses the stainless-steel fry scoop to fill red cartons* Look at the wrist action on that salt shaker, folks! Remember, I'm a lifelong germaphobe—I love that you never touch the fry with your bare hands! And as I told the reporters outside the drive-thru window: 'I've now worked for 15 minutes more than Kamala at McDonald's!'"
@@ -63,7 +63,7 @@
 ---
 
 ### Chapter 5: Falling Out of a Coconut Tree & "Unburdened" (Nov 2024 Finale)
-**Scene:** [`SCENE_ACT4_CH5_COCONUT_FINALE`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Coconut Grove & Unburdened Throne*)
+**Scene:** [`SCENE_ACT4_CH5_COCONUT_FINALE`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Coconut Grove & Unburdened Throne*)
 
 - **Kamala Coconut (`KAMALA`):**
   > "*Throws her head back with a booming laugh before turning deadly serious (May 10, 2023 verbatim)* 'My mother used to—she would give us a hard time sometimes, and she would say to us, \"I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!\" *Laughs* You exist in the context of all in which you live and what came before you! And together, we will see what can be, unburdened by what has been!'"
@@ -75,7 +75,7 @@
 ## PART 2: TRACK B — PLAYING AS KAMALA COCONUT (5 CHAPTERS)
 
 ### Chapter 1: Falling Out of a Coconut Tree & Venn Diagrams (2023–July 2024)
-**Scene:** [`SCENE_ACT4_TB_CH1_COCONUT`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Context of the Coconut Grove*)
+**Scene:** [`SCENE_ACT4_TB_CH1_COCONUT`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Context of the Coconut Grove*)
 
 - **Narrators (`NARRATOR_PSAKI`, `NARRATOR_KJP`, `NARRATOR_OPRAH`):** Introduce **Standard-Bearer #4: Kamala Coconut** (`createAct4TrackBParty()`).
 - **Interactive Hub (`act4_tb_ch1_coconut_hub`):**
@@ -88,7 +88,7 @@
 ---
 
 ### Chapter 2: "I'm Speaking!" vs. JD Pants's Donut Interrogation (Aug–Oct 2024)
-**Scene:** [`SCENE_ACT4_TB_CH2_DONUTS`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Valdosta Donut Counter & South Philly Cheesesteak Window*)
+**Scene:** [`SCENE_ACT4_TB_CH2_DONUTS`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Valdosta Donut Counter & South Philly Cheesesteak Window*)
 
 - **Interactive Hub (`act4_tb_ch2_donut_hub`):**
   1. **Roasting JD Pants's Bakery Interrogation & Swiss Cheese Question:** *"How long has this place been here? Okay, good. How long have you worked here? Okay, good... some sprinkle stuff, whatever makes sense!"*
@@ -100,7 +100,7 @@
 ---
 
 ### Chapter 3: "The Significance of the Passage of Time" & Tiffany Pearls (2022–2024)
-**Scene:** [`SCENE_ACT4_TB_CH3_PASSAGE`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Unburdened Dais of the Passage of Time*)
+**Scene:** [`SCENE_ACT4_TB_CH3_PASSAGE`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Unburdened Dais of the Passage of Time*)
 
 - **Interactive Hub (`act4_tb_ch3_passage_hub`):**
   1. **Circular Oratory Classics:** *"The significance of the passage of time"* (4x in 32 seconds), *"And I haven't been to Europe!"*, and *"Ukraine is a country in Europe next to another country called Russia."*
@@ -110,7 +110,7 @@
 ---
 
 ### Chapter 4: "Concepts of a Plan" & "I Saw It on Television!" (Sept 10, 2024)
-**Scene:** [`SCENE_ACT4_TB_CH4_DEBATE`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Philadelphia Debate Stage — National Constitution Center*)
+**Scene:** [`SCENE_ACT4_TB_CH4_DEBATE`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Philadelphia Debate Stage — National Constitution Center*)
 
 - **Kamala Coconut (`KAMALA`):**
   > "*Rests her chin thoughtfully on her hand for the split-screen camera and smiles* 'I'm going to actually do something really unusual, and I'm going to invite you to attend one of Donald Trump's rallies... And what you will also notice is that people start leaving his rallies early out of exhaustion and boredom!'"
@@ -124,7 +124,7 @@
 ---
 
 ### Chapter 5: The Fry Apron, The Garbage Vest & Passing the Chapati (Nov 2024 Finale)
-**Scene:** [`SCENE_ACT4_TB_CH5_MCDONALDS`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Closed-Set Drive-Thru Window & Garbage Truck Tarmac*)
+**Scene:** [`SCENE_ACT4_TB_CH5_MCDONALDS`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Closed-Set Drive-Thru Window & Garbage Truck Tarmac*)
 
 - **Kamala Coconut (`KAMALA`):**
   > "Look at this October photo-op double feature, Donald! First your advance team had a Pennsylvania McDonald's close its doors to the general public so you could scoop fries for pre-screened rehearsal cars while wearing a Brioni dress shirt and tie, and ten days later you nearly missed the door handle climbing into a custom-painted garbage truck in a neon-orange vest!"

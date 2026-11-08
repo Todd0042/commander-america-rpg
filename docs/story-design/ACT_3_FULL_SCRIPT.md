@@ -14,7 +14,7 @@
 ## PART 1: TRACK A — PLAYING AS COMMANDER AMERICA (+ FOGHORN KENNEDY)
 
 ### Chapter 1: Three Stumbles Up the Stairs & Toe-Cage Bikes (2021–2022)
-**Scene:** [`SCENE_ACT3_CH1_STEEL_MILL`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Andrews Tarmac Stairs & Rehoboth Bike Path*)
+**Scene:** [`SCENE_ACT3_CH1_STEEL_MILL`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Andrews Tarmac Stairs & Rehoboth Bike Path*)
 
 - **Kayleigh Binder-Tabs (`NARRATOR_KAYLEIGH`):**
   > "Welcome to Act III (2021–2023)! On Day One of January 2021, Joe Naptime evicted the red wooden Diet Coke valet button from the Resolute Desk and replaced it with a freezer full of Jeni's Splendid Chocolate Chip ice cream! Meanwhile, out on the tarmac at Joint Base Andrews on March 19, 2021, a brisk breeze is blowing across the stairs of Air Force One!"
@@ -31,7 +31,7 @@
 ---
 
 ### Chapter 2: Enter Foghorn Kennedy, Oxford First-Class Drawl & "Call A Crackhead!" (2021–2023)
-**Scene:** [`SCENE_ACT3_CH2_USMCA`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Senate Judiciary Committee Chamber*)
+**Scene:** [`SCENE_ACT3_CH2_USMCA`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Senate Judiciary Committee Chamber*)
 
 - **Companion Recruitment — Senator Foghorn Kennedy (`KENNEDY`) Joins the Active Party:**
   > "*Adjusts his reading glasses with a slow Southern drawl* Well howdy, Commander! Look, if frogs had wings, they wouldn't bump their tails on the ground, and if Washington bureaucrats had brains, they'd be dangerous! As I told voters in my September 2022 campaign commercial: 'Look, if you hate cops just because they're cops, the next time you get in trouble, call a crackhead!'"
@@ -43,7 +43,7 @@
 ---
 
 ### Chapter 3: Bathroom Chandeliers vs. The 1967 Corvette Garage (2022–2023)
-**Scene:** [`SCENE_ACT3_CH3_AF1`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Mar-a-Lago Bathroom Chandelier & Corvette Garage*)
+**Scene:** [`SCENE_ACT3_CH3_AF1`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Mar-a-Lago Bathroom Chandelier & Corvette Garage*)
 
 - **Kayleigh Binder-Tabs (`NARRATOR_KAYLEIGH`):**
   > "It is 2022–2023: The Great Classified Cardboard Box War! On the left side of the screen is the gilded Lake Room bathroom at Mar-a-Lago, where dozens of cardboard bankers boxes are stacked next to the toilet beneath a crystal chandelier; on the right side is Joe Naptime's Wilmington garage, where classified Ukraine and Iran folders sit in a crushed box on the floor next to his green 1967 Chevrolet Corvette Stingray!"
@@ -56,7 +56,7 @@
 ---
 
 ### Chapter 4: The "215-Pound" Mugshot & $7.1M "Never Surrender" Merch (Aug 2023)
-**Scene:** [`SCENE_ACT3_CH4_SUMMIT`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Fulton County Booking Desk & Trump Force One*)
+**Scene:** [`SCENE_ACT3_CH4_SUMMIT`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Fulton County Booking Desk & Trump Force One*)
 
 - **Commander America (`COMMANDER_AMERICA`):**
   > "*Tilts his chin down, raises one eyebrow in a fierce Stanley Kubrick scowl as the camera flashes, and hands the clerk his self-reported booking sheet* Read those official physical stats on the Fulton County booking sheet, folks: Height: 6 foot 3! Weight: 215 POUNDS! Hair: Strawberry or Blonde! That puts me at the exact same height and weight as Baltimore Ravens All-Pro quarterback Lamar Jackson!"
@@ -67,7 +67,7 @@
 ---
 
 ### Chapter 5: "Economy Strong As Hell" & "Repeat the Line" (2022–2023 Finale)
-**Scene:** [`SCENE_ACT3_CH5_BASKIN`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Portland Baskin-Robbins & Teleprompter Stage*)
+**Scene:** [`SCENE_ACT3_CH5_BASKIN`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Portland Baskin-Robbins & Teleprompter Stage*)
 
 - **Joe Naptime (`BIDEN`):**
   > "*Takes a massive lick of his Baskin-Robbins chocolate chip waffle cone on October 15, 2022 as reporters ask about 8.2% inflation* 'I'm not concerned about the strength of the dollar—I'm concerned about the rest of the world! Our economy is strong as hell, man! ... By the way, don't eat the waitstaff!'"
@@ -81,7 +81,7 @@
 ## PART 2: TRACK B — PLAYING AS JOE NAPTIME (5 CHAPTERS)
 
 ### Chapter 1: Corn Pop's Rusty Razor, Blonde Leg Hair & Toe Cages (2019–2022)
-**Scene:** [`SCENE_ACT3_TB_CH1_POOL`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Wilmington Swimming Pool & Rehoboth Bike Trail*)
+**Scene:** [`SCENE_ACT3_TB_CH1_POOL`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Wilmington Swimming Pool & Rehoboth Bike Trail*)
 
 - **Narrators (`NARRATOR_PSAKI`, `NARRATOR_KJP`, `NARRATOR_OPRAH`):** Introduce **Standard-Bearer #3: Joe Naptime** with his **Real-Audio Gibberish (`biden_gibberish_audio`)** move and his **5 Ice-Cream Cryomancy spells**.
 - **Interactive Hub (`act3_tb_ch1_pool_hub`):**
@@ -95,7 +95,7 @@
 ---
 
 ### Chapter 2: "End of Quote, Repeat the Line" & Two Vindications (2021–2022)
-**Scene:** [`SCENE_ACT3_TB_CH2_TELEPROMPTER`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*White House Teleprompter & Andrews Staircase*)
+**Scene:** [`SCENE_ACT3_TB_CH2_TELEPROMPTER`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*White House Teleprompter & Andrews Staircase*)
 
 - **Interactive Hub (`act3_tb_ch2_prompter_hub`):**
   1. **July 8, 2022 "End of quote. Repeat the line." & March 19, 2021 Andrews Wind Stairs:** Reading the bracketed stage directions verbatim off the teleprompter glass.
@@ -105,7 +105,7 @@
 ---
 
 ### Chapter 3: "Economy Strong As Hell" at Baskin-Robbins vs. Foghorn Kennedy (2022–2023)
-**Scene:** [`SCENE_ACT3_TB_CH3_BASKIN`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Portland Baskin-Robbins Ice-Cream Counter*)
+**Scene:** [`SCENE_ACT3_TB_CH3_BASKIN`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Portland Baskin-Robbins Ice-Cream Counter*)
 
 - **Interactive Hub (`act3_tb_ch3_baskin_hub`):**
   1. **May 27, 2021 Cleveland Ice-Cream Speech & Oct 15, 2022 Portland Baskin-Robbins Lick:** *"I came down because I heard there was chocolate chip ice cream! By the way, I have a whole refrigerator full upstairs!"* + licking a waffle cone during 8.2% inflation and declaring *"Our economy is strong as hell, man!"*
@@ -117,7 +117,7 @@
 ---
 
 ### Chapter 4: The Locked 1967 Corvette Garage & Real-Audio Gibberish Symphony (2023–2024)
-**Scene:** [`SCENE_ACT3_TB_CH4_GARAGE`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Wilmington Locked 1967 Corvette Garage*)
+**Scene:** [`SCENE_ACT3_TB_CH4_GARAGE`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Wilmington Locked 1967 Corvette Garage*)
 
 - **Interactive Hub (`act3_tb_ch4_garage_hub`):**
   1. **Jan 12, 2023 Verbatim Corvette Defense & Feb 2024 Hur Press Conference:** *"My Corvette's in a locked garage, okay? So it's not like they're sitting out on the street!"*—followed by holding an emergency 8:00 PM press conference to prove his memory is sharp and immediately mixing up the President of Egypt with the President of Mexico.
@@ -128,7 +128,7 @@
 ---
 
 ### Chapter 5: The "215-Lb" Mugshot & Passing the Coconut to Kamala (2023–July 2024 Finale)
-**Scene:** [`SCENE_ACT3_TB_CH5_MUGSHOT`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Mar-a-Lago Chandelier Bathroom & Fulton Booking Desk*)
+**Scene:** [`SCENE_ACT3_TB_CH5_MUGSHOT`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Mar-a-Lago Chandelier Bathroom & Fulton Booking Desk*)
 
 - **Joe Naptime (`BIDEN`):**
   > "C'mon, man! Look at this malarkey: first you stacked thirty boxes of government records on the shower floor under a crystal bathroom chandelier at Mar-a-Lago, then on August 24, 2023 you walked into the Fulton County Jail, wrote down on the booking form that you're 6 foot 3 and 215 POUNDS—the exact weight of NFL quarterback Lamar Jackson—and sold \$7.1 million worth of T-shirts that say 'NEVER SURRENDER!' right underneath a photo of you literally surrendering at a police station!"

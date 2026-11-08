@@ -94,7 +94,9 @@ signing.properties
 .env
 .env.*
 
-# Internal AI handoff notes and scratch plans
+# Internal AI handoff notes and scratch folders
+.agents/
+scratch/
 *HANDOFF*.md
 *handoff*.md
 PROJECT_HANDOFF_PLAN.md

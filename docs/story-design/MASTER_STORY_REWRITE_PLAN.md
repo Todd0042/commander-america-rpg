@@ -185,11 +185,11 @@ All names are punchy, instantly recognizable, and hilarious without being overly
 ---
 
 ## 6. Companion Planning Documents Index (`docs/story-design/`)
-1. [`MASTER_STORY_REWRITE_PLAN.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/MASTER_STORY_REWRITE_PLAN.md) — High-level Dual-Track architecture & character roster.
-2. [`FACTUAL_VERBATIM_DATABASE.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/FACTUAL_VERBATIM_DATABASE.md) — 10+ verified real-life quotes/incidents per figure + Speculative Hearsay Vault.
-3. [`VINDICATION_TRIUMPHS_DATABASE.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/VINDICATION_TRIUMPHS_DATABASE.md) — 5 debunked smears/hoaxes per character turned into in-game "Vindication Wins."
-4. [`PARODY_COMBAT_MOVESETS_PLAN.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/PARODY_COMBAT_MOVESETS_PLAN.md) — Full playable & boss movesets (including Joe Naptime's randomized real-audio Gibberish move and ice-cream Cryomancy kit).
-5. [`EPISODE_AND_FIGHT_FLOW_PLAN.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/EPISODE_AND_FIGHT_FLOW_PLAN.md) — Zero-XP/Zero-Money mechanics, seamless Track B Baton-Pass rules, and the complete Act I–V Episode & Fight Sequence Outline.
+1. [`MASTER_STORY_REWRITE_PLAN.md`](../../docs/story-design/MASTER_STORY_REWRITE_PLAN.md) — High-level Dual-Track architecture & character roster.
+2. [`FACTUAL_VERBATIM_DATABASE.md`](../../docs/story-design/FACTUAL_VERBATIM_DATABASE.md) — 10+ verified real-life quotes/incidents per figure + Speculative Hearsay Vault.
+3. [`VINDICATION_TRIUMPHS_DATABASE.md`](../../docs/story-design/VINDICATION_TRIUMPHS_DATABASE.md) — 5 debunked smears/hoaxes per character turned into in-game "Vindication Wins."
+4. [`PARODY_COMBAT_MOVESETS_PLAN.md`](../../docs/story-design/PARODY_COMBAT_MOVESETS_PLAN.md) — Full playable & boss movesets (including Joe Naptime's randomized real-audio Gibberish move and ice-cream Cryomancy kit).
+5. [`EPISODE_AND_FIGHT_FLOW_PLAN.md`](../../docs/story-design/EPISODE_AND_FIGHT_FLOW_PLAN.md) — Zero-XP/Zero-Money mechanics, seamless Track B Baton-Pass rules, and the complete Act I–V Episode & Fight Sequence Outline.
 
 ---
 

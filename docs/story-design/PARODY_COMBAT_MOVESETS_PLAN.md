@@ -2,7 +2,7 @@
 
 > [!IMPORTANT]
 > **Engine Compatibility & Fact-Grounded Satire Mandate**
-> Every move in this document maps directly to the existing Kotlin combat engine schemas in [`TemplateHero.kt`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/template/TemplateHero.kt) (`Spell` / `SpellSchool` / `StatusEffectId`) and [`MovesetTable.kt`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/combat/MovesetTable.kt) (`EnemyMove` / `PhaseRule`). Every attack, buff, debuff, voice chant, and ultimate is 100% rooted in [`FACTUAL_VERBATIM_DATABASE.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/FACTUAL_VERBATIM_DATABASE.md) and [`VINDICATION_TRIUMPHS_DATABASE.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/VINDICATION_TRIUMPHS_DATABASE.md).
+> Every move in this document maps directly to the existing Kotlin combat engine schemas in [`TemplateHero.kt`](../../app/src/main/java/com/voicerpg/engine/template/TemplateHero.kt) (`Spell` / `SpellSchool` / `StatusEffectId`) and [`MovesetTable.kt`](../../app/src/main/java/com/voicerpg/engine/combat/MovesetTable.kt) (`EnemyMove` / `PhaseRule`). Every attack, buff, debuff, voice chant, and ultimate is 100% rooted in [`FACTUAL_VERBATIM_DATABASE.md`](../../docs/story-design/FACTUAL_VERBATIM_DATABASE.md) and [`VINDICATION_TRIUMPHS_DATABASE.md`](../../docs/story-design/VINDICATION_TRIUMPHS_DATABASE.md).
 
 ---
 

@@ -38,7 +38,7 @@ When you are ready to touch code, stripping out the RPG noise is super clean:
 
 ## PART 2 (Option 1): Act-by-Act Episode & Fight Sequence Outline (2015–2026)
 
-Every Act is structured as a tight **3-to-4 Episode arc** per campaign track. Every scene pulls directly from [`FACTUAL_VERBATIM_DATABASE.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/FACTUAL_VERBATIM_DATABASE.md) and [`VINDICATION_TRIUMPHS_DATABASE.md`](file:///home/todd/Documents/GitHub/commander-america-rpg/docs/story-design/VINDICATION_TRIUMPHS_DATABASE.md).
+Every Act is structured as a tight **3-to-4 Episode arc** per campaign track. Every scene pulls directly from [`FACTUAL_VERBATIM_DATABASE.md`](../../docs/story-design/FACTUAL_VERBATIM_DATABASE.md) and [`VINDICATION_TRIUMPHS_DATABASE.md`](../../docs/story-design/VINDICATION_TRIUMPHS_DATABASE.md).
 
 ---
 

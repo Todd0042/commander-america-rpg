@@ -126,7 +126,7 @@ For complete engine architectural specifications, resonance math formulas, and f
 
 ## 2. How Commander America Configures the Engine
 
-Commander America configures the engine dynamically through [`GameContent.kt`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/content/GameContent.kt):
+Commander America configures the engine dynamically through [`GameContent.kt`](app/src/main/java/com/voicerpg/engine/content/GameContent.kt):
 - **Campaign Manifest (`GameManifest`):** Registers the dual campaign tracks (`track_a` "Paint it Red" and `track_b` "Bewilder with Blue") along with starting scene pointers (`scene_act1_intro`, `scene_act1_b_intro`).
 - **Speaker TTS Voice Bindings (`preferredVoiceIds`):** Maps each political caricature (Commander America, Elon, Tulsi, Vivek, Bobby, Barry, Kamala, Joe) to distinct Android TTS pitch, language, and voice model profiles for immersive, distinct vocal dialogue.
 
@@ -134,7 +134,7 @@ Commander America configures the engine dynamically through [`GameContent.kt`](f
 
 ## 3. Custom Satirical Spells & Thesaurus Roots
 
-All satirical abilities are registered into [`MovesetTable.kt`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/combat/MovesetTable.kt) with custom thesaurus root mappings in [`SpellThesaurus.kt`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/SpellThesaurus.kt):
+All satirical abilities are registered into [`MovesetTable.kt`](app/src/main/java/com/voicerpg/engine/combat/MovesetTable.kt) with custom thesaurus root mappings in [`SpellThesaurus.kt`](app/src/main/java/com/voicerpg/engine/engine/SpellThesaurus.kt):
 - **Commander America:** `art_of_deal` (`DEFENSE`), `wall` (`DEFENSE`), `tariff_strike` (`ATTACK`), `covfefe_blast` (`AOE_ATTACK`).
 - **Chief Elon:** `x_post` (`ATTACK`), `rocket_volley` (`AOE_ATTACK`), `cybertruck_slam` (`DEFENSE`).
 - **Thesaurus Merging:** Game-specific chant keywords (*"deal"*, *"wall"*, *"tariff"*, *"covfefe"*, *"rocket"*, *"maha"*) merge seamlessly into the core engine's phonetic dictionary.
@@ -143,7 +143,7 @@ All satirical abilities are registered into [`MovesetTable.kt`](file:///home/tod
 
 ## 4. Procedural 8-Act Script & Non-Destructive Choice Elimination
 
-The story script in [`StoryScript.kt`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) utilizes the engine's choice elimination mechanics:
+The story script in [`StoryScript.kt`](app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) utilizes the engine's choice elimination mechanics:
 - When looping back to dialogue hub nodes, previously selected objectives display a `✓ DONE` badge and are rejected with helpful voice advice (*"That objective has already been completed..."*).
 - State is preserved atomically in `SaveManager` without altering the core story tree structure.
 

@@ -13,7 +13,7 @@
 ## PART 1: TRACK A — PLAYING AS COMMANDER AMERICA (+ KASH SUBPOENA)
 
 ### Chapter 1: Bushes, Cinnamon Gum & The 11-Day Mooch (Jan–July 2017)
-**Scene:** [`SCENE_ACT2_CH1_MALL`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*National Mall & White House Bushes*)
+**Scene:** [`SCENE_ACT2_CH1_MALL`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*National Mall & White House Bushes*)
 
 - **Kayleigh Binder-Tabs (`NARRATOR_KAYLEIGH`):**
   > "Welcome to Act II (2017–2020): Five brand-new chapters of executive chaos! It is January 21, 2017 inside the West Wing. White House Press Secretary Spicy Sean has already chewed and swallowed 35 pieces of Orbit Cinnamon gum whole before noon—right after sneaking into the Eisenhower Executive Office Building at 8:00 PM to steal a mini-fridge from junior research staffers!"
@@ -32,7 +32,7 @@
 ---
 
 ### Chapter 2: The Red Diet Coke Button, 12:06 AM Covfefe & The Bare-Eyed Eclipse (May–Nov 2017)
-**Scene:** [`SCENE_ACT2_CH2_OVAL`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Oval Office & Truman Balcony*)
+**Scene:** [`SCENE_ACT2_CH2_OVAL`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*The Oval Office & Truman Balcony*)
 
 - **Commander America (`COMMANDER_AMERICA`):**
   > "*Taps the red wooden button on the Resolute Desk while reporters from the Associated Press and Financial Times flinch* Everyone gets a little nervous when I press this button, folks! They think it's the nuclear football—nope! Watch this: ten seconds later, a White House butler walks in carrying a single ice-cold Diet Coke on a silver platter! Twelve times a day! Peak executive efficiency!"
@@ -44,7 +44,7 @@
 ---
 
 ### Chapter 3: Paper-Towel Free Throws, Hurricane Sharpie & 15-Flush Toilets (2017–2019)
-**Scene:** [`SCENE_ACT2_CH3_SHARPIE`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*San Juan Supply Gym & Oval Sharpie Easel*)
+**Scene:** [`SCENE_ACT2_CH3_SHARPIE`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*San Juan Supply Gym & Oval Sharpie Easel*)
 
 - **Commander America (`COMMANDER_AMERICA`):**
   > "*Squares his shoulders at Calvary Chapel in Guaynabo, Puerto Rico on October 3, 2017 and launches a jump-shot with a roll of Bounty paper towels into the crowd* Swish! Look at that form, folks—pure Steph Curry from the free-throw line! 'They had these lovely, soft towels. Very good towel!'"
@@ -58,7 +58,7 @@
 ---
 
 ### Chapter 4: Enter Kash Subpoena, The Nunes Memo & "Wizard Kash" (2018–2019)
-**Scene:** [`SCENE_ACT2_CH4_SCIF`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Intelligence Secure Vault / SCIF*)
+**Scene:** [`SCENE_ACT2_CH4_SCIF`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Intelligence Secure Vault / SCIF*)
 
 - **Companion Recruitment — Kash Subpoena (`KASH`) Joins the Active Party:**
   > "*Slams a four-page memo and a glossy picture book onto the table* Commander! Kash Subpoena reporting for party duty! Not only did I co-author the four-page Nunes FISA Memo exposing the Carter Page warrant applications, I also wrote a three-part Brave Books children's fantasy trilogy called *The Plot Against the King*—where I literally had the illustrator draw me as a bearded medieval sorcerer named 'WIZARD KASH' who saves 'KING DONALD' using a magical Scroll of Truth!"
@@ -73,7 +73,7 @@
 ---
 
 ### Chapter 5: Sideways Seal Claps, Pre-Scored Speeches & Twin $24,000 Freezers (2020 Finale)
-**Scene:** [`SCENE_ACT2_CH3_ROTUNDA`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Chamber & Sub-Zero Freezer Vault*)
+**Scene:** [`SCENE_ACT2_CH3_ROTUNDA`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Chamber & Sub-Zero Freezer Vault*)
 
 - **Nancy Palooza (`PELOSI`):**
   > "*Extends both arms stiffly at a 45-degree angle and claps sideways right in Commander America's ear* Good evening, Mr. President! Remember earlier when I said 'We have to pass the bill so that you can find out what is in it, away from the fog of the controversy'?! Well tonight it's February 4, 2020, and while you were talking at the podium, C-SPAN cameras caught me discreetly pre-ripping starter notches into the top left corners of your State of the Union pages under the desk so I wouldn't look weak trying to tear thick cardstock on live television!"
@@ -89,7 +89,7 @@
 ## PART 2: TRACK B — PLAYING AS SPEAKER NANCY PALOOZA (5 CHAPTERS)
 
 ### Chapter 1: Sideways Seal Claps vs. Neon Salsa Ruffles (2017–2019)
-**Scene:** [`SCENE_ACT2_TB_CH1_BUSHES`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Speaker's Rostrum & White House Shrubbery*)
+**Scene:** [`SCENE_ACT2_TB_CH1_BUSHES`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Speaker's Rostrum & White House Shrubbery*)
 
 - **Narrators (`NARRATOR_PSAKI`, `NARRATOR_KJP`, `NARRATOR_OPRAH`):** Introduce the Track B Baton Pass to **Speaker Nancy Palooza**, with 100% HP/MP and her complete Sub-Zero & Call-Option spell kit unlocked.
 - **Spicy Sean (`SPICY_SEAN`):**
@@ -103,7 +103,7 @@
 ---
 
 ### Chapter 2: Pre-Scoring the Speech & The Doctored 75%-Speed Video (2019–2020)
-**Scene:** [`SCENE_ACT2_TB_CH2_SOTU`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Rostrum — State of the Union Dais*)
+**Scene:** [`SCENE_ACT2_TB_CH2_SOTU`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Rostrum — State of the Union Dais*)
 
 - **Interactive Hub (`act2_tb_ch2_sotu_hub`):**
   1. **Pre-Scoring the Feb 4, 2020 SOTU Pages:** Discreetly pinching and pre-ripping starter notches into the top left margins under the desk on C-SPAN so the thick cardstock tears cleanly at the end (*"It was the courteous thing to do considering the alternatives!"*).
@@ -113,7 +113,7 @@
 ---
 
 ### Chapter 3: Twin $24,000 Sub-Zero Freezers & The Salon "Setup" (April–Aug 2020)
-**Scene:** [`SCENE_ACT2_TB_CH3_SUBZERO`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*San Francisco Sub-Zero Kitchen & eSalon*)
+**Scene:** [`SCENE_ACT2_TB_CH3_SUBZERO`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*San Francisco Sub-Zero Kitchen & eSalon*)
 
 - **Interactive Hub (`act2_tb_ch3_subzero_hub`):**
   1. **April 14, 2020 *Late Late Show* Ice-Cream Flex:** Opening twin $24,000 stainless-steel Sub-Zero freezers stocked floor-to-ceiling with $12 pints of Jeni's Splendid Ice Cream on national TV during peak quarantine lockdowns (*"I don't know what I would have done if I didn't have my ice cream!"*).
@@ -123,7 +123,7 @@
 ---
 
 ### Chapter 4: Deep-ITM Call Options & The $341k Nvidia Loss Receipt (2020–2022)
-**Scene:** [`SCENE_ACT2_TB_CH4_STOCKS`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Clerk Periodic Transaction Report Vault*)
+**Scene:** [`SCENE_ACT2_TB_CH4_STOCKS`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*House Clerk Periodic Transaction Report Vault*)
 
 - **Nancy Palooza (`PELOSI`):**
   > "*Stands at the Capitol press podium on December 15, 2021 when reporter Bryan Metzger asks if members of Congress and their spouses should be banned from trading individual stocks while writing legislation* 'No! We are a free-market economy. They should be able to participate in that!'"
@@ -137,7 +137,7 @@
 ---
 
 ### Chapter 5: Four Seasons Total Landscaping & The Waffle Cone Handoff (Nov 2020 Finale)
-**Scene:** [`SCENE_ACT2_TB_CH5_FOUR_SEASONS`](file:///home/todd/Documents/GitHub/commander-america-rpg/app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Four Seasons Total Landscaping — 7339 State Road, Philadelphia*)
+**Scene:** [`SCENE_ACT2_TB_CH5_FOUR_SEASONS`](../../app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) (*Four Seasons Total Landscaping — 7339 State Road, Philadelphia*)
 
 - **Rudy Ghoul (`RUDY_GHOUL`):**
   > "*Stands between a stack of bags of topsoil and a yellow 'ADULT BOOKS & NOVELTIES' sign while dark brown hair dye begins melting in twin streams down both of his temples* Welcome to Four Seasons Total Landscaping! Wait—a reporter in the front row is telling me the Associated Press and every television network just called Pennsylvania while I was standing in front of this garage door?! *Raises both arms to the sky* 'All the networks! Wow! All the networks! We have to forget about the law! Judges don't count! Don't be ridiculous, networks don't get to decide elections!'"
