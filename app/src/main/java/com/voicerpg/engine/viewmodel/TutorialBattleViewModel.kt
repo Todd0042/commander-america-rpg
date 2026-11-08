@@ -61,15 +61,15 @@ data class TutorialBattleUiState(
     val stepIndex: Int = 0,
     val currentStep: TutorialBattleStep = TutorialBattleContent.STEPS[0],
     val party: List<PartyMember> = emptyList(),
-    val activePartyMemberId: String = "commander",
+    val activePartyMemberId: String = TutorialBattleContent.CHARACTERS.firstOrNull()?.id ?: "hero",
     val enemies: List<Enemy> = TutorialBattleContent.ENEMIES,
-    val targetedEnemyId: String = "cable_pundit",
+    val targetedEnemyId: String = "dummy_alpha",
 
     // Centered Modal Dialogue Card
     val isModalVisible: Boolean = true,
     val modalType: ModalCardType = ModalCardType.NARRATOR_INTRO,
-    val modalSpeaker: DialogueSpeaker = DialogueSpeaker.NARRATOR_HULK,
-    val modalTitle: String = "PATRIOT BOOTCAMP",
+    val modalSpeaker: DialogueSpeaker = DialogueSpeaker.NARRATOR,
+    val modalTitle: String = "TRAINING ARENA",
     val modalMessage: String = "",
     val modalHintChant: String? = null,
     val modalSpellToCast: TutorialSpellDef? = null,
@@ -116,12 +116,12 @@ class TutorialBattleViewModel(
     }
 
     private fun createInitialState(): TutorialBattleUiState {
-        val firstChar = TutorialBattleContent.CHARACTERS[0].toPartyMember()
+        val firstChar = TutorialBattleContent.CHARACTERS.firstOrNull()?.toPartyMember()
         return TutorialBattleUiState(
             stepIndex = 0,
             currentStep = TutorialBattleContent.STEPS[0],
-            party = listOf(firstChar),
-            activePartyMemberId = firstChar.id,
+            party = listOfNotNull(firstChar),
+            activePartyMemberId = firstChar?.id ?: "hero",
             enemies = TutorialBattleContent.ENEMIES.map { it.copy() }
         )
     }
@@ -226,8 +226,8 @@ class TutorialBattleViewModel(
                 isCompleted = true,
                 isModalVisible = true,
                 modalType = ModalCardType.COMPLETION,
-                modalTitle = "BOOTCAMP COMPLETE",
-                modalMessage = "You have mastered the fundamentals of vocal combat and debate dominance! Common sense is ready to run wild!"
+                modalTitle = "TUTORIAL COMPLETE",
+                modalMessage = "You have mastered the fundamentals of vocal incantation and fellowship command! The Logos echoes with your power."
             )
         }
     }
@@ -242,7 +242,7 @@ class TutorialBattleViewModel(
                     isModalVisible = true,
                     modalType = ModalCardType.NARRATOR_INTRO,
                     modalSpeaker = step.speaker,
-                    modalTitle = "PATRIOT BOOTCAMP",
+                    modalTitle = "TRAINING ARENA",
                     modalMessage = step.text,
                     modalHintChant = null,
                     modalSpellToCast = null
@@ -267,7 +267,7 @@ class TutorialBattleViewModel(
                     isModalVisible = true,
                     modalType = ModalCardType.CHARACTER_JOIN,
                     modalSpeaker = charDef.speaker,
-                    modalTitle = "COMPANION JOINS",
+                    modalTitle = "FELLOWSHIP JOIN",
                     modalMessage = step.text,
                     modalHintChant = null,
                     modalSpellToCast = null
@@ -299,29 +299,28 @@ class TutorialBattleViewModel(
                     activePartyMemberId = step.characterId,
                     isModalVisible = true,
                     modalType = ModalCardType.PRACTICE_CAST_PROMPT,
-                    modalSpeaker = DialogueSpeaker.NARRATOR_HULK,
+                    modalSpeaker = DialogueSpeaker.NARRATOR,
                     modalTitle = if (step.isResonanceDemo) "RESONANCE SYSTEM DEMO" else "PRACTICE INCANTATION",
                     modalMessage = step.promptText,
                     modalHintChant = step.spellName,
                     modalSpellToCast = spellDef
                 )
-                narrate(step.promptText, DialogueSpeaker.NARRATOR_HULK)
+                narrate(step.promptText, DialogueSpeaker.NARRATOR)
             }
             is TutorialBattleStep.AutoAction -> {
-                val hint = if (step.characterId == "commander") "Tired of Winning" else "Water Bottle Chug"
                 _state.value = _state.value.copy(
                     stepIndex = index,
                     currentStep = step,
                     activePartyMemberId = step.characterId,
                     isModalVisible = true,
                     modalType = ModalCardType.NARRATOR_INTRO,
-                    modalSpeaker = DialogueSpeaker.NARRATOR_HULK,
+                    modalSpeaker = DialogueSpeaker.NARRATOR,
                     modalTitle = "FREE BREATH ABILITY",
                     modalMessage = step.actionText,
-                    modalHintChant = hint,
+                    modalHintChant = step.hintChant,
                     modalSpellToCast = null
                 )
-                narrate(step.actionText, DialogueSpeaker.NARRATOR_HULK)
+                narrate(step.actionText, DialogueSpeaker.NARRATOR)
             }
             is TutorialBattleStep.EnemyAttackDemo -> {
                 _state.value = _state.value.copy(
@@ -500,7 +499,7 @@ class TutorialBattleViewModel(
                 _state.value.resonanceDemoRecords
             }
 
-            val targetDesc = if (isAoE) "ALL opposing targets" else "Hostile Cable Pundit"
+            val targetDesc = if (isAoE) "ALL practice dummies" else "Practice Dummy Alpha"
             val resultMessage = if (isDemo && demoIdx == 0) {
                 "Cast: '${castRecord.utterance}'\nResonance: ${resonance.tier.name} (Base Multiplier 1.0x)\nDealt $finalDamage damage to $targetDesc."
             } else if (isDemo && demoIdx == 1) {
@@ -528,7 +527,7 @@ class TutorialBattleViewModel(
                 modalSpellToCast = null
             )
 
-            narrate(resultMessage, DialogueSpeaker.NARRATOR_HULK)
+            narrate(resultMessage, DialogueSpeaker.NARRATOR)
         }
     }
 
@@ -583,19 +582,18 @@ class TutorialBattleViewModel(
                 isAnimating = true
             )
 
-            // Pundit charges up
+            // Dummy charges up
             delay(400)
             val updatedEnemies = _state.value.enemies.map {
-                if (it.id == "cable_pundit") it.copy(isDamagedFlash = true) else it
+                if (it.id == "dummy_alpha") it.copy(isDamagedFlash = true) else it
             }
             _state.value = _state.value.copy(enemies = updatedEnemies)
 
             delay(500)
             sfxManager.playHitImpact()
 
-            // Damage Marco or first hero
-            val targetHeroId = _state.value.party.firstOrNull { it.id == "marco" }?.id
-                ?: _state.value.party.first().id
+            // Damage first hero in party
+            val targetHeroId = _state.value.party.first().id
 
             val enemyDmg = 35
             val updatedParty = _state.value.party.map { hero ->
@@ -638,12 +636,12 @@ class TutorialBattleViewModel(
                 floatingTexts = emptyList(),
                 isModalVisible = true,
                 modalType = ModalCardType.ENEMY_ATTACK_RESULT,
-                modalTitle = "DEBATE STRATEGY",
+                modalTitle = "COMBAT STRATEGY",
                 modalMessage = step.resultText,
                 modalHintChant = null,
                 modalSpellToCast = null
             )
-            narrate(step.resultText, DialogueSpeaker.NARRATOR_HULK)
+            narrate(step.resultText, DialogueSpeaker.NARRATOR)
         }
     }
 

@@ -61,6 +61,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.voicerpg.engine.audio.MusicManager
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.engine.TutorialBattleContent
 import com.voicerpg.engine.engine.TutorialBattleStep
 import com.voicerpg.engine.model.BattleEnvironment
@@ -147,10 +148,19 @@ fun TutorialBattleScreen(
                 ) {
                     // Living Environmental Background Canvas
                     BattleEnvironmentCanvas(
-                        environment = BattleEnvironment.CASTLE,
+                        environment = GameContent.defaultEncounter?.environment ?: BattleEnvironment.CASTLE,
+                        environmentId = GameContent.defaultEncounter?.environmentId,
+                        isPortrait = !isLandscape,
                         partyCount = state.party.size,
                         enemyCount = state.enemies.size,
                         modifier = Modifier.fillMaxSize()
+                    )
+
+                    // 25% black contrast overlay between background and sprites
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.Black.copy(alpha = 0.25f))
                     )
 
                     // Battle Grid Flanks
@@ -394,6 +404,7 @@ private fun TutorialCommandDock(
                     val isTargetSpell = (state.currentStep as? TutorialBattleStep.PracticeCast)?.let {
                         it.spellName.equals(spell.name, ignoreCase = true)
                     } ?: false
+                    val category = spell.category
 
                     Box(
                         modifier = Modifier
@@ -407,18 +418,38 @@ private fun TutorialCommandDock(
                             .clickable(enabled = !state.isAnimating) {
                                 onCastSpell(spell.name)
                             }
-                            .padding(horizontal = 8.dp, vertical = 4.dp)
+                            .padding(horizontal = 7.dp, vertical = 4.dp)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
+                            // Category Badge: Icon + Label (e.g. ⚔️ ATK, 💥 AOE, 💚 HEAL, 🛡️ DEF, ✨ MANA)
                             Box(
                                 modifier = Modifier
-                                    .size(6.dp)
-                                    .clip(CircleShape)
-                                    .background(spell.school.themeColor)
-                            )
+                                    .clip(RoundedCornerShape(3.dp))
+                                    .background(category.tagBg)
+                                    .border(0.5.dp, category.tagColor.copy(alpha = 0.7f), RoundedCornerShape(3.dp))
+                                    .padding(horizontal = 3.dp, vertical = 1.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(2.dp)
+                                ) {
+                                    Text(
+                                        text = category.icon,
+                                        fontSize = 8.sp
+                                    )
+                                    Text(
+                                        text = category.label,
+                                        color = category.tagColor,
+                                        fontSize = 7.5.sp,
+                                        fontWeight = FontWeight.Black,
+                                        fontFamily = FontFamily.Monospace
+                                    )
+                                }
+                            }
+
                             Text(
                                 text = spell.name,
                                 color = if (isTargetSpell) LogosGold else Color.White,
@@ -437,7 +468,7 @@ private fun TutorialCommandDock(
                                 Text(
                                     text = "FREE",
                                     color = Color(0xFF81C784),
-                                    fontSize = 9.sp,
+                                    fontSize = 8.5.sp,
                                     fontWeight = FontWeight.Bold,
                                     fontFamily = FontFamily.Monospace
                                 )
@@ -998,8 +1029,12 @@ private fun CompletionBannerCard() {
                 fontWeight = FontWeight.Black,
                 fontFamily = FontFamily.Monospace
             )
+            val manifest = com.voicerpg.engine.content.GameContent.manifest
+            val completionMsg = manifest.tutorialCompletionText.ifBlank {
+                "All companions assembled. Resonance mechanics understood. You are prepared to enter the world of ${manifest.worldName}."
+            }
             Text(
-                text = "All companions assembled. Resonance mechanics understood. You are prepared to enter the world of Logos.",
+                text = completionMsg,
                 color = Color(0xFFFFF9C4),
                 fontSize = 11.sp,
                 textAlign = TextAlign.Center
@@ -1031,7 +1066,7 @@ private fun TutorialFloatingNumberItem(ft: TutorialFloatingText) {
         modifier = Modifier
             .offset {
                 // If it's damage to enemy dummy, place it on the right side; if heal/damage to hero, place it on left
-                val isHeroTarget = ft.targetId == "hero" || ft.targetId == "marco" || ft.targetId == "vance" || ft.targetId == "kash" || ft.targetId == "kennedy"
+                val isHeroTarget = !ft.targetId.startsWith("dummy") && !ft.targetId.startsWith("enemy")
                 val baseX = if (isHeroTarget) 120 else 600
                 val baseY = if (ft.targetId.contains("beta")) 380 else if (ft.targetId.contains("gamma")) 460 else 300
                 IntOffset(

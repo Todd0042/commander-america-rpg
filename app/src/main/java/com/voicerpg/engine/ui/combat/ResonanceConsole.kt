@@ -59,6 +59,7 @@ import com.voicerpg.engine.model.AcousticProfile
 import com.voicerpg.engine.model.CombatPhase
 import com.voicerpg.engine.model.ResonanceResult
 import com.voicerpg.engine.model.ResonanceTier
+import com.voicerpg.engine.model.Spell
 import com.voicerpg.engine.model.SpellSchool
 import com.voicerpg.engine.ui.theme.FrostCyan
 import com.voicerpg.engine.ui.theme.LightningViolet
@@ -213,27 +214,14 @@ fun ResonanceConsole(
             ) {
                 activePartyMember.spells.forEach { spell ->
                     val hasEnoughMp = activePartyMember.currentMp >= spell.mpCost
-                    val schoolIcon = when (spell.school) {
-                        SpellSchool.PYROMANCY -> "🔥"
-                        SpellSchool.CRYOMANCY -> "❄️"
-                        SpellSchool.ELECTROMANCY -> "⚡"
-                        SpellSchool.NATURE -> "🌿"
-                        SpellSchool.HOLY -> if (spell.isHeal) "💚" else "⚔️"
-                        SpellSchool.SHADOW -> "🗡️"
-                        SpellSchool.PHYSICAL -> "🛡️"
-                    }
                     TacticalSpellButton(
-                        icon = schoolIcon,
-                        spellName = spell.name,
-                        mpCost = spell.mpCost,
+                        spell = spell,
                         hasEnoughMp = hasEnoughMp,
                         enabled = isInputEnabled,
-                        accentColor = spell.school.themeColor,
                         onClick = {
                             val rolledTier = rollWeightedResonanceTier()
                             val preset = SpellChantPresets.getPreset(spell, rolledTier)
-                            val organicProfile = AcousticProfile.rollOrganicProfile(rolledTier)
-                            onSubmitChant(preset.chantText, organicProfile)
+                            onSubmitChant(preset.chantText, preset.acousticProfile)
                         }
                     )
                 }
@@ -697,19 +685,18 @@ fun AudioEqualizerBars(
 
 /**
  * Weighted random resonance tier generator:
- * Balanced for button taps with varying randomness where lower amounts are prioritized:
- * - Basic (0%..18% bonus): 55% chance (prioritizing lower resonance common hits)
- * - Adept (20%..48% bonus): 28% chance (moderate oratorical command)
- * - Master (50%..85% bonus): 12% chance (strong charismatic delivery)
- * - Mythic (90%..135% bonus): 4% chance (rare crowd roar crit)
- * - Transcendental (150%..200% MAX): 1% chance (legendary jackpot surge)
+ * - Basic (+10%): 50% chance
+ * - Adept (+40%): 30% chance
+ * - Master (+80%): 14% chance
+ * - Mythic (+125%): 5% chance
+ * - Transcendental (+200% MAX): 1% rare chance
  */
 private fun rollWeightedResonanceTier(): ResonanceTier {
     val roll = kotlin.random.Random.nextFloat()
     return when {
-        roll < 0.55f -> ResonanceTier.BASIC
-        roll < 0.83f -> ResonanceTier.ADEPT
-        roll < 0.95f -> ResonanceTier.MASTER
+        roll < 0.50f -> ResonanceTier.BASIC
+        roll < 0.80f -> ResonanceTier.ADEPT
+        roll < 0.94f -> ResonanceTier.MASTER
         roll < 0.99f -> ResonanceTier.MYTHIC
         else -> ResonanceTier.TRANSCENDENTAL
     }
@@ -717,43 +704,75 @@ private fun rollWeightedResonanceTier(): ResonanceTier {
 
 @Composable
 private fun TacticalSpellButton(
-    icon: String,
-    spellName: String,
-    mpCost: Int,
+    spell: Spell,
     hasEnoughMp: Boolean,
     enabled: Boolean,
-    accentColor: Color,
     onClick: () -> Unit
 ) {
+    val category = spell.category
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(6.dp))
             .background(if (enabled && hasEnoughMp) Color(0xFF1E2638) else Color(0xFF181822))
             .border(
                 width = 1.dp,
-                color = if (enabled && hasEnoughMp) accentColor.copy(alpha = 0.85f) else Color(0xFF373752),
+                color = if (enabled && hasEnoughMp) spell.school.themeColor.copy(alpha = 0.85f) else Color(0xFF373752),
                 shape = RoundedCornerShape(6.dp)
             )
             .clickable(enabled = enabled) { onClick() }
-            .padding(horizontal = 8.dp, vertical = 5.dp)
+            .padding(horizontal = 7.dp, vertical = 5.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
+            // Category Badge: Icon + Label (e.g. ⚔️ ATK, 💥 AOE, 💚 HEAL, 🛡️ DEF, ✨ MANA)
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(3.dp))
+                    .background(category.tagBg)
+                    .border(0.5.dp, category.tagColor.copy(alpha = 0.7f), RoundedCornerShape(3.dp))
+                    .padding(horizontal = 3.dp, vertical = 1.dp)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(2.dp)
+                ) {
+                    Text(
+                        text = category.icon,
+                        fontSize = 8.sp
+                    )
+                    Text(
+                        text = category.label,
+                        color = category.tagColor,
+                        fontSize = 7.5.sp,
+                        fontWeight = FontWeight.Black,
+                        fontFamily = FontFamily.Monospace
+                    )
+                }
+            }
+
             Text(
-                text = "$icon $spellName",
+                text = spell.name,
                 color = if (enabled && hasEnoughMp) Color.White else Color.Gray,
                 fontSize = 10.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace
             )
-            if (mpCost > 0) {
+            if (spell.mpCost > 0) {
                 Text(
-                    text = "${mpCost}MP",
+                    text = "${spell.mpCost}MP",
                     color = if (!hasEnoughMp) Color(0xFFFF5252) else if (enabled) FrostCyan else Color.DarkGray,
                     fontSize = 8.5.sp,
                     fontWeight = FontWeight.SemiBold,
+                    fontFamily = FontFamily.Monospace
+                )
+            } else {
+                Text(
+                    text = "FREE",
+                    color = if (enabled) Color(0xFF81C784) else Color.DarkGray,
+                    fontSize = 8.5.sp,
+                    fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Monospace
                 )
             }

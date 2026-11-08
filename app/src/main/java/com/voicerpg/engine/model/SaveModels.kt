@@ -83,10 +83,12 @@ enum class AuraColor(
     val hexColor: String,
     val description: String
 ) {
-    SAPPHIRE_FROST("frost", "Sapphire Frost", "#00E5FF", "Cool cyan luminescence"),
-    SOLAR_GOLD("gold", "Solar Gold", "#FFD700", "Radiant dawn brilliance"),
-    CRIMSON_PYRE("fire", "Crimson Pyre", "#FF5252", "Fierce incandescent flame"),
-    EMERALD_GROVE("verdant", "Emerald Grove", "#69F0AE", "Gentle living earth"),
+    SOLAR_GOLD("sun", "Solar Gold", "#FFD700", "Radiates commanding presence"),
+    SAPPHIRE_FROST("frost", "Sapphire Frost", "#00E5FF", "Crisp analytical chill"),
+    CRIMSON_EMBER("fire", "Crimson Ember", "#FF1744", "Fierce passionate resonance"),
+    CRIMSON_PYRE("fire", "Crimson Pyre", "#FF1744", "Fierce passionate resonance"),
+    EMERALD_LIFE("nature", "Emerald Life", "#00E676", "Vibrant grounding tone"),
+    EMERALD_GROVE("nature", "Emerald Grove", "#00E676", "Vibrant grounding tone"),
     AMETHYST_VOID("shadow", "Amethyst Void", "#E040FB", "Mysterious umbral frequency")
 }
 
@@ -113,13 +115,31 @@ enum class CampaignTrack(
     )
 }
 
+/**
+ * Data-driven storyline track definition (e.g. Track A, Track B).
+ * Games with multiple storylines or perspectives configure these in manifest or GameContent.
+ */
+data class CampaignTrackDef(
+    val id: String = "track_a",
+    val displayName: String = "Main Campaign",
+    val subtitle: String = "",
+    val startNodeId: String = "",
+    val startSceneId: String = "",
+    val rosterDescription: String = "",
+    val badgeText: String = "1P",
+    val voiceKeywords: List<String> = emptyList()
+)
+
 data class PlayerCustomization(
     val name: String = "Commander America",
     val heroClass: HeroClass = HeroClass.COMMANDER,
+    val heroClassId: String = "commander",
     val title: String = "Commander-in-Chief",
     val auraColor: AuraColor = AuraColor.SOLAR_GOLD,
     val voiceAffinityBonusSchool: SpellSchool = SpellSchool.PHYSICAL,
-    val campaignTrack: CampaignTrack = CampaignTrack.TRACK_A
+    val campaignTrack: CampaignTrack = CampaignTrack.TRACK_A,
+    val campaignTrackId: String = "track_a",
+    val customPortraitAsset: String? = null
 )
 
 data class SavedCharacterStats(
@@ -157,49 +177,55 @@ data class SavedCharacterStats(
 data class GameSaveData(
     val saveVersion: Int = 1,
     val saveTimestamp: Long = System.currentTimeMillis(),
-    val totalPlaytimeSeconds: Long = 0L,
+    val timestamp: Long = saveTimestamp,
 
     // 1. Player Profile & Initial Loadout
     val player: PlayerCustomization = PlayerCustomization(),
 
     // 2. Story Progress & Current Scene/Dialogue
-    val currentSceneId: String = "scene_cottage",
-    val currentNodeId: String = "cottage_intro",
+    val currentSceneId: String = "scene_act1_ch1_escalator",
+    val currentNodeId: String = "act1_intro",
 
     // 3. Complete Decision History (every choice ever selected by player)
     val decisionsMade: List<String> = emptyList(),
     val narrativeFlags: Map<String, Boolean> = emptyMap(),
+    val visitedNodeIds: List<String> = emptyList(),
     val recentDialogueLog: List<DialogueLogEntry> = emptyList(),
 
     // 4. Current Stats for all Party Members
     val partyStats: List<SavedCharacterStats> = emptyList(),
 
-    // 5. Accomplishments & Milestones
+    // 5. Narrative Milestones
     val defeatedEncounters: List<String> = emptyList(),
-    val unlockedCompanions: List<String> = listOf("hero"),
+    val unlockedCompanions: List<String> = emptyList(),
     val achievements: List<String> = emptyList(),
-    val totalDamageDealt: Long = 0L,
-    val totalBattlesWon: Int = 0,
-    val highestResonanceTier: String = "BASIC",
+    val unlockedAchievements: List<String> = achievements,
 
     // 6. User Accessibility & Audio Options
     val isEyesFreeMode: Boolean = false,
     val isAutoListen: Boolean = false,
+    val isAutoPlayEnabled: Boolean = false,
     val isChimeMuted: Boolean = true,
     val isNarrationEnabled: Boolean = true,
     val isCombatNarrationEnabled: Boolean = true,
     val isPocketGuardEnabled: Boolean = true,
     val isReadChoicesEnabled: Boolean = true,
+    val isAutoReadHubChoices: Boolean = true,
     val speechRate: Float = 1.05f,
     val isCharacterPitchEnabled: Boolean = true,
     val isSpeakerAttributionEnabled: Boolean = true,
-    val isMusicEnabled: Boolean = true,
-    val musicVolume: Float = 0.55f,
+    val isMusicMuted: Boolean = false,
+    val isMusicEnabled: Boolean = !isMusicMuted,
+    val musicVolume: Float = 0.5f,
+    val speechVolume: Float = 1.0f,
 
     // 7. Per-speaker TTS voice assignments (installed Android voice model names keyed by speaker id)
     val voiceAssignments: Map<String, String> = emptyMap(),
 
     // 8. Auto-Play & Dynamic Metrics
-    val isAutoPlayEnabled: Boolean = false,
-    val dynamicMetrics: Map<String, Float> = emptyMap()
+    val dynamicMetrics: Map<String, Float> = emptyMap(),
+
+    // 9. Multilingual Localization Options
+    val selectedLanguage: String = "en",
+    val selectedRegion: String = ""
 )

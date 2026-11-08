@@ -355,6 +355,11 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         }
+                        GameScreen.LANGUAGE_SELECTION,
+                        GameScreen.DIALECT_SELECTION,
+                        GameScreen.LANGUAGE_DOWNLOAD_STANDBY -> {
+                            storyViewModel.returnToTitle()
+                        }
                     }
 
                     // Global Universal Options & Narration Modal

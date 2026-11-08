@@ -1,6 +1,8 @@
 package com.voicerpg.engine.engine
 
 import androidx.compose.ui.graphics.Color
+import com.voicerpg.engine.content.GameCharacter
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.model.DialogueSpeaker
 import com.voicerpg.engine.model.Enemy
 import com.voicerpg.engine.model.SpellSchool
@@ -16,7 +18,16 @@ data class TutorialSpellDef(
     val manaRestorePct: Float = 0f,
     val description: String,
     val aliases: List<String> = emptyList()
-)
+) {
+    val category: com.voicerpg.engine.model.SpellCategory
+        get() = when {
+            isHeal -> com.voicerpg.engine.model.SpellCategory.HEAL
+            manaRestorePct > 0f -> com.voicerpg.engine.model.SpellCategory.MANA
+            isGuard || (basePower == 0 && !hitsAll) -> com.voicerpg.engine.model.SpellCategory.DEFENSE
+            hitsAll -> com.voicerpg.engine.model.SpellCategory.AOE_ATTACK
+            else -> com.voicerpg.engine.model.SpellCategory.ATTACK
+        }
+}
 
 data class TutorialCharacterDef(
     val id: String,
@@ -34,7 +45,7 @@ data class TutorialCharacterDef(
 sealed class TutorialBattleStep {
     data class IntroPopup(
         val text: String,
-        val speaker: DialogueSpeaker = DialogueSpeaker.NARRATOR_HULK
+        val speaker: DialogueSpeaker = GameContent.narrator
     ) : TutorialBattleStep()
 
     data class CharacterJoin(
@@ -59,7 +70,8 @@ sealed class TutorialBattleStep {
     data class AutoAction(
         val characterId: String,
         val actionText: String,
-        val resultText: String
+        val resultText: String,
+        val hintChant: String = "Attune"
     ) : TutorialBattleStep()
 
     data class EnemyAttackDemo(
@@ -72,211 +84,179 @@ sealed class TutorialBattleStep {
     ) : TutorialBattleStep()
 }
 
+/**
+ * Tutorial content assembled at runtime from the active game's data files:
+ * the template hero character (assets/game/characters/<name>.json), their spells
+ * (assets/game/spells/spells.json), and the practice-dummy enemy template
+ * (assets/game/enemies/enemies.json). No characters or spells are hardcoded.
+ */
 object TutorialBattleContent {
 
-    val CHARACTERS: List<TutorialCharacterDef> = listOf(
-        TutorialCharacterDef(
-            id = "commander",
-            name = "Commander America",
-            title = "Commander-in-Chief",
-            speaker = DialogueSpeaker.COMMANDER_AMERICA,
-            loreClass = "Commander-in-Chief",
-            maxHp = 5000,
-            maxMp = 1776,
-            speed = 70,
-            avatarTint = Color(0xFFFFD700),
-            spells = listOf(
-                TutorialSpellDef(
-                    name = "Tremendous Strike",
-                    school = SpellSchool.PHYSICAL,
-                    basePower = 65,
-                    mpCost = 0,
-                    description = "A tremendously powerful patriotic strike that pulverizes political obstruction.",
-                    aliases = listOf("tremendous", "strike", "smash", "punch", "tremendous blow")
-                ),
-                TutorialSpellDef(
-                    name = "Art of the Deal",
-                    school = SpellSchool.HOLY,
-                    basePower = 50,
-                    mpCost = 20,
-                    hitsAll = true,
-                    description = "Imposes unmatched negotiation power, damaging all opposing targets.",
-                    aliases = listOf("art of the deal", "deal", "negotiate", "trade", "billion")
-                ),
-                TutorialSpellDef(
-                    name = "Obama Did It First!",
-                    school = SpellSchool.SHADOW,
-                    basePower = 80,
-                    mpCost = 25,
-                    description = "Exposes historical receipts! Inflicts devastating damage and stuns the target.",
-                    aliases = listOf("obama did it first", "obama", "receipts", "hypocrisy")
-                ),
-                TutorialSpellDef(
-                    name = "Tired of Winning",
-                    school = SpellSchool.HOLY,
-                    basePower = 0,
-                    mpCost = 0,
-                    manaRestorePct = 0.35f,
-                    description = "Commander America pauses because there is simply so much winning, recovering mana.",
-                    aliases = listOf("tired of winning", "winning", "win", "winning streak")
-                )
-            )
-        ),
-        TutorialCharacterDef(
-            id = "marco",
-            name = "Marco Rubio",
-            title = "Sanctions Sorcerer",
-            speaker = DialogueSpeaker.MARCO,
-            loreClass = "Sanctions Sorcerer",
-            maxHp = 320,
-            maxMp = 160,
-            speed = 65,
-            avatarTint = Color(0xFF81D4FA),
-            spells = listOf(
-                TutorialSpellDef(
-                    name = "Sanctions Blizzard",
-                    school = SpellSchool.PHYSICAL,
-                    basePower = 75,
-                    mpCost = 18,
-                    description = "Freezes rogue accounts and restricts diplomatic capital with biting penalties.",
-                    aliases = listOf("sanctions blizzard", "sanctions", "blizzard", "freeze accounts")
-                ),
-                TutorialSpellDef(
-                    name = "Hydrate & Rebut",
-                    school = SpellSchool.HOLY,
-                    basePower = 70,
-                    mpCost = 15,
-                    isHeal = true,
-                    hitsAll = true,
-                    description = "Pauses for a sip of water, recovering HP for the entire party.",
-                    aliases = listOf("hydrate", "water", "rebut", "heal")
-                ),
-                TutorialSpellDef(
-                    name = "Water Bottle Chug",
-                    school = SpellSchool.HOLY,
-                    basePower = 0,
-                    mpCost = 0,
-                    manaRestorePct = 0.35f,
-                    description = "Takes a deep sip of refreshing Florida spring water to restore mana.",
-                    aliases = listOf("water bottle", "chug", "sip", "drink")
-                )
-            )
-        )
-    )
+    val CHARACTERS: List<TutorialCharacterDef>
+        get() {
+            val hero = GameContent.heroCharacter?.takeIf { it.combat != null }
+            val others = GameContent.characters.values
+                .filter { it.combat != null && it.role != com.voicerpg.engine.content.CharacterRole.NARRATOR && it.id != hero?.id }
+            return listOfNotNull(hero?.toTutorialDef()) + others.map { it.toTutorialDef() }
+        }
 
-    val ENEMIES: List<Enemy> = listOf(
-        Enemy(
-            id = "cable_pundit",
-            name = "Hostile Cable Pundit",
-            subtitle = "Biased Anchor",
-            currentHp = 2000,
-            maxHp = 2000,
-            baseAttack = 0,
-            speed = 30,
-            family = "FLESH"
-        ),
-        Enemy(
-            id = "teleprompter_dummy",
-            name = "Rigged Teleprompter",
-            subtitle = "Talking Points Drone",
-            currentHp = 2000,
-            maxHp = 2000,
-            baseAttack = 0,
-            speed = 30,
-            family = "FLESH"
-        ),
-        Enemy(
-            id = "swamp_bureaucrat",
-            name = "Swamp Red-Tape Clerk",
-            subtitle = "Regulatory Obstructor",
-            currentHp = 2000,
-            maxHp = 2000,
-            baseAttack = 0,
-            speed = 30,
-            family = "FLESH"
+    private fun GameCharacter.toTutorialDef(): TutorialCharacterDef {
+        val combat = combat!!
+        return TutorialCharacterDef(
+            id = id,
+            name = speaker.name,
+            title = speaker.title,
+            speaker = speaker,
+            loreClass = loreClass,
+            maxHp = combat.maxHp,
+            maxMp = combat.maxMp,
+            speed = combat.speed,
+            avatarTint = combat.avatarTint,
+            spells = combat.spells.map {
+                TutorialSpellDef(
+                    name = it.name,
+                    school = it.school,
+                    basePower = it.basePower,
+                    mpCost = it.mpCost,
+                    isHeal = it.isHeal,
+                    isGuard = it.isGuard,
+                    hitsAll = it.hitsAll,
+                    manaRestorePct = it.manaRestorePct,
+                    description = it.description,
+                    aliases = it.aliases
+                )
+            }
         )
-    )
+    }
 
-    val STEPS: List<TutorialBattleStep> = listOf(
-        TutorialBattleStep.IntroPopup(
-            text = "WELCOME TO PATRIOT BOOTCAMP, BROTHER! The media, the teleprompter sorcerers, and the deep swamp are everywhere! Commander America is here to teach you how to dominate the debate floor using the power of your VOICE!",
-            speaker = DialogueSpeaker.NARRATOR_HULK
-        ),
-        TutorialBattleStep.IntroPopup(
-            text = "In real combat, you don't push boring buttons — you SPEAK your incantations into the microphone! The more vivid and dramatic your speech, the higher your resonance bonus! Let's get down to business!",
-            speaker = DialogueSpeaker.NARRATOR_HULK
-        ),
-        TutorialBattleStep.CharacterJoin(
-            characterDef = CHARACTERS[0],
-            text = "Commander America takes the debate podium! Equipped with maximum ratings, unmatched stamina, and presidential authority."
-        ),
-        TutorialBattleStep.SpellOverview(
-            characterDef = CHARACTERS[0],
-            text = "Here is Commander America's presidential arsenal."
-        ),
-        TutorialBattleStep.PracticeCast(
-            characterId = "commander",
-            spellName = "Tremendous Strike",
-            school = SpellSchool.PHYSICAL,
-            promptText = "Try casting Tremendous Strike! Say 'Tremendous Strike' into your microphone to blast the Hostile Cable Pundit!"
-        ),
-        TutorialBattleStep.PracticeCast(
-            characterId = "commander",
-            spellName = "Art of the Deal",
-            school = SpellSchool.HOLY,
-            promptText = "Art of the Deal hits EVERY opponent on the debate floor! Say 'Art of the Deal' to show them who owns the ratings!"
-        ),
-        TutorialBattleStep.AutoAction(
-            characterId = "commander",
-            actionText = "Every patriot has a zero-cost breath ability! Say 'Tired of Winning' to pause, bask in victory, and restore your mana without spending anything!",
-            resultText = "Commander America's mana fully restored via Tired of Winning! You will never get tired of winning, brother!"
-        ),
-        TutorialBattleStep.CharacterJoin(
-            characterDef = CHARACTERS[1],
-            text = "Marco Rubio joins the debate stage as your Sanctions Sorcerer! Armed with leather briefcases, devastating sanctions, and emergency Florida hydration!"
-        ),
-        TutorialBattleStep.SpellOverview(
-            characterDef = CHARACTERS[1],
-            text = "Here are Marco Rubio's debate abilities."
-        ),
-        TutorialBattleStep.PracticeCast(
-            characterId = "marco",
-            spellName = "Sanctions Blizzard",
-            school = SpellSchool.PHYSICAL,
-            promptText = "Command Marco to cast Sanctions Blizzard! Say 'Sanctions Blizzard' to freeze the swamp's offshore bank accounts!"
-        ),
-        TutorialBattleStep.IntroPopup(
-            text = "NOW WITNESS THE SECRET TO VICTORY: THE RESONANCE SYSTEM! Speak with real swagger and conviction to multiply your spell power! First, say just 'Tremendous Strike' — simple and plain.",
-            speaker = DialogueSpeaker.NARRATOR_HULK
-        ),
-        TutorialBattleStep.PracticeCast(
-            characterId = "commander",
-            spellName = "Tremendous Strike",
-            school = SpellSchool.PHYSICAL,
-            promptText = "Say 'Tremendous Strike' now. Just the spell name.",
-            isResonanceDemo = true,
-            resonanceDemoIndex = 0
-        ),
-        TutorialBattleStep.PracticeCast(
-            characterId = "commander",
-            spellName = "Tremendous Strike",
-            school = SpellSchool.PHYSICAL,
-            promptText = "Now cast Tremendous Strike again, but this time use dramatic presidential authority! Say: 'By executive order and tremendous patriotic strength, pulverize this fake news broadcast!'",
-            isResonanceDemo = true,
-            resonanceDemoIndex = 1
-        ),
-        TutorialBattleStep.IntroPopup(
-            text = "LOOK AT THAT DAMAGE MULTIPLIER, BROTHER! That elaborate patriotic chant unleashed massive bonus power! Eloquent conviction will always crush low-energy mumbling!",
-            speaker = DialogueSpeaker.NARRATOR_HULK
-        ),
-        TutorialBattleStep.EnemyAttackDemo(
-            introText = "Watch out! The fake news network is launching an anonymous attack piece! See how your patriotic coalition withstands it!",
-            resultText = "Hostile pundits will hit back on their turn. Use healing spells, shields, and high-energy offense to win the debate every time!"
-        ),
-        TutorialBattleStep.CompletionPopup(
-            text = "OUTSTANDING JOB, BROTHER! You have mastered voice combat and debate dominance! The golden escalator awaits — go take America back!"
+    val ENEMIES: List<Enemy>
+        get() {
+            val dummy = GameContent.enemyTemplateById("practice_dummy")
+            return listOf(
+                dummyId("dummy_alpha", "Practice Dummy Alpha", dummy),
+                dummyId("dummy_beta", "Practice Dummy Beta", dummy),
+                dummyId("dummy_gamma", "Practice Dummy Gamma", dummy)
+            )
+        }
+
+    private fun dummyId(id: String, name: String, template: com.voicerpg.engine.content.EnemyTemplate?): Enemy =
+        template?.toEnemy(instanceId = id, nameOverride = name) ?: Enemy(
+            id = id,
+            name = name,
+            subtitle = "Training Target",
+            currentHp = 2000,
+            maxHp = 2000,
+            baseAttack = 0,
+            speed = 30,
+            spriteId = "practice_dummy",
+            family = "CONSTRUCT"
         )
-    )
+
+    /** Tutorial script generated from the template character's actual spell loadout. */
+    val STEPS: List<TutorialBattleStep>
+        get() = buildSteps()
+
+    private fun buildSteps(): List<TutorialBattleStep> {
+        val hero = CHARACTERS.firstOrNull()
+        val narrator = GameContent.narrator
+        if (hero == null) {
+            return listOf(
+                TutorialBattleStep.IntroPopup(
+                    text = "No playable characters are defined. Add a character file under assets/game/characters/ to enable the tutorial.",
+                    speaker = narrator
+                ),
+                TutorialBattleStep.CompletionPopup(text = "Tutorial unavailable until character content is added.")
+            )
+        }
+
+        val heroName = hero.name
+        val offensiveSpells = hero.spells.filter { !it.isHeal && !it.isGuard && it.manaRestorePct == 0f }
+        val breathSpell = hero.spells.firstOrNull { it.manaRestorePct > 0f }
+        val demoSpell = offensiveSpells.firstOrNull() ?: hero.spells.firstOrNull()
+
+        val steps = mutableListOf<TutorialBattleStep>()
+
+        steps += TutorialBattleStep.IntroPopup(
+            text = "Welcome to the Training Arena. Here, practice dummies stand ready for you to test your incantations. You cannot be harmed. Speak your commands freely.",
+            speaker = narrator
+        )
+        steps += TutorialBattleStep.IntroPopup(
+            text = "In real combat, you will speak voice commands to cast spells. The more vivid and dramatic your words, the more powerful your magic becomes. Let us begin.",
+            speaker = narrator
+        )
+        steps += TutorialBattleStep.CharacterJoin(
+            characterDef = hero,
+            text = "Meet $heroName, the ${loreTitle(hero)}. Every hero in your game is defined by a character data file: name, voice, portrait, stats, and spells all live together in one place."
+        )
+        steps += TutorialBattleStep.SpellOverview(
+            characterDef = hero,
+            text = "Here are ${heroName}'s spells."
+        )
+
+        for (spell in offensiveSpells.take(3)) {
+            steps += TutorialBattleStep.PracticeCast(
+                characterId = hero.id,
+                spellName = spell.name,
+                school = spell.school,
+                promptText = buildCastPrompt(spell.name, spell.hitsAll)
+            )
+        }
+
+        if (breathSpell != null) {
+            steps += TutorialBattleStep.AutoAction(
+                characterId = hero.id,
+                actionText = "Every hero has a free breath ability. Say '${breathSpell.name}' to restore mana. It costs nothing and lets you keep casting.",
+                resultText = "${heroName}'s mana has been restored. Breath abilities are essential for sustaining long battles.",
+                hintChant = breathSpell.name
+            )
+        }
+
+        if (demoSpell != null) {
+            steps += TutorialBattleStep.IntroPopup(
+                text = "Now witness the Resonance System. Your spells grow stronger with more vivid incantation. First, say just '${demoSpell.name}' -- nothing more.",
+                speaker = narrator
+            )
+            steps += TutorialBattleStep.PracticeCast(
+                characterId = hero.id,
+                spellName = demoSpell.name,
+                school = demoSpell.school,
+                promptText = "Say '${demoSpell.name}' now. Keep it simple.",
+                isResonanceDemo = true,
+                resonanceDemoIndex = 0
+            )
+            steps += TutorialBattleStep.PracticeCast(
+                characterId = hero.id,
+                spellName = demoSpell.name,
+                school = demoSpell.school,
+                promptText = "Now cast ${demoSpell.name} again, but this time use elaborate, dramatic language. Describe the energy, the impact, the spectacle. Be creative.",
+                isResonanceDemo = true,
+                resonanceDemoIndex = 1
+            )
+            steps += TutorialBattleStep.IntroPopup(
+                text = "See the difference? Elaborate, vivid incantations unleash far more power than simple spell names. The resonance engine rewards those who speak with conviction.",
+                speaker = narrator
+            )
+        }
+
+        steps += TutorialBattleStep.EnemyAttackDemo(
+            introText = "Now observe -- enemies fight back too! The dummies will take a turn. Don't worry, your party can withstand it.",
+            resultText = "In real combat, enemies will strike back on their own turn. Use healing spells, guards, and smart strategy to keep your party alive."
+        )
+        steps += TutorialBattleStep.CompletionPopup(
+            text = "Well done. You now know the basics of commanding your party. Every spell grows stronger with vivid, dramatic incantation. Your journey awaits."
+        )
+        return steps
+    }
+
+    private fun loreTitle(hero: TutorialCharacterDef): String =
+        hero.loreClass.ifBlank { hero.title.ifBlank { "Adventurer" } }
+
+    private fun buildCastPrompt(spellName: String, hitsAll: Boolean): String =
+        if (hitsAll) {
+            "$spellName strikes all enemies at once. Say the spell name."
+        } else {
+            "Try casting $spellName. Say the spell name to strike the training dummy."
+        }
 
     fun getCharacter(id: String): TutorialCharacterDef? =
         CHARACTERS.firstOrNull { it.id == id }

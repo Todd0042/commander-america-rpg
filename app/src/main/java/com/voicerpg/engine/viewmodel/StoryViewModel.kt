@@ -67,7 +67,13 @@ data class StoryState(
     val visitedNodeIds: Set<String> = emptySet(),
     val activeHubNodeId: String? = null,
     val activeMiniGameConfig: com.voicerpg.engine.model.MiniGameConfig? = null,
-    val isMiniGameTestMenuOpen: Boolean = false
+    val isMiniGameTestMenuOpen: Boolean = false,
+    val returnToOptionsOnConfirm: Boolean = false,
+    val pendingSelectedLanguage: String = "en",
+    val pendingSelectedRegion: String = "",
+    val selectedLanguage: String = "en",
+    val selectedRegion: String = "",
+    val showFirstLaunchLanguagePrompt: Boolean = false
 )
 
 class StoryViewModel(
@@ -186,6 +192,36 @@ class StoryViewModel(
 
     fun isChoiceCompleted(choice: DialogueChoice): Boolean =
         choice.isCompleted(_state.value.narrativeFlags)
+
+    fun isChoiceLocked(choice: DialogueChoice): Boolean {
+        val node = _state.value.currentNode
+        return isChoiceLocked(choice, node, _state.value.narrativeFlags)
+    }
+
+    fun isChoiceLocked(choice: DialogueChoice, node: DialogueNode, flags: Map<String, Boolean>): Boolean {
+        if (choice.requiredFlags.isNotEmpty() && !choice.requiredFlags.all { flags[it] == true }) {
+            return true
+        }
+        val completion = node.hubCompletion
+        val targetNode = StoryScript.ALL_NODES[choice.nextNodeId]
+        val isBattleOrAdvance = choice.completionFlag == null ||
+            targetNode?.triggerBattleEncounterId != null ||
+            targetNode?.changeSceneId != null
+
+        if (completion != null && isBattleOrAdvance) {
+            val dialogueChoices = node.choices.filter { other ->
+                val otherTarget = StoryScript.ALL_NODES[other.nextNodeId]
+                other.completionFlag != null && otherTarget?.triggerBattleEncounterId == null
+            }
+            if (dialogueChoices.isNotEmpty()) {
+                val allDialogueDone = dialogueChoices.all { flags[it.completionFlag] == true }
+                if (!allDialogueDone) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 
     private fun eligibleChoices(node: DialogueNode): List<DialogueChoice> =
         node.choices.filter { choice -> !isChoiceCompleted(choice) }
@@ -448,6 +484,21 @@ class StoryViewModel(
             ?.slotIndex ?: SaveManager.DEFAULT_SLOT
         saveManager.currentSlot = initialSlot
         val existingSave = saveManager.load(initialSlot)
+
+        val globalSettings = saveManager.loadGlobalSettings()
+        val lang = existingSave?.selectedLanguage?.ifBlank { null } ?: globalSettings.selectedLanguage
+        val reg = existingSave?.selectedRegion ?: globalSettings.selectedRegion
+        val initialGameScreen = if (!globalSettings.isLanguageSetupCompleted && existingSave == null) {
+            GameScreen.LANGUAGE_SELECTION
+        } else {
+            GameScreen.TITLE
+        }
+        com.voicerpg.engine.localization.TranslationManager.setLanguageAndRegion(lang, reg)
+        speechManager.setSelectedLocale(lang)
+        speechManager.setSelectedRegion(reg)
+        combatNarrator.setSelectedLanguageAndRegion(lang, reg)
+        com.voicerpg.engine.engine.IntentParser.currentLocale = lang
+
         if (existingSave != null) {
             val sanitizedPlayer = if (existingSave.player.name == "Aethel" || existingSave.player.name.isBlank()) {
                 PlayerCustomization()
@@ -493,7 +544,7 @@ class StoryViewModel(
             _state.value = StoryState(
                 currentScene = restoredScene,
                 currentNode = restoredNode,
-                gameScreen = GameScreen.TITLE,
+                gameScreen = initialGameScreen,
                 player = sanitizedPlayer,
                 decisionsMade = existingSave.decisionsMade,
                 narrativeFlags = existingSave.narrativeFlags,
@@ -506,7 +557,10 @@ class StoryViewModel(
                 saveSlots = allSlots,
                 dialogueHistory = restoredHistory,
                 isAutoPlayEnabled = existingSave.isAutoPlayEnabled,
-                dynamicMetrics = existingSave.dynamicMetrics
+                dynamicMetrics = existingSave.dynamicMetrics,
+                selectedLanguage = lang,
+                selectedRegion = reg,
+                showFirstLaunchLanguagePrompt = !globalSettings.isLanguageSetupCompleted
             )
             combatNarrator.setEyesFreeMode(existingSave.isEyesFreeMode, lockGuard = false)
             combatNarrator.setPocketGuardEnabled(existingSave.isPocketGuardEnabled)
@@ -523,14 +577,17 @@ class StoryViewModel(
             musicManager?.setVolume(existingSave.musicVolume)
             musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_RALLY)
         } else {
-            // First time player: start at Title Screen
+            // First time player: start at Title Screen or Language Selection
             musicManager?.playTrack(com.voicerpg.engine.audio.MusicManager.TRACK_TITLE)
             _state.value = StoryState(
-                gameScreen = GameScreen.TITLE,
+                gameScreen = initialGameScreen,
                 hasExistingSave = false,
                 saveSummary = null,
                 currentSlot = initialSlot,
-                saveSlots = allSlots
+                saveSlots = allSlots,
+                selectedLanguage = lang,
+                selectedRegion = reg,
+                showFirstLaunchLanguagePrompt = !globalSettings.isLanguageSetupCompleted
             )
         }
     }
@@ -2251,6 +2308,73 @@ class StoryViewModel(
                 scheduleStoryModeNextStep(node, delayMs = 400L)
             }
         }
+    }
+
+    fun completeLanguageSetup(lang: String, region: String) {
+        val cleanLang = lang.lowercase().trim()
+        val cleanRegion = region.uppercase().trim()
+        saveManager.saveGlobalSettings(
+            SaveManager.GlobalGameSettings(
+                isLanguageSetupCompleted = true,
+                selectedLanguage = cleanLang,
+                selectedRegion = cleanRegion
+            )
+        )
+        com.voicerpg.engine.localization.TranslationManager.setLanguageAndRegion(cleanLang, cleanRegion)
+        speechManager.setSelectedLocale(cleanLang)
+        speechManager.setSelectedRegion(cleanRegion)
+        combatNarrator.setSelectedLanguageAndRegion(cleanLang, cleanRegion)
+        com.voicerpg.engine.engine.IntentParser.currentLocale = cleanLang
+        _state.value = _state.value.copy(
+            selectedLanguage = cleanLang,
+            selectedRegion = cleanRegion,
+            gameScreen = GameScreen.TITLE,
+            showFirstLaunchLanguagePrompt = false
+        )
+        persistCurrentState()
+    }
+
+    fun setSelectedLanguage(lang: String) {
+        val clean = lang.lowercase().trim()
+        val currentReg = _state.value.selectedRegion
+        saveManager.saveGlobalSettings(
+            SaveManager.GlobalGameSettings(
+                isLanguageSetupCompleted = true,
+                selectedLanguage = clean,
+                selectedRegion = currentReg
+            )
+        )
+        com.voicerpg.engine.localization.TranslationManager.setLanguageAndRegion(clean, currentReg)
+        _state.value = _state.value.copy(selectedLanguage = clean)
+        speechManager.setSelectedLocale(clean)
+        combatNarrator.setSelectedLanguage(clean)
+        com.voicerpg.engine.engine.IntentParser.currentLocale = clean
+        persistCurrentState()
+    }
+
+    fun setSelectedRegion(region: String) {
+        val clean = region.uppercase().trim()
+        val currentLang = _state.value.selectedLanguage
+        saveManager.saveGlobalSettings(
+            SaveManager.GlobalGameSettings(
+                isLanguageSetupCompleted = true,
+                selectedLanguage = currentLang,
+                selectedRegion = clean
+            )
+        )
+        com.voicerpg.engine.localization.TranslationManager.setLanguageAndRegion(currentLang, clean)
+        _state.value = _state.value.copy(selectedRegion = clean)
+        speechManager.setSelectedRegion(clean)
+        combatNarrator.setSelectedRegion(clean)
+        persistCurrentState()
+    }
+
+    fun setLanguageAndRegion(lang: String, region: String) {
+        completeLanguageSetup(lang, region)
+    }
+
+    fun dismissFirstLaunchLanguagePrompt() {
+        _state.value = _state.value.copy(showFirstLaunchLanguagePrompt = false)
     }
 
     override fun onCleared() {

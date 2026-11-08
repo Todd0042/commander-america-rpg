@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.ui.theme.FrostCyan
 import com.voicerpg.engine.ui.theme.HolyYellow
 import com.voicerpg.engine.ui.theme.LogosGold
@@ -97,7 +98,7 @@ fun MicPermissionRationaleDialog(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "COMMANDER AMERICA",
+                    text = GameContent.manifest.voicePermissionTitle.ifBlank { "HANDS-FREE VOICE CONTROL" },
                     color = LogosGold,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Black,
@@ -109,7 +110,10 @@ fun MicPermissionRationaleDialog(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = "Hands-Free Presidential Voice RPG",
+                    text = GameContent.manifest.voicePermissionSubtitle.ifBlank {
+                        if (GameContent.manifest.gameTitle.isNotBlank()) "${GameContent.manifest.gameTitle} Hands-Free Voice Controls"
+                        else "Hands-Free Voice Controls"
+                    },
                     color = Color.LightGray.copy(alpha = 0.85f),
                     fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace,
@@ -123,7 +127,7 @@ fun MicPermissionRationaleDialog(
                     icon = Icons.Default.Mic,
                     iconTint = FrostCyan,
                     title = "Hands-Free & Pocket Mode",
-                    description = "Issue executive orders, make campaign choices, and unleash Tremendous Strikes seamlessly while walking with your screen dimmed in your pocket."
+                    description = "Cast spells, make dialogue choices, and explore the chronicle seamlessly while walking with your screen dimmed in your pocket."
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -133,7 +137,7 @@ fun MicPermissionRationaleDialog(
                     icon = Icons.Default.Security,
                     iconTint = HolyYellow,
                     title = "Private & On-Device Processing",
-                    description = "Speech recognition runs locally via Android speech services. Commander America never records, stores, or uploads your voice to remote servers."
+                    description = "Speech recognition runs locally via Android speech services. The engine never records, stores, or uploads your voice to any remote servers."
                 )
 
 

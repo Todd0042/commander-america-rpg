@@ -128,6 +128,7 @@ enum class ArcadeCandidate(
 @Composable
 fun CharacterCreationScreen(
     initialCustomization: PlayerCustomization = PlayerCustomization(),
+    slot: Int = com.voicerpg.engine.engine.SaveManager.DEFAULT_SLOT,
     speechManager: SpeechManager? = null,
     combatNarrator: CombatNarrator? = null,
     onBack: (() -> Unit)? = null,

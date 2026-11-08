@@ -19,8 +19,13 @@ data class DialogueSpeaker(
     val title: String,
     val portraitAsset: String?,
     val themeColor: Color,
-    val ttsPitch: Float = 1.0f
+    val ttsPitch: Float = 1.0f,
+    val samplePhrase: String? = null,
+    val gender: String? = null,
+    val allowedVoiceRegions: List<String> = emptyList()
 ) {
+    val isNarrator: Boolean get() = id.startsWith("narrator") || id == "narrator"
+
     companion object {
         val AETHEL = DialogueSpeaker(
             id = "aethel",
@@ -410,6 +415,7 @@ data class DialogueChoice(
     val voiceKeywords: List<String>,
     val nextNodeId: String,
     val completionFlag: String? = null,
+    val requiredFlags: List<String> = emptyList(),
     val metricDeltas: Map<String, Float> = emptyMap(),
     val assignHeroClassId: String? = null,
     val triggerMiniGameId: String? = null
@@ -424,6 +430,11 @@ data class DialogueChoice(
     }
 }
 
+data class HubCompletion(
+    val requiredFlags: List<String> = emptyList(),
+    val redirectToNodeId: String = ""
+)
+
 data class DialogueNode(
     val id: String,
     val speaker: DialogueSpeaker,
@@ -436,6 +447,8 @@ data class DialogueNode(
     val triggerMiniGameId: String? = null,
     val changeSceneId: String? = null,
     val setFlagOnEnter: String? = null,
+    val hubCompletion: HubCompletion? = null,
+    val healPartyOnEnter: String? = null,
     val metricDeltas: Map<String, Float> = emptyMap(),
     val metricOverrides: Map<String, Float> = emptyMap(),
     val assignHeroClassId: String? = null,
@@ -450,10 +463,21 @@ data class StoryScene(
     val backgroundAsset: String,
     val initialNodeId: String,
     val ambientDescription: String,
-    val musicAsset: String = "audio/music/bgm_rally.ogg"
+    val musicAsset: String = "audio/music/bgm_rally.ogg",
+    val chapterIndex: Int = 0,
+    val actNumber: Int = 1,
+    val actTitle: String = "Act I",
+    val milestoneTitle: String = "",
+    val milestoneLocation: String = "",
+    val milestoneSummary: String = "",
+    val milestoneIcon: String = "✨",
+    val defaultObjective: String = ""
 )
 
 enum class GameScreen {
+    LANGUAGE_SELECTION,
+    DIALECT_SELECTION,
+    LANGUAGE_DOWNLOAD_STANDBY,
     TITLE,
     TUTORIAL,
     AUDIO_SETUP,
@@ -471,7 +495,8 @@ data class SaveSummary(
     val chapterTitle: String,
     val sceneName: String,
     val partySize: Int,
-    val timestamp: Long
+    val timestamp: Long,
+    val dynamicMetrics: Map<String, Float> = emptyMap()
 )
 
 data class SaveSlotInfo(

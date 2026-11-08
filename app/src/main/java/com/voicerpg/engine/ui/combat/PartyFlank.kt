@@ -29,80 +29,96 @@ fun PartyFlank(
     arenaCoordinates: LayoutCoordinates? = null,
     modifier: Modifier = Modifier
 ) {
-    // 2-Row Tactical Formation:
-    // Front Row (Vanguard): Commander America & JD Vance (positioned between back row and enemies)
-    // Back Row (Support): Marco Rubio, Kash Patel, Senator John Kennedy (positioned on the left)
-    val (backRowMembers, frontRowMembers) = remember(party) {
-        val hasVanguard = party.any { it.id == "hero" || it.id == "commander_america" || it.id == "vance" }
-        if (hasVanguard) {
-            val front = party.filter { it.id == "hero" || it.id == "commander_america" || it.id == "vance" }
-                .sortedBy { if (it.id == "hero" || it.id == "commander_america") 0 else 1 }
-            val back = party.filterNot { it.id == "hero" || it.id == "commander_america" || it.id == "vance" }
-            Pair(back, front)
-        } else {
-            if (party.size >= 4) {
-                Pair(party.drop(2), party.take(2))
-            } else {
-                Pair(emptyList(), party)
+    if (party.size <= 3) {
+        // Standard 1-column layout for small parties
+        Column(
+            modifier = modifier.padding(start = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalAlignment = Alignment.Start
+        ) {
+            party.forEach { member ->
+                PartyFlankMemberItem(
+                    member = member,
+                    isActiveTurn = member.id == activePartyMemberId,
+                    scaledPixelSize = 2.0.dp,
+                    arenaCoordinates = arenaCoordinates,
+                    onSelectHero = onSelectHero,
+                    onPositionHero = onPositionHero
+                )
             }
         }
-    }
+    } else {
+        // Adaptive 2-Row Tactical Formation:
+        // Front Row (Vanguard): First 2 members (or explicit vanguard) positioned forward
+        // Back Row (Support): Remaining support heroes positioned on the left
+        val (backRowMembers, frontRowMembers) = remember(party) {
+            val hasVanguard = party.any { it.id == "hero" || it.id.contains("vanguard", ignoreCase = true) }
+            if (hasVanguard) {
+                val front = party.filter { it.id == "hero" || it.id.contains("vanguard", ignoreCase = true) }
+                    .take(2)
+                val back = party.filterNot { front.contains(it) }
+                Pair(back, front)
+            } else {
+                Pair(party.drop(2), party.take(2))
+            }
+        }
 
-    val verticalSpacing = when {
-        backRowMembers.size >= 3 -> 6.dp
-        party.size >= 4 -> 8.dp
-        else -> 12.dp
-    }
-    val frontVerticalSpacing = when {
-        backRowMembers.size >= 3 -> 24.dp
-        backRowMembers.size == 2 -> 16.dp
-        else -> verticalSpacing
-    }
-    val scaledPixelSize = when {
-        party.size >= 5 -> 1.7.dp
-        party.size >= 4 -> 1.8.dp
-        else -> 2.0.dp
-    }
+        val verticalSpacing = when {
+            backRowMembers.size >= 3 -> 6.dp
+            party.size >= 4 -> 8.dp
+            else -> 12.dp
+        }
+        val frontVerticalSpacing = when {
+            backRowMembers.size >= 3 -> 24.dp
+            backRowMembers.size == 2 -> 16.dp
+            else -> verticalSpacing
+        }
+        val scaledPixelSize = when {
+            party.size >= 5 -> 1.7.dp
+            party.size >= 4 -> 1.8.dp
+            else -> 2.0.dp
+        }
 
-    Row(
-        modifier = modifier.padding(start = 6.dp),
-        horizontalArrangement = Arrangement.spacedBy(14.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        // Back Row: left side of screen (Support heroes: Marco, Kash, Kennedy)
-        if (backRowMembers.isNotEmpty()) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(verticalSpacing),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                backRowMembers.forEach { member ->
-                    PartyFlankMemberItem(
-                        member = member,
-                        isActiveTurn = member.id == activePartyMemberId,
-                        scaledPixelSize = scaledPixelSize,
-                        arenaCoordinates = arenaCoordinates,
-                        onSelectHero = onSelectHero,
-                        onPositionHero = onPositionHero
-                    )
+        Row(
+            modifier = modifier.padding(start = 6.dp),
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Back Row: left side of screen
+            if (backRowMembers.isNotEmpty()) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(verticalSpacing),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    backRowMembers.forEach { member ->
+                        PartyFlankMemberItem(
+                            member = member,
+                            isActiveTurn = member.id == activePartyMemberId,
+                            scaledPixelSize = scaledPixelSize,
+                            arenaCoordinates = arenaCoordinates,
+                            onSelectHero = onSelectHero,
+                            onPositionHero = onPositionHero
+                        )
+                    }
                 }
             }
-        }
 
-        // Front Row: in front of the 3 (between back row and enemies: Commander America, Vance)
-        if (frontRowMembers.isNotEmpty()) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(frontVerticalSpacing),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                frontRowMembers.forEach { member ->
-                    PartyFlankMemberItem(
-                        member = member,
-                        isActiveTurn = member.id == activePartyMemberId,
-                        scaledPixelSize = scaledPixelSize,
-                        arenaCoordinates = arenaCoordinates,
-                        onSelectHero = onSelectHero,
-                        onPositionHero = onPositionHero
-                    )
+            // Front Row: in front of support row
+            if (frontRowMembers.isNotEmpty()) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(frontVerticalSpacing),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    frontRowMembers.forEach { member ->
+                        PartyFlankMemberItem(
+                            member = member,
+                            isActiveTurn = member.id == activePartyMemberId,
+                            scaledPixelSize = scaledPixelSize,
+                            arenaCoordinates = arenaCoordinates,
+                            onSelectHero = onSelectHero,
+                            onPositionHero = onPositionHero
+                        )
+                    }
                 }
             }
         }
@@ -146,6 +162,8 @@ private fun PartyFlankMemberItem(
         isActiveTurn = isActiveTurn,
         stance = member.stance,
         isFlippedHorizontally = false,
+        isGhost = member.isGhost,
+        spriteAlpha = member.spriteAlpha,
         pixelSize = scaledPixelSize,
         onClick = { onSelectHero(member) },
         modifier = Modifier.onGloballyPositioned { cardCoords = it }

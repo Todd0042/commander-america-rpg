@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.model.CombatPhase
 import com.voicerpg.engine.ui.theme.LogosGold
 import com.voicerpg.engine.ui.theme.RetroBorder
@@ -60,14 +61,14 @@ fun InitiativeTrack(
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = when (phase) {
-                        CombatPhase.INACTIVE -> "⏸️ COMBAT STANDBY"
+                        CombatPhase.INACTIVE -> "⏸ COMBAT STANDBY"
                         CombatPhase.ATB_WAITING -> "⏳ TURN GAUGE CHARGING"
                         CombatPhase.PLAYER_INPUT -> "▶ PLAYER TURN (CHANT NOW)"
                         CombatPhase.INCANTATION_RESOLVING -> "⚡ RESOLVING LOGOS..."
                         CombatPhase.SPELL_VFX_PLAYING -> "🔥 UNLEASHING ACTION"
                         CombatPhase.ENEMY_ACTIONS -> "⚠️ ENEMY TURN (STRIKING)"
                         CombatPhase.BATTLE_WON -> "🏆 VICTORY ACHIEVED"
-                        CombatPhase.BATTLE_LOST -> "💀 THE BLIGHT PREVAILS"
+                        CombatPhase.BATTLE_LOST -> "💀 DEFEAT"
                     },
                     color = when (phase) {
                         CombatPhase.ATB_WAITING -> Color(0xFFFFD54F)
@@ -89,14 +90,12 @@ fun InitiativeTrack(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (party.isEmpty()) {
-                    listOf(
-                        Triple("hero", "C", Color(0xFFFFD700))
-                    ).forEach { (id, label, color) ->
+                    GameContent.allSpeakers.filter { !it.isNarrator }.take(4).forEach { speaker ->
                         TimelineIcon(
-                            label = label,
+                            label = speaker.name.take(1).uppercase(),
                             isCurrent = false,
                             isAlive = true,
-                            color = color
+                            color = speaker.themeColor
                         )
                     }
                 } else {

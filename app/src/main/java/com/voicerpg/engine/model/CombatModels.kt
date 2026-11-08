@@ -13,6 +13,28 @@ enum class SpellSchool(val displayName: String, val themeColor: Color) {
     PHYSICAL("Martial", Color(0xFFCFD8DC))
 }
 
+enum class SpellCategory(
+    val label: String,
+    val icon: String,
+    val displayName: String,
+    val tagColor: Color,
+    val tagBg: Color
+) {
+    ATTACK("ATK", "⚔️", "Attack", Color(0xFFFF5252), Color(0x33FF5252)),
+    AOE_ATTACK("AOE", "💥", "AoE Attack", Color(0xFFFF7043), Color(0x33FF7043)),
+    HEAL("HEAL", "💚", "Heal", Color(0xFF69F0AE), Color(0x3369F0AE)),
+    DEFENSE("DEF", "🛡️", "Defensive", Color(0xFF64B5F6), Color(0x3364B5F6)),
+    MANA("MANA", "✨", "Mana Restore", Color(0xFF40C4FF), Color(0x3340C4FF))
+}
+
+data class SpellGraphics(
+    val effectType: String = "PROJECTILE", // PROJECTILE, SLASH, PILLAR, BURST, WAVE
+    val primaryColor: String? = null,
+    val secondaryColor: String? = null,
+    val particleCount: Int = 16,
+    val screenShake: Float = 0f
+)
+
 data class Spell(
     val id: String,
     val name: String,
@@ -27,8 +49,21 @@ data class Spell(
     val lifesteal: Boolean = false,
     val isGuard: Boolean = false,
     val manaRestorePct: Float = 0f,
-    val aliases: List<String> = emptyList()
-)
+    val aliases: List<String> = emptyList(),
+    val graphics: SpellGraphics? = null,
+    val cleansesDebuffs: Boolean = false
+) {
+    val isCleanse: Boolean get() = cleansesDebuffs || status.equals("CLEANSE", ignoreCase = true) || status.equals("DISPEL", ignoreCase = true)
+
+    val category: SpellCategory
+        get() = when {
+            isHeal -> SpellCategory.HEAL
+            manaRestorePct > 0f -> SpellCategory.MANA
+            isGuard || (basePower == 0 && !hitsAll) -> SpellCategory.DEFENSE
+            hitsAll -> SpellCategory.AOE_ATTACK
+            else -> SpellCategory.ATTACK
+        }
+}
 
 enum class CharacterStance {
     READY,
@@ -55,12 +90,16 @@ data class PartyMember(
     val xp: Int = 0,
     val defense: Int = 0,
     val statuses: List<StatusInstance> = emptyList(),
-    val isGuarding: Boolean = false
+    val isGuarding: Boolean = false,
+    val isGhost: Boolean = false,
+    val canAttack: Boolean = true,
+    val isUntargetable: Boolean = false,
+    val spriteAlpha: Float? = null
 ) {
-    val isAlive: Boolean get() = currentHp > 0 && stance != CharacterStance.DEAD
+    val isAlive: Boolean get() = (isGhost || currentHp > 0) && stance != CharacterStance.DEAD
     val isTurnReady: Boolean get() = isAlive && atbGauge >= 1.0f
-    val hpRatio: Float get() = if (isAlive) (currentHp.toFloat() / maxHp).coerceIn(0f, 1f) else 0f
-    val mpRatio: Float get() = if (isAlive) (currentMp.toFloat() / maxMp).coerceIn(0f, 1f) else 0f
+    val hpRatio: Float get() = if (isGhost) 1.0f else if (isAlive) (currentHp.toFloat() / maxHp).coerceIn(0f, 1f) else 0f
+    val mpRatio: Float get() = if (isGhost) 1.0f else if (isAlive) (currentMp.toFloat() / maxMp).coerceIn(0f, 1f) else 0f
     val atbRatio: Float get() = if (isAlive) atbGauge.coerceIn(0f, 1f) else 0f
 }
 
@@ -75,6 +114,7 @@ data class Enemy(
     val isTargeted: Boolean = false,
     val isDamagedFlash: Boolean = false,
     val spriteTint: Color = Color(0xFFE57373),
+    val spriteId: String = "",
     val speed: Int = 50,
     val atbGauge: Float = 0f,
     val family: String = "FLESH",
@@ -151,13 +191,42 @@ data class ParsedIntent(
     val wrongCharacterOwnerName: String? = null
 )
 
+/**
+ * One-shot scripted boss phase, declared per encounter in data files. When the
+ * referenced enemy's HP ratio drops below [hpBelow] (and the rule has not fired
+ * yet), the engine announces [bannerText]/[narrationText], optionally crushes the
+ * party toward [reducePartyToHpPct] (executing anyone under [executeBelowHpPct]),
+ * and optionally summons [summonCount] instances of [summonEnemyId].
+ */
+data class BossPhaseRule(
+    val enemyId: String,
+    val hpBelow: Float,
+    val bannerText: String = "",
+    val narrationText: String = "",
+    val reducePartyToHpPct: Float? = null,
+    val executeBelowHpPct: Float? = null,
+    val summonEnemyId: String? = null,
+    val summonCount: Int = 0
+)
+
+/** Scripted mid-battle party addition, declared per encounter in data files. */
+data class MidBattleJoin(
+    val characterId: String,
+    val bannerText: String = "",
+    val announcementText: String = "",
+    val afterEnemyActions: Int = 1
+)
+
 data class EncounterDefinition(
     val id: String,
     val name: String,
     val description: String = "",
     val environment: BattleEnvironment,
+    val environmentId: String = "",
     val enemies: List<Enemy>,
-    val initialParty: List<PartyMember>? = null
+    val initialParty: List<PartyMember>? = null,
+    val bossPhases: List<BossPhaseRule> = emptyList(),
+    val midBattleJoin: MidBattleJoin? = null
 )
 
 data class FloatingCombatText(

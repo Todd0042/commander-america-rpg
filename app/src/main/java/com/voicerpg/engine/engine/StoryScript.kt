@@ -3961,4 +3961,7 @@ object StoryScript {
         )
     ).associateBy { it.id }
 
+    val INITIAL_SCENE: StoryScene get() = SCENE_ACT1_ESCALATOR
+    val INITIAL_NODE: DialogueNode get() = ALL_NODES["act1_intro"] ?: ALL_NODES.values.first()
+
 }

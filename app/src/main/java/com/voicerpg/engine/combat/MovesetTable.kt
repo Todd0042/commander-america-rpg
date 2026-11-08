@@ -1,5 +1,7 @@
 package com.voicerpg.engine.combat
 
+import com.voicerpg.engine.model.SpellGraphics
+
 // GENERATED from docs/combat-design/data/movesets.json - regenerate, do not hand-edit.
 data class EnemyMove(
     val name: String,
@@ -11,7 +13,8 @@ data class EnemyMove(
     val cooldownTurns: Int = 0,
     val weight: Int = 1,
     val summon: String? = null,
-    val summonCount: Int = 0
+    val summonCount: Int = 0,
+    val graphics: SpellGraphics? = null
 )
 data class PhaseRule(val hpBelow: Float, val addMoves: List<EnemyMove>, val note: String = "")
 data class Moveset(val moves: List<EnemyMove>, val phases: List<PhaseRule> = emptyList())

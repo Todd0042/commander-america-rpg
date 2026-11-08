@@ -25,8 +25,15 @@ class SaveManager(private val context: Context? = null) {
         const val DEFAULT_SLOT = 1
         const val STORY_MODE_SLOT = 0
         private const val LEGACY_SAVE_FILE = "save_game_v1.json"
+        private const val GLOBAL_SETTINGS_FILE = "global_settings.json"
         fun getSlotFileName(slot: Int): String = if (slot == STORY_MODE_SLOT) "save_story_mode.json" else "save_slot_$slot.json"
     }
+
+    data class GlobalGameSettings(
+        val isLanguageSetupCompleted: Boolean = false,
+        val selectedLanguage: String = "en",
+        val selectedRegion: String = ""
+    )
 
     fun sanitizeSlot(slot: Int): Int = if (slot == STORY_MODE_SLOT) STORY_MODE_SLOT else slot.coerceIn(1, MAX_SLOTS)
 
@@ -39,6 +46,41 @@ class SaveManager(private val context: Context? = null) {
 
     // In-memory slot storage for unit tests and headless JVM environments
     private val inMemorySlots = mutableMapOf<Int, String>()
+    private var inMemorySettings: String? = null
+
+    fun loadGlobalSettings(): GlobalGameSettings {
+        val file = context?.let { File(it.filesDir, GLOBAL_SETTINGS_FILE) }
+        val json = if (file != null) {
+            if (file.exists()) readAtomic(file) else null
+        } else {
+            inMemorySettings
+        }
+        return if (!json.isNullOrBlank()) {
+            try {
+                gson.fromJson(json, GlobalGameSettings::class.java)
+            } catch (_: Exception) {
+                GlobalGameSettings(isLanguageSetupCompleted = context == null)
+            }
+        } else {
+            GlobalGameSettings(isLanguageSetupCompleted = context == null)
+        }
+    }
+
+    fun saveGlobalSettings(settings: GlobalGameSettings): Boolean {
+        return try {
+            val json = gson.toJson(settings)
+            val file = context?.let { File(it.filesDir, GLOBAL_SETTINGS_FILE) }
+            if (file != null) {
+                writeAtomic(file, json)
+            } else {
+                inMemorySettings = json
+            }
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
 
     init {
         migrateLegacySaveIfNeeded()
@@ -177,7 +219,12 @@ class SaveManager(private val context: Context? = null) {
         }
     }
 
-    fun createInitialSave(customization: PlayerCustomization, slot: Int = currentSlot): GameSaveData {
+    fun createInitialSave(
+        customization: PlayerCustomization,
+        slot: Int = currentSlot,
+        selectedLanguage: String = "en",
+        selectedRegion: String = ""
+    ): GameSaveData {
         val validSlot = sanitizeSlot(slot)
         val heroClass = customization.heroClass
         val starterSpells = ClassSpellLibrary.getSpellsForClass(heroClass)
@@ -216,7 +263,9 @@ class SaveManager(private val context: Context? = null) {
             partyStats = listOf(initialHeroStats),
             defeatedEncounters = emptyList(),
             unlockedCompanions = listOf("hero"),
-            achievements = listOf("AWAKENED_THE_LOGOS")
+            achievements = listOf("AWAKENED_THE_LOGOS"),
+            selectedLanguage = selectedLanguage,
+            selectedRegion = selectedRegion
         )
 
         save(newSave, validSlot)

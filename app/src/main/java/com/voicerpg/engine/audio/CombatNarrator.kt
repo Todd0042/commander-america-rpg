@@ -30,29 +30,58 @@ class CombatNarrator(
 
     companion object {
         /**
-         * First-try preferred voice packs per speaker, set by the player for auditioning.
-         * These are used only when the exact Android voice model is installed on the device;
-         * otherwise the heuristic assignment below falls back gracefully.
+         * Standard baseline allowed English voice regions, excluding Nigeria and India
+         * from general cast distribution by default unless explicitly configured on a character.
          */
-        val PREFERRED_VOICE_IDS: Map<String, String> = mapOf(
-            DialogueSpeaker.COMMANDER_AMERICA.id to "en-us-x-iob-local",
-            DialogueSpeaker.ELON.id to "en-us-x-tpc-local",
-            DialogueSpeaker.NARRATOR_KAROLINE.id to "en-us-x-tpf-local",
-            DialogueSpeaker.NARRATOR_KAYLEIGH.id to "en-us-x-sfg-local",
-            DialogueSpeaker.NARRATOR_HULK.id to "en-gb-x-gbd-local",
-            DialogueSpeaker.NARRATOR.id to "en-us-x-sfg-local",
-            DialogueSpeaker.PELOSI.id to "en-us-x-tpf-local",
-            DialogueSpeaker.KAMALA.id to "en-us-x-sfg-local",
-            DialogueSpeaker.OBAMA.id to "en-us-x-iog-local",
-            DialogueSpeaker.BIDEN.id to "en-us-x-iol-local",
-            DialogueSpeaker.ROCKET_MAN.id to "en-au-x-aub-local",
-            DialogueSpeaker.MEDIA_ANCHOR.id to "en-us-x-tpd-local",
-            DialogueSpeaker.CEDRIC.id to "en-gb-x-gbd-local",
-            DialogueSpeaker.AETHEL.id to "en-gb-x-gba-local",
-            DialogueSpeaker.LYRA.id to "en-us-x-tpf-local",
-            DialogueSpeaker.ZEPHYR.id to "en-us-x-tpc-local",
-            DialogueSpeaker.MALAKOR.id to "en-us-x-tpd-local"
+        val DEFAULT_ALLOWED_VOICE_REGIONS = listOf("US", "CA", "GB", "AU", "IE", "ZA")
+
+        /**
+         * Extracts the 2-letter uppercase ISO country/region code from a voice
+         * (e.g. "US", "GB", "AU", "IN", "CA", "IE", "ZA", "NG").
+         */
+        fun getVoiceRegionCode(voice: Voice?): String {
+            if (voice == null) return ""
+            val country = voice.locale.country.uppercase(Locale.ROOT)
+            if (country.isNotBlank()) return country
+            val nameLower = voice.name.lowercase(Locale.ROOT)
+            return when {
+                nameLower.startsWith("en-us") || nameLower.contains("-us-") -> "US"
+                nameLower.startsWith("en-gb") || nameLower.contains("-gb-") -> "GB"
+                nameLower.startsWith("en-au") || nameLower.contains("-au-") -> "AU"
+                nameLower.startsWith("en-in") || nameLower.contains("-in-") -> "IN"
+                nameLower.startsWith("en-ng") || nameLower.contains("-ng-") -> "NG"
+                nameLower.startsWith("en-ca") || nameLower.contains("-ca-") -> "CA"
+                nameLower.startsWith("en-za") || nameLower.contains("-za-") -> "ZA"
+                nameLower.startsWith("en-ie") || nameLower.contains("-ie-") -> "IE"
+                else -> ""
+            }
+        }
+
+        val DEFAULT_BUILTIN_PREFERRED_VOICE_IDS: Map<String, String> = mapOf(
+            "commander_america" to "en-us-x-iob-local",
+            "elon" to "en-us-x-tpc-local",
+            "narrator_karoline" to "en-us-x-tpf-local",
+            "narrator_kayleigh" to "en-us-x-sfg-local",
+            "narrator_hulk" to "en-gb-x-gbd-local",
+            "pelosi" to "en-us-x-tpf-local",
+            "kamala" to "en-us-x-sfg-local",
+            "obama" to "en-us-x-iog-local",
+            "biden" to "en-us-x-iol-local",
+            "rocket_man" to "en-au-x-aub-local",
+            "media_anchor" to "en-us-x-tpd-local",
+            "cedric" to "en-gb-x-gbd-local",
+            "aethel" to "en-gb-x-gba-local",
+            "lyra" to "en-us-x-tpf-local",
+            "zephyr" to "en-us-x-tpc-local",
+            "malakor" to "en-us-x-tpd-local"
         )
+
+        /**
+         * Fallback preferred voice packs per speaker, declared by the active game's
+         * character data files (assets/game/characters/<name>.json).
+         */
+        val PREFERRED_VOICE_IDS: Map<String, String>
+            get() = com.voicerpg.engine.content.GameContent.preferredVoiceIds.ifEmpty { DEFAULT_BUILTIN_PREFERRED_VOICE_IDS }
 
         /**
          * Resolves the voice a speaker should use: a persisted player override wins when its
@@ -66,9 +95,27 @@ class CombatNarrator(
             preferredByDefault: Map<String, String>
         ): String? {
             persistedAssignments[speakerId]?.let { if (it in installedNames) return it }
-            preferredByDefault[speakerId]?.let { if (it in installedNames) return it }
+            val preferredVoice = com.voicerpg.engine.content.GameContent.preferredVoiceIds[speakerId]
+                ?: preferredByDefault[speakerId]
+            preferredVoice?.let { if (it in installedNames) return it }
             return heuristicName
         }
+
+        private val SAINT_ABBREVIATION_REGEX = Regex("""\bSt\.?\s+([A-Z][a-zA-Z]*)""")
+    }
+
+    internal fun normalizeTtsText(input: String): String {
+        var text = input
+        // 1. Data-driven project/story pronunciation overrides from manifest (content neutrality)
+        com.voicerpg.engine.content.GameContent.manifest.ttsReplacements.forEach { (target, replacement) ->
+            text = text.replace(target, replacement, ignoreCase = true)
+        }
+        // 2. Generic English title/place abbreviation expansion: "St. <Name>" or "St <Name>" -> "Saint <Name>"
+        // Prevents on-device TTS from pronouncing names like "St. Augustine" as "Street. Augustine"
+        text = SAINT_ABBREVIATION_REGEX.replace(text) { matchResult ->
+            "Saint ${matchResult.groupValues[1]}"
+        }
+        return text.replace(Regex("""[ \t]+"""), " ").trim()
     }
 
     private var tts: TextToSpeech? = null
@@ -79,24 +126,34 @@ class CombatNarrator(
     // Persisted per-speaker voice assignments restored from the save file (speakerId -> voice name)
     private var pendingVoiceAssignments: Map<String, String> = emptyMap()
 
-    // Multi-voice character profile mapping for Commander America roster
+    // Dynamic Multi-Voice Character Profile Registry
     private var defaultVoice: Voice? = null
-    private var commanderAmericaVoice: Voice? = null
-    private var elonVoice: Voice? = null
-    private var narratorVoice: Voice? = null
-    private var karolineVoice: Voice? = null
-    private var kayleighVoice: Voice? = null
-    private var hulkVoice: Voice? = null
-    private var pelosiVoice: Voice? = null
-    private var kamalaVoice: Voice? = null
-    private var obamaVoice: Voice? = null
-    private var bidenVoice: Voice? = null
-    private var rocketManVoice: Voice? = null
-    private var mediaAnchorVoice: Voice? = null
-    private var marcoVoice: Voice? = null
-    private var vanceVoice: Voice? = null
-    private var kashVoice: Voice? = null
-    private var kennedyVoice: Voice? = null
+    private val dynamicSpeakerVoices = mutableMapOf<String, Voice?>()
+    private val registeredSpeakers = mutableListOf<DialogueSpeaker>()
+    private val customPreferredVoiceIds = mutableMapOf<String, String>()
+
+    fun registerSpeaker(speaker: DialogueSpeaker, preferredVoiceId: String? = null) {
+        if (registeredSpeakers.none { it.id == speaker.id }) {
+            registeredSpeakers.add(speaker)
+        }
+        if (preferredVoiceId != null) {
+            customPreferredVoiceIds[speaker.id] = preferredVoiceId
+        }
+    }
+
+    fun registerSpeakers(speakers: Collection<DialogueSpeaker>) {
+        speakers.forEach { speaker ->
+            val pref = com.voicerpg.engine.content.GameContent.preferredVoiceIds[speaker.id]
+            registerSpeaker(speaker, pref)
+        }
+    }
+
+    fun getRegisteredSpeakers(): List<DialogueSpeaker> {
+        if (registeredSpeakers.isEmpty()) {
+            registerSpeakers(com.voicerpg.engine.content.GameContent.allSpeakers)
+        }
+        return registeredSpeakers.toList()
+    }
 
     private val _availableVoiceCount = MutableStateFlow(0)
     val availableVoiceCount: StateFlow<Int> = _availableVoiceCount.asStateFlow()
@@ -116,14 +173,14 @@ class CombatNarrator(
     private val _isCombatNarrationEnabled = MutableStateFlow(true)
     val isCombatNarrationEnabled: StateFlow<Boolean> = _isCombatNarrationEnabled.asStateFlow()
 
-    private val _isCombatActive = MutableStateFlow(false)
-    val isCombatActive: StateFlow<Boolean> = _isCombatActive.asStateFlow()
-
     private val _isNarrationEnabled = MutableStateFlow(true)
     val isNarrationEnabled: StateFlow<Boolean> = _isNarrationEnabled.asStateFlow()
 
     private val _isReadChoicesEnabled = MutableStateFlow(true)
     val isReadChoicesEnabled: StateFlow<Boolean> = _isReadChoicesEnabled.asStateFlow()
+
+    private val _isAutoReadHubChoices = MutableStateFlow(true)
+    val isAutoReadHubChoices: StateFlow<Boolean> = _isAutoReadHubChoices.asStateFlow()
 
     private val _speechRate = MutableStateFlow(1.05f)
     val speechRate: StateFlow<Float> = _speechRate.asStateFlow()
@@ -136,6 +193,62 @@ class CombatNarrator(
 
     private val _isSpeaking = MutableStateFlow(false)
     val isSpeaking: StateFlow<Boolean> = _isSpeaking.asStateFlow()
+
+    private val utteranceCounter = java.util.concurrent.atomic.AtomicLong(0)
+
+    private val _isCombatActive = MutableStateFlow(false)
+    val isCombatActive: StateFlow<Boolean> = _isCombatActive.asStateFlow()
+
+    private val _selectedLanguage = MutableStateFlow("en")
+    val selectedLanguage: StateFlow<String> = _selectedLanguage.asStateFlow()
+
+    private val _selectedRegion = MutableStateFlow("")
+    val selectedRegion: StateFlow<String> = _selectedRegion.asStateFlow()
+
+    fun setSelectedLanguage(langCode: String) {
+        val clean = langCode.lowercase().take(2)
+        _selectedLanguage.value = clean
+        updateTtsLocale()
+    }
+
+    fun setSelectedRegion(regionCode: String) {
+        _selectedRegion.value = regionCode.uppercase(Locale.ROOT).trim()
+        updateTtsLocale()
+    }
+
+    fun setSelectedLanguageAndRegion(langCode: String, regionCode: String = "") {
+        val clean = langCode.lowercase().take(2)
+        _selectedLanguage.value = clean
+        _selectedRegion.value = regionCode.uppercase(Locale.ROOT).trim()
+        updateTtsLocale()
+    }
+
+    private fun updateTtsLocale() {
+        tts?.let { engine ->
+            val lang = _selectedLanguage.value
+            val reg = _selectedRegion.value
+            val locale = if (reg.isNotBlank()) {
+                Locale(lang, reg)
+            } else {
+                Locale(lang)
+            }
+            try {
+                engine.setLanguage(locale)
+            } catch (_: Exception) {}
+            assignCharacterVoices(engine)
+        }
+    }
+
+    fun isTtsLanguageAvailable(langCode: String, regionCode: String = ""): Boolean {
+        val engine = tts ?: return false
+        val locale = if (regionCode.isNotBlank()) Locale(langCode, regionCode) else Locale(langCode)
+        val result = engine.isLanguageAvailable(locale)
+        return result != TextToSpeech.LANG_NOT_SUPPORTED && result != TextToSpeech.LANG_MISSING_DATA
+    }
+
+    fun setCombatActive(active: Boolean) {
+        _isCombatActive.value = active
+    }
 
     init {
         if (context != null) {
@@ -163,7 +276,9 @@ class CombatNarrator(
                     engine.setPitch(1.0f)
                     engine.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
                         override fun onStart(utteranceId: String?) {
-                            _isSpeaking.value = true
+                            if (utteranceId != null && utteranceId == activeUtteranceId) {
+                                _isSpeaking.value = true
+                            }
                         }
 
                         override fun onDone(utteranceId: String?) {
@@ -173,6 +288,14 @@ class CombatNarrator(
                                 val cb = pendingSpeechOnDone
                                 pendingSpeechOnDone = null
                                 cb?.invoke()
+                            }
+                        }
+
+                        override fun onStop(utteranceId: String?, interrupted: Boolean) {
+                            if (utteranceId != null && utteranceId == activeUtteranceId) {
+                                _isSpeaking.value = false
+                                activeUtteranceId = null
+                                pendingSpeechOnDone = null
                             }
                         }
 
@@ -263,10 +386,10 @@ class CombatNarrator(
             android.util.Log.d("VoiceRPG_TTS", "Installed: ${installedVoices.size}, Physical English: ${englishPhysicalVoices.size}")
 
             // Google TTS & third-party voice classification tokens:
-            // Female codes: sfg (Voice 1), iom (Voice 3), tpd (Voice 5), tpf (Voice 7), gba, gbb, gbd, gbg, aua, auc, or "female"
-            // Male codes: iob (Voice 2), iog (Voice 4), tpc (Voice 6), iol (Voice 8), rjs, gbc, aub, aud, or "male"
-            val femaleTokens = listOf("female", "#f", "-f-", "_female", "sfg", "iom", "tpd", "tpf", "gba", "gbb", "gbg", "aua", "auc")
-            val maleTokens = listOf("male", "#m", "-m-", "_male", "iob", "iog", "tpc", "iol", "rjs", "gbc", "gbd", "aub", "aud")
+            // Female codes: sfg (Voice 1), iom (Voice 3), tpd (Voice 5), tpf (Voice 7), gba, gbb, gbg, aua, auc, inc, or "female"
+            // Male codes: iob (Voice 2), iog (Voice 4), tpc (Voice 6), iol (Voice 8), rjs, gbc, gbd, aub, aud, ina, or "male"
+            val femaleTokens = listOf("female", "#f", "-f-", "_f_", "_female", "-f0", "smtf", "sfg", "iom", "tpd", "tpf", "gba", "gbb", "gbg", "aua", "auc", "inc")
+            val maleTokens = listOf("male", "#m", "-m-", "_m_", "_male", "-m0", "smtm", "iob", "iog", "tpc", "iol", "rjs", "gbc", "gbd", "aub", "aud", "ina")
 
             val femaleVoices = englishPhysicalVoices.filter { v ->
                 val lower = v.name.lowercase(Locale.ROOT)
@@ -284,148 +407,70 @@ class CombatNarrator(
             val malePool = (maleVoices + otherVoices.filterIndexed { i, _ -> i % 2 == 1 }).ifEmpty { englishPhysicalVoices }
             val femalePool = (femaleVoices + otherVoices.filterIndexed { i, _ -> i % 2 == 0 }).ifEmpty { englishPhysicalVoices }
 
-            // 1. Narrator Trio: Kayleigh (Primetime anchor), Karoline (Press Sec), Hulkster (Hype legend)
-            val kayleighCandidate = femalePool.firstOrNull { it.name.contains("sfg") }
-                ?: femalePool.firstOrNull { it.name.contains("gba") }
-                ?: femalePool.firstOrNull() ?: defaultVoice
-            kayleighVoice = applyVoicePreference(DialogueSpeaker.NARRATOR_KAYLEIGH.id, kayleighCandidate, englishPhysicalVoices)
+            // British narrator voice if present, else default
+            val britishStoryteller = englishPhysicalVoices.firstOrNull {
+                it.name.contains("rjs") || (it.locale.country.equals("GB", ignoreCase = true) && it.name in maleTokens)
+            } ?: defaultVoice
 
-            val remainingFemaleAfterKayleigh = femalePool.filter { it != kayleighVoice }
+            val distinctMalePool = if (britishStoryteller != null && malePool.size > 1) {
+                malePool.filter { it != britishStoryteller }
+            } else {
+                malePool
+            }
 
-            val karolineCandidate = remainingFemaleAfterKayleigh.firstOrNull { it.name.contains("tpf") }
-                ?: remainingFemaleAfterKayleigh.firstOrNull { it.name.contains("iom") }
-                ?: remainingFemaleAfterKayleigh.firstOrNull() ?: defaultVoice
-            karolineVoice = applyVoicePreference(DialogueSpeaker.NARRATOR_KAROLINE.id, karolineCandidate, englishPhysicalVoices)
+            val allSpeakers = getRegisteredSpeakers().ifEmpty {
+                listOf(com.voicerpg.engine.content.GameContent.narrator)
+            }
 
-            val remainingFemaleAfterKaroline = remainingFemaleAfterKayleigh.filter { it != karolineVoice }
+            var femaleIdx = 0
+            var maleIdx = 0
+            var neutralIdx = 0
 
-            val hulkCandidate = malePool.firstOrNull { it.name.contains("gbd") }
-                ?: malePool.firstOrNull { it.name.contains("iol") }
-                ?: malePool.firstOrNull { it.name.contains("rjs") }
-                ?: malePool.firstOrNull() ?: defaultVoice
-            hulkVoice = applyVoicePreference(DialogueSpeaker.NARRATOR_HULK.id, hulkCandidate, englishPhysicalVoices)
+            fun List<Voice>.filterByRegion(regions: List<String>): List<Voice> {
+                val matched = filter { getVoiceRegionCode(it) in regions }
+                return matched.ifEmpty { this }
+            }
 
-            val remainingMaleAfterHulk = malePool.filter { it != hulkVoice }
+            // Dynamically distribute available physical voices respecting character gender and region
+            allSpeakers.forEach { speaker ->
+                val preferred = customPreferredVoiceIds[speaker.id] ?: PREFERRED_VOICE_IDS[speaker.id]
+                val char = com.voicerpg.engine.content.GameContent.characterById(speaker.id)
+                val charGender = speaker.gender ?: char?.gender
+                val isFemale = charGender?.equals("female", ignoreCase = true) == true
+                val isMale = charGender?.equals("male", ignoreCase = true) == true
 
-            // General narrator default falls back to Kayleigh's anchor voice
-            narratorVoice = applyVoicePreference(DialogueSpeaker.NARRATOR.id, kayleighVoice ?: defaultVoice, englishPhysicalVoices)
+                val rawRegions = speaker.allowedVoiceRegions.ifEmpty {
+                    char?.allowedVoiceRegions?.ifEmpty { DEFAULT_ALLOWED_VOICE_REGIONS } ?: DEFAULT_ALLOWED_VOICE_REGIONS
+                }.map { it.uppercase(Locale.ROOT) }
 
-            // Commander America: deep, resonant, charismatic US baritone male (iob or iog)
-            val commanderCandidate = remainingMaleAfterHulk.firstOrNull { it.name.contains("iob") }
-                ?: remainingMaleAfterHulk.firstOrNull { it.name.contains("iog") }
-                ?: remainingMaleAfterHulk.firstOrNull { it.name.contains("gbc") }
-                ?: remainingMaleAfterHulk.firstOrNull() ?: defaultVoice
-            commanderAmericaVoice = applyVoicePreference(DialogueSpeaker.COMMANDER_AMERICA.id, commanderCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterCommander = remainingMaleAfterHulk.filter { it != commanderAmericaVoice }
-
-            // Elon Musk: brisk, energetic US male (tpc or aub)
-            val elonCandidate = remainingMaleAfterCommander.firstOrNull { it.name.contains("tpc") }
-                ?: remainingMaleAfterCommander.firstOrNull { it.name.contains("aub") }
-                ?: remainingMaleAfterCommander.firstOrNull() ?: defaultVoice
-            elonVoice = applyVoicePreference(DialogueSpeaker.ELON.id, elonCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterElon = remainingMaleAfterCommander.filter { it != elonVoice }
-
-            // Barack Obama: smooth, baritone US male (iog or gbc)
-            val obamaCandidate = remainingMaleAfterElon.firstOrNull { it.name.contains("iog") }
-                ?: remainingMaleAfterElon.firstOrNull { it.name.contains("gbc") }
-                ?: remainingMaleAfterElon.firstOrNull() ?: defaultVoice
-            obamaVoice = applyVoicePreference(DialogueSpeaker.OBAMA.id, obamaCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterObama = remainingMaleAfterElon.filter { it != obamaVoice }
-
-            // Final Boss Biden: older raspy US male (iol or gbd)
-            val bidenCandidate = remainingMaleAfterObama.firstOrNull { it.name.contains("iol") }
-                ?: remainingMaleAfterObama.firstOrNull { it.name.contains("gbd") }
-                ?: remainingMaleAfterObama.firstOrNull() ?: defaultVoice
-            bidenVoice = applyVoicePreference(DialogueSpeaker.BIDEN.id, bidenCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterBiden = remainingMaleAfterObama.filter { it != bidenVoice }
-
-            // Rocket Man: deep resonant male (aud or remaining)
-            val rocketCandidate = remainingMaleAfterBiden.firstOrNull { it.name.contains("aud") }
-                ?: remainingMaleAfterBiden.firstOrNull() ?: defaultVoice
-            rocketManVoice = applyVoicePreference(DialogueSpeaker.ROCKET_MAN.id, rocketCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterRocket = remainingMaleAfterBiden.filter { it != rocketManVoice }
-
-            // Marco Rubio: articulate US male (iog or iob or remaining)
-            val marcoCandidate = remainingMaleAfterRocket.firstOrNull { it.name.contains("iog") }
-                ?: remainingMaleAfterRocket.firstOrNull { it.name.contains("iob") }
-                ?: remainingMaleAfterRocket.firstOrNull() ?: defaultVoice
-            marcoVoice = applyVoicePreference(DialogueSpeaker.MARCO.id, marcoCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterMarco = remainingMaleAfterRocket.filter { it != marcoVoice }
-
-            // JD Vance: measured baritone US male (tpc or iol or remaining)
-            val vanceCandidate = remainingMaleAfterMarco.firstOrNull { it.name.contains("tpc") }
-                ?: remainingMaleAfterMarco.firstOrNull { it.name.contains("iol") }
-                ?: remainingMaleAfterMarco.firstOrNull() ?: defaultVoice
-            vanceVoice = applyVoicePreference(DialogueSpeaker.VANCE.id, vanceCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterVance = remainingMaleAfterMarco.filter { it != vanceVoice }
-
-            // Kash Patel: confident, sharp US male (gbc or rjs or remaining)
-            val kashCandidate = remainingMaleAfterVance.firstOrNull { it.name.contains("gbc") }
-                ?: remainingMaleAfterVance.firstOrNull { it.name.contains("rjs") }
-                ?: remainingMaleAfterVance.firstOrNull() ?: defaultVoice
-            kashVoice = applyVoicePreference(DialogueSpeaker.KASH.id, kashCandidate, englishPhysicalVoices)
-
-            val remainingMaleAfterKash = remainingMaleAfterVance.filter { it != kashVoice }
-
-            // Senator John Kennedy: southern, measured US male
-            val kennedyCandidate = remainingMaleAfterKash.firstOrNull { it.name.contains("gbd") }
-                ?: remainingMaleAfterKash.firstOrNull { it.name.contains("aud") }
-                ?: remainingMaleAfterKash.firstOrNull() ?: defaultVoice
-            kennedyVoice = applyVoicePreference(DialogueSpeaker.KENNEDY.id, kennedyCandidate, englishPhysicalVoices)
-
-            // Madam Speaker Pelosi: sharp, calculating US female (tpf or iom)
-            val pelosiCandidate = remainingFemaleAfterKaroline.firstOrNull { it.name.contains("tpf") }
-                ?: remainingFemaleAfterKaroline.firstOrNull { it.name.contains("iom") }
-                ?: remainingFemaleAfterKaroline.firstOrNull() ?: defaultVoice
-            pelosiVoice = applyVoicePreference(DialogueSpeaker.PELOSI.id, pelosiCandidate, englishPhysicalVoices)
-
-            val remainingFemaleAfterPelosi = remainingFemaleAfterKaroline.filter { it != pelosiVoice }
-
-            // Kamala: melodic/expressive US female (sfg or gba)
-            val kamalaCandidate = remainingFemaleAfterPelosi.firstOrNull { it.name.contains("sfg") }
-                ?: remainingFemaleAfterPelosi.firstOrNull { it.name.contains("gba") }
-                ?: remainingFemaleAfterPelosi.firstOrNull() ?: defaultVoice
-            kamalaVoice = applyVoicePreference(DialogueSpeaker.KAMALA.id, kamalaCandidate, englishPhysicalVoices)
-
-            val remainingFemaleAfterKamala = remainingFemaleAfterPelosi.filter { it != kamalaVoice }
-
-            // Media Anchor: formal / sibilant (tpd or aua or remaining)
-            val mediaCandidate = remainingFemaleAfterKamala.firstOrNull { it.name.contains("tpd") }
-                ?: remainingFemaleAfterKamala.firstOrNull() ?: defaultVoice
-            mediaAnchorVoice = applyVoicePreference(DialogueSpeaker.MEDIA_ANCHOR.id, mediaCandidate, englishPhysicalVoices)
-
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Commander: ${commanderAmericaVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Elon: ${elonVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Kayleigh: ${kayleighVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Karoline: ${karolineVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Hulkster: ${hulkVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Pelosi: ${pelosiVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Kamala: ${kamalaVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Obama: ${obamaVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned Biden: ${bidenVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned RocketMan: ${rocketManVoice?.name}")
-            android.util.Log.d("VoiceRPG_TTS", "Assigned MediaAnchor: ${mediaAnchorVoice?.name}")
+                val candidate = when {
+                    preferred != null && englishPhysicalVoices.any { it.name == preferred } ->
+                        englishPhysicalVoices.first { it.name == preferred }
+                    speaker.isNarrator || speaker.id == "narrator" -> {
+                        val narratorPool = englishPhysicalVoices.filterByRegion(rawRegions)
+                        britishStoryteller ?: narratorPool.firstOrNull() ?: defaultVoice
+                    }
+                    isFemale -> {
+                        val regional = femalePool.filterByRegion(rawRegions)
+                        regional[femaleIdx++ % regional.size]
+                    }
+                    isMale -> {
+                        val regional = distinctMalePool.filterByRegion(rawRegions)
+                        regional[maleIdx++ % regional.size]
+                    }
+                    else -> {
+                        val regional = englishPhysicalVoices.filterByRegion(rawRegions)
+                        regional[neutralIdx++ % regional.size]
+                    }
+                }
+                dynamicSpeakerVoices[speaker.id] = applyVoicePreference(speaker.id, candidate, englishPhysicalVoices)
+                android.util.Log.d("VoiceRPG_TTS", "Assigned ${speaker.name} (${speaker.id}, gender=$charGender, regions=$rawRegions): ${dynamicSpeakerVoices[speaker.id]?.name}")
+            }
         } catch (e: Exception) {
             android.util.Log.e("VoiceRPG_TTS", "Error assigning voices", e)
-            commanderAmericaVoice = defaultVoice
-            elonVoice = defaultVoice
-            kayleighVoice = defaultVoice
-            karolineVoice = defaultVoice
-            hulkVoice = defaultVoice
-            narratorVoice = defaultVoice
-            pelosiVoice = defaultVoice
-            kamalaVoice = defaultVoice
-            obamaVoice = defaultVoice
-            bidenVoice = defaultVoice
-            rocketManVoice = defaultVoice
-            mediaAnchorVoice = defaultVoice
+            getRegisteredSpeakers().forEach { speaker ->
+                dynamicSpeakerVoices[speaker.id] = defaultVoice
+            }
         }
     }
 
@@ -481,10 +526,6 @@ class CombatNarrator(
         _isCombatNarrationEnabled.value = enabled
     }
 
-    fun setCombatActive(active: Boolean) {
-        _isCombatActive.value = active
-    }
-
     fun toggleCombatNarrationEnabled(): Boolean {
         _isCombatNarrationEnabled.value = !_isCombatNarrationEnabled.value
         return _isCombatNarrationEnabled.value
@@ -512,6 +553,15 @@ class CombatNarrator(
     fun toggleReadChoices(): Boolean {
         _isReadChoicesEnabled.value = !_isReadChoicesEnabled.value
         return _isReadChoicesEnabled.value
+    }
+
+    fun setAutoReadHubChoices(enabled: Boolean) {
+        _isAutoReadHubChoices.value = enabled
+    }
+
+    fun toggleAutoReadHubChoices(): Boolean {
+        _isAutoReadHubChoices.value = !_isAutoReadHubChoices.value
+        return _isAutoReadHubChoices.value
     }
 
     fun setSpeechRate(rate: Float) {
@@ -559,21 +609,9 @@ class CombatNarrator(
      * persisting into the save file.
      */
     fun getVoiceAssignments(): Map<String, String> =
-        listOf(
-            DialogueSpeaker.COMMANDER_AMERICA,
-            DialogueSpeaker.ELON,
-            DialogueSpeaker.NARRATOR_KAYLEIGH,
-            DialogueSpeaker.NARRATOR_KAROLINE,
-            DialogueSpeaker.NARRATOR_HULK,
-            DialogueSpeaker.NARRATOR,
-            DialogueSpeaker.PELOSI,
-            DialogueSpeaker.KAMALA,
-            DialogueSpeaker.OBAMA,
-            DialogueSpeaker.BIDEN,
-            DialogueSpeaker.ROCKET_MAN,
-            DialogueSpeaker.MEDIA_ANCHOR
-        ).mapNotNull { speaker -> getVoiceForSpeaker(speaker)?.name?.let { speaker.id to it } }
-            .toMap()
+        getRegisteredSpeakers().mapNotNull { speaker ->
+            getVoiceForSpeaker(speaker)?.name?.let { speaker.id to it }
+        }.toMap()
 
     fun openVoiceSettings(context: Context) {
         val installIntent = Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA).apply {
@@ -599,81 +637,16 @@ class CombatNarrator(
         }
     }
 
-    fun getVoiceForSpeaker(speaker: DialogueSpeaker): Voice? = when (speaker.id) {
-        DialogueSpeaker.COMMANDER_AMERICA.id -> commanderAmericaVoice
-        DialogueSpeaker.ELON.id -> elonVoice
-        DialogueSpeaker.NARRATOR_KAROLINE.id -> karolineVoice ?: narratorVoice
-        DialogueSpeaker.NARRATOR_KAYLEIGH.id -> kayleighVoice ?: narratorVoice
-        DialogueSpeaker.NARRATOR_HULK.id -> hulkVoice ?: narratorVoice
-        DialogueSpeaker.NARRATOR.id -> narratorVoice
-        DialogueSpeaker.PELOSI.id -> pelosiVoice
-        DialogueSpeaker.KAMALA.id -> kamalaVoice
-        DialogueSpeaker.OBAMA.id -> obamaVoice
-        DialogueSpeaker.BIDEN.id -> bidenVoice
-        DialogueSpeaker.ROCKET_MAN.id -> rocketManVoice
-        DialogueSpeaker.MEDIA_ANCHOR.id -> mediaAnchorVoice
-        DialogueSpeaker.MARCO.id -> marcoVoice
-        DialogueSpeaker.VANCE.id -> vanceVoice
-        DialogueSpeaker.KASH.id -> kashVoice
-        DialogueSpeaker.KENNEDY.id -> kennedyVoice
-        // Legacy fallbacks for any older save compatibility
-        "cedric" -> commanderAmericaVoice
-        "aethel" -> commanderAmericaVoice
-        "lyra" -> kamalaVoice
-        "zephyr" -> elonVoice
-        "malakor" -> bidenVoice
-        else -> narratorVoice
-    }
+    fun getVoiceForSpeaker(speaker: DialogueSpeaker): Voice? =
+        dynamicSpeakerVoices[speaker.id] ?: defaultVoice
 
     fun setSpeakerVoice(speaker: DialogueSpeaker, voice: Voice) {
-        when (speaker.id) {
-            DialogueSpeaker.COMMANDER_AMERICA.id -> commanderAmericaVoice = voice
-            DialogueSpeaker.ELON.id -> elonVoice = voice
-            DialogueSpeaker.NARRATOR_KAROLINE.id -> karolineVoice = voice
-            DialogueSpeaker.NARRATOR_KAYLEIGH.id -> {
-                kayleighVoice = voice
-                narratorVoice = voice
-            }
-            DialogueSpeaker.NARRATOR_HULK.id -> hulkVoice = voice
-            DialogueSpeaker.NARRATOR.id -> {
-                narratorVoice = voice
-                kayleighVoice = voice
-            }
-            DialogueSpeaker.PELOSI.id -> pelosiVoice = voice
-            DialogueSpeaker.KAMALA.id -> kamalaVoice = voice
-            DialogueSpeaker.OBAMA.id -> obamaVoice = voice
-            DialogueSpeaker.BIDEN.id -> bidenVoice = voice
-            DialogueSpeaker.ROCKET_MAN.id -> rocketManVoice = voice
-            DialogueSpeaker.MEDIA_ANCHOR.id -> mediaAnchorVoice = voice
-            DialogueSpeaker.MARCO.id -> marcoVoice = voice
-            DialogueSpeaker.VANCE.id -> vanceVoice = voice
-            DialogueSpeaker.KASH.id -> kashVoice = voice
-            DialogueSpeaker.KENNEDY.id -> kennedyVoice = voice
-            else -> narratorVoice = voice
-        }
+        dynamicSpeakerVoices[speaker.id] = voice
     }
 
     fun previewSpeakerVoice(speaker: DialogueSpeaker, onDone: (() -> Unit)? = null) {
-        val samplePhrase = when (speaker.id) {
-            DialogueSpeaker.COMMANDER_AMERICA.id -> "We are going to win so much, folks! You may get tired of winning, but believe me, we won't stop!"
-            DialogueSpeaker.ELON.id -> "Occupy Mars! Full Self-Driving starships, Dogecoin, and total government efficiency. Let's make the future epic!"
-            DialogueSpeaker.NARRATOR_KAROLINE.id -> "Good morning! Let's get right to the facts. The numbers in this binder are indisputable, and Commander America's momentum cannot be stopped!"
-            DialogueSpeaker.NARRATOR_KAYLEIGH.id -> "Welcome back to primetime. Tonight, all eyes turn to the Capitol spire as the fellowship makes their historic stand."
-            DialogueSpeaker.NARRATOR_HULK.id -> "WELL LET ME TELL YA SOMETHING, BROTHER! When the Hulkster and Commander America run wild on this realm, what'cha gonna do?!"
-            DialogueSpeaker.NARRATOR.id -> "Welcome back to primetime. Tonight, all eyes turn to the Capitol spire as the fellowship makes their historic stand."
-            DialogueSpeaker.PELOSI.id -> "We must pass the bill so you can find out what is in it! And my stock portfolio has never looked better!"
-            DialogueSpeaker.KAMALA.id -> "You think you just fell out of a coconut tree? You exist in the context of all in which you live and what came before you!"
-            DialogueSpeaker.OBAMA.id -> "Now, uh... let me be clear. Don't boo. Vote! And check the receipts from 2014."
-            DialogueSpeaker.BIDEN.id -> "No joke, man! Look, here's the deal! Two scoops of chocolate chocolate chip ice cream, period!"
-            DialogueSpeaker.ROCKET_MAN.id -> "Tremble before the Crimson Spire! Our glorious rockets shall conquer the Pacific!"
-            DialogueSpeaker.MEDIA_ANCHOR.id -> "Breaking news! Unnamed anonymous sources claim that victory is completely unverified!"
-            DialogueSpeaker.MARCO.id -> "Commander, maximum sanctions are locked in, foreign assets frozen, and I have a fresh bottle of water ready for the journey!"
-            DialogueSpeaker.VANCE.id -> "Middle America will never be forgotten again. We've got common sense, family fortitude, and we're dismantling the establishment debate stage!"
-            DialogueSpeaker.KASH.id -> "Everything is declassified. The binders are open, the leaks are plugged, and the truth will prevail!"
-            DialogueSpeaker.KENNEDY.id -> "Did you write that rule yourself, or did someone help you think it up? In plain English, that sounds dumber than a bag of hammers!"
-            DialogueSpeaker.HILL_ROD.id -> "Delete the emails! Wipe the server with a cloth, and let's take back the party!"
-            else -> "The chronicle of the Golden Tower unfolds with every step."
-        }
+        val samplePhrase = speaker.samplePhrase
+            ?: "I am ${speaker.name}, ${speaker.title}. My voice stands ready."
         narrateDialogue(speaker, samplePhrase, emptyList(), force = true) {
             onDone?.invoke()
         }
@@ -696,10 +669,37 @@ class CombatNarrator(
     fun cycleSpeakerVoice(speaker: DialogueSpeaker, onDone: (() -> Unit)? = null): Voice? {
         val physicalVoices = getInstalledPhysicalVoices()
         if (physicalVoices.isEmpty()) return null
+
+        val char = com.voicerpg.engine.content.GameContent.characterById(speaker.id)
+        val charGender = speaker.gender ?: char?.gender
+        val isFemale = charGender?.equals("female", ignoreCase = true) == true
+        val isMale = charGender?.equals("male", ignoreCase = true) == true
+
+        val rawRegions = speaker.allowedVoiceRegions.ifEmpty {
+            char?.allowedVoiceRegions?.ifEmpty { DEFAULT_ALLOWED_VOICE_REGIONS } ?: DEFAULT_ALLOWED_VOICE_REGIONS
+        }.map { it.uppercase(Locale.ROOT) }
+
+        val femaleTokens = listOf("female", "#f", "-f-", "_f_", "_female", "-f0", "smtf", "sfg", "iom", "tpd", "tpf", "gba", "gbb", "gbg", "aua", "auc", "inc")
+        val maleTokens = listOf("male", "#m", "-m-", "_m_", "_male", "-m0", "smtm", "iob", "iog", "tpc", "iol", "rjs", "gbc", "gbd", "aub", "aud", "ina")
+
+        val genderVoices = when {
+            isFemale -> physicalVoices.filter { v ->
+                val lower = v.name.lowercase(Locale.ROOT)
+                femaleTokens.any { lower.contains(it) } && !lower.contains("male")
+            }.ifEmpty { physicalVoices }
+            isMale -> physicalVoices.filter { v ->
+                val lower = v.name.lowercase(Locale.ROOT)
+                maleTokens.any { lower.contains(it) } && !lower.contains("female")
+            }.ifEmpty { physicalVoices }
+            else -> physicalVoices
+        }
+
+        val eligibleVoices = genderVoices.filter { getVoiceRegionCode(it) in rawRegions }.ifEmpty { genderVoices }
+
         val current = getVoiceForSpeaker(speaker)
-        val currentIndex = physicalVoices.indexOfFirst { it.name == current?.name }
-        val nextIndex = if (currentIndex >= 0) (currentIndex + 1) % physicalVoices.size else 0
-        val nextVoice = physicalVoices[nextIndex]
+        val currentIndex = eligibleVoices.indexOfFirst { it.name == current?.name }
+        val nextIndex = if (currentIndex >= 0) (currentIndex + 1) % eligibleVoices.size else 0
+        val nextVoice = eligibleVoices[nextIndex]
         setSpeakerVoice(speaker, nextVoice)
         previewSpeakerVoice(speaker, onDone)
         return nextVoice
@@ -741,90 +741,24 @@ class CombatNarrator(
 
         // Apply character vocal inflection/pitch if enabled
         if (_isCharacterPitchEnabled.value) {
-            when (speaker.id) {
-                DialogueSpeaker.COMMANDER_AMERICA.id -> {
-                    tts?.setPitch(0.90f) // Resonant, charismatic
-                    tts?.setSpeechRate(_speechRate.value * 1.05f)
-                }
-                DialogueSpeaker.ELON.id -> {
-                    tts?.setPitch(1.02f) // Brisk, energetic tech visionary
-                    tts?.setSpeechRate(_speechRate.value * 1.10f)
-                }
-                DialogueSpeaker.NARRATOR_KAROLINE.id -> {
-                    tts?.setPitch(1.12f) // Fast, crisp press secretary
-                    tts?.setSpeechRate(_speechRate.value * 1.15f)
-                }
-                DialogueSpeaker.NARRATOR_KAYLEIGH.id, DialogueSpeaker.NARRATOR.id -> {
-                    tts?.setPitch(1.02f) // Smooth, measured primetime desk anchor
-                    tts?.setSpeechRate(_speechRate.value * 1.05f)
-                }
-                DialogueSpeaker.NARRATOR_HULK.id -> {
-                    tts?.setPitch(0.78f) // Deep, booming wrestling hype legend
-                    tts?.setSpeechRate(_speechRate.value * 1.00f)
-                }
-                DialogueSpeaker.PELOSI.id -> {
-                    tts?.setPitch(1.15f) // Sharp, calculating
-                    tts?.setSpeechRate(_speechRate.value * 0.95f)
-                }
-                DialogueSpeaker.KAMALA.id -> {
-                    tts?.setPitch(1.25f) // Melodic, expressive
-                    tts?.setSpeechRate(_speechRate.value * 1.02f)
-                }
-                DialogueSpeaker.OBAMA.id -> {
-                    tts?.setPitch(0.92f) // Smooth, rhythmic cadence
-                    tts?.setSpeechRate(_speechRate.value * 0.92f)
-                }
-                DialogueSpeaker.BIDEN.id -> {
-                    tts?.setPitch(0.85f) // Folksy raspy cadence
-                    tts?.setSpeechRate(_speechRate.value * 0.88f)
-                }
-                DialogueSpeaker.ROCKET_MAN.id -> {
-                    tts?.setPitch(0.78f) // Deep dramatic cadence
-                    tts?.setSpeechRate(_speechRate.value * 1.0f)
-                }
-                DialogueSpeaker.MEDIA_ANCHOR.id -> {
-                    tts?.setPitch(1.10f) // High-tempo news anchor
-                    tts?.setSpeechRate(_speechRate.value * 1.15f)
-                }
-                DialogueSpeaker.MARCO.id -> {
-                    tts?.setPitch(1.05f) // Confident, articulate diplomatic cadence
-                    tts?.setSpeechRate(_speechRate.value * 1.08f)
-                }
-                DialogueSpeaker.VANCE.id -> {
-                    tts?.setPitch(0.92f) // Grounded, measured Rust Belt baritone
-                    tts?.setSpeechRate(_speechRate.value * 1.00f)
-                }
-                DialogueSpeaker.KASH.id -> {
-                    tts?.setPitch(0.98f) // Sharp, focused intel cadence
-                    tts?.setSpeechRate(_speechRate.value * 1.05f)
-                }
-                DialogueSpeaker.KENNEDY.id -> {
-                    tts?.setPitch(0.88f) // Southern committee cross-examiner drawl
-                    tts?.setSpeechRate(_speechRate.value * 0.92f)
-                }
-                else -> {
-                    tts?.setPitch(1.0f)
-                    tts?.setSpeechRate(_speechRate.value)
-                }
-            }
+            tts?.setPitch(speaker.ttsPitch)
+            tts?.setSpeechRate(_speechRate.value)
         } else {
             tts?.setPitch(1.0f)
             tts?.setSpeechRate(_speechRate.value)
         }
 
         val cleanedText = text.replace("...", ". ").trim()
-        val isAnyNarrator = speaker == DialogueSpeaker.NARRATOR ||
-                speaker == DialogueSpeaker.NARRATOR_KAROLINE ||
-                speaker == DialogueSpeaker.NARRATOR_KAYLEIGH ||
-                speaker == DialogueSpeaker.NARRATOR_HULK ||
-                speaker.id.startsWith("narrator")
-        val speakerPrefix = if (isAnyNarrator || !_isSpeakerAttributionEnabled.value) "" else "${speaker.name} says: "
+        val speakerPrefix = if (speaker.isNarrator || !_isSpeakerAttributionEnabled.value) "" else "${speaker.name} says: "
 
         val fullScript = StringBuilder()
         fullScript.append("$speakerPrefix$cleanedText")
 
-        // Read choices aloud if setting enabled
-        if (_isReadChoicesEnabled.value && choices.isNotEmpty()) {
+        // Read choices aloud if setting enabled, or if in Screenless Pocket Mode with auto-read enabled
+        val shouldReadChoices = choices.isNotEmpty() && (
+            _isReadChoicesEnabled.value || (_isEyesFreeMode.value && _isAutoReadHubChoices.value)
+        )
+        if (shouldReadChoices) {
             fullScript.append(". Your options are: ")
             choices.forEachIndexed { index, choice ->
                 fullScript.append("Option ${index + 1}: ${choice.text}. ")
@@ -859,27 +793,29 @@ class CombatNarrator(
             // Reset to Narrator voice for system / tactical announcements
             tts?.setPitch(1.0f)
             tts?.setSpeechRate(_speechRate.value)
-            narratorVoice?.let {
+            getVoiceForSpeaker(com.voicerpg.engine.content.GameContent.narrator)?.let {
                 try {
                     tts?.voice = it
                 } catch (_: Exception) {}
             }
         }
 
-        val utteranceId = "combat_tts_${System.currentTimeMillis()}"
+        val utteranceId = "combat_tts_${utteranceCounter.incrementAndGet()}"
         activeUtteranceId = utteranceId
         pendingSpeechOnDone = onDone
         _isSpeaking.value = true
 
+        val translatedText = com.voicerpg.engine.localization.TranslationManager.translate(text)
+        val speechText = normalizeTtsText(translatedText)
         val params = Bundle().apply {
             putFloat(TextToSpeech.Engine.KEY_PARAM_VOLUME, 1.0f)
         }
-        var result = tts?.speak(text, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
+        var result = tts?.speak(speechText, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
         if (result != TextToSpeech.SUCCESS) {
             // Safety fallback: if custom voice failed, reset to defaultVoice and retry immediately
             try {
                 defaultVoice?.let { tts?.voice = it }
-                result = tts?.speak(text, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
+                result = tts?.speak(speechText, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
             } catch (_: Exception) {}
         }
 
@@ -1113,7 +1049,7 @@ class CombatNarrator(
         val members = party.map {
             if (it.isAlive) "${it.name} the ${it.loreClass}, ${it.currentHp} HP" else "${it.name} has fallen"
         }.joinToString(". ")
-        val text = "Fellowship status. $members."
+        val text = "Party status. $members."
         speak(text, force = true, onDone = onDone)
     }
 
@@ -1128,16 +1064,19 @@ class CombatNarrator(
         speak(text, force = true, onDone = onDone)
     }
 
-    fun narrateConclusion(isVictory: Boolean, onDone: (() -> Unit)? = null) {
-        if (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value)) {
+    fun narrateConclusion(
+        isVictory: Boolean,
+        extraPrefix: String? = null,
+        force: Boolean = false,
+        onDone: (() -> Unit)? = null
+    ) {
+        if (!force && (!_isCombatActive.value || (!_isEyesFreeMode.value && !_isCombatNarrationEnabled.value))) {
             onDone?.invoke()
             return
         }
-        val text = if (isVictory) {
-            "Victory achieved! The Logos resonates through the sanctum."
-        } else {
-            "Defeat. Your voice fades into the Silent Blight."
-        }
+        val manifest = com.voicerpg.engine.content.GameContent.manifest
+        val baseLine = if (isVictory) manifest.victoryLine else manifest.defeatLine
+        val text = if (!extraPrefix.isNullOrBlank()) "$extraPrefix $baseLine" else baseLine
         speak(text, force = true, onDone = onDone)
     }
 
@@ -1154,7 +1093,6 @@ class CombatNarrator(
     }
 
     fun destroy() {
-        val cb = pendingSpeechOnDone
         pendingSpeechOnDone = null
         activeUtteranceId = null
         try {
@@ -1162,7 +1100,6 @@ class CombatNarrator(
             tts?.shutdown()
         } catch (_: Exception) {}
         _isSpeaking.value = false
-        cb?.invoke()
         tts = null
     }
 }
