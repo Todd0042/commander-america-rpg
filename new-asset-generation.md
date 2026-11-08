@@ -270,3 +270,13 @@ Each prompt below is a single, self-contained paragraph with all style, lighting
 ```text
 16-bit retro JRPG environment background of an ornate, surrealist political throne room inside a marble palace of philosophical paradox. Stylized 90s SNES RPG pixel art aesthetic with regal grandeur and metaphysical JRPG dungeon elements. At the top of a grand red-carpeted marble staircase sits an ornate golden throne with a circular backrest shaped like a glowing infinity loop. Flanking the throne are towering marble pillars carved with repeating inscriptions: 'WHAT CAN BE, UNBURDENED BY WHAT HAS BEEN'. Behind the throne, colossal arched windows look out over a swirling twilight sky where calendars and pocket watches float gently like falling autumn leaves. Regal golden chandelier lighting and mystical violet window backlighting, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
+
+---
+
+## 3. Official App Icon (1:1 Aspect Ratio)
+
+### 53. App Icon: Debate Podium Excalibur
+```text
+16-bit retro JRPG mobile game app icon emblem of a stately presidential debate podium. Stylized 90s SNES RPG pixel art aesthetic with crisp outlines, rich dithering, and vibrant saturated colors, masterpiece --ar 1:1. Centered in the composition is a polished dark mahogany debate podium with an ornate gold presidential seal medallion on the front. Embedded firmly into the top of the podium like Excalibur in the stone is a glowing enchanted golden presidential signing pen and gavel scepter crackling with crimson red and electric sapphire blue magical mana sparks. Draped symmetrically down the front and sides of the podium are two ceremonial embroidered satin campaign banners: on the left a vibrant scarlet-red banner with golden star runes (Track A), and on the right a rich royal-blue banner with silver star runes (Track B). The background is a dramatic twilight sky with deep indigo, violet, and royal blue gradients featuring the faint backlit silhouette of the US Capitol dome flanked by warm golden stage spotlights and drifting golden pixel dust. A polished gold-trimmed pixel border neatly frames the square icon, clean iconic silhouette optimized for mobile launcher icon.
+```
+
