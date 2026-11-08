@@ -1,15 +1,14 @@
 package com.voicerpg.engine
 
+import androidx.compose.ui.graphics.Color
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
 import com.voicerpg.engine.audio.SpeechState
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.engine.IntentParser
 import com.voicerpg.engine.engine.SaveManager
-import com.voicerpg.engine.engine.StoryEncounters
-import com.voicerpg.engine.engine.StoryScript
 import com.voicerpg.engine.model.DialogueChoice
 import com.voicerpg.engine.model.DialogueSpeaker
-import com.voicerpg.engine.model.GameSaveData
 import com.voicerpg.engine.model.GameScreen
 import com.voicerpg.engine.model.MetaCommand
 import com.voicerpg.engine.model.PlayerCustomization
@@ -24,6 +23,42 @@ import org.junit.Before
 import org.junit.Test
 
 class NarrationAndOptionsTest {
+
+    private val alphaFixture = DialogueSpeaker(
+        id = "alpha",
+        name = "Alpha Scout",
+        title = "Field Operative",
+        portraitAsset = null,
+        themeColor = Color(0xFFFFD54F)
+    )
+    private val betaFixture = DialogueSpeaker(
+        id = "beta",
+        name = "Beta Mage",
+        title = "Elemental Adept",
+        portraitAsset = null,
+        themeColor = Color(0xFF4FC3F7)
+    )
+    private val gammaFixture = DialogueSpeaker(
+        id = "gamma",
+        name = "Gamma Warden",
+        title = "Grove Sentinel",
+        portraitAsset = null,
+        themeColor = Color(0xFFA5D6A7)
+    )
+    private val deltaFixture = DialogueSpeaker(
+        id = "delta",
+        name = "Delta Blade",
+        title = "Shadow Operative",
+        portraitAsset = null,
+        themeColor = Color(0xFFCE93D8)
+    )
+    private val epsilonFixture = DialogueSpeaker(
+        id = "epsilon",
+        name = "Epsilon Inquisitor",
+        title = "The Quiet Crown",
+        portraitAsset = null,
+        themeColor = Color(0xFFEF5350)
+    )
 
     @org.junit.Test
     fun speakerAttributionToggleMetaCommandRecognized() {
@@ -104,68 +139,72 @@ class NarrationAndOptionsTest {
         assertEquals(0, narrator.availableVoiceCount.value)
 
         // Verifying speaker voice mapping getters return gracefully without throwing
-        val cedricVoice = narrator.getVoiceForSpeaker(DialogueSpeaker.CEDRIC)
-        val aethelVoice = narrator.getVoiceForSpeaker(DialogueSpeaker.AETHEL)
+        val alphaVoice = narrator.getVoiceForSpeaker(alphaFixture)
+        val betaVoice = narrator.getVoiceForSpeaker(betaFixture)
         val narratorVoice = narrator.getVoiceForSpeaker(DialogueSpeaker.NARRATOR)
 
         // Without hardware TTS engine, speaker voices are null
-        assertEquals(null, cedricVoice)
-        assertEquals(null, aethelVoice)
+        assertEquals(null, alphaVoice)
+        assertEquals(null, betaVoice)
         assertEquals(null, narratorVoice)
     }
 
     @Test
     fun testCombatNarratorPreferredVoiceIdsConfiguredForAllSpeakers() {
         val preferred = CombatNarrator.PREFERRED_VOICE_IDS
-        assertEquals(16, preferred.size)
-        assertEquals("en-gb-x-gbd-local", preferred[DialogueSpeaker.CEDRIC.id]) // Sir Cedric
-        assertEquals("en-gb-x-gba-local", preferred[DialogueSpeaker.AETHEL.id]) // Aethel the Invocator
-        assertEquals("en-us-x-tpf-local", preferred[DialogueSpeaker.LYRA.id]) // Lyra the Grove Warden
-        assertEquals("en-us-x-tpc-local", preferred[DialogueSpeaker.ZEPHYR.id]) // Zephyr the Shadowblade
-        assertEquals("en-us-x-tpd-local", preferred[DialogueSpeaker.MALAKOR.id]) // Grand Inquisitor Malakor
-        assertEquals("en-us-x-sfg-local", preferred[DialogueSpeaker.NARRATOR.id]) // The Chronicle / Press Secretary
+        assertEquals(GameContent.preferredVoiceIds, preferred)
+        assertEquals("en-gb-x-rjs-local", preferred["narrator"])
+        for (speaker in GameContent.allSpeakers) {
+            assertEquals(
+                speaker.id,
+                GameContent.characterById(speaker.id)?.preferredVoiceId,
+                preferred[speaker.id]
+            )
+        }
     }
 
     @Test
     fun testResolvePreferredVoiceNameRespectsPersistedThenPreferredThenHeuristic() {
+        val speakerId = "fixture_speaker"
+        val preferred = mapOf(speakerId to "voice-preferred-local")
         val installed = setOf(
-            "en-gb-x-gbd-local", "en-us-x-tpf-local", "en-gb-x-rjs-local",
-            "en-us-x-tpc-local", "en-us-x-tpd-local", "en-gb-x-gba-local", "en-us-x-iob-local"
+            "voice-preferred-local",
+            "voice-persisted-local",
+            "voice-heuristic-local"
         )
-        val preferredDefault = CombatNarrator.PREFERRED_VOICE_IDS
 
         // Heuristic alone is used when neither a persisted override nor the preferred pack is installed
         assertEquals(
-            "en-us-x-iob-local",
+            "voice-heuristic-local",
             CombatNarrator.resolvePreferredVoiceName(
-                DialogueSpeaker.CEDRIC.id, "en-us-x-iob-local",
-                setOf("en-us-x-iob-local", "en-gb-x-rjs-local"), emptyMap(), preferredDefault
+                speakerId, "voice-heuristic-local",
+                setOf("voice-heuristic-local"), emptyMap(), preferred
             )
         )
 
         // First-try preferred pack overrides the heuristic when its voice model is installed
         assertEquals(
-            "en-gb-x-gbd-local",
+            "voice-preferred-local",
             CombatNarrator.resolvePreferredVoiceName(
-                DialogueSpeaker.CEDRIC.id, "en-us-x-iob-local", installed, emptyMap(), preferredDefault
+                speakerId, "voice-heuristic-local", installed, emptyMap(), preferred
             )
         )
 
         // Persisted player override wins over both when its voice is still installed
         assertEquals(
-            "en-us-x-iob-local",
+            "voice-persisted-local",
             CombatNarrator.resolvePreferredVoiceName(
-                DialogueSpeaker.CEDRIC.id, "en-us-x-iob-local", installed,
-                mapOf(DialogueSpeaker.CEDRIC.id to "en-us-x-iob-local"), preferredDefault
+                speakerId, "voice-heuristic-local", installed,
+                mapOf(speakerId to "voice-persisted-local"), preferred
             )
         )
 
         // Persisted override to a no-longer-installed voice falls back to the preferred pack
         assertEquals(
-            "en-gb-x-gbd-local",
+            "voice-preferred-local",
             CombatNarrator.resolvePreferredVoiceName(
-                DialogueSpeaker.CEDRIC.id, "en-us-x-iob-local", installed,
-                mapOf(DialogueSpeaker.CEDRIC.id to "en-us-x-gone-local"), preferredDefault
+                speakerId, "voice-heuristic-local", installed,
+                mapOf(speakerId to "voice-gone-local"), preferred
             )
         )
     }
@@ -175,11 +214,11 @@ class NarrationAndOptionsTest {
         // Headless JVM has no TTS engine: assignments are held in reserve for onInit/refresh,
         // and the snapped assignments map is empty because no real voice models exist.
         val assignments = mapOf(
-            DialogueSpeaker.CEDRIC.id to "en-gb-x-gbd-local",
-            DialogueSpeaker.AETHEL.id to "en-gb-x-gba-local",
-            DialogueSpeaker.LYRA.id to "en-us-x-tpf-local",
-            DialogueSpeaker.ZEPHYR.id to "en-us-x-tpc-local",
-            DialogueSpeaker.MALAKOR.id to "en-us-x-tpd-local",
+            alphaFixture.id to "en-gb-x-gbd-local",
+            betaFixture.id to "en-gb-x-gba-local",
+            gammaFixture.id to "en-us-x-tpf-local",
+            deltaFixture.id to "en-us-x-tpc-local",
+            epsilonFixture.id to "en-us-x-tpd-local",
             DialogueSpeaker.NARRATOR.id to "en-gb-x-rjs-local"
         )
         narrator.setVoiceAssignments(assignments)
@@ -203,7 +242,7 @@ class NarrationAndOptionsTest {
         val testChoices = listOf(
             DialogueChoice("1", "Look outside", emptyList(), "next_node")
         )
-        narrator.narrateDialogue(DialogueSpeaker.CEDRIC, "Halt!", testChoices) {
+        narrator.narrateDialogue(alphaFixture, "Halt!", testChoices) {
             completed = true
         }
 
@@ -248,10 +287,9 @@ class NarrationAndOptionsTest {
         assertTrue(closeCalled)
     }
 
-
     @Test
     fun testNarrationSettingsPersistenceRoundTrip() {
-        val custom = PlayerCustomization(name = "Lyra")
+        val custom = PlayerCustomization(name = "Rowan")
         val initialSave = saveManager.createInitialSave(custom)
 
         val updatedSave = initialSave.copy(
@@ -298,7 +336,7 @@ class NarrationAndOptionsTest {
     fun testCombatNarratorDialoguePreservesVoiceAndUtteranceTracking() {
         var callbackFired = false
         narrator.narrateDialogue(
-            speaker = DialogueSpeaker.CEDRIC,
+            speaker = alphaFixture,
             text = "By the holy light, we stand firm!",
             choices = emptyList()
         ) {
@@ -324,9 +362,9 @@ class NarrationAndOptionsTest {
         assertEquals(0, narrator.installedVoiceCount.value)
 
         // Verify speaker mapping returns null safely without throwing
-        assertEquals(null, narrator.getVoiceForSpeaker(DialogueSpeaker.ZEPHYR))
-        assertEquals(null, narrator.getVoiceForSpeaker(DialogueSpeaker.MALAKOR))
-        assertEquals(null, narrator.getVoiceForSpeaker(DialogueSpeaker.LYRA))
+        assertEquals(null, narrator.getVoiceForSpeaker(deltaFixture))
+        assertEquals(null, narrator.getVoiceForSpeaker(epsilonFixture))
+        assertEquals(null, narrator.getVoiceForSpeaker(gammaFixture))
 
         // Verify fresh story state begins at TITLE
         val freshVm = StoryViewModel(
@@ -337,7 +375,7 @@ class NarrationAndOptionsTest {
         )
         assertEquals(GameScreen.TITLE, freshVm.state.value.gameScreen)
 
-        // Starting new game flow routes to CHARACTER_CREATION
+        // Starting new game flow routes to CHARACTER_CREATION directly
         freshVm.startNewGameFlow()
         assertEquals(GameScreen.CHARACTER_CREATION, freshVm.state.value.gameScreen)
 

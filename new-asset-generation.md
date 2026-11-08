@@ -77,67 +77,67 @@ Each prompt below is a single, self-contained paragraph with all style, lighting
 16-bit retro JRPG character dialogue portrait of Nancy Palooza, a cunning legislative matriarch and wall street oracle caricature inspired by Nancy Pelosi. Stylized 90s SNES RPG visual novel aesthetic with sharp pixel art dithering and vibrant financial-district tones. Close-up chest-up bust portrait facing forward with wide, intense, calculating eyes and an unmistakable triumphant smirk. She features voluminous dark brunette bouffant hair, wearing a sharp, vibrant hot-pink blazer over an orange blouse, adorned with a massive multi-strand amber and coral bead necklace. In one hand she holds a heavy wooden Speaker's gavel wrapped in green stock ticker tape, and in the other a pint of gourmet Jeni's chocolate ice cream. Crisp cool white spotlighting accented with glowing neon-green stock market upward graph lines dancing in the rim lighting, set against a deep emerald and dark jade textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 15. Low-Energy Jeb (Jeb Bush)
+### 15. Low-Energy Jeb (Jeb Bush) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Low-Energy Jeb, a melancholy establishment dynast caricature inspired by Jeb Bush. Stylized 90s SNES RPG visual novel aesthetic with muted pixel art dithering and drab pastel tones. Close-up chest-up bust portrait facing forward with drooping, sorrowful hound-dog eyes and a faint, pleading smile. He features thinning combed grayish-brown hair, large wire-rimmed glasses, wearing a slightly ill-fitting beige button-up dress shirt without a tie, with a small yellow lapel sticker reading 'Please Clap'. In his hands he holds up a small volcanic-stone molcajete bowl filled with bright green guacamole and a single corn tortilla chip. Muted fluorescent debate-stage lighting with pale blue desaturated shadows, set against a dark washed-out gray and faded navy textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 16. Spicy Sean (Sean Spicer)
+### 16. Spicy Sean (Sean Spicer) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Spicy Sean, a frazzled, aggressive press briefer caricature inspired by Sean Spicer. Stylized 90s SNES RPG visual novel aesthetic with chaotic pixel art dithering and press room lighting. Close-up chest-up bust portrait facing forward with a frantic, red-faced, shouting expression, wide defensive eyes, and clenched teeth chewing violently on an enormous wad of red cinnamon bubblegum. He wears an oversized, boxy charcoal-gray suit with lapels that bunch up awkwardly, a crooked blue tie, and dark green leafy hedge branches and twigs humorously protruding out from his suit collar and hair, referencing 'among the bushes'. Harsh, glaring white press briefing flashbulb lighting with sharp dark green shadow accents, set against a deep dark olive-green and navy textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid saturated colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 17. The 11-Day Mooch (Anthony Scaramucci)
+### 17. The 11-Day Mooch (Anthony Scaramucci) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of The 11-Day Mooch, an ultra-caffeinated Wall Street fireball caricature inspired by Anthony Scaramucci. Stylized 90s SNES RPG visual novel aesthetic with hyper-kinetic pixel art dithering and flashy high-finance colors. Close-up chest-up bust portrait facing slightly right with an explosive, manic, wide-mouthed grin, slicked-back jet-black hair with mirror shine, and sharp Roman facial features. He wears an ultra-tailored, pinstriped navy-blue Italian designer suit with wide peaked lapels, a gleaming gold tie bar on an electric-blue silk tie, and oversized aviator shades pushed up into his hairline. Golden lightning bolts and swirling speed lines wrap around his shoulders representing his historic 11-day tenure. Glamorous neon magenta and golden-yellow rim lighting, set against a deep midnight-purple and gold textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 18. Rudy Ghoul (Rudy Giuliani)
+### 18. Rudy Ghoul (Rudy Giuliani) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Rudy Ghoul, an eccentric courtroom necromancer caricature inspired by Rudy Giuliani. Stylized 90s SNES RPG visual novel aesthetic with gothic parody pixel art dithering and eerie purple-tinted highlights. Close-up chest-up bust portrait facing forward with wide animated bulging eyes, an open-mouthed fiery legal rant expression, and two prominent, comical dark brown streaks of melting hair dye trickling down both of his sweaty cheeks from his silver temples. He wears an old-school double-breasted navy pin-striped suit, gold signet ring on his finger as he gestures wildly, with a pocket square featuring a miniature yellow Four Seasons Total Landscaping lawn mower logo. Harsh industrial yellow sodium parking lot lighting from above paired with ghostly violet underlighting, set against a dark industrial garage and brick textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 19. Billy Access-Bus (Billy Bush)
+### 19. Billy Access-Bus (Billy Bush) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Billy Access-Bus, an early-2000s Hollywood entertainment host caricature inspired by Billy Bush. Stylized 90s SNES RPG visual novel aesthetic with glossy pixel art dithering and warm California entertainment-news tones. Close-up chest-up bust portrait facing slightly left with a cheesy, breathless, sycophantic giggling grin and squinting eyes. He features a frosted-tips spiky 2005 hairstyle, wearing an unbuttoned casual black leather jacket over an olive-green vintage t-shirt, with a silver boom microphone headset wrapped around his ear and an Access Hollywood VIP backstage lanyard hanging from his neck. Warm tungsten dressing-room vanities lighting with golden-orange rim highlights, set against a dark magenta and warm amber textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 20. Director Jim-Tall (James Comey)
+### 20. Director Jim-Tall (James Comey) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Director Jim-Tall, a towering, sanctimonious law-enforcement chameleon caricature inspired by James Comey. Stylized 90s SNES RPG visual novel aesthetic with cool bureaucratic pixel art dithering and somber blue tones. Close-up chest-up bust portrait depicting a visibly tall man with an elongated, solemn, pensive face, drooping eyelids, and a deeply conflicted frown. He features graying dark hair combed flat, wearing a rigid charcoal FBI suit with a crisp white shirt and dark blue conservative tie. Behind his shoulders, heavy royal blue velvet White House curtains drape awkwardly around him as if he is attempting to camouflage himself into the drapery. Sterile fluorescent federal office lighting with cold cyan edge highlights, set against a dark federal-blue and slate textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 21. Zach Two-Ferns (Zach Galifianakis)
+### 21. Zach Two-Ferns (Zach Galifianakis) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Zach Two-Ferns, a deadpan, unenthusiastic talk-show host caricature inspired by Zach Galifianakis. Stylized 90s SNES RPG visual novel aesthetic with flat public-access television pixel art dithering and earthy green tones. Close-up chest-up bust portrait facing directly forward with an utterly blank, lifeless, unblinking stare and heavy bearded jaw. He features a thick bushy brown beard and shaggy uncombed hair, wearing an ill-fitting brown corduroy blazer over a faded blue polo shirt, clutching a stack of handwritten 3x5 index cards. A wilted green Boston fern leaf humorously pokes into the side of the frame right against his cheek. Flat, unforgiving public-access television lighting with zero glamor, set against a pitch-black studio void background with two drooping green ferns. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 22. Zohran Cardamom (Zohran Mamdani)
+### 22. Zohran Cardamom (Zohran Mamdani) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Zohran Cardamom, a charismatic, hip hop progressive organizer caricature inspired by Zohran Mamdani. Stylized 90s SNES RPG visual novel aesthetic with lively Queens street art pixel dithering and warm South Asian culinary colors. Close-up chest-up bust portrait facing slightly right with a warm, energetic, welcoming smile and expressive brown eyes. He features dark wavy hair, a trim stylish beard, wearing a casual denim work jacket over a red hoodie, with an MTA yellow MetroCard stuck playfully in his jacket breast pocket. In his left hand he deftly balances a sizzling hot, golden-brown rolled chapati flatbread wrapped in foil, releasing small fragrant steam puffs. Warm neon orange bodega street lighting from the left and vibrant teal rim lighting from the right, set against a dark subway tile and transit-map textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 23. Mayor Swagger (Eric Adams)
+### 23. Mayor Swagger (Eric Adams) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Mayor Swagger, a flamboyant, high-energy metropolitan mayor caricature inspired by Eric Adams. Stylized 90s SNES RPG visual novel aesthetic with ultra-glossy nightclub pixel art dithering and vibrant metropolitan tones. Close-up chest-up bust portrait facing forward with an irrepressible, wide, toothy grin and intense charismatic eyes. He features a shaved bald head with high shine, wearing a sharply tailored royal-blue executive suit with a white shirt, power tie, and a glowing gold lapel pin of the NYC skyline. He holds a VIP gold card in one hand while a pair of Turkish Airlines boarding passes peek out from his pocket. Dazzling neon pink, cyan, and gold nightclub strobe lighting reflecting off his features, set against a dark Manhattan penthouse skyline and velvet rope textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 24. Kayleigh Binder-Tabs (Kayleigh McEnany)
+### 24. Kayleigh Binder-Tabs (Kayleigh McEnany) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Kayleigh Binder-Tabs, an ultra-prepared, formidable press briefer caricature inspired by Kayleigh McEnany. Stylized 90s SNES RPG visual novel aesthetic with radiant pixel art dithering and patriotic White House press room colors. Close-up chest-up bust portrait facing forward with a dazzling, polite, yet lethally confident smile and sharp, focused blue eyes. She features long, flowing golden-blonde hair styled in television waves, wearing a tailored sky-blue sheath dress with a delicate silver cross pendant necklace. In her hands, she displays an enormous, heavy white press binder filled with dozens of brightly colored neon sticky tabs (pink, green, yellow, orange) radiating magical citation receipt runes. Crisp 4K television studio key lighting with soft golden halo rim light, set against a dark White House blue briefing podium textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid saturated colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 25. Karoline Mic-Drop (Karoline Leavitt)
+### 25. Karoline Mic-Drop (Karoline Leavitt) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Karoline Mic-Drop, a fiery, razor-sharp youthful press secretary caricature inspired by Karoline Leavitt. Stylized 90s SNES RPG visual novel aesthetic with high-energy pixel art dithering and dynamic primary colors. Close-up chest-up bust portrait facing forward with an assertive, unyielding, fearless grin and piercing brown eyes. She features sleek brunette hair pulled into a neat, modern professional style, wearing an electric-red tailored power suit jacket over an ivory silk blouse. In her right hand, she holds an old-school Shure dynamic press microphone tilted downward as if mid-drop, with spark particles crackling off the steel mesh head. Crisp modern press briefing spotlighting with sharp gold and crimson rim lights, set against a dark presidential seal and navy-blue textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 26. Jen Circle-Back (Jen Psaki)
+### 26. Jen Circle-Back (Jen Psaki) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Jen Circle-Back, a calm, maternal, bureaucratic deflection master caricature inspired by Jen Psaki. Stylized 90s SNES RPG visual novel aesthetic with smooth pixel art dithering and soothing pastel briefing colors. Close-up chest-up bust portrait facing slightly left with a polite, patient, slightly patronizing half-smile and watchful green eyes. She features vibrant copper-red bob hair with neat bangs, wearing an elegant emerald-green or pastel-coral business dress, holding a slim leather notebook with a ballpoint pen poised. A glowing ethereal clock arrow loops gracefully around her shoulder forming a literal circular 'circle-back' glyph. Soft television studio lighting with warm peach and mint-green rim highlights, set against a dark muted teal and White House briefing blue textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 27. Karine Hatch-Act (Karine Jean-Pierre)
+### 27. Karine Hatch-Act (Karine Jean-Pierre) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Karine Hatch-Act, an earnest, historical press secretary caricature inspired by Karine Jean-Pierre. Stylized 90s SNES RPG visual novel aesthetic with rich pixel art dithering and warm vibrant colors. Close-up chest-up bust portrait facing forward with a wide, bright, earnest smile, expressive dark eyes, and distinctive tightly curled voluminous dark afro-textured hair. She wears a striking royal-purple or bright-fuchsia blazer over a white top, pearl earrings, and holds open an oversized black leather press briefing binder, looking down with one finger pointed at a highlighted passage while saying 'I will refer you to the campaign'. Crisp broadcast studio lighting with magenta and soft gold rim glows, set against a dark navy-blue press briefing room textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```

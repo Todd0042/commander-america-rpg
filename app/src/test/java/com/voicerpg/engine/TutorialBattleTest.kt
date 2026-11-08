@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -24,6 +25,9 @@ class TutorialBattleTest {
     private lateinit var dummyNarrator: CombatNarrator
     private val testScope = CoroutineScope(Dispatchers.Default)
 
+    private val heroId: String
+        get() = TutorialBattleContent.CHARACTERS.first().id
+
     @Before
     fun setUp() {
         dummySpeech = SpeechManager()
@@ -35,6 +39,43 @@ class TutorialBattleTest {
         )
     }
 
+    /** Run [trigger], then wait until the state advances out of the pre-trigger snapshot,
+     *  the animation/listening settles, and a modal is showing again. */
+    private suspend fun TutorialBattleViewModel.waitForChangeAndIdle(trigger: (TutorialBattleViewModel) -> Unit) {
+        val before = state.value
+        trigger(this)
+        var waited = 0
+        while (waited < 8000) {
+            val s = state.value
+            if (s !== before && !s.isAnimating && !s.isListening && s.isModalVisible) return
+            delay(20)
+            waited += 20
+        }
+    }
+
+    private suspend fun TutorialBattleViewModel.waitForChangeAndIdle() {
+        waitForChangeAndIdle { it.advanceModal() }
+    }
+
+    /** Advance one modal after its animation (if any) settles. Practice casts are cast hands-free. */
+    private suspend fun TutorialBattleViewModel.advanceAndSettle() {
+        val cur = state.value.currentStep
+        if (cur is TutorialBattleStep.PracticeCast && state.value.modalType != ModalCardType.CAST_RESULT) {
+            waitForChangeAndIdle { vm -> vm.castSpell(cur.spellName) }
+            return
+        }
+        waitForChangeAndIdle()
+    }
+
+    private suspend fun TutorialBattleViewModel.fastForwardUntil(predicate: (TutorialBattleStep) -> Boolean) {
+        while (!predicate(state.value.currentStep)) {
+            advanceAndSettle()
+        }
+    }
+
+    private fun TutorialBattleStep.practiceSpellName(): String =
+        (this as TutorialBattleStep.PracticeCast).spellName
+
     @Test
     fun testInitialTutorialState() {
         val state = viewModel.state.value
@@ -42,17 +83,17 @@ class TutorialBattleTest {
         assertTrue(state.isModalVisible)
         assertEquals(ModalCardType.NARRATOR_INTRO, state.modalType)
         assertEquals(1, state.party.size)
-        assertEquals("commander", state.party[0].id)
-        assertEquals("Commander America", state.party[0].name)
+        assertEquals(heroId, state.party[0].id)
         assertEquals(3, state.enemies.size)
-        assertEquals("cable_pundit", state.enemies[0].id)
-        assertEquals("teleprompter_dummy", state.enemies[1].id)
-        assertEquals("swamp_bureaucrat", state.enemies[2].id)
-        assertEquals("cable_pundit", state.targetedEnemyId)
+        assertEquals("dummy_alpha", state.enemies[0].id)
+        assertEquals("dummy_beta", state.enemies[1].id)
+        assertEquals("dummy_gamma", state.enemies[2].id)
+        assertEquals("dummy_alpha", state.targetedEnemyId)
+        assertEquals(heroId, state.activePartyMemberId)
     }
 
     @Test
-    fun testStepProgressionAndFellowshipJoin() {
+    fun testStepProgressionAndHeroJoin() {
         // Step 0: Intro 1
         assertEquals(0, viewModel.state.value.stepIndex)
         viewModel.advanceModal()
@@ -61,72 +102,75 @@ class TutorialBattleTest {
         assertEquals(1, viewModel.state.value.stepIndex)
         viewModel.advanceModal()
 
-        // Step 2: Commander America Join
+        // Step 2: Hero Join
         assertEquals(2, viewModel.state.value.stepIndex)
         assertEquals(ModalCardType.CHARACTER_JOIN, viewModel.state.value.modalType)
         assertEquals(1, viewModel.state.value.party.size)
-        assertEquals("commander", viewModel.state.value.party[0].id)
         viewModel.advanceModal()
 
-        // Step 3: Commander America Spell Overview
+        // Step 3: Hero Spell Overview
         assertEquals(3, viewModel.state.value.stepIndex)
         assertEquals(ModalCardType.SPELL_OVERVIEW, viewModel.state.value.modalType)
         viewModel.advanceModal()
 
-        // Step 4: Practice Tremendous Strike
+        // Step 4: First Practice Cast
         assertEquals(4, viewModel.state.value.stepIndex)
         assertEquals(ModalCardType.PRACTICE_CAST_PROMPT, viewModel.state.value.modalType)
+        assertTrue(viewModel.state.value.currentStep is TutorialBattleStep.PracticeCast)
     }
 
     @Test
     fun testPracticeCastExecutionAndDamage() = runBlocking {
-        // Fast-forward to step 4 (Practice Cast Tremendous Strike)
-        while (viewModel.state.value.stepIndex < 4) {
-            viewModel.advanceModal()
-        }
+        // Fast-forward to the first Practice Cast
+        viewModel.fastForwardUntil { it is TutorialBattleStep.PracticeCast }
 
-        val initialPunditHp = viewModel.state.value.enemies.first { it.id == "cable_pundit" }.currentHp
+        val initialDummyHp = viewModel.state.value.enemies.first { it.id == "dummy_alpha" }.currentHp
+        val initialHeroMp = viewModel.state.value.party.first { it.id == heroId }.currentMp
+        val spellName = viewModel.state.value.currentStep.practiceSpellName()
+        val mpCost = TutorialBattleContent.getCharacter(heroId)!!.spells
+            .first { it.name.equals(spellName, ignoreCase = true) }.mpCost
 
-        viewModel.castSpell("Tremendous Strike")
-
-        // Wait for animation & resolution
-        delay(1800)
+        viewModel.waitForChangeAndIdle { it.castSpell(spellName) }
 
         val updatedState = viewModel.state.value
-        val damagedPundit = updatedState.enemies.first { it.id == "cable_pundit" }
+        val damagedDummy = updatedState.enemies.first { it.id == "dummy_alpha" }
+        val updatedHero = updatedState.party.first { it.id == heroId }
 
-        assertTrue("Cable Pundit HP should be reduced", damagedPundit.currentHp < initialPunditHp)
+        assertTrue("Dummy HP should be reduced", damagedDummy.currentHp < initialDummyHp)
+        assertEquals(initialHeroMp - mpCost, updatedHero.currentMp)
         assertEquals(ModalCardType.CAST_RESULT, updatedState.modalType)
         assertTrue(updatedState.isModalVisible)
         assertNotNull(updatedState.lastCastRecord)
     }
 
     @Test
+    fun testAutoActionBreathRestoresMana() = runBlocking {
+        viewModel.fastForwardUntil { it is TutorialBattleStep.AutoAction }
+
+        assertTrue(viewModel.state.value.currentStep is TutorialBattleStep.AutoAction)
+
+        // Execute auto action
+        viewModel.waitForChangeAndIdle()
+
+        val state = viewModel.state.value
+        assertEquals(ModalCardType.ACTION_RESULT, state.modalType)
+        val hero = state.party.first { it.id == heroId }
+        assertEquals(hero.maxMp, hero.currentMp)
+    }
+
+    @Test
     fun testResonanceComparisonDemo() = runBlocking {
-        // Navigate to Resonance Demo Step 1 (Simple Tremendous Strike at step 11)
-        while (viewModel.state.value.stepIndex < 11) {
-            val curStep = viewModel.state.value.currentStep
-            if (curStep is TutorialBattleStep.PracticeCast) {
-                viewModel.castSpell(curStep.spellName)
-                delay(1700)
-                viewModel.advanceModal()
-            } else if (curStep is TutorialBattleStep.AutoAction) {
-                viewModel.advanceModal()
-                delay(1200)
-                viewModel.advanceModal()
-            } else {
-                viewModel.advanceModal()
-            }
+        // Navigate to Resonance Demo Step 1 (simple cast)
+        viewModel.fastForwardUntil {
+            it is TutorialBattleStep.PracticeCast && it.isResonanceDemo && it.resonanceDemoIndex == 0
         }
 
-        assertEquals(11, viewModel.state.value.stepIndex)
-        val step11 = viewModel.state.value.currentStep as TutorialBattleStep.PracticeCast
-        assertTrue(step11.isResonanceDemo)
-        assertEquals(0, step11.resonanceDemoIndex)
+        val step0 = viewModel.state.value.currentStep as TutorialBattleStep.PracticeCast
+        assertTrue(step0.isResonanceDemo)
+        assertEquals(0, step0.resonanceDemoIndex)
 
-        // Cast simple Tremendous Strike
-        viewModel.castSpell("Tremendous Strike")
-        delay(1800)
+        // Cast simple spell name
+        viewModel.waitForChangeAndIdle { it.castSpell(step0.spellName) }
 
         val simpleRecord = viewModel.state.value.lastCastRecord
         assertNotNull(simpleRecord)
@@ -134,21 +178,18 @@ class TutorialBattleTest {
         assertEquals(0, simpleRecord.bonusPercent)
         val simpleDamage = simpleRecord.damage
 
-        // Advance to elaborate cast (step 12)
-        viewModel.advanceModal()
-        assertEquals(12, viewModel.state.value.stepIndex)
-        val step12 = viewModel.state.value.currentStep as TutorialBattleStep.PracticeCast
-        assertTrue(step12.isResonanceDemo)
-        assertEquals(1, step12.resonanceDemoIndex)
+        // Advance to elaborate cast (resonance demo step 2)
+        viewModel.waitForChangeAndIdle()
+        val step1 = viewModel.state.value.currentStep as? TutorialBattleStep.PracticeCast
+        assertTrue(step1 is TutorialBattleStep.PracticeCast && step1.resonanceDemoIndex == 1)
 
-        // Cast elaborate Tremendous Strike
-        viewModel.castSpell("By executive order and tremendous patriotic strength, pulverize this fake news broadcast!")
-        delay(1800)
+        // Cast elaborate chant
+        viewModel.waitForChangeAndIdle { it.castSpell("O primordial flame of creation, incinerate this practice target!") }
 
         val elaborateRecord = viewModel.state.value.lastCastRecord
         assertNotNull(elaborateRecord)
-        assertTrue(elaborateRecord!!.resonanceTier.ordinal >= ResonanceTier.MASTER.ordinal)
-        assertTrue(elaborateRecord.bonusPercent >= 60)
+        assertEquals(ResonanceTier.MASTER, elaborateRecord!!.resonanceTier)
+        assertEquals(60, elaborateRecord.bonusPercent)
         val elaborateDamage = elaborateRecord.damage
 
         assertTrue(
@@ -158,66 +199,29 @@ class TutorialBattleTest {
     }
 
     @Test
-    fun testAutoActionBreathRestoresMana() = runBlocking {
-        // Fast-forward to step 6 (Commander Tired of Winning AutoAction)
-        while (viewModel.state.value.stepIndex < 6) {
-            val cur = viewModel.state.value.currentStep
-            if (cur is TutorialBattleStep.PracticeCast) {
-                viewModel.castSpell(cur.spellName)
-                delay(1700)
-                viewModel.advanceModal()
-            } else {
-                viewModel.advanceModal()
-            }
-        }
-
-        assertEquals(6, viewModel.state.value.stepIndex)
-        assertTrue(viewModel.state.value.currentStep is TutorialBattleStep.AutoAction)
-
-        // Execute auto action
-        viewModel.advanceModal()
-        delay(1300)
-
-        val state = viewModel.state.value
-        assertEquals(ModalCardType.ACTION_RESULT, state.modalType)
-        val commander = state.party.first { it.id == "commander" }
-        assertEquals(commander.maxMp, commander.currentMp)
-    }
-
-    @Test
     fun testEnemyCounterAttackDemo() = runBlocking {
-        // Fast-forward to step 14 (EnemyAttackDemo)
-        while (viewModel.state.value.stepIndex < 14) {
-            val cur = viewModel.state.value.currentStep
-            if (cur is TutorialBattleStep.PracticeCast) {
-                viewModel.castSpell(cur.spellName)
-                delay(1700)
-                viewModel.advanceModal()
-            } else if (cur is TutorialBattleStep.AutoAction) {
-                viewModel.advanceModal()
-                delay(1200)
-                viewModel.advanceModal()
-            } else {
-                viewModel.advanceModal()
-            }
-        }
+        // Fast-forward to the EnemyAttackDemo step (generated by buildSteps, found dynamically)
+        viewModel.fastForwardUntil { it is TutorialBattleStep.EnemyAttackDemo }
 
-        assertEquals(14, viewModel.state.value.stepIndex)
-        assertTrue(viewModel.state.value.currentStep is TutorialBattleStep.EnemyAttackDemo)
+        val initialTargetHp = viewModel.state.value.party.first().currentHp
+        assertEquals(ModalCardType.ENEMY_ATTACK_INTRO, viewModel.state.value.modalType)
 
-        viewModel.advanceModal()
-        delay(2200)
+        // Execute the demo (advance from intro, let the animation play out)
+        viewModel.advanceAndSettle()
 
         val state = viewModel.state.value
         assertEquals(ModalCardType.ENEMY_ATTACK_RESULT, state.modalType)
-        val targetHero = state.party.firstOrNull { it.id == "marco" } ?: state.party.first()
-        assertTrue("Hero should have taken counterattack damage", targetHero.currentHp < targetHero.maxHp)
+        val targetHero = state.party.first { it.id == heroId }
+        assertTrue(
+            "Hero should have taken counterattack damage",
+            targetHero.currentHp < initialTargetHp
+        )
     }
 
     @Test
     fun testFullResetTutorial() {
-        // Advance a few steps
-        for (i in 0 until 5) {
+        // Advance a few steps through the modal sequence
+        for (i in 0 until 10) {
             viewModel.advanceModal()
         }
         assertTrue(viewModel.state.value.stepIndex > 0)
@@ -227,7 +231,7 @@ class TutorialBattleTest {
         val resetState = viewModel.state.value
         assertEquals(0, resetState.stepIndex)
         assertEquals(1, resetState.party.size)
-        assertEquals("commander", resetState.party[0].id)
+        assertEquals(heroId, resetState.party[0].id)
         assertEquals(3, resetState.enemies.size)
         assertEquals(ModalCardType.NARRATOR_INTRO, resetState.modalType)
     }

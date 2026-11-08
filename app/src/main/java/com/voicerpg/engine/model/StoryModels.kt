@@ -77,7 +77,7 @@ data class DialogueSpeaker(
             id = "narrator_psaki",
             name = "Jen Circle-Back",
             title = "High Priestess of Circling Back",
-            portraitAsset = "portraits/template/narrator_psaki_template.jpg",
+            portraitAsset = "portraits/narrator_psaki.jpg",
             themeColor = Color(0xFF4FC3F7),
             ttsPitch = 1.05f
         )
@@ -86,7 +86,7 @@ data class DialogueSpeaker(
             id = "narrator_kjp",
             name = "Karine Hatch-Act",
             title = "Historic Binder Guard",
-            portraitAsset = "portraits/template/narrator_kjp_template.jpg",
+            portraitAsset = "portraits/narrator_kjp.jpg",
             themeColor = Color(0xFFCE93D8),
             ttsPitch = 1.10f
         )
@@ -250,7 +250,7 @@ data class DialogueSpeaker(
             id = "establishment_rival",
             name = "Low-Energy Jeb!",
             title = "$130M Guacamole Bowl Peddler",
-            portraitAsset = "portraits/media_anchor.jpg",
+            portraitAsset = "portraits/jeb.jpg",
             themeColor = Color(0xFF5C6BC0),
             ttsPitch = 0.85f
         )
@@ -323,7 +323,7 @@ data class DialogueSpeaker(
             id = "spicy_sean",
             name = "Spicy Sean",
             title = "Hedge-Hiding Cinnamon Gum Bard",
-            portraitAsset = "portraits/template/spicy_sean_template.jpg",
+            portraitAsset = "portraits/spicy_sean.jpg",
             themeColor = Color(0xFFAED581),
             ttsPitch = 1.14f
         )
@@ -332,7 +332,7 @@ data class DialogueSpeaker(
             id = "zach_ferns",
             name = "Zach Two-Ferns",
             title = "Deadpan Potted-Plant Interrogator",
-            portraitAsset = "portraits/template/zach_ferns_template.jpg",
+            portraitAsset = "portraits/zach_ferns.jpg",
             themeColor = Color(0xFF81C784),
             ttsPitch = 0.88f
         )
@@ -341,7 +341,7 @@ data class DialogueSpeaker(
             id = "billy_bus",
             name = "Billy Access-Bus",
             title = "2005 Hot-Mic Bus Giggler",
-            portraitAsset = "portraits/template/billy_bus_template.jpg",
+            portraitAsset = "portraits/billy_bus.jpg",
             themeColor = Color(0xFFFFB74D),
             ttsPitch = 1.15f
         )
@@ -350,7 +350,7 @@ data class DialogueSpeaker(
             id = "comey_tall",
             name = "Director Jim-Tall",
             title = "6-Foot-8 Blue-Curtain Chameleon",
-            portraitAsset = "portraits/template/comey_template.jpg",
+            portraitAsset = "portraits/comey.jpg",
             themeColor = Color(0xFF90A4AE),
             ttsPitch = 0.82f
         )
@@ -359,7 +359,7 @@ data class DialogueSpeaker(
             id = "rudy_ghoul",
             name = "Rudy Ghoul",
             title = "Four-Seasons Hair-Dye Landscaper",
-            portraitAsset = "portraits/template/rudy_ghoul_template.jpg",
+            portraitAsset = "portraits/rudy_ghoul.jpg",
             themeColor = Color(0xFFBA68C8),
             ttsPitch = 0.76f
         )
@@ -368,7 +368,7 @@ data class DialogueSpeaker(
             id = "zohran_cardamom",
             name = "Zohran Cardamom",
             title = "Fare-Free Chapati Rap Mayor",
-            portraitAsset = "portraits/template/mamdani_template.jpg",
+            portraitAsset = "portraits/mamdani.jpg",
             themeColor = Color(0xFFFF8A65),
             ttsPitch = 1.02f
         )
@@ -377,7 +377,7 @@ data class DialogueSpeaker(
             id = "mayor_swagger",
             name = "Mayor Swagger",
             title = "Istanbul-Upgrade Nightlife Czar",
-            portraitAsset = "portraits/template/mayor_swagger_template.jpg",
+            portraitAsset = "portraits/mayor_swagger.jpg",
             themeColor = Color(0xFF4DD0E1),
             ttsPitch = 0.90f
         )
@@ -386,7 +386,7 @@ data class DialogueSpeaker(
             id = "the_mooch",
             name = "The 11-Day Mooch",
             title = "Front-Stabbing Wall Street Whirlwind",
-            portraitAsset = "portraits/template/mooch_template.jpg",
+            portraitAsset = "portraits/mooch.jpg",
             themeColor = Color(0xFFFF80AB),
             ttsPitch = 1.16f
         )
