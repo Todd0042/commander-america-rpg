@@ -142,7 +142,7 @@ Each prompt below is a single, self-contained paragraph with all style, lighting
 16-bit retro JRPG character dialogue portrait of Karine Hatch-Act, an earnest, historical press secretary caricature inspired by Karine Jean-Pierre. Stylized 90s SNES RPG visual novel aesthetic with rich pixel art dithering and warm vibrant colors. Close-up chest-up bust portrait facing forward with a wide, bright, earnest smile, expressive dark eyes, and distinctive tightly curled voluminous dark afro-textured hair. She wears a striking royal-purple or bright-fuchsia blazer over a white top, pearl earrings, and holds open an oversized black leather press briefing binder, looking down with one finger pointed at a highlighted passage while saying 'I will refer you to the campaign'. Crisp broadcast studio lighting with magenta and soft gold rim glows, set against a dark navy-blue press briefing room textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
 
-### 28. Hulkster 24-Pythons (Hulk Hogan)
+### 28. Hulkster 24-Pythons (Hulk Hogan) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG character dialogue portrait of Hulkster 24-Pythons, a legendary wrestling icon and hype orator caricature inspired by Hulk Hogan. Stylized 90s SNES RPG visual novel aesthetic with explosive, high-testosterone pixel art dithering and electrifying arena colors. Close-up chest-up bust portrait facing forward with a roaring, veins-bulging, open-mouthed rally battle cry. He features an iconic platinum-blonde horseshoe mustache, dark wraparound sunglasses resting on his nose, and a crimson-red bandana reading 'TRUMP-VANCE' tightly tied around his head. With both massive sun-bronzed hands, he violently rips open the front of a black t-shirt down the chest to reveal a bright yellow tank top beneath, with electric sparks flying from the shredded fabric. Dazzling stadium pyrotechnic red, white, and golden-yellow arena lighting, set against a dark cheering stadium crowd and falling red-white-blue confetti textured vignette background. High-resolution pixel art, retro video game UI portrait, clean silhouette, vivid colors, nostalgic 16-bit RPG graphic, masterpiece --ar 1:1
 ```
@@ -151,62 +151,62 @@ Each prompt below is a single, self-contained paragraph with all style, lighting
 
 ## 2. Story Backgrounds & Battle Arenas (16:9 Widescreen)
 
-### 29. Chappaqua Private Email Server Room
+### 29. Chappaqua Private Email Server Room — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of a secretive, suburban bathroom converted into a high-tech private email server facility in Chappaqua, New York. Stylized 90s SNES RPG pixel art aesthetic with intricate dithering and retro computer lab ambiance. In the center sits a humming black server rack tower tangled in colorful Ethernet patch cables, set awkwardly next to an ornate porcelain residential bathtub and gold towel rack. On top of the server rack rests an open bottle of BleachBit digital wiping software, a scattered box of smashed BlackBerry smartphones with tiny hammer marks, and an open box of yellow microfiber cloths. Flickering green and amber server LED status lights cast rhythmic glowing patterns across damp floral wallpaper and marble floor tiles. Dim fluorescent overhead vanity lighting mixed with moody cyber-green server glows, wide establishing shot, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 30. Access Hollywood Studio Lot Bus
+### 30. Access Hollywood Studio Lot Bus — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of the NBC Burbank studio backlot featuring the iconic Access Hollywood tour bus on an October afternoon in 2005. Stylized 90s SNES RPG pixel art aesthetic with nostalgic Southern California palm tree lighting and retro television production details. A large, glossy purple-and-gold wrapped tour bus with 'ACCESS HOLLYWOOD' stenciled in bold retro letters is parked on an asphalt studio lane. The bus door is open with warm yellow interior lights showing plush velvet touring seats and a tiny vintage recording microphone hanging from the ceiling. Outside, palm trees sway against a hazy golden-hour California sunset sky, while studio soundstage buildings with huge painted stage numbers frame the background. Warm nostalgic golden hour lighting with long purple shadows across the asphalt, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 31. Bronx Subway 4-Train Turnstile
+### 31. Bronx Subway 4-Train Turnstile — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of a gritty, subterranean New York City subway mezzanine in the Bronx along the 4-Train line during the 2016 primary campaign. Stylized 90s SNES RPG pixel art aesthetic with authentic urban transit details, worn white subway tiles, and mosaic mosaic station signage reading '161 ST - YANKEE STADIUM'. In the center stands a bank of heavy metal rotating subway turnstiles with flashing red 'SWIPE AGAIN' LED digital indicators. Discarded yellow MetroCards litter the concrete floor near a wooden transit token booth with scratched plexiglass. Flickering industrial fluorescent tube lighting casting greenish-yellow reflections on damp tile walls, with dark iron support pillars and shadowed stairwells descending to the train platform. Retro 16-bit pixel art environmental scenery, nostalgic JRPG urban stage backdrop, masterpiece --ar 16:9
 ```
 
-### 32. Power 105.1 Breakfast Club Radio Studio
+### 32. Power 105.1 Breakfast Club Radio Studio — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of a high-energy urban radio broadcast studio inspired by Power 105.1 The Breakfast Club. Stylized 90s SNES RPG pixel art aesthetic with acoustic soundproof foam wall tiles and vibrant broadcast studio equipment. In the center is a curved wooden radio desk equipped with four heavy silver Shure SM7B broadcast boom microphones with red wind foam covers, studio monitoring headphones, and an audio mixing console with glowing digital VU meters. Resting prominently in the middle of the desk is a comically oversized, open designer leather handbag with a bottle of bright red Tabasco hot sauce sticking out proudly, emitting playful red pepper heat sparkles. Neon magenta, cyan, and deep purple ambient LED wall accent lighting casting reflections on polished wood floors, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 33. Javits Center Glass Ceiling (Election Night 2016)
+### 33. Javits Center Glass Ceiling (Election Night 2016) — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of the cavernous Javits Convention Center main hall in Manhattan on the melancholic early morning of November 9, 2016. Stylized 90s SNES RPG pixel art aesthetic with grand architectural scale and dramatic somber lighting. High above spans the colossal, unbroken geometric glass-and-steel atrium ceiling completely intact without a single crack. Below sits an enormous, unlit victory stage with an empty presidential teleprompter podium, surrounded by thousands of empty folding chairs draped in abandoned blue campaign signs. The floor is strewn with un-popped confetti canons and deflated red-white-and-blue balloons. Cold pre-dawn steel-blue moonlight pours through the massive glass ceiling, mixing with dim emergency exit signs and blue stage wash lights, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 34. Between Two Ferns Public-Access Studio
+### 34. Between Two Ferns Public-Access Studio — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of the intentionally low-budget, minimalist Between Two Ferns interview set. Stylized 90s SNES RPG pixel art aesthetic with deadpan comedy staging. In the center sit two simple, mismatched black vinyl office chairs facing each other across a small cheap wooden side table holding two plain white coffee mugs and a stack of index cards. Flanking the two chairs on left and right are two large, drooping, slightly wilted potted Boston ferns in cheap plastic brown planters. The background is a pitch-black studio void with zero decoration. Harsh, flat, unflattering single-source television spotlighting from above, casting harsh dark shadows beneath the chairs, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, clean composition, masterpiece --ar 16:9
 ```
 
-### 35. Trump Tower Cinco de Mayo Office
+### 35. Trump Tower Cinco de Mayo Office — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of Commander America's lavish, gold-gilded executive corner office high inside Trump Tower on Cinco de Mayo. Stylized 90s SNES RPG pixel art aesthetic with extravagant luxury textures and panoramic city views. In the center rests a massive mahogany desk cluttered with magazines, sports trophies, and a huge fried crispy tortilla taco bowl overflowing with seasoned beef, sour cream, and salsa. Behind the desk, floor-to-ceiling glass windows look out over the glittering Central Park skyline under bright spring sunshine. The office walls are adorned with framed magazine covers, gold-plated plaques, and plush leather chairs. Warm golden sunlight floods the room, glinting off brass trim and polished wood surfaces, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 36. White House North Lawn Holly Bushes at Dusk
+### 36. White House North Lawn Holly Bushes at Dusk — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of the White House North Lawn at dusk, featuring a dense thicket of tall evergreen holly bushes outside the West Wing. Stylized 90s SNES RPG pixel art aesthetic with atmospheric twilight lighting and espionage parody elements. In the foreground, manicured dark-green leafy bushes and hedges cast deep shadows, with several snapped twigs and a dropped red necktie hidden among the leaves. In the background, the illuminated neoclassical facade of the White House glows under a deep twilight indigo sky. Several intense white flashlight beams from reporters and cameramen slice through the dark foliage, hunting for press secretaries hiding in the hedges. Deep navy-blue and charcoal twilight palette contrasted with piercing white flashlight beams, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 37. Oval Office Sharpie Hurricane Dorian Briefing
+### 37. Oval Office Sharpie Hurricane Dorian Briefing — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background inside the Oval Office featuring a large NOAA hurricane weather forecast poster on a wooden presentation easel. Stylized 90s SNES RPG pixel art aesthetic with regal presidential decor. On the easel, an official meteorological map of Florida and the Atlantic Ocean shows a white projected storm cone path, with an obvious, comically drawn extra black Sharpie marker loop crudely extending the hurricane cone over the state of Alabama. The Resolute Desk sits in the background flanked by the American and Presidential flags, with golden curtains framing the arched windows. Warm presidential chandelier lighting illuminating the weather chart with bold black marker line contrast, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 38. Nancy's Gourmet Sub-Zero Freezer Kitchen
+### 38. Nancy's Gourmet Sub-Zero Freezer Kitchen — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of a luxurious gourmet kitchen in Pacific Heights, San Francisco. Stylized 90s SNES RPG pixel art aesthetic with sleek modern culinary luxury. In the center stand twin towering, commercial-grade $24,000 Sub-Zero stainless steel refrigerator freezers with clear glass door panels. Inside the illuminated freezer shelves are dozens of colorful pints of gourmet Jeni's Splendid Ice Creams neatly stacked in rows. Marble waterfall kitchen islands with polished chrome faucets, white quartz countertops, and hanging designer brass pendant lights frame the room. Pristine cool white and ice-blue reflections gleaming off stainless steel and marble surfaces, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 39. Four Seasons Total Landscaping Parking Lot
+### 39. Four Seasons Total Landscaping Parking Lot — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of the industrial alley parking lot at Four Seasons Total Landscaping in Northeast Philadelphia on a chilly November morning in 2020. Stylized 90s SNES RPG pixel art aesthetic with gritty industrial realism. In the center is a corrugated metal garage door plastered with red-white-and-blue Trump campaign posters. Flanking the small asphalt lot on the left is the yellow awning of 'Fantasy Island Adult Bookstore', and on the right is the brick wall of the 'Delaware Valley Crematory'. A makeshift podium with press microphones is set up on the cracked asphalt beside bags of lawn fertilizer and yellow hoses. Pale autumn morning sunlight casting long shadows across cracked concrete, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
 
-### 40. Wilmington Delaware Basement Bunker Studio
+### 40. Wilmington Delaware Basement Bunker Studio — [COMPLETE ✅]
 ```text
 16-bit retro JRPG environment background of Joe Naptime's quarantine basement campaign broadcast studio in Wilmington, Delaware in 2020. Stylized 90s SNES RPG pixel art aesthetic with sterile broadcast equipment inside a residential basement. In the center sits an empty green leather wingback chair facing a large LED ring light on a tripod and a television prompter screen glowing with scrolling green text. Behind the chair is a dark wood bookcase sparsely decorated with family photos and small American flags, resting on beige basement carpet. Exposed basement ceiling joists and heating ducts are visible above the studio lights. Cool blue LED ring light glare reflecting off dark monitors, contrasted with warm beige interior lamp glow, pixel art background scenery for retro JRPG, nostalgic 16-bit visual novel backdrop, masterpiece --ar 16:9
 ```
