@@ -47,7 +47,7 @@ object IncidentManager {
     fun selectRandomIncident(
         state: StoryState,
         random: Random = Random.Default,
-        availableIncidents: Collection<IncidentDefinition> = emptyList()
+        availableIncidents: Collection<IncidentDefinition> = com.voicerpg.engine.content.GameContent.incidents.values
     ): IncidentDefinition? {
         if (availableIncidents.isEmpty()) return null
 

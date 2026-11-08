@@ -317,6 +317,46 @@ class MainActivity : ComponentActivity() {
                                     } else {
                                         storyViewModel.returnFromAudioSetup()
                                     }
+                                },
+                                onOpenLanguageSelection = {
+                                    storyViewModel.openLanguageSelection(fromOptions = false)
+                                }
+                            )
+                        }
+                        GameScreen.LANGUAGE_SELECTION -> {
+                            com.voicerpg.engine.ui.setup.LanguageSelectionScreen(
+                                currentLanguageCode = storyState.pendingSelectedLanguage,
+                                canCancel = storyState.previousScreen != null,
+                                onLanguageSelected = { langCode ->
+                                    storyViewModel.onLanguageChosen(langCode)
+                                },
+                                onCancel = {
+                                    storyViewModel.cancelLanguageSelection()
+                                }
+                            )
+                        }
+                        GameScreen.DIALECT_SELECTION -> {
+                            com.voicerpg.engine.ui.setup.DialectSelectionScreen(
+                                languageCode = storyState.pendingSelectedLanguage,
+                                initialRegionCode = storyState.pendingSelectedRegion,
+                                combatNarrator = combatNarrator,
+                                onBack = {
+                                    storyViewModel.returnToLanguageSelection()
+                                },
+                                onConfirm = { langCode, regionCode ->
+                                    storyViewModel.onDialectConfirmed(langCode, regionCode)
+                                }
+                            )
+                        }
+                        GameScreen.LANGUAGE_DOWNLOAD_STANDBY -> {
+                            com.voicerpg.engine.ui.setup.LanguageDownloadStandbyScreen(
+                                languageCode = storyState.pendingSelectedLanguage,
+                                regionCode = storyState.pendingSelectedRegion,
+                                onDownloadComplete = { langCode, regionCode ->
+                                    storyViewModel.applyLanguageAndFinish(langCode, regionCode)
+                                },
+                                onChangeLanguage = {
+                                    storyViewModel.returnToLanguageSelection()
                                 }
                             )
                         }
@@ -354,11 +394,6 @@ class MainActivity : ComponentActivity() {
                                     storyViewModel.onCombatVictory()
                                 }
                             )
-                        }
-                        GameScreen.LANGUAGE_SELECTION,
-                        GameScreen.DIALECT_SELECTION,
-                        GameScreen.LANGUAGE_DOWNLOAD_STANDBY -> {
-                            storyViewModel.returnToTitle()
                         }
                     }
 
@@ -473,6 +508,10 @@ class MainActivity : ComponentActivity() {
                             combatViewModel.closeOptions()
                             storyViewModel.openAudioSetup()
                         },
+                        onOpenLanguageSelection = {
+                            combatViewModel.closeOptions()
+                            storyViewModel.openLanguageSelection(fromOptions = true)
+                        },
                         onTriggerCheaterDialogue = {
                             combatNarrator.speak(
                                 "Cheater detected! You have invoked the ancient Konami incantation to bend time and space. Do you boldly embrace your dishonor?",
@@ -559,11 +598,15 @@ class MainActivity : ComponentActivity() {
                         PocketModeUnlockedBanner(
                             onLock = {
                                 combatNarrator.lockPocketGuard()
-                                combatNarrator.speak("Screen locked. Pocket mode active.", force = true)
+                                if (!storyViewModel.state.value.isPureStoryMode || !combatNarrator.isSpeaking.value) {
+                                    combatNarrator.speak("Screen locked. Pocket mode active.", force = true)
+                                }
                             },
                             onExitPocketMode = {
                                 combatNarrator.setEyesFreeMode(false)
-                                combatNarrator.speak("Pocket mode disabled.", force = true)
+                                if (!storyViewModel.state.value.isPureStoryMode || !combatNarrator.isSpeaking.value) {
+                                    combatNarrator.speak("Pocket mode disabled.", force = true)
+                                }
                                 storyViewModel.persistCurrentState()
                             },
                             modifier = Modifier.align(Alignment.TopCenter)
@@ -580,11 +623,15 @@ class MainActivity : ComponentActivity() {
                             isTtsSpeaking = isTtsSpeaking,
                             onUnlock = {
                                 combatNarrator.unlockPocketGuard()
-                                combatNarrator.speak("Screen unlocked.", force = true)
+                                if (!storyViewModel.state.value.isPureStoryMode || !combatNarrator.isSpeaking.value) {
+                                    combatNarrator.speak("Screen unlocked.", force = true)
+                                }
                             },
                             onExitPocketMode = {
                                 combatNarrator.setEyesFreeMode(false)
-                                combatNarrator.speak("Pocket mode disabled.", force = true)
+                                if (!storyViewModel.state.value.isPureStoryMode || !combatNarrator.isSpeaking.value) {
+                                    combatNarrator.speak("Pocket mode disabled.", force = true)
+                                }
                                 storyViewModel.persistCurrentState()
                             }
                         )

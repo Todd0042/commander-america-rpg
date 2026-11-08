@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.engine.IntentParser
 import com.voicerpg.engine.engine.SaveManager
 import com.voicerpg.engine.engine.QuestRecap
@@ -192,6 +193,95 @@ class StoryViewModel(
 
     fun isChoiceCompleted(choice: DialogueChoice): Boolean =
         choice.isCompleted(_state.value.narrativeFlags)
+
+    fun formatStoryText(
+        rawText: String,
+        playerName: String,
+        playerTitle: String = "",
+        metrics: Map<String, Float> = emptyMap()
+    ): String {
+        if (rawText.isBlank()) return rawText
+        val defaultName = GameContent.manifest.defaultHeroName.ifBlank { "Hero" }
+        val effectiveName = playerName.ifBlank { defaultName }
+        val effectiveTitle = playerTitle.ifBlank { GameContent.manifest.defaultHeroTitle.ifBlank { "Adventurer" } }
+
+        var result = rawText
+            .replace("{hero}", effectiveName)
+            .replace("{heroName}", effectiveName)
+            .replace("{player}", effectiveName)
+            .replace("{playerName}", effectiveName)
+            .replace("{heroTitle}", effectiveTitle)
+            .replace("{title}", effectiveTitle)
+
+        // Possessive placeholders
+        result = result
+            .replace("{hero}'s", "$effectiveName's")
+            .replace("{heroName}'s", "$effectiveName's")
+            .replace("{player}'s", "$effectiveName's")
+
+        // Dynamic metric token replacement if metrics are present
+        if (metrics.isNotEmpty() || GameContent.metrics.isNotEmpty()) {
+            for ((metricId, metricVal) in metrics) {
+                if (result.contains("{$metricId}")) {
+                    result = result.replace("{$metricId}", "${metricVal.toInt()}%")
+                }
+            }
+            for (metric in GameContent.metrics.values) {
+                if (result.contains("{${metric.id}}")) {
+                    val valNum = metrics[metric.id] ?: metric.initialValue
+                    result = result.replace("{${metric.id}}", "${valNum.toInt()}%")
+                }
+            }
+        }
+
+        // If player has a custom name different from defaultName, replace any leftover defaultName references
+        if (!effectiveName.equals(defaultName, ignoreCase = true) && !defaultName.contains("{")) {
+            result = result.replace(Regex("\\b${Regex.escape(defaultName)}'s\\b", RegexOption.IGNORE_CASE), "$effectiveName's")
+            result = result.replace(Regex("\\b${Regex.escape(defaultName)}'\\b", RegexOption.IGNORE_CASE), "$effectiveName'")
+            result = result.replace(Regex("\\b${Regex.escape(defaultName)}\\b", RegexOption.IGNORE_CASE), effectiveName)
+        }
+
+        return result
+    }
+
+    fun formatNodeForPlayer(
+        node: DialogueNode,
+        player: PlayerCustomization,
+        metrics: Map<String, Float> = emptyMap()
+    ): DialogueNode {
+        val defaultHeroName = GameContent.manifest.defaultHeroName.ifBlank { "Hero" }
+        val effectiveName = player.name.ifBlank { defaultHeroName }
+        val effectiveTitle = player.title.ifBlank { GameContent.manifest.defaultHeroTitle.ifBlank { "Adventurer" } }
+
+        val isHero = node.speaker.id in setOf("hero", "player") ||
+                node.speaker == GameContent.heroCharacter?.speaker ||
+                node.speaker.name.equals(defaultHeroName, ignoreCase = true)
+
+        val formattedSpeaker = if (isHero) {
+            node.speaker.copy(
+                name = effectiveName,
+                title = if (player.title.isNotBlank()) player.title else (if (node.speaker.title.isBlank()) effectiveTitle else node.speaker.title)
+            )
+        } else {
+            node.speaker
+        }
+
+        val formattedText = formatStoryText(node.text, effectiveName, effectiveTitle, metrics)
+        val formattedRevisit = node.revisitText?.let { formatStoryText(it, effectiveName, effectiveTitle, metrics) }
+        val formattedChoices = node.choices.map { choice ->
+            choice.copy(
+                text = formatStoryText(choice.text, effectiveName, effectiveTitle, metrics),
+                voiceKeywords = choice.voiceKeywords.map { formatStoryText(it, effectiveName, effectiveTitle, metrics) }
+            )
+        }
+
+        return node.copy(
+            speaker = formattedSpeaker,
+            text = formattedText,
+            revisitText = formattedRevisit,
+            choices = formattedChoices
+        )
+    }
 
     fun isChoiceLocked(choice: DialogueChoice): Boolean {
         val node = _state.value.currentNode
@@ -741,6 +831,101 @@ class StoryViewModel(
             previousScreen = GameScreen.TITLE,
             isNewGameFlow = true
         )
+    }
+
+    /**
+     * Opens Screen 1: Language Selection (e.g. from Options, Audio Setup, or first boot).
+     */
+    fun openLanguageSelection(fromOptions: Boolean = false) {
+        val prev = _state.value.gameScreen
+        _state.value = _state.value.copy(
+            gameScreen = GameScreen.LANGUAGE_SELECTION,
+            previousScreen = prev,
+            returnToOptionsOnConfirm = fromOptions,
+            pendingSelectedLanguage = com.voicerpg.engine.localization.TranslationManager.currentLanguage.value,
+            pendingSelectedRegion = com.voicerpg.engine.localization.TranslationManager.currentRegion.value
+        )
+    }
+
+    /**
+     * Advances from Screen 1 (Language selected) to Screen 2 (Dialect / Accent selection).
+     */
+    fun onLanguageChosen(languageCode: String) {
+        val clean = languageCode.lowercase().trim().take(2)
+        _state.value = _state.value.copy(
+            gameScreen = GameScreen.DIALECT_SELECTION,
+            pendingSelectedLanguage = clean,
+            pendingSelectedRegion = ""
+        )
+    }
+
+    /**
+     * Returns from Screen 2 (Dialect) back to Screen 1 (Language).
+     */
+    fun returnToLanguageSelection() {
+        _state.value = _state.value.copy(
+            gameScreen = GameScreen.LANGUAGE_SELECTION
+        )
+    }
+
+    /**
+     * Cancels language selection and returns to previous screen without applying changes.
+     */
+    fun cancelLanguageSelection() {
+        val dest = _state.value.previousScreen ?: GameScreen.TITLE
+        _state.value = _state.value.copy(
+            gameScreen = dest,
+            previousScreen = null,
+            returnToOptionsOnConfirm = false
+        )
+    }
+
+    /**
+     * Called when user confirms dialect on Screen 2. Checks if model is downloaded;
+     * if not, routes to LANGUAGE_DOWNLOAD_STANDBY gatekeeper screen.
+     */
+    fun onDialectConfirmed(languageCode: String, regionCode: String) {
+        val cleanLang = languageCode.lowercase().trim().take(2)
+        val cleanReg = regionCode.uppercase().trim()
+        _state.value = _state.value.copy(
+            pendingSelectedLanguage = cleanLang,
+            pendingSelectedRegion = cleanReg
+        )
+
+        viewModelScope.launch {
+            val isInstalled = com.voicerpg.engine.localization.TranslationManager.isModelInstalled(cleanLang)
+            if (isInstalled) {
+                applyLanguageAndFinish(cleanLang, cleanReg)
+            } else {
+                _state.value = _state.value.copy(
+                    gameScreen = GameScreen.LANGUAGE_DOWNLOAD_STANDBY
+                )
+                com.voicerpg.engine.localization.TranslationManager.setLanguageAndRegion(cleanLang, cleanReg)
+            }
+        }
+    }
+
+    fun applyLanguageAndFinish(languageCode: String, regionCode: String) {
+        com.voicerpg.engine.localization.TranslationManager.setLanguageAndRegion(languageCode, regionCode)
+        combatNarrator.setSelectedLanguageAndRegion(languageCode, regionCode)
+        speechManager.setSelectedLocale(languageCode)
+        speechManager.setSelectedRegion(regionCode)
+
+        val dest = _state.value.previousScreen ?: GameScreen.TITLE
+        _state.value = _state.value.copy(
+            gameScreen = dest,
+            previousScreen = null
+        )
+    }
+
+    fun assignHeroClass(classId: String) {
+        val cls = GameContent.classById(classId)
+        val current = _state.value.player
+        val updated = current.copy(
+            heroClassId = cls.id,
+            title = cls.subtitle.ifBlank { cls.title }
+        )
+        _state.value = _state.value.copy(player = updated)
     }
 
     /**

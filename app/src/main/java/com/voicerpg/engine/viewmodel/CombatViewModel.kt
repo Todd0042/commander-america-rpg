@@ -222,6 +222,8 @@ class CombatViewModel(
     }
 
     private var atbJob: Job? = null
+    private var conclusionTransitionJob: Job? = null
+    private var conclusionWatchdogJob: Job? = null
     private var lastActedHeroId: String? = null
     var lastActedFaction: CombatantFaction = CombatantFaction.NONE
         internal set
@@ -453,19 +455,12 @@ class CombatViewModel(
             )
             speechManager.cancel()
 
-            val aliveHeroes = _state.value.party.filter { it.isAlive }
-            if (aliveHeroes.isEmpty()) {
-                _state.value = _state.value.copy(phase = CombatPhase.BATTLE_LOST)
-                combatNarrator.narrateConclusion(isVictory = false) {
-                    if (speechManager.isAutoListen.value) {
-                        activeScope.launch {
-                            delay(150)
-                            startVoiceListening()
-                        }
-                    }
-                }
+            val mortalHeroes = _state.value.party.filter { it.isAlive && !it.isGhost }
+            if (mortalHeroes.isEmpty()) {
+                concludeDefeat()
                 return@launch
             }
+            val aliveHeroes = _state.value.party.filter { it.isAlive && !it.isGhost && !it.isUntargetable }.ifEmpty { mortalHeroes }
 
             // 2. Begin-of-enemy-turn status effects: DoT ticks and stun/bind skips.
             val livingSelf = _state.value.enemies.firstOrNull { it.id == enemy.id } ?: return@launch
@@ -693,7 +688,7 @@ class CombatViewModel(
             } else null
 
             val updatedParty = _state.value.party.map { hero ->
-                if (targetList.any { it.id == hero.id } && hero.isAlive) {
+                if (targetList.any { it.id == hero.id } && hero.isAlive && !hero.isGhost && !hero.isUntargetable) {
                     val blessMitigation = 1f / StatusSystem.defenseMult(hero.statuses).coerceAtLeast(1f)
                     val damage = DamageResolver.resolveEnemyStrike(
                         enemyAttack = enemy.baseAttack,
@@ -775,15 +770,7 @@ class CombatViewModel(
 
             // Check defeat
             if (_state.value.party.none { it.isAlive }) {
-                _state.value = _state.value.copy(phase = CombatPhase.BATTLE_LOST)
-                combatNarrator.narrateConclusion(isVictory = false) {
-                    if (speechManager.isAutoListen.value) {
-                        activeScope.launch {
-                            delay(150)
-                            startVoiceListening()
-                        }
-                    }
-                }
+                concludeDefeat()
                 return@launch
             }
 
@@ -827,25 +814,47 @@ class CombatViewModel(
 
     /** Shared victory conclusion: award XP, narrate, arm the continue/listen loop. */
     private fun concludeVictory() {
+        conclusionTransitionJob?.cancel()
+        conclusionWatchdogJob?.cancel()
         _state.value = _state.value.copy(phase = CombatPhase.BATTLE_WON)
-        awardVictoryXp()
+        val levelUpLines = awardVictoryXp()
+
+        fun proceedToStory() {
+            if (_state.value.phase == CombatPhase.BATTLE_WON && _state.value.isPureStoryMode) {
+                pauseAtb()
+                onContinueStory?.invoke()
+            }
+        }
+
+        val fullVictoryText = if (!levelUpLines.isNullOrBlank()) {
+            "$levelUpLines ${com.voicerpg.engine.content.GameContent.manifest.victoryLine}"
+        } else {
+            com.voicerpg.engine.content.GameContent.manifest.victoryLine
+        }
         if (_state.value.isPureStoryMode) {
-            activeScope.launch {
-                delay(3000)
+            val wordCount = fullVictoryText.split(Regex("\\s+")).count { it.isNotBlank() }
+            val estimatedDurationMs = maxOf(4000L, ((wordCount / 2.0f) * 1000L).toLong() + 3000L)
+            val watchdogTimeoutMs = estimatedDurationMs + 6000L
+            conclusionWatchdogJob = activeScope.launch {
+                delay(watchdogTimeoutMs)
                 if (_state.value.phase == CombatPhase.BATTLE_WON && _state.value.isPureStoryMode) {
-                    pauseAtb()
-                    onContinueStory?.invoke()
+                    proceedToStory()
                 }
             }
         }
-        combatNarrator.narrateConclusion(isVictory = true) {
+
+        combatNarrator.narrateConclusion(
+            isVictory = true,
+            extraPrefix = levelUpLines,
+            force = _state.value.isPureStoryMode
+        ) {
+            conclusionWatchdogJob?.cancel()
+            conclusionWatchdogJob = null
             if (_state.value.isPureStoryMode) {
-                activeScope.launch {
-                    delay(1200)
-                    if (_state.value.phase == CombatPhase.BATTLE_WON && _state.value.isPureStoryMode) {
-                        pauseAtb()
-                        onContinueStory?.invoke()
-                    }
+                conclusionTransitionJob?.cancel()
+                conclusionTransitionJob = activeScope.launch {
+                    delay(1500L)
+                    proceedToStory()
                 }
             } else if (speechManager.isAutoListen.value) {
                 activeScope.launch {
@@ -856,9 +865,55 @@ class CombatViewModel(
         }
     }
 
-    private fun awardVictoryXp() {
+    private fun concludeDefeat() {
+        conclusionTransitionJob?.cancel()
+        conclusionWatchdogJob?.cancel()
+        _state.value = _state.value.copy(phase = CombatPhase.BATTLE_LOST)
+
+        fun proceedToStory() {
+            if (_state.value.phase == CombatPhase.BATTLE_LOST && _state.value.isPureStoryMode) {
+                pauseAtb()
+                onContinueStory?.invoke()
+            }
+        }
+
+        val fullDefeatText = com.voicerpg.engine.content.GameContent.manifest.defeatLine
+        if (_state.value.isPureStoryMode) {
+            val wordCount = fullDefeatText.split(Regex("\\s+")).count { it.isNotBlank() }
+            val estimatedDurationMs = maxOf(4000L, ((wordCount / 2.0f) * 1000L).toLong() + 3000L)
+            val watchdogTimeoutMs = estimatedDurationMs + 6000L
+            conclusionWatchdogJob = activeScope.launch {
+                delay(watchdogTimeoutMs)
+                if (_state.value.phase == CombatPhase.BATTLE_LOST && _state.value.isPureStoryMode) {
+                    proceedToStory()
+                }
+            }
+        }
+
+        combatNarrator.narrateConclusion(
+            isVictory = false,
+            force = _state.value.isPureStoryMode
+        ) {
+            conclusionWatchdogJob?.cancel()
+            conclusionWatchdogJob = null
+            if (_state.value.isPureStoryMode) {
+                conclusionTransitionJob?.cancel()
+                conclusionTransitionJob = activeScope.launch {
+                    delay(1500L)
+                    proceedToStory()
+                }
+            } else if (speechManager.isAutoListen.value) {
+                activeScope.launch {
+                    delay(150)
+                    startVoiceListening()
+                }
+            }
+        }
+    }
+
+    private fun awardVictoryXp(): String? {
         val party = _state.value.party
-        if (party.isEmpty()) return
+        if (party.isEmpty()) return null
         val totalXp = _state.value.enemies.filterNot { it.isAlive }.sumOf { it.xpReward } +
                 if (_state.value.enemies.any { it.isBoss }) 300 else 0
         val roster = party.map {
@@ -872,7 +927,7 @@ class CombatViewModel(
         }
         val outcomes = Progression.awardXp(roster, totalXp)
         lastVictoryOutcomes = outcomes
-        if (outcomes.isEmpty()) return
+        if (outcomes.isEmpty()) return null
         _state.value = _state.value.copy(
             party = _state.value.party.map { hero ->
                 val o = outcomes.firstOrNull { it.memberId == hero.id } ?: return@map hero
@@ -889,6 +944,22 @@ class CombatViewModel(
                 )
             }
         )
+        val levelUps = outcomes.filter { it.levelsGained > 0 }
+        if (levelUps.isNotEmpty()) {
+            val lines = levelUps.joinToString(" ") { "${it.memberId} ascends to level ${it.newLevel}!" }
+            levelUps.forEach { o ->
+                val hero = _state.value.party.firstOrNull { it.id == o.memberId }
+                val (lx, ly) = partyFloatSlot(o.memberId)
+                val fct = FloatingCombatText(text = "LEVEL ${hero?.level ?: o.newLevel}!", color = Color(0xFFFFD700), startX = lx, startY = ly, isCrit = true)
+                _state.value = _state.value.copy(floatingTexts = _state.value.floatingTexts + fct)
+                activeScope.launch {
+                    delay(1600)
+                    _state.value = _state.value.copy(floatingTexts = _state.value.floatingTexts.filterNot { f -> f.id == fct.id })
+                }
+            }
+            return lines
+        }
+        return null
     }
 
     private fun checkAndTransitionNextTurn() {
@@ -1271,40 +1342,36 @@ class CombatViewModel(
     fun triggerAutoHeroAction(hero: PartyMember): Spell? {
         if (_state.value.phase != CombatPhase.PLAYER_INPUT) return null
         val aliveEnemies = _state.value.enemies.filter { it.isAlive }
-        val affordableSpells = hero.spells.filter { it.mpCost <= hero.currentMp }
-        val chosenSpell = if (affordableSpells.isNotEmpty()) {
-            val lowestAlly = _state.value.party.filter { it.isAlive }.minByOrNull { it.currentHp.toFloat() / it.maxHp }
-            val healSpell = affordableSpells.firstOrNull { it.isHeal }
-            val emergencyHealNeeded = lowestAlly != null && (lowestAlly.currentHp.toFloat() / lowestAlly.maxHp) < 0.5f
 
-            if (emergencyHealNeeded && healSpell != null) {
-                val woundedCount = _state.value.party.count { it.isAlive && (it.currentHp.toFloat() / it.maxHp) < 0.7f }
-                if (woundedCount >= 2) {
-                    affordableSpells.firstOrNull { it.isHeal && it.hitsAll } ?: healSpell
-                } else {
-                    healSpell
-                }
+        // In pure story mode auto play fights, heroes NEVER heal.
+        val nonHealSpells = hero.spells.filter { !it.isHeal }
+        val affordableSpells = nonHealSpells.filter { it.mpCost <= hero.currentMp }
+
+        val chosenSpell = if (aliveEnemies.size > 1) {
+            // 1. Always prefer AoE damage spells when there is more than 1 enemy
+            val affordableAoe = affordableSpells.filter { it.hitsAll && it.manaRestorePct == 0f && !it.isGuard }
+            if (affordableAoe.isNotEmpty()) {
+                affordableAoe.maxByOrNull { it.basePower } ?: affordableAoe.first()
             } else {
-                val offensiveSpells = affordableSpells.filter { !it.isHeal && it.manaRestorePct == 0f }
-                val aoeSpells = offensiveSpells.filter { it.hitsAll }
-
-                if (aliveEnemies.size >= 2 && aoeSpells.isNotEmpty()) {
-                    // Prefer casting AOE spells anytime there are 2 or more enemies alive on field
-                    aoeSpells.maxByOrNull { it.basePower } ?: aoeSpells.first()
-                } else if (offensiveSpells.isNotEmpty()) {
-                    val singleTarget = offensiveSpells.filter { !it.hitsAll }
-                    (if (singleTarget.isNotEmpty()) singleTarget else offensiveSpells).maxByOrNull { it.basePower } ?: offensiveSpells.first()
+                val zeroCostAoe = nonHealSpells.filter { it.mpCost == 0 && it.hitsAll && it.manaRestorePct == 0f && !it.isGuard }
+                if (zeroCostAoe.isNotEmpty()) {
+                    zeroCostAoe.maxByOrNull { it.basePower } ?: zeroCostAoe.first()
                 } else {
-                    affordableSpells.maxByOrNull { it.basePower } ?: affordableSpells.first()
+                    val offensive = affordableSpells.filter { it.manaRestorePct == 0f && !it.isGuard }
+                    offensive.maxByOrNull { it.basePower }
+                        ?: affordableSpells.firstOrNull { it.manaRestorePct > 0f }
+                        ?: nonHealSpells.firstOrNull { it.mpCost == 0 }
+                        ?: nonHealSpells.firstOrNull()
                 }
             }
         } else {
-            val zeroCostAoe = hero.spells.filter { it.mpCost == 0 && it.hitsAll && !it.isHeal }
-            if (aliveEnemies.size >= 2 && zeroCostAoe.isNotEmpty()) {
-                zeroCostAoe.maxByOrNull { it.basePower } ?: zeroCostAoe.first()
-            } else {
-                hero.spells.firstOrNull { it.mpCost == 0 } ?: hero.spells.firstOrNull()
-            }
+            // Single enemy on field: prefer strongest single-target offensive spell, fallback to AoE
+            val offensive = affordableSpells.filter { it.manaRestorePct == 0f && !it.isGuard }
+            val singleTarget = offensive.filter { !it.hitsAll }
+            (if (singleTarget.isNotEmpty()) singleTarget else offensive).maxByOrNull { it.basePower }
+                ?: affordableSpells.firstOrNull { it.manaRestorePct > 0f }
+                ?: nonHealSpells.firstOrNull { it.mpCost == 0 && !it.hitsAll }
+                ?: nonHealSpells.firstOrNull()
         }
 
         if (chosenSpell != null) {
@@ -1312,15 +1379,6 @@ class CombatViewModel(
                 ?: _state.value.enemies.firstOrNull { it.isAlive }
             val chant = if (chosenSpell.manaRestorePct > 0f) {
                 "attune"
-            } else if (chosenSpell.isHeal) {
-                val lowestAlly = _state.value.party.filter { it.isAlive }.minByOrNull { it.currentHp.toFloat() / it.maxHp }
-                if (chosenSpell.hitsAll) {
-                    "${chosenSpell.name} party"
-                } else if (lowestAlly != null) {
-                    "${chosenSpell.name} ${lowestAlly.name}"
-                } else {
-                    chosenSpell.name
-                }
             } else if (chosenSpell.hitsAll) {
                 "${chosenSpell.name} all"
             } else if (aliveEnemy != null) {
