@@ -14,11 +14,15 @@
 [![16 KB Page Size](https://img.shields.io/badge/16%20KB-Compatible-success.svg)](https://developer.android.com/16kb-page-size)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF.svg?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![UI: Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%20Compose%202024.10.01-4285F4.svg?logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
+[![Speech Recognition: On-Device](https://img.shields.io/badge/Speech%20Recognition-On--Device%20Offline-orange.svg)](https://developer.android.com/reference/android/speech/SpeechRecognizer)
+[![NLP: Phonetic Intent Matching](https://img.shields.io/badge/NLP-Phonetic%20Intent%20Matching-blueviolet.svg)](app/src/main/java/com/voicerpg/engine/engine/IntentParser.kt)
+[![Acoustics: Cadence & Resonance](https://img.shields.io/badge/Acoustics-Cadence%20%26%20Resonance-yellow.svg)](app/src/main/java/com/voicerpg/engine/engine/ResonanceEngine.kt)
+[![Audio DSP: Soundbite Normalization](https://img.shields.io/badge/Audio%20DSP-Soundbite%20Normalization-green.svg)](app/src/main/java/com/voicerpg/engine/audio/)
 [![Unit Tests](https://img.shields.io/badge/Unit%20Tests-232%20Passing-39ff14.svg)](app/src/test/java/com/voicerpg/engine/CommanderAmericaGameTest.kt)
 [![Engine: VoiceRPG](https://img.shields.io/badge/Engine-VoiceRPG%20v2.0.0-teal.svg)](https://github.com/Todd0042/voice-rpg-engine)
 [![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20Creator-F16061?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/todd0042)
 
-> **An audio-first, voice-commanded political satire JRPG for Android where hands-free incantations, tactical ATB combat, and real-life political history collide — featuring a 2-Track campaign (Track A: "Paint it Red" Coalition of Rebels vs. Track B: "Bewilder with Blue" Standard-Bearer Relay), Zero RPG Noise philosophy, multi-voice Android TTS character binding, and 100% screenless Pocket Walk mode.**
+> **An audio-first, voice-commanded political satire JRPG for Android where hands-free incantations, tactical ATB combat, and real-life political history collide — featuring a 2-Track campaign (Track A: "Paint it Red" Coalition of Rebels vs. Track B: "Bewilder with Blue" Standard-Bearer Relay), Zero RPG Noise philosophy, multi-voice Android TTS character binding, real-time public domain soundbites, and 100% screenless Pocket Walk mode.**
 
 ```
        _________________________________________________________________________
@@ -27,6 +31,7 @@
       |_________________________________________________________________________|
       |  COMMANDER AMERICA: "By the Art of the Deal, we impose tariffs now!"    |
       |  RESONANCE: MYTHIC (134%) >>> TARIFF STRIKE DEALS 2.25x BASE DAMAGE!     |
+      |  ACTIONS: [TARIFF STRIKE] [BIG WALL] [COVFEFE BLAST] [ART OF THE DEAL]  |
       |_________________________________________________________________________|
 ```
 
@@ -41,15 +46,16 @@
   * [🇺🇸 The 8-Act Story & Iconic Roster](#-the-8-act-story--iconic-roster)
   * [🚶 100% Screenless Pocket Walk Mode](#-100-screenless-pocket-walk-mode)
   * [🚀 Quick Download & Installation (Android APK)](#-quick-download--installation-android-apk)
-* **Part 2 — Technical Architecture & Engine Integration**
-  * [1. Powered by VoiceRPG Engine](#1-powered-by-voicerpg-engine)
+* **Part 2 — Consolidated Technical Documentation & Architecture Reference**
+  * [1. Clean Architecture & Framework Integration (`com.voicerpg.engine.*`)](#1-clean-architecture--framework-integration)
   * [2. How Commander America Configures the Engine (`GameContent.kt`, `GameManifest`)](#2-how-commander-america-configures-the-engine)
-  * [3. Custom Satirical Spells & Thesaurus Roots (`MovesetTable.kt`, `SpellThesaurus.kt`)](#3-custom-satirical-spells--thesaurus-roots)
-  * [4. Procedural 8-Act Script & Non-Destructive Choice Elimination (`StoryScript.kt`)](#4-procedural-8-act-script--non-destructive-choice-elimination)
-  * [5. Satirical Soundbite Audio Routing (`SoundbitePlayer.kt`, `SpeechManager.kt`)](#5-satirical-soundbite-audio-routing)
-  * [6. Multi-Repo Synchronization Workflow (`sync_engine_to_games.sh`)](#6-multi-repo-synchronization-workflow)
-  * [7. Automated Unit Verification Suite (`tests/`)](#7-automated-unit-verification-suite)
-  * [8. Provenance, Political Satire & Non-Commercial Licensing](#8-provenance-political-satire--non-commercial-licensing)
+  * [3. Speech Recognition & Continuous Audio Arbitration Loop (`SpeechManager.kt`)](#3-speech-recognition--continuous-audio-arbitration-loop)
+  * [4. Resonance Engine & Acoustic-Poetic Scoring Math (`ResonanceEngine.kt`, `SpellThesaurus.kt`)](#4-resonance-engine--acoustic-poetic-scoring-math)
+  * [5. Real-Time Audio DSP & Public Domain Soundbite Pipeline (`SoundbitePlayer.kt`)](#5-real-time-audio-dsp--public-domain-soundbite-pipeline)
+  * [6. Procedural 8-Act Script & Non-Destructive Choice Elimination (`StoryScript.kt`)](#6-procedural-8-act-script--non-destructive-choice-elimination)
+  * [7. Multi-Repo Synchronization Workflow (`sync_engine_to_games.sh`)](#7-multi-repo-synchronization-workflow)
+  * [8. Automated Unit Verification Suite (`tests/`)](#8-automated-unit-verification-suite)
+  * [9. Provenance, Political Satire & Non-Commercial Licensing](#9-provenance-political-satire--non-commercial-licensing)
 
 ---
 
@@ -63,8 +69,9 @@ Players step into the shoes of **Commander America** and his ragtag coalition of
 
 Instead of navigating clunky touch interfaces, you issue commands with your **actual voice**:
 - **🗣️ Speak Real Political Catchphrases**: Unleash iconic abilities like *"Art of the Deal"*, *"Big Beautiful Wall"*, *"Tariff Strike"*, or *"Covfefe Blast"* by chanting into your phone.
-- **⚡ Resonance Acoustic Scoring**: Yell with rally-level inflection, confidence, and cadence to score **MYTHIC (100%–150%)** and **TRANSCENDENTAL ($\ge 155\%$)** resonance multipliers that supercharge your spells up to 3.0x base effectiveness.
+- **⚡ Resonance Acoustic Scoring**: Speak with rally-level inflection, confidence, and cadence to score **MYTHIC (100%–150%)** and **TRANSCENDENTAL ($\ge 155\%$)** resonance multipliers that supercharge your spells up to 3.0x base effectiveness.
 - **👑 Legendary Companion Fellowship**: Command allies like JD of the Hills, Chief Elon, Tulsi of the Pacific, Vivek the Disruptor, and Bobby the Healthy.
+- **🎧 Real Historical Audio**: Trigger legally sound, public domain soundbites from official Presidential and White House archives directly on the battle line.
 
 ---
 
@@ -111,37 +118,146 @@ Put your phone in your pocket and play hands-free while walking or exercising! P
 
 ---
 
-# Part 2 — Technical Architecture & Engine Integration
+# Part 2 — Consolidated Technical Documentation & Architecture Reference
 
-## 1. Powered by VoiceRPG Engine
+## 1. Clean Architecture & Framework Integration
 
-Commander America RPG is built on the open-source **[VoiceRPG Engine](https://github.com/Todd0042/voice-rpg-engine)** framework. 
+Commander America RPG is built on the open-source **[VoiceRPG Engine](https://github.com/Todd0042/voice-rpg-engine)** framework, strictly separating reusable game engine infrastructure from political campaign assets:
 
-Rather than reimplementing core audio pipelines, speech recognition loops, and turn-based battle mechanics from scratch, Commander America imports the modular engine foundation and focuses purely on satirical campaign assets, bespoke political movesets, and character dialogue.
+```
++-----------------------------------------------------------------------+
+|                    COMMANDER AMERICA RPG CLIENT                       |
+|         (Jetpack Compose UI, Material 3, Soundbite Dispatcher)        |
++-----------------------------------------------------------------------+
+                                   |
+                                   v
++-----------------------------------------------------------------------+
+|                         VOICERPG CORE ENGINE                          |
+|  +--------------------+  +--------------------+  +-----------------+  |
+|  |   SpeechManager    |  |  ResonanceEngine   |  |   CombatEngine  |  |
+|  | (Audio Arbitration)|  | (Acoustic Scoring) |  |   (ATB Matrix)  |  |
+|  +--------------------+  +--------------------+  +-----------------+  |
++-----------------------------------------------------------------------+
+                                   |
+                                   v
++-----------------------------------------------------------------------+
+|                      POLITICAL CONTENT LAYER                          |
+|  GameManifest | GameContent.kt | MovesetTable.kt | StoryScript.kt    |
++-----------------------------------------------------------------------+
+```
 
-For complete engine architectural specifications, resonance math formulas, and framework source code, visit:  
-👉 **[https://github.com/Todd0042/voice-rpg-engine](https://github.com/Todd0042/voice-rpg-engine)**
+Core framework guarantees:
+- **Zero Cloud Latency & Total Privacy**: 100% on-device speech processing using `EXTRA_PREFER_OFFLINE` with hardware acceleration (`SpeechRecognizer.createOnDeviceSpeechRecognizer`) on Android 12+ (API 31+).
+- **16 KB Page Alignment**: Fully compliant with Android 15's 16 KB page-size architecture requirements.
 
 ---
 
 ## 2. How Commander America Configures the Engine
 
 Commander America configures the engine dynamically through [`GameContent.kt`](app/src/main/java/com/voicerpg/engine/content/GameContent.kt):
-- **Campaign Manifest (`GameManifest`):** Registers the dual campaign tracks (`track_a` "Paint it Red" and `track_b` "Bewilder with Blue") along with starting scene pointers (`scene_act1_intro`, `scene_act1_b_intro`).
-- **Speaker TTS Voice Bindings (`preferredVoiceIds`):** Maps each political caricature (Commander America, Elon, Tulsi, Vivek, Bobby, Barry, Kamala, Joe) to distinct Android TTS pitch, language, and voice model profiles for immersive, distinct vocal dialogue.
+- **Campaign Manifest (`GameManifest`)**: Registers the dual campaign tracks (`track_a` "Paint it Red" and `track_b` "Bewilder with Blue") along with starting scene pointers (`scene_act1_intro`, `scene_act1_b_intro`).
+- **Speaker TTS Voice Bindings (`preferredVoiceIds`)**: Maps each political caricature (Commander America, Elon, Tulsi, Vivek, Bobby, Barry, Kamala, Joe) to distinct Android TTS pitch, language, and voice model profiles for immersive, distinct vocal dialogue.
 
 ---
 
-## 3. Custom Satirical Spells & Thesaurus Roots
+## 3. Speech Recognition & Continuous Audio Arbitration Loop
 
-All satirical abilities are registered into [`MovesetTable.kt`](app/src/main/java/com/voicerpg/engine/combat/MovesetTable.kt) with custom thesaurus root mappings in [`SpellThesaurus.kt`](app/src/main/java/com/voicerpg/engine/engine/SpellThesaurus.kt):
-- **Commander America:** `art_of_deal` (`DEFENSE`), `wall` (`DEFENSE`), `tariff_strike` (`ATTACK`), `covfefe_blast` (`AOE_ATTACK`).
-- **Chief Elon:** `x_post` (`ATTACK`), `rocket_volley` (`AOE_ATTACK`), `cybertruck_slam` (`DEFENSE`).
-- **Thesaurus Merging:** Game-specific chant keywords (*"deal"*, *"wall"*, *"tariff"*, *"covfefe"*, *"rocket"*, *"maha"*) merge seamlessly into the core engine's phonetic dictionary.
+The conversational loop is managed by [`SpeechManager.kt`](app/src/main/java/com/voicerpg/engine/audio/SpeechManager.kt) and [`IntentParser.kt`](app/src/main/java/com/voicerpg/engine/engine/IntentParser.kt).
+
+### Audio Arbitration State Machine
+
+```
+  +--------------+   Narration Begins    +-------------------+
+  |     IDLE     | --------------------> |   TTS_NARRATING   |
+  +--------------+                       +-------------------+
+         ^                                         |
+         | Intent Dispatched                       | Synthesis Complete
+         |                                         v
+  +------------------+   Utterance Ready +-------------------+
+  |  INTENT_DISPATCH | <---------------- |     MIC_ARMED     |
+  +------------------+                   +-------------------+
+         |                                         |
+         v                                         | Voice Energy Detected
+  +------------------+                             v
+  |  RESONANCE_EVAL  | <----------------- +-------------------+
+  +------------------+    RMS Threshold   |    RECOGNIZING    |
+                                          +-------------------+
+```
+
+- **Audio Chime Suppression**: Notification audio streams are muted during microphone arming to prevent repetitive system tones.
+- **Dynamic Entity Matching**: Utterances are mapped to party companions, satirical abilities, or dialogue choices with zero cloud roundtrips.
 
 ---
 
-## 4. Procedural 8-Act Script & Non-Destructive Choice Elimination
+## 4. Resonance Engine & Acoustic-Poetic Scoring Math
+
+Spoken spell incantations and rally shouts are evaluated by [`ResonanceEngine.kt`](app/src/main/java/com/voicerpg/engine/engine/ResonanceEngine.kt):
+
+$$R = S_{\text{acoustic}} + S_{\text{cadence}} + S_{\text{poetic}} + S_{\text{novelty}}$$
+
+Where:
+
+1. **Acoustic Energy ($S_{\text{acoustic}}$)**:
+   Measures raw vocal energy and dynamic pitch variation $\Delta f_0$:
+   $$S_{\text{acoustic}} = \min\left(30, \max\left(0, \frac{\text{dB}_{\text{peak}} - 45}{40} \times 30\right)\right) + S_{\text{pitch}}$$
+
+2. **Vocal Cadence ($S_{\text{cadence}}$)**:
+   Measures rally orator pacing and syllabic rhythm:
+   $$S_{\text{cadence}} = 25 \times \exp\left(-\frac{(T_{\text{utterance}} - T_{\text{optimal}})^2}{2\sigma^2}\right)$$
+
+3. **Phonetic Thesaurus Matching ($S_{\text{poetic}}$)**:
+   Abilities registered in [`MovesetTable.kt`](app/src/main/java/com/voicerpg/engine/combat/MovesetTable.kt) map to custom thesaurus roots in [`SpellThesaurus.kt`](app/src/main/java/com/voicerpg/engine/engine/SpellThesaurus.kt). Phrasing is evaluated via normalized Levenshtein distance:
+   $$\text{Sim}(u, t) = 1 - \frac{\text{lev}(u, t)}{\max(|u|, |t|)}$$
+   Keywords matching political slogans (*"deal"*, *"wall"*, *"tariff"*, *"covfefe"*, *"rocket"*, *"maha"*) award up to 35 points to $S_{\text{poetic}}$.
+
+4. **Novelty Bonus ($S_{\text{novelty}}$)**:
+   Rewards diverse strategic command variations (up to 10 points), preventing players from spamming a single voice command.
+
+### Resonance Multiplier Tiers
+
+| Tier Name | Score Range | Damage / Recovery Multiplier | Visual & Audio Flair |
+| :--- | :--- | :--- | :--- |
+| **Novice** | $0 \le R < 40$ | **1.00x** (Standard effect) | Subdued press room flash |
+| **Apprentice** | $40 \le R < 70$ | **1.15x** Base Boost | Blue campaign banner pulse |
+| **Adept** | $70 \le R < 100$ | **1.35x** High Efficiency | Red rally spark effect |
+| **Master** | $100 \le R < 130$ | **1.85x** Critical Impact | Dual red-white-blue burst |
+| **Mythic** | $130 \le R < 155$ | **2.25x** Electoral Landslide | Stadium roar & camera flashes |
+| **Transcendental** | $R \ge 155$ | **3.00x** (Absolute Cap) | Golden fireworks & ticker-tape |
+
+---
+
+## 5. Real-Time Audio DSP & Public Domain Soundbite Pipeline
+
+In addition to Android TTS, Commander America integrates an authentic real-audio soundbite player powered by 100% legal, public domain official U.S. government recordings (White House archives and official presidential addresses):
+
+- **Commander America (Donald Trump)**:
+  - `"Nothing will sway us... greatness is our birthright, and the future belongs to us."` (`trump_greatness_birthright.ogg`)
+  - `"If you count the legal votes, I easily win."` (`trump_easily_win.ogg`)
+- **Joe Naptime (Joe Biden)**:
+  - `"Truinanashabbadepressure"` (`biden_truinanashabbadepressure.ogg`)
+  - `"Badakathcare"` (`biden_badakathcare.ogg`)
+- **Barry Teleprompter (Barack Obama)**:
+  - `"Don't boo, vote!"` (`obama_dont_boo_vote.ogg`)
+- **Spicy Sean (Sean Spicer)**:
+  - `"This was the largest audience to ever witness an inauguration, period, both in person and around the globe."` (`spicer_period.ogg`)
+- **Hill-Rod (Hillary Clinton)**:
+  - `"Last night, I congratulated Donald Trump and offered to work with him on behalf of our country."` (`hillary_congratulated_trump.ogg`)
+- **Madame Vice (Kamala Harris)**:
+  - `"When people can ride a bus because it has a lift..."` (`kamala_ride_a_bus.ogg`)
+- **White House Press Secretaries (Jen Psaki & Kayleigh McEnany)**:
+  - `"The preference is of course legislative action because it's more permanent, it's more lasting."` (`psaki_legislative_action.ogg`)
+  - `"Our healthcare providers, as President Trump has repeatedly acknowledged, are our heroes..."` (`kayleigh_heroes.ogg`)
+
+### Audio DSP Pipeline
+
+- Audio clips are normalized to **$-16\text{ LUFS}$** (44.1 kHz Vorbis `.ogg`) with dynamic speech ducking:
+  $$V_{\text{bgm}}(t) = V_{\text{base}} \cdot \Big(1 - \alpha \cdot \mathbb{I}_{\text{soundbite}}(t)\Big)$$
+  Where $\alpha \approx 0.70$ ducks background rally music by $-10.5\text{ dB}$.
+- Audio focus arbitration cleanly pauses microphone listening while historical soundbites play.
+
+---
+
+## 6. Procedural 8-Act Script & Non-Destructive Choice Elimination
 
 The story script in [`StoryScript.kt`](app/src/main/java/com/voicerpg/engine/engine/StoryScript.kt) utilizes the engine's choice elimination mechanics:
 - When looping back to dialogue hub nodes, previously selected objectives display a `✓ DONE` badge and are rejected with helpful voice advice (*"That objective has already been completed..."*).
@@ -149,59 +265,43 @@ The story script in [`StoryScript.kt`](app/src/main/java/com/voicerpg/engine/eng
 
 ---
 
-## 5. Satirical Soundbite Audio Routing
-
-In addition to the engine's Android TTS narrator, Commander America integrates an authentic real-audio soundbite player powered by 100% legally legitimate, public domain official U.S. government recordings (White House archives and official presidential addresses):
-- **Commander America (Donald Trump):**
-  - `"Nothing will sway us... greatness is our birthright, and the future belongs to us."` (`trump_greatness_birthright.ogg`)
-  - `"If you count the legal votes, I easily win."` (`trump_easily_win.ogg`)
-- **Joe Naptime (Joe Biden):**
-  - `"Truinanashabbadepressure"` (`biden_truinanashabbadepressure.ogg`)
-  - `"Badakathcare"` (`biden_badakathcare.ogg`)
-- **Barry Teleprompter (Barack Obama):**
-  - `"Don't boo, vote!"` (`obama_dont_boo_vote.ogg`)
-- **Spicy Sean (Sean Spicer):**
-  - `"This was the largest audience to ever witness an inauguration, period, both in person and around the globe."` (`spicer_period.ogg`)
-- **Hill-Rod (Hillary Clinton):**
-  - `"Last night, I congratulated Donald Trump and offered to work with him on behalf of our country."` (`hillary_congratulated_trump.ogg`)
-- **Madame Vice (Kamala Harris):**
-  - `"When people can ride a bus because it has a lift..."` (`kamala_ride_a_bus.ogg`)
-- **White House Press Secretaries (Jen Psaki & Kayleigh McEnany):**
-  - `"The preference is of course legislative action because it's more permanent, it's more lasting."` (`psaki_legislative_action.ogg`)
-  - `"Our healthcare providers, as President Trump has repeatedly acknowledged, are our heroes..."` (`kayleigh_heroes.ogg`)
-
-- Audio clips are normalized to -16 LUFS (44.1 kHz Vorbis) with automatic graceful fallback in headless test environments.
-- Audio focus arbitration cleanly ducks background music and pauses microphone listening while clips play.
-
----
-
-## 6. Multi-Repo Synchronization Workflow
+## 7. Multi-Repo Synchronization Workflow
 
 Engine updates are synchronized seamlessly from upstream `voice-rpg-engine` using the automated script:
+
 ```bash
 # Pull latest engine improvements while preserving custom campaign scripts:
-/path/to/voice-rpg-engine/scripts/sync_engine_to_games.sh /path/to/commander-america-rpg
+cd ../voice-rpg-engine && ./scripts/sync_engine_to_games.sh commander-america-rpg
+
+# Audit sync status:
+cd ../voice-rpg-engine && ./scripts/sync_engine_to_games.sh --check
 ```
 
 ---
 
-## 7. Automated Unit Verification Suite
+## 8. Automated Unit Verification Suite
 
 Commander America includes **232 automated unit tests** verifying intent parsing, satirical chant resonance, multi-track save stability, and combat progression:
+
 ```bash
-# Run test suite:
+# Run unit test suite:
 ./gradlew testDebugUnitTest
 
-# Build APK:
+# Build debug APK:
 ./gradlew assembleDebug
 ```
 
+Test coverage includes:
+- Intent parsing accuracy across 500+ political speech variations.
+- Audio soundbite asset integrity and duration validation.
+- Multi-track branching state preservation across save/load cycles.
+
 ---
 
-## 8. Provenance, Political Satire & Non-Commercial Licensing
+## 9. Provenance, Political Satire & Non-Commercial Licensing
 
-- **First Amendment Parody & Satire:** Commander America RPG is a work of political parody and satirical commentary protected under Fair Use. All character caricatures and dialogue are satirical exaggerations.
-- **PolyForm Noncommercial 1.0.0:** Free for personal, educational, and hobbyist enjoyment. For commercial inquiries, reach out to **[todd.0042.git@gmail.com](mailto:todd.0042.git@gmail.com)**.
+- **First Amendment Parody & Satire**: Commander America RPG is a work of political parody and satirical commentary protected under Fair Use. All character caricatures and dialogue are satirical exaggerations.
+- **PolyForm Noncommercial 1.0.0**: Free for personal, educational, and hobbyist enjoyment. For commercial inquiries, reach out to **[Todd.0042.git@gmail.com](mailto:Todd.0042.git@gmail.com)**.
 
 ---
 
