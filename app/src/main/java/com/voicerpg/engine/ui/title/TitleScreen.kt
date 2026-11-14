@@ -14,6 +14,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -64,7 +65,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.voicerpg.engine.audio.SpeechState
-import com.voicerpg.engine.model.CampaignTrack
+import com.voicerpg.engine.content.GameContent
+import com.voicerpg.engine.content.GameManifest
 import com.voicerpg.engine.model.SaveSlotInfo
 import com.voicerpg.engine.model.SaveSummary
 import com.voicerpg.engine.ui.story.StoryAssetLoader
@@ -79,7 +81,9 @@ import com.voicerpg.engine.ui.theme.RetroDeepSlate
 import com.voicerpg.engine.ui.theme.RetroPanel
 
 /**
- * Atmospheric Title & Main Menu Screen for VoiceRPG: Echoes of the Logos.
+ * Atmospheric Title & Main Menu Screen. Fully manifest-driven: the hero title, subtitle,
+ * and background artwork come from the game manifest (assets/game/manifest.json), so any
+ * VoiceRPG game title can re-skin this screen without touching engine code.
  * Provides hands-free voice command navigation, save summary preview, overwrite confirmation,
  * and immediate access to Audio Setup, Options, and Campaign Continue.
  */
@@ -107,9 +111,20 @@ fun TitleScreen(
     onCloseMiniGameTestMenu: () -> Unit = {},
     onLaunchMiniGame: (String) -> Unit = {},
     storyModeSummary: SaveSummary? = null,
-    onPureStoryMode: (fresh: Boolean, track: CampaignTrack) -> Unit = { _, _ -> },
+    onPureStoryMode: (fresh: Boolean, campaignTrackId: String?) -> Unit = { _, _ -> },
     onStartListening: () -> Unit,
     onStopListening: () -> Unit,
+    manifest: GameManifest = GameManifest(
+        gameTitle = "VOICE RPG",
+        gameSubtitle = "Template Voice-First RPG Adventure",
+        initialSceneId = "",
+        initialNodeId = "",
+        defaultEncounterId = "",
+        startingAchievementId = "QUEST_BEGUN",
+        victoryLine = "Victory! The battle is won.",
+        defeatLine = "Defeat. Your voice fades.",
+        titleBackgroundAsset = null
+    ),
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -119,9 +134,12 @@ fun TitleScreen(
     var showStoryModeTrackDialog by remember { mutableStateOf(false) }
     var slotDialogIsNewGameMode by remember { mutableStateOf(false) }
 
-    val backgroundBitmap = remember {
-        StoryAssetLoader.loadBitmap(context, "story/golden_inauguration.jpg")
-            ?: StoryAssetLoader.loadBitmap(context, "story/oval_citadel.jpg")
+    val configuration = androidx.compose.ui.platform.LocalConfiguration.current
+    val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
+
+    val backgroundBitmap = remember(manifest.titleBackgroundAsset, isPortrait) {
+        val assetPath = manifest.titleBackgroundAsset ?: "backgrounds/bg_summit.jpg"
+        StoryAssetLoader.loadBackground(context, assetPath, isPortrait)
     }
 
     val infiniteTransition = rememberInfiniteTransition(label = "title_glow")
@@ -181,7 +199,7 @@ fun TitleScreen(
                 modifier = Modifier.padding(top = 16.dp)
             ) {
                 Text(
-                    text = "VOICE RPG",
+                    text = "VOICE-FIRST RPG",
                     color = LogosGold.copy(alpha = 0.9f),
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
@@ -192,7 +210,7 @@ fun TitleScreen(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = "COMMANDER AMERICA",
+                    text = manifest.gameTitle,
                     color = LogosGold,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black,
@@ -218,10 +236,9 @@ fun TitleScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Quest for the Golden Tower",
+                    text = manifest.gameSubtitle.ifBlank { "Voice-Commanded Storytelling RPG" },
                     color = Color.LightGray.copy(alpha = 0.85f),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace,
                     textAlign = TextAlign.Center
                 )
@@ -399,8 +416,10 @@ fun TitleScreen(
                     onClick = {
                         if (storyModeSummary != null) {
                             showStoryModePromptDialog = true
-                        } else {
+                        } else if (manifest.campaignTracks.size > 1) {
                             showStoryModeTrackDialog = true
+                        } else {
+                            onPureStoryMode(true, null)
                         }
                     },
                     modifier = Modifier
@@ -528,7 +547,7 @@ fun TitleScreen(
                     }
                 }
 
-                // 6. Gallery & Jukebox Button
+                // 6. Asset Viewer & Jukebox Button
                 Button(
                     onClick = onAssetViewer,
                     modifier = Modifier
@@ -544,19 +563,51 @@ fun TitleScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            imageVector = Icons.Default.VolumeUp,
+                            imageVector = Icons.Default.GraphicEq,
                             contentDescription = null,
-                            tint = FrostCyan,
+                            tint = HolyYellow,
                             modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "GALLERY & JUKEBOX",
+                            text = "ASSET VIEWER & JUKEBOX",
                             color = Color.White,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace
                         )
+                    }
+                }
+
+                // Mini-Game Testing Arcade Button (Only if game defines minigames)
+                if (GameContent.minigames.isNotEmpty()) {
+                    Button(
+                        onClick = onOpenMiniGameTestMenu,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .border(1.dp, RetroBorder, RoundedCornerShape(8.dp)),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = RetroDeepSlate.copy(alpha = 0.85f)
+                        ),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "🕹️",
+                                fontSize = 16.sp
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "MINI-GAME ARCADE (QA)",
+                                color = Color.White,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = FontFamily.Monospace
+                            )
+                        }
                     }
                 }
             }
@@ -592,9 +643,9 @@ fun TitleScreen(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = if (isListening) {
-                            "🎤 Listening... Speak 'Continue', 'New Game', 'Tutorial', or 'Options'"
+                            "🎤 Listening... Speak 'Continue', 'New Game', 'Asset Viewer', or 'Options'"
                         } else {
-                            "🎤 Speak 'Continue', 'New Game', 'Tutorial', or Tap to Talk"
+                            "🎤 Speak 'Continue', 'New Game', 'Asset Viewer', or Tap to Talk"
                         },
                         color = if (isListening) Color.White else Color.LightGray,
                         fontSize = 11.sp,
@@ -630,7 +681,7 @@ fun TitleScreen(
                         )
 
                         Text(
-                            text = "An active campaign for ${saveSummary?.heroName ?: "Commander America"} in ${saveSummary?.chapterTitle ?: "The Golden Tower"} is currently saved.\n\nBeginning a new campaign will replace this save file. Are you certain you wish to proceed?",
+                            text = "An active journey for ${saveSummary?.heroName ?: "your Hero"} in ${saveSummary?.chapterTitle ?: GameContent.manifest.worldName} is currently saved.\n\nBeginning a new campaign will replace this save file. Are you certain you wish to proceed?",
                             color = Color.LightGray,
                             fontSize = 12.sp,
                             fontFamily = FontFamily.Monospace,
@@ -720,7 +771,7 @@ fun TitleScreen(
                         Button(
                             onClick = {
                                 showStoryModePromptDialog = false
-                                onPureStoryMode(false, CampaignTrack.TRACK_A)
+                                onPureStoryMode(false, null)
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -740,7 +791,11 @@ fun TitleScreen(
                         Button(
                             onClick = {
                                 showStoryModePromptDialog = false
-                                showStoryModeTrackDialog = true
+                                if (manifest.campaignTracks.size > 1) {
+                                    showStoryModeTrackDialog = true
+                                } else {
+                                    onPureStoryMode(true, null)
+                                }
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -778,25 +833,25 @@ fun TitleScreen(
             }
         }
 
-        // Pure Story Mode Track Selector Modal Dialog
-        if (showStoryModeTrackDialog) {
+        // Multi-Track Campaign Selector Dialog (Data-driven for games with multiple storylines)
+        if (showStoryModeTrackDialog && manifest.campaignTracks.size > 1) {
             Dialog(onDismissRequest = { showStoryModeTrackDialog = false }) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(12.dp))
-                        .background(RetroBlack)
-                        .border(2.dp, Color(0xFFBA68C8), RoundedCornerShape(12.dp))
+                        .background(RetroBlack.copy(alpha = 0.98f))
+                        .border(2.dp, LogosGold, RoundedCornerShape(12.dp))
                         .padding(20.dp)
                 ) {
                     Column(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(14.dp)
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         Text(
-                            text = "🎬 SELECT AUTO-PLAY STORY",
-                            color = Color(0xFFE1BEE7),
+                            text = "SELECT CAMPAIGN TRACK",
+                            color = LogosGold,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Black,
                             fontFamily = FontFamily.Monospace,
@@ -804,7 +859,7 @@ fun TitleScreen(
                         )
 
                         Text(
-                            text = "Choose which campaign track to watch hands-free in Pure Story Mode:\n(Regular battles are auto-won, story advances automatically)",
+                            text = "Choose which storyline track to play in Pure Story Mode:\n(Regular battles are auto-won, story advances automatically)",
                             color = Color.LightGray,
                             fontSize = 10.sp,
                             fontFamily = FontFamily.Monospace,
@@ -812,71 +867,41 @@ fun TitleScreen(
                             lineHeight = 15.sp
                         )
 
-                        // Track A Option
-                        Button(
-                            onClick = {
-                                showStoryModeTrackDialog = false
-                                onPureStoryMode(true, CampaignTrack.TRACK_A)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .border(1.5.dp, LogosGold, RoundedCornerShape(8.dp)),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E1C00)),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-                            Column(
-                                modifier = Modifier.padding(vertical = 4.dp),
-                                horizontalAlignment = Alignment.CenterHorizontally
+                        manifest.campaignTracks.forEach { track ->
+                            Button(
+                                onClick = {
+                                    showStoryModeTrackDialog = false
+                                    onPureStoryMode(true, track.id)
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .border(1.5.dp, LogosGold, RoundedCornerShape(8.dp)),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E1C00)),
+                                shape = RoundedCornerShape(8.dp)
                             ) {
-                                Text(
-                                    text = "🇺🇸 PAINT IT RED",
-                                    color = LogosGold,
-                                    fontSize = 11.sp,
-                                    fontWeight = FontWeight.Black,
-                                    fontFamily = FontFamily.Monospace
-                                )
-                                Text(
-                                    text = "Trump • Rubio • Vance • Patel • Kennedy • Musk",
-                                    color = Color.LightGray,
-                                    fontSize = 9.sp,
-                                    fontFamily = FontFamily.Monospace
-                                )
+                                Column(
+                                    modifier = Modifier.padding(vertical = 4.dp),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Text(
+                                        text = "${track.displayName.uppercase()} (${track.badgeText})",
+                                        color = LogosGold,
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Black,
+                                        fontFamily = FontFamily.Monospace
+                                    )
+                                    if (track.rosterDescription.isNotBlank() || track.subtitle.isNotBlank()) {
+                                        Text(
+                                            text = track.rosterDescription.ifBlank { track.subtitle },
+                                            color = Color.LightGray,
+                                            fontSize = 9.sp,
+                                            fontFamily = FontFamily.Monospace
+                                        )
+                                    }
+                                }
                             }
                         }
 
-                        // Track B Option
-                        Button(
-                            onClick = {
-                                showStoryModeTrackDialog = false
-                                onPureStoryMode(true, CampaignTrack.TRACK_B)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .border(1.5.dp, Color(0xFF00E5FF), RoundedCornerShape(8.dp)),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF002233)),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-                            Column(
-                                modifier = Modifier.padding(vertical = 4.dp),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = "🌊 BEWILDER WITH BLUE",
-                                    color = Color(0xFF00E5FF),
-                                    fontSize = 11.sp,
-                                    fontWeight = FontWeight.Black,
-                                    fontFamily = FontFamily.Monospace
-                                )
-                                Text(
-                                    text = "Hill-Rod ➔ Nancy ➔ Joe ➔ Kamala ➔ Zohran",
-                                    color = Color.LightGray,
-                                    fontSize = 9.sp,
-                                    fontFamily = FontFamily.Monospace
-                                )
-                            }
-                        }
-
-                        // Cancel Button
                         Button(
                             onClick = { showStoryModeTrackDialog = false },
                             modifier = Modifier
@@ -908,6 +933,10 @@ fun TitleScreen(
                     showSlotArchivesDialog = false
                     onContinueSlot(slot)
                 },
+                onSelectAndAutoPlay = { slot ->
+                    showSlotArchivesDialog = false
+                    onContinueSlotAuto(slot)
+                },
                 onSelectAndNewGame = { slot ->
                     showSlotArchivesDialog = false
                     onNewGameInSlot(slot)
@@ -918,6 +947,18 @@ fun TitleScreen(
                 onDismiss = {
                     showSlotArchivesDialog = false
                 }
+            )
+        }
+
+        // Mini-Game Testing Arcade Dialog (QA)
+        if (isMiniGameTestMenuOpen && GameContent.minigames.isNotEmpty()) {
+            MiniGameTestMenuDialog(
+                minigames = GameContent.minigames.values.toList(),
+                onSelectGame = { gameId ->
+                    onCloseMiniGameTestMenu()
+                    onLaunchMiniGame(gameId)
+                },
+                onDismiss = onCloseMiniGameTestMenu
             )
         }
     }
@@ -933,6 +974,7 @@ fun SaveSlotDialog(
     currentSlot: Int,
     isNewGameMode: Boolean,
     onSelectAndLoad: (Int) -> Unit,
+    onSelectAndAutoPlay: (Int) -> Unit = {},
     onSelectAndNewGame: (Int) -> Unit,
     onDeleteSlot: (Int) -> Unit,
     onDismiss: () -> Unit
@@ -1131,6 +1173,28 @@ fun SaveSlotDialog(
                                                     text = "RESUME",
                                                     color = HolyYellow,
                                                     fontSize = 11.sp,
+                                                    fontFamily = FontFamily.Monospace,
+                                                    fontWeight = FontWeight.Bold
+                                                )
+                                            }
+                                        }
+
+                                        Button(
+                                            onClick = { onSelectAndAutoPlay(slotInfo.slotIndex) },
+                                            modifier = Modifier
+                                                .weight(0.85f)
+                                                .border(1.dp, FrostCyan.copy(alpha = 0.8f), RoundedCornerShape(6.dp)),
+                                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0F2B3E)),
+                                            shape = RoundedCornerShape(6.dp)
+                                        ) {
+                                            Row(
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.Center
+                                            ) {
+                                                Text(
+                                                    text = "🤖 AUTO",
+                                                    color = FrostCyan,
+                                                    fontSize = 10.5.sp,
                                                     fontFamily = FontFamily.Monospace,
                                                     fontWeight = FontWeight.Bold
                                                 )
@@ -1365,6 +1429,166 @@ fun SaveSlotDialog(
                             )
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Generic Mini-Game Testing Arcade Dialog (QA).
+ * Dynamically lists all mini-games registered in GameContent.minigames.
+ */
+@Composable
+fun MiniGameTestMenuDialog(
+    minigames: List<com.voicerpg.engine.model.MiniGameConfig>,
+    onSelectGame: (String) -> Unit,
+    onDismiss: () -> Unit
+) {
+    Dialog(onDismissRequest = onDismiss) {
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(16.dp))
+                .border(2.dp, Color(0xFFFFA726), RoundedCornerShape(16.dp)),
+            color = RetroBlack.copy(alpha = 0.98f)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(18.dp)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Header
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = "🕹️ MINI-GAME ARCADE",
+                            color = Color(0xFFFFA726),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Black,
+                            fontFamily = FontFamily.Monospace,
+                            letterSpacing = 1.sp
+                        )
+                        Text(
+                            text = "Test interactive challenges directly (QA Mode)",
+                            color = Color.LightGray.copy(alpha = 0.8f),
+                            fontSize = 10.sp,
+                            fontFamily = FontFamily.Monospace
+                        )
+                    }
+                    Button(
+                        onClick = onDismiss,
+                        modifier = Modifier.size(32.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "Close",
+                            tint = Color.LightGray,
+                            modifier = Modifier.size(18.dp)
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                minigames.forEach { item ->
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 5.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(RetroDeepSlate.copy(alpha = 0.9f))
+                            .border(1.dp, Color(0xFFFFA726).copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+                            .padding(12.dp)
+                    ) {
+                        Column(modifier = Modifier.fillMaxWidth()) {
+                            if (item.department.isNotBlank()) {
+                                Text(
+                                    text = item.department,
+                                    color = Color(0xFFFFA726),
+                                    fontSize = 9.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = FontFamily.Monospace
+                                )
+                                Spacer(modifier = Modifier.height(2.dp))
+                            }
+                            Text(
+                                text = item.title,
+                                color = Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = FontFamily.Monospace
+                            )
+                            if (item.description.isNotBlank()) {
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(
+                                    text = item.description,
+                                    color = Color.LightGray.copy(alpha = 0.85f),
+                                    fontSize = 10.sp,
+                                    lineHeight = 14.sp,
+                                    fontFamily = FontFamily.Monospace
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Button(
+                                onClick = { onSelectGame(item.id) },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(34.dp)
+                                    .border(1.dp, Color(0xFFFFA726), RoundedCornerShape(6.dp)),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(0xFFFFA726).copy(alpha = 0.25f)
+                                ),
+                                shape = RoundedCornerShape(6.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.PlayArrow,
+                                        contentDescription = null,
+                                        tint = Color(0xFFFFA726),
+                                        modifier = Modifier.size(16.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text(
+                                        text = "PLAY ${item.title.uppercase()} ➔",
+                                        color = Color.White,
+                                        fontSize = 10.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        fontFamily = FontFamily.Monospace
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Button(
+                    onClick = onDismiss,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(1.dp, RetroBorder, RoundedCornerShape(8.dp)),
+                    colors = ButtonDefaults.buttonColors(containerColor = RetroDeepSlate),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text(
+                        text = "BACK TO TITLE",
+                        color = Color.White,
+                        fontSize = 11.sp,
+                        fontFamily = FontFamily.Monospace
+                    )
                 }
             }
         }

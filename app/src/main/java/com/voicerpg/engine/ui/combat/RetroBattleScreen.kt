@@ -41,11 +41,14 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.roundToInt
+import android.content.res.Configuration
+import androidx.compose.ui.platform.LocalConfiguration
 import com.voicerpg.engine.BuildConfig
-import com.voicerpg.engine.engine.StoryEncounters
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.model.CombatPhase
 import com.voicerpg.engine.model.FloatingCombatText
 import com.voicerpg.engine.ui.environment.BattleEnvironmentCanvas
+import com.voicerpg.engine.ui.environment.BattleForegroundOverlay
 import com.voicerpg.engine.ui.theme.LogosGold
 import com.voicerpg.engine.ui.theme.LogosGlow
 import com.voicerpg.engine.ui.theme.RetroBlack
@@ -72,6 +75,8 @@ fun RetroBattleScreen(
     val isAutoListen by viewModel.speechManager.isAutoListen.collectAsState()
     val rmsLevel by viewModel.speechManager.rmsLevel.collectAsState()
     val showDeveloperTools by viewModel.isDeveloperToolsEnabled.collectAsState()
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -158,9 +163,9 @@ fun RetroBattleScreen(
                         onSelectEncounter = { viewModel.startEncounter(it) },
                         onSummonMinion = {
                             val minionNum = (state.enemies.size + 1)
-                            val minion = StoryEncounters.createMinion(
+                            val minion = GameContent.createMinion(
                                 idSuffix = "$minionNum",
-                                name = "Blighted Minion $minionNum",
+                                name = "Template Minion $minionNum",
                                 hp = 180
                             )
                             viewModel.summonReinforcements(listOf(minion))
@@ -186,27 +191,23 @@ fun RetroBattleScreen(
                             arenaCoordinates = coords
                         }
                 ) {
-                    // 4-Frame Living Environmental Background Canvas
+                    // SNES BG3/BG2 Layer: Backdrop + Horizon Mist + Mode-7 Perspective Floor
                     BattleEnvironmentCanvas(
                         environment = state.currentEnvironment,
+                        environmentId = state.currentEnvironmentId,
+                        isPortrait = !isLandscape,
                         partyCount = state.party.size,
                         enemyCount = state.enemies.size,
                         modifier = Modifier.fillMaxSize()
                     )
 
-                    // 25% black contrast overlay between background and sprites
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color.Black.copy(alpha = 0.25f))
-                    )
-                    // Battle Grid
+                    // SNES OBJ Layer: Combatants anchored onto the floor stage
                     Row(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(vertical = 12.dp),
+                            .padding(top = 44.dp, bottom = 16.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.Bottom
                     ) {
                         // Left Flank (Heroes / Party)
                         PartyFlank(
@@ -231,6 +232,13 @@ fun RetroBattleScreen(
                             modifier = Modifier.weight(1f)
                         )
                     }
+
+                    // SNES BG1 + Color Math Foreground Layer (silhouettes, light shafts & vignette)
+                    BattleForegroundOverlay(
+                        environment = state.currentEnvironment,
+                        environmentId = state.currentEnvironmentId,
+                        modifier = Modifier.fillMaxSize()
+                    )
 
                     // Spell Projectiles Layer
                     SpellVfxCanvas(
@@ -310,35 +318,48 @@ private fun BattleConclusionOverlay(
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = if (isVictory) "⚔️ VICTORY ⚔️" else "💀 DEFEAT 💀",
+                text = if (isVictory) "⚔️ VICTORY ⚔️" else "💀 CLOCKED OUT (DEFEAT) 💀",
                 color = if (isVictory) LogosGlow else Color(0xFFFF5252),
-                fontSize = 24.sp,
+                fontSize = 22.sp,
                 fontWeight = FontWeight.Black,
                 fontFamily = FontFamily.Monospace
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
+            // Pull conclusion lines from manifest so game-specific narrative can shine hands-free
+            val conclusionText = if (isVictory) {
+                GameContent.manifest.victoryLine.ifBlank { "Shift complete. You held the line." }
+            } else {
+                GameContent.manifest.defeatLine.ifBlank {
+                    "Your team was decisively crushed, but this is retail — corporate policy does not recognize death as an excused absence. Dust off the vest, clock back in, and press on."
+                }
+            }
+
             Text(
-                text = if (isVictory) "Political victory! All HP & MP restored to 100%." else "Defeated! Regroup and try again.",
+                text = conclusionText,
                 color = Color.LightGray,
                 fontSize = 12.sp,
-                fontFamily = FontFamily.Monospace
+                fontFamily = FontFamily.Monospace,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 8.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            if (isVictory && onContinueStory != null) {
+            // GAME SPECIFIC (Wally's World / The Squeeze): Never upstream to core engine repo.
+            // In retail, defeat is not a game over — the shift must go on. The player presses on even in death.
+            if (onContinueStory != null) {
                 Button(
                     onClick = onContinueStory,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = LogosGold,
+                        containerColor = if (isVictory) LogosGold else Color(0xFFFF9800),
                         contentColor = RetroBlack
                     ),
                     shape = RoundedCornerShape(6.dp)
                 ) {
                     Text(
-                        text = "CONTINUE STORY ➔",
+                        text = if (isVictory) "CONTINUE STORY ➔" else "PRESS ON (STILL ON THE CLOCK) ➔",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Black
                     )
@@ -365,7 +386,11 @@ private fun BattleConclusionOverlay(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = if (isVictory) "🎤 Say \"Commence Story\" or \"Restart Battle\"" else "🎤 Say \"Restart Battle\" to fight again",
+                text = if (isVictory) {
+                    "🎤 Say \"Commence Story\" or \"Restart Battle\""
+                } else {
+                    "🎤 Say \"Press On\" / \"Continue Story\" or \"Restart Battle\""
+                },
                 color = LogosGold.copy(alpha = 0.9f),
                 fontSize = 11.sp,
                 fontFamily = FontFamily.Monospace,

@@ -261,7 +261,11 @@ class MainActivity : ComponentActivity() {
                                 onCloseMiniGameTestMenu = { storyViewModel.closeMiniGameTestMenu() },
                                 onLaunchMiniGame = { id -> storyViewModel.triggerMiniGame(id) },
                                 storyModeSummary = storyViewModel.getStoryModeSaveSummary(),
-                                onPureStoryMode = { fresh, track -> storyViewModel.startPureStoryMode(fresh, track) },
+                                onPureStoryMode = { fresh, trackId ->
+                                    val resolvedTrack = com.voicerpg.engine.model.CampaignTrack.entries.firstOrNull { it.id == trackId }
+                                        ?: com.voicerpg.engine.model.CampaignTrack.TRACK_A
+                                    storyViewModel.startPureStoryMode(fresh, resolvedTrack)
+                                },
                                 onTutorial = {
                                     tutorialBattleViewModel.resetTutorial()
                                     storyViewModel.openTutorial()

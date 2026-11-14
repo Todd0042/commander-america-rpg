@@ -69,6 +69,7 @@ data class CombatState(
     val screenShakeOffsetX: Float = 0f,
     val screenShakeOffsetY: Float = 0f,
     val currentEnvironment: BattleEnvironment = BattleEnvironment.DUNGEON,
+    val currentEnvironmentId: String = "",
     val isEyesFreeMode: Boolean = false,
     val isOptionsOpen: Boolean = false,
     val isPureStoryMode: Boolean = false
