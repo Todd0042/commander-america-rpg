@@ -42,9 +42,9 @@ jobs:
       matrix:
         include:
           - { game: echoes-of-logos, ref: main, private: false }
-          - { game: superstore-saga, ref: main, private: false }
-          - { game: wallys-world, ref: main, private: true }
-          - { game: commander-america-rpg, ref: main, private: true }
+          - { game: superstore-saga, ref: engine-convergence, private: false }   # main once merged
+          - { game: wallys-world, ref: engine-convergence, private: true }   # main once merged
+          - { game: commander-america-rpg, ref: engine-convergence, private: true }   # main once merged
     env:
       HAS_TOKEN: ${{ secrets.GAME_REPOS_TOKEN != '' }}
     steps:
