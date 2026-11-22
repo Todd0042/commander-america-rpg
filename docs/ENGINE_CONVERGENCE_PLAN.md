@@ -107,15 +107,22 @@ device check of the affected game(s).
 - **Rules**: AGENTS.md §2/§9 (GEMINI.md is now an identical copy) and the `.agy` protocol rewritten.
 - `MainActivity` stays engine-owned (simpler than a per-game shell; it's identical in three games).
 
-### Status (2026-11-22)
-| Game | Branch `engine-convergence` | Engine tests on its content |
+### Status (2026-11-22): all four games on the identical engine (b6ec8b1)
+| Game | Where | Engine tests on its content |
 |---|---|---|
-| echoes-of-logos | synced (based on `feature/engine-migration`); `presetChants` in its spells.json | ✅ all pass |
-| wallys-world | synced; game tests moved to `com.voicerpg.game`; defeat labels + 2 thesaurus words in its JSON | ✅ 259 pass |
-| superstore-saga | synced; locker room entry fixed; defeat labels; game test moved | ❌ 1: 227 unlinked story nodes (decision needed) |
-| commander-america-rpg | engine-removed content saved in `docs/engine-migration/` | step 5 not started |
+| echoes-of-logos | **main** (migration branch merged) | ✅ |
+| wallys-world | branch `engine-convergence` | ✅ |
+| superstore-saga | branch `engine-convergence` (career storylines wired in with `flagRoutes`) | ✅ |
+| commander-america-rpg | branch `engine-convergence` (content extracted to JSON; fresh saves) | ✅ 262 tests |
 
-Steps 1, 2, 2b (except the orphaned nodes) and 3 are done; step 4 needs the device check and merge.
+`sync_engine_to_games.sh --check` reports all four in sync. Remaining: device checks, then merge the
+three game branches and the engine branch into main, and tag the engine (step 6). Engine CI needs a
+`GAME_REPOS_TOKEN` secret to test the two private games' content.
+
+Engine features added along the way (all opt-in, JSON): `flagRoutes` (story branching on flags),
+`soundBites`, preset hero select (`creationMode: "preset_select"` + track `hero`), `outOfTurnLine`,
+`titleMusic`/`explorationMusic`/`combatMusic`, `presetChants`, enemy `voiceAliases`, battle result
+labels; crash-safe saves (AtomicFile).
 
 ### Step 2: Remove the content leaks from the engine (§1.2) ✅
 Done as planned, plus: Commander's chants (24 spells), voice ids (16) and vocabulary (71 words) were
@@ -136,16 +143,18 @@ by every game's resonance UI, not one game's content.
 - Verify: Superstore and Echoes (branch) tests and a device check. Voice targeting by name still works
   in Echoes, now through aliases.
 
-### Step 2b: Superstore content fixes (found in step 1)
+### Step 2b: Superstore content fixes (found in step 1) ✅
 - `scene_locker_room.initialNodeId` is `node_locker_001`, which doesn't exist (the chapter menu would
   dead-end there). The scene is entered through role-specific nodes; point it at a real entry.
 - Orphaned story: 227 nodes are never linked from anywhere: `node_act1_teamwork_entry`, 14 hubs, and
   role chains (cashier, stocker, unloader, specialist) for Shifts 2–54. Nothing in the engine routes to
-  them either. **Decision needed:** wire them in, or remove them.
+  them either. Decision: each starting role has its own story that intertwines in the shared store, so
+  they were wired in: role flags set at the locker room, `flagRoutes` at every act's branch node, and
+  Acts 2–3 pass through the role hubs like Acts 4–5. The one superseded node was removed.
 - Move `HubReturnTeamworkIncidentTest.kt` (a Superstore test inside the engine's test folder) to
   `app/src/test/java/com/voicerpg/game/`.
 
-### Step 3: Wally's World catch-up
+### Step 3: Wally's World catch-up ✅
 - `sync_engine_to_games.sh --dry-run wallys-world` and review it. Then sync with `--verify`.
 - The arena changes it never received (SNES multi-layer, floor grounding, new environment canvas)
   will look different. Check every Wally's environment id renders, and that sprite positions and the
@@ -154,7 +163,7 @@ by every game's resonance UI, not one game's content.
 - Fix every content incompatibility **in the engine**, with a default that keeps the other games unchanged.
 - Add Wally's pack to the engine CI matrix.
 
-### Step 4: Echoes of Logos onto `main`
+### Step 4: Echoes of Logos onto `main` ✅
 - Device playthrough check of the `feature/engine-migration` build (title, a story chapter, a
   battle, a save/load).
 - Merge the branch into `main`, then bring the one README commit across.
@@ -163,7 +172,7 @@ by every game's resonance UI, not one game's content.
 - Its `applicationId` and save files: check that an existing install upgrades cleanly (see §5).
 - Add Echoes' pack to the engine CI matrix (it's already identical, so this should just be green).
 
-### Step 5: Commander America
+### Step 5: Commander America ✅
 **5a. Take its generic features into the engine first** (§1.1), each with neutral defaults:
 - `soundBites`: on characters and enemies, `combat.soundBites: { "onCast": [], "onHit": [],
   "onDefeat": [], "onVictory": [] }`, plus `audioClip` on story nodes. The engine picks one at
@@ -226,11 +235,11 @@ by every game's resonance UI, not one game's content.
 Steps 3, 4 and 5a can run in parallel after step 2.
 
 ## 5. Open questions
-1. **Existing saves**: Commander's save format changes (its `SaveModels` uses its own `HeroClass` enum)
+1. ~~**Existing saves**~~ (answered: fresh start is fine for Commander): Commander's save format changes (its `SaveModels` uses its own `HeroClass` enum)
    and Echoes moves from the old app to the engine. Do installed copies (yours and any testers') need
    their saves migrated, or is a fresh start acceptable?
 2. **Wally's look**: once it's on the new arena, keep its darker overlay (as `arenaDim`) or take the
    engine's look as-is?
-3. **Commander's "Death of Voice"**: rebuild it as a proper boss phase within I-1 (recommended), or
-   keep the old 3× behaviour as an explicit, documented exception?
-4. **Superstore's orphaned storylines** (227 nodes, Shifts 2–54 per role): wire them in, or remove them?
+3. ~~Commander's "Death of Voice"~~: moot. It (and Cords of Severance, Zephyr's recruitment) was
+   Echoes code left in Commander's copy and only fired in Echoes encounter ids; dropped.
+4. ~~Superstore's orphaned storylines~~: wired in (see step 2b).
