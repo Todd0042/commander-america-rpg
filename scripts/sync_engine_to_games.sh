@@ -260,10 +260,10 @@ PY
 
     if [ "$RUN_VERIFY" = true ]; then
         echo "    [*] running ${game} unit tests..."
-        if (cd "$dir" && ./gradlew testDebugUnitTest --quiet > "$dir/.engine-sync-verify.log" 2>&1); then
+        if (cd "$dir" && ./gradlew testDebugUnitTest --quiet > "${TMPDIR:-/tmp}/engine-sync-verify-${game}.log" 2>&1); then
             echo "    [✓] ${game} tests passed"
         else
-            echo "    [-] ${game} tests FAILED (log: ${dir}/.engine-sync-verify.log). Either the engine change broke"
+            echo "    [-] ${game} tests FAILED (log: ${TMPDIR:-/tmp}/engine-sync-verify-${game}.log). Either the engine change broke"
             echo "        a game contract (fix it upstream) or the game's content breaks one (fix the content)."
             failures=1
         fi
