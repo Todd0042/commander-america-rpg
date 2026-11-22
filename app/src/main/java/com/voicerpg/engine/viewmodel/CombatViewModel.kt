@@ -642,6 +642,7 @@ class CombatViewModel(
 
             delay(if (isBossUltimate) 550 else 350)
             sfxManager.playHitImpact()
+            sfxManager.playSoundBite(move.soundBites.ifEmpty { refreshedSelf.soundBites })
             val moveShake = enemyGraphics?.screenShake ?: 0f
             if (isBossUltimate || moveShake > 0f) {
                 triggerScreenShake(if (isBossUltimate) 18f.coerceAtLeast(moveShake) else moveShake)
@@ -1869,6 +1870,9 @@ class CombatViewModel(
 
             // Audio & Feedback
             sfxManager.playSpellCast()
+            sfxManager.playSoundBite(parsed.spell.soundBites.ifEmpty {
+                com.voicerpg.engine.content.GameContent.characterById(activeHero.id)?.soundBites ?: emptyList()
+            })
             if (isSuperLogos) {
                 sfxManager.playLogosFanfare()
                 triggerScreenShake(if (isTranscendental) 30f else 18f)

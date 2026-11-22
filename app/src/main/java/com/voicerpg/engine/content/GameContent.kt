@@ -81,7 +81,9 @@ data class ManifestDto(
     val creationNameLabel: String? = null,
     val creationAestheticsLabel: String? = null,
     val creationStatusSubtitle: String? = null,
-    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef>? = null
+    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef>? = null,
+    /** "custom" (name, class, portrait) or "preset_select" (pick one of the campaign tracks' heroes). */
+    val creationMode: String? = null
 )
 
 data class ResonanceProfileDto(
@@ -174,6 +176,8 @@ data class CharacterDto(
     val preferredVoiceId: String? = null,
     val allowedVoiceRegions: List<String>? = null,
     val voiceAliases: List<String>? = null,
+    /** Clips played when this character casts in battle (asset paths); one at random. */
+    val soundBites: List<String>? = null,
     val loreClass: String = "Adventurer",
     val combat: CharacterCombatDto? = null,
     val spells: List<SpellDto>? = null,
@@ -231,7 +235,9 @@ data class SpellDto(
     val graphics: SpellGraphicsDto? = null,
     val cleansesDebuffs: Boolean = false,
     /** Optional chants per resonance tier ("BASIC".."TRANSCENDENTAL") used by hands-free presets. */
-    val presetChants: Map<String, String>? = null
+    val presetChants: Map<String, String>? = null,
+    /** Optional recorded clips (asset paths, e.g. audio/quotes/x.ogg); one plays at random. */
+    val soundBites: List<String>? = null
 )
 
 data class SpellFileDto(val spells: List<SpellDto>? = null)
@@ -247,7 +253,9 @@ data class EnemyMoveDto(
     val weight: Int = 1,
     val summon: String? = null,
     val summonCount: Int = 0,
-    val graphics: SpellGraphicsDto? = null
+    val graphics: SpellGraphicsDto? = null,
+    /** Optional recorded clips (asset paths, e.g. audio/quotes/x.ogg); one plays at random. */
+    val soundBites: List<String>? = null
 ) {
     fun toEnemyMove(): EnemyMove = EnemyMove(
         name = name.ifBlank { "Attack" },
@@ -260,7 +268,8 @@ data class EnemyMoveDto(
         weight = weight,
         summon = summon,
         summonCount = summonCount,
-        graphics = graphics?.toSpellGraphics()
+        graphics = graphics?.toSpellGraphics(),
+        soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
     )
 }
 
@@ -306,7 +315,9 @@ data class EnemyDto(
     val spriteId: String = "",
     val spriteTint: String = "#E57373",
     /** Extra words that target this enemy by voice ("warrior" for an orc), besides its name and subtitle. */
-    val voiceAliases: List<String>? = null
+    val voiceAliases: List<String>? = null,
+    /** Optional recorded clips (asset paths, e.g. audio/quotes/x.ogg); one plays at random. */
+    val soundBites: List<String>? = null
 )
 
 data class EnemyFileDto(val enemies: List<EnemyDto>? = null)
@@ -664,8 +675,12 @@ data class GameManifest(
     val creationNameLabel: String? = null,
     val creationAestheticsLabel: String? = null,
     val creationStatusSubtitle: String? = null,
-    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef> = emptyList()
+    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef> = emptyList(),
+    val creationMode: String = "custom"
 ) {
+    /** Character creation is a pick between the campaign tracks' preset heroes. */
+    val isPresetSelect: Boolean get() = creationMode.equals("preset_select", ignoreCase = true) && campaignTracks.any { it.hero != null }
+
     fun resolveDefaultHeroName(): String = resolveTemplateTokens(defaultHeroName)
 
     companion object {
@@ -801,7 +816,8 @@ data class GameCharacter(
     val spellGrants: List<SpellGrant>,
     val gender: String? = null,
     val allowedVoiceRegions: List<String> = emptyList(),
-    val sprite: SpriteDefinition? = null
+    val sprite: SpriteDefinition? = null,
+    val soundBites: List<String> = emptyList()
 ) {
     fun toPartyMember(atbOverride: Float? = null): PartyMember? {
         val c = combat ?: return null
@@ -859,7 +875,8 @@ data class EnemyTemplate(
     val isBoss: Boolean,
     val spriteId: String,
     val spriteTint: Color,
-    val voiceAliases: List<String> = emptyList()
+    val voiceAliases: List<String> = emptyList(),
+    val soundBites: List<String> = emptyList()
 ) {
     fun toEnemy(
         instanceId: String? = null,
@@ -891,7 +908,8 @@ data class EnemyTemplate(
             xpReward = xpReward,
             movesetId = movesetId,
             atbGauge = atbGauge,
-            voiceAliases = voiceAliases
+            voiceAliases = voiceAliases,
+            soundBites = soundBites
         )
     }
 }
@@ -1237,7 +1255,8 @@ class GameContentLoader(private val source: ContentSource) {
                 creationNameLabel = manifestDto.creationNameLabel,
                 creationAestheticsLabel = manifestDto.creationAestheticsLabel,
                 creationStatusSubtitle = manifestDto.creationStatusSubtitle,
-                campaignTracks = manifestDto.campaignTracks ?: emptyList()
+                campaignTracks = manifestDto.campaignTracks ?: emptyList(),
+                creationMode = manifestDto.creationMode?.ifBlank { null } ?: "custom"
             ),
             characters = characters,
             classes = classes,
@@ -1284,7 +1303,8 @@ class GameContentLoader(private val source: ContentSource) {
         aliases = aliases ?: emptyList(),
         graphics = graphics?.toSpellGraphics(),
         cleansesDebuffs = cleansesDebuffs || status.equals("CLEANSE", ignoreCase = true) || status.equals("DISPEL", ignoreCase = true),
-        presetChants = presetChants?.mapKeys { it.key.uppercase() } ?: emptyMap()
+        presetChants = presetChants?.mapKeys { it.key.uppercase() } ?: emptyMap(),
+        soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
     )
 
     private fun ClassDto.toDef(spells: Map<String, Spell>): HeroClassDef = HeroClassDef(
@@ -1354,7 +1374,8 @@ class GameContentLoader(private val source: ContentSource) {
             },
             gender = gender,
             allowedVoiceRegions = allowedVoiceRegions ?: emptyList(),
-            sprite = resolvedSprite
+            sprite = resolvedSprite,
+            soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
         )
     }
 
@@ -1396,7 +1417,8 @@ class GameContentLoader(private val source: ContentSource) {
         isBoss = isBoss,
         spriteId = spriteId,
         spriteTint = parseHexColor(spriteTint, Color(0xFFE57373)),
-        voiceAliases = voiceAliases?.filter { it.isNotBlank() } ?: emptyList()
+        voiceAliases = voiceAliases?.filter { it.isNotBlank() } ?: emptyList(),
+        soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
     )
 
     private fun EncounterDto.toDefinition(
