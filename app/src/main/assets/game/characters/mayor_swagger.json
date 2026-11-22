@@ -1,0 +1,24 @@
+{
+  "id": "mayor_swagger",
+  "role": "companion",
+  "name": "Mayor Swagger",
+  "title": "Istanbul-Upgrade Nightlife Czar",
+  "portraitAsset": "portraits/mayor_swagger.jpg",
+  "themeColor": "#4DD0E1",
+  "ttsPitch": 0.9,
+  "loreClass": "Istanbul Nightlife Envoy",
+  "combat": {
+    "maxHp": 420,
+    "maxMp": 150,
+    "speed": 70,
+    "defense": 0,
+    "avatarTint": "#26A69A",
+    "startAtb": 0.4,
+    "spellIds": [
+      "swagger_turkish_upgrade",
+      "swagger_contraband_doll",
+      "swagger_vegan_seabass",
+      "swagger_forgot_passcode"
+    ]
+  }
+}

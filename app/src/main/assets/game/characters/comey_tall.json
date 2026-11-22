@@ -1,0 +1,9 @@
+{
+  "id": "comey_tall",
+  "role": "npc",
+  "name": "Director Jim-Tall",
+  "title": "6-Foot-8 Blue-Curtain Chameleon",
+  "portraitAsset": "portraits/comey.jpg",
+  "themeColor": "#90A4AE",
+  "ttsPitch": 0.82
+}

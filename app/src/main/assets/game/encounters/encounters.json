@@ -1,55 +1,799 @@
 {
-  "_doc": "TEMPLATE ENCOUNTERS. 'party' lists character ids from characters/ (empty = use the active campaign party). 'enemies' instantiate templates from enemies/enemies.json with per-instance overrides. bossPhases fire once when the referenced enemy drops below hpBelow: they can announce (bannerText/narrationText), crush the party toward reducePartyToHpPct (executing anyone under executeBelowHpPct), and/or summon reinforcements. midBattleJoin adds a character to the party after N enemy actions.",
   "encounters": [
     {
-      "id": "template_solo_battle",
-      "name": "Initiate Proving Trial",
-      "description": "A single combat drone awakens to test vocal incantations and basic resonance.",
-      "environment": "CAVE",
-      "party": ["hero"],
-      "enemies": [
-        { "templateId": "training_drone", "id": "drone_solo", "name": "Training Drone Alpha", "isTargeted": true, "atbGauge": 0.35 }
-      ]
-    },
-    {
-      "id": "template_trio_battle",
-      "name": "Squad Defense Exercise",
-      "description": "Three combat automatons deploy in staggered formation to test crowd control and targeting.",
-      "environment": "DUNGEON",
-      "party": ["hero"],
-      "enemies": [
-        { "templateId": "training_drone", "id": "drone_vanguard", "name": "Drone Vanguard", "subtitle": "Frontline Brawler", "hp": 110, "attack": 18, "speed": 42, "isTargeted": true, "atbGauge": 0.3 },
-        { "templateId": "template_sniper", "id": "drone_artillery", "name": "Drone Artillery", "subtitle": "Heavy Blaster", "hp": 70, "attack": 24, "speed": 36, "atbGauge": 0.2 },
-        { "templateId": "training_drone", "id": "drone_scout", "name": "Drone Scout", "subtitle": "Swift Harasser", "hp": 65, "attack": 12, "speed": 62, "atbGauge": 0.15 }
-      ]
-    },
-    {
-      "id": "template_boss_battle",
-      "name": "The Guardian Trial",
-      "description": "A heavyweight template guardian demonstrates boss phases, enrage announcements, party-wide pressure, and summons.",
+      "id": "act1_ch1_press_battle",
+      "name": "Act I - Ch 1: Escalator Press Confrontation",
+      "description": "Skeptical cable news anchors and K-Street retainer lobbyists attempt to block the Trump Tower press conference!",
       "environment": "CASTLE",
-      "party": ["hero"],
-      "enemies": [
-        { "templateId": "template_boss", "id": "boss_core", "name": "Proving Guardian", "isTargeted": true, "atbGauge": 0.4 },
-        { "templateId": "template_minion", "id": "boss_warden_a", "name": "Guardian Warden A", "atbGauge": 0.25 },
-        { "templateId": "template_minion", "id": "boss_warden_b", "name": "Guardian Warden B", "atbGauge": 0.2 }
+      "party": [
+        "hero"
       ],
-      "bossPhases": [
+      "enemies": [
         {
-          "enemyId": "boss_core",
-          "hpBelow": 0.66,
-          "bannerText": "GUARDIAN SUMMONS REINFORCEMENTS",
-          "narrationText": "The Proving Guardian calls a fresh warden into the arena!",
-          "summonEnemyId": "template_minion",
-          "summonCount": 1
+          "templateId": "pundit_producer",
+          "atbGauge": 0.35
         },
         {
-          "enemyId": "boss_core",
-          "hpBelow": 0.33,
-          "bannerText": "GUARDIAN OVERLOAD — CATACLYSM",
-          "narrationText": "The Proving Guardian unleashes a devastating overload, tearing through the party!",
-          "reducePartyToHpPct": 0.1,
-          "executeBelowHpPct": 0.3
+          "templateId": "lobbyist",
+          "id": "lobbyist_1",
+          "isTargeted": true,
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act1_ch2_debate_battle",
+      "name": "Act I - Ch 2: The Primary Debate Arena",
+      "description": "Low-Energy Dynasty rivals and focus-grouped Super PAC strategists attempt to ambush the debate podium!",
+      "environment": "CASTLE",
+      "party": [
+        "hero"
+      ],
+      "enemies": [
+        {
+          "templateId": "dynasty_candidate",
+          "isTargeted": true,
+          "atbGauge": 0.3
+        },
+        {
+          "templateId": "pac_strategist",
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "consultant_checker",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act1_track_a_barry_battle",
+      "name": "Act I (Track A): Tan Suit & Dijon Exhibition",
+      "description": "Barry Teleprompter steps onto the stage in his August 2014 summer tan suit, armed with a Dijon mustard burger and a mic-drop!",
+      "environment": "CASTLE",
+      "party": [
+        "hero"
+      ],
+      "enemies": [
+        {
+          "templateId": "barry_tan_suit",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "dijon_waiter",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act1_track_a_hill_rod_finale",
+      "name": "Act I Finale (Track A): The Chappaqua Server Sovereign",
+      "description": "Hill-Rod deploys BleachBit cloth wipes, Purse Hot Sauce, and Pokémon Go-To-The-Polls on Election Night 2016!",
+      "environment": "CASTLE",
+      "party": [
+        "hero"
+      ],
+      "enemies": [
+        {
+          "templateId": "hill_rod_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "bleachbit_server",
+          "atbGauge": 0.2
+        },
+        {
+          "templateId": "fern_intern",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act1_track_b_ferns_battle",
+      "name": "Act I (Track B): Between Two Potted Ferns",
+      "description": "Zach Two-Ferns rolls a rival campaign commercial mid-interview while weaponized potted ferns close in!",
+      "environment": "FOREST",
+      "party": [
+        "hill_rod"
+      ],
+      "enemies": [
+        {
+          "templateId": "zach_ferns_boss",
+          "isTargeted": true,
+          "atbGauge": 0.3
+        },
+        {
+          "templateId": "potted_fern",
+          "id": "potted_fern_1",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act1_track_b_commander_finale",
+      "name": "Act I Finale (Track B): Golden Podium Showdown",
+      "description": "Commander America commands the stage with Accordion Hands, Diet Coke Valet Buttons, and Tic-Tac Bus counter-strikes!",
+      "environment": "CASTLE",
+      "party": [
+        "hill_rod"
+      ],
+      "enemies": [
+        {
+          "templateId": "commander_boss_act1",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "billy_bus_minion",
+          "atbGauge": 0.25
+        },
+        {
+          "templateId": "escalator_extra",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act2_ch1_inauguration_battle",
+      "name": "Act II (Track A) - Ch 1: Crowd-Size Spin & The 11-Day Mooch",
+      "description": "Cable News Aerial Spin Crew and The 11-Day Mooch tornado collide with Spicy Sean's podium!",
+      "environment": "CASTLE",
+      "party": [
+        "hero"
+      ],
+      "enemies": [
+        {
+          "templateId": "aerial_spin_anchor",
+          "isTargeted": true,
+          "atbGauge": 0.4
+        },
+        {
+          "templateId": "hostile_fact_checker",
+          "atbGauge": 0.3
+        }
+      ]
+    },
+    {
+      "id": "act2_media_battle",
+      "name": "Act II Finale (Track A): Nancy Palooza & The Sub-Zero Vault",
+      "description": "Nancy Palooza unleashes 45-degree sideways seal claps, pre-scored SOTU speech rips, and twin $24,000 Sub-Zero ice cream freezers!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco"
+      ],
+      "enemies": [
+        {
+          "templateId": "pelosi",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "fact_checker",
+          "atbGauge": 0.25
+        },
+        {
+          "templateId": "anonymous_source",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act2_track_a_sharpie_battle",
+      "name": "Act II (Track A) - Ch 3: Hurricane Sharpie & 15 Flushes",
+      "description": "NOAA Weather-Map Fact-Checkers and Low-Flow Plumbing Inspectors challenge the Alabama Sharpie bubble and Bounty free-throws!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco"
+      ],
+      "enemies": [
+        {
+          "templateId": "noaa_meteorologist",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "plumbing_inspector",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act2_track_b_spicer_salsa_battle",
+      "name": "Act II (Track B) - Ch 1: White House Bushes & Neon Salsa",
+      "description": "Spicy Sean leaps out of the White House hedges in his neon-green Dancing with the Stars ruffled shirt alongside The 11-Day Mooch!",
+      "environment": "FOREST",
+      "party": [
+        "nancy_palooza"
+      ],
+      "enemies": [
+        {
+          "templateId": "spicy_sean_salsa",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "the_mooch_boss",
+          "atbGauge": 0.4
+        }
+      ]
+    },
+    {
+      "id": "act2_track_b_kash_battle",
+      "name": "Act II (Track B) - Ch 4: Wizard Kash & The Nunes Scroll",
+      "description": "Kash Subpoena unrolls his 4-page FISA scroll while hawking his $19.99 illustrated children's book, The Plot Against the King!",
+      "environment": "DUNGEON",
+      "party": [
+        "nancy_palooza"
+      ],
+      "enemies": [
+        {
+          "templateId": "kash_wizard_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "brave_book_golem",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act2_track_b_rudy_finale",
+      "name": "Act II Finale (Track B): Four Seasons Total Landscaping",
+      "description": "Wedged between a crematorium and Fantasy Island Adult Books, Rudy Ghoul drips hair dye down both cheeks beside Commander America!",
+      "environment": "CASTLE",
+      "party": [
+        "nancy_palooza"
+      ],
+      "enemies": [
+        {
+          "templateId": "rudy_ghoul_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "commander_sharpie",
+          "atbGauge": 0.3
+        },
+        {
+          "templateId": "landscaping_mower",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act3_track_a_stairs_bike_battle",
+      "name": "Act III (Track A) - Ch 1: Windy Stairs & Toe-Cage Bike",
+      "description": "Andrews Air Force Base wind gusts and a stationary Rehoboth Beach Trek bicycle with metal pedal toe-cages block the tarmac!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "af1_staircase_gust",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "rehoboth_toe_cage_bike",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act3_track_a_chandelier_battle",
+      "name": "Act III (Track A) - Ch 3: Bathroom Chandeliers & Corvette Boxes",
+      "description": "Subpoena Archivists inspect the Mar-a-Lago bathroom chandelier bankers boxes while ignoring the 1967 Corvette garage!",
+      "environment": "DUNGEON",
+      "party": [
+        "hero",
+        "marco",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "chandelier_archivist",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "corvette_garage_drone",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act3_track_a_biden_ice_cream_finale",
+      "name": "Act III Finale (Track A): Baskin-Robbins Waffle Cone Showdown",
+      "description": "Joe Naptime licks a double-scoop chocolate chip waffle cone at Baskin-Robbins while reading 'End of quote, repeat the line' off the teleprompter!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "joe_naptime_baskin_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "repeat_line_prompter",
+          "atbGauge": 0.25
+        },
+        {
+          "templateId": "two_scoop_golem",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act3_track_b_corn_pop_battle",
+      "name": "Act III (Track B) - Ch 1: Corn Pop & The Toe-Cage Bicycle",
+      "description": "Corn Pop ('a bad dude who ran a bunch of bad boys') bangs rusty razors in a rainwater barrel beside a treacherous toe-cage bicycle!",
+      "environment": "FOREST",
+      "party": [
+        "joe_naptime"
+      ],
+      "enemies": [
+        {
+          "templateId": "corn_pop_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "toe_cage_pedal",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act3_track_b_foghorn_battle",
+      "name": "Act III (Track B) - Ch 3: Foghorn Kennedy's Oxford Drawl",
+      "description": "Senator Foghorn Kennedy hides an Oxford First-Class degree behind folksy one-liners while asking judicial nominees about Article V!",
+      "environment": "CASTLE",
+      "party": [
+        "joe_naptime"
+      ],
+      "enemies": [
+        {
+          "templateId": "foghorn_kennedy_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "article_five_binder",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act3_track_b_mugshot_finale",
+      "name": "Act III Finale (Track B): 215-Pound Mugshot & Bathroom Chandelier",
+      "description": "Commander America flashes his 'Never Surrender' Fulton County mugshot beside a gilded Mar-a-Lago bathroom chandelier stacked with bankers boxes!",
+      "environment": "CASTLE",
+      "party": [
+        "joe_naptime"
+      ],
+      "enemies": [
+        {
+          "templateId": "commander_mugshot_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "bathroom_chandelier_golem",
+          "atbGauge": 0.25
+        },
+        {
+          "templateId": "never_surrender_merch",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act4_ch1_fisa_battle",
+      "name": "Act IV - Ch 1: Archivist Phantoms",
+      "description": "Bureau Archivist Phantoms and unauthorized redaction officers attempt to shred the declassified FISA memos!",
+      "environment": "DUNGEON",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash"
+      ],
+      "enemies": [
+        {
+          "templateId": "archivist_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "redaction_guard",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act4_track_a_donut_battle",
+      "name": "Act IV (Track A) - Ch 1: 'Whatever Makes Sense' Donuts & Swiss Cheese",
+      "description": "JD Pants joins the party at Holt's Sweet Shoppe as an unimpressed bakery counter and a Philly Swiss-cheese purist attack!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "donut_shop_case",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "swiss_cheese_purist",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act4_track_b_venn_critics_battle",
+      "name": "Act IV (Track B) - Ch 1: Coconut Context & Venn Circles",
+      "description": "Kamala Coconut unleashes overlapping Venn diagrams and yellow school buses against skeptical pundits!",
+      "environment": "FOREST",
+      "party": [
+        "kamala_coconut"
+      ],
+      "enemies": [
+        {
+          "templateId": "word_salad_critic",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "teleprompter_glitch",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act4_track_b_vance_donut_battle",
+      "name": "Act IV (Track B) - Ch 2: JD Pants & 'Whatever Makes Sense'",
+      "description": "JD Pants asks 'How long have you worked here? Okay, good' while hurling sprinkle donuts and CBS fact-check rules!",
+      "environment": "CASTLE",
+      "party": [
+        "kamala_coconut"
+      ],
+      "enemies": [
+        {
+          "templateId": "jd_pants_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "sprinkle_stuff_box",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act4_track_b_concepts_debate_battle",
+      "name": "Act IV (Track B) - Ch 4: 'Concepts of a Plan' & 'People on TV'",
+      "description": "On the Philadelphia debate stage, Commander America unveils 'Concepts of a Plan' and 'I saw it on television!'",
+      "environment": "CASTLE",
+      "party": [
+        "kamala_coconut"
+      ],
+      "enemies": [
+        {
+          "templateId": "concepts_of_plan_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "people_on_tv_set",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act4_track_b_mcdonalds_finale",
+      "name": "Act IV Finale (Track B): Drive-Thru Fry Basket & Garbage Vest",
+      "description": "Commander America leans out a closed-set McDonald's drive-thru window in a fry apron and neon-orange garbage truck vest beside JD Pants!",
+      "environment": "CASTLE",
+      "party": [
+        "kamala_coconut"
+      ],
+      "enemies": [
+        {
+          "templateId": "commander_fry_apron",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "garbage_truck_vest",
+          "atbGauge": 0.25
+        },
+        {
+          "templateId": "vance_diet_dew",
+          "atbGauge": 0.2
+        }
+      ]
+    },
+    {
+      "id": "act5_track_a_cybertruck_sink_battle",
+      "name": "Act V (Track A) - Ch 1: Mid-Air Star-Jump & Porcelain Sink",
+      "description": "Musk-X leaps into an X-shape mid-air with a porcelain bathroom sink while a shattered-window Cybertruck and SEC $420 auditor attack!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "shattered_cybertruck",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "sec_420_auditor",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_a_doge_bureaucrats_battle",
+      "name": "Act V (Track A) - Ch 2: Hulkster Shirt-Rip & DOGE Audit",
+      "description": "Hulkster 24-Pythons rips his shirt in half as the Shiba Inu DOGE commission audits an Omnibus Pork-Barrel Golem!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "omnibus_pork_golem",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "dealbook_boycott_exec",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_a_swagger_turkish_battle",
+      "name": "Act V (Track A) - Ch 3: Mayor Swagger & Turkish Lie-Flat Suites",
+      "description": "Mayor Swagger pulls contraband out of a baby doll's head while sipping rat-free table water in a Turkish Airlines suite!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "mayor_swagger_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "turkish_lie_flat_seat",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_a_grand_finale",
+      "name": "Act V Grand Finale (Track A): Mr. Cardamom & The All-Star Relay",
+      "description": "Zohran Cardamom ('Mr. Cardamom') flips sizzling chapatis alongside Kamala Coconut's Venn Diagrams and Joe Naptime's Double-Scoop Cone!",
+      "environment": "CASTLE",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "zohran_cardamom_boss",
+          "isTargeted": true,
+          "atbGauge": 0.4
+        },
+        {
+          "templateId": "kamala_venn_ally",
+          "atbGauge": 0.3
+        },
+        {
+          "templateId": "joe_naptime_ally",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_b_landlord_lobby_battle",
+      "name": "Act V (Track B) - Ch 1: 'Nani' Chapati Truck & Rent Freeze",
+      "description": "Zohran Cardamom ('Mr. Cardamom') and Mayor Swagger defend the Astoria chapati truck against Rent-Board Lobbyists!",
+      "environment": "FOREST",
+      "party": [
+        "zohran_cardamom",
+        "mayor_swagger"
+      ],
+      "enemies": [
+        {
+          "templateId": "rent_board_lobbyist",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "mta_turnstile_drone",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_b_turkish_auditor_battle",
+      "name": "Act V (Track B) - Ch 2: 6-Digit Passcodes & Chilean Sea Bass",
+      "description": "Subpoena Passcode Crackers and Rat-Ticket Inspectors ambush Mayor Swagger outside Osteria La Baia!",
+      "environment": "DUNGEON",
+      "party": [
+        "zohran_cardamom",
+        "mayor_swagger"
+      ],
+      "enemies": [
+        {
+          "templateId": "passcode_cracker",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "rat_summit_inspector",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_b_musk_starjump_battle",
+      "name": "Act V (Track B) - Ch 3: Mid-Air 'X' Star-Jump & Porcelain Sink",
+      "description": "Musk-X leaps into an X-shape mid-air exposing four inches of midriff while hurling a porcelain bathroom sink!",
+      "environment": "CASTLE",
+      "party": [
+        "zohran_cardamom",
+        "mayor_swagger"
+      ],
+      "enemies": [
+        {
+          "templateId": "musk_x_starjump_boss",
+          "isTargeted": true,
+          "atbGauge": 0.4
+        },
+        {
+          "templateId": "porcelain_sink_golem",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_b_doge_squad_battle",
+      "name": "Act V (Track B) - Ch 4: Donuts, Wizard Books & Oxford Drawls",
+      "description": "JD Pants, Wizard Kash, and Senator Foghorn Kennedy defend the Shiba Inu DOGE hearing room!",
+      "environment": "CASTLE",
+      "party": [
+        "zohran_cardamom",
+        "mayor_swagger"
+      ],
+      "enemies": [
+        {
+          "templateId": "vance_doge_boss",
+          "isTargeted": true,
+          "atbGauge": 0.35
+        },
+        {
+          "templateId": "kash_doge_boss",
+          "atbGauge": 0.3
+        },
+        {
+          "templateId": "kennedy_doge_boss",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act5_track_b_grand_finale",
+      "name": "Act V Grand Finale (Track B): Golden Podium & Dark Gothic MAGA",
+      "description": "Zohran Cardamom and Mayor Swagger clash with Commander America, Musk-X's Mid-Air Star-Jump, and the Diet Coke Valet Button!",
+      "environment": "CASTLE",
+      "party": [
+        "zohran_cardamom",
+        "mayor_swagger"
+      ],
+      "enemies": [
+        {
+          "templateId": "commander_finale_boss",
+          "isTargeted": true,
+          "atbGauge": 0.4
+        },
+        {
+          "templateId": "musk_x_finale_ally",
+          "atbGauge": 0.3
+        },
+        {
+          "templateId": "diet_coke_mecha",
+          "atbGauge": 0.25
+        }
+      ]
+    },
+    {
+      "id": "act6_ch3_bus_battle",
+      "name": "Act VI - Ch 3: The Electric School Bus Mire",
+      "description": "A Stranded Battery Golem and Federal Green Mandate Drones attempt to siphon the party's energy into non-existent chargers!",
+      "environment": "SWAMP",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "battery_golem",
+          "isTargeted": true,
+          "atbGauge": 0.25
+        },
+        {
+          "templateId": "mandate_drone",
+          "atbGauge": 0.35
+        }
+      ]
+    },
+    {
+      "id": "act6_kamala_battle",
+      "name": "Act VI: The Word-Salad Wasteland",
+      "description": "Kamala the Unburdened traps the hero in endless overlapping Venn diagrams and circular speeches!",
+      "environment": "SWAMP",
+      "party": [
+        "hero",
+        "marco",
+        "vance",
+        "kash",
+        "kennedy"
+      ],
+      "enemies": [
+        {
+          "templateId": "kamala",
+          "isTargeted": true,
+          "atbGauge": 0.4
+        },
+        {
+          "templateId": "yellow_venn",
+          "atbGauge": 0.45
+        },
+        {
+          "templateId": "blue_venn",
+          "atbGauge": 0.3
         }
       ]
     }

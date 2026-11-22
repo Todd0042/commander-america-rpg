@@ -1,0 +1,9 @@
+{
+  "id": "the_mooch",
+  "role": "npc",
+  "name": "The 11-Day Mooch",
+  "title": "Front-Stabbing Wall Street Whirlwind",
+  "portraitAsset": "portraits/mooch.jpg",
+  "themeColor": "#FF80AB",
+  "ttsPitch": 1.16
+}

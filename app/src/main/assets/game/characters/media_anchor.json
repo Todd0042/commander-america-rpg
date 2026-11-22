@@ -1,0 +1,10 @@
+{
+  "id": "media_anchor",
+  "role": "npc",
+  "name": "Chyron McSpin",
+  "title": "Breaking-News Outrage Pundit",
+  "portraitAsset": "portraits/media_anchor.jpg",
+  "themeColor": "#B0BEC5",
+  "ttsPitch": 1.1,
+  "preferredVoiceId": "en-us-x-tpd-local"
+}

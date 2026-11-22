@@ -1,0 +1,27 @@
+{
+  "id": "joe_naptime",
+  "role": "companion",
+  "name": "Joe Naptime",
+  "title": "Two-Scoop Chocolate-Chip Sovereign",
+  "portraitAsset": "portraits/biden.jpg",
+  "themeColor": "#90CAF9",
+  "ttsPitch": 0.65,
+  "loreClass": "Grand Ice-Cream Cryomancer",
+  "combat": {
+    "maxHp": 390,
+    "maxMp": 160,
+    "speed": 70,
+    "defense": 0,
+    "avatarTint": "#FFF59D",
+    "startAtb": 0.5,
+    "spellIds": [
+      "biden_gibberish_audio",
+      "biden_double_scoop_cone",
+      "biden_jenis_brain_freeze",
+      "biden_baskin_robbins_lick",
+      "biden_9am_lid_sundae",
+      "biden_fudge_ripple_meltdown",
+      "attune"
+    ]
+  }
+}

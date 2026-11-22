@@ -1,0 +1,9 @@
+{
+  "id": "rudy_ghoul",
+  "role": "npc",
+  "name": "Rudy Ghoul",
+  "title": "Four-Seasons Hair-Dye Landscaper",
+  "portraitAsset": "portraits/rudy_ghoul.jpg",
+  "themeColor": "#BA68C8",
+  "ttsPitch": 0.76
+}

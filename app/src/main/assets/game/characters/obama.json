@@ -1,0 +1,13 @@
+{
+  "id": "obama",
+  "role": "npc",
+  "name": "Barry Teleprompter",
+  "title": "Tan-Suit Dijon Oracle",
+  "portraitAsset": "portraits/obama.jpg",
+  "themeColor": "#4FC3F7",
+  "ttsPitch": 0.95,
+  "preferredVoiceId": "en-us-x-iog-local",
+  "soundBites": [
+    "audio/quotes/obama/obama_dont_boo_vote.ogg"
+  ]
+}

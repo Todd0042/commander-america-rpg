@@ -1,0 +1,10 @@
+{
+  "id": "narrator_karoline",
+  "role": "narrator",
+  "name": "Karoline Mic-Drop",
+  "title": "Gen-Z Briefing Enforcer",
+  "portraitAsset": "portraits/narrator_karoline.jpg",
+  "themeColor": "#FFD54F",
+  "ttsPitch": 1.12,
+  "preferredVoiceId": "en-us-x-tpf-local"
+}

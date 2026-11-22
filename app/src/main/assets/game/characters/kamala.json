@@ -1,0 +1,13 @@
+{
+  "id": "kamala",
+  "role": "npc",
+  "name": "Kamala Coconut",
+  "title": "Triple-Circle Venn Mystic",
+  "portraitAsset": "portraits/kamala.jpg",
+  "themeColor": "#CE93D8",
+  "ttsPitch": 1.25,
+  "preferredVoiceId": "en-us-x-sfg-local",
+  "soundBites": [
+    "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+  ]
+}

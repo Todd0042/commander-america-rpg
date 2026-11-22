@@ -1,0 +1,29 @@
+{
+  "id": "hill_rod",
+  "role": "companion",
+  "name": "Hill-Rod",
+  "title": "Chappaqua Cloth-Wipe Technomancer",
+  "portraitAsset": "portraits/template/hill_rod_template.jpg",
+  "themeColor": "#64B5F6",
+  "ttsPitch": 1.08,
+  "loreClass": "Chappaqua Server Technomancer",
+  "soundBites": [
+    "audio/quotes/hillary/hillary_congratulated_trump.ogg"
+  ],
+  "combat": {
+    "maxHp": 340,
+    "maxMp": 140,
+    "speed": 72,
+    "defense": 0,
+    "avatarTint": "#64B5F6",
+    "startAtb": 0.5,
+    "spellIds": [
+      "hill_pokemon_go",
+      "hill_cloth_wipe",
+      "hill_hot_sauce",
+      "hill_cattle_futures",
+      "hill_vindication_11hr",
+      "attune"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "narrator_kjp",
+  "role": "narrator",
+  "name": "Karine Hatch-Act",
+  "title": "Historic Binder Guard",
+  "portraitAsset": "portraits/narrator_kjp.jpg",
+  "themeColor": "#CE93D8",
+  "ttsPitch": 1.1
+}

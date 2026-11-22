@@ -1,144 +1,42 @@
 {
-  "_doc": "TEMPLATE CHARACTER FILE. Everything about a character lives here: dialogue speaker (name/title/portrait/theme color/TTS pitch/sample phrase/preferred voice), voice command aliases, embedded 16-bit sprite animation frames, and combat stats/spells/growth/graphics. The engine resolves characters by id everywhere (story nodes reference speakerId, encounters reference party member ids, saves store stats per id). Copy this file to add more characters.",
   "id": "hero",
   "role": "hero",
-  "name": "Template Hero",
-  "title": "Protagonist",
-  "portraitAsset": "portraits/template_hero.jpg",
-  "spriteId": "hero",
+  "name": "Commander America",
+  "title": "Golden Escalator Brawler",
+  "portraitAsset": "portraits/commander_america.jpg",
   "themeColor": "#FFD700",
-  "ttsPitch": 1.0,
-  "samplePhrase": "I stand ready for the quest.",
-  "preferredVoiceId": null,
+  "ttsPitch": 0.9,
+  "preferredVoiceId": "en-us-x-iob-local",
   "voiceAliases": [
-    "hero",
-    "protagonist",
-    "adventurer",
-    "champion",
-    "spellblade"
+    "commander",
+    "america",
+    "trump",
+    "chief"
   ],
-  "gender": "male",
-  "allowedVoiceRegions": [
-    "US",
-    "CA",
-    "GB",
-    "AU"
+  "loreClass": "Commander-in-Chief",
+  "soundBites": [
+    "audio/quotes/trump/trump_greatness_birthright.ogg",
+    "audio/quotes/trump/trump_easily_win.ogg"
   ],
-  "loreClass": "Spellblade",
+  "outOfTurnLine": "Hold on folks, that's {owner}'s move! Commander America has the tremendous spells ready right here!",
   "combat": {
-    "maxHp": 240,
-    "maxMp": 140,
+    "maxHp": 5000,
+    "maxMp": 1776,
     "speed": 70,
-    "defense": 6,
-    "avatarTint": "#90CAF9",
-    "startAtb": 0.45,
+    "defense": 35,
+    "avatarTint": "#FFD700",
+    "startAtb": 0.0,
     "spellIds": [
-      "power_strike",
-      "flame_spark",
-      "mending_touch",
-      "aegis_guard",
-      "attune"
-    ],
-    "growth": {
-      "maxHp": 14,
-      "maxMp": 12,
-      "speed": 1,
-      "defense": 1,
-      "potencyPct": 0.035
-    },
-    "spells": [
-      {
-        "id": "power_strike",
-        "name": "Power Strike",
-        "school": "PHYSICAL",
-        "basePower": 40,
-        "mpCost": 0,
-        "description": "A swift, heavy blade strike.",
-        "exampleChant": "Power strike the foe!",
-        "aliases": ["strike", "slash", "attack", "blade", "cleave"],
-        "graphics": {
-          "effectType": "SLASH",
-          "primaryColor": "#ECEFF1",
-          "secondaryColor": "#42A5F5",
-          "particleCount": 18,
-          "screenShake": 3.0
-        }
-      },
-      {
-        "id": "flame_spark",
-        "name": "Flame Spark",
-        "school": "PYROMANCY",
-        "basePower": 55,
-        "mpCost": 15,
-        "description": "Hurls a searing burst of fire.",
-        "exampleChant": "Flame spark the drone!",
-        "aliases": ["spark", "flame", "burn", "fire", "ignite"],
-        "graphics": {
-          "effectType": "BURST",
-          "primaryColor": "#FF6E40",
-          "secondaryColor": "#FFD740",
-          "particleCount": 24,
-          "screenShake": 4.0
-        }
-      },
-      {
-        "id": "mending_touch",
-        "name": "Mending Touch",
-        "school": "HOLY",
-        "basePower": 50,
-        "mpCost": 20,
-        "isHeal": true,
-        "description": "Restores hit points to an ally.",
-        "exampleChant": "Mending touch!",
-        "aliases": ["heal", "mend", "restore", "cure", "soothe"],
-        "graphics": {
-          "effectType": "WAVE",
-          "primaryColor": "#69F0AE",
-          "secondaryColor": "#B9F6CA",
-          "particleCount": 20,
-          "screenShake": 0.0
-        }
-      },
-      {
-        "id": "aegis_guard",
-        "name": "Aegis Guard",
-        "school": "PHYSICAL",
-        "basePower": 0,
-        "mpCost": 10,
-        "isGuard": true,
-        "description": "Raises a defensive stance, reducing incoming damage.",
-        "exampleChant": "Aegis guard!",
-        "aliases": ["guard", "defend", "shield", "protect", "aegis"],
-        "graphics": {
-          "effectType": "SHIELD",
-          "primaryColor": "#40C4FF",
-          "secondaryColor": "#0091EA",
-          "particleCount": 16,
-          "screenShake": 1.0
-        }
-      },
-      {
-        "id": "attune",
-        "name": "Attune",
-        "school": "PHYSICAL",
-        "basePower": 0,
-        "mpCost": 0,
-        "manaRestorePct": 0.35,
-        "description": "Steady the breath; a third of your mana returns.",
-        "exampleChant": "Attune",
-        "aliases": ["attune", "tune", "breathe", "breath", "concentrate", "center", "centre", "steady", "focus", "gather", "recover mana", "restore mana"],
-        "graphics": {
-          "effectType": "BURST",
-          "primaryColor": "#80DEEA",
-          "secondaryColor": "#00ACC1",
-          "particleCount": 18,
-          "screenShake": 0.0
-        }
-      }
+      "ca_tremendous_strike",
+      "ca_art_of_the_deal",
+      "ca_obama_did_it_first",
+      "ca_presidential_veto",
+      "ca_executive_action",
+      "ca_build_the_wall",
+      "ca_rally_patriots",
+      "ca_tired_of_winning"
     ]
   },
-  "joinWhenFlag": null,
-  "spellGrants": [],
   "sprite": {
     "palette": {
       ".": "#00000000",
@@ -276,5 +174,6 @@
         "...KKKKK..KKKKK....."
       ]
     }
-  }
+  },
+  "spriteId": "hero"
 }

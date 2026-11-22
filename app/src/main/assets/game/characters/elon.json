@@ -1,0 +1,10 @@
+{
+  "id": "elon",
+  "role": "npc",
+  "name": "Musk-X",
+  "title": "Porcelain Sink Technoking",
+  "portraitAsset": "portraits/elon.jpg",
+  "themeColor": "#00E5FF",
+  "ttsPitch": 1.05,
+  "preferredVoiceId": "en-us-x-tpc-local"
+}

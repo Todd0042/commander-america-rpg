@@ -1,0 +1,18 @@
+{
+  "id": "commander",
+  "title": "Commander-in-Chief",
+  "subtitle": "Patriotic Sovereign & Master of the Deal",
+  "description": "Wields Tremendous Strike, Art of the Deal, Build The Wall, and Obama Did It First to obliterate political opposition.",
+  "startingHp": 5000,
+  "startingMp": 1776,
+  "startingSpeed": 70,
+  "startingBaseAttack": 50,
+  "preferredSchool": "PHYSICAL",
+  "starterSpellIds": [
+    "ca_tremendous_strike",
+    "ca_art_of_the_deal",
+    "ca_obama_did_it_first",
+    "ca_build_the_wall",
+    "ca_rally_patriots"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "spicy_sean",
+  "role": "npc",
+  "name": "Spicy Sean",
+  "title": "Hedge-Hiding Cinnamon Gum Bard",
+  "portraitAsset": "portraits/spicy_sean.jpg",
+  "themeColor": "#AED581",
+  "ttsPitch": 1.14,
+  "soundBites": [
+    "audio/quotes/spicer/spicer_period.ogg"
+  ]
+}

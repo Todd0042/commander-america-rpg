@@ -1,0 +1,30 @@
+{
+  "id": "marco",
+  "role": "companion",
+  "name": "Little Marco",
+  "title": "Emergency Water-Bottle Sipper",
+  "portraitAsset": "portraits/marco.jpg",
+  "themeColor": "#42A5F5",
+  "ttsPitch": 1.05,
+  "voiceAliases": [
+    "marco",
+    "rubio",
+    "little marco"
+  ],
+  "loreClass": "Sanctions Sorcerer",
+  "outOfTurnLine": "That's {owner}'s jurisdiction! I'm Marco Rubio, and I have sanctions and tariffs standing by!",
+  "combat": {
+    "maxHp": 3800,
+    "maxMp": 1200,
+    "speed": 65,
+    "defense": 28,
+    "avatarTint": "#42A5F5",
+    "startAtb": 0.0,
+    "spellIds": [
+      "ca_marco_filibuster",
+      "ca_marco_sanction",
+      "ca_marco_hydrate",
+      "ca_marco_tariff"
+    ]
+  }
+}

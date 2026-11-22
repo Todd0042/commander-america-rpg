@@ -1,0 +1,9 @@
+{
+  "id": "narrator_psaki",
+  "role": "narrator",
+  "name": "Jen Circle-Back",
+  "title": "High Priestess of Circling Back",
+  "portraitAsset": "portraits/narrator_psaki.jpg",
+  "themeColor": "#4FC3F7",
+  "ttsPitch": 1.05
+}

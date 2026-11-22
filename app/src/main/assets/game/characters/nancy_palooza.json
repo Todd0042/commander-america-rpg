@@ -1,0 +1,27 @@
+{
+  "id": "nancy_palooza",
+  "role": "companion",
+  "name": "Nancy Palooza",
+  "title": "Sub-Zero Call-Option Oracle",
+  "portraitAsset": "portraits/pelosi.jpg",
+  "themeColor": "#81C784",
+  "ttsPitch": 0.8,
+  "loreClass": "Sub-Zero Call-Option Oracle",
+  "combat": {
+    "maxHp": 360,
+    "maxMp": 150,
+    "speed": 74,
+    "defense": 0,
+    "avatarTint": "#81C784",
+    "startAtb": 0.5,
+    "spellIds": [
+      "nancy_sotu_shred",
+      "nancy_subzero_flex",
+      "nancy_sideways_clap",
+      "nancy_pass_to_find_out",
+      "nancy_deep_itm_calls",
+      "nancy_vindication_nvda",
+      "attune"
+    ]
+  }
+}

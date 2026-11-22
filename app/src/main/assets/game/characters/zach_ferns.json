@@ -1,0 +1,9 @@
+{
+  "id": "zach_ferns",
+  "role": "npc",
+  "name": "Zach Two-Ferns",
+  "title": "Deadpan Potted-Plant Interrogator",
+  "portraitAsset": "portraits/zach_ferns.jpg",
+  "themeColor": "#81C784",
+  "ttsPitch": 0.88
+}

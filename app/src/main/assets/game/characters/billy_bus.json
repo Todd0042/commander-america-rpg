@@ -1,0 +1,9 @@
+{
+  "id": "billy_bus",
+  "role": "npc",
+  "name": "Billy Access-Bus",
+  "title": "2005 Hot-Mic Bus Giggler",
+  "portraitAsset": "portraits/billy_bus.jpg",
+  "themeColor": "#FFB74D",
+  "ttsPitch": 1.15
+}

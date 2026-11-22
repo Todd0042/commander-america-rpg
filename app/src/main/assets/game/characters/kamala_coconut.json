@@ -1,0 +1,30 @@
+{
+  "id": "kamala_coconut",
+  "role": "companion",
+  "name": "Kamala Coconut",
+  "title": "Triple-Circle Venn Mystic",
+  "portraitAsset": "portraits/kamala.jpg",
+  "themeColor": "#CE93D8",
+  "ttsPitch": 1.25,
+  "loreClass": "Venn-Diagram Prosecutor",
+  "soundBites": [
+    "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+  ],
+  "combat": {
+    "maxHp": 410,
+    "maxMp": 165,
+    "speed": 75,
+    "defense": 0,
+    "avatarTint": "#BA68C8",
+    "startAtb": 0.5,
+    "spellIds": [
+      "kamala_coconut_tree",
+      "kamala_unburdened_loop",
+      "kamala_venn_diagram",
+      "kamala_passage_of_time",
+      "kamala_yellow_school_bus",
+      "kamala_vindication_tiffany",
+      "attune"
+    ]
+  }
+}

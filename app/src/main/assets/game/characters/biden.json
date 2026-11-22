@@ -1,0 +1,10 @@
+{
+  "id": "biden",
+  "role": "npc",
+  "name": "Joe Naptime",
+  "title": "Two-Scoop Chocolate-Chip Sovereign",
+  "portraitAsset": "portraits/biden.jpg",
+  "themeColor": "#90CAF9",
+  "ttsPitch": 0.65,
+  "preferredVoiceId": "en-us-x-iol-local"
+}

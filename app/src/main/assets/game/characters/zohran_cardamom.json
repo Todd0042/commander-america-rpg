@@ -1,0 +1,26 @@
+{
+  "id": "zohran_cardamom",
+  "role": "companion",
+  "name": "Zohran Cardamom",
+  "title": "Fare-Free Chapati Rap Mayor",
+  "portraitAsset": "portraits/mamdani.jpg",
+  "themeColor": "#FF8A65",
+  "ttsPitch": 1.02,
+  "loreClass": "Artisanal Chapati Socialist",
+  "combat": {
+    "maxHp": 430,
+    "maxMp": 175,
+    "speed": 76,
+    "defense": 0,
+    "avatarTint": "#FF7043",
+    "startAtb": 0.5,
+    "spellIds": [
+      "zohran_nani_chapati",
+      "zohran_municipal_grocery",
+      "zohran_freeze_the_rent",
+      "zohran_bowdoin_stipend",
+      "zohran_vindication_pilot",
+      "attune"
+    ]
+  }
+}

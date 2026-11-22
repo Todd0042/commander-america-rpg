@@ -1,0 +1,10 @@
+{
+  "id": "narrator_hulk",
+  "role": "narrator",
+  "name": "Hulkster 24-Pythons",
+  "title": "Shirt-Ripping RNC Legend",
+  "portraitAsset": "portraits/narrator_hulk.jpg",
+  "themeColor": "#FF5252",
+  "ttsPitch": 0.78,
+  "preferredVoiceId": "en-gb-x-gbd-local"
+}

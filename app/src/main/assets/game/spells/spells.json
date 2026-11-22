@@ -1,47 +1,305 @@
 {
-  "_doc": "TEMPLATE SPELL LIBRARY. Every voice-chantable ability in the game. Classes and characters reference spells by id. school must be one of PYROMANCY/CRYOMANCY/ELECTROMANCY/NATURE/HOLY/SHADOW/PHYSICAL. aliases are fuzzy voice-match keywords. manaRestorePct > 0 marks the free breath/attune discipline.",
   "spells": [
     {
-      "id": "power_strike",
-      "name": "Power Strike",
+      "id": "ca_tremendous_strike",
+      "name": "Tremendous Strike",
       "school": "PHYSICAL",
-      "basePower": 40,
+      "basePower": 65,
       "mpCost": 0,
-      "description": "A swift, heavy blade strike.",
-      "exampleChant": "Power strike the foe!",
-      "aliases": ["strike", "slash", "attack", "blade", "cleave"]
+      "description": "A tremendously powerful patriotic strike that pulverizes political obstruction.",
+      "exampleChant": "Tremendous strike!",
+      "aliases": [
+        "tremendous",
+        "strike",
+        "tremendous strike",
+        "smash",
+        "punch",
+        "tremendous blow",
+        "victory strike"
+      ],
+      "presetChants": {
+        "BASIC": "Tremendous blow!",
+        "ADEPT": "Hit them tremendous blow!",
+        "MASTER": "Unleash tremendous strike upon enemies!",
+        "MYTHIC": "Arise tremendous strike crush all enemies now!",
+        "TRANSCENDENTAL": "By the power of celestial steel arise and crush all enemies with a tremendous winning strike!"
+      }
     },
     {
-      "id": "flame_spark",
-      "name": "Flame Spark",
-      "school": "PYROMANCY",
-      "basePower": 55,
-      "mpCost": 15,
-      "description": "Hurls a searing burst of fire.",
-      "exampleChant": "Flame spark the drone!",
-      "aliases": ["spark", "flame", "burn", "fire", "ignite"]
-    },
-    {
-      "id": "mending_touch",
-      "name": "Mending Touch",
+      "id": "ca_art_of_the_deal",
+      "name": "Art of the Deal",
       "school": "HOLY",
       "basePower": 50,
       "mpCost": 20,
-      "isHeal": true,
-      "description": "Restores hit points to an ally.",
-      "exampleChant": "Mending touch!",
-      "aliases": ["heal", "mend", "restore", "cure", "soothe"]
+      "hitsAll": true,
+      "description": "Imposes unmatched negotiation power, damaging and confusing all enemies.",
+      "exampleChant": "Art of the deal!",
+      "aliases": [
+        "art of the deal",
+        "deal",
+        "negotiate",
+        "trade",
+        "billion"
+      ],
+      "presetChants": {
+        "BASIC": "The deal!",
+        "ADEPT": "Impose the deal",
+        "MASTER": "Unleash the golden deal now!",
+        "MYTHIC": "Arise divine art of golden liberty!",
+        "TRANSCENDENTAL": "By the power of celestial liberty arise and negotiate the golden art of the deal for total victory!"
+      }
     },
     {
-      "id": "aegis_guard",
-      "name": "Aegis Guard",
+      "id": "ca_obama_did_it_first",
+      "name": "Obama Did It First!",
+      "school": "SHADOW",
+      "basePower": 80,
+      "mpCost": 25,
+      "description": "Exposes historical receipts! Inflicts devastating damage and stuns the target with hypocrisy paralysis.",
+      "exampleChant": "Obama did it first!",
+      "status": "OVERLOAD",
+      "aliases": [
+        "obama did it first",
+        "obama",
+        "receipts",
+        "hypocrisy",
+        "check the dates",
+        "2014"
+      ],
+      "presetChants": {
+        "BASIC": "Blame Obama!",
+        "ADEPT": "Search the ancient archives",
+        "MASTER": "Unleash shadow Obama records now!",
+        "MYTHIC": "Arise abyssal shadows and expose Obama!",
+        "TRANSCENDENTAL": "By the power of celestial truth descend from the void to expose the shadow archives of Obama and shatter all hypocrisy!"
+      },
+      "soundBites": [
+        "audio/quotes/obama/obama_dont_boo_vote.ogg"
+      ]
+    },
+    {
+      "id": "ca_presidential_veto",
+      "name": "Presidential Veto",
+      "school": "PHYSICAL",
+      "basePower": 75,
+      "mpCost": 20,
+      "description": "Vetoes enemy actions with constitutional authority! Inflicts heavy damage and Stun.",
+      "exampleChant": "Presidential veto!",
+      "status": "OVERLOAD",
+      "aliases": [
+        "presidential veto",
+        "veto",
+        "shut down",
+        "deny",
+        "block",
+        "override"
+      ],
+      "presetChants": {
+        "BASIC": "Presidential veto!",
+        "ADEPT": "Presidential veto now!",
+        "MASTER": "Unleash presidential veto upon corrupt spending!",
+        "MYTHIC": "Arise executive authority, shut down the opposition with a presidential veto!",
+        "TRANSCENDENTAL": "By absolute constitutional executive authority, I hereby issue a presidential veto to crush bureaucratic overreach and stun all enemies into silence!"
+      }
+    },
+    {
+      "id": "ca_executive_action",
+      "name": "Executive Action",
+      "school": "HOLY",
+      "basePower": 90,
+      "mpCost": 35,
+      "hitsAll": true,
+      "description": "Issues an immediate sweeping presidential order that strikes all opposition with immense force.",
+      "exampleChant": "Executive action!",
+      "aliases": [
+        "executive action",
+        "decree",
+        "order",
+        "executive order",
+        "signing"
+      ],
+      "presetChants": {
+        "BASIC": "Executive action!",
+        "MASTER": "Unleash swift executive action across the swamp!",
+        "MYTHIC": "Arise presidential power, sign executive action against all opposition!",
+        "TRANSCENDENTAL": "By the sacred authority of the Constitution, I enact sweeping executive action to purge corruption and strike all foes across the nation!"
+      }
+    },
+    {
+      "id": "ca_build_the_wall",
+      "name": "Build The Wall",
       "school": "PHYSICAL",
       "basePower": 0,
-      "mpCost": 10,
+      "mpCost": 15,
+      "description": "Erects a golden border barrier, reducing incoming damage.",
+      "exampleChant": "Build the wall!",
       "isGuard": true,
-      "description": "Raises a defensive stance, reducing incoming damage.",
-      "exampleChant": "Aegis guard!",
-      "aliases": ["guard", "defend", "shield", "protect", "aegis"]
+      "aliases": [
+        "build the wall",
+        "wall",
+        "border",
+        "barrier",
+        "fortify"
+      ],
+      "presetChants": {
+        "BASIC": "Build wall!",
+        "ADEPT": "Build strong wall now",
+        "MASTER": "Unleash the steel wall now!",
+        "MYTHIC": "Arise steel vanguard build impenetrable wall!",
+        "TRANSCENDENTAL": "By the power of celestial steel and vanguard valor arise and fortify the great golden wall to shield all patriots!"
+      }
+    },
+    {
+      "id": "ca_rally_patriots",
+      "name": "Rally The Patriots",
+      "school": "HOLY",
+      "basePower": 70,
+      "mpCost": 30,
+      "isHeal": true,
+      "description": "Restores massive HP to Commander America and the entire party.",
+      "exampleChant": "Rally the patriots!",
+      "aliases": [
+        "rally",
+        "patriots",
+        "rally the patriots",
+        "heal",
+        "maga",
+        "freedom"
+      ],
+      "presetChants": {
+        "BASIC": "Rally now!",
+        "ADEPT": "Rally all allies now",
+        "MASTER": "Unleash the golden rally now!",
+        "MYTHIC": "Arise celestial dawn rally the patriots!",
+        "TRANSCENDENTAL": "By the power of celestial freedom arise and inspire the sacred rally of patriots to bless and mend all champions!"
+      }
+    },
+    {
+      "id": "ca_tired_of_winning",
+      "name": "Tired of Winning",
+      "school": "HOLY",
+      "basePower": 0,
+      "mpCost": 0,
+      "description": "Commander America pauses because there is simply so much winning, recovering 35% MP.",
+      "exampleChant": "Tired of winning!",
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "tired of winning",
+        "winning",
+        "win",
+        "so much winning",
+        "winning streak"
+      ],
+      "presetChants": {
+        "BASIC": "Tired of winning!",
+        "MYTHIC": "Arise glorious momentum, tired of winning restores our energy!"
+      }
+    },
+    {
+      "id": "hill_pokemon_go",
+      "name": "Pokémon Go-To-The-Polls",
+      "school": "ELECTROMANCY",
+      "basePower": 65,
+      "mpCost": 12,
+      "hitsAll": true,
+      "description": "Pitches a cringe smartphone app to make Pokémon appear in voting booths (July 14, 2016)",
+      "exampleChant": "Pokemon Go to the polls",
+      "status": "OVERLOAD",
+      "aliases": [
+        "pokemon go",
+        "go to the polls",
+        "pokemon",
+        "polls",
+        "smartphone app"
+      ],
+      "soundBites": [
+        "audio/quotes/hillary/hillary_congratulated_trump.ogg"
+      ]
+    },
+    {
+      "id": "hill_cloth_wipe",
+      "name": "Chappaqua Cloth Wipe",
+      "school": "SHADOW",
+      "basePower": 70,
+      "mpCost": 14,
+      "description": "\"What, like with a cloth or something?\" Scrubs 33,000 emails and drains enemy buffs",
+      "exampleChant": "Wipe the server with a cloth or something",
+      "status": "CORRODE",
+      "lifesteal": true,
+      "aliases": [
+        "with a cloth",
+        "wipe the server",
+        "cloth wipe",
+        "bleachbit",
+        "server wipe"
+      ],
+      "soundBites": [
+        "audio/quotes/hillary/hillary_congratulated_trump.ogg"
+      ]
+    },
+    {
+      "id": "hill_hot_sauce",
+      "name": "Purse Ninja Hot Sauce",
+      "school": "PYROMANCY",
+      "basePower": 78,
+      "mpCost": 15,
+      "description": "Pulls Ninja Squirrel hot sauce from her handbag on The Breakfast Club while swearing it isn't pandering",
+      "exampleChant": "Hot sauce in my bag right now",
+      "status": "BURN",
+      "aliases": [
+        "hot sauce",
+        "purse hot sauce",
+        "breakfast club",
+        "red pepper",
+        "pandering"
+      ],
+      "soundBites": [
+        "audio/quotes/hillary/hillary_congratulated_trump.ogg"
+      ]
+    },
+    {
+      "id": "hill_cattle_futures",
+      "name": "$1,000 Cattle Futures Stampede",
+      "school": "PHYSICAL",
+      "basePower": 82,
+      "mpCost": 18,
+      "hitsAll": true,
+      "description": "Turns $1,000 into $100,000 via 1978 Refco live-cattle contracts by reading the Wall Street Journal",
+      "exampleChant": "One thousand dollar cattle futures stampede",
+      "status": "BLEED",
+      "aliases": [
+        "cattle futures",
+        "wall street journal",
+        "live cattle",
+        "one thousand dollars",
+        "hundred grand"
+      ],
+      "soundBites": [
+        "audio/quotes/hillary/hillary_congratulated_trump.ogg"
+      ]
+    },
+    {
+      "id": "hill_vindication_11hr",
+      "name": "11-Hour Marathon Shield",
+      "school": "HOLY",
+      "basePower": 110,
+      "mpCost": 20,
+      "isHeal": true,
+      "hitsAll": true,
+      "description": "Survives an 11-hour committee grilling with a shoulder shrug and debunks the slab-foundation pizzeria basement hoax",
+      "exampleChant": "Eleven hour hearing shoulder shrug",
+      "status": "GUARD",
+      "isGuard": true,
+      "aliases": [
+        "eleven hour hearing",
+        "marathon shield",
+        "no basement",
+        "shoulder shrug",
+        "vindication"
+      ],
+      "soundBites": [
+        "audio/quotes/hillary/hillary_congratulated_trump.ogg"
+      ]
     },
     {
       "id": "attune",
@@ -49,151 +307,915 @@
       "school": "PHYSICAL",
       "basePower": 0,
       "mpCost": 0,
-      "manaRestorePct": 0.35,
-      "description": "Steady the breath; a third of your mana returns.",
+      "description": "Steady the inner ear; a third of your mana returns",
       "exampleChant": "Attune",
-      "aliases": ["attune", "tune", "breathe", "breath", "concentrate", "center", "centre", "steady", "focus", "gather", "recover mana", "restore mana"]
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "attune",
+        "tune",
+        "breathe",
+        "breath",
+        "concentrate",
+        "center",
+        "centre",
+        "steady",
+        "gather",
+        "recover mana",
+        "restore mana"
+      ]
     },
     {
-      "id": "fireball",
-      "name": "Fireball",
-      "school": "PYROMANCY",
-      "basePower": 65,
-      "mpCost": 15,
-      "status": "BURN",
-      "description": "Roaring sphere of flame.",
-      "exampleChant": "Fireball the brute!",
-      "aliases": ["fire", "flame", "burn", "blaze", "inferno"]
-    },
-    {
-      "id": "frost_spike",
-      "name": "Frost Spike",
-      "school": "CRYOMANCY",
-      "basePower": 58,
-      "mpCost": 12,
-      "status": "CHILL",
-      "description": "Piercing icicle.",
-      "exampleChant": "Glacial frost spike the drone!",
-      "aliases": ["frost", "ice", "freeze", "cold", "chill", "icicle"]
-    },
-    {
-      "id": "chain_lightning",
-      "name": "Chain Lightning",
-      "school": "ELECTROMANCY",
-      "basePower": 55,
-      "mpCost": 20,
-      "hitsAll": true,
-      "status": "OVERLOAD",
-      "description": "Arcing lightning storm.",
-      "exampleChant": "Tempest lightning strike all enemies!",
-      "aliases": ["lightning", "thunder", "storm", "shock", "spark", "tempest"]
-    },
-    {
-      "id": "flame_strike",
-      "name": "Flame Strike",
-      "school": "PYROMANCY",
-      "basePower": 72,
-      "mpCost": 14,
-      "status": "BURN",
-      "description": "Searing close-range flame slash.",
-      "exampleChant": "Searing flame strike the brute!",
-      "aliases": ["flame strike", "fire strike", "burning slash"]
-    },
-    {
-      "id": "arcane_barrier",
-      "name": "Arcane Barrier",
+      "id": "ca_marco_filibuster",
+      "name": "Filibuster Strike",
       "school": "PHYSICAL",
-      "basePower": 45,
-      "mpCost": 10,
-      "hitsAll": true,
-      "isGuard": true,
-      "status": "GUARD",
-      "description": "Absorbing vanguard protection.",
-      "exampleChant": "Arcane barrier protect the party!",
-      "aliases": ["barrier", "ward", "bulwark", "protect"]
-    },
-    {
-      "id": "thunder_cleave",
-      "name": "Thunder Cleave",
-      "school": "ELECTROMANCY",
       "basePower": 60,
-      "mpCost": 16,
-      "hitsAll": true,
+      "mpCost": 15,
+      "description": "Delivers an uninterrupted diplomatic marathon speech, stunning the target into submission.",
+      "exampleChant": "Filibuster strike!",
       "status": "OVERLOAD",
-      "description": "Sweeping lightning sword cleave.",
-      "exampleChant": "Thunder cleave shatter the horde!",
-      "aliases": ["thunder cleave", "lightning cleave", "storm cleave"]
+      "aliases": [
+        "filibuster",
+        "filibuster strike",
+        "marathon speech",
+        "marco filibuster",
+        "speech"
+      ],
+      "presetChants": {
+        "BASIC": "Filibuster strike!",
+        "MASTER": "Deliver an uninterrupted filibuster strike on the Senate floor!",
+        "MYTHIC": "Arise diplomatic resolve, filibuster strike to freeze the opposition!"
+      }
     },
     {
-      "id": "temporal_stasis",
-      "name": "Temporal Stasis",
-      "school": "ELECTROMANCY",
+      "id": "ca_marco_sanction",
+      "name": "Maximum Sanctions",
+      "school": "SHADOW",
       "basePower": 55,
-      "mpCost": 12,
-      "status": "OVERLOAD",
-      "description": "Acoustic distortion freezing a foe in time.",
-      "exampleChant": "Temporal stasis freeze the sniper!",
-      "aliases": ["stasis", "freeze time", "temporal", "halt"]
+      "mpCost": 25,
+      "hitsAll": true,
+      "description": "Freezes foreign assets and bombards all foes with crippling economic sanctions.",
+      "exampleChant": "Maximum sanctions!",
+      "aliases": [
+        "sanctions",
+        "maximum sanctions",
+        "embargo",
+        "asset freeze",
+        "sanction all"
+      ],
+      "presetChants": {
+        "BASIC": "Maximum sanctions!",
+        "ADEPT": "Impose maximum sanctions now!",
+        "MASTER": "Freeze all foreign assets with maximum sanctions!",
+        "MYTHIC": "Arise diplomatic retribution, maximum sanctions against every adversary!"
+      }
     },
     {
-      "id": "haste_cadence",
-      "name": "Haste Cadence",
+      "id": "ca_marco_hydrate",
+      "name": "Water Sip",
       "school": "HOLY",
       "basePower": 65,
-      "mpCost": 15,
+      "mpCost": 20,
+      "isHeal": true,
+      "description": "Takes a quick, refreshing sip of bottled water, restoring substantial HP to the party.",
+      "exampleChant": "Water sip!",
+      "aliases": [
+        "water sip",
+        "hydrate",
+        "water bottle",
+        "rubio sip",
+        "water",
+        "sip"
+      ],
+      "presetChants": {
+        "BASIC": "Water sip!",
+        "MYTHIC": "Arise refreshing clarity, water sip heals all allies with holy resolve!",
+        "TRANSCENDENTAL": "With laser diplomatic focus and pure crystalline hydration, take a historic water sip to bless, heal, and revitalize our entire fellowship!"
+      }
+    },
+    {
+      "id": "ca_marco_tariff",
+      "name": "Tariff Dividend",
+      "school": "PHYSICAL",
+      "basePower": 0,
+      "mpCost": 0,
+      "description": "Levies strategic tariffs on foreign adversaries, recovering 35% MP.",
+      "exampleChant": "Tariff dividend!",
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "tariff dividend",
+        "tariff",
+        "dividends",
+        "import tax",
+        "levy"
+      ],
+      "presetChants": {
+        "BASIC": "Tariff dividend!",
+        "MASTER": "Collect the tariff dividend from unfair trade partners!",
+        "MYTHIC": "Arise domestic prosperity, tariff dividend recovers national energy!",
+        "TRANSCENDENTAL": "By strategic economic sovereignty, levy massive tariffs on cheating foreign adversaries and harvest the rich tariff dividend to restore our team's mana!"
+      }
+    },
+    {
+      "id": "nancy_sotu_shred",
+      "name": "Pre-Scored SOTU Speech Rip",
+      "school": "PHYSICAL",
+      "basePower": 74,
+      "mpCost": 12,
+      "description": "Secretly pre-scores starter notches under the desk, then stands up to rip the speech in half on live TV (Feb 4, 2020)",
+      "exampleChant": "Rip the State of the Union speech in half",
+      "status": "BLEED",
+      "aliases": [
+        "rip the speech",
+        "tear pages",
+        "sotu shred",
+        "pre scored",
+        "state of the union"
+      ]
+    },
+    {
+      "id": "nancy_subzero_flex",
+      "name": "$24,000 Dual Sub-Zero Freezer Flex",
+      "school": "CRYOMANCY",
+      "basePower": 115,
+      "mpCost": 16,
       "isHeal": true,
       "hitsAll": true,
-      "status": "BLESS",
-      "description": "Rhythmic breath healing and quickening the party.",
-      "exampleChant": "Swift rhythm hasten the party!",
-      "aliases": ["haste", "cadence", "rhythm", "quickening"]
+      "description": "Opens twin $24,000 stainless-steel Sub-Zero freezers stocked with $12 Jeni's pints on The Late Late Show (April 2020)",
+      "exampleChant": "Open the dual Sub Zero ice cream freezers",
+      "status": "GUARD",
+      "isGuard": true,
+      "aliases": [
+        "sub zero freezer",
+        "jenis ice cream",
+        "late late show",
+        "ice cream freezer",
+        "twenty four thousand"
+      ],
+      "presetChants": {
+        "ADEPT": "$24,000 Dual Sub-Zero",
+        "MASTER": "Unleash $24,000 Dual Sub-Zero now"
+      }
     },
     {
-      "id": "resonant_surge",
-      "name": "Resonant Surge",
-      "school": "PYROMANCY",
-      "basePower": 70,
-      "mpCost": 18,
+      "id": "nancy_sideways_clap",
+      "name": "45-Degree Sideways Seal Clap",
+      "school": "HOLY",
+      "basePower": 68,
+      "mpCost": 14,
       "hitsAll": true,
-      "status": "BURN",
-      "description": "Multi-tonal acoustic shockwave.",
-      "exampleChant": "Harmonic surge ignite all enemies!",
-      "aliases": ["surge", "resonant", "harmonic", "shockwave"]
+      "description": "Extends both arms at a 45-degree angle and claps condescendingly right into the target's face (Feb 5, 2019)",
+      "exampleChant": "Condescending sideways applause",
+      "status": "OVERLOAD",
+      "aliases": [
+        "sideways clap",
+        "pelosi clap",
+        "seal clap",
+        "condescending clap"
+      ]
     },
     {
-      "id": "shadow_spike",
-      "name": "Shadow Spike",
+      "id": "nancy_pass_to_find_out",
+      "name": "Pass the Bill to Find Out",
       "school": "SHADOW",
-      "basePower": 78,
-      "mpCost": 12,
+      "basePower": 76,
+      "mpCost": 15,
+      "description": "\"We have to pass the bill so that you can find out what is in it, away from the fog of the controversy!\"",
+      "exampleChant": "Pass the bill to find out what is in it",
       "status": "CORRODE",
-      "description": "Piercing needle from darkness.",
-      "exampleChant": "Abyssal shadow spike the caster!",
-      "aliases": ["shadow spike", "dark spike", "umbral spike"]
+      "lifesteal": true,
+      "aliases": [
+        "pass the bill",
+        "find out whats in it",
+        "fog of controversy",
+        "omnibus"
+      ],
+      "presetChants": {
+        "ADEPT": "Bill to Find Out"
+      }
     },
     {
-      "id": "void_drain",
-      "name": "Void Drain",
+      "id": "nancy_deep_itm_calls",
+      "name": "Deep-ITM Tech Call Option (`NANC`)",
+      "school": "ELECTROMANCY",
+      "basePower": 88,
+      "mpCost": 20,
+      "hitsAll": true,
+      "description": "\"We are a free-market economy. They should be able to participate in that!\" Exercises $5M in Big Tech LEAPS",
+      "exampleChant": "Free market Periodic Transaction Report",
+      "status": "BURN",
+      "aliases": [
+        "call options",
+        "free market economy",
+        "stock trade",
+        "periodic transaction",
+        "nanc"
+      ],
+      "presetChants": {
+        "ADEPT": "Deep-ITM Tech Call Option"
+      }
+    },
+    {
+      "id": "nancy_vindication_nvda",
+      "name": "$341k Pre-CHIPS Act Loss Receipt",
+      "school": "HOLY",
+      "basePower": 95,
+      "mpCost": 22,
+      "hitsAll": true,
+      "description": "Slams down the July 26, 2022 clerk filing proving Paul SOLD 25,000 Nvidia shares at a $341,365 loss before the CHIPS Act vote!",
+      "exampleChant": "Three hundred forty one thousand dollar loss receipt",
+      "status": "WEAKEN",
+      "aliases": [
+        "chips act loss",
+        "nvidia loss",
+        "unedited cspan",
+        "fact check trade",
+        "three hundred forty one"
+      ]
+    },
+    {
+      "id": "ca_kash_declassify",
+      "name": "Declassify Now!",
+      "school": "SHADOW",
+      "basePower": 65,
+      "mpCost": 18,
+      "description": "Slaps down unredacted evidence, shocking and stunning the target with undeniable truth.",
+      "exampleChant": "Declassify now!",
+      "status": "OVERLOAD",
+      "aliases": [
+        "declassify now",
+        "declassify",
+        "unredacted",
+        "the memo",
+        "fisa memo",
+        "truth"
+      ],
+      "presetChants": {
+        "BASIC": "Declassify now!",
+        "MYTHIC": "Arise unredacted truth, declassify now to stun the conspirators!"
+      }
+    },
+    {
+      "id": "ca_kash_binder",
+      "name": "Binder of Truth",
+      "school": "PHYSICAL",
+      "basePower": 58,
+      "mpCost": 28,
+      "hitsAll": true,
+      "description": "Flings a heavy three-ring binder of declassified dossiers across all opposition.",
+      "exampleChant": "Binder of truth!",
+      "aliases": [
+        "binder of truth",
+        "binder",
+        "dossier",
+        "deep state binder",
+        "evidence"
+      ],
+      "presetChants": {
+        "BASIC": "Binder of truth!",
+        "MASTER": "Unleash the three-ring binder of truth across the room!",
+        "MYTHIC": "Arise documented receipts, heavy binder of truth hits all enemies!",
+        "TRANSCENDENTAL": "By the unyielding weight of declassified cross-examination, slam the three-ring binder of truth across the opposition line to crush all false narratives!"
+      }
+    },
+    {
+      "id": "ca_kash_clearance",
+      "name": "Security Clearance",
+      "school": "HOLY",
+      "basePower": 60,
+      "mpCost": 20,
+      "isHeal": true,
+      "description": "Grants top-secret diplomatic clearance, cleansing fatigue and healing party wounds.",
+      "exampleChant": "Security clearance!",
+      "aliases": [
+        "security clearance",
+        "clearance",
+        "top secret",
+        "clean dossier",
+        "classified"
+      ],
+      "presetChants": {
+        "BASIC": "Security clearance!",
+        "MASTER": "Issue security clearance and purge political sabotage!",
+        "MYTHIC": "Arise top-secret trust, security clearance heals party wounds!",
+        "TRANSCENDENTAL": "By presidential intelligence decree, issue top-secret security clearance, purge foreign disinformation, and cleanse and heal our entire fellowship!"
+      }
+    },
+    {
+      "id": "ca_kash_leak",
+      "name": "Plug the Leaks",
+      "school": "SHADOW",
+      "basePower": 0,
+      "mpCost": 0,
+      "description": "Plugs anonymous agency leaks and redirects the flow of power, regaining 35% MP.",
+      "exampleChant": "Plug the leaks!",
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "plug the leaks",
+        "plug leaks",
+        "stop leaks",
+        "containment",
+        "plug"
+      ],
+      "presetChants": {
+        "BASIC": "Plug the leaks!",
+        "MYTHIC": "Arise institutional integrity, plug the leaks to reclaim power!"
+      }
+    },
+    {
+      "id": "ca_kennedy_english",
+      "name": "Plain English Cross-Exam",
+      "school": "PHYSICAL",
+      "basePower": 65,
+      "mpCost": 18,
+      "description": "Grills the witness in relentless plain English until they freeze in stunned embarrassment.",
+      "exampleChant": "Plain English cross-exam!",
+      "status": "OVERLOAD",
+      "aliases": [
+        "plain english",
+        "cross exam",
+        "grill",
+        "witness",
+        "kennedy grill"
+      ],
+      "presetChants": {
+        "BASIC": "Plain English cross-exam!",
+        "MASTER": "Plain English cross-exam leaves the witness speechless!",
+        "MYTHIC": "Arise Southern logic, plain English cross-exam freezes the bureaucrat!",
+        "TRANSCENDENTAL": "Now look here son, in plain English cross-exam, explain why the American taxpayer is funding this nonsense until the enemy freezes in stunned silence!"
+      }
+    },
+    {
+      "id": "ca_kennedy_officer",
+      "name": "Call an Officer",
       "school": "SHADOW",
       "basePower": 55,
-      "mpCost": 14,
-      "lifesteal": true,
-      "status": "CORRODE",
-      "description": "Siphons life essence from enemy to caster.",
-      "exampleChant": "Void siphon drain their life essence!",
-      "aliases": ["siphon", "drain", "leech", "void"]
+      "mpCost": 26,
+      "hitsAll": true,
+      "description": "Exposes absurd government waste and illegal absurdity across all enemies with scathing Southern humor.",
+      "exampleChant": "Call an officer!",
+      "aliases": [
+        "call an officer",
+        "bureaucratic waste",
+        "squeal",
+        "expose waste",
+        "officer"
+      ],
+      "presetChants": {
+        "BASIC": "Call an officer!",
+        "MASTER": "Call an officer, someone is looting the public purse!",
+        "MYTHIC": "Arise common decency, call an officer across the whole swamp!"
+      }
     },
     {
-      "id": "umbral_veil",
-      "name": "Umbral Veil",
-      "school": "SHADOW",
-      "basePower": 52,
+      "id": "ca_kennedy_remedy",
+      "name": "Common Sense Remedy",
+      "school": "HOLY",
+      "basePower": 70,
+      "mpCost": 20,
+      "isHeal": true,
+      "description": "Applies straightforward folk wisdom to heal party wounds and clear confusion.",
+      "exampleChant": "Common sense remedy!",
+      "aliases": [
+        "common sense remedy",
+        "remedy",
+        "folk wisdom",
+        "southern remedy",
+        "southern heal",
+        "folk remedy"
+      ],
+      "presetChants": {
+        "BASIC": "Common sense remedy!",
+        "MYTHIC": "Arise down-home folk wisdom, common sense remedy mends our team!",
+        "TRANSCENDENTAL": "Forget your fancy committee consultant reports, apply a pure common sense remedy of down-home wisdom to heal and bless our entire squad!"
+      }
+    },
+    {
+      "id": "ca_kennedy_oneliner",
+      "name": "Devastating One-Liner",
+      "school": "PHYSICAL",
+      "basePower": 0,
+      "mpCost": 0,
+      "description": "Delivers a mic-drop committee hearing punchline, recovering 35% MP.",
+      "exampleChant": "Devastating one-liner!",
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "one liner",
+        "mic drop",
+        "punchline",
+        "kennedy one liner",
+        "devastating"
+      ],
+      "presetChants": {
+        "BASIC": "Devastating one-liner!",
+        "MASTER": "A devastating one-liner silences the committee hearing!",
+        "MYTHIC": "Arise folk humor, devastating one-liner restores our good spirit!"
+      }
+    },
+    {
+      "id": "biden_gibberish_audio",
+      "name": "Real-Audio Gibberish (`Truinanashabbadepressure!`)",
+      "school": "ELECTROMANCY",
+      "basePower": 94,
+      "mpCost": 18,
+      "hitsAll": true,
+      "description": "Plays a random real-life Biden audio quote (Truinanashabbadepressure, Badakathcare, Repeat the Line, Corn Pop, Beat Medicare) to stun all foes!",
+      "exampleChant": "Mobilize truinanashabbadepressure and badakathcare",
+      "status": "OVERLOAD",
+      "aliases": [
+        "gibberish",
+        "truinanashabbadepressure",
+        "badakathcare",
+        "repeat the line",
+        "corn pop",
+        "beat medicare",
+        "you know the thing"
+      ],
+      "soundBites": [
+        "audio/quotes/biden/biden_truinanashabbadepressure.ogg",
+        "audio/quotes/biden/biden_badakathcare.ogg"
+      ]
+    },
+    {
+      "id": "biden_double_scoop_cone",
+      "name": "Double-Scoop Waffle Cone Blitz",
+      "school": "CRYOMANCY",
+      "basePower": 76,
+      "mpCost": 12,
+      "description": "\"I came down because I heard there was chocolate chip ice cream!\" Hurls a freezing double-scoop waffle cone (May 27, 2021)",
+      "exampleChant": "Double scoop chocolate chip waffle cone",
+      "status": "CHILL",
+      "aliases": [
+        "double scoop",
+        "waffle cone",
+        "chocolate chip",
+        "ice cream blitz",
+        "two scoops"
+      ]
+    },
+    {
+      "id": "biden_jenis_brain_freeze",
+      "name": "Jeni's Chocolate Chip Brain-Freeze",
+      "school": "CRYOMANCY",
+      "basePower": 86,
+      "mpCost": 18,
+      "hitsAll": true,
+      "description": "\"I have a whole refrigerator full upstairs!\" Unleashes an AoE blizzard of Jeni's Splendid Chocolate Chip pints",
+      "exampleChant": "Whole refrigerator full of chocolate chip ice cream",
+      "status": "CHILL",
+      "aliases": [
+        "brain freeze",
+        "jenis chocolate chip",
+        "refrigerator upstairs",
+        "ice cream blizzard"
+      ]
+    },
+    {
+      "id": "biden_baskin_robbins_lick",
+      "name": "\"Economy Strong As Hell\" Baskin-Robbins Lick",
+      "school": "CRYOMANCY",
+      "basePower": 120,
+      "mpCost": 16,
+      "isHeal": true,
+      "hitsAll": true,
+      "description": "Licks a Baskin-Robbins chocolate chip waffle cone during 8.2% inflation while declaring \"Our economy is strong as hell, man!\" (Oct 15, 2022)",
+      "exampleChant": "Our economy is strong as hell Baskin Robbins cone",
+      "status": "GUARD",
+      "isGuard": true,
+      "aliases": [
+        "economy strong as hell",
+        "baskin robbins",
+        "ice cream lick",
+        "strong as hell",
+        "portland cone"
+      ],
+      "presetChants": {
+        "ADEPT": "Strong As Hell Baskin-Robbins"
+      }
+    },
+    {
+      "id": "biden_9am_lid_sundae",
+      "name": "9:00 AM Lid & Sundae Nap",
+      "school": "CRYOMANCY",
+      "basePower": 90,
+      "mpCost": 0,
+      "isHeal": true,
+      "description": "Calls an early 9:00 AM press lid over a hot-fudge sundae, restoring HP and 35% MP",
+      "exampleChant": "Call a nine AM lid for a hot fudge sundae",
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "call a lid",
+        "sundae nap",
+        "nine am lid",
+        "delaware beach",
+        "ice cream nap"
+      ],
+      "presetChants": {
+        "ADEPT": "9:00 AM Lid & Sundae"
+      }
+    },
+    {
+      "id": "biden_fudge_ripple_meltdown",
+      "name": "Aviator Fudge-Ripple Meltdown",
+      "school": "CRYOMANCY",
+      "basePower": 90,
+      "mpCost": 20,
+      "hitsAll": true,
+      "description": "Adjusts Ray-Ban aviators over a melting fudge-ripple cone while debunking the 'Two Beers a Week & Red Meat Ban' hoax!",
+      "exampleChant": "Aviator fudge ripple meltdown no malarkey",
+      "status": "WEAKEN",
+      "aliases": [
+        "fudge ripple",
+        "aviator meltdown",
+        "no malarkey",
+        "melting cone",
+        "two beers"
+      ]
+    },
+    {
+      "id": "ca_vance_debate",
+      "name": "Debate Dismantle",
+      "school": "ELECTROMANCY",
+      "basePower": 70,
+      "mpCost": 18,
+      "description": "Calmly dissects opponent rhetoric on live television, stunning the target into silence.",
+      "exampleChant": "Debate dismantle!",
+      "status": "OVERLOAD",
+      "aliases": [
+        "debate dismantle",
+        "debate",
+        "dismantle",
+        "dissect",
+        "moderator",
+        "fact check"
+      ],
+      "presetChants": {
+        "BASIC": "Debate dismantle!",
+        "MASTER": "Debate dismantle opponent rhetoric with calm facts!",
+        "MYTHIC": "Arise heartland eloquence, debate dismantle the corrupt moderators!"
+      }
+    },
+    {
+      "id": "ca_vance_slam",
+      "name": "Appalachian Slam",
+      "school": "PHYSICAL",
+      "basePower": 55,
+      "mpCost": 25,
+      "hitsAll": true,
+      "description": "Unleashes the raw industrial grit of the heartland upon all enemies.",
+      "exampleChant": "Appalachian slam!",
+      "aliases": [
+        "appalachian slam",
+        "rustbelt slam",
+        "heartland",
+        "hillbilly slam",
+        "slam"
+      ],
+      "presetChants": {
+        "BASIC": "Appalachian slam!",
+        "MASTER": "Unleash the Appalachian slam of industrial grit!",
+        "MYTHIC": "Arise steel heartland fury, Appalachian slam across all enemies!",
+        "TRANSCENDENTAL": "From the iron hills and manufacturing heartland, unleash the thunderous Appalachian slam to pulverize every corrupt obstacle across the field!"
+      }
+    },
+    {
+      "id": "ca_vance_fortitude",
+      "name": "Hillbilly Fortitude",
+      "school": "HOLY",
+      "basePower": 65,
+      "mpCost": 20,
+      "isHeal": true,
+      "description": "Channels generational resilience and family resolve to restore party HP.",
+      "exampleChant": "Hillbilly fortitude!",
+      "aliases": [
+        "hillbilly fortitude",
+        "fortitude",
+        "resilience",
+        "family resolve",
+        "resolve"
+      ],
+      "presetChants": {
+        "BASIC": "Hillbilly fortitude!",
+        "ADEPT": "Channel hillbilly fortitude now!",
+        "MYTHIC": "Arise family resilience, hillbilly fortitude restores the party!",
+        "TRANSCENDENTAL": "Through generations of unwavering faith, relentless grit, and family devotion, channel hillbilly fortitude to bless and restore our comrades with heroic resolve!"
+      }
+    },
+    {
+      "id": "ca_vance_commonsense",
+      "name": "Common Sense",
+      "school": "PHYSICAL",
+      "basePower": 0,
+      "mpCost": 0,
+      "description": "Applies straightforward Middle-American logic, refreshing 35% MP.",
+      "exampleChant": "Common sense!",
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "common sense",
+        "renewal",
+        "straight talk",
+        "logic",
+        "middle america"
+      ],
+      "presetChants": {
+        "BASIC": "Common sense!",
+        "ADEPT": "Apply straightforward common sense!",
+        "TRANSCENDENTAL": "With the pure and unyielding logic of Middle America, apply straightforward common sense to sweep away coastal madness and renew our vital energy!"
+      }
+    },
+    {
+      "id": "kamala_coconut_tree",
+      "name": "Coconut Tree Context Drop",
+      "school": "NATURE",
+      "basePower": 78,
+      "mpCost": 14,
+      "description": "\"You think you just fell out of a coconut tree?! You exist in the context of all in which you live and what came before you!\" (May 10, 2023)",
+      "exampleChant": "You think you just fell out of a coconut tree",
+      "status": "OVERLOAD",
+      "aliases": [
+        "coconut tree",
+        "fell out of a coconut tree",
+        "context of all",
+        "what came before"
+      ],
+      "soundBites": [
+        "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+      ]
+    },
+    {
+      "id": "kamala_unburdened_loop",
+      "name": "Unburdened By What Has Been",
+      "school": "HOLY",
+      "basePower": 120,
+      "mpCost": 16,
+      "isHeal": true,
+      "hitsAll": true,
+      "description": "Repeats her signature philosophical mantra 47 times to unburden the party of damage and raise a rhetorical shield",
+      "exampleChant": "What can be unburdened by what has been",
+      "status": "GUARD",
+      "isGuard": true,
+      "aliases": [
+        "unburdened",
+        "what can be",
+        "what has been",
+        "unburdened by what has been"
+      ],
+      "soundBites": [
+        "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+      ]
+    },
+    {
+      "id": "kamala_venn_diagram",
+      "name": "Triple-Circle Venn Diagram Trap",
+      "school": "ELECTROMANCY",
+      "basePower": 82,
       "mpCost": 16,
       "hitsAll": true,
-      "status": "CORRODE",
-      "description": "Blinding smoke of dark matter.",
-      "exampleChant": "Veil of night consume the battlefield!",
-      "aliases": ["veil", "umbral", "darkness", "shroud"]
+      "description": "\"I love Venn diagrams! Always ask, is there a Venn diagram for this? Those three circles!\" Traps all foes in overlapping circles",
+      "exampleChant": "I love Venn diagrams and those three circles",
+      "status": "ROOT",
+      "aliases": [
+        "venn diagram",
+        "three circles",
+        "love venn diagrams",
+        "intersection"
+      ],
+      "soundBites": [
+        "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+      ]
+    },
+    {
+      "id": "kamala_passage_of_time",
+      "name": "Significance of the Passage of Time (4x)",
+      "school": "SHADOW",
+      "basePower": 84,
+      "mpCost": 18,
+      "hitsAll": true,
+      "description": "Repeats \"the significance of the passage of time\" four times in 32 seconds (March 2022), freezing enemy ATB gauges",
+      "exampleChant": "The significance of the passage of time",
+      "status": "CHILL",
+      "aliases": [
+        "passage of time",
+        "significance of the passage",
+        "four times",
+        "time loop"
+      ],
+      "soundBites": [
+        "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+      ],
+      "presetChants": {
+        "ADEPT": "Significance of the Passage"
+      }
+    },
+    {
+      "id": "kamala_yellow_school_bus",
+      "name": "Yellow Electric School Bus Charge",
+      "school": "ELECTROMANCY",
+      "basePower": 90,
+      "mpCost": 20,
+      "hitsAll": true,
+      "description": "\"Who doesn't love a yellow school bus, right?! Can you raise your hand if you love a yellow school bus?!\" (Oct 2022)",
+      "exampleChant": "Who does not love a yellow school bus",
+      "status": "BURN",
+      "aliases": [
+        "yellow school bus",
+        "love a yellow school bus",
+        "raise your hand",
+        "electric bus"
+      ],
+      "soundBites": [
+        "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+      ],
+      "presetChants": {
+        "ADEPT": "Electric School Bus Charge"
+      }
+    },
+    {
+      "id": "kamala_vindication_tiffany",
+      "name": "Tiffany Pearl & CDCR Fact-Check",
+      "school": "HOLY",
+      "basePower": 96,
+      "mpCost": 22,
+      "hitsAll": true,
+      "description": "Debunks the 'Bluetooth Earpiece' conspiracy with Tiffany South Sea Pearl photos and cites official CDCR records!",
+      "exampleChant": "Tiffany pearl earrings and official records",
+      "status": "WEAKEN",
+      "aliases": [
+        "tiffany earrings",
+        "pearl earrings",
+        "cdcr records",
+        "im speaking",
+        "vindication"
+      ],
+      "soundBites": [
+        "audio/quotes/kamala/kamala_ride_a_bus.ogg"
+      ]
+    },
+    {
+      "id": "zohran_nani_chapati",
+      "name": "\"Mr. Cardamom\" Nani Chapati Drop",
+      "school": "PYROMANCY",
+      "basePower": 82,
+      "mpCost": 14,
+      "description": "Puts on his 2019 'Mr. Cardamom' rap apron with Madhur Jaffrey and hurls a sizzling chapati from a Queens food truck!",
+      "exampleChant": "Mister Cardamom Nani chapati drop",
+      "status": "BURN",
+      "aliases": [
+        "mr cardamom",
+        "young cardamom",
+        "nani",
+        "chapati",
+        "madhur jaffrey"
+      ]
+    },
+    {
+      "id": "zohran_municipal_grocery",
+      "name": "5 City-Owned Grocery Stores",
+      "school": "NATURE",
+      "basePower": 125,
+      "mpCost": 16,
+      "isHeal": true,
+      "hitsAll": true,
+      "description": "Opens five city-run municipal grocery stores across all five boroughs, healing the party with wholesale milk",
+      "exampleChant": "Open five city owned municipal grocery stores",
+      "status": "GUARD",
+      "isGuard": true,
+      "aliases": [
+        "city owned grocery",
+        "municipal grocery",
+        "five grocery stores",
+        "astoria"
+      ]
+    },
+    {
+      "id": "zohran_freeze_the_rent",
+      "name": "Freeze the Rent & Free the Q70 Bus",
+      "school": "CRYOMANCY",
+      "basePower": 88,
+      "mpCost": 18,
+      "hitsAll": true,
+      "description": "Films a symmetrical Wes Anderson TikTok in a thrifted suit to freeze enemy ATB gauges at 0% rent increase!",
+      "exampleChant": "Freeze the rent and free the buses",
+      "status": "CHILL",
+      "aliases": [
+        "freeze the rent",
+        "free the buses",
+        "q70 bus",
+        "rent stabilized"
+      ],
+      "presetChants": {
+        "BASIC": "Rent & Free the Q70 Bus",
+        "ADEPT": "Rent & Free the Q70",
+        "MASTER": "Unleash Rent & Free the Q70 Bus now",
+        "MYTHIC": "By the power of song, cast Rent & Free the Q70 Bus"
+      }
+    },
+    {
+      "id": "zohran_bowdoin_stipend",
+      "name": "Bowdoin & Hollywood Trust-Fund Crit",
+      "school": "ELECTROMANCY",
+      "basePower": 92,
+      "mpCost": 20,
+      "hitsAll": true,
+      "description": "Channels $60k/yr Bank Street prep-school rhetoric and Oscar-nominated family cinema into a high-budget AoE strike!",
+      "exampleChant": "Bank Street and Bowdoin campus stipend",
+      "status": "OVERLOAD",
+      "aliases": [
+        "bowdoin",
+        "bank street",
+        "monsoon wedding",
+        "faculty club",
+        "trust fund"
+      ]
+    },
+    {
+      "id": "zohran_vindication_pilot",
+      "name": "MTA Fare-Free Pilot Receipt",
+      "school": "HOLY",
+      "basePower": 98,
+      "mpCost": 22,
+      "hitsAll": true,
+      "description": "Slams down official MTA pilot data showing fare-free routes boosted ridership 30% and cut driver assaults 38.9%!",
+      "exampleChant": "Official MTA fare free bus pilot data",
+      "status": "WEAKEN",
+      "aliases": [
+        "fare free pilot",
+        "mta data",
+        "bus assaults down",
+        "vindication"
+      ]
+    },
+    {
+      "id": "swagger_turkish_upgrade",
+      "name": "Turkish Airlines Lie-Flat Upgrade",
+      "school": "HOLY",
+      "basePower": 115,
+      "mpCost": 16,
+      "isHeal": true,
+      "hitsAll": true,
+      "description": "\"When someone upgrades you to a lie-flat suite to Istanbul, you say 'Thank you'!\" Restores party HP in luxury",
+      "exampleChant": "Turkish Airlines business class upgrade",
+      "aliases": [
+        "turkish airlines",
+        "business class",
+        "istanbul",
+        "i said thank you",
+        "st regis"
+      ]
+    },
+    {
+      "id": "swagger_contraband_doll",
+      "name": "Contraband Baby-Doll Search",
+      "school": "SHADOW",
+      "basePower": 84,
+      "mpCost": 16,
+      "hitsAll": true,
+      "description": "Pulls a crack pipe out of a marble jar and weed out of a baby doll's head from his viral NYPD instructional video!",
+      "exampleChant": "Search the baby doll and marble jar",
+      "status": "OVERLOAD",
+      "aliases": [
+        "baby doll",
+        "jar of marbles",
+        "contraband",
+        "simple searches",
+        "pillowcase"
+      ]
+    },
+    {
+      "id": "swagger_vegan_seabass",
+      "name": "\"Strictly Vegan\" Midnight Sea Bass",
+      "school": "NATURE",
+      "basePower": 86,
+      "mpCost": 18,
+      "description": "Preaches a strict plant-based diet by day while secretly devouring flaky Chilean sea bass at Osteria La Baia by night!",
+      "exampleChant": "Plant based midnight Chilean sea bass",
+      "status": "POISON",
+      "lifesteal": true,
+      "aliases": [
+        "sea bass",
+        "vegan",
+        "plant based",
+        "la baia",
+        "fish"
+      ],
+      "presetChants": {
+        "ADEPT": "Strictly Vegan Midnight Sea"
+      }
+    },
+    {
+      "id": "swagger_forgot_passcode",
+      "name": "Forgotten 6-Digit iPhone Passcode",
+      "school": "ELECTROMANCY",
+      "basePower": 0,
+      "mpCost": 0,
+      "description": "Changes his iPhone passcode from 4 digits to 6 digits right before a subpoena and 'accidentally forgets' it, restoring 35% MP!",
+      "exampleChant": "Forgot my six digit iPhone passcode",
+      "manaRestorePct": 0.35,
+      "aliases": [
+        "forgot passcode",
+        "six digits",
+        "iphone lock",
+        "changed password"
+      ]
     }
   ]
 }

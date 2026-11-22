@@ -1,0 +1,9 @@
+{
+  "id": "establishment_rival",
+  "role": "npc",
+  "name": "Low-Energy Jeb!",
+  "title": "$130M Guacamole Bowl Peddler",
+  "portraitAsset": "portraits/jeb.jpg",
+  "themeColor": "#5C6BC0",
+  "ttsPitch": 0.85
+}

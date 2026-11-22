@@ -1,0 +1,10 @@
+{
+  "id": "pelosi",
+  "role": "npc",
+  "name": "Nancy Palooza",
+  "title": "Sub-Zero Call-Option Oracle",
+  "portraitAsset": "portraits/pelosi.jpg",
+  "themeColor": "#81C784",
+  "ttsPitch": 0.8,
+  "preferredVoiceId": "en-us-x-tpf-local"
+}

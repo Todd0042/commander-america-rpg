@@ -1,0 +1,14 @@
+{
+  "id": "commander_america",
+  "role": "npc",
+  "name": "Commander America",
+  "title": "Golden Escalator Brawler",
+  "portraitAsset": "portraits/commander_america.jpg",
+  "themeColor": "#FFD700",
+  "ttsPitch": 0.9,
+  "preferredVoiceId": "en-us-x-iob-local",
+  "soundBites": [
+    "audio/quotes/trump/trump_greatness_birthright.ogg",
+    "audio/quotes/trump/trump_easily_win.ogg"
+  ]
+}

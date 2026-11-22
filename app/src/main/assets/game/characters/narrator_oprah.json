@@ -1,0 +1,9 @@
+{
+  "id": "narrator_oprah",
+  "role": "narrator",
+  "name": "Oprah Free-Car",
+  "title": "Under-Your-Seat DNC Hypeman",
+  "portraitAsset": "portraits/template/narrator_oprah_template.jpg",
+  "themeColor": "#FFCA28",
+  "ttsPitch": 0.92
+}

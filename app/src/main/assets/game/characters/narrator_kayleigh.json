@@ -1,0 +1,10 @@
+{
+  "id": "narrator_kayleigh",
+  "role": "narrator",
+  "name": "Kayleigh Binder-Tabs",
+  "title": "Color-Coded Receipt Anchor",
+  "portraitAsset": "portraits/narrator_kayleigh.jpg",
+  "themeColor": "#4FC3F7",
+  "ttsPitch": 1.02,
+  "preferredVoiceId": "en-us-x-sfg-local"
+}

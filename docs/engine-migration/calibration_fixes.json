@@ -1,0 +1,106 @@
+{
+  "fixes": {
+    "ca_executive_action": {
+      "ADEPT": null
+    },
+    "ca_tired_of_winning": {
+      "ADEPT": null,
+      "MASTER": null,
+      "TRANSCENDENTAL": null
+    },
+    "ca_marco_filibuster": {
+      "ADEPT": null,
+      "TRANSCENDENTAL": null
+    },
+    "ca_marco_sanction": {
+      "TRANSCENDENTAL": null
+    },
+    "ca_marco_hydrate": {
+      "ADEPT": null,
+      "MASTER": null
+    },
+    "ca_marco_tariff": {
+      "ADEPT": null
+    },
+    "nancy_subzero_flex": {
+      "ADEPT": "$24,000 Dual Sub-Zero",
+      "MASTER": "Unleash $24,000 Dual Sub-Zero now"
+    },
+    "nancy_pass_to_find_out": {
+      "ADEPT": "Bill to Find Out"
+    },
+    "nancy_deep_itm_calls": {
+      "ADEPT": "Deep-ITM Tech Call Option"
+    },
+    "ca_kash_declassify": {
+      "ADEPT": null,
+      "MASTER": null,
+      "TRANSCENDENTAL": null
+    },
+    "ca_kash_binder": {
+      "ADEPT": null
+    },
+    "ca_kash_clearance": {
+      "ADEPT": null
+    },
+    "ca_kash_leak": {
+      "ADEPT": null,
+      "MASTER": null,
+      "TRANSCENDENTAL": null
+    },
+    "ca_kennedy_english": {
+      "ADEPT": null
+    },
+    "ca_kennedy_officer": {
+      "ADEPT": null,
+      "TRANSCENDENTAL": null
+    },
+    "ca_kennedy_remedy": {
+      "ADEPT": null,
+      "MASTER": null
+    },
+    "ca_kennedy_oneliner": {
+      "ADEPT": null,
+      "TRANSCENDENTAL": null
+    },
+    "biden_baskin_robbins_lick": {
+      "ADEPT": "Strong As Hell Baskin-Robbins"
+    },
+    "biden_9am_lid_sundae": {
+      "ADEPT": "9:00 AM Lid & Sundae"
+    },
+    "ca_vance_debate": {
+      "ADEPT": null,
+      "TRANSCENDENTAL": null
+    },
+    "ca_vance_slam": {
+      "ADEPT": null
+    },
+    "ca_vance_fortitude": {
+      "MASTER": null
+    },
+    "ca_vance_commonsense": {
+      "MASTER": null,
+      "MYTHIC": null
+    },
+    "kamala_passage_of_time": {
+      "ADEPT": "Significance of the Passage"
+    },
+    "kamala_yellow_school_bus": {
+      "ADEPT": "Electric School Bus Charge"
+    },
+    "zohran_freeze_the_rent": {
+      "BASIC": "Rent & Free the Q70 Bus",
+      "ADEPT": "Rent & Free the Q70",
+      "MASTER": "Unleash Rent & Free the Q70 Bus now",
+      "MYTHIC": "By the power of song, cast Rent & Free the Q70 Bus"
+    },
+    "swagger_vegan_seabass": {
+      "ADEPT": "Strictly Vegan Midnight Sea"
+    },
+    "ca_presidential_veto": {
+      "ADEPT": "Presidential veto now!"
+    }
+  },
+  "unsolved": []
+}
