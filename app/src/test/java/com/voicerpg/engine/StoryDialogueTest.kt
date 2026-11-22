@@ -1,5 +1,7 @@
 package com.voicerpg.engine
 
+import org.junit.Rule
+import com.voicerpg.engine.testing.TemplateFixture
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
 import com.voicerpg.engine.content.GameContent
@@ -19,6 +21,9 @@ import org.junit.Before
 import org.junit.Test
 
 class StoryDialogueTest {
+
+    /** Mechanics test: runs on the engine's frozen template content, whatever game it's in. */
+    @get:Rule val templateFixture = TemplateFixture()
 
     private lateinit var storyViewModel: StoryViewModel
     private lateinit var dummySpeech: SpeechManager
@@ -464,6 +469,8 @@ class StoryGraphSchemaTest {
         val visited = mutableSetOf<String>()
         val queue = ArrayDeque<String>()
         queue.add(startId)
+        // Incidents are entry points the engine jumps to on its own (IncidentManager), not story links.
+        GameContent.incidents.values.forEach { incident -> incident.triggerNodeId?.let { queue.add(it) } }
         while (queue.isNotEmpty()) {
             val id = queue.removeFirst()
             if (!visited.add(id)) continue

@@ -1,5 +1,7 @@
 package com.voicerpg.engine
 
+import org.junit.Rule
+import com.voicerpg.engine.testing.TemplateFixture
 import com.voicerpg.engine.engine.IntentParser
 import com.voicerpg.engine.engine.NoveltyCache
 import com.voicerpg.engine.engine.ResonanceEngine
@@ -19,6 +21,9 @@ import org.junit.Before
 import org.junit.Test
 
 class ResonanceEngineTest {
+
+    /** Mechanics test: runs on the engine's frozen template content, whatever game it's in. */
+    @get:Rule val templateFixture = TemplateFixture()
 
     private lateinit var engine: ResonanceEngine
     private lateinit var testSpells: List<Spell>

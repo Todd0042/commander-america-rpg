@@ -1568,11 +1568,12 @@ object GameContent {
         }
     }
 
+    /** Loads a content pack from a folder (tests, tools). A pack that fails to load is an error, never a silent fallback. */
     fun initializeFromDirectory(dir: File) {
         current = try {
             GameContentLoader(FileContentSource(dir)).load()
         } catch (t: Throwable) {
-            EmergencyFallback.build()
+            throw IllegalStateException("Game content in ${dir.absolutePath} failed to load: ${t.message}", t)
         }
     }
 
@@ -1601,10 +1602,12 @@ object GameContent {
         )
         for (dir in candidates) {
             if (dir.isDirectory) {
+                // A content folder that exists but doesn't load is broken content: say so instead of
+                // quietly running on the emergency pack (which would let tests pass on the wrong content).
                 return try {
                     GameContentLoader(FileContentSource(dir)).load()
-                } catch (_: Throwable) {
-                    null
+                } catch (t: Throwable) {
+                    throw IllegalStateException("Game content in ${dir.absolutePath} failed to load: ${t.message}", t)
                 }
             }
         }

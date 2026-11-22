@@ -1,5 +1,7 @@
 package com.voicerpg.engine
 
+import org.junit.Rule
+import com.voicerpg.engine.testing.TemplateFixture
 import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.engine.StoryRecapEngine
 import com.voicerpg.engine.model.SavedCharacterStats
@@ -9,6 +11,9 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class StoryRecapEngineTest {
+
+    /** Mechanics test: runs on the engine's frozen template content, whatever game it's in. */
+    @get:Rule val templateFixture = TemplateFixture()
 
     private fun scene(id: String) = GameContent.scenes.getValue(id)
     private fun node(id: String) = GameContent.nodes.getValue(id)
