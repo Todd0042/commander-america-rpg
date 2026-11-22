@@ -191,7 +191,9 @@ for game in "${TARGETS[@]}"; do
         echo "    [-] NOT MIGRATED: branch '${branch}' has no ${ENGINE_JAVA}. Check out the engine-based branch first."
         failures=1; continue
     fi
-    if [ -n "$(git -C "$dir" status --porcelain -- "${ENGINE_OWNED_PATHS[@]}")" ]; then
+    if [ -n "$(git -C "$dir" status --porcelain -- "${ENGINE_OWNED_PATHS[@]}")" ] && \
+       ! { [ -f "$dir/.engine-sync/guard.sh" ] && (cd "$dir" && bash .engine-sync/guard.sh --ci >/dev/null 2>&1); }; then
+        # (Uncommitted files that exactly match the last recorded sync are that sync, not edits: safe to replace.)
         echo "    [-] uncommitted changes in engine-owned paths on '${branch}'; a push would overwrite them:"
         git -C "$dir" status --porcelain -- "${ENGINE_OWNED_PATHS[@]}" | sed 's/^/        /'
         echo "        If they belong upstream: --pull-from ${game} <path>. Otherwise discard them."
