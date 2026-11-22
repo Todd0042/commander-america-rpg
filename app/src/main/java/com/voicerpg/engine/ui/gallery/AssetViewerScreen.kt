@@ -81,8 +81,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.voicerpg.engine.audio.MusicManager
 import com.voicerpg.engine.audio.SpeechManager
-import com.voicerpg.engine.engine.StoryScript
-import com.voicerpg.engine.model.DialogueSpeaker
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.ui.story.StoryAssetLoader
 import com.voicerpg.engine.ui.theme.FrostCyan
 import com.voicerpg.engine.ui.theme.HolyYellow
@@ -120,26 +119,8 @@ object AssetCatalog {
         val list = mutableListOf<PortraitAssetItem>()
         val seenPaths = mutableSetOf<String>()
 
-        // 1. From Story Speakers
-        val speakers = listOf(
-            DialogueSpeaker.COMMANDER_AMERICA,
-            DialogueSpeaker.MARCO,
-            DialogueSpeaker.VANCE,
-            DialogueSpeaker.KASH,
-            DialogueSpeaker.KENNEDY,
-            DialogueSpeaker.ELON,
-            DialogueSpeaker.NARRATOR_KAYLEIGH,
-            DialogueSpeaker.NARRATOR_KAROLINE,
-            DialogueSpeaker.NARRATOR_HULK,
-            DialogueSpeaker.PELOSI,
-            DialogueSpeaker.KAMALA,
-            DialogueSpeaker.BIDEN,
-            DialogueSpeaker.OBAMA,
-            DialogueSpeaker.ROCKET_MAN,
-            DialogueSpeaker.PARTY_BOSS,
-            DialogueSpeaker.ESTABLISHMENT_RIVAL
-        )
-        for (speaker in speakers) {
+        // 1. From GameContent speakers
+        for (speaker in GameContent.allSpeakers) {
             val path = speaker.portraitAsset ?: continue
             if (seenPaths.add(path)) {
                 list.add(
@@ -154,7 +135,23 @@ object AssetCatalog {
             }
         }
 
-        // 2. Scan assets/portraits/
+        // 2. From GameContent classes
+        for (cls in GameContent.classes) {
+            val path = cls.portraitAsset ?: continue
+            if (seenPaths.add(path)) {
+                list.add(
+                    PortraitAssetItem(
+                        id = cls.id,
+                        name = cls.title,
+                        title = cls.subtitle.ifBlank { "Hero Class" },
+                        assetPath = path,
+                        themeColor = LogosGold
+                    )
+                )
+            }
+        }
+
+        // 3. Scan assets/portraits/
         try {
             val files = context.assets.list("portraits") ?: emptyArray()
             for (f in files) {
@@ -185,22 +182,36 @@ object AssetCatalog {
         val list = mutableListOf<BackgroundAssetItem>()
         val seenPaths = mutableSetOf<String>()
 
-        // 1. Story Scenes
-        for (scene in StoryScript.ALL_SCENES.values) {
-            val path = scene.backgroundAsset
-            if (path.isNotBlank() && seenPaths.add(path)) {
+        // 1. Manifest title background
+        GameContent.manifest.titleBackgroundAsset?.let { path ->
+            if (seenPaths.add(path)) {
                 list.add(
                     BackgroundAssetItem(
-                        id = scene.id,
-                        name = scene.name.ifBlank { scene.id },
-                        chapterOrAct = scene.chapterTitle.ifBlank { scene.name },
+                        id = "manifest_title",
+                        name = GameContent.manifest.gameTitle + " Title",
+                        chapterOrAct = "Main Title Artwork",
                         assetPath = path
                     )
                 )
             }
         }
 
-        // 2. Scan story/, backgrounds/, environments/ folders for unreferenced assets
+        // 2. Story Scenes
+        for (scene in GameContent.scenes.values) {
+            val path = scene.backgroundAsset
+            if (path.isNotBlank() && seenPaths.add(path)) {
+                list.add(
+                    BackgroundAssetItem(
+                        id = scene.id,
+                        name = scene.name.ifBlank { scene.id },
+                        chapterOrAct = if (scene.actTitle.isNotBlank()) scene.actTitle else "Act ${scene.actNumber}",
+                        assetPath = path
+                    )
+                )
+            }
+        }
+
+        // 3. Scan story/, backgrounds/, environments/ folders for unreferenced assets
         val folders = listOf("story", "backgrounds", "environments")
         for (folder in folders) {
             try {
@@ -239,10 +250,7 @@ object AssetCatalog {
         val coreThemes = listOf(
             Triple(MusicManager.TRACK_TITLE, "Title Theme", "Main Menu & Opening"),
             Triple(MusicManager.TRACK_EXPLORATION, "Exploration Theme", "World Ambient & Story"),
-            Triple(MusicManager.TRACK_COMBAT, "Combat Arena Theme", "Battle Encounters"),
-            Triple(MusicManager.TRACK_OVAL, "Oval Citadel Theme", "Executive Power"),
-            Triple(MusicManager.TRACK_INTRIGUE, "Intrigue Theme", "Deep State Investigation"),
-            Triple(MusicManager.TRACK_INAUGURATION, "Inauguration Theme", "Celebration")
+            Triple(MusicManager.TRACK_COMBAT, "Combat Arena Theme", "Battle Encounters")
         )
         for ((path, title, desc) in coreThemes) {
             if (seenPaths.add(path)) {
@@ -251,7 +259,7 @@ object AssetCatalog {
         }
 
         // 2. Scene BGMs
-        for (scene in StoryScript.ALL_SCENES.values) {
+        for (scene in GameContent.scenes.values) {
             val path = scene.musicAsset
             if (path.isNotBlank() && seenPaths.add(path)) {
                 val title = path.substringAfterLast('/').substringBeforeLast('.')

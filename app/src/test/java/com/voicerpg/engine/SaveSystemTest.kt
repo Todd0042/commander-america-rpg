@@ -1,17 +1,17 @@
 package com.voicerpg.engine
 
+import org.junit.Rule
+import com.voicerpg.engine.testing.TemplateFixture
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
-import com.voicerpg.engine.engine.ClassSpellLibrary
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.engine.IntentParser
 import com.voicerpg.engine.engine.SaveManager
-import com.voicerpg.engine.engine.StoryEncounters
 import com.voicerpg.engine.engine.StoryScript
 import com.voicerpg.engine.model.AuraColor
-import com.voicerpg.engine.model.CampaignTrack
+import com.voicerpg.engine.model.Enemy
 import com.voicerpg.engine.model.GameSaveData
 import com.voicerpg.engine.model.GameScreen
-import com.voicerpg.engine.model.HeroClass
 import com.voicerpg.engine.model.PlayerCustomization
 import com.voicerpg.engine.model.SavedCharacterStats
 import com.voicerpg.engine.viewmodel.CombatViewModel
@@ -27,6 +27,9 @@ import org.junit.Before
 import org.junit.Test
 
 class SaveSystemTest {
+
+    /** Mechanics test: runs on the engine's frozen template content, whatever game it's in. */
+    @get:Rule val templateFixture = TemplateFixture()
 
     private lateinit var saveManager: SaveManager
     private lateinit var speechManager: SpeechManager
@@ -44,13 +47,13 @@ class SaveSystemTest {
         // Elementalist
         val elemCustom = PlayerCustomization(
             name = "Lyra",
-            heroClass = HeroClass.ELEMENTALIST,
+            heroClassId = "elementalist",
             title = "Acolyte of Embers",
             auraColor = AuraColor.CRIMSON_PYRE
         )
         val elemSave = saveManager.createInitialSave(elemCustom)
         assertEquals("Lyra", elemSave.player.name)
-        assertEquals(HeroClass.ELEMENTALIST, elemSave.player.heroClass)
+        assertEquals("elementalist", elemSave.player.heroClassId)
         assertEquals(240, elemSave.partyStats.first().maxHp)
         assertEquals(160, elemSave.partyStats.first().maxMp)
         assertTrue(elemSave.partyStats.first().spellIds.contains("fireball"))
@@ -58,7 +61,7 @@ class SaveSystemTest {
         // Battlemage
         val battleCustom = PlayerCustomization(
             name = "Thorin",
-            heroClass = HeroClass.BATTLEMAGE,
+            heroClassId = "battlemage",
             title = "Runeguard",
             auraColor = AuraColor.SOLAR_GOLD
         )
@@ -70,7 +73,7 @@ class SaveSystemTest {
         // Chanter
         val chanterCustom = PlayerCustomization(
             name = "Aria",
-            heroClass = HeroClass.CHANTER,
+            heroClassId = "chanter",
             title = "Voice of the Grove",
             auraColor = AuraColor.EMERALD_GROVE
         )
@@ -82,7 +85,7 @@ class SaveSystemTest {
         // Shadowweaver
         val shadowCustom = PlayerCustomization(
             name = "Vesper",
-            heroClass = HeroClass.SHADOWWEAVER,
+            heroClassId = "shadowweaver",
             title = "Voidstrider",
             auraColor = AuraColor.AMETHYST_VOID
         )
@@ -96,7 +99,7 @@ class SaveSystemTest {
     fun testSaveAndLoadRoundTripSerialization() {
         val custom = PlayerCustomization(
             name = "Zephyr",
-            heroClass = HeroClass.ELEMENTALIST,
+            heroClassId = "elementalist",
             title = "Stormcaller",
             auraColor = AuraColor.SAPPHIRE_FROST
         )
@@ -119,7 +122,7 @@ class SaveSystemTest {
         val loaded = saveManager.load()
         assertNotNull(loaded)
         assertEquals("Zephyr", loaded!!.player.name)
-        assertEquals(HeroClass.ELEMENTALIST, loaded.player.heroClass)
+        assertEquals("elementalist", loaded.player.heroClassId)
         assertEquals(AuraColor.SAPPHIRE_FROST, loaded.player.auraColor)
         assertEquals("scene_crossroads", loaded.currentSceneId)
         assertEquals("crossroads_cedric_first", loaded.currentNodeId)
@@ -187,6 +190,8 @@ class SaveSystemTest {
         assertFalse(storyVm.state.value.hasExistingSave)
 
         storyVm.startNewGameFlow()
+        assertEquals(GameScreen.AUDIO_SETUP, storyVm.state.value.gameScreen)
+        storyVm.proceedToCharacterCreation()
         assertEquals(GameScreen.CHARACTER_CREATION, storyVm.state.value.gameScreen)
     }
 
@@ -203,29 +208,31 @@ class SaveSystemTest {
         // Player customizes hero and starts game
         val custom = PlayerCustomization(
             name = "Rowan",
-            heroClass = HeroClass.BATTLEMAGE,
+            heroClassId = "battlemage",
             title = "Acolyte of Embers",
             auraColor = AuraColor.CRIMSON_PYRE
         )
         storyVm.startNewGame(custom)
 
         assertEquals(GameScreen.STORY_EXPLORATION, storyVm.state.value.gameScreen)
-        assertEquals(StoryScript.SCENE_ACT1_ESCALATOR.id, storyVm.state.value.currentScene.id)
-        assertEquals("act1_intro", storyVm.state.value.currentNode.id)
+        assertEquals("scene_proving_grounds", storyVm.state.value.currentScene.id)
+        assertEquals("template_intro", storyVm.state.value.currentNode.id)
         assertEquals("Rowan", storyVm.state.value.player.name)
 
-        // Make decision 1: Deliver speech
-        val speakChoice = storyVm.state.value.currentNode.choices.first { it.id == "a1_speech" }
+        // Advance to the choice hub, then make decision 1: "Ask about the history"
+        storyVm.advanceDialogue()
+        storyVm.advanceDialogue()
+        val speakChoice = storyVm.state.value.currentNode.choices.first { it.id == "choice_history" }
         storyVm.selectChoice(speakChoice)
 
-        assertEquals("act1_ch1_speech", storyVm.state.value.currentNode.id)
-        assertEquals(listOf("a1_speech"), storyVm.state.value.decisionsMade)
+        assertEquals("template_branch_history", storyVm.state.value.currentNode.id)
+        assertEquals(listOf("choice_history"), storyVm.state.value.decisionsMade)
 
         // Verify save was written to disk/memory
         val autoSavedData = saveManager.load()
         assertNotNull(autoSavedData)
-        assertEquals("act1_ch1_speech", autoSavedData!!.currentNodeId)
-        assertEquals(listOf("a1_speech"), autoSavedData.decisionsMade)
+        assertEquals("template_branch_history", autoSavedData!!.currentNodeId)
+        assertEquals(listOf("choice_history"), autoSavedData.decisionsMade)
         assertEquals("Rowan", autoSavedData.player.name)
     }
 
@@ -243,18 +250,27 @@ class SaveSystemTest {
 
         val custom = PlayerCustomization(
             name = "Elora",
-            heroClass = HeroClass.CHANTER,
+            heroClassId = "chanter",
             title = "Voice of the Grove",
             auraColor = AuraColor.EMERALD_GROVE
         )
         storyVm1.startNewGame(custom)
 
-        // Make choice
-        val choice = storyVm1.state.value.currentNode.choices.first { it.id == "a1_speech" }
+        // Advance to the choice hub, then make a choice
+        storyVm1.advanceDialogue()
+        storyVm1.advanceDialogue()
+        val choice = storyVm1.state.value.currentNode.choices.first { it.id == "choice_history" }
         storyVm1.selectChoice(choice)
 
-        assertEquals("act1_ch1_speech", storyVm1.state.value.currentNode.id)
-        assertEquals(listOf("a1_speech"), storyVm1.state.value.decisionsMade)
+        // Advance to the Echo Hall scene via its transition node
+        val hallTransNode = StoryScript.ALL_NODES["template_to_echo_hall"]!!
+        val jumpChoice = com.voicerpg.engine.model.DialogueChoice("jump", "Proceed to the Echo Hall", emptyList(), hallTransNode.id)
+        storyVm1.selectChoice(jumpChoice)
+        storyVm1.advanceDialogue()
+
+        assertEquals("scene_echo_hall", storyVm1.state.value.currentScene.id)
+        assertEquals("hall_intro", storyVm1.state.value.currentNode.id)
+        assertEquals(listOf("choice_history", "jump"), storyVm1.state.value.decisionsMade)
 
         // Session 2: Fresh launch of the app with existing save
         val storyVm2 = StoryViewModel(
@@ -274,11 +290,11 @@ class SaveSystemTest {
         // Continue chronicle resumes directly into story
         storyVm2.continueGame()
         assertEquals(GameScreen.STORY_EXPLORATION, storyVm2.state.value.gameScreen)
-        assertEquals(StoryScript.SCENE_ACT1_ESCALATOR.id, storyVm2.state.value.currentScene.id)
-        assertEquals("act1_ch1_speech", storyVm2.state.value.currentNode.id)
+        assertEquals("scene_echo_hall", storyVm2.state.value.currentScene.id)
+        assertEquals("hall_intro", storyVm2.state.value.currentNode.id)
         assertEquals("Elora", storyVm2.state.value.player.name)
-        assertEquals(HeroClass.CHANTER, storyVm2.state.value.player.heroClass)
-        assertEquals(listOf("a1_speech"), storyVm2.state.value.decisionsMade)
+        assertEquals("chanter", storyVm2.state.value.player.heroClassId)
+        assertEquals(listOf("choice_history", "jump"), storyVm2.state.value.decisionsMade)
 
         // Return to title persists and transitions back to Title Screen
         storyVm2.returnToTitle()
@@ -298,18 +314,18 @@ class SaveSystemTest {
         storyVm.startNewGame(PlayerCustomization(name = "Valen"))
 
         // Trigger encounter
-        storyVm.triggerEncounter(StoryEncounters.PROLOGUE_SOLO.id)
+        storyVm.triggerEncounter(GameContent.defaultEncounter!!.id)
         assertEquals(GameScreen.COMBAT_ARENA, storyVm.state.value.gameScreen)
 
         // Win encounter
         storyVm.onCombatVictory()
         assertEquals(GameScreen.STORY_EXPLORATION, storyVm.state.value.gameScreen)
-        assertTrue(storyVm.state.value.defeatedEncounters.contains(StoryEncounters.PROLOGUE_SOLO.id))
+        assertTrue(storyVm.state.value.defeatedEncounters.contains(GameContent.defaultEncounter!!.id))
 
         // Check save
         val save = saveManager.load()
         assertNotNull(save)
-        assertTrue(save!!.defeatedEncounters.contains(StoryEncounters.PROLOGUE_SOLO.id))
+        assertTrue(save!!.defeatedEncounters.contains(GameContent.defaultEncounter!!.id))
     }
 
     @Test
@@ -321,7 +337,7 @@ class SaveSystemTest {
         )
         val custom = PlayerCustomization(
             name = "Kaelen",
-            heroClass = HeroClass.SHADOWWEAVER,
+            heroClassId = "shadowweaver",
             title = "Voidstrider",
             auraColor = AuraColor.AMETHYST_VOID
         )
@@ -351,17 +367,25 @@ class SaveSystemTest {
         )
         val custom = PlayerCustomization(
             name = "Ignis",
-            heroClass = HeroClass.BATTLEMAGE
+            heroClassId = "battlemage"
         )
         combatVm.applyPlayerCustomization(custom)
 
         val hero = combatVm.state.value.party.first()
         assertEquals("Ignis", hero.name)
 
+        val orc = Enemy(
+            id = "orc",
+            name = "Orc",
+            subtitle = "Warband Berserker",
+            currentHp = 100,
+            maxHp = 100,
+            baseAttack = 15
+        )
         val parsed = IntentParser.parse(
             utterance = "Flame strike the orc with fury!",
             availableSpells = hero.spells,
-            activeEnemies = combatVm.state.value.enemies,
+            activeEnemies = listOf(orc),
             party = combatVm.state.value.party
         )
 
@@ -371,9 +395,9 @@ class SaveSystemTest {
 
     @Test
     fun testMultiSlotIndependentSaveAndLoad() {
-        val hero1 = PlayerCustomization(name = "Aethel", heroClass = HeroClass.ELEMENTALIST)
-        val hero2 = PlayerCustomization(name = "Cedric", heroClass = HeroClass.BATTLEMAGE)
-        val hero3 = PlayerCustomization(name = "Lyra", heroClass = HeroClass.CHANTER)
+        val hero1 = PlayerCustomization(name = "Aethel", heroClassId = "elementalist")
+        val hero2 = PlayerCustomization(name = "Cedric", heroClassId = "battlemage")
+        val hero3 = PlayerCustomization(name = "Lyra", heroClassId = "chanter")
 
         saveManager.createInitialSave(hero1, slot = 1)
         saveManager.createInitialSave(hero2, slot = 2)
@@ -392,19 +416,19 @@ class SaveSystemTest {
         assertNotNull(loaded3)
 
         assertEquals("Aethel", loaded1!!.player.name)
-        assertEquals(HeroClass.ELEMENTALIST, loaded1.player.heroClass)
+        assertEquals("elementalist", loaded1.player.heroClassId)
 
         assertEquals("Cedric", loaded2!!.player.name)
-        assertEquals(HeroClass.BATTLEMAGE, loaded2.player.heroClass)
+        assertEquals("battlemage", loaded2.player.heroClassId)
 
         assertEquals("Lyra", loaded3!!.player.name)
-        assertEquals(HeroClass.CHANTER, loaded3.player.heroClass)
+        assertEquals("chanter", loaded3.player.heroClassId)
     }
 
     @Test
     fun testMultiSlotDeletionAndSummary() {
-        val hero1 = PlayerCustomization(name = "Sol", heroClass = HeroClass.BATTLEMAGE)
-        val hero2 = PlayerCustomization(name = "Luna", heroClass = HeroClass.SHADOWWEAVER)
+        val hero1 = PlayerCustomization(name = "Sol", heroClassId = "battlemage")
+        val hero2 = PlayerCustomization(name = "Luna", heroClassId = "shadowweaver")
 
         saveManager.createInitialSave(hero1, slot = 1)
         saveManager.createInitialSave(hero2, slot = 2)
@@ -438,7 +462,7 @@ class SaveSystemTest {
         )
 
         // Start in Slot 2
-        val heroCustom = PlayerCustomization(name = "Kael", heroClass = HeroClass.ELEMENTALIST)
+        val heroCustom = PlayerCustomization(name = "Kael", heroClassId = "elementalist")
         storyVm.startNewGame(heroCustom, slot = 2)
 
         assertEquals(2, storyVm.state.value.currentSlot)
@@ -478,8 +502,8 @@ class SaveSystemTest {
         val testScope = CoroutineScope(Dispatchers.Default)
 
         // Setup campaign saves in slot 1 and 2
-        val custom1 = PlayerCustomization(name = "CampaignHero1", heroClass = HeroClass.ELEMENTALIST)
-        val custom2 = PlayerCustomization(name = "CampaignHero2", heroClass = HeroClass.BATTLEMAGE)
+        val custom1 = PlayerCustomization(name = "CampaignHero1", heroClassId = "elementalist")
+        val custom2 = PlayerCustomization(name = "CampaignHero2", heroClassId = "battlemage")
         val save1 = saveManager.createInitialSave(custom1, slot = 1).copy(saveTimestamp = 1000L)
         saveManager.save(save1, slot = 1, updateTimestamp = false)
         val save2 = saveManager.createInitialSave(custom2, slot = 2).copy(saveTimestamp = 2000L)
@@ -526,26 +550,6 @@ class SaveSystemTest {
         val archives = saveManager.getAllSlotInfos()
         assertEquals(3, archives.size)
         assertEquals(listOf(1, 2, 3), archives.map { it.slotIndex })
-    }
-
-    @Test
-    fun testPureStoryModeTrackBSelection() {
-        val testScope = CoroutineScope(Dispatchers.Default)
-        val storyVm = StoryViewModel(
-            speechManager = speechManager,
-            combatNarrator = combatNarrator,
-            saveManager = saveManager,
-            scopeOverride = testScope
-        )
-
-        // Start Pure Story Mode on Track B
-        storyVm.startPureStoryMode(fresh = true, track = CampaignTrack.TRACK_B)
-        assertTrue(storyVm.state.value.isPureStoryMode)
-        assertEquals(SaveManager.STORY_MODE_SLOT, storyVm.state.value.currentSlot)
-        assertEquals("Hill-Rod", storyVm.state.value.player.name)
-        assertEquals(CampaignTrack.TRACK_B, storyVm.state.value.player.campaignTrack)
-        assertEquals("act1_tb_ch1_intro", storyVm.state.value.currentNode.id)
-        assertEquals(StoryScript.SCENE_ACT1_TB_CH1_SERVER.id, storyVm.state.value.currentScene.id)
     }
 
     @Test

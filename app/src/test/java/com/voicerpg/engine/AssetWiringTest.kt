@@ -1,7 +1,7 @@
 package com.voicerpg.engine
 
+import com.voicerpg.engine.audio.MusicManager
 import com.voicerpg.engine.engine.StoryScript
-import com.voicerpg.engine.model.DialogueSpeaker
 import java.io.File
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -10,8 +10,8 @@ import org.junit.Test
 
 /**
  * Guards that every artwork path wired into the story engine (scene backgrounds and
- * character portraits) resolves to a real asset file, and that the narrator easter-egg
- * portrait alternates are valid.
+ * character portraits) resolves to a real asset file, and that the narrator's
+ * effective portrait is deterministic and stable.
  */
 class AssetWiringTest {
 
@@ -49,14 +49,13 @@ class AssetWiringTest {
 
     @Test
     fun allBgmAudioFilesExist() {
-        val expectedTracks = listOf(
-            "audio/music/bgm_title.ogg",
-            "audio/music/bgm_act1_forest.ogg",
-            "audio/music/bgm_act2_marsh.ogg",
-            "audio/music/bgm_act3_bastion.ogg",
-            "audio/music/bgm_act4_celestial.ogg",
-            "audio/music/bgm_combat.ogg"
-        )
+        val expectedTracks = (
+            listOf(
+                MusicManager.TRACK_TITLE,
+                MusicManager.TRACK_EXPLORATION,
+                MusicManager.TRACK_COMBAT
+            ) + StoryScript.ALL_SCENES.values.map { it.musicAsset }
+        ).distinct()
         val missing = mutableListOf<String>()
         for (track in expectedTracks) {
             val file = File(assetsDir, track)
@@ -67,24 +66,7 @@ class AssetWiringTest {
 
     @Test
     fun everyPortraitAssetResolvesToARealFile() {
-        val speakers = listOf(
-            DialogueSpeaker.COMMANDER_AMERICA,
-            DialogueSpeaker.MARCO,
-            DialogueSpeaker.VANCE,
-            DialogueSpeaker.KASH,
-            DialogueSpeaker.KENNEDY,
-            DialogueSpeaker.ELON,
-            DialogueSpeaker.NARRATOR_KAYLEIGH,
-            DialogueSpeaker.NARRATOR_KAROLINE,
-            DialogueSpeaker.NARRATOR_HULK,
-            DialogueSpeaker.PELOSI,
-            DialogueSpeaker.KAMALA,
-            DialogueSpeaker.BIDEN,
-            DialogueSpeaker.OBAMA,
-            DialogueSpeaker.ROCKET_MAN,
-            DialogueSpeaker.PARTY_BOSS,
-            DialogueSpeaker.ESTABLISHMENT_RIVAL
-        )
+        val speakers = StoryScript.ALL_SPEAKERS
         val missing = mutableListOf<String>()
         for (speaker in speakers) {
             val asset = speaker.portraitAsset
@@ -98,28 +80,8 @@ class AssetWiringTest {
     }
 
     @Test
-    fun narratorEasterEggAlternatePortraitExists() {
-        assertTrue("narrator1.jpg easter-egg art missing", File(assetsDir, "portraits/narrator1.jpg").isFile)
-    }
-
-    @Test
     fun effectivePortraitAssetIsStableForNonNarrators() {
-        val nonNarrators = listOf(
-            DialogueSpeaker.AETHEL,
-            DialogueSpeaker.CEDRIC,
-            DialogueSpeaker.LYRA,
-            DialogueSpeaker.ZEPHYR,
-            DialogueSpeaker.MALAKOR,
-            DialogueSpeaker.SHADOW_WISP,
-            DialogueSpeaker.VAELOR,
-            DialogueSpeaker.GALAHAULT,
-            DialogueSpeaker.NOCTURNE,
-            DialogueSpeaker.OUROS,
-            DialogueSpeaker.DRYAD_MATRON,
-            DialogueSpeaker.PELOSI,
-            DialogueSpeaker.COMMANDER_AMERICA
-        )
-
+        val nonNarrators = StoryScript.ALL_SPEAKERS.filterNot { it.isNarrator }
         for (speaker in nonNarrators) {
             repeat(200) {
                 assertTrue(
@@ -132,24 +94,19 @@ class AssetWiringTest {
 
     @Test
     fun narratorEffectivePortraitChoosesOnlyValidArt() {
-        val valid = setOf("portraits/narrator.jpg", "portraits/narrator1.jpg", "portraits/narrator_kayleigh.jpg")
-        var alternateCount = 0
-        val trials = 10000
-        repeat(trials) {
-            val picked = DialogueSpeaker.NARRATOR.effectivePortraitAsset()
-            assertTrue("Narrator picked invalid asset $picked", picked in valid)
-            if (picked == "portraits/narrator1.jpg") {
-                alternateCount++
-            }
+        // The randomized easter-egg alternation was removed from the engine: the narrator
+        // now always resolves its own declared portrait asset, deterministically.
+        val narrator = StoryScript.ALL_SPEAKERS.first { it.isNarrator }
+        repeat(10000) {
+            assertEquals(narrator.portraitAsset, narrator.effectivePortraitAsset("scene_node_$it"))
         }
-        // At 1 in 100 chance, 10,000 trials should see ~100 hits (safe bounds: 40 to 180)
-        assertTrue("Expected ~1% easter-egg frequency, got $alternateCount out of $trials", alternateCount in 40..180)
     }
 
     @Test
     fun narratorEffectivePortraitIsDeterministicWithSeed() {
-        val asset1 = DialogueSpeaker.NARRATOR.effectivePortraitAsset("scene_node_42")
-        val asset2 = DialogueSpeaker.NARRATOR.effectivePortraitAsset("scene_node_42")
+        val narrator = StoryScript.ALL_SPEAKERS.first { it.isNarrator }
+        val asset1 = narrator.effectivePortraitAsset("scene_node_42")
+        val asset2 = narrator.effectivePortraitAsset("scene_node_42")
         assertEquals(asset1, asset2)
     }
 }

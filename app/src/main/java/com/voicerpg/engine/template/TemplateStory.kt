@@ -26,9 +26,9 @@ object TemplateStory {
         id = "template_mentor",
         name = "Grandmaster Vael",
         title = "Chamber Warden",
-        portraitAsset = "portraits/commander_america.jpg", // Reusable sample portrait included in assets
+        portraitAsset = "portraits/template_hero.jpg",
         themeColor = Color(0xFFFFB74D),
-        ttsPitch = 0.85f // Deep baritone mentor pitch
+        ttsPitch = 0.85f
     )
 
     // --- Scene Definition ---
@@ -36,10 +36,10 @@ object TemplateStory {
         id = "template_proving_grounds",
         name = "The Proving Grounds",
         chapterTitle = "Sandbox: The Voice Sanctuary",
-        backgroundAsset = "story/oval_citadel.jpg",
+        backgroundAsset = "environments/cave_bg.jpg",
         initialNodeId = "template_linear_narration",
         ambientDescription = "An ancient vaulted chamber where stone glyphs hum in resonance with human incantations.",
-        musicAsset = "audio/music/bgm_title.ogg"
+        musicAsset = "audio/music/bgm_exploration.ogg"
     )
 
     // --- 1. Linear Narration Template ---
@@ -71,14 +71,14 @@ object TemplateStory {
                 text = "Ask about the history of the Proving Grounds.",
                 voiceKeywords = listOf("history", "grounds", "lore", "past", "ancient"),
                 nextNodeId = "template_branch_history",
-                completionFlag = "flag_template_history_read" // Auto-eliminates after completed!
+                completionFlag = "flag_template_history_read"
             ),
             DialogueChoice(
                 id = "choice_blessing",
                 text = "Receive the Grandmaster's tactical counsel.",
                 voiceKeywords = listOf("blessing", "counsel", "advice", "tactical", "help"),
                 nextNodeId = "template_branch_blessing",
-                completionFlag = "flag_template_blessing_received" // Auto-eliminates after completed!
+                completionFlag = "flag_template_blessing_received"
             ),
             DialogueChoice(
                 id = "choice_solo_battle",
@@ -102,7 +102,7 @@ object TemplateStory {
         side = SpeakerSide.LEFT,
         text = "Centuries ago, the first invocators discovered that acoustic clarity directly amplifies elemental force. Every crisp syllable shatters enemy armor.",
         setFlagOnEnter = "flag_template_history_read",
-        nextNodeId = "template_choice_hub" // Returns to hub; choice will now be filtered out
+        nextNodeId = "template_choice_hub"
     )
 
     // Sub-Branch: Tactical Blessing
@@ -112,7 +112,7 @@ object TemplateStory {
         side = SpeakerSide.LEFT,
         text = "Remember: your Flame Spark hits ice-attuned automatons for double damage, while Power Strike penetrates physical shielding.",
         setFlagOnEnter = "flag_template_blessing_received",
-        nextNodeId = "template_choice_hub" // Returns to hub; choice will now be filtered out
+        nextNodeId = "template_choice_hub"
     )
 
     // --- 3. Combat Triggers ---

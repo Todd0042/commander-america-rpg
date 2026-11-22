@@ -50,7 +50,7 @@ object TemplateEnemy {
             isBoss = isBoss,
             spriteTint = spriteTint,
             family = "CONSTRUCT",
-            selfElement = "ICE", // Weak to Fire (TemplateHero's Flame Spark deals bonus damage!)
+            selfElement = "ICE",
             movesetId = "template_drone_moves"
         )
     }
@@ -71,9 +71,9 @@ object TemplateEnemy {
                 attack = 14 + (index * 2),
                 speed = 38 + (index * 4),
                 spriteTint = when (index % 3) {
-                    1 -> Color(0xFFEF5350) // Reddish
-                    2 -> Color(0xFFFFA726) // Orange
-                    else -> Color(0xFFAB47BC) // Violet
+                    1 -> Color(0xFFEF5350)
+                    2 -> Color(0xFFFFA726)
+                    else -> Color(0xFFAB47BC)
                 }
             )
         }

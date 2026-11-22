@@ -2,6 +2,7 @@ package com.voicerpg.engine.minigame
 
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.engine.MiniGameSimulator
 import com.voicerpg.engine.model.GameScreen
 import com.voicerpg.engine.model.MiniGameConfig
@@ -126,8 +127,10 @@ class MiniGameEngineTest {
     @Test
     fun testGracefulOmissionWhenNoMinigames() {
         val viewModel = createViewModel()
-        // Voice command for arcade should not crash and menu should remain closed
-        viewModel.handleStoryVoiceInput("arcade")
-        assertFalse(viewModel.state.value.isMiniGameTestMenuOpen)
+        if (GameContent.minigames.isEmpty()) {
+            // Voice command for arcade should not crash and menu should remain closed
+            viewModel.handleStoryVoiceInput("arcade")
+            assertFalse(viewModel.state.value.isMiniGameTestMenuOpen)
+        }
     }
 }

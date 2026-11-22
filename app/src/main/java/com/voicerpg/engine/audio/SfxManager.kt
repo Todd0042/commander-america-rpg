@@ -2,9 +2,9 @@ package com.voicerpg.engine.audio
 
 import android.content.Context
 import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.media.AudioFormat
 import android.media.AudioTrack
-import android.media.MediaPlayer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,8 +12,9 @@ import kotlin.math.sin
 import kotlin.random.Random
 
 /**
- * Procedural retro sound synthesizer for hit impacts, spell casts, and Logos fanfare,
- * with support for streaming historical audio clips from assets.
+ * Procedural retro sound synthesizer for hit impacts, spell casts, and Logos fanfare (no audio files),
+ * plus recorded sound bites from the game's assets (characters', spells' and enemies' soundBites).
+ * Without a [context] (unit tests) sound bites are skipped.
  */
 class SfxManager(private val context: Context? = null) {
 
@@ -25,105 +26,31 @@ class SfxManager(private val context: Context? = null) {
         isMuted = muted
     }
 
-    /**
-     * Plays a compressed audio asset (.ogg) from the assets/ folder via MediaPlayer.
-     * Fails gracefully if context is null (e.g. in headless unit tests) or file is missing.
-     */
+    private var soundBitePlayer: MediaPlayer? = null
+
+    /** Plays one of [clips] (asset paths) at random, replacing any sound bite still playing. */
+    fun playSoundBite(clips: List<String>) {
+        if (clips.isEmpty()) return
+        playAssetAudio(clips.random())
+    }
+
+    /** Plays a compressed audio asset (e.g. audio/quotes/x.ogg). A missing or unplayable file is logged, not fatal. */
     fun playAssetAudio(assetPath: String) {
-        if (isMuted) return
         val ctx = context ?: return
-        scope.launch(Dispatchers.IO) {
-            try {
-                val afd = ctx.assets.openFd(assetPath)
-                val mediaPlayer = MediaPlayer()
-                mediaPlayer.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-                mediaPlayer.prepare()
-                mediaPlayer.start()
-                mediaPlayer.setOnCompletionListener {
-                    runCatching { mediaPlayer.release() }
-                    runCatching { afd.close() }
-                }
-            } catch (_: Exception) {
-                // Graceful fallback when asset cannot be loaded or audio hardware busy
-            }
-        }
-    }
-
-    /**
-     * Plays a random real-life Biden gaffe/gibberish audio clip.
-     */
-    fun playBidenGibberish() {
-        val quotes = listOf(
-            "audio/quotes/biden/biden_truinanashabbadepressure.ogg",
-            "audio/quotes/biden/biden_badakathcare.ogg"
-        )
-        val selected = quotes.random()
-        playAssetAudio(selected)
-    }
-
-    /**
-     * Plays a real-life Commander America (Donald Trump) audio quote.
-     */
-    fun playTrumpQuote() {
-        val quotes = listOf(
-            "audio/quotes/trump/trump_greatness_birthright.ogg",
-            "audio/quotes/trump/trump_easily_win.ogg"
-        )
-        playAssetAudio(quotes.random())
-    }
-
-    /**
-     * Plays a real-life Barry Teleprompter (Barack Obama) audio quote.
-     */
-    fun playObamaQuote() {
-        playAssetAudio("audio/quotes/obama/obama_dont_boo_vote.ogg")
-    }
-
-    /**
-     * Plays a real-life Spicy Sean (Sean Spicer) audio quote.
-     */
-    fun playSpicerQuote() {
-        playAssetAudio("audio/quotes/spicer/spicer_period.ogg")
-    }
-
-    /**
-     * Plays a real-life Hill-Rod (Hillary Clinton) audio quote.
-     */
-    fun playHillaryQuote() {
-        playAssetAudio("audio/quotes/hillary/hillary_congratulated_trump.ogg")
-    }
-
-    /**
-     * Plays a real-life Madame Vice / Kamala Coconut audio quote.
-     */
-    fun playKamalaQuote() {
-        playAssetAudio("audio/quotes/kamala/kamala_ride_a_bus.ogg")
-    }
-
-    /**
-     * Plays a real-life White House Press Secretary briefing quote (Psaki or Kayleigh).
-     */
-    fun playPressBriefingQuote() {
-        val quotes = listOf(
-            "audio/quotes/press/psaki_legislative_action.ogg",
-            "audio/quotes/press/kayleigh_heroes.ogg"
-        )
-        playAssetAudio(quotes.random())
-    }
-
-    /**
-     * Dispatches the corresponding real audio quote for a character identifier.
-     */
-    fun playCharacterQuote(characterId: String) {
-        val lower = characterId.lowercase()
-        when {
-            lower.contains("biden") || lower.contains("naptime") || lower.contains("joe") -> playBidenGibberish()
-            lower.contains("trump") || lower.contains("commander") -> playTrumpQuote()
-            lower.contains("obama") || lower.contains("barry") -> playObamaQuote()
-            lower.contains("spicer") || lower.contains("spicy") -> playSpicerQuote()
-            lower.contains("hill") -> playHillaryQuote()
-            lower.contains("kamala") || lower.contains("vice") || lower.contains("coconut") -> playKamalaQuote()
-            lower.contains("psaki") || lower.contains("kayleigh") || lower.contains("press") -> playPressBriefingQuote()
+        if (isMuted) return
+        try {
+            soundBitePlayer?.release()
+            val player = MediaPlayer()
+            ctx.assets.openFd(assetPath).use { fd -> player.setDataSource(fd.fileDescriptor, fd.startOffset, fd.length) }
+            player.setAudioAttributes(
+                AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build()
+            )
+            player.setOnCompletionListener { it.release(); if (soundBitePlayer === it) soundBitePlayer = null }
+            player.prepare()
+            player.start()
+            soundBitePlayer = player
+        } catch (e: Exception) {
+            android.util.Log.e("SfxManager", "Sound bite '$assetPath' couldn't be played: ${e.message}", e)
         }
     }
 

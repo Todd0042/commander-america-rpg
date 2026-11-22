@@ -153,7 +153,6 @@ class NarrationAndOptionsTest {
     fun testCombatNarratorPreferredVoiceIdsConfiguredForAllSpeakers() {
         val preferred = CombatNarrator.PREFERRED_VOICE_IDS
         assertEquals(GameContent.preferredVoiceIds, preferred)
-        assertEquals("en-gb-x-rjs-local", preferred["narrator"])
         for (speaker in GameContent.allSpeakers) {
             assertEquals(
                 speaker.id,
@@ -375,8 +374,10 @@ class NarrationAndOptionsTest {
         )
         assertEquals(GameScreen.TITLE, freshVm.state.value.gameScreen)
 
-        // Starting new game flow routes to CHARACTER_CREATION directly
+        // Starting new game flow routes to AUDIO_SETUP then CHARACTER_CREATION
         freshVm.startNewGameFlow()
+        assertEquals(GameScreen.AUDIO_SETUP, freshVm.state.value.gameScreen)
+        freshVm.proceedToCharacterCreation()
         assertEquals(GameScreen.CHARACTER_CREATION, freshVm.state.value.gameScreen)
 
         // Reset returns to TITLE

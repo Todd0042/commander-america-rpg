@@ -64,25 +64,20 @@ object TemplateEncounters {
             TemplateEnemy.createTemplateEnemy(
                 id = "drone_artillery",
                 name = "Drone Artillery",
-                subtitle = "Heavy Blaster",
-                hp = 70,
-                attack = 24,
-                speed = 36
+                subtitle = "Backline Blaster",
+                hp = 85,
+                attack = 22,
+                speed = 52
             ),
             TemplateEnemy.createTemplateEnemy(
                 id = "drone_scout",
                 name = "Drone Scout",
-                subtitle = "Swift Harasser",
-                hp = 65,
+                subtitle = "Evasive Disruptor",
+                hp = 70,
                 attack = 12,
-                speed = 62
+                speed = 65
             )
         ),
         initialParty = listOf(TemplateHero.createTemplateAdventurer())
-    )
-
-    val ALL_TEMPLATE_ENCOUNTERS = mapOf(
-        ENCOUNTER_SOLO_ID to TEMPLATE_SOLO_BATTLE,
-        ENCOUNTER_TRIO_ID to TEMPLATE_TRIO_BATTLE
     )
 }

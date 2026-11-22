@@ -1,7 +1,6 @@
 package com.voicerpg.engine.engine
 
 import android.content.Context
-import androidx.core.util.AtomicFile
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.voicerpg.engine.model.GameSaveData
@@ -9,6 +8,7 @@ import com.voicerpg.engine.model.PlayerCustomization
 import com.voicerpg.engine.model.SaveSlotInfo
 import com.voicerpg.engine.model.SaveSummary
 import com.voicerpg.engine.model.SavedCharacterStats
+import androidx.core.util.AtomicFile
 import java.io.File
 import java.io.FileOutputStream
 
@@ -111,12 +111,16 @@ class SaveManager(private val context: Context? = null) {
     }
 
     private fun writeAtomic(file: File, content: String) {
+        file.parentFile?.let { if (!it.exists()) it.mkdirs() }
+        // AtomicFile keeps the previous save as a backup until the new one is fully written, so a crash
+        // or power loss mid-write never leaves a truncated save.
         val atomicFile = AtomicFile(file)
         var stream: FileOutputStream? = null
         try {
             stream = atomicFile.startWrite()
             stream.write(content.toByteArray(Charsets.UTF_8))
             atomicFile.finishWrite(stream)
+            stream = null
         } catch (e: Exception) {
             if (stream != null) {
                 atomicFile.failWrite(stream)
@@ -126,11 +130,10 @@ class SaveManager(private val context: Context? = null) {
     }
 
     private fun readAtomic(file: File): String? {
-        if (!file.exists()) return null
+        // AtomicFile restores from its .bak copy when a write was interrupted, so check both.
+        if (!file.exists() && !File(file.path + ".bak").exists()) return null
         return try {
-            val atomicFile = AtomicFile(file)
-            val bytes = atomicFile.readFully()
-            String(bytes, Charsets.UTF_8)
+            String(AtomicFile(file).readFully(), Charsets.UTF_8)
         } catch (e: Exception) {
             e.printStackTrace()
             null
@@ -193,8 +196,7 @@ class SaveManager(private val context: Context? = null) {
         }
         val file = getSaveFile(validSlot)
         return if (file != null) {
-            val atomic = AtomicFile(file)
-            atomic.delete()
+            AtomicFile(file).delete()
             true
         } else {
             true
@@ -203,11 +205,12 @@ class SaveManager(private val context: Context? = null) {
 
     fun getSlotSummary(slot: Int): SaveSummary? {
         val data = load(slot) ?: return null
-        val scene = StoryScript.ALL_SCENES[data.currentSceneId] ?: StoryScript.SCENE_ACT1_ESCALATOR
+        val scene = StoryScript.ALL_SCENES[data.currentSceneId] ?: StoryScript.INITIAL_SCENE
+        val heroClass = com.voicerpg.engine.content.GameContent.classById(data.player.heroClassId)
         return SaveSummary(
             slotIndex = slot,
             heroName = data.player.name,
-            heroClassTitle = data.player.heroClass.title,
+            heroClassTitle = heroClass.title,
             chapterTitle = scene.chapterTitle,
             sceneName = scene.name,
             partySize = data.partyStats.size.coerceAtLeast(1),
@@ -231,8 +234,9 @@ class SaveManager(private val context: Context? = null) {
         selectedRegion: String = ""
     ): GameSaveData {
         val validSlot = sanitizeSlot(slot)
-        val heroClass = customization.heroClass
-        val starterSpells = ClassSpellLibrary.getSpellsForClass(heroClass)
+        val heroClass = com.voicerpg.engine.content.GameContent.classById(customization.heroClassId)
+        val starterSpells = com.voicerpg.engine.content.GameContent.spellsForClass(heroClass.id)
+        val manifest = com.voicerpg.engine.content.GameContent.manifest
 
         val initialHeroStats = SavedCharacterStats(
             id = "hero",
@@ -248,17 +252,9 @@ class SaveManager(private val context: Context? = null) {
             spellIds = starterSpells.map { it.id }
         )
 
-        val track = customization.campaignTrack
-        val initialSceneId = if (track == com.voicerpg.engine.model.CampaignTrack.TRACK_B) {
-            StoryScript.SCENE_ACT1_TB_CH1_SERVER.id
-        } else {
-            StoryScript.SCENE_ACT1_ESCALATOR.id
-        }
-        val initialNodeId = if (track == com.voicerpg.engine.model.CampaignTrack.TRACK_B) {
-            "act1_tb_ch1_intro"
-        } else {
-            "act1_intro"
-        }
+        val trackDef = manifest.campaignTracks.firstOrNull { it.id == customization.campaignTrackId }
+        val initialSceneId = trackDef?.startSceneId?.ifBlank { null } ?: manifest.initialSceneId
+        val initialNodeId = trackDef?.startNodeId?.ifBlank { null } ?: manifest.initialNodeId
 
         val newSave = GameSaveData(
             player = customization,
@@ -268,7 +264,7 @@ class SaveManager(private val context: Context? = null) {
             partyStats = listOf(initialHeroStats),
             defeatedEncounters = emptyList(),
             unlockedCompanions = listOf("hero"),
-            achievements = listOf("AWAKENED_THE_LOGOS"),
+            achievements = listOf(manifest.startingAchievementId),
             selectedLanguage = selectedLanguage,
             selectedRegion = selectedRegion
         )

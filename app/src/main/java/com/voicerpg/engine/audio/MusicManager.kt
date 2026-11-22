@@ -18,8 +18,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * Background Music (BGM) Manager for VoiceRPG: Echoes of the Logos.
- * Provides continuous, seamlessly looping ambient soundtracks per Act and combat arena.
+ * Background Music (BGM) Manager for the VoiceRPG Engine.
+ * Provides continuous, seamlessly looping ambient soundtracks per story scene and combat arena.
+ * Scene tracks are declared per scene in story data files (musicAsset); the engine ships
+ * template tracks (title / exploration / combat) under assets/audio/music/.
  *
  * Audio Architecture & Routing:
  * - Uses [AudioAttributes.USAGE_MEDIA] and [AudioAttributes.CONTENT_TYPE_MUSIC]
@@ -34,19 +36,14 @@ class MusicManager(
 ) {
     companion object {
         private const val TAG = "MusicManager"
-        const val TRACK_TITLE = "audio/music/bgm_title.ogg"
-        const val TRACK_COMBAT = "audio/music/bgm_combat.ogg"
-        const val TRACK_RALLY = "audio/music/bgm_rally.ogg"
-        const val TRACK_OVAL = "audio/music/bgm_oval.ogg"
-        const val TRACK_INTRIGUE = "audio/music/bgm_intrigue.ogg"
-        const val TRACK_INAUGURATION = "audio/music/bgm_inauguration.ogg"
+        const val DEFAULT_TRACK_TITLE = "audio/music/bgm_title.ogg"
+        const val DEFAULT_TRACK_EXPLORATION = "audio/music/bgm_exploration.ogg"
+        const val DEFAULT_TRACK_COMBAT = "audio/music/bgm_combat.ogg"
 
-        // Legacy compatibility aliases pointing to patriotic tracks
-        const val TRACK_EXPLORATION = TRACK_RALLY
-        const val TRACK_ACT1_FOREST = TRACK_RALLY
-        const val TRACK_ACT2_MARSH = TRACK_OVAL
-        const val TRACK_ACT3_BASTION = TRACK_INTRIGUE
-        const val TRACK_ACT4_CELESTIAL = TRACK_INAUGURATION
+        // The game may name its own default tracks in the manifest (titleMusic, explorationMusic, combatMusic).
+        val TRACK_TITLE: String get() = com.voicerpg.engine.content.GameContent.manifest.titleMusic ?: DEFAULT_TRACK_TITLE
+        val TRACK_EXPLORATION: String get() = com.voicerpg.engine.content.GameContent.manifest.explorationMusic ?: DEFAULT_TRACK_EXPLORATION
+        val TRACK_COMBAT: String get() = com.voicerpg.engine.content.GameContent.manifest.combatMusic ?: DEFAULT_TRACK_COMBAT
 
         const val DUCK_RATIO = 0.22f
     }
@@ -134,28 +131,8 @@ class MusicManager(
         startTrackPlayback(assetPath)
     }
 
-    fun playTitleMusic() {
-        playTrack(TRACK_TITLE)
-    }
-
     fun playCombatMusic() {
         playTrack(TRACK_COMBAT)
-    }
-
-    fun playRallyMusic() {
-        playTrack(TRACK_RALLY)
-    }
-
-    fun playOvalMusic() {
-        playTrack(TRACK_OVAL)
-    }
-
-    fun playIntrigueMusic() {
-        playTrack(TRACK_INTRIGUE)
-    }
-
-    fun playInaugurationMusic() {
-        playTrack(TRACK_INAUGURATION)
     }
 
     private fun startTrackPlayback(assetPath: String) {
@@ -220,7 +197,7 @@ class MusicManager(
         if (_isMusicEnabled.value == enabled) return
         _isMusicEnabled.value = enabled
         if (enabled) {
-            val track = _currentTrack.value ?: TRACK_ACT1_FOREST
+            val track = _currentTrack.value ?: TRACK_EXPLORATION
             startTrackPlayback(track)
         } else {
             mediaPlayer?.pause()

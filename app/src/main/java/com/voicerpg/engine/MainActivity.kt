@@ -19,10 +19,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.lifecycleScope
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.MusicManager
@@ -42,8 +53,6 @@ import com.voicerpg.engine.ui.setup.AudioSetupScreen
 import com.voicerpg.engine.ui.setup.MicPermissionRationaleDialog
 import com.voicerpg.engine.ui.story.StoryScreen
 import com.voicerpg.engine.ui.theme.VoiceRPGTheme
-import com.voicerpg.engine.ui.gallery.AssetViewerScreen
-import com.voicerpg.engine.ui.minigame.MiniGameContainerScreen
 import com.voicerpg.engine.ui.title.TitleScreen
 import com.voicerpg.engine.ui.tutorial.TutorialBattleScreen
 import com.voicerpg.engine.viewmodel.CombatViewModel
@@ -80,18 +89,23 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Load the drop-in game content pack from Android assets BEFORE constructing any
+        // ViewModel. On-device there is no filesystem pack (that path is for tests/CI), so
+        // without this the engine would fall back to the empty EmergencyFallback and every
+        // battle/tutorial/story screen would crash on boot. Content stays JSON + assets only.
+        com.voicerpg.engine.content.GameContent.initialize(applicationContext)
+
         speechManager = SpeechManager(this)
         combatNarrator = CombatNarrator(this)
+        combatNarrator.registerSpeakers(com.voicerpg.engine.content.GameContent.allSpeakers)
         musicManager = MusicManager(this)
         saveManager = SaveManager(this)
-
-        val sfxManager = com.voicerpg.engine.audio.SfxManager(this)
 
         combatViewModel = CombatViewModel(
             speechManager = speechManager,
             combatNarrator = combatNarrator,
             musicManager = musicManager,
-            sfxManager = sfxManager
+            sfxManager = com.voicerpg.engine.audio.SfxManager(applicationContext)
         )
         storyViewModel = StoryViewModel(
             speechManager = speechManager,
@@ -129,8 +143,6 @@ class MainActivity : ComponentActivity() {
         }
         storyViewModel.onCloseOptions = { combatViewModel.closeOptions() }
         combatViewModel.onContinueStory = {
-            combatNarrator.setCombatActive(false)
-            combatViewModel.pauseAtb()
             storyViewModel.updatePartyStatsFromCombat(combatViewModel.state.value.party)
             storyViewModel.onCombatVictory()
         }
@@ -153,6 +165,7 @@ class MainActivity : ComponentActivity() {
             val isTtsSpeaking by combatNarrator.isSpeaking.collectAsState()
             val isNarrationEnabled by combatNarrator.isNarrationEnabled.collectAsState()
             val isReadChoicesEnabled by combatNarrator.isReadChoicesEnabled.collectAsState()
+            val isAutoReadHubChoices by combatNarrator.isAutoReadHubChoices.collectAsState()
             val isCharacterPitchEnabled by combatNarrator.isCharacterPitchEnabled.collectAsState()
             val isSpeakerAttributionEnabled by combatNarrator.isSpeakerAttributionEnabled.collectAsState()
             val speechRate by combatNarrator.speechRate.collectAsState()
@@ -202,24 +215,20 @@ class MainActivity : ComponentActivity() {
                     combatViewModel.applySavedStats(storyState.partyStats)
                     combatViewModel.startEncounter(encounter)
                     combatViewModel.setPureStoryMode(storyState.isPureStoryMode)
-                } ?: run {
-                    combatNarrator.setCombatActive(false)
-                    combatViewModel.pauseAtb()
-                }
-            }
-
-            LaunchedEffect(storyState.gameScreen) {
-                if (storyState.gameScreen != GameScreen.COMBAT_ARENA) {
-                    combatNarrator.setCombatActive(false)
-                    combatViewModel.pauseAtb()
-                }
-                if (storyState.gameScreen == GameScreen.TUTORIAL) {
-                    tutorialBattleViewModel.startTutorial()
                 }
             }
 
             LaunchedEffect(storyState.isPureStoryMode) {
                 combatViewModel.setPureStoryMode(storyState.isPureStoryMode)
+            }
+
+            LaunchedEffect(storyState.gameScreen) {
+                if (storyState.gameScreen != GameScreen.COMBAT_ARENA) {
+                    combatViewModel.pauseAtb()
+                }
+                if (storyState.gameScreen == GameScreen.TUTORIAL) {
+                    tutorialBattleViewModel.startTutorial()
+                }
             }
 
             LaunchedEffect(storyState.currentScene.id, storyState.gameScreen) {
@@ -230,16 +239,35 @@ class MainActivity : ComponentActivity() {
                 } else if (storyState.gameScreen == GameScreen.TITLE || storyState.gameScreen == GameScreen.TUTORIAL) {
                     musicManager.playTrack(MusicManager.TRACK_TITLE)
                 } else {
-                    musicManager.playTrack(MusicManager.TRACK_RALLY)
+                    musicManager.playTrack(MusicManager.TRACK_EXPLORATION)
                 }
             }
 
             VoiceRPGTheme {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    when (storyState.gameScreen) {
+                val downloadStatus by com.voicerpg.engine.localization.TranslationManager.downloadStatus.collectAsState()
+                val downloadProgress by com.voicerpg.engine.localization.TranslationManager.downloadProgress.collectAsState()
+                val downloadTargetName by com.voicerpg.engine.localization.TranslationManager.downloadTargetName.collectAsState()
+
+                Column(modifier = Modifier.fillMaxSize()) {
+                    androidx.compose.animation.AnimatedVisibility(
+                        visible = downloadStatus != com.voicerpg.engine.localization.ModelDownloadStatus.IDLE,
+                        enter = androidx.compose.animation.expandVertically() + androidx.compose.animation.fadeIn(),
+                        exit = androidx.compose.animation.shrinkVertically() + androidx.compose.animation.fadeOut()
+                    ) {
+                        com.voicerpg.engine.ui.setup.LanguageModelDownloadBanner(
+                            status = downloadStatus,
+                            progress = downloadProgress,
+                            languageName = downloadTargetName,
+                            onDismiss = { com.voicerpg.engine.localization.TranslationManager.dismissDownloadBanner() }
+                        )
+                    }
+
+                    Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                        when (storyState.gameScreen) {
                         GameScreen.TITLE -> {
                             val speechState by speechManager.speechState.collectAsState()
                             TitleScreen(
+                                manifest = com.voicerpg.engine.content.GameContent.manifest,
                                 hasSave = storyState.hasExistingSave,
                                 saveSummary = storyState.saveSummary,
                                 saveSlots = storyState.saveSlots,
@@ -253,47 +281,25 @@ class MainActivity : ComponentActivity() {
                                 onContinueSlot = { slot -> storyViewModel.continueGame(slot) },
                                 onContinueSlotAuto = { slot -> storyViewModel.continueGame(slot, startInAutoPlay = true) },
                                 onNewGameInSlot = { slot -> storyViewModel.startNewGameFlow(slot) },
-                                onAudioSetup = { storyViewModel.openAudioSetup() },
-                                onOptions = { combatViewModel.openOptions() },
-                                onAssetViewer = { storyViewModel.openAssetViewer() },
                                 isMiniGameTestMenuOpen = storyState.isMiniGameTestMenuOpen,
                                 onOpenMiniGameTestMenu = { storyViewModel.openMiniGameTestMenu() },
                                 onCloseMiniGameTestMenu = { storyViewModel.closeMiniGameTestMenu() },
                                 onLaunchMiniGame = { id -> storyViewModel.triggerMiniGame(id) },
+                                onAudioSetup = { storyViewModel.openAudioSetup() },
+                                onOptions = { combatViewModel.openOptions() },
                                 storyModeSummary = storyViewModel.getStoryModeSaveSummary(),
-                                onPureStoryMode = { fresh, trackId ->
-                                    val resolvedTrack = com.voicerpg.engine.model.CampaignTrack.entries.firstOrNull { it.id == trackId }
-                                        ?: com.voicerpg.engine.model.CampaignTrack.TRACK_A
-                                    storyViewModel.startPureStoryMode(fresh, resolvedTrack)
-                                },
+                                onPureStoryMode = { fresh, trackId -> storyViewModel.startPureStoryMode(fresh, trackId) },
                                 onTutorial = {
                                     tutorialBattleViewModel.resetTutorial()
                                     storyViewModel.openTutorial()
                                 },
+                                onAssetViewer = { storyViewModel.openAssetViewer() },
                                 onStartListening = {
                                     speechManager.startListening(
                                         onResult = { storyViewModel.handleStoryVoiceInput(it) }
                                     )
                                 },
                                 onStopListening = { speechManager.stopListening() }
-                            )
-                        }
-                        GameScreen.MINI_GAME -> {
-                            storyState.activeMiniGameConfig?.let { config ->
-                                MiniGameContainerScreen(
-                                    config = config,
-                                    onFinish = { outcome -> storyViewModel.onMiniGameFinished(outcome) },
-                                    onSkip = { storyViewModel.onSkipMiniGame() }
-                                )
-                            } ?: run {
-                                storyViewModel.returnToTitle()
-                            }
-                        }
-                        GameScreen.ASSET_VIEWER -> {
-                            AssetViewerScreen(
-                                musicManager = musicManager,
-                                speechManager = speechManager,
-                                onBack = { storyViewModel.returnFromAssetViewer() }
                             )
                         }
                         GameScreen.TUTORIAL -> {
@@ -367,6 +373,7 @@ class MainActivity : ComponentActivity() {
                         GameScreen.CHARACTER_CREATION -> {
                             CharacterCreationScreen(
                                 initialCustomization = storyState.player,
+                                slot = storyState.currentSlot,
                                 speechManager = speechManager,
                                 combatNarrator = combatNarrator,
                                 onBack = {
@@ -394,8 +401,28 @@ class MainActivity : ComponentActivity() {
                                 viewModel = combatViewModel,
                                 onReturnToStory = { storyViewModel.switchToStory() },
                                 onContinueStory = {
-                                    storyViewModel.updatePartyStatsFromCombat(combatViewModel.state.value.party)
-                                    storyViewModel.onCombatVictory()
+                                    combatNarrator.stop()
+                                    combatViewModel.onContinueStory?.invoke()
+                                }
+                            )
+                        }
+                        GameScreen.MINI_GAME -> {
+                            val activeConfig = storyState.activeMiniGameConfig ?: com.voicerpg.engine.model.MiniGameConfig(
+                                id = "minigame",
+                                title = "Mini-Game"
+                            )
+                            com.voicerpg.engine.ui.minigame.MiniGameContainerScreen(
+                                config = activeConfig,
+                                onFinish = { outcome -> storyViewModel.onMiniGameFinished(outcome) },
+                                onSkip = { storyViewModel.onSkipMiniGame() }
+                            )
+                        }
+                        GameScreen.ASSET_VIEWER -> {
+                            com.voicerpg.engine.ui.gallery.AssetViewerScreen(
+                                musicManager = musicManager,
+                                speechManager = speechManager,
+                                onBack = {
+                                    storyViewModel.returnFromAssetViewer()
                                 }
                             )
                         }
@@ -406,16 +433,13 @@ class MainActivity : ComponentActivity() {
                         isOpen = combatState.isOptionsOpen,
                         isEyesFreeMode = isEyesFreeMode,
                         isNarrationEnabled = isNarrationEnabled,
+                        isAutoPlayEnabled = storyState.isPureStoryMode,
                         isCombatNarrationEnabled = isCombatNarrationEnabled,
                         isPocketGuardEnabled = isPocketGuardEnabled,
                         isReadChoicesEnabled = isReadChoicesEnabled,
+                        isAutoReadHubChoices = isAutoReadHubChoices,
                         isCharacterPitchEnabled = isCharacterPitchEnabled,
                         isSpeakerAttributionEnabled = isSpeakerAttributionEnabled,
-                        isAutoPlayEnabled = storyState.isPureStoryMode,
-                        onToggleAutoPlay = {
-                            storyViewModel.toggleAutoPlay()
-                            storyViewModel.persistCurrentState()
-                        },
                         speechRate = speechRate,
                         isAutoListen = isAutoListen,
                         isChimeMuted = isChimeMuted,
@@ -429,6 +453,9 @@ class MainActivity : ComponentActivity() {
                         onToggleNarration = {
                             combatNarrator.toggleNarration()
                             storyViewModel.persistCurrentState()
+                        },
+                        onToggleAutoPlay = {
+                            storyViewModel.toggleAutoPlay()
                         },
                         onToggleCombatNarration = {
                             combatNarrator.toggleCombatNarrationEnabled()
@@ -445,6 +472,7 @@ class MainActivity : ComponentActivity() {
                                     combatNarrator.setCombatNarrationEnabled(true)
                                     combatNarrator.setNarrationEnabled(true)
                                     combatNarrator.setReadChoicesEnabled(true)
+                                    combatNarrator.setAutoReadHubChoices(true)
                                     combatNarrator.setEyesFreeMode(true, lockGuard = true)
                                     speechManager.setAutoListen(true)
                                     speechManager.setChimeMuted(true)
@@ -473,6 +501,10 @@ class MainActivity : ComponentActivity() {
                         },
                         onToggleReadChoices = {
                             combatNarrator.toggleReadChoices()
+                            storyViewModel.persistCurrentState()
+                        },
+                        onToggleAutoReadHubChoices = {
+                            combatNarrator.toggleAutoReadHubChoices()
                             storyViewModel.persistCurrentState()
                         },
                         onToggleCharacterPitch = {
@@ -593,7 +625,7 @@ class MainActivity : ComponentActivity() {
                         } else if (storyState.gameScreen == GameScreen.TUTORIAL) {
                             "Chronicle Guide"
                         } else {
-                            "Echoes of the Logos"
+                            com.voicerpg.engine.content.GameContent.manifest.gameTitle
                         }
                     }
 
@@ -671,6 +703,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+        }
         }
     }
 

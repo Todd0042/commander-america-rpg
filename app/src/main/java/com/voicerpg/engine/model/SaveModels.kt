@@ -1,81 +1,6 @@
 package com.voicerpg.engine.model
 
-import androidx.compose.ui.graphics.Color
-import com.voicerpg.engine.model.SpellSchool
-
-enum class HeroClass(
-    val id: String,
-    val title: String,
-    val subtitle: String,
-    val description: String,
-    val startingHp: Int,
-    val startingMp: Int,
-    val startingSpeed: Int,
-    val startingBaseAttack: Int,
-    val preferredSchool: SpellSchool,
-    val starterSpellIds: List<String>
-) {
-    COMMANDER(
-        id = "commander",
-        title = "Commander-in-Chief",
-        subtitle = "Patriotic Sovereign & Master of the Deal",
-        description = "Wields Tremendous Strike, Art of the Deal, Build The Wall, and Obama Did It First to obliterate political opposition.",
-        startingHp = 5000,
-        startingMp = 1776,
-        startingSpeed = 70,
-        startingBaseAttack = 50,
-        preferredSchool = SpellSchool.PHYSICAL,
-        starterSpellIds = listOf("ca_tremendous_strike", "ca_art_of_the_deal", "ca_obama_did_it_first", "ca_build_the_wall", "ca_rally_patriots")
-    ),
-    ELEMENTALIST(
-        id = "elementalist",
-        title = "Elementalist",
-        subtitle = "Master of Primordial Elements",
-        description = "Wields blistering fire, piercing frost, and crackling storm incantations. High magical burst damage.",
-        startingHp = 240,
-        startingMp = 160,
-        startingSpeed = 70,
-        startingBaseAttack = 22,
-        preferredSchool = SpellSchool.PYROMANCY,
-        starterSpellIds = listOf("fireball", "frost_spike", "chain_lightning")
-    ),
-    BATTLEMAGE(
-        id = "battlemage",
-        title = "Battlemage",
-        subtitle = "Frontline Spellblade Vanguard",
-        description = "Combines heavy martial fortitude with devastating close-range elemental inflections. High vitality and defense.",
-        startingHp = 320,
-        startingMp = 110,
-        startingSpeed = 60,
-        startingBaseAttack = 28,
-        preferredSchool = SpellSchool.PHYSICAL,
-        starterSpellIds = listOf("flame_strike", "arcane_barrier", "thunder_cleave")
-    ),
-    CHANTER(
-        id = "chanter",
-        title = "Chanter",
-        subtitle = "Acoustic Chronomancer",
-        description = "Manipulates battle cadence, accelerates turn gauges, and doubles vocal resonance bonuses. High agility and tactical speed.",
-        startingHp = 220,
-        startingMp = 180,
-        startingSpeed = 80,
-        startingBaseAttack = 18,
-        preferredSchool = SpellSchool.ELECTROMANCY,
-        starterSpellIds = listOf("temporal_stasis", "haste_cadence", "resonant_surge")
-    ),
-    SHADOWWEAVER(
-        id = "shadowweaver",
-        title = "Shadowweaver",
-        subtitle = "Umbral Occultist",
-        description = "Strikes from the blind spots of the Blight with precision critical strikes and dark life-draining sibilants.",
-        startingHp = 230,
-        startingMp = 140,
-        startingSpeed = 85,
-        startingBaseAttack = 26,
-        preferredSchool = SpellSchool.SHADOW,
-        starterSpellIds = listOf("shadow_spike", "void_drain", "umbral_veil")
-    )
-}
+import com.voicerpg.engine.content.GameContent
 
 enum class AuraColor(
     val id: String,
@@ -83,36 +8,11 @@ enum class AuraColor(
     val hexColor: String,
     val description: String
 ) {
-    SOLAR_GOLD("sun", "Solar Gold", "#FFD700", "Radiates commanding presence"),
-    SAPPHIRE_FROST("frost", "Sapphire Frost", "#00E5FF", "Crisp analytical chill"),
-    CRIMSON_EMBER("fire", "Crimson Ember", "#FF1744", "Fierce passionate resonance"),
-    CRIMSON_PYRE("fire", "Crimson Pyre", "#FF1744", "Fierce passionate resonance"),
-    EMERALD_LIFE("nature", "Emerald Life", "#00E676", "Vibrant grounding tone"),
-    EMERALD_GROVE("nature", "Emerald Grove", "#00E676", "Vibrant grounding tone"),
+    SAPPHIRE_FROST("frost", "Sapphire Frost", "#00E5FF", "Cool cyan luminescence"),
+    SOLAR_GOLD("gold", "Solar Gold", "#FFD700", "Radiant dawn brilliance"),
+    CRIMSON_PYRE("fire", "Crimson Pyre", "#FF5252", "Fierce incandescent flame"),
+    EMERALD_GROVE("verdant", "Emerald Grove", "#69F0AE", "Gentle living earth"),
     AMETHYST_VOID("shadow", "Amethyst Void", "#E040FB", "Mysterious umbral frequency")
-}
-
-enum class CampaignTrack(
-    val id: String,
-    val displayName: String,
-    val subtitle: String,
-    val startNodeId: String,
-    val startSceneId: String
-) {
-    TRACK_A(
-        id = "track_a",
-        displayName = "Paint it Red",
-        subtitle = "Commander America + Little Marco + Wizard Kash + Foghorn Kennedy + JD Pants + Musk-X",
-        startNodeId = "act1_intro",
-        startSceneId = "scene_act1_ch1_escalator"
-    ),
-    TRACK_B(
-        id = "track_b",
-        displayName = "Bewilder with Blue",
-        subtitle = "Hill-Rod ➔ Nancy Palooza ➔ Joe Naptime ➔ Kamala Coconut ➔ Zohran Cardamom & Mayor Swagger",
-        startNodeId = "act1_tb_ch1_intro",
-        startSceneId = "scene_act1_tb_ch1_server"
-    )
 }
 
 /**
@@ -127,20 +27,60 @@ data class CampaignTrackDef(
     val startSceneId: String = "",
     val rosterDescription: String = "",
     val badgeText: String = "1P",
-    val voiceKeywords: List<String> = emptyList()
+    val voiceKeywords: List<String> = emptyList(),
+    /**
+     * A fixed protagonist for this track (perspective games: each track is told by its own hero).
+     * With manifest creationMode "preset_select", character creation becomes a pick between the tracks'
+     * heroes; choosing one sets the hero and the track together.
+     */
+    val hero: TrackHeroPreset? = null
 )
 
+/** The protagonist a campaign track starts with, and how its select card presents them. All optional. */
+data class TrackHeroPreset(
+    val name: String = "",
+    val title: String = "",
+    val heroClassId: String = "",
+    val portraitAsset: String? = null,
+    /** AuraColor name, e.g. SOLAR_GOLD. */
+    val auraColor: String? = null,
+    // Select card flavour
+    val alias: String = "",
+    val slogan: String = "",
+    val playstyle: String = "",
+    val featuredMoves: List<String> = emptyList(),
+    val accentColor: String = "#FFD700",
+    val secondaryColor: String = "#B71C1C",
+    /** Clips played when the hero is picked; [soundBiteLabel] captions them on the card. */
+    val soundBites: List<String> = emptyList(),
+    val soundBiteLabel: String = ""
+) {
+    /** The player this preset produces on [track], with [fallback] filling anything the preset leaves out. */
+    fun toCustomization(track: CampaignTrackDef, fallback: PlayerCustomization): PlayerCustomization = fallback.copy(
+        name = name.ifBlank { fallback.name },
+        title = title.ifBlank { fallback.title },
+        heroClassId = heroClassId.ifBlank { fallback.heroClassId },
+        auraColor = auraColor?.let { a -> AuraColor.entries.firstOrNull { it.name.equals(a, ignoreCase = true) } } ?: fallback.auraColor,
+        customPortraitAsset = portraitAsset ?: fallback.customPortraitAsset,
+        campaignTrackId = track.id
+    )
+}
+
+/**
+ * Player-created hero identity. Hero classes are data-driven: [heroClassId]
+ * resolves against assets/game/classes/<name>.json via the content registry.
+ */
 data class PlayerCustomization(
-    val name: String = "Commander America",
-    val heroClass: HeroClass = HeroClass.COMMANDER,
-    val heroClassId: String = "commander",
-    val title: String = "Commander-in-Chief",
-    val auraColor: AuraColor = AuraColor.SOLAR_GOLD,
+    val name: String = "Hero",
+    val heroClassId: String = "",
+    val title: String = "The Awakened Hero",
+    val auraColor: AuraColor = AuraColor.SAPPHIRE_FROST,
     val voiceAffinityBonusSchool: SpellSchool = SpellSchool.PHYSICAL,
-    val campaignTrack: CampaignTrack = CampaignTrack.TRACK_A,
-    val campaignTrackId: String = "track_a",
-    val customPortraitAsset: String? = null
-)
+    val customPortraitAsset: String? = null,
+    val campaignTrackId: String = "track_a"
+) {
+    val heroClass get() = GameContent.classById(heroClassId)
+}
 
 data class SavedCharacterStats(
     val id: String,
@@ -177,14 +117,14 @@ data class SavedCharacterStats(
 data class GameSaveData(
     val saveVersion: Int = 1,
     val saveTimestamp: Long = System.currentTimeMillis(),
-    val timestamp: Long = saveTimestamp,
+    val totalPlaytimeSeconds: Long = 0L,
 
     // 1. Player Profile & Initial Loadout
     val player: PlayerCustomization = PlayerCustomization(),
 
-    // 2. Story Progress & Current Scene/Dialogue
-    val currentSceneId: String = "scene_act1_ch1_escalator",
-    val currentNodeId: String = "act1_intro",
+    // 2. Story Progress & Current Scene/Dialogue (empty = resolve to manifest initial values)
+    val currentSceneId: String = "",
+    val currentNodeId: String = "",
 
     // 3. Complete Decision History (every choice ever selected by player)
     val decisionsMade: List<String> = emptyList(),
@@ -195,11 +135,13 @@ data class GameSaveData(
     // 4. Current Stats for all Party Members
     val partyStats: List<SavedCharacterStats> = emptyList(),
 
-    // 5. Narrative Milestones
+    // 5. Accomplishments & Milestones
     val defeatedEncounters: List<String> = emptyList(),
-    val unlockedCompanions: List<String> = emptyList(),
+    val unlockedCompanions: List<String> = listOf("hero"),
     val achievements: List<String> = emptyList(),
-    val unlockedAchievements: List<String> = achievements,
+    val totalDamageDealt: Long = 0L,
+    val totalBattlesWon: Int = 0,
+    val highestResonanceTier: String = "BASIC",
 
     // 6. User Accessibility & Audio Options
     val isEyesFreeMode: Boolean = false,
@@ -214,15 +156,13 @@ data class GameSaveData(
     val speechRate: Float = 1.05f,
     val isCharacterPitchEnabled: Boolean = true,
     val isSpeakerAttributionEnabled: Boolean = true,
-    val isMusicMuted: Boolean = false,
-    val isMusicEnabled: Boolean = !isMusicMuted,
-    val musicVolume: Float = 0.5f,
-    val speechVolume: Float = 1.0f,
+    val isMusicEnabled: Boolean = true,
+    val musicVolume: Float = 0.55f,
 
     // 7. Per-speaker TTS voice assignments (installed Android voice model names keyed by speaker id)
     val voiceAssignments: Map<String, String> = emptyMap(),
 
-    // 8. Auto-Play & Dynamic Metrics
+    // 8. Dynamic Simulation & Metric Tracking (Data-driven and opt-in per game)
     val dynamicMetrics: Map<String, Float> = emptyMap(),
 
     // 9. Multilingual Localization Options

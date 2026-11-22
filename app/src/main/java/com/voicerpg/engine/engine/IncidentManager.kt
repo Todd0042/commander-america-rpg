@@ -1,5 +1,6 @@
 package com.voicerpg.engine.engine
 
+import com.voicerpg.engine.content.GameContent
 import com.voicerpg.engine.model.IncidentCondition
 import com.voicerpg.engine.model.IncidentConditionType
 import com.voicerpg.engine.model.IncidentDefinition
@@ -47,7 +48,7 @@ object IncidentManager {
     fun selectRandomIncident(
         state: StoryState,
         random: Random = Random.Default,
-        availableIncidents: Collection<IncidentDefinition> = com.voicerpg.engine.content.GameContent.incidents.values
+        availableIncidents: Collection<IncidentDefinition> = GameContent.incidents.values
     ): IncidentDefinition? {
         if (availableIncidents.isEmpty()) return null
 

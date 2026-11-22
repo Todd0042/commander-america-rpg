@@ -53,13 +53,13 @@ class ProgressionTest {
             assertEquals(heroCharGrowth, Progression.growthFor("hero"))
         }
         // Unknown members still resolve to the engine default growth, never a crash.
-        assertTrue("unknown members resolve to the engine default growth", Progression.growthFor("lyra") == Progression.DEFAULT_GROWTH)
+        assertTrue("unknown members resolve to the engine default growth", Progression.growthFor("__no_such_party_member__") == Progression.DEFAULT_GROWTH)
     }
 }
 
 class EnemyBrainTest {
 
-    private val boss = MovesetTable.TABLE.values.first { it.phases.isNotEmpty() }
+    private val boss = MovesetTable.movesetFor("boss_template")!!
 
     @Test
     fun `enemies are never one-note - full movesets with variety`() {

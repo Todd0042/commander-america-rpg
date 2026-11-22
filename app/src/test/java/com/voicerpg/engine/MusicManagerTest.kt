@@ -58,16 +58,13 @@ class MusicManagerTest {
     @Test
     fun testTrackSwitching() {
         val musicManager = MusicManager(null)
-        musicManager.playTrack(MusicManager.TRACK_ACT1_FOREST)
-        assertEquals(MusicManager.TRACK_ACT1_FOREST, musicManager.currentTrack.value)
+        musicManager.playTrack(MusicManager.TRACK_EXPLORATION)
+        assertEquals(MusicManager.TRACK_EXPLORATION, musicManager.currentTrack.value)
 
         musicManager.playTrack(MusicManager.TRACK_TITLE)
         assertEquals(MusicManager.TRACK_TITLE, musicManager.currentTrack.value)
 
         musicManager.playCombatMusic()
         assertEquals(MusicManager.TRACK_COMBAT, musicManager.currentTrack.value)
-
-        musicManager.playTrack(MusicManager.TRACK_ACT2_MARSH)
-        assertEquals(MusicManager.TRACK_ACT2_MARSH, musicManager.currentTrack.value)
     }
 }
