@@ -99,13 +99,15 @@ class PerspectiveAndSoundBitesTest {
         val pack = packOf(
             mapOf(
                 "manifest.json" to """{ "gameTitle": "Bites" }""",
-                "characters/red.json" to """{ "id": "red", "role": "hero", "name": "Red", "soundBites": ["audio/quotes/red1.ogg", " "] }""",
+                "characters/red.json" to """{ "id": "red", "role": "hero", "name": "Red", "soundBites": ["audio/quotes/red1.ogg", " "],
+                    "outOfTurnLine": "That's {owner}'s move, I'm {active}!" }""",
                 "spells/spells.json" to """{ "spells": [ { "id": "zap", "name": "Zap", "school": "ELECTROMANCY", "soundBites": ["audio/quotes/zap.ogg"] } ] }""",
                 "enemies/enemies.json" to """{ "enemies": [ { "id": "grunt", "name": "Grunt", "soundBites": ["audio/quotes/grunt.ogg"] } ] }""",
                 "enemies/enemy_spells.json" to """{ "movesets": { "grunt_moves": { "moves": [ { "name": "Shove", "soundBites": ["audio/quotes/shove.ogg"] } ] } } }"""
             )
         )
         assertEquals("blank entries are dropped", listOf("audio/quotes/red1.ogg"), pack.characters.getValue("red").soundBites)
+        assertEquals("That's {owner}'s move, I'm {active}!", pack.characters.getValue("red").outOfTurnLine)
         assertEquals(listOf("audio/quotes/zap.ogg"), pack.spells.getValue("zap").soundBites)
         assertEquals(listOf("audio/quotes/grunt.ogg"), pack.enemyTemplates.getValue("grunt").toEnemy().soundBites)
         assertEquals(listOf("audio/quotes/shove.ogg"), pack.enemyMovesets.getValue("grunt_moves").moves.first().soundBites)

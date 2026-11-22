@@ -178,6 +178,11 @@ data class CharacterDto(
     val voiceAliases: List<String>? = null,
     /** Clips played when this character casts in battle (asset paths); one at random. */
     val soundBites: List<String>? = null,
+    /**
+     * Spoken in this character's voice when, on their turn, the player calls another hero's spell.
+     * {owner} = that hero, {active} = this character. Without it the narrator explains whose turn it is.
+     */
+    val outOfTurnLine: String? = null,
     val loreClass: String = "Adventurer",
     val combat: CharacterCombatDto? = null,
     val spells: List<SpellDto>? = null,
@@ -817,7 +822,8 @@ data class GameCharacter(
     val gender: String? = null,
     val allowedVoiceRegions: List<String> = emptyList(),
     val sprite: SpriteDefinition? = null,
-    val soundBites: List<String> = emptyList()
+    val soundBites: List<String> = emptyList(),
+    val outOfTurnLine: String? = null
 ) {
     fun toPartyMember(atbOverride: Float? = null): PartyMember? {
         val c = combat ?: return null
@@ -1375,7 +1381,8 @@ class GameContentLoader(private val source: ContentSource) {
             gender = gender,
             allowedVoiceRegions = allowedVoiceRegions ?: emptyList(),
             sprite = resolvedSprite,
-            soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
+            soundBites = soundBites.orEmpty().filter { it.isNotBlank() },
+            outOfTurnLine = outOfTurnLine?.ifBlank { null }
         )
     }
 
