@@ -12,11 +12,8 @@
 # Usage:
 #   ./scripts/test_content_packs.sh                 # all games
 #   ./scripts/test_content_packs.sh wallys-world    # one or more games
-#   GAME_REF_echoes_of_logos=origin/feature/engine-migration ./scripts/test_content_packs.sh echoes-of-logos
+#   GAME_REF_echoes_of_logos=origin/main ./scripts/test_content_packs.sh echoes-of-logos
 #       Content from a git ref instead of the working tree (dashes in the repo name become underscores).
-#
-# Defaults: echoes-of-logos is read from origin/feature/engine-migration (its main branch is the
-# pre-engine app); every other game from its working tree.
 #
 # Output: one line per game (PASS / FAIL with the failing test classes), and the full Gradle log and
 # JUnit XML in the run's folder. Exit code 1 if any game fails.
@@ -29,8 +26,6 @@ GITHUB_ROOT="${VB_GAMES_ROOT:-$(cd "${ENGINE_ROOT}/.." && pwd)}"
 WORK_ROOT="${TMPDIR:-/tmp}/vb-content-packs"
 GAMES=("$@")
 [ ${#GAMES[@]} -eq 0 ] && GAMES=("echoes-of-logos" "wallys-world" "commander-america-rpg" "superstore-saga")
-: "${GAME_REF_echoes_of_logos=origin/feature/engine-migration}"   # set to "" to use the working tree
-export GAME_REF_echoes_of_logos
 
 if [ -z "${ANDROID_HOME:-}" ] && [ -d "$HOME/Android/Sdk" ]; then export ANDROID_HOME="$HOME/Android/Sdk"; fi
 

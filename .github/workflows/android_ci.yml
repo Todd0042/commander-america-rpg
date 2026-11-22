@@ -41,7 +41,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { game: echoes-of-logos, ref: feature/engine-migration, private: false }
+          - { game: echoes-of-logos, ref: main, private: false }
           - { game: superstore-saga, ref: main, private: false }
           - { game: wallys-world, ref: main, private: true }
           - { game: commander-america-rpg, ref: main, private: true }
@@ -79,7 +79,5 @@ jobs:
       - name: Run the engine's tests on the game's content
         if: ${{ !matrix.private || env.HAS_TOKEN == 'true' }}
         working-directory: voice-rpg-engine
-        env:
-          GAME_REF_echoes_of_logos: ""   # use the checked-out branch, not origin/...
         run: chmod +x gradlew scripts/test_content_packs.sh && ./scripts/test_content_packs.sh ${{ matrix.game }}
 
