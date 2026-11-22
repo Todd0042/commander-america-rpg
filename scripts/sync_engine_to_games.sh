@@ -46,6 +46,7 @@ ENGINE_OWNED_PATHS=(
     "app/src/test/fixtures/template-pack/"
 )
 ENGINE_JAVA="app/src/main/java/com/voicerpg/engine/"
+if [ -z "${ANDROID_HOME:-}" ] && [ -d "$HOME/Android/Sdk" ]; then export ANDROID_HOME="$HOME/Android/Sdk"; fi
 
 MODE="push"; DRY_RUN=false; RUN_VERIFY=false; PRUNE=false; ALLOW_DIRTY=false
 PULL_FROM=""; DIFF_GAME=""; TARGETS=(); PULL_PATHS=()
@@ -259,10 +260,11 @@ PY
 
     if [ "$RUN_VERIFY" = true ]; then
         echo "    [*] running ${game} unit tests..."
-        if (cd "$dir" && ./gradlew testDebugUnitTest --quiet); then
+        if (cd "$dir" && ./gradlew testDebugUnitTest --quiet > "$dir/.engine-sync-verify.log" 2>&1); then
             echo "    [✓] ${game} tests passed"
         else
-            echo "    [-] ${game} tests FAILED: the engine change broke a game contract; fix it upstream"
+            echo "    [-] ${game} tests FAILED (log: ${dir}/.engine-sync-verify.log). Either the engine change broke"
+            echo "        a game contract (fix it upstream) or the game's content breaks one (fix the content)."
             failures=1
         fi
     fi
