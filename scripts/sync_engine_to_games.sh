@@ -2,280 +2,271 @@
 # ==============================================================================
 # sync_engine_to_games.sh
 #
-# Synchronizes the shared core VoiceRPG engine source code, templates, and
-# multilingual localization assets between `voice-rpg-engine` and derived games:
-#   - echoes-of-logos
-#   - wallys-world
-#   - commander-america-rpg
+# Keeps every game on the identical engine. The engine owns these paths in each game (and nothing
+# else): ENGINE_OWNED_PATHS below. In a game they are read-only copies of the engine.
 #
-# Modes:
-#   Push (default): Distributes engine updates to downstream game repositories.
-#   Pull:           Imports engine updates from a specific game back to upstream.
-#   Check:          Detects divergence between engine and downstream game forks.
+#   Push (default)   Mirror the engine into games: exact copy by checksum, stray files removed.
+#                    Writes .engine-sync/ (engine version, checksum manifest, guard script) and
+#                    installs the pre-commit hook that blocks edits to engine files in the game.
+#   --check          Report, per game: NOT MIGRATED / modified / missing / extra / out of date / in sync.
+#   --diff <game>    Show a unified diff (engine -> game) of the engine-owned paths, for review.
+#   --pull-from <game> <path>...
+#                    Copy the named files (paths relative to the repo root) from a game into the
+#                    engine, after showing their diff. Only for changes that belong upstream.
+#
+# Push options:
+#   --verify         Run each game's unit tests after syncing.
+#   --dry-run        Show what would change; write nothing.
+#   --prune          Delete files in the game's engine-owned paths that the engine doesn't have
+#                    (otherwise the push stops and lists them: move game tests to com/voicerpg/game).
+#   --allow-dirty    Push an engine with uncommitted changes (local experiments; the version is
+#                    recorded as <hash>-dirty and the game's CI guard still checks exact checksums).
 #
 # Usage:
-#   ./scripts/sync_engine_to_games.sh [--dry-run] [--verify] [target_repo...]
-#   ./scripts/sync_engine_to_games.sh --pull-from <game_repo> [--verify]
-#   ./scripts/sync_engine_to_games.sh --check
+#   ./scripts/sync_engine_to_games.sh [--verify] [--dry-run] [--prune] [--allow-dirty] [game...]
+#   ./scripts/sync_engine_to_games.sh --check [game...]
+#   ./scripts/sync_engine_to_games.sh --diff <game>
+#   ./scripts/sync_engine_to_games.sh --pull-from <game> <path>...
 # ==============================================================================
-
 set -euo pipefail
+export LC_ALL=C   # one sort order for sort/comm
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ENGINE_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 GITHUB_ROOT="$(cd "${ENGINE_ROOT}/.." && pwd)"
+ALL_GAMES=("echoes-of-logos" "wallys-world" "commander-america-rpg" "superstore-saga")
 
-DRY_RUN=false
-RUN_VERIFY=false
-CHECK_ONLY=false
-PULL_FROM=""
-CUSTOM_TARGETS=()
+# Everything the engine owns inside a game. Directories end with '/'.
+ENGINE_OWNED_PATHS=(
+    "app/src/main/java/com/voicerpg/engine/"
+    "app/src/main/assets/game/commands/"
+    "app/src/main/assets/game/localization/"
+    "app/src/test/java/com/voicerpg/engine/"
+    "app/src/test/fixtures/template-pack/"
+)
+ENGINE_JAVA="app/src/main/java/com/voicerpg/engine/"
 
+MODE="push"; DRY_RUN=false; RUN_VERIFY=false; PRUNE=false; ALLOW_DIRTY=false
+PULL_FROM=""; DIFF_GAME=""; TARGETS=(); PULL_PATHS=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --dry-run)
-            DRY_RUN=true
-            shift
-            ;;
-        --verify)
-            RUN_VERIFY=true
-            shift
-            ;;
-        --check)
-            CHECK_ONLY=true
-            shift
-            ;;
-        --pull-from)
-            PULL_FROM="$2"
-            shift 2
-            ;;
-        *)
-            CUSTOM_TARGETS+=("$1")
-            shift
-            ;;
+        --check) MODE="check"; shift ;;
+        --diff) MODE="diff"; DIFF_GAME="${2:?--diff needs a game}"; shift 2 ;;
+        --pull-from) MODE="pull"; PULL_FROM="${2:?--pull-from needs a game}"; shift 2
+            while [[ $# -gt 0 && "$1" != --* ]]; do PULL_PATHS+=("$1"); shift; done ;;
+        --verify) RUN_VERIFY=true; shift ;;
+        --dry-run) DRY_RUN=true; shift ;;
+        --prune) PRUNE=true; shift ;;
+        --allow-dirty) ALLOW_DIRTY=true; shift ;;
+        -h|--help) sed -n '2,32p' "$0"; exit 0 ;;
+        --*) echo "Unknown option: $1" >&2; exit 2 ;;
+        *) TARGETS+=("$1"); shift ;;
     esac
 done
+[ ${#TARGETS[@]} -eq 0 ] && TARGETS=("${ALL_GAMES[@]}")
 
-if [ ${#CUSTOM_TARGETS[@]} -eq 0 ]; then
-    TARGET_REPOS=("echoes-of-logos" "wallys-world" "commander-america-rpg" "superstore-saga")
-else
-    TARGET_REPOS=("${CUSTOM_TARGETS[@]}")
-fi
+die() { echo "[-] $*" >&2; exit 1; }
 
-# Shared engine packages under app/src/main/java/com/voicerpg/engine/
-SHARED_PACKAGES=(
-    "audio"
-    "combat"
-    "engine"
-    "model"
-    "save"
-    "ui/creation"
-    "ui/setup"
-    "ui/story"
-    "ui/combat"
-    "ui/tutorial"
-    "ui/gallery"
-    "ui/vfx"
-    "ui/theme"
-    "ui/title"
-    "ui/pocket"
-    "ui/sprites"
-    "ui/environment"
-    "ui/minigame"
-    "localization"
-    "template"
-    "viewmodel"
-    "content"
-)
+# List engine-owned files (relative paths) present under a root.
+owned_files() {
+    local root="$1" p
+    for p in "${ENGINE_OWNED_PATHS[@]}"; do
+        if [ -d "$root/$p" ]; then (cd "$root" && find "$p" -type f ! -name '.DS_Store'); fi
+    done | sort
+    return 0
+}
 
-# Shared multilingual assets under app/src/main/assets/game/
-SHARED_ASSETS=(
-    "commands"
-    "localization"
-)
+engine_version() {
+    local v; v="$(git -C "$ENGINE_ROOT" rev-parse HEAD)"
+    if [ -n "$(git -C "$ENGINE_ROOT" status --porcelain -- "${ENGINE_OWNED_PATHS[@]}")" ]; then v="${v}-dirty"; fi
+    echo "$v"
+}
+
+# Compare engine vs one game. Prints a report; returns 0 if identical.
+compare_game() {
+    local game="$1" dir="${GITHUB_ROOT}/$1" status=0
+    local tmp; tmp="$(mktemp -d)"
+    owned_files "$ENGINE_ROOT" > "$tmp/engine"
+    owned_files "$dir" > "$tmp/game"
+    local missing extra modified
+    missing=$(comm -23 "$tmp/engine" "$tmp/game")
+    extra=$(comm -13 "$tmp/engine" "$tmp/game")
+    modified=$(comm -12 "$tmp/engine" "$tmp/game" | while read -r f; do cmp -s "$ENGINE_ROOT/$f" "$dir/$f" || echo "$f"; done)
+    rm -rf "$tmp"
+    [ -n "$modified" ] && { echo "    modified ($(wc -l <<<"$modified")):"; sed 's/^/        /' <<<"$modified"; status=1; }
+    [ -n "$missing" ] && { echo "    missing in game ($(wc -l <<<"$missing")):"; sed 's/^/        /' <<<"$missing"; status=1; }
+    [ -n "$extra" ] && { echo "    extra in game, not in engine ($(wc -l <<<"$extra")):"; sed 's/^/        /' <<<"$extra"; status=1; }
+    return $status
+}
 
 # ==============================================================================
-# MODE 1: Check divergence across repositories
+# --check
 # ==============================================================================
-if [ "$CHECK_ONLY" = true ]; then
-    echo "========================================================================"
-    echo "VoiceRPG Engine Divergence Audit"
-    echo "Engine root:  ${ENGINE_ROOT}"
-    echo "Targets:      ${TARGET_REPOS[*]}"
-    echo "========================================================================"
-    DIVERGENCE_FOUND=0
-
-    for target in "${TARGET_REPOS[@]}"; do
-        TARGET_DIR="${GITHUB_ROOT}/${target}"
-        if [ ! -d "${TARGET_DIR}" ]; then
-            echo "[-] Target '${target}' not found at ${TARGET_DIR}. Skipping."
-            continue
+if [ "$MODE" = "check" ]; then
+    echo "Engine: $(engine_version)"
+    overall=0
+    for game in "${TARGETS[@]}"; do
+        dir="${GITHUB_ROOT}/${game}"
+        if [ ! -d "$dir" ]; then echo "[?] ${game}: not found at ${dir}"; overall=1; continue; fi
+        branch="$(git -C "$dir" branch --show-current 2>/dev/null || echo '?')"
+        if [ ! -d "$dir/$ENGINE_JAVA" ]; then
+            echo "[!] ${game} (${branch}): NOT MIGRATED: no ${ENGINE_JAVA} on this branch"
+            overall=1; continue
         fi
-
-        echo ""
-        echo "[*] Auditing divergence for: ${target}"
-        TARGET_DIVERGED=0
-
-        for pkg in "${SHARED_PACKAGES[@]}"; do
-            SRC_PKG="${ENGINE_ROOT}/app/src/main/java/com/voicerpg/engine/${pkg}"
-            DST_PKG="${TARGET_DIR}/app/src/main/java/com/voicerpg/engine/${pkg}"
-            if [ -d "${SRC_PKG}" ] && [ -d "${DST_PKG}" ]; then
-                DIFF_OUT=$(diff -rq "${SRC_PKG}" "${DST_PKG}" 2>/dev/null || true)
-                if [ -n "$DIFF_OUT" ]; then
-                    echo "    [!] Package com.voicerpg.engine.${pkg} differs:"
-                    echo "$DIFF_OUT" | sed 's/^/        /'
-                    TARGET_DIVERGED=1
-                    DIVERGENCE_FOUND=1
-                fi
+        recorded="$(cat "$dir/.engine-sync/ENGINE_VERSION" 2>/dev/null || echo 'none')"
+        if report="$(compare_game "$game")"; then
+            if [ "$recorded" = "$(engine_version)" ]; then
+                echo "[✓] ${game} (${branch}): in sync"
+            else
+                echo "[~] ${game} (${branch}): files identical, but .engine-sync/ENGINE_VERSION is ${recorded:0:12} (run a push to record it)"
+                overall=1
             fi
-        done
-
-        if [ $TARGET_DIVERGED -eq 0 ]; then
-            echo "    [✓] In sync with upstream engine."
+        else
+            echo "[!] ${game} (${branch}): DIVERGED from engine (recorded engine version: ${recorded:0:12})"
+            echo "$report"
+            overall=1
         fi
     done
-
-    echo ""
-    if [ $DIVERGENCE_FOUND -eq 0 ]; then
-        echo "========================================================================"
-        echo "[✓] All repositories are 100% in sync with upstream voice-rpg-engine."
-        echo "========================================================================"
-        exit 0
-    else
-        echo "========================================================================"
-        echo "[!] Divergence detected. Use --pull-from or run sync to reconcile."
-        echo "========================================================================"
-        exit 1
-    fi
+    exit $overall
 fi
 
 # ==============================================================================
-# MODE 2: Pull engine changes from a game fork back into voice-rpg-engine
+# --diff <game>
 # ==============================================================================
-if [ -n "$PULL_FROM" ]; then
-    SRC_DIR="${GITHUB_ROOT}/${PULL_FROM}"
-    if [ ! -d "${SRC_DIR}" ]; then
-        echo "[-] Error: Source repository '${PULL_FROM}' not found at ${SRC_DIR}"
-        exit 1
-    fi
-
-    echo "========================================================================"
-    echo "VoiceRPG Engine <- Import from Game Fork"
-    echo "Source:       ${PULL_FROM} (${SRC_DIR})"
-    echo "Engine root:  ${ENGINE_ROOT}"
-    echo "Dry run:      ${DRY_RUN}"
-    echo "Verify:       ${RUN_VERIFY}"
-    echo "========================================================================"
-
-    for pkg in "${SHARED_PACKAGES[@]}"; do
-        SRC_PKG="${SRC_DIR}/app/src/main/java/com/voicerpg/engine/${pkg}"
-        DST_PKG="${ENGINE_ROOT}/app/src/main/java/com/voicerpg/engine/${pkg}"
-
-        if [ -d "${SRC_PKG}" ]; then
-            if [ "$DRY_RUN" = true ]; then
-                echo "    [dry-run] rsync -av --update ${SRC_PKG}/ -> ${DST_PKG}/"
-            else
-                mkdir -p "${DST_PKG}"
-                rsync -av --update "${SRC_PKG}/" "${DST_PKG}/" > /dev/null
-                echo "    [+] Imported package: com.voicerpg.engine.${pkg}"
-            fi
+if [ "$MODE" = "diff" ]; then
+    dir="${GITHUB_ROOT}/${DIFF_GAME}"
+    [ -d "$dir/$ENGINE_JAVA" ] || die "${DIFF_GAME} has no ${ENGINE_JAVA} (not migrated on its current branch)"
+    for p in "${ENGINE_OWNED_PATHS[@]}"; do
+        if [ -d "$ENGINE_ROOT/$p" ] || [ -d "$dir/$p" ]; then
+            diff -ruN "$ENGINE_ROOT/$p" "$dir/$p" | sed "s#${ENGINE_ROOT}/#engine/#; s#${dir}/#${DIFF_GAME}/#" || true
         fi
     done
-
-    for asset in "${SHARED_ASSETS[@]}"; do
-        SRC_ASSET="${SRC_DIR}/app/src/main/assets/game/${asset}"
-        DST_ASSET="${ENGINE_ROOT}/app/src/main/assets/game/${asset}"
-
-        if [ -d "${SRC_ASSET}" ]; then
-            if [ "$DRY_RUN" = true ]; then
-                echo "    [dry-run] rsync -av --update ${SRC_ASSET}/ -> ${DST_ASSET}/"
-            else
-                mkdir -p "${DST_ASSET}"
-                rsync -av --update "${SRC_ASSET}/" "${DST_ASSET}/" > /dev/null
-                echo "    [+] Imported asset: assets/game/${asset}"
-            fi
-        fi
-    done
-
-    if [ "$RUN_VERIFY" = true ] && [ "$DRY_RUN" = false ]; then
-        echo "    [*] Running unit tests in voice-rpg-engine..."
-        (cd "${ENGINE_ROOT}" && ./gradlew testDebugUnitTest --quiet)
-        echo "    [✓] Engine tests passed!"
-    fi
-
-    echo ""
-    echo "[✓] Upstream import complete! Run without --pull-from to distribute to all other games."
     exit 0
 fi
 
 # ==============================================================================
-# MODE 3: Push engine changes downstream to game repositories (Default)
+# --pull-from <game> <path>...
 # ==============================================================================
-echo "========================================================================"
-echo "VoiceRPG Engine -> Game Distribution Sync"
-echo "Engine root:  ${ENGINE_ROOT}"
-echo "Targets:      ${TARGET_REPOS[*]}"
-echo "Dry run:      ${DRY_RUN}"
-echo "Verify tests: ${RUN_VERIFY}"
-echo "========================================================================"
+if [ "$MODE" = "pull" ]; then
+    dir="${GITHUB_ROOT}/${PULL_FROM}"
+    [ -d "$dir" ] || die "${PULL_FROM} not found at ${dir}"
+    [ ${#PULL_PATHS[@]} -gt 0 ] || die "Name the files to pull, e.g. --pull-from ${PULL_FROM} ${ENGINE_JAVA}engine/SaveManager.kt (see --diff ${PULL_FROM})"
+    for f in "${PULL_PATHS[@]}"; do
+        owned=false
+        for p in "${ENGINE_OWNED_PATHS[@]}"; do [[ "$f" == "$p"* ]] && owned=true; done
+        $owned || die "$f is not an engine-owned path"
+        [ -f "$dir/$f" ] || die "$f does not exist in ${PULL_FROM}"
+        echo "=== ${f}"
+        diff -u "$ENGINE_ROOT/$f" "$dir/$f" || true
+    done
+    if [ "$DRY_RUN" = true ]; then echo "[dry-run] nothing copied"; exit 0; fi
+    for f in "${PULL_PATHS[@]}"; do
+        mkdir -p "$(dirname "$ENGINE_ROOT/$f")"
+        cp "$dir/$f" "$ENGINE_ROOT/$f"
+        echo "[+] pulled ${f}"
+    done
+    echo "Review, make it content-neutral, run ./gradlew testDebugUnitTest and scripts/test_content_packs.sh, commit, then push to all games."
+    exit 0
+fi
 
-for target in "${TARGET_REPOS[@]}"; do
-    TARGET_DIR="${GITHUB_ROOT}/${target}"
-    if [ ! -d "${TARGET_DIR}" ]; then
-        echo "[-] Skipping target ${target}: directory not found at ${TARGET_DIR}"
-        continue
-    fi
+# ==============================================================================
+# Push (default)
+# ==============================================================================
+if [ "$ALLOW_DIRTY" = false ] && [ "$DRY_RUN" = false ] && \
+   [ -n "$(git -C "$ENGINE_ROOT" status --porcelain -- "${ENGINE_OWNED_PATHS[@]}")" ]; then
+    die "The engine has uncommitted changes in engine-owned paths. Commit them first (games record the engine commit), or pass --allow-dirty."
+fi
+VERSION="$(engine_version)"
+echo "Engine ${VERSION} -> ${TARGETS[*]}$( [ "$DRY_RUN" = true ] && echo '  [dry run]')"
 
+failures=0
+for game in "${TARGETS[@]}"; do
+    dir="${GITHUB_ROOT}/${game}"
     echo ""
-    echo "[*] Syncing engine to: ${target}"
+    echo "[*] ${game}"
+    if [ ! -d "$dir/.git" ]; then echo "    [-] not found at ${dir}; skipped"; failures=1; continue; fi
+    branch="$(git -C "$dir" branch --show-current)"
+    if [ ! -d "$dir/$ENGINE_JAVA" ]; then
+        echo "    [-] NOT MIGRATED: branch '${branch}' has no ${ENGINE_JAVA}. Check out the engine-based branch first."
+        failures=1; continue
+    fi
+    if [ -n "$(git -C "$dir" status --porcelain -- "${ENGINE_OWNED_PATHS[@]}")" ]; then
+        echo "    [-] uncommitted changes in engine-owned paths on '${branch}'; a push would overwrite them:"
+        git -C "$dir" status --porcelain -- "${ENGINE_OWNED_PATHS[@]}" | sed 's/^/        /'
+        echo "        If they belong upstream: --pull-from ${game} <path>. Otherwise discard them."
+        failures=1; continue
+    fi
+    extra=$(comm -13 <(owned_files "$ENGINE_ROOT") <(owned_files "$dir"))
+    if [ -n "$extra" ] && [ "$PRUNE" = false ]; then
+        echo "    [-] files in engine-owned paths that the engine doesn't have:"
+        sed 's/^/        /' <<<"$extra"
+        echo "        Game-specific tests belong in app/src/test/java/com/voicerpg/game/. Engine code belongs upstream."
+        echo "        Move or upstream them, or re-run with --prune to delete them."
+        failures=1; continue
+    fi
 
-    # Sync shared packages
-    for pkg in "${SHARED_PACKAGES[@]}"; do
-        SRC_PKG="${ENGINE_ROOT}/app/src/main/java/com/voicerpg/engine/${pkg}"
-        DST_PKG="${TARGET_DIR}/app/src/main/java/com/voicerpg/engine/${pkg}"
-
-        if [ -d "${SRC_PKG}" ]; then
-            if [ "$DRY_RUN" = true ]; then
-                echo "    [dry-run] rsync -av --update ${SRC_PKG}/ -> ${DST_PKG}/"
-            else
-                mkdir -p "${DST_PKG}"
-                rsync -av --update "${SRC_PKG}/" "${DST_PKG}/" > /dev/null
-                echo "    [+] Synced package: com.voicerpg.engine.${pkg}"
-            fi
+    for p in "${ENGINE_OWNED_PATHS[@]}"; do
+        [ -d "$ENGINE_ROOT/$p" ] || continue
+        if [ "$DRY_RUN" = true ]; then
+            rsync -a --checksum --delete --dry-run --itemize-changes "$ENGINE_ROOT/$p" "$dir/$p" | sed "s#^#    [dry-run] ${p}: #"
+        else
+            mkdir -p "$dir/$p"
+            rsync -a --checksum --delete "$ENGINE_ROOT/$p" "$dir/$p"
         fi
     done
+    if [ "$DRY_RUN" = true ]; then continue; fi
 
-    # Sync shared localization and command catalogs
-    for asset in "${SHARED_ASSETS[@]}"; do
-        SRC_ASSET="${ENGINE_ROOT}/app/src/main/assets/game/${asset}"
-        DST_ASSET="${TARGET_DIR}/app/src/main/assets/game/${asset}"
-
-        if [ -d "${SRC_ASSET}" ]; then
-            if [ "$DRY_RUN" = true ]; then
-                echo "    [dry-run] rsync -av --update ${SRC_ASSET}/ -> ${DST_ASSET}/"
-            else
-                mkdir -p "${DST_ASSET}"
-                rsync -av --update "${SRC_ASSET}/" "${DST_ASSET}/" > /dev/null
-            fi
-        fi
+    # Record the version and every engine-owned file's checksum, and install the guard.
+    mkdir -p "$dir/.engine-sync" "$dir/.githooks"
+    echo "$VERSION" > "$dir/.engine-sync/ENGINE_VERSION"
+    printf '%s\n' "${ENGINE_OWNED_PATHS[@]}" > "$dir/.engine-sync/OWNED_PATHS"
+    (cd "$dir" && owned_files "$dir" | xargs -d '\n' sha256sum) > "$dir/.engine-sync/MANIFEST.sha256"
+    cp "$ENGINE_ROOT/scripts/engine_guard.sh" "$dir/.engine-sync/guard.sh"
+    chmod +x "$dir/.engine-sync/guard.sh"
+    cp "$ENGINE_ROOT/scripts/githooks/pre-commit" "$dir/.githooks/pre-commit"
+    chmod +x "$dir/.githooks/pre-commit"
+    # The agent rule: in .agy/rules/ (Antigravity) and as a marked block in AGENTS.md / GEMINI.md.
+    mkdir -p "$dir/.agy/rules"
+    cp "$ENGINE_ROOT/scripts/game-files/00_voicerpg_engine.md" "$dir/.agy/rules/00_voicerpg_engine.md"
+    for doc in AGENTS.md GEMINI.md; do
+        python3 - "$dir/$doc" "$ENGINE_ROOT/scripts/game-files/00_voicerpg_engine.md" <<'PY'
+import os, re, sys
+doc, rule = sys.argv[1], open(sys.argv[2]).read().strip()
+start, end = "<!-- voicerpg-engine-rule:start -->", "<!-- voicerpg-engine-rule:end -->"
+block = f"{start}\n{rule}\n{end}"
+text = open(doc).read() if os.path.exists(doc) else ""
+if start in text and end in text:
+    text = re.sub(re.escape(start) + r".*?" + re.escape(end), lambda m: block, text, flags=re.S)
+else:
+    text = block + "\n\n" + text
+open(doc, "w").write(text)
+PY
     done
 
-    # Sync root MainActivity.kt
-    if [ "$DRY_RUN" = true ]; then
-        echo "    [dry-run] cp ${ENGINE_ROOT}/app/src/main/java/com/voicerpg/engine/MainActivity.kt -> ${TARGET_DIR}/app/src/main/java/com/voicerpg/engine/MainActivity.kt"
+    current_hooks="$(git -C "$dir" config core.hooksPath || true)"
+    if [ -z "$current_hooks" ] || [ "$current_hooks" = ".githooks" ]; then
+        git -C "$dir" config core.hooksPath .githooks
     else
-        cp "${ENGINE_ROOT}/app/src/main/java/com/voicerpg/engine/MainActivity.kt" "${TARGET_DIR}/app/src/main/java/com/voicerpg/engine/MainActivity.kt"
-        echo "    [+] Synced root Activity: MainActivity.kt"
+        echo "    [!] core.hooksPath is '${current_hooks}'; add .githooks/pre-commit to it yourself."
     fi
+    if ! grep -qs "engine-sync/guard.sh" "$dir/.github/workflows/"*.yml; then
+        echo "    [!] the game's CI doesn't run .engine-sync/guard.sh yet; add this step before the tests:"
+        echo "          - name: Engine files match the synced engine"
+        echo "            run: bash .engine-sync/guard.sh --ci"
+    fi
+    echo "    [+] synced (${branch}); engine version recorded: ${VERSION:0:12}"
 
-    if [ "$RUN_VERIFY" = true ] && [ "$DRY_RUN" = false ]; then
-        echo "    [*] Running unit tests in ${target}..."
-        (cd "${TARGET_DIR}" && ./gradlew testDebugUnitTest --quiet)
-        echo "    [✓] Tests passed for ${target}"
+    if [ "$RUN_VERIFY" = true ]; then
+        echo "    [*] running ${game} unit tests..."
+        if (cd "$dir" && ./gradlew testDebugUnitTest --quiet); then
+            echo "    [✓] ${game} tests passed"
+        else
+            echo "    [-] ${game} tests FAILED: the engine change broke a game contract; fix it upstream"
+            failures=1
+        fi
     fi
+    echo "    Commit in ${game}:  git add -A ${ENGINE_OWNED_PATHS[*]} .engine-sync .githooks AGENTS.md GEMINI.md && git commit -m \"Sync engine ${VERSION:0:12}\""
 done
 
 echo ""
-echo "========================================================================"
-echo "[✓] Engine distribution complete!"
-echo "========================================================================"
+[ $failures -eq 0 ] && echo "[✓] done" || { echo "[-] finished with problems (see above)"; exit 1; }

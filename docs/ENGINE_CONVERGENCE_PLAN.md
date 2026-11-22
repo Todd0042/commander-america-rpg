@@ -48,9 +48,21 @@ This comes before the combat feel overhaul (`COMBAT_FEEL_PLAN.md`). Plan only; n
 Also check `localization/BuiltInDictionaries.kt`, `model/CombatModels.kt` and `model/MetricModels.kt`,
 which matched the same scan. Some matches are just words ("caster"), so review them one by one.
 
-### 1.3 Tooling gaps
+### 1.3 Tests drifted too (found in step 1)
+- Every game had edited or deleted engine tests. Even Superstore, whose engine code matched, modified
+  four and lacked six (for example `SaveSystemTest`, `MultiLanguageSupportTest`).
+- Cause: many engine "mechanics" tests asserted the template's data (`template_solo_battle`,
+  `training_drone`, "Template Hero", the template thesaurus). On a real game's content they failed, so
+  agents in the games changed them.
+- First run of the engine suite on each game's content: Echoes 39 failures, Wally's 46, Superstore 27,
+  Commander 5. Almost all were template assumptions in tests, not engine/content incompatibilities.
+
+### 1.4 Tooling gaps
 - `--check` reports a game with **no** engine package as "in sync". That's how Echoes `main` looks fine.
-- `MainActivity.kt` isn't in the sync list, so it drifts freely (Commander: 136 lines).
+- Push used `rsync --update`: a file that's *newer* in the game is skipped, so an agent's edit in a game
+  survives every later sync, and nothing is ever deleted. Pull used the same rule in reverse and
+  imported anything newer from a game, game content included.
+- `MainActivity.kt` drifted (Commander: 136 lines).
 - Nothing stops an agent from editing engine files inside a game repo, and nothing records which
   engine version a game is on.
 - The engine tests only run against the engine's template content, never against the four real
@@ -60,8 +72,9 @@ which matched the same scan. Some matches are just words ("caster"), so review t
 
 ## 2. Target end state
 1. The `com.voicerpg.engine.*` packages are byte-identical in all four games.
-2. Each game's own code is just a thin `MainActivity` shell (app id, theme, icon) that calls an engine
-   entry point, plus JSON and assets.
+2. Games contain no Kotlin of their own in `app/src/main`: engine code (MainActivity included) is
+   synced; a game is JSON, assets, resources and app identity, plus game-specific tests in
+   `com.voicerpg.game`.
 3. Each game has an `ENGINE_VERSION` file (engine commit hash). Its CI fails if any engine file
    differs from that commit.
 4. Engine CI runs the full content-agnostic test suite against **all four content packs**.
@@ -74,25 +87,25 @@ which matched the same scan. Some matches are just words ("caster"), so review t
 Each step ends with engine tests green, a sync to the converged games, their tests green, and a
 device check of the affected game(s).
 
-### Step 1: Guardrails first (stops new drift while the rest happens)
-- `sync_engine_to_games.sh`:
-  - `--check` reports **NOT MIGRATED** for a game with no engine package, and **EXTRA FILES**
-    for engine-package files the engine doesn't have (Commander's `StoryEncounters.kt`, `ClassSpellLibrary.kt`).
-  - Push writes `ENGINE_VERSION` (engine `git rev-parse HEAD`) into each game.
-  - Add `superstore-saga` to the protocol file (`.agy/rules/00_engine_sync_protocol.md`) and to AGENTS.md §9.
-- **Game CI guard** (a step in each game's `android_ci.yml`): fetch the engine at `ENGINE_VERSION` and
-  `diff -r` the engine packages. Any difference fails the build, with a message saying to make the
-  change upstream. A local **pre-commit hook** in each game (installed by the sync script) blocks
-  commits that touch `app/src/main/java/com/voicerpg/engine/**`, unless the commit is a sync commit.
-- **Agent rules** in every game repo (`AGENTS.md`, `GEMINI.md`, `.agy/rules/`): the engine package is
-  read-only here, with the exact upstream workflow. The CI guard makes this enforceable; the rule
-  just explains it.
-- **Content-pack test matrix** in engine CI: a job that checks out each game's
-  `app/src/main/assets/game/**` (and the assets the JSON references) into the engine's test resources and runs
-  `testDebugUnitTest` once per pack. Commander joins this matrix in Step 5, once its content is JSON.
-- **MainActivity**: move its logic into the engine (e.g. `com.voicerpg.engine.app.VoiceRpgApp`
-  composable plus `EngineActivity` base class). Each game's `MainActivity` becomes about 10 lines
-  (extends `EngineActivity`), keeping per-game app identity (AGENTS.md §8).
+### Step 1: Guardrails first ✅ (engine branch `engine-convergence`)
+- **Tests**: mechanics tests load a frozen template fixture (`app/src/test/fixtures/template-pack`,
+  `TemplateFixture` rule); contract tests run on the game's content and assert nothing template-specific;
+  reachability counts incident entry nodes; a content folder that fails to load is an error, not a
+  silent emergency pack.
+- **`scripts/test_content_packs.sh`**: the engine's suite against every game's content. Result after
+  this step: Echoes ✅, Wally's ✅, Superstore ❌ (real content bugs, step 2b), Commander ❌ (template
+  assets its JSON references but it deleted; goes away in step 5).
+- **`sync_engine_to_games.sh` rewritten**: engine-owned paths now include the engine tests and the
+  fixture; push mirrors exactly (checksums, deletes strays) and refuses dirty engines, unmigrated
+  branches, uncommitted engine edits in a game, and stray files; records `.engine-sync/` (version,
+  owned paths, checksum manifest, guard); installs the pre-commit hook and the agent rule (`.agy/rules/`
+  plus a marked block in the game's AGENTS.md and GEMINI.md). `--check`, `--diff <game>`, and a
+  `--pull-from <game> <path>...` that only copies named files.
+- **Guard** (`.engine-sync/guard.sh`): CI (`--ci`) and pre-commit (`--staged`); also catches a
+  hand-edited manifest by checking it against the engine commit.
+- **Engine CI**: a content-pack job per game (private games need a `GAME_REPOS_TOKEN` secret).
+- **Rules**: AGENTS.md §2/§9 (GEMINI.md is now an identical copy) and the `.agy` protocol rewritten.
+- `MainActivity` stays engine-owned (simpler than a per-game shell; it's identical in three games).
 
 ### Step 2: Remove the content leaks from the engine (§1.2)
 - Add the replacement JSON fields with defaults, switch the engine to read them, and delete the
@@ -106,6 +119,14 @@ device check of the affected game(s).
   denylist built from all four packs' character, enemy and spell names. Fails CI if one appears.
 - Verify: Superstore and Echoes (branch) tests and a device check. Voice targeting by name still works
   in Echoes, now through aliases.
+
+### Step 2b: Superstore content fixes (found in step 1)
+- `scene_locker_room.initialNodeId` is `node_locker_001`, which doesn't exist (the chapter menu would
+  dead-end there). The scene is entered through role-specific nodes; point it at a real entry.
+- Orphaned story: `node_act1_teamwork_entry` and the `node_shift2_*` / `node_shift3_*` chains are
+  never linked from anywhere. **Decision needed:** wire them in, or remove them.
+- Move `HubReturnTeamworkIncidentTest.kt` (a Superstore test inside the engine's test folder) to
+  `app/src/test/java/com/voicerpg/game/`.
 
 ### Step 3: Wally's World catch-up
 - `sync_engine_to_games.sh --dry-run wallys-world` and review it. Then sync with `--verify`.
@@ -195,3 +216,4 @@ Steps 3, 4 and 5a can run in parallel after step 2.
    engine's look as-is?
 3. **Commander's "Death of Voice"**: rebuild it as a proper boss phase within I-1 (recommended), or
    keep the old 3× behaviour as an explicit, documented exception?
+4. **Superstore's orphaned Shift 2/Shift 3 storylines**: wire them into the story, or remove them?

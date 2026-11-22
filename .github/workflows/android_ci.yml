@@ -33,3 +33,53 @@ jobs:
 
       - name: Compile Debug APK
         run: ./gradlew assembleDebug --no-daemon
+
+  content-packs:
+    name: Engine tests on ${{ matrix.game }} content
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { game: echoes-of-logos, ref: feature/engine-migration, private: false }
+          - { game: superstore-saga, ref: main, private: false }
+          - { game: wallys-world, ref: main, private: true }
+          - { game: commander-america-rpg, ref: main, private: true }
+    env:
+      HAS_TOKEN: ${{ secrets.GAME_REPOS_TOKEN != '' }}
+    steps:
+      - name: Skip notice (private game, no GAME_REPOS_TOKEN secret)
+        if: matrix.private && env.HAS_TOKEN != 'true'
+        run: echo "::warning::${{ matrix.game }} is private; add a GAME_REPOS_TOKEN secret (read access to it) to test the engine on its content."
+
+      - name: Checkout engine
+        if: ${{ !matrix.private || env.HAS_TOKEN == 'true' }}
+        uses: actions/checkout@v4
+        with:
+          path: voice-rpg-engine
+
+      - name: Checkout ${{ matrix.game }} (content only is used)
+        if: ${{ !matrix.private || env.HAS_TOKEN == 'true' }}
+        uses: actions/checkout@v4
+        with:
+          repository: Todd0042/${{ matrix.game }}
+          ref: ${{ matrix.ref }}
+          path: ${{ matrix.game }}
+          token: ${{ matrix.private && secrets.GAME_REPOS_TOKEN || github.token }}
+
+      - name: Set up JDK 17
+        if: ${{ !matrix.private || env.HAS_TOKEN == 'true' }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+          cache-dependency-path: voice-rpg-engine/**/*.gradle*
+
+      - name: Run the engine's tests on the game's content
+        if: ${{ !matrix.private || env.HAS_TOKEN == 'true' }}
+        working-directory: voice-rpg-engine
+        env:
+          GAME_REF_echoes_of_logos: ""   # use the checked-out branch, not origin/...
+        run: chmod +x gradlew scripts/test_content_packs.sh && ./scripts/test_content_packs.sh ${{ matrix.game }}
+

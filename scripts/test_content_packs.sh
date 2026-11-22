@@ -28,7 +28,7 @@ GITHUB_ROOT="$(cd "${ENGINE_ROOT}/.." && pwd)"
 WORK_ROOT="${TMPDIR:-/tmp}/vb-content-packs"
 GAMES=("$@")
 [ ${#GAMES[@]} -eq 0 ] && GAMES=("echoes-of-logos" "wallys-world" "commander-america-rpg" "superstore-saga")
-: "${GAME_REF_echoes_of_logos:=origin/feature/engine-migration}"
+: "${GAME_REF_echoes_of_logos=origin/feature/engine-migration}"   # set to "" to use the working tree
 export GAME_REF_echoes_of_logos
 
 if [ -z "${ANDROID_HOME:-}" ] && [ -d "$HOME/Android/Sdk" ]; then export ANDROID_HOME="$HOME/Android/Sdk"; fi
