@@ -250,11 +250,9 @@ PY
     else
         echo "    [!] core.hooksPath is '${current_hooks}'; add .githooks/pre-commit to it yourself."
     fi
-    if ! grep -qs "engine-sync/guard.sh" "$dir/.github/workflows/"*.yml; then
-        echo "    [!] the game's CI doesn't run .engine-sync/guard.sh yet; add this step before the tests:"
-        echo "          - name: Engine files match the synced engine"
-        echo "            run: bash .engine-sync/guard.sh --ci"
-    fi
+    # CI check: its own small workflow (checksums only, a few seconds), kept up to date by every sync.
+    mkdir -p "$dir/.github/workflows"
+    cp "$ENGINE_ROOT/scripts/game-files/engine_guard.yml" "$dir/.github/workflows/engine_guard.yml"
     echo "    [+] synced (${branch}); engine version recorded: ${VERSION:0:12}"
 
     if [ "$RUN_VERIFY" = true ]; then
@@ -266,7 +264,7 @@ PY
             failures=1
         fi
     fi
-    echo "    Commit in ${game}:  git add -A ${ENGINE_OWNED_PATHS[*]} .engine-sync .githooks AGENTS.md GEMINI.md && git commit -m \"Sync engine ${VERSION:0:12}\""
+    echo "    Commit in ${game}:  git add -A ${ENGINE_OWNED_PATHS[*]} .engine-sync .githooks .github/workflows/engine_guard.yml AGENTS.md GEMINI.md && git commit -m \"Sync engine ${VERSION:0:12}\""
 done
 
 echo ""
