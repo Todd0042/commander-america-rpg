@@ -12,3 +12,11 @@ this game's JSON during its content extraction (step 5b):
 
 Also removed from the engine: the voice targets for Marco, Vance, Kash and Kennedy
 (`TargetSelection`); give those characters `voiceAliases` in their character files.
+
+## How the content was extracted (step 5b, done)
+
+`ExtractContentTest` (in git history at commit 350fff4, `app/src/test/java/com/voicerpg/game/tools/`)
+read the Kotlin content of the pre-convergence code and wrote engine JSON; `finalize_content.py`
+installed it, with `calibration_fixes.json` (preset chants recalibrated for the shared engine's
+ResonanceEngine). The extractor needs the old Kotlin classes, so it was removed when the repo
+switched to the shared engine.
