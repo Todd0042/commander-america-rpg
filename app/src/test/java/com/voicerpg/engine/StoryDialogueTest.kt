@@ -1,5 +1,7 @@
 package com.voicerpg.engine
 
+import org.junit.Rule
+import com.voicerpg.engine.testing.TemplateFixture
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
 import com.voicerpg.engine.content.GameContent
@@ -19,6 +21,9 @@ import org.junit.Before
 import org.junit.Test
 
 class StoryDialogueTest {
+
+    /** Mechanics test: runs on the engine's frozen template content, whatever game it's in. */
+    @get:Rule val templateFixture = TemplateFixture()
 
     private lateinit var storyViewModel: StoryViewModel
     private lateinit var dummySpeech: SpeechManager
@@ -377,6 +382,20 @@ class StoryGraphSchemaTest {
     fun everyStoryLinkResolves() {
         assertTrue("Game content must ship at least one story node", GameContent.nodes.isNotEmpty())
         for (node in GameContent.nodes.values) {
+            for (route in node.flagRoutes) {
+                assertTrue(
+                    "Node '${node.id}' flag route to '${route.nextNodeId}' does not resolve",
+                    GameContent.nodes.containsKey(route.nextNodeId)
+                )
+                assertTrue("Node '${node.id}' has a flag route with no requiredFlags", route.requiredFlags.isNotEmpty())
+            }
+            // A node that branches on flags needs a fallback, or a player matching no route is stranded.
+            if (node.flagRoutes.isNotEmpty()) {
+                assertTrue(
+                    "Node '${node.id}' has flagRoutes but no nextNodeId or choices to fall back on",
+                    node.nextNodeId != null || node.choices.isNotEmpty()
+                )
+            }
             node.nextNodeId?.let { next ->
                 assertTrue(
                     "Node '${node.id}' nextNodeId '$next' does not resolve",
@@ -464,11 +483,15 @@ class StoryGraphSchemaTest {
         val visited = mutableSetOf<String>()
         val queue = ArrayDeque<String>()
         queue.add(startId)
+        // Every campaign track starts somewhere of its own (multi-perspective games).
+        GameContent.manifest.campaignTracks.forEach { track -> track.startNodeId.takeIf { it.isNotBlank() }?.let { queue.add(it) } }
+        // Incidents are entry points the engine jumps to on its own (IncidentManager), not story links.
+        GameContent.incidents.values.forEach { incident -> incident.triggerNodeId?.let { queue.add(it) } }
         while (queue.isNotEmpty()) {
             val id = queue.removeFirst()
             if (!visited.add(id)) continue
             val node = GameContent.nodes[id] ?: continue
-            node.nextNodeId?.let { queue.add(it) }
+            queue.addAll(node.allNextNodeIds)
             node.choices.forEach { queue.add(it.nextNodeId) }
             node.hubCompletion?.let { queue.add(it.redirectToNodeId) }
             node.changeSceneId?.let { sceneId ->

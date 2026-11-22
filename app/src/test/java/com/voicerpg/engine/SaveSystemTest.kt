@@ -1,5 +1,7 @@
 package com.voicerpg.engine
 
+import org.junit.Rule
+import com.voicerpg.engine.testing.TemplateFixture
 import com.voicerpg.engine.audio.CombatNarrator
 import com.voicerpg.engine.audio.SpeechManager
 import com.voicerpg.engine.content.GameContent
@@ -25,6 +27,9 @@ import org.junit.Before
 import org.junit.Test
 
 class SaveSystemTest {
+
+    /** Mechanics test: runs on the engine's frozen template content, whatever game it's in. */
+    @get:Rule val templateFixture = TemplateFixture()
 
     private lateinit var saveManager: SaveManager
     private lateinit var speechManager: SpeechManager

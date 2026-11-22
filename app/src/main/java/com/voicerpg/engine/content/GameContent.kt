@@ -16,6 +16,7 @@ import com.voicerpg.engine.model.SpellGraphics
 import com.voicerpg.engine.model.BattleEnvironment
 import com.voicerpg.engine.model.DialogueChoice
 import com.voicerpg.engine.model.DialogueNode
+import com.voicerpg.engine.model.FlagRoute
 import com.voicerpg.engine.model.DialogueSpeaker
 import com.voicerpg.engine.model.Enemy
 import com.voicerpg.engine.model.EncounterDefinition
@@ -54,6 +55,11 @@ data class ManifestDto(
     val startingAchievementId: String = "QUEST_BEGUN",
     val victoryLine: String = "Victory! The battle is won.",
     val defeatLine: String = "Defeat. Your voice fades.",
+    /** Battle result overlay: titles and the continue-story button labels. */
+    val victoryTitle: String = "⚔️ VICTORY ⚔️",
+    val defeatTitle: String = "💀 DEFEAT 💀",
+    val victoryContinueLabel: String = "CONTINUE STORY ➔",
+    val defeatContinueLabel: String = "PRESS ON ➔",
     val titleBackgroundAsset: String? = null,
     val defaultHeroName: String = "Hero",
     val defaultHeroTitle: String = "Adventurer",
@@ -75,7 +81,13 @@ data class ManifestDto(
     val creationNameLabel: String? = null,
     val creationAestheticsLabel: String? = null,
     val creationStatusSubtitle: String? = null,
-    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef>? = null
+    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef>? = null,
+    /** "custom" (name, class, portrait) or "preset_select" (pick one of the campaign tracks' heroes). */
+    val creationMode: String? = null,
+    /** The game's default music (asset paths); unset = the engine's audio/music/bgm_{title,exploration,combat}.ogg. */
+    val titleMusic: String? = null,
+    val explorationMusic: String? = null,
+    val combatMusic: String? = null
 )
 
 data class ResonanceProfileDto(
@@ -168,6 +180,13 @@ data class CharacterDto(
     val preferredVoiceId: String? = null,
     val allowedVoiceRegions: List<String>? = null,
     val voiceAliases: List<String>? = null,
+    /** Clips played when this character casts in battle (asset paths); one at random. */
+    val soundBites: List<String>? = null,
+    /**
+     * Spoken in this character's voice when, on their turn, the player calls another hero's spell.
+     * {owner} = that hero, {active} = this character. Without it the narrator explains whose turn it is.
+     */
+    val outOfTurnLine: String? = null,
     val loreClass: String = "Adventurer",
     val combat: CharacterCombatDto? = null,
     val spells: List<SpellDto>? = null,
@@ -223,7 +242,11 @@ data class SpellDto(
     val manaRestorePct: Float = 0f,
     val aliases: List<String>? = null,
     val graphics: SpellGraphicsDto? = null,
-    val cleansesDebuffs: Boolean = false
+    val cleansesDebuffs: Boolean = false,
+    /** Optional chants per resonance tier ("BASIC".."TRANSCENDENTAL") used by hands-free presets. */
+    val presetChants: Map<String, String>? = null,
+    /** Optional recorded clips (asset paths, e.g. audio/quotes/x.ogg); one plays at random. */
+    val soundBites: List<String>? = null
 )
 
 data class SpellFileDto(val spells: List<SpellDto>? = null)
@@ -239,7 +262,9 @@ data class EnemyMoveDto(
     val weight: Int = 1,
     val summon: String? = null,
     val summonCount: Int = 0,
-    val graphics: SpellGraphicsDto? = null
+    val graphics: SpellGraphicsDto? = null,
+    /** Optional recorded clips (asset paths, e.g. audio/quotes/x.ogg); one plays at random. */
+    val soundBites: List<String>? = null
 ) {
     fun toEnemyMove(): EnemyMove = EnemyMove(
         name = name.ifBlank { "Attack" },
@@ -252,7 +277,8 @@ data class EnemyMoveDto(
         weight = weight,
         summon = summon,
         summonCount = summonCount,
-        graphics = graphics?.toSpellGraphics()
+        graphics = graphics?.toSpellGraphics(),
+        soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
     )
 }
 
@@ -296,7 +322,11 @@ data class EnemyDto(
     val movesetId: String = "",
     val isBoss: Boolean = false,
     val spriteId: String = "",
-    val spriteTint: String = "#E57373"
+    val spriteTint: String = "#E57373",
+    /** Extra words that target this enemy by voice ("warrior" for an orc), besides its name and subtitle. */
+    val voiceAliases: List<String>? = null,
+    /** Optional recorded clips (asset paths, e.g. audio/quotes/x.ogg); one plays at random. */
+    val soundBites: List<String>? = null
 )
 
 data class EnemyFileDto(val enemies: List<EnemyDto>? = null)
@@ -383,7 +413,14 @@ data class HubCompletionDto(
     val redirectToNodeId: String = ""
 )
 
+data class FlagRouteDto(
+    val requiredFlags: List<String>? = null,
+    val nextNodeId: String = ""
+)
+
 data class NodeDto(
+    /** Optional automatic branching on story flags (see DialogueNode.flagRoutes). */
+    val flagRoutes: List<FlagRouteDto>? = null,
     val id: String = "",
     val speakerId: String = "narrator",
     val side: String = "CENTER_NARRATOR",
@@ -622,6 +659,10 @@ data class GameManifest(
     val startingAchievementId: String,
     val victoryLine: String,
     val defeatLine: String,
+    val victoryTitle: String = "⚔️ VICTORY ⚔️",
+    val defeatTitle: String = "💀 DEFEAT 💀",
+    val victoryContinueLabel: String = "CONTINUE STORY ➔",
+    val defeatContinueLabel: String = "PRESS ON ➔",
     val titleBackgroundAsset: String? = null,
     val defaultHeroName: String = "Hero",
     val defaultHeroTitle: String = "Adventurer",
@@ -643,8 +684,15 @@ data class GameManifest(
     val creationNameLabel: String? = null,
     val creationAestheticsLabel: String? = null,
     val creationStatusSubtitle: String? = null,
-    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef> = emptyList()
+    val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef> = emptyList(),
+    val creationMode: String = "custom",
+    val titleMusic: String? = null,
+    val explorationMusic: String? = null,
+    val combatMusic: String? = null
 ) {
+    /** Character creation is a pick between the campaign tracks' preset heroes. */
+    val isPresetSelect: Boolean get() = creationMode.equals("preset_select", ignoreCase = true) && campaignTracks.any { it.hero != null }
+
     fun resolveDefaultHeroName(): String = resolveTemplateTokens(defaultHeroName)
 
     companion object {
@@ -780,7 +828,9 @@ data class GameCharacter(
     val spellGrants: List<SpellGrant>,
     val gender: String? = null,
     val allowedVoiceRegions: List<String> = emptyList(),
-    val sprite: SpriteDefinition? = null
+    val sprite: SpriteDefinition? = null,
+    val soundBites: List<String> = emptyList(),
+    val outOfTurnLine: String? = null
 ) {
     fun toPartyMember(atbOverride: Float? = null): PartyMember? {
         val c = combat ?: return null
@@ -837,7 +887,9 @@ data class EnemyTemplate(
     val movesetId: String,
     val isBoss: Boolean,
     val spriteId: String,
-    val spriteTint: Color
+    val spriteTint: Color,
+    val voiceAliases: List<String> = emptyList(),
+    val soundBites: List<String> = emptyList()
 ) {
     fun toEnemy(
         instanceId: String? = null,
@@ -868,7 +920,9 @@ data class EnemyTemplate(
             selfElement = selfElement,
             xpReward = xpReward,
             movesetId = movesetId,
-            atbGauge = atbGauge
+            atbGauge = atbGauge,
+            voiceAliases = voiceAliases,
+            soundBites = soundBites
         )
     }
 }
@@ -1189,6 +1243,10 @@ class GameContentLoader(private val source: ContentSource) {
                 startingAchievementId = manifestDto.startingAchievementId,
                 victoryLine = manifestDto.victoryLine,
                 defeatLine = manifestDto.defeatLine,
+                victoryTitle = manifestDto.victoryTitle,
+                defeatTitle = manifestDto.defeatTitle,
+                victoryContinueLabel = manifestDto.victoryContinueLabel,
+                defeatContinueLabel = manifestDto.defeatContinueLabel,
                 titleBackgroundAsset = manifestDto.titleBackgroundAsset,
                 defaultHeroName = manifestDto.defaultHeroName,
                 defaultHeroTitle = manifestDto.defaultHeroTitle,
@@ -1210,7 +1268,11 @@ class GameContentLoader(private val source: ContentSource) {
                 creationNameLabel = manifestDto.creationNameLabel,
                 creationAestheticsLabel = manifestDto.creationAestheticsLabel,
                 creationStatusSubtitle = manifestDto.creationStatusSubtitle,
-                campaignTracks = manifestDto.campaignTracks ?: emptyList()
+                campaignTracks = manifestDto.campaignTracks ?: emptyList(),
+                creationMode = manifestDto.creationMode?.ifBlank { null } ?: "custom",
+                titleMusic = manifestDto.titleMusic?.ifBlank { null },
+                explorationMusic = manifestDto.explorationMusic?.ifBlank { null },
+                combatMusic = manifestDto.combatMusic?.ifBlank { null }
             ),
             characters = characters,
             classes = classes,
@@ -1256,7 +1318,9 @@ class GameContentLoader(private val source: ContentSource) {
         manaRestorePct = manaRestorePct,
         aliases = aliases ?: emptyList(),
         graphics = graphics?.toSpellGraphics(),
-        cleansesDebuffs = cleansesDebuffs || status.equals("CLEANSE", ignoreCase = true) || status.equals("DISPEL", ignoreCase = true)
+        cleansesDebuffs = cleansesDebuffs || status.equals("CLEANSE", ignoreCase = true) || status.equals("DISPEL", ignoreCase = true),
+        presetChants = presetChants?.mapKeys { it.key.uppercase() } ?: emptyMap(),
+        soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
     )
 
     private fun ClassDto.toDef(spells: Map<String, Spell>): HeroClassDef = HeroClassDef(
@@ -1326,7 +1390,9 @@ class GameContentLoader(private val source: ContentSource) {
             },
             gender = gender,
             allowedVoiceRegions = allowedVoiceRegions ?: emptyList(),
-            sprite = resolvedSprite
+            sprite = resolvedSprite,
+            soundBites = soundBites.orEmpty().filter { it.isNotBlank() },
+            outOfTurnLine = outOfTurnLine?.ifBlank { null }
         )
     }
 
@@ -1367,7 +1433,9 @@ class GameContentLoader(private val source: ContentSource) {
         movesetId = movesetId,
         isBoss = isBoss,
         spriteId = spriteId,
-        spriteTint = parseHexColor(spriteTint, Color(0xFFE57373))
+        spriteTint = parseHexColor(spriteTint, Color(0xFFE57373)),
+        voiceAliases = voiceAliases?.filter { it.isNotBlank() } ?: emptyList(),
+        soundBites = soundBites.orEmpty().filter { it.isNotBlank() }
     )
 
     private fun EncounterDto.toDefinition(
@@ -1469,7 +1537,10 @@ class GameContentLoader(private val source: ContentSource) {
         metricDeltas = metricDeltas ?: emptyMap(),
         metricOverrides = metricOverrides ?: emptyMap(),
         assignHeroClassId = assignHeroClassId,
-        allowIncidents = if (blacklistIncidents == true) false else (allowIncidents ?: true)
+        allowIncidents = if (blacklistIncidents == true) false else (allowIncidents ?: true),
+        flagRoutes = (flagRoutes ?: emptyList())
+            .filter { it.nextNodeId.isNotBlank() }
+            .map { FlagRoute(it.requiredFlags ?: emptyList(), it.nextNodeId) }
     )
 
     private fun EnvironmentDefinitionDto.toDefinition(): EnvironmentDefinition = EnvironmentDefinition(
@@ -1559,7 +1630,9 @@ object GameContent {
     @Volatile
     private var current: GameContentPack? = null
 
-    fun initialize(context: Context) {
+    // initialize/initializeFromDirectory/reset take the same lock as the lazy loader in [pack], so a
+    // load already in progress on another thread can't finish afterwards and overwrite what they set.
+    fun initialize(context: Context) = synchronized(this) {
         current = try {
             GameContentLoader(AssetContentSource(context.assets, CONTENT_ROOT)).load()
         } catch (t: Throwable) {
@@ -1568,16 +1641,17 @@ object GameContent {
         }
     }
 
-    fun initializeFromDirectory(dir: File) {
+    /** Loads a content pack from a folder (tests, tools). A pack that fails to load is an error, never a silent fallback. */
+    fun initializeFromDirectory(dir: File) = synchronized(this) {
         current = try {
             GameContentLoader(FileContentSource(dir)).load()
         } catch (t: Throwable) {
-            EmergencyFallback.build()
+            throw IllegalStateException("Game content in ${dir.absolutePath} failed to load: ${t.message}", t)
         }
     }
 
     /** Clears the cached pack (used by tests to reload modified content). */
-    fun reset() {
+    fun reset() = synchronized(this) {
         current = null
     }
 
@@ -1601,10 +1675,12 @@ object GameContent {
         )
         for (dir in candidates) {
             if (dir.isDirectory) {
+                // A content folder that exists but doesn't load is broken content: say so instead of
+                // quietly running on the emergency pack (which would let tests pass on the wrong content).
                 return try {
                     GameContentLoader(FileContentSource(dir)).load()
-                } catch (_: Throwable) {
-                    null
+                } catch (t: Throwable) {
+                    throw IllegalStateException("Game content in ${dir.absolutePath} failed to load: ${t.message}", t)
                 }
             }
         }

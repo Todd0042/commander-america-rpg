@@ -274,7 +274,8 @@ class StoryViewModel(
         if (node.triggerBattleEncounterId != null) return false
         if (node.triggerMiniGameId != null) return true
         if (node.choices.isNotEmpty()) return true
-        if (node.nextNodeId != null) return StoryScript.ALL_NODES.containsKey(node.nextNodeId)
+        val next = node.nextNodeIdFor(_state.value.narrativeFlags)
+        if (next != null) return StoryScript.ALL_NODES.containsKey(next)
         // Terminal node (no choices, no next): the playthrough is complete or a dead end.
         return false
     }
@@ -396,11 +397,14 @@ class StoryViewModel(
             val defaultName = manifest.defaultHeroName.ifBlank { "Hero" }
             val defaultTitle = manifest.defaultHeroTitle.ifBlank { "The Awakened Hero" }
             val resolvedTrackId = campaignTrackId ?: manifest.campaignTracks.firstOrNull()?.id ?: "track_a"
-            val defaultPlayer = PlayerCustomization(
+            val baseDefaultPlayer = PlayerCustomization(
                 name = defaultName,
                 title = defaultTitle,
                 campaignTrackId = resolvedTrackId
             )
+            // A track with a preset hero (perspective games) plays as that hero.
+            val resolvedTrack = manifest.campaignTracks.firstOrNull { it.id == resolvedTrackId }
+            val defaultPlayer = resolvedTrack?.hero?.toCustomization(resolvedTrack, baseDefaultPlayer) ?: baseDefaultPlayer
             saveManager.createInitialSave(defaultPlayer, storySlot)
             saveManager.currentSlot = storySlot
             StoryAssetLoader.activeSlot = storySlot
@@ -978,7 +982,7 @@ class StoryViewModel(
             return
         }
 
-        val nextId = node.nextNodeId
+        val nextId = node.nextNodeIdFor(_state.value.narrativeFlags)
         if (nextId != null) {
             val nextNode = StoryScript.ALL_NODES[nextId]
             if (nextNode != null) {
@@ -1294,7 +1298,7 @@ class StoryViewModel(
 
         // Generic post-battle routing: return to the encounter-triggering node's declared
         // next node. A game may instead define victory nodes purely via the node graph.
-        val defaultTarget = StoryScript.ALL_NODES[lastNode.nextNodeId ?: lastNode.id]
+        val defaultTarget = StoryScript.ALL_NODES[lastNode.nextNodeIdFor(_state.value.narrativeFlags) ?: lastNode.id]
         val targetNode = defaultTarget ?: lastNode
 
         _state.value = _state.value.copy(
@@ -1530,7 +1534,7 @@ class StoryViewModel(
             dynamicMetrics = updatedMetrics
         )
 
-        val nextNodeId = lastNode.nextNodeId
+        val nextNodeId = lastNode.nextNodeIdFor(_state.value.narrativeFlags)
         if (!nextNodeId.isNullOrBlank()) {
             val nextNode = GameContent.nodes[nextNodeId]
             if (nextNode != null) {

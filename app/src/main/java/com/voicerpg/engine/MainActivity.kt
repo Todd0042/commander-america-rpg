@@ -104,7 +104,8 @@ class MainActivity : ComponentActivity() {
         combatViewModel = CombatViewModel(
             speechManager = speechManager,
             combatNarrator = combatNarrator,
-            musicManager = musicManager
+            musicManager = musicManager,
+            sfxManager = com.voicerpg.engine.audio.SfxManager(applicationContext)
         )
         storyViewModel = StoryViewModel(
             speechManager = speechManager,
@@ -624,7 +625,7 @@ class MainActivity : ComponentActivity() {
                         } else if (storyState.gameScreen == GameScreen.TUTORIAL) {
                             "Chronicle Guide"
                         } else {
-                            "Echoes of the Logos"
+                            com.voicerpg.engine.content.GameContent.manifest.gameTitle
                         }
                     }
 

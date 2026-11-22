@@ -17,14 +17,26 @@ This repository is the **standalone, reusable engine** for voice-commanded JRPGs
 - Bundled art/music referenced by those JSON files live under `app/src/main/assets/{portraits,story,audio,sprites}`.
 - New game content = **JSON + assets only**. If a change requires touching `app/src/main`, it must be a genuinely generic engine improvement, not content.
 
-## 2. Tests Are Content-Agnostic Guarantees
+## 2. Tests: Contract Tests and Mechanics Tests
 
-The unit suite (`./gradlew testDebugUnitTest`) must stay **green with any drop-in content**. Two test flavors are required:
+The unit suite (`./gradlew testDebugUnitTest`) runs in the engine **and in every game**, on that game's
+content. It must stay green for all four games. Two kinds of test:
 
-1. **Schema/invariant tests** that iterate `GameContent` and assert engine-contract invariants (every node link resolves, no dead-ends except `game_completed`, every choice has a `voiceKeyword`, every battle trigger resolves to an encounter, flag names are non-blank, hub `requiredFlags` resolve, scene entries resolve, full reachability).
-2. **Engine-mechanics tests** that exercise behavior on whatever the template data is (resonance calibration, tutorial flow, combat economy, voice resolution, save/persistence).
+1. **Contract tests** run on the content that's loaded (the game's own `app/src/main/assets/game`). They
+   assert engine-contract invariants that every game must meet: every node link resolves, no dead ends
+   except `game_completed`, every choice has a `voiceKeyword`, every battle trigger resolves, scenes and
+   hub flags resolve, full reachability (incidents count as entry points), assets referenced by JSON
+   exist, chant calibration of the game's spells. **Never assert specific content in a contract test**:
+   iterate over whatever is loaded.
+2. **Mechanics tests** check engine behaviour on known data (a named encounter, hero, spell, node). They
+   use the frozen template fixture, `app/src/test/fixtures/template-pack/game`, through
+   `@get:Rule val templateFixture = TemplateFixture()` (see `testing/TemplateFixture.kt`), so they behave
+   the same in every game. Never point a mechanics test at the game's content, and never edit the
+   fixture to suit one game.
 
-Never write a test that asserts a specific story/person/place. The template story ("Proving Grounds", "Echo Hall", the Guardian) is a **fixture**, and only tests the state machine's mechanics, not the fiction.
+Before committing an engine change, also run **`./scripts/test_content_packs.sh`**: it runs the whole
+suite against each game's content (engine working tree + the game's assets, in a throwaway copy). A
+failure there means the change breaks a game, or a test assumes template data.
 
 ## 3. Story Graph Conventions (engine contract)
 
@@ -62,13 +74,25 @@ Driving `StoryViewModel`/`TutorialBattleViewModel`/`CombatViewModel` in tests th
 
 ---
 
-## 9. Multi-Repo Upstream-First & Distribution Protocol
+## 9. One Engine, Every Game (sync protocol)
 
-- **Engine vs. Game Boundary**: The shared codebase (`com.voicerpg.engine.*`) and shared multilingual catalogs live here in `voice-rpg-engine`.
-- **Forks Must Upstream**: If working inside a game fork (`echoes-of-logos`, `wallys-world`, `commander-america-rpg`), all engine improvements must be committed upstream to `voice-rpg-engine` (or pulled via `./scripts/sync_engine_to_games.sh --pull-from <game_repo> --verify`). Never keep divergent engine code in a game repo.
-- **Engine Pushes Downstream**: Whenever this engine repository changes, run:
-  ```bash
-  ./scripts/sync_engine_to_games.sh --verify
-  ```
-  All derived games must cleanly accept the update and pass their unit test suites with zero regression.
-- **Opt-In Features & Compatibility**: Downstream games are **never required to utilize every engine feature** (e.g. selfie generation, parallel story tracks, mini-games). Engine capabilities must provide sensible defaults and remain backwards-compatible so any game can pull updates cleanly without breaking existing logic or adopting unwanted features.
+Every game (`echoes-of-logos`, `wallys-world`, `commander-america-rpg`, `superstore-saga`) runs the
+**identical** engine. The engine owns these paths in each game (`ENGINE_OWNED_PATHS` in
+`scripts/sync_engine_to_games.sh`): `app/src/main/java/com/voicerpg/engine/**` (MainActivity included),
+`assets/game/commands/**`, `assets/game/localization/**`, `app/src/test/java/com/voicerpg/engine/**` and
+`app/src/test/fixtures/template-pack/**`. In a game they are read-only.
+
+- **Engine changes happen here, never in a game.** Keep them content-neutral: a game needs different
+  behaviour → a JSON field with a default that leaves the other games unchanged (opt-in, §3 of the
+  sync protocol).
+- **Workflow:** change → `./gradlew testDebugUnitTest` → `./scripts/test_content_packs.sh` → commit →
+  `./scripts/sync_engine_to_games.sh --verify` → commit the sync in each game ("Sync engine <hash>").
+- **Push mirrors exactly** (checksums, stray files removed) and records `.engine-sync/ENGINE_VERSION` and
+  `MANIFEST.sha256` in the game. It refuses an engine with uncommitted changes, a game branch with no
+  engine (not migrated), uncommitted engine edits in the game, and files in engine paths the engine
+  doesn't have (game tests go in `app/src/test/java/com/voicerpg/game/`).
+- **Guards in each game:** `.engine-sync/guard.sh` in CI (`--ci`) and as a pre-commit hook (`--staged`)
+  reject engine files that don't match the recorded engine version, and hand-edited manifests.
+- **Found an engine change in a game?** Review it with `--diff <game>`; bring over only what belongs
+  upstream with `--pull-from <game> <path>...`; make it content-neutral; then follow the workflow.
+- **Audit:** `./scripts/sync_engine_to_games.sh --check` must report every game as in sync.
