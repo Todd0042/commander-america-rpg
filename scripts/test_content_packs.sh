@@ -24,7 +24,8 @@
 set -euo pipefail
 
 ENGINE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-GITHUB_ROOT="$(cd "${ENGINE_ROOT}/.." && pwd)"
+# Games are expected next to the engine; VB_GAMES_ROOT points elsewhere (e.g. a folder of worktrees).
+GITHUB_ROOT="${VB_GAMES_ROOT:-$(cd "${ENGINE_ROOT}/.." && pwd)}"
 WORK_ROOT="${TMPDIR:-/tmp}/vb-content-packs"
 GAMES=("$@")
 [ ${#GAMES[@]} -eq 0 ] && GAMES=("echoes-of-logos" "wallys-world" "commander-america-rpg" "superstore-saga")
@@ -39,7 +40,7 @@ failed=0
 
 for game in "${GAMES[@]}"; do
     game_dir="${GITHUB_ROOT}/${game}"
-    if [ ! -d "$game_dir/.git" ]; then
+    if [ ! -e "$game_dir/.git" ]; then
         summary+=("SKIP  ${game}: no repository at ${game_dir}")
         continue
     fi

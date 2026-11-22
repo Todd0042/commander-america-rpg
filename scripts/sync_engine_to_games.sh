@@ -33,7 +33,8 @@ export LC_ALL=C   # one sort order for sort/comm
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ENGINE_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-GITHUB_ROOT="$(cd "${ENGINE_ROOT}/.." && pwd)"
+# Games are expected next to the engine; VB_GAMES_ROOT points elsewhere (e.g. a folder of worktrees).
+GITHUB_ROOT="${VB_GAMES_ROOT:-$(cd "${ENGINE_ROOT}/.." && pwd)}"
 ALL_GAMES=("echoes-of-logos" "wallys-world" "commander-america-rpg" "superstore-saga")
 
 # Everything the engine owns inside a game. Directories end with '/'.
@@ -184,7 +185,7 @@ for game in "${TARGETS[@]}"; do
     dir="${GITHUB_ROOT}/${game}"
     echo ""
     echo "[*] ${game}"
-    if [ ! -d "$dir/.git" ]; then echo "    [-] not found at ${dir}; skipped"; failures=1; continue; fi
+    if [ ! -e "$dir/.git" ]; then echo "    [-] not found at ${dir}; skipped"; failures=1; continue; fi
     branch="$(git -C "$dir" branch --show-current)"
     if [ ! -d "$dir/$ENGINE_JAVA" ]; then
         echo "    [-] NOT MIGRATED: branch '${branch}' has no ${ENGINE_JAVA}. Check out the engine-based branch first."
