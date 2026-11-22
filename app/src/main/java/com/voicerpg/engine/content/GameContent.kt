@@ -83,7 +83,11 @@ data class ManifestDto(
     val creationStatusSubtitle: String? = null,
     val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef>? = null,
     /** "custom" (name, class, portrait) or "preset_select" (pick one of the campaign tracks' heroes). */
-    val creationMode: String? = null
+    val creationMode: String? = null,
+    /** The game's default music (asset paths); unset = the engine's audio/music/bgm_{title,exploration,combat}.ogg. */
+    val titleMusic: String? = null,
+    val explorationMusic: String? = null,
+    val combatMusic: String? = null
 )
 
 data class ResonanceProfileDto(
@@ -681,7 +685,10 @@ data class GameManifest(
     val creationAestheticsLabel: String? = null,
     val creationStatusSubtitle: String? = null,
     val campaignTracks: List<com.voicerpg.engine.model.CampaignTrackDef> = emptyList(),
-    val creationMode: String = "custom"
+    val creationMode: String = "custom",
+    val titleMusic: String? = null,
+    val explorationMusic: String? = null,
+    val combatMusic: String? = null
 ) {
     /** Character creation is a pick between the campaign tracks' preset heroes. */
     val isPresetSelect: Boolean get() = creationMode.equals("preset_select", ignoreCase = true) && campaignTracks.any { it.hero != null }
@@ -1262,7 +1269,10 @@ class GameContentLoader(private val source: ContentSource) {
                 creationAestheticsLabel = manifestDto.creationAestheticsLabel,
                 creationStatusSubtitle = manifestDto.creationStatusSubtitle,
                 campaignTracks = manifestDto.campaignTracks ?: emptyList(),
-                creationMode = manifestDto.creationMode?.ifBlank { null } ?: "custom"
+                creationMode = manifestDto.creationMode?.ifBlank { null } ?: "custom",
+                titleMusic = manifestDto.titleMusic?.ifBlank { null },
+                explorationMusic = manifestDto.explorationMusic?.ifBlank { null },
+                combatMusic = manifestDto.combatMusic?.ifBlank { null }
             ),
             characters = characters,
             classes = classes,
