@@ -107,7 +107,23 @@ device check of the affected game(s).
 - **Rules**: AGENTS.md §2/§9 (GEMINI.md is now an identical copy) and the `.agy` protocol rewritten.
 - `MainActivity` stays engine-owned (simpler than a per-game shell; it's identical in three games).
 
-### Step 2: Remove the content leaks from the engine (§1.2)
+### Status (2026-11-22)
+| Game | Branch `engine-convergence` | Engine tests on its content |
+|---|---|---|
+| echoes-of-logos | synced (based on `feature/engine-migration`); `presetChants` in its spells.json | ✅ all pass |
+| wallys-world | synced; game tests moved to `com.voicerpg.game`; defeat labels + 2 thesaurus words in its JSON | ✅ 259 pass |
+| superstore-saga | synced; locker room entry fixed; defeat labels; game test moved | ❌ 1: 227 unlinked story nodes (decision needed) |
+| commander-america-rpg | engine-removed content saved in `docs/engine-migration/` | step 5 not started |
+
+Steps 1, 2, 2b (except the orphaned nodes) and 3 are done; step 4 needs the device check and merge.
+
+### Step 2: Remove the content leaks from the engine (§1.2) ✅
+Done as planned, plus: Commander's chants (24 spells), voice ids (16) and vocabulary (71 words) were
+also in the engine, and are saved in commander-america-rpg `docs/engine-migration/` for step 5b; the
+engine's built-in thesaurus held Commander and Wally's words (moved to those games); the template enemy
+sprites drew magenta in their hurt frames (fixed). "Logos" wording stays: it's engine vocabulary used
+by every game's resonance UI, not one game's content.
+
 - Add the replacement JSON fields with defaults, switch the engine to read them, and delete the
   hard-coded content.
 - In the same change, add the moved data to the games that used it:
@@ -123,8 +139,9 @@ device check of the affected game(s).
 ### Step 2b: Superstore content fixes (found in step 1)
 - `scene_locker_room.initialNodeId` is `node_locker_001`, which doesn't exist (the chapter menu would
   dead-end there). The scene is entered through role-specific nodes; point it at a real entry.
-- Orphaned story: `node_act1_teamwork_entry` and the `node_shift2_*` / `node_shift3_*` chains are
-  never linked from anywhere. **Decision needed:** wire them in, or remove them.
+- Orphaned story: 227 nodes are never linked from anywhere: `node_act1_teamwork_entry`, 14 hubs, and
+  role chains (cashier, stocker, unloader, specialist) for Shifts 2–54. Nothing in the engine routes to
+  them either. **Decision needed:** wire them in, or remove them.
 - Move `HubReturnTeamworkIncidentTest.kt` (a Superstore test inside the engine's test folder) to
   `app/src/test/java/com/voicerpg/game/`.
 
@@ -216,4 +233,4 @@ Steps 3, 4 and 5a can run in parallel after step 2.
    engine's look as-is?
 3. **Commander's "Death of Voice"**: rebuild it as a proper boss phase within I-1 (recommended), or
    keep the old 3× behaviour as an explicit, documented exception?
-4. **Superstore's orphaned Shift 2/Shift 3 storylines**: wire them into the story, or remove them?
+4. **Superstore's orphaned storylines** (227 nodes, Shifts 2–54 per role): wire them in, or remove them?
