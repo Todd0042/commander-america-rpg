@@ -36,7 +36,7 @@ object StoryScript {
         id = "scene_act1_ch3_taco_bus",
         name = "Trump Tower Grill & The 2005 Access Bus Lot",
         chapterTitle = "Act I - Ch 3: Taco Bowls & The Tic-Tac Bus That Never Dies (2016)",
-        backgroundAsset = "story/template/taco_bowl_bus_template.jpg",
+        backgroundAsset = "story/trump_tower_taco_bowl.jpg",
         initialNodeId = "act1_ch3_intro",
         ambientDescription = "A fiesta taco bowl sits atop a 1990s newspaper photo of Marla Maples while an Access Hollywood tour bus idles outside with a crate of Tic-Tacs."
     )
@@ -55,7 +55,7 @@ object StoryScript {
         id = "scene_act1_tb_ch1_server",
         name = "Chappaqua Basement Server Room",
         chapterTitle = "Act I - Ch 1: With A Cloth & 1978 Cattle Futures (2015)",
-        backgroundAsset = "story/template/chappaqua_server_template.jpg",
+        backgroundAsset = "story/chappaqua_server_room.jpg",
         initialNodeId = "act1_tb_ch1_intro",
         ambientDescription = "An off-the-books email server blinks in a Chappaqua basement beside 1978 Refco live-cattle futures receipts and a microfiber cloth."
     )
@@ -64,7 +64,7 @@ object StoryScript {
         id = "scene_act1_tb_ch2_ferns",
         name = "170th St. Bronx Subway Turnstile & Between Two Ferns Set",
         chapterTitle = "Act I - Ch 2: Five MetroCard Swipes & Two Potted Ferns (2016)",
-        backgroundAsset = "story/template/bronx_turnstile_template.jpg",
+        backgroundAsset = "story/bronx_subway_turnstile.jpg",
         initialNodeId = "act1_tb_ch2_intro",
         ambientDescription = "A stubborn MTA subway turnstile flashes 'SWIPE AGAIN AT THIS TURNSTILE' next to two dusty plastic studio ferns."
     )
@@ -73,7 +73,7 @@ object StoryScript {
         id = "scene_act1_tb_ch3_breakfast",
         name = "The Breakfast Club Radio Booth & Virginia Pokémon Rally",
         chapterTitle = "Act I - Ch 3: Purse Hot Sauce, Pokémon Go & No Basement (2016)",
-        backgroundAsset = "story/template/breakfast_club_template.jpg",
+        backgroundAsset = "story/breakfast_club_studio.jpg",
         initialNodeId = "act1_tb_ch3_intro",
         ambientDescription = "A bottle of Ninja Squirrel hot sauce sits beside a smartphone running Pokémon Go and blueprints of a slab-foundation pizzeria."
     )
@@ -82,7 +82,7 @@ object StoryScript {
         id = "scene_act1_tb_ch4_javits",
         name = "Javits Center Glass Ceiling & Final Debate Stage",
         chapterTitle = "Act I - Ch 4: The Blue-Curtain Director & Election Night (Nov 2016)",
-        backgroundAsset = "story/template/javits_glass_ceiling_template.jpg",
+        backgroundAsset = "story/javits_glass_ceiling.jpg",
         initialNodeId = "act1_tb_ch4_intro",
         ambientDescription = "Beneath the literal glass ceiling of the Javits Center, a 6-foot-8 FBI Director tries to blend into a blue curtain."
     )
@@ -117,7 +117,7 @@ object StoryScript {
         id = "scene_act2_ch3_sharpie",
         name = "San Juan Supply Gym & Oval Sharpie Easel",
         chapterTitle = "Act II - Ch 3: Paper-Towel Free Throws, Hurricane Sharpie & 15 Flushes (2017–2019)",
-        backgroundAsset = "story/template/sharpie_puerto_rico_template.jpg",
+        backgroundAsset = "story/sharpie_hurricane.jpg",
         initialNodeId = "act2_ch3_sharpie_intro",
         ambientDescription = "Rolls of Bounty paper towels arc through the air beside an official NOAA hurricane poster extended into Alabama with a black Sharpie.",
         musicAsset = "audio/music/bgm_oval.ogg"
@@ -158,7 +158,7 @@ object StoryScript {
         id = "scene_act2_tb_ch1_bushes",
         name = "Speaker's Rostrum & White House Shrubbery",
         chapterTitle = "Act II - Ch 1: Sideways Seal Claps vs. Neon Salsa Ruffles (2017–2019)",
-        backgroundAsset = "story/template/spicer_bushes_template.jpg",
+        backgroundAsset = "story/spicer_bushes.jpg",
         initialNodeId = "act2_tb_ch1_intro",
         ambientDescription = "Speaker Nancy Palooza's gavel gleams while Spicy Sean rustles inside the White House bushes wearing a neon-green ruffled salsa shirt.",
         musicAsset = "audio/music/bgm_intrigue.ogg"
@@ -178,7 +178,7 @@ object StoryScript {
         id = "scene_act2_tb_ch3_subzero",
         name = "San Francisco Sub-Zero Kitchen & eSalon",
         chapterTitle = "Act II - Ch 3: Twin \$24,000 Freezers & The Salon 'Setup' (April–Aug 2020)",
-        backgroundAsset = "story/template/subzero_kitchen_template.jpg",
+        backgroundAsset = "story/subzero_kitchen.jpg",
         initialNodeId = "act2_tb_ch3_intro",
         ambientDescription = "Twin \$24,000 stainless-steel Sub-Zero freezers hum with \$12 pints of Jeni's Splendid Ice Cream next to a neighborhood hair salon.",
         musicAsset = "audio/music/bgm_oval.ogg"
@@ -198,7 +198,7 @@ object StoryScript {
         id = "scene_act2_tb_ch5_four_seasons",
         name = "Four Seasons Total Landscaping — Philadelphia",
         chapterTitle = "Act II - Ch 5: Between a Crematorium and an Adult Bookshop (Nov 2020 Finale)",
-        backgroundAsset = "story/template/four_seasons_landscaping_template.jpg",
+        backgroundAsset = "story/four_seasons_landscaping.jpg",
         initialNodeId = "act2_tb_ch5_intro",
         ambientDescription = "A garage door plastered with campaign signs stands wedged between the Delaware Valley Crematorium and Fantasy Island Adult Books.",
         musicAsset = "audio/music/bgm_title.ogg"
@@ -241,7 +241,7 @@ object StoryScript {
         id = "scene_act3_ch4_summit",
         name = "Fulton County Booking Desk & Trump Force One",
         chapterTitle = "Act III - Ch 4: The '215-Pound' Mugshot & \$7.1M 'Never Surrender' Merch (Aug 2023)",
-        backgroundAsset = "story/template/fulton_mugshot_template.jpg",
+        backgroundAsset = "story/fulton_county_booking.jpg",
         initialNodeId = "act3_ch4_intro",
         ambientDescription = "Booking cameras flash as a 6-foot-3, 215-pound mugshot is immediately printed onto 'NEVER SURRENDER!' T-shirts and coffee mugs.",
         musicAsset = "audio/music/bgm_oval.ogg"
@@ -251,7 +251,7 @@ object StoryScript {
         id = "scene_act3_ch5_baskin",
         name = "Portland Baskin-Robbins & Teleprompter Stage",
         chapterTitle = "Act III - Ch 5: 'Economy Strong As Hell' & 'Repeat the Line' (2022–2023 Finale)",
-        backgroundAsset = "story/template/baskin_robbins_portland_template.jpg",
+        backgroundAsset = "story/baskin_robbins_portland.jpg",
         initialNodeId = "act3_ch5_baskin_intro",
         ambientDescription = "Joe Naptime licks a double-scoop chocolate chip waffle cone at Baskin-Robbins beside a teleprompter flashing 'End of quote. Repeat the line.'",
         musicAsset = "audio/music/bgm_inauguration.ogg"
@@ -271,7 +271,7 @@ object StoryScript {
         id = "scene_act3_tb_ch1_pool",
         name = "Wilmington Swimming Pool & Rehoboth Bike Trail",
         chapterTitle = "Act III - Ch 1: Corn Pop's Rusty Razor, Blonde Leg Hair & Toe Cages (2019–2022)",
-        backgroundAsset = "story/template/rehoboth_bike_pool_template.jpg",
+        backgroundAsset = "story/rehoboth_bike_trail.jpg",
         initialNodeId = "act3_tb_ch1_intro",
         ambientDescription = "A 6-foot poolside chain and a rainwater barrel of rusty razors sit beside a Rehoboth Beach bicycle trail.",
         musicAsset = "audio/music/bgm_title.ogg"
@@ -291,7 +291,7 @@ object StoryScript {
         id = "scene_act3_tb_ch3_baskin",
         name = "Portland Baskin-Robbins Ice-Cream Counter",
         chapterTitle = "Act III - Ch 3: 'Economy Strong As Hell' vs. Foghorn Kennedy (2022–2023)",
-        backgroundAsset = "story/template/baskin_robbins_portland_template.jpg",
+        backgroundAsset = "story/baskin_robbins_portland.jpg",
         initialNodeId = "act3_tb_ch3_intro",
         ambientDescription = "Thirty-one flavors of ice cream gleam under neon lights as Joe Naptime orders a double-scoop chocolate chip waffle cone.",
         musicAsset = "audio/music/bgm_oval.ogg"
@@ -311,7 +311,7 @@ object StoryScript {
         id = "scene_act3_tb_ch5_mugshot",
         name = "Mar-a-Lago Chandelier Bathroom & Fulton Booking Desk",
         chapterTitle = "Act III - Ch 5: The '215-Lb' Mugshot & Passing the Coconut to Kamala (2023–2024 Finale)",
-        backgroundAsset = "story/template/fulton_mugshot_template.jpg",
+        backgroundAsset = "story/fulton_county_booking.jpg",
         initialNodeId = "act3_tb_ch5_intro",
         ambientDescription = "A gilded bathroom chandelier illuminates stacks of bankers boxes beside a 'NEVER SURRENDER!' mugshot T-shirt press.",
         musicAsset = "audio/music/bgm_inauguration.ogg"
@@ -324,7 +324,7 @@ object StoryScript {
         id = "scene_act4_ch1_fisa",
         name = "Holt's Sweet Shoppe — Valdosta, Georgia",
         chapterTitle = "Act IV - Ch 1: Enter JD Pants & 'Whatever Makes Sense' Donuts (Aug 2024)",
-        backgroundAsset = "story/template/holt_donut_shop_template.jpg",
+        backgroundAsset = "story/holt_donut_shop.jpg",
         initialNodeId = "act4_ch1_intro",
         ambientDescription = "Fluorescent bakery lights buzz as JD Pants asks 'How long have you worked here? Okay, good' over a tray of sprinkle donuts.",
         musicAsset = "audio/music/bgm_title.ogg"
@@ -354,7 +354,7 @@ object StoryScript {
         id = "scene_act4_ch4_hearing",
         name = "Feasterville McDonald's Fry Station & Green Bay Garbage Truck",
         chapterTitle = "Act IV - Ch 4: The McDonald's Fry Apron & Orange Garbage Vest (Oct 2024)",
-        backgroundAsset = "story/template/mcdonalds_fry_apron_template.jpg",
+        backgroundAsset = "story/mcdonalds_fry_station.jpg",
         initialNodeId = "act4_ch4_intro",
         ambientDescription = "Golden French-fry baskets sizzle beside a white Mack garbage truck and a high-visibility neon-orange safety vest.",
         musicAsset = "audio/music/bgm_oval.ogg"
@@ -394,7 +394,7 @@ object StoryScript {
         id = "scene_act4_tb_ch2_donuts",
         name = "Valdosta Donut Counter & South Philly Cheesesteak Window",
         chapterTitle = "Act IV - Ch 2: 'I'm Speaking!' vs. JD Pants's Donut Interrogation (Aug–Oct 2024)",
-        backgroundAsset = "story/template/holt_donut_shop_template.jpg",
+        backgroundAsset = "story/holt_donut_shop.jpg",
         initialNodeId = "act4_tb_ch2_intro",
         ambientDescription = "A box of 'some sprinkle stuff, whatever makes sense' glazed donuts sits next to a wedge of outlawed Philly Swiss cheese.",
         musicAsset = "audio/music/bgm_oval.ogg"
@@ -424,7 +424,7 @@ object StoryScript {
         id = "scene_act4_tb_ch5_mcdonalds",
         name = "Closed-Set Drive-Thru Window & Garbage Truck Tarmac",
         chapterTitle = "Act IV - Ch 5: The Fry Apron, The Garbage Vest & Passing the Chapati (Nov 2024 Finale)",
-        backgroundAsset = "story/template/mcdonalds_fry_apron_template.jpg",
+        backgroundAsset = "story/mcdonalds_fry_station.jpg",
         initialNodeId = "act4_tb_ch5_intro",
         ambientDescription = "A closed-set McDonald's drive-thru window gleams beside a neon-orange garbage truck vest and a Queens chapati food truck.",
         musicAsset = "audio/music/bgm_inauguration.ogg"
@@ -467,7 +467,7 @@ object StoryScript {
         id = "scene_act5_ch4_closets",
         name = "Astoria Chapati Food Truck & Municipal Grocery",
         chapterTitle = "Act V - Ch 4: Enter 'Mr. Cardamom,' Nani's Apron & City-Owned Groceries (2025–2026)",
-        backgroundAsset = "story/template/chapati_food_truck_template.jpg",
+        backgroundAsset = "story/chapati_food_truck.jpg",
         initialNodeId = "act5_ch4_intro",
         ambientDescription = "Zohran Cardamom ('Mr. Cardamom') flips chapatis in an apron beside a 'FREEZE THE RENT & FREE Q70 BUS' sign and five city-owned grocery blueprints.",
         musicAsset = "audio/music/bgm_intrigue.ogg"
@@ -498,7 +498,7 @@ object StoryScript {
         id = "scene_act5_tb_ch1_chapati",
         name = "Astoria Chapati Truck & Free Q70 Bus Stop",
         chapterTitle = "Act V - Ch 1: 'Mr. Cardamom,' Nani's Apron & 5 City Grocery Stores (2025)",
-        backgroundAsset = "story/template/chapati_food_truck_template.jpg",
+        backgroundAsset = "story/chapati_food_truck.jpg",
         initialNodeId = "act5_tb_ch1_intro",
         ambientDescription = "Sizzling chapatis, a bespoke thrifted suit, Madhur Jaffrey's apron, and an MTA Fare-Free Bus Pilot report.",
         musicAsset = "audio/music/bgm_title.ogg"
