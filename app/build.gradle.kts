@@ -87,9 +87,8 @@ dependencies {
     implementation("com.google.mlkit:face-detection:16.1.7")
     implementation("com.google.mlkit:translate:17.0.3")
 
-    // Optional on-device TFLite stylization
-    implementation("org.tensorflow:tensorflow-lite:2.16.1")
-    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    // Optional on-device LiteRT (TFLite) stylization (16 KB page-size aligned)
+    implementation("com.google.ai.edge.litert:litert:1.4.2")
 
     // Testing
     testImplementation("junit:junit:4.13.2")
