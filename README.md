@@ -9,7 +9,7 @@
 # 🇺🇸 Commander America RPG: The 2024 Political Satire Voice JRPG
 
 [![Version](https://img.shields.io/badge/Version-1.6.0-ff2a85.svg)](https://github.com/Todd0042/commander-america-rpg/releases)
-[![License: PolyForm Noncommercial](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-00f0ff.svg)](LICENSE)
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-00f0ff.svg)](LICENSE)
 [![Platform: Android 8.0+](https://img.shields.io/badge/Platform-Android%208.0%2B%20(API%2026%2B)-3DDC84.svg?logo=android&logoColor=white)](https://developer.android.com)
 [![16 KB Page Size](https://img.shields.io/badge/16%20KB-Compatible-success.svg)](https://developer.android.com/16kb-page-size)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF.svg?logo=kotlin&logoColor=white)](https://kotlinlang.org)
@@ -122,7 +122,7 @@ Put your phone in your pocket and play hands-free while walking or exercising! P
 
 ## 1. Clean Architecture & Framework Integration
 
-Commander America RPG is built on the open-source **[VoiceRPG Engine](https://github.com/Todd0042/voice-rpg-engine)** framework, strictly separating reusable game engine infrastructure from political campaign assets:
+Commander America RPG is built on the source-available **[VoiceRPG Engine](https://github.com/Todd0042/voice-rpg-engine)** framework, strictly separating reusable game engine infrastructure from political campaign assets:
 
 ```
 +-----------------------------------------------------------------------+
@@ -306,7 +306,7 @@ Test coverage includes:
 ---
 
 <p align="center">
-  If you enjoy playing Commander America RPG, consider supporting open-source development:<br/><br/>
+  If you enjoy playing Commander America RPG, consider supporting its development:<br/><br/>
   <a href="https://ko-fi.com/todd0042" target="_blank">
     <img src="https://img.shields.io/badge/☕_Support_Commander_America_on_Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support on Ko-fi">
   </a>
