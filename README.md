@@ -302,6 +302,7 @@ Test coverage includes:
 
 - **First Amendment Parody & Satire**: Commander America RPG is a work of political parody and satirical commentary protected under Fair Use. All character caricatures and dialogue are satirical exaggerations.
 - **PolyForm Noncommercial 1.0.0**: Free for personal, educational, and hobbyist enjoyment. For commercial inquiries, reach out to **[Todd.0042.git@gmail.com](mailto:Todd.0042.git@gmail.com)**.
+- **Media License**: the images, artwork and audio made for this project (paths listed in [LICENSE-MEDIA](LICENSE-MEDIA)) are © Todd0042 under **[CC BY-NC 4.0](LICENSE-MEDIA)**: free to share and adapt with credit for non-commercial purposes; commercial use requires permission.
 
 ---
 
