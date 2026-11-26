@@ -6,7 +6,7 @@ Every fighter, enemy and boss is mapped to a sprite key below. A sheet named aft
 
 A political parody JRPG: public figures as a JRPG party, their famous gaffes and props as spells, and the bosses mostly earlier or rival versions of the party. Draw everyone as affectionate 16-bit caricatures that match the portraits in `app/src/main/assets/portraits/` (big recognisable hair, signature suits and props); the satire is in the props and poses, never in mocking anyone's body, ethnicity or religion. The regular enemies are mostly animated objects and media types (potted ferns, freezers, teleprompters, a riding mower) and should be as funny as their names.
 
-**To draw: 53 sheets** (11 party fighters, 23 enemy families, 19 bosses). Everything else is a recolour of one of those.
+**To draw: 54 sheets** (11 party fighters, 24 enemy families, 19 bosses). Everything else is a recolour of one of those.
 
 ## Style (every sprite)
 
@@ -164,7 +164,15 @@ From portraits/mamdani.jpg: tousled dark hair, short beard, a red hoodie under a
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `zohran_cardamom_boss`: Zohran Cardamom ('Mr. Cardamom') (Occultist, flesh): 'Mr. Cardamom': a food-truck spatula, spices swirling
 
-## Enemy families (23, 64 px)
+## Enemy families (24, 64 px)
+
+### `practice_dummy`: Rally Cut-Out
+
+A life-size cardboard cut-out of a generic rally heckler on a wooden A-frame stand (no real person): a painted-on scowl, a megaphone, a blank protest sign. Used by the voice tutorial.
+
+*Moves*: attack: wobbles forward on its stand; hurt: flaps backward; death: folds flat and topples.
+
+Draws: Rally Cut-Out (Cardboard Heckler for Voice Drills, construct/physical)
 
 ### `newsroom`: Cable News Producer
 
@@ -550,6 +558,5 @@ Element: flesh.
 
 ## Notes for the game
 
-- The tutorial's practice dummy: this game's enemies.json has no practice_dummy, so the tutorial shows the engine's fallback sprite. Add a practice_dummy enemy (and a 64 px training-dummy sheet, e.g. a cardboard cut-out of a podium heckler) at the sprite rollout.
 - Boss versions of party members are recolours of the party sheet by default; draw a sheet named after the boss id where the costume changes (fry apron, golden podium, mugshot, wizard hat).
 - Enemies have no family/selfElement in the data; the brief can't show elements for this game.

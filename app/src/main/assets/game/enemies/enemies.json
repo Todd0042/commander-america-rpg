@@ -1354,6 +1354,22 @@
       "isBoss": false,
       "spriteId": "",
       "spriteTint": "#42A5F5"
+    },
+    {
+      "id": "practice_dummy",
+      "name": "Rally Cut-Out",
+      "subtitle": "Cardboard Heckler for Voice Drills",
+      "family": "CONSTRUCT",
+      "selfElement": "PHYSICAL",
+      "hp": 2000,
+      "attack": 0,
+      "defense": 0,
+      "speed": 30,
+      "xpReward": 0,
+      "movesetId": "",
+      "isBoss": false,
+      "spriteId": "practice_dummy",
+      "spriteTint": "#D7CCC8"
     }
   ]
 }
