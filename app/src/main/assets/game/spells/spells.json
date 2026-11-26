@@ -476,6 +476,7 @@
     {
       "id": "nancy_pass_to_find_out",
       "name": "Pass the Bill to Find Out",
+      "calloutName": "Pass the Bill",
       "school": "SHADOW",
       "basePower": 76,
       "mpCost": 15,
@@ -772,6 +773,7 @@
     {
       "id": "biden_baskin_robbins_lick",
       "name": "\"Economy Strong As Hell\" Baskin-Robbins Lick",
+      "calloutName": "Baskin-Robbins Lick",
       "school": "CRYOMANCY",
       "basePower": 120,
       "mpCost": 16,
@@ -986,6 +988,7 @@
     {
       "id": "kamala_passage_of_time",
       "name": "Significance of the Passage of Time (4x)",
+      "calloutName": "Passage of Time",
       "school": "SHADOW",
       "basePower": 84,
       "mpCost": 18,
@@ -1089,6 +1092,7 @@
     {
       "id": "zohran_freeze_the_rent",
       "name": "Freeze the Rent & Free the Q70 Bus",
+      "calloutName": "Rent Freeze",
       "school": "CRYOMANCY",
       "basePower": 88,
       "mpCost": 18,
