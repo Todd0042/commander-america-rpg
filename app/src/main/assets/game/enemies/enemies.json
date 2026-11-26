@@ -13,7 +13,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "newsroom",
       "spriteTint": "#EF5350"
     },
     {
@@ -29,7 +29,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "suit",
       "spriteTint": "#78909C"
     },
     {
@@ -45,7 +45,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "dynasty_candidate",
       "spriteTint": "#5C6BC0"
     },
     {
@@ -61,7 +61,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "pac_strategist",
       "spriteTint": "#AB47BC"
     },
     {
@@ -77,7 +77,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "consultant_checker",
       "spriteTint": "#42A5F5"
     },
     {
@@ -93,7 +93,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "barry_tan_suit",
       "spriteTint": "#D7CCC8",
       "soundBites": [
         "audio/quotes/obama/obama_dont_boo_vote.ogg"
@@ -112,7 +112,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "waiter",
       "spriteTint": "#FFD54F"
     },
     {
@@ -128,7 +128,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "hill_rod_boss",
       "spriteTint": "#64B5F6",
       "soundBites": [
         "audio/quotes/hillary/hillary_congratulated_trump.ogg"
@@ -147,7 +147,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "server_rack",
       "spriteTint": "#90A4AE"
     },
     {
@@ -163,7 +163,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "fern_intern",
       "spriteTint": "#81C784"
     },
     {
@@ -179,7 +179,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "zach_ferns_boss",
       "spriteTint": "#81C784"
     },
     {
@@ -195,7 +195,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "fern",
       "spriteTint": "#4CAF50"
     },
     {
@@ -211,7 +211,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "commander_boss_act1",
       "spriteTint": "#FFD700",
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
@@ -231,7 +231,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "billy_bus",
       "spriteTint": "#FFB74D"
     },
     {
@@ -247,7 +247,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "casting_extra",
       "spriteTint": "#B0BEC5"
     },
     {
@@ -263,7 +263,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "aerial_spin_anchor",
       "spriteTint": "#EF5350"
     },
     {
@@ -279,7 +279,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "hostile_fact_checker",
       "spriteTint": "#42A5F5"
     },
     {
@@ -295,7 +295,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "pelosi",
       "spriteTint": "#AB47BC"
     },
     {
@@ -311,7 +311,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "freezer_golem",
       "spriteTint": "#42A5F5"
     },
     {
@@ -327,7 +327,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "stylist",
       "spriteTint": "#7E57C2"
     },
     {
@@ -343,7 +343,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "noaa_meteorologist",
       "spriteTint": "#29B6F6"
     },
     {
@@ -359,7 +359,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "inspector",
       "spriteTint": "#78909C"
     },
     {
@@ -375,7 +375,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "spicy_sean_salsa",
       "spriteTint": "#76FF03",
       "soundBites": [
         "audio/quotes/spicer/spicer_period.ogg"
@@ -394,7 +394,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "the_mooch",
       "spriteTint": "#FF80AB"
     },
     {
@@ -410,7 +410,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "kash_wizard_boss",
       "spriteTint": "#AB47BC"
     },
     {
@@ -426,7 +426,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "box_golem",
       "spriteTint": "#FFCA28"
     },
     {
@@ -442,7 +442,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "rudy_ghoul_boss",
       "spriteTint": "#8D6E63"
     },
     {
@@ -458,7 +458,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "commander_sharpie",
       "spriteTint": "#FFD700",
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
@@ -478,7 +478,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "riding_mower",
       "spriteTint": "#66BB6A"
     },
     {
@@ -494,7 +494,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "af1_staircase_gust",
       "spriteTint": "#90CAF9"
     },
     {
@@ -510,7 +510,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "trek_bike",
       "spriteTint": "#80CBC4"
     },
     {
@@ -526,7 +526,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "chandelier_archivist",
       "spriteTint": "#FFD54F"
     },
     {
@@ -542,7 +542,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "corvette",
       "spriteTint": "#66BB6A"
     },
     {
@@ -558,7 +558,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "joe_naptime_baskin_boss",
       "spriteTint": "#FFF59D",
       "soundBites": [
         "audio/quotes/biden/biden_truinanashabbadepressure.ogg",
@@ -578,7 +578,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "teleprompter",
       "spriteTint": "#4DD0E1"
     },
     {
@@ -594,7 +594,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "two_scoop_golem",
       "spriteTint": "#F48FB1"
     },
     {
@@ -610,7 +610,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "corn_pop_boss",
       "spriteTint": "#FFB74D"
     },
     {
@@ -626,7 +626,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "toe_cage_pedal",
       "spriteTint": "#90A4AE"
     },
     {
@@ -642,7 +642,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "foghorn_kennedy_boss",
       "spriteTint": "#78909C"
     },
     {
@@ -658,7 +658,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "article_five_binder",
       "spriteTint": "#BA68C8"
     },
     {
@@ -674,7 +674,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "commander_mugshot_boss",
       "spriteTint": "#FFD700",
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
@@ -694,7 +694,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "bathroom_chandelier_golem",
       "spriteTint": "#FFF176"
     },
     {
@@ -710,7 +710,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "merch_press",
       "spriteTint": "#E57373"
     },
     {
@@ -726,7 +726,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "archivist_boss",
       "spriteTint": "#7E57C2"
     },
     {
@@ -742,7 +742,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "redaction_guard",
       "spriteTint": "#546E7A"
     },
     {
@@ -758,7 +758,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "donut_shop_case",
       "spriteTint": "#FFB74D"
     },
     {
@@ -774,7 +774,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "swiss_cheese_purist",
       "spriteTint": "#FFF176"
     },
     {
@@ -790,7 +790,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "word_salad_critic",
       "spriteTint": "#81C784"
     },
     {
@@ -806,7 +806,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "teleprompter_glitch",
       "spriteTint": "#4FC3F7"
     },
     {
@@ -822,7 +822,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "jd_pants_boss",
       "spriteTint": "#5C6BC0"
     },
     {
@@ -838,7 +838,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "sprinkle_stuff_box",
       "spriteTint": "#F48FB1"
     },
     {
@@ -854,7 +854,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "concepts_of_plan_boss",
       "spriteTint": "#FFD700"
     },
     {
@@ -870,7 +870,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "people_on_tv_set",
       "spriteTint": "#42A5F5"
     },
     {
@@ -886,7 +886,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "commander_fry_apron",
       "spriteTint": "#FFCA28",
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
@@ -906,7 +906,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "garbage_truck",
       "spriteTint": "#FF7043"
     },
     {
@@ -922,7 +922,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "vance_diet_dew",
       "spriteTint": "#66BB6A"
     },
     {
@@ -938,7 +938,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "shattered_cybertruck",
       "spriteTint": "#B0BEC5"
     },
     {
@@ -954,7 +954,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "sec_420_auditor",
       "spriteTint": "#42A5F5"
     },
     {
@@ -970,7 +970,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "omnibus_pork_golem",
       "spriteTint": "#AB47BC"
     },
     {
@@ -986,7 +986,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "dealbook_boycott_exec",
       "spriteTint": "#EC407A"
     },
     {
@@ -1002,7 +1002,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "mayor_swagger_boss",
       "spriteTint": "#26A69A"
     },
     {
@@ -1018,7 +1018,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "lie_flat_pod",
       "spriteTint": "#EF5350"
     },
     {
@@ -1034,7 +1034,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "zohran_cardamom_boss",
       "spriteTint": "#FF7043"
     },
     {
@@ -1050,7 +1050,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "kamala_venn_ally",
       "spriteTint": "#BA68C8",
       "soundBites": [
         "audio/quotes/kamala/kamala_ride_a_bus.ogg"
@@ -1069,7 +1069,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "joe_naptime_ally",
       "spriteTint": "#FFF59D",
       "soundBites": [
         "audio/quotes/biden/biden_truinanashabbadepressure.ogg",
@@ -1089,7 +1089,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "rent_board_lobbyist",
       "spriteTint": "#8D6E63"
     },
     {
@@ -1105,7 +1105,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "mta_turnstile_drone",
       "spriteTint": "#42A5F5"
     },
     {
@@ -1121,7 +1121,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "passcode_cracker",
       "spriteTint": "#7E57C2"
     },
     {
@@ -1137,7 +1137,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "rat_summit_inspector",
       "spriteTint": "#90A4AE"
     },
     {
@@ -1153,7 +1153,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "musk_x_starjump_boss",
       "spriteTint": "#26C6DA"
     },
     {
@@ -1169,7 +1169,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "sink_golem",
       "spriteTint": "#ECEFF1"
     },
     {
@@ -1185,7 +1185,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "vance_doge_boss",
       "spriteTint": "#5C6BC0"
     },
     {
@@ -1201,7 +1201,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "kash_doge_boss",
       "spriteTint": "#AB47BC"
     },
     {
@@ -1217,7 +1217,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "kennedy_doge_boss",
       "spriteTint": "#78909C"
     },
     {
@@ -1233,7 +1233,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "commander_finale_boss",
       "spriteTint": "#FFD700",
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
@@ -1253,7 +1253,7 @@
       "xpReward": 60,
       "movesetId": "flesh_caster",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "musk_x_finale_ally",
       "spriteTint": "#26C6DA"
     },
     {
@@ -1269,7 +1269,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "valet_button",
       "spriteTint": "#EF5350"
     },
     {
@@ -1285,7 +1285,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": true,
-      "spriteId": "",
+      "spriteId": "battery_golem",
       "spriteTint": "#26A69A"
     },
     {
@@ -1301,7 +1301,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "green_drone",
       "spriteTint": "#81C784"
     },
     {
@@ -1316,8 +1316,8 @@
       "speed": 65,
       "xpReward": 60,
       "movesetId": "flesh_caster",
-      "isBoss": false,
-      "spriteId": "",
+      "isBoss": true,
+      "spriteId": "kamala",
       "spriteTint": "#FFCA28",
       "soundBites": [
         "audio/quotes/kamala/kamala_ride_a_bus.ogg"
@@ -1336,7 +1336,7 @@
       "xpReward": 60,
       "movesetId": "flesh_sniper",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "venn_loop",
       "spriteTint": "#FFEB3B"
     },
     {
@@ -1352,7 +1352,7 @@
       "xpReward": 60,
       "movesetId": "flesh_bruiser",
       "isBoss": false,
-      "spriteId": "",
+      "spriteId": "blue_venn",
       "spriteTint": "#42A5F5"
     },
     {

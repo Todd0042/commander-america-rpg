@@ -92,7 +92,7 @@ From portraits/kamala.jpg: shoulder-length dark wavy hair, a pearl necklace, a b
 
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `kamala_venn_ally`: Kamala Coconut (3-Circle Venn) (Occultist, flesh): 3-Circle Venn: three rings orbiting
-- `kamala`: Kamala the Unburdened (Occultist, flesh): Kamala the Unburdened (a regular enemy): the rings looping endlessly, a dreamy glow
+- `kamala`: Kamala the Unburdened (Occultist, flesh): Kamala the Unburdened (the Act 6 boss): the rings looping endlessly, a dreamy glow
 
 ### `kash`: Kash Subpoena
 
