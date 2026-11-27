@@ -11,13 +11,17 @@
       "enemies": [
         {
           "templateId": "pundit_producer",
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 133,
+          "attack": 280
         },
         {
           "templateId": "lobbyist",
           "id": "lobbyist_1",
           "isTargeted": true,
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 157,
+          "attack": 315
         }
       ]
     },
@@ -33,15 +37,21 @@
         {
           "templateId": "dynasty_candidate",
           "isTargeted": true,
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 363,
+          "attack": 290
         },
         {
           "templateId": "pac_strategist",
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 243,
+          "attack": 233
         },
         {
           "templateId": "consultant_checker",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 225,
+          "attack": 262
         }
       ]
     },
@@ -57,11 +67,15 @@
         {
           "templateId": "barry_tan_suit",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 328,
+          "attack": 339
         },
         {
           "templateId": "dijon_waiter",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 171,
+          "attack": 247
         }
       ]
     },
@@ -77,15 +91,21 @@
         {
           "templateId": "hill_rod_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 426,
+          "attack": 321
         },
         {
           "templateId": "bleachbit_server",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 219,
+          "attack": 231
         },
         {
           "templateId": "fern_intern",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 179,
+          "attack": 218
         }
       ]
     },
@@ -101,12 +121,16 @@
         {
           "templateId": "zach_ferns_boss",
           "isTargeted": true,
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 461,
+          "attack": 24
         },
         {
           "templateId": "potted_fern",
           "id": "potted_fern_1",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 253,
+          "attack": 19
         }
       ]
     },
@@ -122,15 +146,21 @@
         {
           "templateId": "commander_boss_act1",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 924,
+          "attack": 19
         },
         {
           "templateId": "billy_bus_minion",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 419,
+          "attack": 14
         },
         {
           "templateId": "escalator_extra",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 390,
+          "attack": 11
         }
       ]
     },
@@ -146,11 +176,15 @@
         {
           "templateId": "aerial_spin_anchor",
           "isTargeted": true,
-          "atbGauge": 0.4
+          "atbGauge": 0.4,
+          "hp": 474,
+          "attack": 207
         },
         {
           "templateId": "hostile_fact_checker",
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 356,
+          "attack": 187
         }
       ]
     },
@@ -168,15 +202,21 @@
         {
           "templateId": "pelosi",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 489,
+          "attack": 274
         },
         {
           "templateId": "fact_checker",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 263,
+          "attack": 210
         },
         {
           "templateId": "anonymous_source",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 235,
+          "attack": 200
         }
       ]
     },
@@ -193,11 +233,15 @@
         {
           "templateId": "noaa_meteorologist",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 784,
+          "attack": 265
         },
         {
           "templateId": "plumbing_inspector",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 516,
+          "attack": 229
         }
       ]
     },
@@ -214,11 +258,15 @@
         {
           "templateId": "spicy_sean_salsa",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 2149,
+          "attack": 48
         },
         {
           "templateId": "the_mooch_boss",
-          "atbGauge": 0.4
+          "atbGauge": 0.4,
+          "hp": 1481,
+          "attack": 47
         }
       ]
     },
@@ -235,11 +283,15 @@
         {
           "templateId": "kash_wizard_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1803,
+          "attack": 48
         },
         {
           "templateId": "brave_book_golem",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 1040,
+          "attack": 38
         }
       ]
     },
@@ -256,15 +308,21 @@
         {
           "templateId": "rudy_ghoul_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1459,
+          "attack": 48
         },
         {
           "templateId": "commander_sharpie",
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 1408,
+          "attack": 51
         },
         {
           "templateId": "landscaping_mower",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 654,
+          "attack": 36
         }
       ]
     },
@@ -282,11 +340,15 @@
         {
           "templateId": "af1_staircase_gust",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1332,
+          "attack": 211
         },
         {
           "templateId": "rehoboth_toe_cage_bike",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 915,
+          "attack": 175
         }
       ]
     },
@@ -305,11 +367,15 @@
         {
           "templateId": "chandelier_archivist",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 920,
+          "attack": 293
         },
         {
           "templateId": "corvette_garage_drone",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 613,
+          "attack": 246
         }
       ]
     },
@@ -328,15 +394,21 @@
         {
           "templateId": "joe_naptime_baskin_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 958,
+          "attack": 195
         },
         {
           "templateId": "repeat_line_prompter",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 516,
+          "attack": 154
         },
         {
           "templateId": "two_scoop_golem",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 561,
+          "attack": 146
         }
       ]
     },
@@ -354,11 +426,15 @@
         {
           "templateId": "corn_pop_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 4051,
+          "attack": 67
         },
         {
           "templateId": "toe_cage_pedal",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 2553,
+          "attack": 58
         }
       ]
     },
@@ -376,11 +452,15 @@
         {
           "templateId": "foghorn_kennedy_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 3897,
+          "attack": 126
         },
         {
           "templateId": "article_five_binder",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 2322,
+          "attack": 104
         }
       ]
     },
@@ -398,15 +478,21 @@
         {
           "templateId": "commander_mugshot_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 2463,
+          "attack": 79
         },
         {
           "templateId": "bathroom_chandelier_golem",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 1414,
+          "attack": 63
         },
         {
           "templateId": "never_surrender_merch",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 1173,
+          "attack": 57
         }
       ]
     },
@@ -424,11 +510,15 @@
         {
           "templateId": "archivist_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1161,
+          "attack": 323
         },
         {
           "templateId": "redaction_guard",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 808,
+          "attack": 274
         }
       ]
     },
@@ -448,11 +538,15 @@
         {
           "templateId": "donut_shop_case",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1186,
+          "attack": 388
         },
         {
           "templateId": "swiss_cheese_purist",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 823,
+          "attack": 327
         }
       ]
     },
@@ -471,11 +565,15 @@
         {
           "templateId": "word_salad_critic",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 2716,
+          "attack": 104
         },
         {
           "templateId": "teleprompter_glitch",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 1791,
+          "attack": 89
         }
       ]
     },
@@ -494,11 +592,15 @@
         {
           "templateId": "jd_pants_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 5564,
+          "attack": 107
         },
         {
           "templateId": "sprinkle_stuff_box",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 3297,
+          "attack": 85
         }
       ]
     },
@@ -517,11 +619,15 @@
         {
           "templateId": "concepts_of_plan_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 4390,
+          "attack": 140
         },
         {
           "templateId": "people_on_tv_set",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 2498,
+          "attack": 112
         }
       ]
     },
@@ -540,15 +646,21 @@
         {
           "templateId": "commander_fry_apron",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 2601,
+          "attack": 115
         },
         {
           "templateId": "garbage_truck_vest",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 1528,
+          "attack": 93
         },
         {
           "templateId": "vance_diet_dew",
-          "atbGauge": 0.2
+          "atbGauge": 0.2,
+          "hp": 1321,
+          "attack": 84
         }
       ]
     },
@@ -568,11 +680,15 @@
         {
           "templateId": "shattered_cybertruck",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1440,
+          "attack": 571
         },
         {
           "templateId": "sec_420_auditor",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 997,
+          "attack": 483
         }
       ]
     },
@@ -592,11 +708,15 @@
         {
           "templateId": "omnibus_pork_golem",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1740,
+          "attack": 345
         },
         {
           "templateId": "dealbook_boycott_exec",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 1107,
+          "attack": 292
         }
       ]
     },
@@ -616,11 +736,15 @@
         {
           "templateId": "mayor_swagger_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1193,
+          "attack": 368
         },
         {
           "templateId": "turkish_lie_flat_seat",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 761,
+          "attack": 300
         }
       ]
     },
@@ -640,15 +764,21 @@
         {
           "templateId": "zohran_cardamom_boss",
           "isTargeted": true,
-          "atbGauge": 0.4
+          "atbGauge": 0.4,
+          "hp": 1313,
+          "attack": 254
         },
         {
           "templateId": "kamala_venn_ally",
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 928,
+          "attack": 211
         },
         {
           "templateId": "joe_naptime_ally",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 928,
+          "attack": 211
         }
       ]
     },
@@ -669,11 +799,15 @@
         {
           "templateId": "rent_board_lobbyist",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 5564,
+          "attack": 302
         },
         {
           "templateId": "mta_turnstile_drone",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 3747,
+          "attack": 252
         }
       ]
     },
@@ -694,11 +828,15 @@
         {
           "templateId": "passcode_cracker",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 6779,
+          "attack": 206
         },
         {
           "templateId": "rat_summit_inspector",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 4652,
+          "attack": 173
         }
       ]
     },
@@ -719,11 +857,15 @@
         {
           "templateId": "musk_x_starjump_boss",
           "isTargeted": true,
-          "atbGauge": 0.4
+          "atbGauge": 0.4,
+          "hp": 6057,
+          "attack": 185
         },
         {
           "templateId": "porcelain_sink_golem",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 3760,
+          "attack": 148
         }
       ]
     },
@@ -744,15 +886,21 @@
         {
           "templateId": "vance_doge_boss",
           "isTargeted": true,
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 7766,
+          "attack": 210
         },
         {
           "templateId": "kash_doge_boss",
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 7280,
+          "attack": 201
         },
         {
           "templateId": "kennedy_doge_boss",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 7280,
+          "attack": 201
         }
       ]
     },
@@ -773,15 +921,21 @@
         {
           "templateId": "commander_finale_boss",
           "isTargeted": true,
-          "atbGauge": 0.4
+          "atbGauge": 0.4,
+          "hp": 7345,
+          "attack": 144
         },
         {
           "templateId": "musk_x_finale_ally",
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 5293,
+          "attack": 128
         },
         {
           "templateId": "diet_coke_mecha",
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 4105,
+          "attack": 113
         }
       ]
     },
@@ -801,11 +955,15 @@
         {
           "templateId": "battery_golem",
           "isTargeted": true,
-          "atbGauge": 0.25
+          "atbGauge": 0.25,
+          "hp": 1998,
+          "attack": 510
         },
         {
           "templateId": "mandate_drone",
-          "atbGauge": 0.35
+          "atbGauge": 0.35,
+          "hp": 1077,
+          "attack": 442
         }
       ]
     },
@@ -825,15 +983,21 @@
         {
           "templateId": "kamala",
           "isTargeted": true,
-          "atbGauge": 0.4
+          "atbGauge": 0.4,
+          "hp": 953,
+          "attack": 360
         },
         {
           "templateId": "yellow_venn",
-          "atbGauge": 0.45
+          "atbGauge": 0.45,
+          "hp": 432,
+          "attack": 275
         },
         {
           "templateId": "blue_venn",
-          "atbGauge": 0.3
+          "atbGauge": 0.3,
+          "hp": 457,
+          "attack": 254
         }
       ]
     }

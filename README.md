@@ -18,7 +18,7 @@
 [![Speech: Android Offline STT](https://img.shields.io/badge/Speech-Android%20Offline%20STT-3DDC84.svg)](https://developer.android.com/reference/android/speech/SpeechRecognizer)
 [![Audio: Public Domain Soundbites](https://img.shields.io/badge/Audio-Historical%20Soundbites-yellow.svg)](app/src/main/java/com/voicerpg/engine/audio/SoundbitePlayer.kt)
 [![Audio: Dynamic Ducking](https://img.shields.io/badge/Audio-Dynamic%20Ducking-green.svg)](app/src/main/java/com/voicerpg/engine/audio/)
-[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-347%20Passing-39ff14.svg)](app/src/test/java/com/voicerpg/engine/)
+[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-368%20Passing-39ff14.svg)](app/src/test/java/com/voicerpg/engine/)
 [![Engine: VoiceRPG](https://img.shields.io/badge/Engine-VoiceRPG%20v2.0.0-teal.svg)](https://github.com/Todd0042/voice-rpg-engine)
 [![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20Creator-F16061?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/todd0042)
 
@@ -290,7 +290,7 @@ cd ../voice-rpg-engine && ./scripts/sync_engine_to_games.sh --check
 
 ## 8. Automated Unit Verification Suite
 
-Commander America runs **347 automated unit tests** (the engine's suite against this game's content) verifying intent parsing, satirical chant resonance, multi-track save stability, and combat progression:
+Commander America runs **368 automated unit tests** (the engine's suite against this game's content) verifying intent parsing, satirical chant resonance, multi-track save stability, and combat progression:
 
 ```bash
 # Run unit test suite:
@@ -299,6 +299,8 @@ Commander America runs **347 automated unit tests** (the engine's suite against 
 # Build debug APK:
 ./gradlew assembleDebug
 ```
+
+**Combat balance.** Every story fight is played by the engine's battle simulator (`BalanceContractTest`: the real combat on virtual time, with the party and spells the story has given them at that point): 35 story fights across both tracks. A sensible player at the balance point (**x1.5** resonance, [`combat/balance.json`](app/src/main/assets/game/combat/balance.json)) should win in a target number of rounds with a safety margin that narrows toward the finale, a lazy x1.1 player should be able to lose late bosses, healing should never take over a fight, and Pure Story Mode must win every fight. The enemy HP and attack in [`encounters.json`](app/src/main/assets/game/encounters/encounters.json) were tuned to those targets with the engine's `BalanceTunerTest`; the report of every fight is written to `app/build/reports/balance.txt` (it reports rather than fails the build: a handful of fights still sit just outside a target).
 
 Test coverage includes:
 - Intent parsing accuracy across 500+ political speech variations.
