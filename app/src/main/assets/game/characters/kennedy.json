@@ -14,7 +14,7 @@
   "loreClass": "Committee Cross-Examiner",
   "outOfTurnLine": "Now hold on, son! That's {owner}'s business. In plain English, I'm Senator Kennedy and we're here to cross-examine these folks!",
   "combat": {
-    "maxHp": 4000,
+    "maxHp": 400,
     "speed": 62,
     "defense": 30,
     "avatarTint": "#78909C",

@@ -68,7 +68,7 @@
     {
       "id": "act1_track_a_hill_rod_finale",
       "name": "Act I Finale (Track A): The Chappaqua Server Sovereign",
-      "description": "Hill-Rod deploys BleachBit cloth wipes, Purse Hot Sauce, and Pokémon Go-To-The-Polls on Election Night 2016!",
+      "description": "Hill-Rod deploys BleachBit cloth wipes, Purse Hot Sauce, and Pok\u00e9mon Go-To-The-Polls on Election Night 2016!",
       "environment": "CASTLE",
       "party": [
         "hero"
@@ -206,6 +206,7 @@
       "description": "Spicy Sean leaps out of the White House hedges in his neon-green Dancing with the Stars ruffled shirt alongside The 11-Day Mooch!",
       "environment": "FOREST",
       "party": [
+        "hill_rod",
         "nancy_palooza"
       ],
       "enemies": [
@@ -226,6 +227,7 @@
       "description": "Kash Subpoena unrolls his 4-page FISA scroll while hawking his $19.99 illustrated children's book, The Plot Against the King!",
       "environment": "DUNGEON",
       "party": [
+        "hill_rod",
         "nancy_palooza"
       ],
       "enemies": [
@@ -246,6 +248,7 @@
       "description": "Wedged between a crematorium and Fantasy Island Adult Books, Rudy Ghoul drips hair dye down both cheeks beside Commander America!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
         "nancy_palooza"
       ],
       "enemies": [
@@ -343,6 +346,8 @@
       "description": "Corn Pop ('a bad dude who ran a bunch of bad boys') bangs rusty razors in a rainwater barrel beside a treacherous toe-cage bicycle!",
       "environment": "FOREST",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
         "joe_naptime"
       ],
       "enemies": [
@@ -363,6 +368,8 @@
       "description": "Senator Foghorn Kennedy hides an Oxford First-Class degree behind folksy one-liners while asking judicial nominees about Article V!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
         "joe_naptime"
       ],
       "enemies": [
@@ -383,6 +390,8 @@
       "description": "Commander America flashes his 'Never Surrender' Fulton County mugshot beside a gilded Mar-a-Lago bathroom chandelier stacked with bankers boxes!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
         "joe_naptime"
       ],
       "enemies": [
@@ -454,6 +463,9 @@
       "description": "Kamala Coconut unleashes overlapping Venn diagrams and yellow school buses against skeptical pundits!",
       "environment": "FOREST",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
         "kamala_coconut"
       ],
       "enemies": [
@@ -474,6 +486,9 @@
       "description": "JD Pants asks 'How long have you worked here? Okay, good' while hurling sprinkle donuts and CBS fact-check rules!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
         "kamala_coconut"
       ],
       "enemies": [
@@ -494,6 +509,9 @@
       "description": "On the Philadelphia debate stage, Commander America unveils 'Concepts of a Plan' and 'I saw it on television!'",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
         "kamala_coconut"
       ],
       "enemies": [
@@ -514,6 +532,9 @@
       "description": "Commander America leans out a closed-set McDonald's drive-thru window in a fry apron and neon-orange garbage truck vest beside JD Pants!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
         "kamala_coconut"
       ],
       "enemies": [
@@ -638,6 +659,10 @@
       "description": "Zohran Cardamom ('Mr. Cardamom') and Mayor Swagger defend the Astoria chapati truck against Rent-Board Lobbyists!",
       "environment": "FOREST",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
+        "kamala_coconut",
         "zohran_cardamom",
         "mayor_swagger"
       ],
@@ -659,6 +684,10 @@
       "description": "Subpoena Passcode Crackers and Rat-Ticket Inspectors ambush Mayor Swagger outside Osteria La Baia!",
       "environment": "DUNGEON",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
+        "kamala_coconut",
         "zohran_cardamom",
         "mayor_swagger"
       ],
@@ -680,6 +709,10 @@
       "description": "Musk-X leaps into an X-shape mid-air exposing four inches of midriff while hurling a porcelain bathroom sink!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
+        "kamala_coconut",
         "zohran_cardamom",
         "mayor_swagger"
       ],
@@ -701,6 +734,10 @@
       "description": "JD Pants, Wizard Kash, and Senator Foghorn Kennedy defend the Shiba Inu DOGE hearing room!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
+        "kamala_coconut",
         "zohran_cardamom",
         "mayor_swagger"
       ],
@@ -726,6 +763,10 @@
       "description": "Zohran Cardamom and Mayor Swagger clash with Commander America, Musk-X's Mid-Air Star-Jump, and the Diet Coke Valet Button!",
       "environment": "CASTLE",
       "party": [
+        "hill_rod",
+        "nancy_palooza",
+        "joe_naptime",
+        "kamala_coconut",
         "zohran_cardamom",
         "mayor_swagger"
       ],

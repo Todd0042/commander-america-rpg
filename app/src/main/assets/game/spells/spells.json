@@ -165,15 +165,18 @@
         "MASTER": "Unleash the golden rally now!",
         "MYTHIC": "Arise celestial dawn rally the patriots!",
         "TRANSCENDENTAL": "By the power of celestial freedom arise and inspire the sacred rally of patriots to bless and mend all champions!"
-      }
+      },
+      "target": "ally",
+      "hitsAll": false,
+      "healPctOfMax": 0.25
     },
     {
       "id": "hill_pokemon_go",
-      "name": "Pokémon Go-To-The-Polls",
+      "name": "Pok\u00e9mon Go-To-The-Polls",
       "school": "ELECTROMANCY",
       "basePower": 65,
       "hitsAll": true,
-      "description": "Pitches a cringe smartphone app to make Pokémon appear in voting booths (July 14, 2016)",
+      "description": "Pitches a cringe smartphone app to make Pok\u00e9mon appear in voting booths (July 14, 2016)",
       "exampleChant": "Pokemon Go to the polls",
       "status": "OVERLOAD",
       "aliases": [
@@ -252,7 +255,7 @@
       "school": "HOLY",
       "basePower": 110,
       "isHeal": true,
-      "hitsAll": true,
+      "hitsAll": false,
       "description": "Survives an 11-hour committee grilling with a shoulder shrug and debunks the slab-foundation pizzeria basement hoax",
       "exampleChant": "Eleven hour hearing shoulder shrug",
       "status": "GUARD",
@@ -266,7 +269,9 @@
       ],
       "soundBites": [
         "audio/quotes/hillary/hillary_congratulated_trump.ogg"
-      ]
+      ],
+      "target": "ally",
+      "healPctOfMax": 0.25
     },
     {
       "id": "ca_marco_filibuster",
@@ -316,7 +321,7 @@
       "name": "Water Sip",
       "school": "HOLY",
       "basePower": 65,
-      "isHeal": true,
+      "isHeal": false,
       "description": "Takes a quick, refreshing sip of bottled water, restoring substantial HP to the party.",
       "exampleChant": "Water sip!",
       "aliases": [
@@ -331,7 +336,9 @@
         "BASIC": "Water sip!",
         "MYTHIC": "Arise refreshing clarity, water sip heals all allies with holy resolve!",
         "TRANSCENDENTAL": "With laser diplomatic focus and pure crystalline hydration, take a historic water sip to bless, heal, and revitalize our entire fellowship!"
-      }
+      },
+      "isGuard": true,
+      "status": "GUARD"
     },
     {
       "id": "nancy_sotu_shred",
@@ -354,7 +361,7 @@
       "name": "$24,000 Dual Sub-Zero Freezer Flex",
       "school": "CRYOMANCY",
       "basePower": 115,
-      "isHeal": true,
+      "isHeal": false,
       "hitsAll": true,
       "description": "Opens twin $24,000 stainless-steel Sub-Zero freezers stocked with $12 Jeni's pints on The Late Late Show (April 2020)",
       "exampleChant": "Open the dual Sub Zero ice cream freezers",
@@ -508,7 +515,10 @@
         "MASTER": "Issue security clearance and purge political sabotage!",
         "MYTHIC": "Arise top-secret trust, security clearance heals party wounds!",
         "TRANSCENDENTAL": "By presidential intelligence decree, issue top-secret security clearance, purge foreign disinformation, and cleanse and heal our entire fellowship!"
-      }
+      },
+      "target": "ally",
+      "hitsAll": false,
+      "healPctOfMax": 0.45
     },
     {
       "id": "ca_kennedy_english",
@@ -573,7 +583,9 @@
         "BASIC": "Common sense remedy!",
         "MYTHIC": "Arise down-home folk wisdom, common sense remedy mends our team!",
         "TRANSCENDENTAL": "Forget your fancy committee consultant reports, apply a pure common sense remedy of down-home wisdom to heal and bless our entire squad!"
-      }
+      },
+      "hitsAll": true,
+      "healPctOfMax": 0.25
     },
     {
       "id": "biden_gibberish_audio",
@@ -651,7 +663,8 @@
       ],
       "presetChants": {
         "ADEPT": "Strong As Hell Baskin-Robbins"
-      }
+      },
+      "healPctOfMax": 0.25
     },
     {
       "id": "biden_9am_lid_sundae",
@@ -670,7 +683,10 @@
       ],
       "presetChants": {
         "ADEPT": "9:00 AM Lid & Sundae"
-      }
+      },
+      "target": "ally",
+      "hitsAll": false,
+      "healPctOfMax": 0.45
     },
     {
       "id": "biden_fudge_ripple_meltdown",
@@ -738,7 +754,7 @@
       "name": "Hillbilly Fortitude",
       "school": "HOLY",
       "basePower": 65,
-      "isHeal": true,
+      "isHeal": false,
       "description": "Channels generational resilience and family resolve to restore party HP.",
       "exampleChant": "Hillbilly fortitude!",
       "aliases": [
@@ -753,7 +769,9 @@
         "ADEPT": "Channel hillbilly fortitude now!",
         "MYTHIC": "Arise family resilience, hillbilly fortitude restores the party!",
         "TRANSCENDENTAL": "Through generations of unwavering faith, relentless grit, and family devotion, channel hillbilly fortitude to bless and restore our comrades with heroic resolve!"
-      }
+      },
+      "isGuard": true,
+      "status": "GUARD"
     },
     {
       "id": "kamala_coconut_tree",
@@ -778,7 +796,7 @@
       "name": "Unburdened By What Has Been",
       "school": "HOLY",
       "basePower": 120,
-      "isHeal": true,
+      "isHeal": false,
       "hitsAll": true,
       "description": "Repeats her signature philosophical mantra 47 times to unburden the party of damage and raise a rhetorical shield",
       "exampleChant": "What can be unburdened by what has been",
@@ -899,7 +917,7 @@
       "name": "5 City-Owned Grocery Stores",
       "school": "NATURE",
       "basePower": 125,
-      "isHeal": true,
+      "isHeal": false,
       "hitsAll": true,
       "description": "Opens five city-run municipal grocery stores across all five boroughs, healing the party with wholesale milk",
       "exampleChant": "Open five city owned municipal grocery stores",
@@ -973,7 +991,7 @@
       "name": "Turkish Airlines Lie-Flat Upgrade",
       "school": "HOLY",
       "basePower": 115,
-      "isHeal": true,
+      "isHeal": false,
       "hitsAll": true,
       "description": "\"When someone upgrades you to a lie-flat suite to Istanbul, you say 'Thank you'!\" Restores party HP in luxury",
       "exampleChant": "Turkish Airlines business class upgrade",
@@ -983,7 +1001,9 @@
         "istanbul",
         "i said thank you",
         "st regis"
-      ]
+      ],
+      "isGuard": true,
+      "status": "GUARD"
     },
     {
       "id": "swagger_contraband_doll",

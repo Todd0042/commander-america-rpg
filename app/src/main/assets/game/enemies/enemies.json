@@ -4,7 +4,7 @@
       "id": "pundit_producer",
       "name": "Cable News Producer",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 220,
       "attack": 16,
@@ -13,13 +13,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "newsroom",
-      "spriteTint": "#EF5350"
+      "spriteTint": "#EF5350",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "lobbyist",
       "name": "K-Street Retainer Lobbyist",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "VERDANT",
       "selfElement": "",
       "hp": 260,
       "attack": 18,
@@ -28,13 +31,16 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "suit",
-      "spriteTint": "#78909C"
+      "spriteTint": "#78909C",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "dynasty_candidate",
       "name": "Low-Energy Dynasty Candidate",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "UNDEAD",
       "selfElement": "",
       "hp": 420,
       "attack": 20,
@@ -43,13 +49,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "dynasty_candidate",
-      "spriteTint": "#5C6BC0"
+      "spriteTint": "#5C6BC0",
+      "weak": [
+        "PHYSICAL"
+      ],
+      "resist": [
+        "CRYOMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "pac_strategist",
       "name": "Super PAC Media Strategist",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 280,
       "attack": 16,
@@ -58,13 +71,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "pac_strategist",
-      "spriteTint": "#AB47BC"
+      "spriteTint": "#AB47BC",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "consultant_checker",
       "name": "Consultant Fact-Checker",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 260,
       "attack": 18,
@@ -73,7 +89,10 @@
       "movesetId": "flesh_caster",
       "isBoss": false,
       "spriteId": "consultant_checker",
-      "spriteTint": "#42A5F5"
+      "spriteTint": "#42A5F5",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "barry_tan_suit",
@@ -91,13 +110,20 @@
       "spriteTint": "#D7CCC8",
       "soundBites": [
         "audio/quotes/obama/obama_dont_boo_vote.ogg"
-      ]
+      ],
+      "weak": [
+        "SHADOW"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "dijon_waiter",
       "name": "Poupon Mustard Sommelier",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "RADIANT",
       "selfElement": "",
       "hp": 250,
       "attack": 16,
@@ -106,7 +132,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "waiter",
-      "spriteTint": "#FFD54F"
+      "spriteTint": "#FFD54F",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "hill_rod_boss",
@@ -124,13 +153,20 @@
       "spriteTint": "#64B5F6",
       "soundBites": [
         "audio/quotes/hillary/hillary_congratulated_trump.ogg"
-      ]
+      ],
+      "weak": [
+        "SHADOW"
+      ],
+      "resist": [
+        "HOLY"
+      ],
+      "armor": 15
     },
     {
       "id": "bleachbit_server",
       "name": "Chappaqua Basement Server Rack",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 320,
       "attack": 18,
@@ -139,13 +175,18 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "server_rack",
-      "spriteTint": "#90A4AE"
+      "spriteTint": "#90A4AE",
+      "weak": [],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 35
     },
     {
       "id": "fern_intern",
       "name": "Potted Fern Intern",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VERDANT",
       "selfElement": "",
       "hp": 260,
       "attack": 17,
@@ -154,13 +195,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "fern_intern",
-      "spriteTint": "#81C784"
+      "spriteTint": "#81C784",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "zach_ferns_boss",
       "name": "Zach Two-Ferns",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 420,
       "attack": 19,
@@ -169,13 +213,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "zach_ferns_boss",
-      "spriteTint": "#81C784"
+      "spriteTint": "#81C784",
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "potted_fern",
       "name": "Hostile Studio Fern Left",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "VERDANT",
       "selfElement": "",
       "hp": 230,
       "attack": 15,
@@ -184,7 +235,10 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "fern",
-      "spriteTint": "#4CAF50"
+      "spriteTint": "#4CAF50",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "commander_boss_act1",
@@ -203,13 +257,20 @@
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
         "audio/quotes/trump/trump_easily_win.ogg"
-      ]
+      ],
+      "weak": [
+        "SHADOW"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "billy_bus_minion",
       "name": "Billy Access-Bus Hot Mic",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 290,
       "attack": 18,
@@ -218,13 +279,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "billy_bus",
-      "spriteTint": "#FFB74D"
+      "spriteTint": "#FFB74D",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "escalator_extra",
       "name": "$50 FEC Casting Extra",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 270,
       "attack": 16,
@@ -233,13 +297,16 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "casting_extra",
-      "spriteTint": "#B0BEC5"
+      "spriteTint": "#B0BEC5",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "aerial_spin_anchor",
       "name": "Cable News Aerial Spin Anchor",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 320,
       "attack": 20,
@@ -248,13 +315,20 @@
       "movesetId": "flesh_sniper",
       "isBoss": true,
       "spriteId": "aerial_spin_anchor",
-      "spriteTint": "#EF5350"
+      "spriteTint": "#EF5350",
+      "weak": [
+        "CRYOMANCY"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 0
     },
     {
       "id": "hostile_fact_checker",
       "name": "Hostile Fisheye Fact-Checker",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 240,
       "attack": 18,
@@ -263,7 +337,10 @@
       "movesetId": "flesh_caster",
       "isBoss": false,
       "spriteId": "hostile_fact_checker",
-      "spriteTint": "#42A5F5"
+      "spriteTint": "#42A5F5",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "pelosi",
@@ -278,14 +355,21 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "pelosi",
-      "spriteTint": "#AB47BC"
+      "spriteTint": "#AB47BC",
+      "weak": [
+        "SHADOW"
+      ],
+      "resist": [
+        "PHYSICAL"
+      ],
+      "armor": 15
     },
     {
       "id": "fact_checker",
       "name": "Sub-Zero Jeni's Freezer Golem",
       "subtitle": "Vanguard",
-      "family": "FLESH",
-      "selfElement": "",
+      "family": "CONSTRUCT",
+      "selfElement": "CRYOMANCY",
       "hp": 280,
       "attack": 20,
       "defense": 0,
@@ -293,13 +377,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "freezer_golem",
-      "spriteTint": "#42A5F5"
+      "spriteTint": "#42A5F5",
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [
+        "CRYOMANCY"
+      ],
+      "armor": 35
     },
     {
       "id": "anonymous_source",
       "name": "eSalon Blowout Stylist",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 250,
       "attack": 19,
@@ -308,13 +399,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "stylist",
-      "spriteTint": "#7E57C2"
+      "spriteTint": "#7E57C2",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "noaa_meteorologist",
       "name": "NOAA Cone-of-Uncertainty Chief",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 440,
       "attack": 22,
@@ -323,13 +417,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "noaa_meteorologist",
-      "spriteTint": "#29B6F6"
+      "spriteTint": "#29B6F6",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "PHYSICAL"
+      ],
+      "armor": 0
     },
     {
       "id": "plumbing_inspector",
       "name": "Low-Flow 15-Flush Regulator",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 290,
       "attack": 19,
@@ -338,13 +439,16 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "inspector",
-      "spriteTint": "#78909C"
+      "spriteTint": "#78909C",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "spicy_sean_salsa",
       "name": "Spicy Sean (Neon Salsa Shirt)",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 450,
       "attack": 21,
@@ -356,13 +460,20 @@
       "spriteTint": "#76FF03",
       "soundBites": [
         "audio/quotes/spicer/spicer_period.ogg"
-      ]
+      ],
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "the_mooch_boss",
       "name": "The 11-Day Mooch Whirlwind",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "UNDEAD",
       "selfElement": "",
       "hp": 310,
       "attack": 20,
@@ -371,7 +482,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "the_mooch",
-      "spriteTint": "#FF80AB"
+      "spriteTint": "#FF80AB",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "kash_wizard_boss",
@@ -386,13 +500,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "kash_wizard_boss",
-      "spriteTint": "#AB47BC"
+      "spriteTint": "#AB47BC",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 15
     },
     {
       "id": "brave_book_golem",
       "name": "Plot Against the King Merch Box",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 300,
       "attack": 19,
@@ -401,13 +522,16 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "box_golem",
-      "spriteTint": "#FFCA28"
+      "spriteTint": "#FFCA28",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "rudy_ghoul_boss",
       "name": "Rudy Ghoul (Melting Hair Dye)",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "UNDEAD",
       "selfElement": "",
       "hp": 580,
       "attack": 25,
@@ -416,7 +540,14 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "rudy_ghoul_boss",
-      "spriteTint": "#8D6E63"
+      "spriteTint": "#8D6E63",
+      "weak": [
+        "ELECTROMANCY"
+      ],
+      "resist": [
+        "PHYSICAL"
+      ],
+      "armor": 0
     },
     {
       "id": "commander_sharpie",
@@ -435,13 +566,20 @@
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
         "audio/quotes/trump/trump_easily_win.ogg"
-      ]
+      ],
+      "weak": [
+        "PHYSICAL"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "landscaping_mower",
       "name": "Four Seasons Riding Mower",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 260,
       "attack": 18,
@@ -450,13 +588,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "riding_mower",
-      "spriteTint": "#66BB6A"
+      "spriteTint": "#66BB6A",
+      "weak": [],
+      "resist": [],
+      "armor": 35
     },
     {
       "id": "af1_staircase_gust",
       "name": "Air Force One Triple-Stumble Staircase",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 480,
       "attack": 24,
@@ -465,13 +606,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "af1_staircase_gust",
-      "spriteTint": "#90CAF9"
+      "spriteTint": "#90CAF9",
+      "weak": [
+        "PHYSICAL"
+      ],
+      "resist": [
+        "CRYOMANCY"
+      ],
+      "armor": 35
     },
     {
       "id": "rehoboth_toe_cage_bike",
       "name": "Stationary Toe-Cage Trek Bicycle",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 330,
       "attack": 20,
@@ -480,13 +628,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "trek_bike",
-      "spriteTint": "#80CBC4"
+      "spriteTint": "#80CBC4",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "chandelier_archivist",
       "name": "Bathroom Chandelier Box Inspector",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 510,
       "attack": 25,
@@ -495,13 +646,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "chandelier_archivist",
-      "spriteTint": "#FFD54F"
+      "spriteTint": "#FFD54F",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 0
     },
     {
       "id": "corvette_garage_drone",
       "name": "Wilmington Corvette Garage Sentinel",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 340,
       "attack": 21,
@@ -510,14 +668,17 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "corvette",
-      "spriteTint": "#66BB6A"
+      "spriteTint": "#66BB6A",
+      "weak": [],
+      "resist": [],
+      "armor": 35
     },
     {
       "id": "joe_naptime_baskin_boss",
       "name": "Joe Naptime (Baskin-Robbins Cryomancer)",
       "subtitle": "Occultist",
-      "family": "FLESH",
-      "selfElement": "",
+      "family": "UNDEAD",
+      "selfElement": "CRYOMANCY",
       "hp": 650,
       "attack": 28,
       "defense": 0,
@@ -529,13 +690,20 @@
       "soundBites": [
         "audio/quotes/biden/biden_truinanashabbadepressure.ogg",
         "audio/quotes/biden/biden_badakathcare.ogg"
-      ]
+      ],
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [
+        "CRYOMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "repeat_line_prompter",
       "name": "'End of Quote, Repeat the Line' Teleprompter",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 350,
       "attack": 22,
@@ -544,14 +712,17 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "teleprompter",
-      "spriteTint": "#4DD0E1"
+      "spriteTint": "#4DD0E1",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "two_scoop_golem",
       "name": "Jeni's Double-Scoop Freezer Golem",
       "subtitle": "Vanguard",
-      "family": "FLESH",
-      "selfElement": "",
+      "family": "CONSTRUCT",
+      "selfElement": "CRYOMANCY",
       "hp": 380,
       "attack": 21,
       "defense": 0,
@@ -559,13 +730,18 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "two_scoop_golem",
-      "spriteTint": "#F48FB1"
+      "spriteTint": "#F48FB1",
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "corn_pop_boss",
       "name": "Corn Pop (Rusty Rain-Barrel Dude)",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "UNDEAD",
       "selfElement": "",
       "hp": 460,
       "attack": 21,
@@ -574,13 +750,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "corn_pop_boss",
-      "spriteTint": "#FFB74D"
+      "spriteTint": "#FFB74D",
+      "weak": [
+        "ELECTROMANCY"
+      ],
+      "resist": [
+        "CRYOMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "toe_cage_pedal",
       "name": "Rehoboth Metal Toe-Cage Bike",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 290,
       "attack": 18,
@@ -589,7 +772,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "toe_cage_pedal",
-      "spriteTint": "#90A4AE"
+      "spriteTint": "#90A4AE",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "foghorn_kennedy_boss",
@@ -604,13 +790,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "foghorn_kennedy_boss",
-      "spriteTint": "#78909C"
+      "spriteTint": "#78909C",
+      "weak": [
+        "CRYOMANCY"
+      ],
+      "resist": [
+        "NATURE"
+      ],
+      "armor": 0
     },
     {
       "id": "article_five_binder",
       "name": "Constitutional Article V Pop-Quiz",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 310,
       "attack": 19,
@@ -619,7 +812,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "article_five_binder",
-      "spriteTint": "#BA68C8"
+      "spriteTint": "#BA68C8",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "commander_mugshot_boss",
@@ -638,13 +834,20 @@
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
         "audio/quotes/trump/trump_easily_win.ogg"
-      ]
+      ],
+      "weak": [
+        "ELECTROMANCY"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 15
     },
     {
       "id": "bathroom_chandelier_golem",
       "name": "Mar-a-Lago Chandelier Box Stack",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 350,
       "attack": 20,
@@ -653,13 +856,16 @@
       "movesetId": "flesh_caster",
       "isBoss": false,
       "spriteId": "bathroom_chandelier_golem",
-      "spriteTint": "#FFF176"
+      "spriteTint": "#FFF176",
+      "weak": [],
+      "resist": [],
+      "armor": 35
     },
     {
       "id": "never_surrender_merch",
       "name": "$7.1M 'Never Surrender' Mug Press",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 290,
       "attack": 18,
@@ -668,13 +874,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "merch_press",
-      "spriteTint": "#E57373"
+      "spriteTint": "#E57373",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "archivist_boss",
       "name": "Chief Bureau Archivist",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 460,
       "attack": 26,
@@ -683,13 +892,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "archivist_boss",
-      "spriteTint": "#7E57C2"
+      "spriteTint": "#7E57C2",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "redaction_guard",
       "name": "Redaction Marker Sentinel",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 320,
       "attack": 22,
@@ -698,13 +914,16 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "redaction_guard",
-      "spriteTint": "#546E7A"
+      "spriteTint": "#546E7A",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "donut_shop_case",
       "name": "'Whatever Makes Sense' Glazed Case",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 490,
       "attack": 25,
@@ -713,13 +932,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "donut_shop_case",
-      "spriteTint": "#FFB74D"
+      "spriteTint": "#FFB74D",
+      "weak": [
+        "NATURE"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 35
     },
     {
       "id": "swiss_cheese_purist",
       "name": "South Philly Swiss-Cheese Heckler",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 340,
       "attack": 21,
@@ -728,13 +954,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "swiss_cheese_purist",
-      "spriteTint": "#FFF176"
+      "spriteTint": "#FFF176",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "word_salad_critic",
       "name": "Uncontextualized Pundit",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 470,
       "attack": 22,
@@ -743,13 +972,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "word_salad_critic",
-      "spriteTint": "#81C784"
+      "spriteTint": "#81C784",
+      "weak": [
+        "NATURE"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "teleprompter_glitch",
       "name": "32-Day Teleprompter Glitch",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 310,
       "attack": 19,
@@ -758,7 +994,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "teleprompter_glitch",
-      "spriteTint": "#4FC3F7"
+      "spriteTint": "#4FC3F7",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "jd_pants_boss",
@@ -773,13 +1012,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "jd_pants_boss",
-      "spriteTint": "#5C6BC0"
+      "spriteTint": "#5C6BC0",
+      "weak": [
+        "ELECTROMANCY"
+      ],
+      "resist": [
+        "PHYSICAL"
+      ],
+      "armor": 15
     },
     {
       "id": "sprinkle_stuff_box",
       "name": "'Some Sprinkle Stuff' Donut Box",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 320,
       "attack": 19,
@@ -788,7 +1034,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "sprinkle_stuff_box",
-      "spriteTint": "#F48FB1"
+      "spriteTint": "#F48FB1",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "concepts_of_plan_boss",
@@ -803,13 +1052,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "concepts_of_plan_boss",
-      "spriteTint": "#FFD700"
+      "spriteTint": "#FFD700",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 15
     },
     {
       "id": "people_on_tv_set",
       "name": "'The People on Television' Monitor",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "VOID",
       "selfElement": "",
       "hp": 330,
       "attack": 20,
@@ -818,7 +1074,10 @@
       "movesetId": "flesh_caster",
       "isBoss": false,
       "spriteId": "people_on_tv_set",
-      "spriteTint": "#42A5F5"
+      "spriteTint": "#42A5F5",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "commander_fry_apron",
@@ -837,13 +1096,20 @@
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
         "audio/quotes/trump/trump_easily_win.ogg"
-      ]
+      ],
+      "weak": [
+        "NATURE"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "garbage_truck_vest",
       "name": "Neon-Orange Mack Garbage Truck",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 370,
       "attack": 21,
@@ -852,7 +1118,10 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "garbage_truck",
-      "spriteTint": "#FF7043"
+      "spriteTint": "#FF7043",
+      "weak": [],
+      "resist": [],
+      "armor": 35
     },
     {
       "id": "vance_diet_dew",
@@ -867,13 +1136,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "vance_diet_dew",
-      "spriteTint": "#66BB6A"
+      "spriteTint": "#66BB6A",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "shattered_cybertruck",
       "name": "Shattered Armor-Glass Cybertruck",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 520,
       "attack": 26,
@@ -882,13 +1154,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "shattered_cybertruck",
-      "spriteTint": "#B0BEC5"
+      "spriteTint": "#B0BEC5",
+      "weak": [
+        "PHYSICAL"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 35
     },
     {
       "id": "sec_420_auditor",
       "name": "SEC '$420 Funding Secured' Auditor",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 360,
       "attack": 22,
@@ -897,13 +1176,16 @@
       "movesetId": "flesh_caster",
       "isBoss": false,
       "spriteId": "sec_420_auditor",
-      "spriteTint": "#42A5F5"
+      "spriteTint": "#42A5F5",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "omnibus_pork_golem",
       "name": "4,000-Page Omnibus Pork Golem",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "VERDANT",
       "selfElement": "",
       "hp": 550,
       "attack": 26,
@@ -912,13 +1194,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "omnibus_pork_golem",
-      "spriteTint": "#AB47BC"
+      "spriteTint": "#AB47BC",
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [
+        "NATURE"
+      ],
+      "armor": 15
     },
     {
       "id": "dealbook_boycott_exec",
       "name": "DealBook Ad-Boycott Executive",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "RADIANT",
       "selfElement": "",
       "hp": 350,
       "attack": 22,
@@ -927,7 +1216,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "dealbook_boycott_exec",
-      "spriteTint": "#EC407A"
+      "spriteTint": "#EC407A",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "mayor_swagger_boss",
@@ -942,13 +1234,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "mayor_swagger_boss",
-      "spriteTint": "#26A69A"
+      "spriteTint": "#26A69A",
+      "weak": [
+        "SHADOW"
+      ],
+      "resist": [
+        "NATURE"
+      ],
+      "armor": 15
     },
     {
       "id": "turkish_lie_flat_seat",
       "name": "Turkish Airlines Lie-Flat Pod",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "RADIANT",
       "selfElement": "",
       "hp": 370,
       "attack": 22,
@@ -957,7 +1256,10 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "lie_flat_pod",
-      "spriteTint": "#EF5350"
+      "spriteTint": "#EF5350",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "zohran_cardamom_boss",
@@ -972,7 +1274,14 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "zohran_cardamom_boss",
-      "spriteTint": "#FF7043"
+      "spriteTint": "#FF7043",
+      "weak": [
+        "SHADOW"
+      ],
+      "resist": [
+        "NATURE"
+      ],
+      "armor": 0
     },
     {
       "id": "kamala_venn_ally",
@@ -990,14 +1299,21 @@
       "spriteTint": "#BA68C8",
       "soundBites": [
         "audio/quotes/kamala/kamala_ride_a_bus.ogg"
-      ]
+      ],
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "joe_naptime_ally",
       "name": "Joe Naptime (2-Scoop Waffle Cone)",
       "subtitle": "Vanguard",
-      "family": "FLESH",
-      "selfElement": "",
+      "family": "UNDEAD",
+      "selfElement": "CRYOMANCY",
       "hp": 480,
       "attack": 24,
       "defense": 0,
@@ -1009,13 +1325,20 @@
       "soundBites": [
         "audio/quotes/biden/biden_truinanashabbadepressure.ogg",
         "audio/quotes/biden/biden_badakathcare.ogg"
-      ]
+      ],
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [
+        "CRYOMANCY"
+      ],
+      "armor": 0
     },
     {
       "id": "rent_board_lobbyist",
       "name": "Luxury Condo Rent-Hike Lobbyist",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "RADIANT",
       "selfElement": "",
       "hp": 490,
       "attack": 24,
@@ -1024,13 +1347,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "rent_board_lobbyist",
-      "spriteTint": "#8D6E63"
+      "spriteTint": "#8D6E63",
+      "weak": [
+        "CRYOMANCY"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 15
     },
     {
       "id": "mta_turnstile_drone",
       "name": "Q70 Bus Fare Inspector",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 330,
       "attack": 20,
@@ -1039,13 +1369,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "mta_turnstile_drone",
-      "spriteTint": "#42A5F5"
+      "spriteTint": "#42A5F5",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "passcode_cracker",
       "name": "6-Digit iPhone Passcode Cracker",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 510,
       "attack": 25,
@@ -1054,13 +1387,20 @@
       "movesetId": "flesh_sniper",
       "isBoss": true,
       "spriteId": "passcode_cracker",
-      "spriteTint": "#7E57C2"
+      "spriteTint": "#7E57C2",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "rat_summit_inspector",
       "name": "Brooklyn Townhouse Rat Inspector",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 350,
       "attack": 21,
@@ -1069,13 +1409,16 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "rat_summit_inspector",
-      "spriteTint": "#90A4AE"
+      "spriteTint": "#90A4AE",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "musk_x_starjump_boss",
       "name": "Musk-X (Mid-Air 'X' Star-Jump)",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "RADIANT",
       "selfElement": "",
       "hp": 580,
       "attack": 26,
@@ -1084,13 +1427,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "musk_x_starjump_boss",
-      "spriteTint": "#26C6DA"
+      "spriteTint": "#26C6DA",
+      "weak": [
+        "NATURE"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "porcelain_sink_golem",
       "name": "'Let That Sink In' Porcelain Basin",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 360,
       "attack": 21,
@@ -1099,7 +1449,10 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "sink_golem",
-      "spriteTint": "#ECEFF1"
+      "spriteTint": "#ECEFF1",
+      "weak": [],
+      "resist": [],
+      "armor": 35
     },
     {
       "id": "vance_doge_boss",
@@ -1114,7 +1467,14 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "vance_doge_boss",
-      "spriteTint": "#5C6BC0"
+      "spriteTint": "#5C6BC0",
+      "weak": [
+        "ELECTROMANCY"
+      ],
+      "resist": [
+        "PHYSICAL"
+      ],
+      "armor": 15
     },
     {
       "id": "kash_doge_boss",
@@ -1129,7 +1489,14 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "kash_doge_boss",
-      "spriteTint": "#AB47BC"
+      "spriteTint": "#AB47BC",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 15
     },
     {
       "id": "kennedy_doge_boss",
@@ -1144,7 +1511,14 @@
       "movesetId": "flesh_sniper",
       "isBoss": true,
       "spriteId": "kennedy_doge_boss",
-      "spriteTint": "#78909C"
+      "spriteTint": "#78909C",
+      "weak": [
+        "CRYOMANCY"
+      ],
+      "resist": [
+        "NATURE"
+      ],
+      "armor": 0
     },
     {
       "id": "commander_finale_boss",
@@ -1163,13 +1537,20 @@
       "soundBites": [
         "audio/quotes/trump/trump_greatness_birthright.ogg",
         "audio/quotes/trump/trump_easily_win.ogg"
-      ]
+      ],
+      "weak": [
+        "NATURE"
+      ],
+      "resist": [
+        "SHADOW"
+      ],
+      "armor": 35
     },
     {
       "id": "musk_x_finale_ally",
       "name": "Musk-X (Dark Gothic Star-Jump)",
       "subtitle": "Occultist",
-      "family": "FLESH",
+      "family": "RADIANT",
       "selfElement": "",
       "hp": 490,
       "attack": 25,
@@ -1178,13 +1559,20 @@
       "movesetId": "flesh_caster",
       "isBoss": true,
       "spriteId": "musk_x_finale_ally",
-      "spriteTint": "#26C6DA"
+      "spriteTint": "#26C6DA",
+      "weak": [
+        "HOLY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "diet_coke_mecha",
       "name": "Red Wooden Diet Coke Valet Turret",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 380,
       "attack": 22,
@@ -1193,13 +1581,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "valet_button",
-      "spriteTint": "#EF5350"
+      "spriteTint": "#EF5350",
+      "weak": [],
+      "resist": [],
+      "armor": 35
     },
     {
       "id": "battery_golem",
       "name": "Stranded EV Battery Golem",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "CONSTRUCT",
       "selfElement": "",
       "hp": 650,
       "attack": 30,
@@ -1208,13 +1599,20 @@
       "movesetId": "flesh_bruiser",
       "isBoss": true,
       "spriteId": "battery_golem",
-      "spriteTint": "#26A69A"
+      "spriteTint": "#26A69A",
+      "weak": [
+        "CRYOMANCY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 35
     },
     {
       "id": "mandate_drone",
       "name": "Federal Green Mandate Drone",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "SILENCE",
       "selfElement": "",
       "hp": 350,
       "attack": 26,
@@ -1223,7 +1621,10 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "green_drone",
-      "spriteTint": "#81C784"
+      "spriteTint": "#81C784",
+      "weak": [],
+      "resist": [],
+      "armor": 15
     },
     {
       "id": "kamala",
@@ -1241,13 +1642,20 @@
       "spriteTint": "#FFCA28",
       "soundBites": [
         "audio/quotes/kamala/kamala_ride_a_bus.ogg"
-      ]
+      ],
+      "weak": [
+        "PYROMANCY"
+      ],
+      "resist": [
+        "ELECTROMANCY"
+      ],
+      "armor": 15
     },
     {
       "id": "yellow_venn",
       "name": "Yellow Venn Loop",
       "subtitle": "Sniper",
-      "family": "FLESH",
+      "family": "VERDANT",
       "selfElement": "",
       "hp": 340,
       "attack": 26,
@@ -1256,13 +1664,16 @@
       "movesetId": "flesh_sniper",
       "isBoss": false,
       "spriteId": "venn_loop",
-      "spriteTint": "#FFEB3B"
+      "spriteTint": "#FFEB3B",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "blue_venn",
       "name": "Blue Venn Loop",
       "subtitle": "Vanguard",
-      "family": "FLESH",
+      "family": "VERDANT",
       "selfElement": "",
       "hp": 360,
       "attack": 24,
@@ -1271,14 +1682,17 @@
       "movesetId": "flesh_bruiser",
       "isBoss": false,
       "spriteId": "blue_venn",
-      "spriteTint": "#42A5F5"
+      "spriteTint": "#42A5F5",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     },
     {
       "id": "practice_dummy",
       "name": "Rally Cut-Out",
       "subtitle": "Cardboard Heckler for Voice Drills",
       "family": "CONSTRUCT",
-      "selfElement": "PHYSICAL",
+      "selfElement": "",
       "hp": 2000,
       "attack": 0,
       "defense": 0,
@@ -1286,7 +1700,10 @@
       "movesetId": "",
       "isBoss": false,
       "spriteId": "practice_dummy",
-      "spriteTint": "#D7CCC8"
+      "spriteTint": "#D7CCC8",
+      "weak": [],
+      "resist": [],
+      "armor": 0
     }
   ]
 }

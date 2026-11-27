@@ -14,7 +14,7 @@
   "loreClass": "Rustbelt Vanguard",
   "outOfTurnLine": "Hold your horses, that belongs to {owner}. I'm JD Vance, and we've got debate dismantling ready to go.",
   "combat": {
-    "maxHp": 4200,
+    "maxHp": 420,
     "speed": 60,
     "defense": 32,
     "avatarTint": "#5C6BC0",

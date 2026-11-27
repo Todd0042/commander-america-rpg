@@ -14,7 +14,7 @@
   "loreClass": "Intel Inquisitor",
   "outOfTurnLine": "That's in {owner}'s file! I'm Kash Patel, let's declassify the truth or plug the leaks!",
   "combat": {
-    "maxHp": 3900,
+    "maxHp": 390,
     "speed": 68,
     "defense": 25,
     "avatarTint": "#AB47BC",
