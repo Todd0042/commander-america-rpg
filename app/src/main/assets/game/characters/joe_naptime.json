@@ -9,7 +9,6 @@
   "loreClass": "Grand Ice-Cream Cryomancer",
   "combat": {
     "maxHp": 390,
-    "maxMp": 160,
     "speed": 70,
     "defense": 0,
     "avatarTint": "#FFF59D",
@@ -20,8 +19,7 @@
       "biden_jenis_brain_freeze",
       "biden_baskin_robbins_lick",
       "biden_9am_lid_sundae",
-      "biden_fudge_ripple_meltdown",
-      "attune"
+      "biden_fudge_ripple_meltdown"
     ]
   }
 }

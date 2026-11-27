@@ -9,7 +9,6 @@
   "loreClass": "Artisanal Chapati Socialist",
   "combat": {
     "maxHp": 430,
-    "maxMp": 175,
     "speed": 76,
     "defense": 0,
     "avatarTint": "#FF7043",
@@ -19,8 +18,7 @@
       "zohran_municipal_grocery",
       "zohran_freeze_the_rent",
       "zohran_bowdoin_stipend",
-      "zohran_vindication_pilot",
-      "attune"
+      "zohran_vindication_pilot"
     ]
   }
 }

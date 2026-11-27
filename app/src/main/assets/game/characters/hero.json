@@ -21,7 +21,6 @@
   "outOfTurnLine": "Hold on folks, that's {owner}'s move! Commander America has the tremendous spells ready right here!",
   "combat": {
     "maxHp": 5000,
-    "maxMp": 1776,
     "speed": 70,
     "defense": 35,
     "avatarTint": "#FFD700",
@@ -33,8 +32,7 @@
       "ca_presidential_veto",
       "ca_executive_action",
       "ca_build_the_wall",
-      "ca_rally_patriots",
-      "ca_tired_of_winning"
+      "ca_rally_patriots"
     ]
   },
   "sprite": {

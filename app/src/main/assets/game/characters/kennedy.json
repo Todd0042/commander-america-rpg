@@ -15,7 +15,6 @@
   "outOfTurnLine": "Now hold on, son! That's {owner}'s business. In plain English, I'm Senator Kennedy and we're here to cross-examine these folks!",
   "combat": {
     "maxHp": 4000,
-    "maxMp": 1150,
     "speed": 62,
     "defense": 30,
     "avatarTint": "#78909C",
@@ -23,8 +22,7 @@
     "spellIds": [
       "ca_kennedy_english",
       "ca_kennedy_officer",
-      "ca_kennedy_remedy",
-      "ca_kennedy_oneliner"
+      "ca_kennedy_remedy"
     ]
   }
 }

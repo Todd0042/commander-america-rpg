@@ -9,7 +9,6 @@
   "loreClass": "Istanbul Nightlife Envoy",
   "combat": {
     "maxHp": 420,
-    "maxMp": 150,
     "speed": 70,
     "defense": 0,
     "avatarTint": "#26A69A",
@@ -17,8 +16,7 @@
     "spellIds": [
       "swagger_turkish_upgrade",
       "swagger_contraband_doll",
-      "swagger_vegan_seabass",
-      "swagger_forgot_passcode"
+      "swagger_vegan_seabass"
     ]
   }
 }

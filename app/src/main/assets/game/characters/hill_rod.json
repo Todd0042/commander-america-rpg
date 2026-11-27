@@ -12,7 +12,6 @@
   ],
   "combat": {
     "maxHp": 340,
-    "maxMp": 140,
     "speed": 72,
     "defense": 0,
     "avatarTint": "#64B5F6",
@@ -22,8 +21,7 @@
       "hill_cloth_wipe",
       "hill_hot_sauce",
       "hill_cattle_futures",
-      "hill_vindication_11hr",
-      "attune"
+      "hill_vindication_11hr"
     ]
   }
 }

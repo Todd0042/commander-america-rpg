@@ -1,5 +1,6 @@
 {
   "_doc": "Commander America: two campaigns told from opposite perspectives. creationMode preset_select makes character creation a pick between the two tracks' heroes.",
+  "combatResource": "none",
   "gameTitle": "Commander America",
   "gameSubtitle": "Paint it Red • Bewilder with Blue",
   "worldName": "the campaign trail",

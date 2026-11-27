@@ -15,7 +15,6 @@
   "outOfTurnLine": "That's in {owner}'s file! I'm Kash Patel, let's declassify the truth or plug the leaks!",
   "combat": {
     "maxHp": 3900,
-    "maxMp": 1100,
     "speed": 68,
     "defense": 25,
     "avatarTint": "#AB47BC",
@@ -23,8 +22,7 @@
     "spellIds": [
       "ca_kash_declassify",
       "ca_kash_binder",
-      "ca_kash_clearance",
-      "ca_kash_leak"
+      "ca_kash_clearance"
     ]
   }
 }

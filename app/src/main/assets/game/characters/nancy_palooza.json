@@ -9,7 +9,6 @@
   "loreClass": "Sub-Zero Call-Option Oracle",
   "combat": {
     "maxHp": 360,
-    "maxMp": 150,
     "speed": 74,
     "defense": 0,
     "avatarTint": "#81C784",
@@ -20,8 +19,7 @@
       "nancy_sideways_clap",
       "nancy_pass_to_find_out",
       "nancy_deep_itm_calls",
-      "nancy_vindication_nvda",
-      "attune"
+      "nancy_vindication_nvda"
     ]
   }
 }

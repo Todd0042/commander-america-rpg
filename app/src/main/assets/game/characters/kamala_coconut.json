@@ -12,7 +12,6 @@
   ],
   "combat": {
     "maxHp": 410,
-    "maxMp": 165,
     "speed": 75,
     "defense": 0,
     "avatarTint": "#BA68C8",
@@ -23,8 +22,7 @@
       "kamala_venn_diagram",
       "kamala_passage_of_time",
       "kamala_yellow_school_bus",
-      "kamala_vindication_tiffany",
-      "attune"
+      "kamala_vindication_tiffany"
     ]
   }
 }
