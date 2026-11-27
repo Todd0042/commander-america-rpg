@@ -6,7 +6,7 @@ Every fighter, enemy and boss is mapped to a sprite key below. A sheet named aft
 
 A political parody JRPG: public figures as a JRPG party, their famous gaffes and props as spells, and the bosses mostly earlier or rival versions of the party. Draw everyone as affectionate 16-bit caricatures that match the portraits in `app/src/main/assets/portraits/` (big recognisable hair, signature suits and props); the satire is in the props and poses, never in mocking anyone's body, ethnicity or religion. The regular enemies are mostly animated objects and media types (potted ferns, freezers, teleprompters, a riding mower) and should be as funny as their names.
 
-**To draw: 54 sheets** (11 party fighters, 24 enemy families, 19 bosses). Everything else is a recolour of one of those.
+**To draw: 0 sheets** (0 party fighters, 0 enemy families, 0 bosses). Everything else is a recolour of one of those.
 
 ## Style (every sprite)
 
@@ -35,7 +35,7 @@ A political parody JRPG: public figures as a JRPG party, their famous gaffes and
 
 ## Party fighters (11, 64 px)
 
-### `hero`: Commander America
+### `hero`: Commander America ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/hero.png` + `hero.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -53,7 +53,7 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `commander_fry_apron`: Commander America (Fry-Cook Apron) (Vanguard, flesh): a fry-cook apron over the shirt and tie, a fry basket; or the neon-orange vest (costume change: own sheet recommended)
 - `commander_finale_boss`: Commander America (Golden Podium) (Vanguard, flesh): the finale: behind a golden podium, gold trim on the suit (own 96 px sheet recommended)
 
-### `hill_rod`: Hill-Rod
+### `hill_rod`: Hill-Rod ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/hill_rod.png` + `hill_rod.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -66,7 +66,7 @@ A pantsuit politician (portraits/template/hill_rod_template.jpg): blonde bob, a 
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `hill_rod_boss`: Hill-Rod (Server Sovereign) (Occultist, flesh): Server Sovereign: a blue server-light aura
 
-### `joe_naptime`: Joe Naptime
+### `joe_naptime`: Joe Naptime ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/joe_naptime.png` + `joe_naptime.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -80,7 +80,7 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `joe_naptime_baskin_boss`: Joe Naptime (Baskin-Robbins Cryomancer) (Occultist, flesh): a double-scoop chocolate-chip waffle cone, a teleprompter behind
 - `joe_naptime_ally`: Joe Naptime (2-Scoop Waffle Cone) (Vanguard, flesh): the same with a two-scoop waffle cone
 
-### `kamala_coconut`: Kamala Coconut
+### `kamala_coconut`: Kamala Coconut ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/kamala_coconut.png` + `kamala_coconut.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -94,7 +94,7 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `kamala_venn_ally`: Kamala Coconut (3-Circle Venn) (Occultist, flesh): 3-Circle Venn: three rings orbiting
 - `kamala`: Kamala the Unburdened (Occultist, flesh): Kamala the Unburdened (the Act 6 boss): the rings looping endlessly, a dreamy glow
 
-### `kash`: Kash Subpoena
+### `kash`: Kash Subpoena ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/kash.png` + `kash.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -108,7 +108,7 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `kash_wizard_boss`: Kash Subpoena (Wizard Kash) (Occultist, flesh): Wizard Kash: a purple wizard hat and a 4-page FISA scroll
 - `kash_doge_boss`: Wizard Kash ($19.99 King Book) (Occultist, flesh): the $19.99 King Book held high, a price tag
 
-### `kennedy`: Foghorn Kennedy
+### `kennedy`: Foghorn Kennedy ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/kennedy.png` + `kennedy.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -122,7 +122,7 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `foghorn_kennedy_boss`: Foghorn Kennedy (Oxford Drawl) (Occultist, flesh): Oxford drawl: an Oxford scarf
 - `kennedy_doge_boss`: Foghorn Kennedy (Oxford Drawl) (Sniper, flesh): the same, at a hearing-room desk
 
-### `marco`: Little Marco
+### `marco`: Little Marco ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/marco.png` + `marco.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory
 
@@ -132,7 +132,7 @@ From portraits/marco.jpg: neat dark hair, a navy suit and blue tie, an emergency
 
 *Moves*: cast: takes a sip and sprays a sanctions scroll (release=4); attack: hurls the water bottle; charge: sips nervously.
 
-### `mayor_swagger`: Mayor Swagger
+### `mayor_swagger`: Mayor Swagger ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/mayor_swagger.png` + `mayor_swagger.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -145,7 +145,7 @@ From portraits/mayor_swagger.jpg: bald, a big grin, a royal-blue suit with a gol
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `mayor_swagger_boss`: Mayor Swagger (Istanbul Envoy) (Occultist, flesh): Istanbul Envoy: a Turkish Airlines amenity kit and eye mask on the forehead
 
-### `nancy_palooza`: Nancy Palooza
+### `nancy_palooza`: Nancy Palooza ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/nancy_palooza.png` + `nancy_palooza.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -158,7 +158,7 @@ From portraits/pelosi.jpg: voluminous brown hair, a hot-pink suit, an orange pea
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `pelosi`: Nancy Palooza (Sub-Zero Oracle) (Occultist, flesh): Sub-Zero Oracle: frost on the suit, a speech torn in half
 
-### `vance`: JD Pants
+### `vance`: JD Pants ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/vance.png` + `vance.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -173,7 +173,7 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `vance_doge_boss`: JD Pants ('Whatever Makes Sense') (Vanguard, flesh): 'Whatever Makes Sense': arms spread
 - `vance_diet_dew`: JD Pants (Diet Mountain Dew) (Sniper, flesh): Diet Mountain Dew (a regular enemy): a green soda can in hand
 
-### `zohran_cardamom`: Zohran Cardamom
+### `zohran_cardamom`: Zohran Cardamom ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/zohran_cardamom.png` + `zohran_cardamom.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
 
@@ -188,7 +188,7 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 
 ## Enemy families (24, 64 px)
 
-### `practice_dummy`: Rally Cut-Out
+### `practice_dummy`: Rally Cut-Out ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/practice_dummy.png` + `practice_dummy.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -198,7 +198,7 @@ A life-size cardboard cut-out of a generic rally heckler on a wooden A-frame sta
 
 Draws: Rally Cut-Out (Cardboard Heckler for Voice Drills, construct/physical)
 
-### `newsroom`: Cable News Producer
+### `newsroom`: Cable News Producer ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/newsroom.png` + `newsroom.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -211,7 +211,7 @@ Draws: Cable News Producer (Sniper, flesh)
 Recolours:
 - `hostile_fact_checker`: Hostile Fisheye Fact-Checker (Occultist, flesh): Hostile Fisheye Fact-Checker: big fisheye glasses, red stamp in hand
 
-### `suit`: K-Street Lobbyist
+### `suit`: K-Street Lobbyist ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/suit.png` + `suit.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -227,7 +227,7 @@ Recolours:
 - `dealbook_boycott_exec`: DealBook Ad-Boycott Executive (Sniper, flesh): DealBook executive: a lanyard and a tablet
 - `sec_420_auditor`: SEC '$420 Funding Secured' Auditor (Occultist, flesh): SEC auditor: a navy windbreaker
 
-### `inspector`: Low-Flow Regulator
+### `inspector`: Low-Flow Regulator ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/inspector.png` + `inspector.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -242,7 +242,7 @@ Recolours:
 - `mta_turnstile_drone`: Q70 Bus Fare Inspector (Sniper, flesh): bus fare inspector: transit uniform and cap
 - `redaction_guard`: Redaction Marker Sentinel (Vanguard, flesh): Redaction sentinel: a navy windbreaker and a giant black marker
 
-### `waiter`: Poupon Mustard Sommelier
+### `waiter`: Poupon Mustard Sommelier ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/waiter.png` + `waiter.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -252,7 +252,7 @@ A tuxedoed waiter with a towel over the arm, presenting a jar of Dijon mustard o
 
 Draws: Poupon Mustard Sommelier (Sniper, flesh)
 
-### `server_rack`: Chappaqua Basement Server Rack
+### `server_rack`: Chappaqua Basement Server Rack ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/server_rack.png` + `server_rack.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -262,7 +262,7 @@ A basement server rack on stubby legs, blinking blue and green lights, cables li
 
 Draws: Chappaqua Basement Server Rack (Vanguard, flesh)
 
-### `fern`: Hostile Studio Fern
+### `fern`: Hostile Studio Fern ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/fern.png` + `fern.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -275,7 +275,7 @@ Draws: Hostile Studio Fern Left (Vanguard, flesh)
 Recolours:
 - `fern_intern`: Potted Fern Intern (Sniper, flesh): Potted Fern Intern: a tiny lanyard, a lighter green
 
-### `billy_bus`: Billy Access-Bus Hot Mic
+### `billy_bus`: Billy Access-Bus Hot Mic ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/billy_bus.png` + `billy_bus.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -285,7 +285,7 @@ From portraits/billy_bus.jpg: spiky blond hair, leather jacket over a band tee, 
 
 Draws: Billy Access-Bus Hot Mic (Sniper, flesh)
 
-### `casting_extra`: $50 Casting Extra
+### `casting_extra`: $50 Casting Extra ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/casting_extra.png` + `casting_extra.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -298,7 +298,7 @@ Draws: $50 FEC Casting Extra (Vanguard, flesh)
 Recolours:
 - `swiss_cheese_purist`: South Philly Swiss-Cheese Heckler (Sniper, flesh): South Philly heckler: kelly-green team jacket, a cheesesteak
 
-### `freezer_golem`: Sub-Zero Freezer Golem
+### `freezer_golem`: Sub-Zero Freezer Golem ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/freezer_golem.png` + `freezer_golem.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -311,7 +311,7 @@ Draws: Sub-Zero Jeni's Freezer Golem (Vanguard, flesh)
 Recolours:
 - `two_scoop_golem`: Jeni's Double-Scoop Freezer Golem (Vanguard, flesh): a double scoop of chocolate chip on its head
 
-### `stylist`: eSalon Blowout Stylist
+### `stylist`: eSalon Blowout Stylist ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/stylist.png` + `stylist.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -321,7 +321,7 @@ A celebrity hairstylist with a huge blowout, a hair dryer drawn like a pistol an
 
 Draws: eSalon Blowout Stylist (Sniper, flesh)
 
-### `the_mooch`: The 11-Day Mooch
+### `the_mooch`: The 11-Day Mooch ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/the_mooch.png` + `the_mooch.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -331,7 +331,7 @@ From portraits/mooch.jpg: slicked black hair, sunglasses on the head, a navy pin
 
 Draws: The 11-Day Mooch Whirlwind (Sniper, flesh)
 
-### `box_golem`: Merch Box Golem
+### `box_golem`: Merch Box Golem ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/box_golem.png` + `box_golem.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -346,7 +346,7 @@ Recolours:
 - `sprinkle_stuff_box`: 'Some Sprinkle Stuff' Donut Box (Sniper, flesh): a pink bakery box with sprinkles
 - `article_five_binder`: Constitutional Article V Pop-Quiz (Sniper, flesh): a giant three-ring binder version, pop-quiz pages flapping
 
-### `riding_mower`: Four Seasons Riding Mower
+### `riding_mower`: Four Seasons Riding Mower ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/riding_mower.png` + `riding_mower.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -356,7 +356,7 @@ A green riding lawn mower with no rider, headlights for eyes, the cutter deck gr
 
 Draws: Four Seasons Riding Mower (Sniper, flesh)
 
-### `trek_bike`: Toe-Cage Trek Bicycle
+### `trek_bike`: Toe-Cage Trek Bicycle ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/trek_bike.png` + `trek_bike.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -369,7 +369,7 @@ Draws: Stationary Toe-Cage Trek Bicycle (Sniper, flesh)
 Recolours:
 - `toe_cage_pedal`: Rehoboth Metal Toe-Cage Bike (Sniper, flesh): rustier, a single giant toe-cage pedal for a head
 
-### `corvette`: 1967 Corvette Sentinel
+### `corvette`: 1967 Corvette Sentinel ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/corvette.png` + `corvette.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -379,7 +379,7 @@ A classic 1967 Corvette Stingray in green with headlight eyes popping up, guardi
 
 Draws: Wilmington Corvette Garage Sentinel (Vanguard, flesh)
 
-### `teleprompter`: Teleprompter
+### `teleprompter`: Teleprompter ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/teleprompter.png` + `teleprompter.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -393,7 +393,7 @@ Recolours:
 - `teleprompter_glitch`: 32-Day Teleprompter Glitch (Sniper, flesh): glitching red, static lines
 - `people_on_tv_set`: 'The People on Television' Monitor (Occultist, flesh): an old CRT television on legs instead of the glass (own sheet would sell it better)
 
-### `merch_press`: 'Never Surrender' Mug Press
+### `merch_press`: 'Never Surrender' Mug Press ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/merch_press.png` + `merch_press.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -403,7 +403,7 @@ A mug-printing press machine stamping out mugs with a glaring face printed on th
 
 Draws: $7.1M 'Never Surrender' Mug Press (Sniper, flesh)
 
-### `garbage_truck`: Neon-Orange Garbage Truck
+### `garbage_truck`: Neon-Orange Garbage Truck ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/garbage_truck.png` + `garbage_truck.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -413,7 +413,7 @@ A white garbage truck with a neon-orange safety vest stripe, the hopper as a mou
 
 Draws: Neon-Orange Mack Garbage Truck (Vanguard, flesh)
 
-### `lie_flat_pod`: Turkish Airlines Lie-Flat Pod
+### `lie_flat_pod`: Turkish Airlines Lie-Flat Pod ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/lie_flat_pod.png` + `lie_flat_pod.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -423,7 +423,7 @@ A first-class airline lie-flat seat pod come alive, the seat back flapping like 
 
 Draws: Turkish Airlines Lie-Flat Pod (Vanguard, flesh)
 
-### `sink_golem`: Porcelain Basin
+### `sink_golem`: Porcelain Basin ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/sink_golem.png` + `sink_golem.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -433,7 +433,7 @@ A white porcelain bathroom sink on a pedestal, faucet as a nose, spraying water,
 
 Draws: 'Let That Sink In' Porcelain Basin (Vanguard, flesh)
 
-### `valet_button`: Diet Coke Valet Turret
+### `valet_button`: Diet Coke Valet Turret ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/valet_button.png` + `valet_button.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -443,7 +443,7 @@ A red wooden desk box with a single big button on top, a small turret barrel tha
 
 Draws: Red Wooden Diet Coke Valet Turret (Sniper, flesh)
 
-### `green_drone`: Federal Green Mandate Drone
+### `green_drone`: Federal Green Mandate Drone ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/green_drone.png` + `green_drone.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -453,7 +453,7 @@ A quadcopter drone painted green with a leaf emblem and a dangling charging cabl
 
 Draws: Federal Green Mandate Drone (Sniper, flesh)
 
-### `venn_loop`: Venn Loop
+### `venn_loop`: Venn Loop ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/venn_loop.png` + `venn_loop.json` · **enemy** · **64x64** cells · tags: idle, attack (impact=4), hurt (+ windup, cast (release=4), death)
 
@@ -468,7 +468,7 @@ Recolours:
 
 ## Bosses (19 to draw, each its own sprite)
 
-### `dynasty_candidate`: Low-Energy Dynasty Candidate (96 px)
+### `dynasty_candidate`: Low-Energy Dynasty Candidate (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/dynasty_candidate.png` + `dynasty_candidate.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -478,7 +478,7 @@ From portraits/jeb.jpg: glasses, a tan button-down, a bowl of guacamole held up;
 
 Element: flesh.
 
-### `barry_tan_suit`: Barry Teleprompter (Tan Suit) (96 px)
+### `barry_tan_suit`: Barry Teleprompter (Tan Suit) (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/barry_tan_suit.png` + `barry_tan_suit.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -488,7 +488,7 @@ From portraits/obama.jpg: short grey hair, the famous tan summer suit, a microph
 
 Element: flesh.
 
-### `zach_ferns_boss`: Zach Two-Ferns (96 px)
+### `zach_ferns_boss`: Zach Two-Ferns (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/zach_ferns_boss.png` + `zach_ferns_boss.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -498,7 +498,7 @@ From portraits/zach_ferns.jpg: shaggy hair and beard, a corduroy jacket, two pot
 
 Element: flesh.
 
-### `aerial_spin_anchor`: Cable News Aerial Spin Anchor (96 px)
+### `aerial_spin_anchor`: Cable News Aerial Spin Anchor (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/aerial_spin_anchor.png` + `aerial_spin_anchor.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -508,7 +508,7 @@ From portraits/media_anchor.jpg: a news anchor in glasses and a blue suit with a
 
 Element: flesh.
 
-### `noaa_meteorologist`: NOAA Cone-of-Uncertainty Chief (96 px)
+### `noaa_meteorologist`: NOAA Cone-of-Uncertainty Chief (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/noaa_meteorologist.png` + `noaa_meteorologist.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -518,7 +518,7 @@ A meteorologist in a NOAA windbreaker before a hurricane map, a cone of uncertai
 
 Element: flesh.
 
-### `spicy_sean_salsa`: Spicy Sean (Neon Salsa Shirt) (96 px)
+### `spicy_sean_salsa`: Spicy Sean (Neon Salsa Shirt) (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/spicy_sean_salsa.png` + `spicy_sean_salsa.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -528,7 +528,7 @@ From portraits/spicy_sean.jpg: a press secretary bursting out of the hedges in a
 
 Element: flesh.
 
-### `rudy_ghoul_boss`: Rudy Ghoul (Melting Hair Dye) (96 px)
+### `rudy_ghoul_boss`: Rudy Ghoul (Melting Hair Dye) (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/rudy_ghoul_boss.png` + `rudy_ghoul_boss.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -538,7 +538,7 @@ From portraits/rudy_ghoul.jpg: a ghoulish lawyer in a navy suit, hair dye drippi
 
 Element: flesh.
 
-### `af1_staircase_gust`: Air Force One Triple-Stumble Staircase (128 px)
+### `af1_staircase_gust`: Air Force One Triple-Stumble Staircase (128 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/af1_staircase_gust.png` + `af1_staircase_gust.json` · **boss** · **128x128** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -548,7 +548,7 @@ The rolling airstairs of a presidential jet come alive, steps as teeth, the hand
 
 Element: flesh.
 
-### `chandelier_archivist`: Bathroom Chandelier Box Inspector (96 px)
+### `chandelier_archivist`: Bathroom Chandelier Box Inspector (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/chandelier_archivist.png` + `chandelier_archivist.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -558,7 +558,7 @@ A subpoena archivist in a navy windbreaker with a magnifying glass, standing on 
 
 Element: flesh.
 
-### `corn_pop_boss`: Corn Pop (Rusty Rain-Barrel Dude) (96 px)
+### `corn_pop_boss`: Corn Pop (Rusty Rain-Barrel Dude) (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/corn_pop_boss.png` + `corn_pop_boss.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -568,7 +568,7 @@ A 1960s swimming-pool tough from the old anecdote: slicked pompadour, sleeveless
 
 Element: flesh.
 
-### `archivist_boss`: Chief Bureau Archivist (96 px)
+### `archivist_boss`: Chief Bureau Archivist (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/archivist_boss.png` + `archivist_boss.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -578,7 +578,7 @@ From portraits/comey.jpg: a very tall man in a navy suit, a stack of memos under
 
 Element: flesh.
 
-### `donut_shop_case`: 'Whatever Makes Sense' Glazed Case (96 px)
+### `donut_shop_case`: 'Whatever Makes Sense' Glazed Case (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/donut_shop_case.png` + `donut_shop_case.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -588,7 +588,7 @@ An unimpressed bakery display case on legs, rows of donuts as teeth, a sliding g
 
 Element: flesh.
 
-### `word_salad_critic`: Uncontextualized Pundit (96 px)
+### `word_salad_critic`: Uncontextualized Pundit (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/word_salad_critic.png` + `word_salad_critic.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -598,7 +598,7 @@ A pundit at a news desk with a bowl of literal word salad (lettuce with letter s
 
 Element: flesh.
 
-### `shattered_cybertruck`: Shattered Armor-Glass Cybertruck (128 px)
+### `shattered_cybertruck`: Shattered Armor-Glass Cybertruck (128 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/shattered_cybertruck.png` + `shattered_cybertruck.json` · **boss** · **128x128** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -608,7 +608,7 @@ An angular stainless-steel electric pickup come alive, its 'armor glass' windows
 
 Element: flesh.
 
-### `omnibus_pork_golem`: 4,000-Page Omnibus Pork Golem (128 px)
+### `omnibus_pork_golem`: 4,000-Page Omnibus Pork Golem (128 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/omnibus_pork_golem.png` + `omnibus_pork_golem.json` · **boss** · **128x128** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -618,7 +618,7 @@ A towering golem of stacked bill pages bound with red tape, pork chops and earma
 
 Element: flesh.
 
-### `rent_board_lobbyist`: Luxury Condo Rent-Hike Lobbyist (96 px)
+### `rent_board_lobbyist`: Luxury Condo Rent-Hike Lobbyist (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/rent_board_lobbyist.png` + `rent_board_lobbyist.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -628,7 +628,7 @@ A real-estate lobbyist in a camel overcoat with a tiny condo tower model under o
 
 Element: flesh.
 
-### `passcode_cracker`: 6-Digit iPhone Passcode Cracker (96 px)
+### `passcode_cracker`: 6-Digit iPhone Passcode Cracker (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/passcode_cracker.png` + `passcode_cracker.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -638,7 +638,7 @@ A hooded forensic hacker with a laptop and a phone on a cable, glowing keypad di
 
 Element: flesh.
 
-### `musk_x_starjump_boss`: Musk-X (Mid-Air 'X' Star-Jump) (96 px)
+### `musk_x_starjump_boss`: Musk-X (Mid-Air 'X' Star-Jump) (96 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/musk_x_starjump_boss.png` + `musk_x_starjump_boss.json` · **boss** · **96x96** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
@@ -654,7 +654,7 @@ The finale version: an all-black gothic outfit and black cap; a darker recolour 
 
 Element: flesh. A recolour of `musk_x_starjump_boss` (no art needed unless it should differ).
 
-### `battery_golem`: Stranded EV Battery Golem (128 px)
+### `battery_golem`: Stranded EV Battery Golem (128 px) ✅ delivered
 
 > **Deliver:** `app/src/main/assets/game/sprites/sheets/battery_golem.png` + `battery_golem.json` · **boss** · **128x128** cells · tags: idle, windup, attack (impact=4), cast (release=4), hurt, charge_ultimate, ultimate (release=5) (+ death)
 
