@@ -8,9 +8,14 @@
       "loreLocation": "Grand Courtyard",
       "subtitle": "Stone battlements, banners in the wind, training targets & banneret shields",
       "ambientThemeColor": "#2196F3",
-      "backgroundAsset": "environments/castle.jpg",
-      "aliases": ["courtyard", "CASTLE", "training_grounds"],
-      "overlayType": "CASTLE"
+      "backgroundAsset": "environments/castle.png",
+      "aliases": [
+        "courtyard",
+        "CASTLE",
+        "training_grounds"
+      ],
+      "overlayType": "CASTLE",
+      "artHorizon": 0.6
     },
     {
       "id": "cave",
@@ -19,9 +24,14 @@
       "loreLocation": "Deep Chasm",
       "subtitle": "Bioluminescent crystal clusters, echoing stalactites & subterranean mist",
       "ambientThemeColor": "#78909C",
-      "backgroundAsset": "environments/cave.jpg",
-      "aliases": ["cavern", "CAVE", "crystal_cavern"],
-      "overlayType": "CAVE"
+      "backgroundAsset": "environments/cave.png",
+      "aliases": [
+        "cavern",
+        "CAVE",
+        "crystal_cavern"
+      ],
+      "overlayType": "CAVE",
+      "artHorizon": 0.55
     },
     {
       "id": "dungeon",
@@ -30,9 +40,14 @@
       "loreLocation": "Subterranean Vaults",
       "subtitle": "Carved stone columns, iron braziers, runic inscriptions & ancient arches",
       "ambientThemeColor": "#FF9800",
-      "backgroundAsset": "environments/dungeon.jpg",
-      "aliases": ["vaults", "DUNGEON", "echo_hall"],
-      "overlayType": "DUNGEON"
+      "backgroundAsset": "environments/dungeon.png",
+      "aliases": [
+        "vaults",
+        "DUNGEON",
+        "echo_hall"
+      ],
+      "overlayType": "DUNGEON",
+      "artHorizon": 0.66
     },
     {
       "id": "forest",
@@ -41,9 +56,14 @@
       "loreLocation": "Verdant Canopy",
       "subtitle": "Towering oaks, drifting spores, sunbeams through leaves & mossy roots",
       "ambientThemeColor": "#4CAF50",
-      "backgroundAsset": "environments/forest.jpg",
-      "aliases": ["woods", "FOREST", "whispering_woods"],
-      "overlayType": "FOREST"
+      "backgroundAsset": "environments/forest.png",
+      "aliases": [
+        "woods",
+        "FOREST",
+        "whispering_woods"
+      ],
+      "overlayType": "FOREST",
+      "artHorizon": 0.57
     },
     {
       "id": "swamp",
@@ -52,9 +72,14 @@
       "loreLocation": "Marshlands",
       "subtitle": "Murky waters, will-o'-the-wisps, weeping cypress & clinging fog",
       "ambientThemeColor": "#8D6E63",
-      "backgroundAsset": "environments/swamp.jpg",
-      "aliases": ["marsh", "SWAMP", "sunken_hollow"],
-      "overlayType": "SWAMP"
+      "backgroundAsset": "environments/swamp.png",
+      "aliases": [
+        "marsh",
+        "SWAMP",
+        "sunken_hollow"
+      ],
+      "overlayType": "SWAMP",
+      "artHorizon": 0.72
     }
   ]
 }

@@ -18,7 +18,7 @@
 [![Speech: Android Offline STT](https://img.shields.io/badge/Speech-Android%20Offline%20STT-3DDC84.svg)](https://developer.android.com/reference/android/speech/SpeechRecognizer)
 [![Audio: Public Domain Soundbites](https://img.shields.io/badge/Audio-Historical%20Soundbites-yellow.svg)](app/src/main/java/com/voicerpg/engine/audio/SoundbitePlayer.kt)
 [![Audio: Dynamic Ducking](https://img.shields.io/badge/Audio-Dynamic%20Ducking-green.svg)](app/src/main/java/com/voicerpg/engine/audio/)
-[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-232%20Passing-39ff14.svg)](app/src/test/java/com/voicerpg/engine/CommanderAmericaGameTest.kt)
+[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-347%20Passing-39ff14.svg)](app/src/test/java/com/voicerpg/engine/)
 [![Engine: VoiceRPG](https://img.shields.io/badge/Engine-VoiceRPG%20v2.0.0-teal.svg)](https://github.com/Todd0042/voice-rpg-engine)
 [![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20Creator-F16061?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/todd0042)
 
@@ -157,6 +157,8 @@ Core framework guarantees:
 Commander America configures the engine dynamically through [`GameContent.kt`](app/src/main/java/com/voicerpg/engine/content/GameContent.kt):
 - **Campaign Manifest (`GameManifest`)**: Registers the dual campaign tracks (`track_a` "Paint it Red" and `track_b` "Bewilder with Blue") along with starting scene pointers (`scene_act1_intro`, `scene_act1_b_intro`).
 - **Speaker TTS Voice Bindings (`preferredVoiceIds`)**: Maps each political caricature (Commander America, Elon, Tulsi, Vivek, Bobby, Barry, Kamala, Joe) to distinct Android TTS pitch, language, and voice model profiles for immersive, distinct vocal dialogue.
+- **Battle Sprites (`game/sprites/sheets/`)**: **54** animated side-view Aseprite sheets (PNG + JSON): 11 party fighters, 24 enemy families and 19 bosses, at 64 px (bosses at 96 or 128 px), each with `feet`/`hit`/`cast`/`head` slices and `release=`/`impact=` events. Bosses that are recolours of a party fighter are listed in [`sprites/sprites.json`](app/src/main/assets/game/sprites/sprites.json). The roster behind them, with the artist's brief and a ✅ or ⚠️ REDO per sheet, is [`art/sprite_roster.json`](art/sprite_roster.json) / [`art/SPRITE_BRIEFS.md`](art/SPRITE_BRIEFS.md); `../voice-rpg-engine/scripts/sprite_coverage.sh commander-america-rpg` lists what the sprite contract still needs before a release build is allowed.
+- **Battle Backdrops (`game/environments/environments.json`)**: five pixel-art backdrops (`assets/environments/{castle,cave,dungeon,forest,swamp}.png`, 1344x768), each with its painted floor line (`artHorizon`) so combatants stand on the floor; the selfie creator offers the same five as backgrounds.
 
 ---
 
@@ -281,7 +283,7 @@ cd ../voice-rpg-engine && ./scripts/sync_engine_to_games.sh --check
 
 ## 8. Automated Unit Verification Suite
 
-Commander America includes **232 automated unit tests** verifying intent parsing, satirical chant resonance, multi-track save stability, and combat progression:
+Commander America runs **347 automated unit tests** (the engine's suite against this game's content) verifying intent parsing, satirical chant resonance, multi-track save stability, and combat progression:
 
 ```bash
 # Run unit test suite:
@@ -301,6 +303,7 @@ Test coverage includes:
 ## 9. Provenance, Political Satire & Non-Commercial Licensing
 
 - **First Amendment Parody & Satire**: Commander America RPG is a work of political parody and satirical commentary protected under Fair Use. All character caricatures and dialogue are satirical exaggerations.
+- **AI-Assisted Battle Art**: the battle sprite sheets and backdrops are AI-assisted (generated with Antigravity's art pipeline from the game's portraits and sprite briefs, then checked with the engine's sprite tools).
 - **PolyForm Noncommercial 1.0.0**: Free for personal, educational, and hobbyist enjoyment. For commercial inquiries, reach out to **[Todd.0042.git@gmail.com](mailto:Todd.0042.git@gmail.com)**.
 - **Media License**: the images, artwork and audio made for this project (paths listed in [LICENSE-MEDIA](LICENSE-MEDIA)) are © Todd0042 under **[CC BY-NC 4.0](LICENSE-MEDIA)**: free to share and adapt with credit for non-commercial purposes; commercial use requires permission.
 

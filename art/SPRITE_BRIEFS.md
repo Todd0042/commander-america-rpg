@@ -35,9 +35,9 @@ A political parody JRPG: public figures as a JRPG party, their famous gaffes and
 
 ## Party fighters (11, 64 px)
 
-### `hero`: Commander America ✅ delivered
+### `hero`: Commander America ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/hero.png` + `hero.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/hero.png` + `hero.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/commander_america.jpg`.
 
@@ -53,9 +53,9 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `commander_fry_apron`: Commander America (Fry-Cook Apron) (Vanguard, flesh): a fry-cook apron over the shirt and tie, a fry basket; or the neon-orange vest (costume change: own sheet recommended)
 - `commander_finale_boss`: Commander America (Golden Podium) (Vanguard, flesh): the finale: behind a golden podium, gold trim on the suit (own 96 px sheet recommended)
 
-### `hill_rod`: Hill-Rod ✅ delivered
+### `hill_rod`: Hill-Rod ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/hill_rod.png` + `hill_rod.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/hill_rod.png` + `hill_rod.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/template/hill_rod_template.jpg`.
 
@@ -66,9 +66,9 @@ A pantsuit politician (portraits/template/hill_rod_template.jpg): blonde bob, a 
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `hill_rod_boss`: Hill-Rod (Server Sovereign) (Occultist, flesh): Server Sovereign: a blue server-light aura
 
-### `joe_naptime`: Joe Naptime ✅ delivered
+### `joe_naptime`: Joe Naptime ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/joe_naptime.png` + `joe_naptime.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/joe_naptime.png` + `joe_naptime.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/biden.jpg`.
 
@@ -80,9 +80,9 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `joe_naptime_baskin_boss`: Joe Naptime (Baskin-Robbins Cryomancer) (Occultist, flesh): a double-scoop chocolate-chip waffle cone, a teleprompter behind
 - `joe_naptime_ally`: Joe Naptime (2-Scoop Waffle Cone) (Vanguard, flesh): the same with a two-scoop waffle cone
 
-### `kamala_coconut`: Kamala Coconut ✅ delivered
+### `kamala_coconut`: Kamala Coconut ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/kamala_coconut.png` + `kamala_coconut.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/kamala_coconut.png` + `kamala_coconut.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/kamala.jpg`.
 
@@ -94,9 +94,9 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `kamala_venn_ally`: Kamala Coconut (3-Circle Venn) (Occultist, flesh): 3-Circle Venn: three rings orbiting
 - `kamala`: Kamala the Unburdened (Occultist, flesh): Kamala the Unburdened (the Act 6 boss): the rings looping endlessly, a dreamy glow
 
-### `kash`: Kash Subpoena ✅ delivered
+### `kash`: Kash Subpoena ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/kash.png` + `kash.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/kash.png` + `kash.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/kash.jpg`.
 
@@ -108,9 +108,9 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `kash_wizard_boss`: Kash Subpoena (Wizard Kash) (Occultist, flesh): Wizard Kash: a purple wizard hat and a 4-page FISA scroll
 - `kash_doge_boss`: Wizard Kash ($19.99 King Book) (Occultist, flesh): the $19.99 King Book held high, a price tag
 
-### `kennedy`: Foghorn Kennedy ✅ delivered
+### `kennedy`: Foghorn Kennedy ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/kennedy.png` + `kennedy.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/kennedy.png` + `kennedy.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/kennedy.jpg`.
 
@@ -132,9 +132,9 @@ From portraits/marco.jpg: neat dark hair, a navy suit and blue tie, an emergency
 
 *Moves*: cast: takes a sip and sprays a sanctions scroll (release=4); attack: hurls the water bottle; charge: sips nervously.
 
-### `mayor_swagger`: Mayor Swagger ✅ delivered
+### `mayor_swagger`: Mayor Swagger ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/mayor_swagger.png` + `mayor_swagger.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/mayor_swagger.png` + `mayor_swagger.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/mayor_swagger.jpg`.
 
@@ -145,9 +145,9 @@ From portraits/mayor_swagger.jpg: bald, a big grin, a royal-blue suit with a gol
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `mayor_swagger_boss`: Mayor Swagger (Istanbul Envoy) (Occultist, flesh): Istanbul Envoy: a Turkish Airlines amenity kit and eye mask on the forehead
 
-### `nancy_palooza`: Nancy Palooza ✅ delivered
+### `nancy_palooza`: Nancy Palooza ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/nancy_palooza.png` + `nancy_palooza.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/nancy_palooza.png` + `nancy_palooza.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/pelosi.jpg`.
 
@@ -158,9 +158,9 @@ From portraits/pelosi.jpg: voluminous brown hair, a hot-pink suit, an orange pea
 Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimate (and death). Boss versions (recolours of this sheet; draw a separate sheet named after the id only for a costume change):
 - `pelosi`: Nancy Palooza (Sub-Zero Oracle) (Occultist, flesh): Sub-Zero Oracle: frost on the suit, a speech torn in half
 
-### `vance`: JD Pants ✅ delivered
+### `vance`: JD Pants ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/vance.png` + `vance.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/vance.png` + `vance.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/vance.jpg`.
 
@@ -173,9 +173,9 @@ Also fought as a boss, so this sheet also needs windup, charge_ultimate, ultimat
 - `vance_doge_boss`: JD Pants ('Whatever Makes Sense') (Vanguard, flesh): 'Whatever Makes Sense': arms spread
 - `vance_diet_dew`: JD Pants (Diet Mountain Dew) (Sniper, flesh): Diet Mountain Dew (a regular enemy): a green soda can in hand
 
-### `zohran_cardamom`: Zohran Cardamom ✅ delivered
+### `zohran_cardamom`: Zohran Cardamom ⚠️ REDO: missing windup, charge_ultimate, ultimate
 
-> **Deliver:** `app/src/main/assets/game/sprites/sheets/zohran_cardamom.png` + `zohran_cardamom.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · also the boss tags
+> **Deliver:** `app/src/main/assets/game/sprites/sheets/zohran_cardamom.png` + `zohran_cardamom.json` · **party** · **64x64** cells · tags: idle, ready, charge, cast (release=4), attack (impact=4), hurt, ko, victory · **plus, because this hero is also fought as a boss: windup, charge_ultimate, ultimate (release=5), death**
 
 Portrait: `portraits/mamdani.jpg`.
 
