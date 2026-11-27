@@ -8,7 +8,7 @@
 
 # 🇺🇸 Commander America RPG: The 2024 Political Satire Voice JRPG
 
-[![Version](https://img.shields.io/badge/Version-1.6.0-ff2a85.svg)](https://github.com/Todd0042/commander-america-rpg/releases)
+[![Version](https://img.shields.io/badge/Version-1.7.0-ff2a85.svg)](https://github.com/Todd0042/commander-america-rpg/releases)
 [![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-00f0ff.svg)](LICENSE)
 [![Platform: Android 8.0+](https://img.shields.io/badge/Platform-Android%208.0%2B%20(API%2026%2B)-3DDC84.svg?logo=android&logoColor=white)](https://developer.android.com)
 [![16 KB Page Size](https://img.shields.io/badge/16%20KB-Compatible-success.svg)](https://developer.android.com/16kb-page-size)
