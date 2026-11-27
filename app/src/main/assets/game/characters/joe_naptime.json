@@ -14,12 +14,30 @@
     "avatarTint": "#FFF59D",
     "startAtb": 0.5,
     "spellIds": [
-      "biden_gibberish_audio",
       "biden_double_scoop_cone",
-      "biden_jenis_brain_freeze",
       "biden_baskin_robbins_lick",
-      "biden_9am_lid_sundae",
-      "biden_fudge_ripple_meltdown"
+      "biden_9am_lid_sundae"
     ]
-  }
+  },
+  "joinWhenFlag": "blue_joe_joined",
+  "spellGrants": [
+    {
+      "flag": "blue_a2_finale_won",
+      "spellIds": [
+        "biden_jenis_brain_freeze"
+      ]
+    },
+    {
+      "flag": "blue_a3c4_garage_opened",
+      "spellIds": [
+        "biden_gibberish_audio"
+      ]
+    },
+    {
+      "flag": "blue_a3_finale_won",
+      "spellIds": [
+        "biden_fudge_ripple_meltdown"
+      ]
+    }
+  ]
 }

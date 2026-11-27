@@ -330,7 +330,8 @@
       "side": "RIGHT",
       "text": "Look... *uhhh...* make no mistake: that tan suit still breathes fantastically in August humidity, and Dijon is objectively superior to yellow ketchup-water. Oh, and by the way, Donald—did you pay those escalator actors $50 a head before or after you popped a box of Tic-Tacs on the 2005 Access Hollywood bus?! See you in Chapter 3!",
       "nextNodeId": "act1_ch3_intro",
-      "changeSceneId": "scene_act1_ch3_taco_bus"
+      "changeSceneId": "scene_act1_ch3_taco_bus",
+      "setFlagOnEnter": "red_a1c2_barry_won"
     },
     {
       "id": "act1_ch3_intro",
@@ -421,7 +422,8 @@
       "side": "LEFT",
       "text": "We survived the October Surprise bus ambush—and our HP and MP are right back at 100%! Now let's march into Chapter 4: The Final 2016 General Election Showdown against Hill-Rod!",
       "nextNodeId": "act1_ch4_intro",
-      "changeSceneId": "scene_act1_ch3_rally"
+      "changeSceneId": "scene_act1_ch3_rally",
+      "setFlagOnEnter": "red_a1c3_bus_won"
     },
     {
       "id": "act1_ch4_intro",
@@ -464,7 +466,8 @@
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
       "text": "270 Electoral Votes certified! Commander America takes the win! Next stop: Washington, D.C. for four years of executive chaos!",
-      "nextNodeId": "act2_ch1_intro"
+      "nextNodeId": "act2_ch1_intro",
+      "setFlagOnEnter": "red_a1_finale_won"
     },
     {
       "id": "act1_tb_ch1_intro",
@@ -479,7 +482,8 @@
       "speakerId": "narrator_kjp",
       "side": "CENTER_NARRATOR",
       "text": "According to my binder, thirty-three thousand emails just evaporated into thin air! But don't panic, folks—Oprah is in the driveway with the megaphone!",
-      "nextNodeId": "act1_tb_ch1_oprah_hype"
+      "nextNodeId": "act1_tb_ch1_oprah_hype",
+      "setFlagOnEnter": "blue_hill_rod_joined"
     },
     {
       "id": "act1_tb_ch1_oprah_hype",
@@ -642,7 +646,8 @@
       "side": "LEFT",
       "text": "That's the last time I sit between two ferns without checking the ad-buy sheet first! With HP and MP 100% restored, let's head to Chapter 3: The Breakfast Club radio studio and our Virginia Pokémon Go rally!",
       "nextNodeId": "act1_tb_ch3_intro",
-      "changeSceneId": "scene_act1_tb_ch3_breakfast"
+      "changeSceneId": "scene_act1_tb_ch3_breakfast",
+      "setFlagOnEnter": "blue_a1c2_ferns_won"
     },
     {
       "id": "act1_tb_ch3_intro",
@@ -713,7 +718,8 @@
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
       "text": "And that wraps up the 2016 race! The calendar flips to 2017, and in Washington, Speaker Nancy Palooza takes the spotlight!",
-      "nextNodeId": "act2_tb_ch1_intro"
+      "nextNodeId": "act2_tb_ch1_intro",
+      "setFlagOnEnter": "blue_a1_finale_won"
     },
     {
       "id": "act2_ch1_intro",
@@ -834,7 +840,8 @@
       "side": "LEFT",
       "text": "Nice win, Commander! Our HP and MP are automatically back at 100%, and I packed extra Poland Spring bottles for Chapter 2 inside the Oval Office!",
       "nextNodeId": "act2_ch2_intro",
-      "changeSceneId": "scene_act2_ch2_oval"
+      "changeSceneId": "scene_act2_ch2_oval",
+      "setFlagOnEnter": "red_marco_joined"
     },
     {
       "id": "act2_ch2_intro",
@@ -1051,7 +1058,8 @@
       "side": "LEFT",
       "text": "The plumbing flows freely, Alabama is officially safe from Hurricane Dorian, and our HP and MP are 100% restored! Now let's head down to the House Intelligence SCIF in Chapter 4 to recruit our new party companion: Kash Subpoena!",
       "nextNodeId": "act2_ch4_scif_intro",
-      "changeSceneId": "scene_act2_ch4_scif"
+      "changeSceneId": "scene_act2_ch4_scif",
+      "setFlagOnEnter": "red_a2c3_sharpie_won"
     },
     {
       "id": "act2_ch4_scif_intro",
@@ -1059,7 +1067,8 @@
       "side": "CENTER_NARRATOR",
       "text": "We are inside the House Intelligence Secure Compartmented Information Facility (SCIF). Kicking open the acoustic vault door is your new party companion: Kash Subpoena—carrying his four-page February 2018 Nunes FISA Memo under one arm and a stack of $19.99 illustrated children's books under the other!",
       "nextNodeId": "act2_ch4_kash_recruitment",
-      "changeSceneId": "scene_act2_ch4_scif"
+      "changeSceneId": "scene_act2_ch4_scif",
+      "setFlagOnEnter": "red_kash_joined"
     },
     {
       "id": "act2_ch4_kash_recruitment",
@@ -1151,7 +1160,8 @@
       "side": "LEFT",
       "text": "Boom! The SCIF is cleared, every binder is declassified, and our HP and MP are back at 100%! Now let's march into the House Chamber for Chapter 5—the Act II Finale against Speaker Nancy Palooza!",
       "nextNodeId": "act2_ch3_intro",
-      "changeSceneId": "scene_act2_ch3_rotunda"
+      "changeSceneId": "scene_act2_ch3_rotunda",
+      "setFlagOnEnter": "red_a2c4_scif_won"
     },
     {
       "id": "act2_ch3_intro",
@@ -1195,15 +1205,24 @@
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
       "text": "Victory in the House Chamber! The gavel falls on the 2020 State of the Union as the journey marches onward to Act III!",
-      "nextNodeId": "act3_ch1_intro"
+      "nextNodeId": "act3_ch1_intro",
+      "setFlagOnEnter": "red_a2_finale_won"
     },
     {
       "id": "act2_tb_ch1_intro",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
       "text": "Washington, D.C., 2017 to 2020! Speaker Nancy Palooza strides down the Capitol hallways, power-heels clicking, armed with a fresh blowout, a killer gavel, and an eye for high-stakes tech stock options!",
-      "nextNodeId": "act2_tb_ch1_kjp_oprah",
+      "nextNodeId": "act2_tb_ch1_hill_rod_stays",
       "changeSceneId": "scene_act2_tb_ch1_bushes"
+    },
+    {
+      "id": "act2_tb_ch1_hill_rod_stays",
+      "speakerId": "hill_rod",
+      "side": "LEFT",
+      "text": "*Folds a microfiber cloth into her pantsuit pocket and pulls up a folding chair beside the gavel* Oh, I'm not going anywhere, Nancy. I have a book tour, a podcast, and a closet full of 'It's Her Turn' banners the printer won't take back. You hold the gavel, I'll hold the cloth. Party of two!",
+      "setFlagOnEnter": "blue_nancy_joined",
+      "nextNodeId": "act2_tb_ch1_kjp_oprah"
     },
     {
       "id": "act2_tb_ch1_kjp_oprah",
@@ -1360,7 +1379,8 @@
       "side": "CENTER_NARRATOR",
       "text": "It is April 14, 2020 in San Francisco! While the entire country is locked indoors baking sourdough bread during quarantine, Speaker Nancy Palooza has invited James Corden's Late Late Show cameras into her gourmet kitchen to show off how she's surviving lockdown!",
       "nextNodeId": "act2_tb_ch3_subzero_hub",
-      "changeSceneId": "scene_act2_tb_ch3_subzero"
+      "changeSceneId": "scene_act2_tb_ch3_subzero",
+      "setFlagOnEnter": "blue_a2c3_subzero_opened"
     },
     {
       "id": "act2_tb_ch3_subzero_hub",
@@ -1451,7 +1471,8 @@
       "side": "CENTER_NARRATOR",
       "text": "We are inside the House Clerk's Periodic Transaction Report (PTR) Vault! On the wall, retail traders have launched an actual exchange-traded fund ticker—'NANC'—just to copy Paul and Nancy's deep-in-the-money tech call options on Alphabet, Visa, and Palo Alto Networks!",
       "nextNodeId": "act2_tb_ch4_free_market",
-      "changeSceneId": "scene_act2_tb_ch4_stocks"
+      "changeSceneId": "scene_act2_tb_ch4_stocks",
+      "setFlagOnEnter": "blue_a2c4_stocks_opened"
     },
     {
       "id": "act2_tb_ch4_free_market",
@@ -1587,7 +1608,8 @@
       "speakerId": "pelosi",
       "side": "LEFT",
       "text": "*Reaches into her portable $24,000 Sub-Zero freezer and pulls out a fresh double-scoop chocolate chip waffle cone* That wraps up 2020! Now it's January 2021, and it's time to pass this chocolate chip waffle cone to our next protagonist: Joe Naptime!",
-      "nextNodeId": "act2_tb_ch5_biden_handoff"
+      "nextNodeId": "act2_tb_ch5_biden_handoff",
+      "setFlagOnEnter": "blue_a2_finale_won"
     },
     {
       "id": "act2_tb_ch5_biden_handoff",
@@ -1701,7 +1723,8 @@
       "side": "CENTER_NARRATOR",
       "text": "We are inside the wood-paneled Senate Judiciary Committee Chamber. Leaning into his microphone with a slow, syrupy Louisiana drawl is your newest party member: Senator Foghorn Kennedy!",
       "nextNodeId": "act3_ch2_kennedy_joins",
-      "changeSceneId": "scene_act3_ch2_usmca"
+      "changeSceneId": "scene_act3_ch2_usmca",
+      "setFlagOnEnter": "red_kennedy_joined"
     },
     {
       "id": "act3_ch2_kennedy_joins",
@@ -2011,15 +2034,24 @@
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
       "text": "The Baskin-Robbins counter is secured! The waffle cone has been conquered as the journey marches onward to Act IV!",
-      "nextNodeId": "act4_ch1_intro"
+      "nextNodeId": "act4_ch1_intro",
+      "setFlagOnEnter": "red_a3_finale_won"
     },
     {
       "id": "act3_tb_ch1_intro",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
       "text": "Summer 2021! Joe Naptime slides into the Oval Office behind a pair of dark aviators, gripping a fresh double-scoop waffle cone of Jeni's Chocolate Chip ice cream and ready to take on the world!",
-      "nextNodeId": "act3_tb_ch1_oprah_cones",
+      "nextNodeId": "act3_tb_ch1_leads_stay",
       "changeSceneId": "scene_act3_tb_ch1_pool"
+    },
+    {
+      "id": "act3_tb_ch1_leads_stay",
+      "speakerId": "pelosi",
+      "side": "LEFT",
+      "text": "*Claps sideways at a crisp 45 degrees* Retire? Joe, I've been in the House since 1987. Hill-Rod is keeping her cloth, I'm keeping my freezers and my options desk, and we are both staying right here. Think of us as Senior Advisors: unpaid, unelected, and absolutely un-leaving!",
+      "setFlagOnEnter": "blue_joe_joined",
+      "nextNodeId": "act3_tb_ch1_oprah_cones"
     },
     {
       "id": "act3_tb_ch1_oprah_cones",
@@ -2124,7 +2156,8 @@
       "side": "LEFT",
       "text": "See that, folks? Me and Corn Pop settled it over a waffle cone, and our HP and MP are 100% restored! Now let's head to the White House teleprompter stage for Chapter 2!",
       "nextNodeId": "act3_tb_ch2_intro",
-      "changeSceneId": "scene_act3_tb_ch2_teleprompter"
+      "changeSceneId": "scene_act3_tb_ch2_teleprompter",
+      "setFlagOnEnter": "blue_a3c1_cornpop_won"
     },
     {
       "id": "act3_tb_ch2_intro",
@@ -2308,7 +2341,8 @@
       "side": "LEFT",
       "text": "Take that Oxford degree back to Baton Rouge, John! Our HP and MP are 100% restored, so let's head back to Wilmington for Chapter 4: My locked 1967 Corvette garage and the Real-Audio Gibberish Symphony!",
       "nextNodeId": "act3_tb_ch4_intro",
-      "changeSceneId": "scene_act3_tb_ch4_garage"
+      "changeSceneId": "scene_act3_tb_ch4_garage",
+      "setFlagOnEnter": "blue_a3c3_foghorn_won"
     },
     {
       "id": "act3_tb_ch4_intro",
@@ -2316,7 +2350,8 @@
       "side": "CENTER_NARRATOR",
       "text": "It is January 12, 2023 inside Joe Naptime's Wilmington, Delaware garage! Parked in the center is his prized green 1967 Chevrolet Corvette Stingray, and sitting on the concrete floor right beside the rear tire is a crushed cardboard box containing classified documents from his Vice Presidential days!",
       "nextNodeId": "act3_tb_ch4_garage_hub",
-      "changeSceneId": "scene_act3_tb_ch4_garage"
+      "changeSceneId": "scene_act3_tb_ch4_garage",
+      "setFlagOnEnter": "blue_a3c4_garage_opened"
     },
     {
       "id": "act3_tb_ch4_garage_hub",
@@ -2451,7 +2486,8 @@
       "speakerId": "biden",
       "side": "LEFT",
       "text": "*Finishes his double-scoop chocolate chip waffle cone in Rehoboth Beach on Sunday afternoon, July 21, 2024, and taps 'Post' on X at 1:46 PM* Folks, after we finally beat Medicare on that June 27 debate stage—and George Clooney wrote an op-ed three weeks after I raised $28 million at his Hollywood gala—it's time to pass the torch for Act IV to Vice President Kamala Coconut!",
-      "nextNodeId": "act3_tb_ch5_kamala_handoff"
+      "nextNodeId": "act3_tb_ch5_kamala_handoff",
+      "setFlagOnEnter": "blue_a3_finale_won"
     },
     {
       "id": "act3_tb_ch5_kamala_handoff",
@@ -2466,7 +2502,8 @@
       "side": "CENTER_NARRATOR",
       "text": "Welcome to Act IV (2024): Five chapters of Coconut Trees, Venn Diagrams, Donut Shop Interrogations, and McDonald's Fry Baskets! It is August 22, 2024 inside Holt's Sweet Shoppe in Valdosta, Georgia, where your newest party companion—JD Pants—is attempting human small talk with a bakery clerk in front of twenty television cameras!",
       "nextNodeId": "act4_ch1_vance_donuts",
-      "changeSceneId": "scene_act4_ch1_fisa"
+      "changeSceneId": "scene_act4_ch1_fisa",
+      "setFlagOnEnter": "red_vance_joined"
     },
     {
       "id": "act4_ch1_vance_donuts",
@@ -2572,7 +2609,8 @@
       "side": "LEFT",
       "text": "Okay, good! We boxed up two dozen glazed donuts, our HP and MP are back at 100%, and now let's head to Chapter 2—where Kamala Coconut is explaining to Lester Holt why she hasn't visited Europe!",
       "nextNodeId": "act4_ch2_intro",
-      "changeSceneId": "scene_act4_ch2_binder"
+      "changeSceneId": "scene_act4_ch2_binder",
+      "setFlagOnEnter": "red_a4c1_donut_won"
     },
     {
       "id": "act4_ch2_intro",
@@ -2863,8 +2901,16 @@
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
       "text": "Sunday afternoon, July 21, 2024! Joe Naptime drops out from Rehoboth Beach, and Vice President Kamala Coconut takes the mic, completely unburdened by what has been!",
-      "nextNodeId": "act4_tb_ch1_oprah_townhall",
+      "nextNodeId": "act4_tb_ch1_joe_stays",
       "changeSceneId": "scene_act4_tb_ch1_coconut"
+    },
+    {
+      "id": "act4_tb_ch1_joe_stays",
+      "speakerId": "biden",
+      "side": "LEFT",
+      "text": "*Lowers his aviators* Folks, dropping out doesn't mean dropping OUT. Here's the deal: Hill-Rod's got the cloth, Nancy's got the freezers, and I've got the healing scoops. Kamala, you're the boss now. I'll be right behind you, probably napping. No malarkey!",
+      "setFlagOnEnter": "blue_kamala_joined",
+      "nextNodeId": "act4_tb_ch1_oprah_townhall"
     },
     {
       "id": "act4_tb_ch1_oprah_townhall",
@@ -2948,7 +2994,8 @@
       "side": "LEFT",
       "text": "They have officially been unburdened by what has been, and our HP and MP are back at 100%! Now let's head to Valdosta, Georgia in Chapter 2—where JD Pants is currently interrogating a donut shop worker!",
       "nextNodeId": "act4_tb_ch2_intro",
-      "changeSceneId": "scene_act4_tb_ch2_donuts"
+      "changeSceneId": "scene_act4_tb_ch2_donuts",
+      "setFlagOnEnter": "blue_a4c1_venn_won"
     },
     {
       "id": "act4_tb_ch2_intro",
@@ -3034,7 +3081,8 @@
       "side": "LEFT",
       "text": "Mr. Vice Presidential Nominee, I'm speaking! With our HP and MP automatically back at 100%, let's step up to the Unburdened Dais for Chapter 3: The Significance of the Passage of Time and our Tiffany Pearl Vindications!",
       "nextNodeId": "act4_tb_ch3_intro",
-      "changeSceneId": "scene_act4_tb_ch3_passage"
+      "changeSceneId": "scene_act4_tb_ch3_passage",
+      "setFlagOnEnter": "blue_a4c2_donut_won"
     },
     {
       "id": "act4_tb_ch3_intro",
@@ -3042,7 +3090,8 @@
       "side": "CENTER_NARRATOR",
       "text": "We are inside the Hall of the Passage of Time! Here, every speech loops back into itself like an infinity symbol while internet sleuths zoom in 4,000% on Kamala's pearl earrings!",
       "nextNodeId": "act4_tb_ch3_passage_hub",
-      "changeSceneId": "scene_act4_tb_ch3_passage"
+      "changeSceneId": "scene_act4_tb_ch3_passage",
+      "setFlagOnEnter": "blue_a4c3_passage_opened"
     },
     {
       "id": "act4_tb_ch3_passage_hub",
@@ -3165,7 +3214,8 @@
       "side": "LEFT",
       "text": "'Concepts of a plan' is going straight into the Political Hall of Fame! With our HP and MP 100% restored, let's head to the closed-set Pennsylvania McDonald's drive-thru and Green Bay garbage truck tarmac for the Chapter 5 Act IV Finale!",
       "nextNodeId": "act4_tb_ch5_intro",
-      "changeSceneId": "scene_act4_tb_ch5_mcdonalds"
+      "changeSceneId": "scene_act4_tb_ch5_mcdonalds",
+      "setFlagOnEnter": "blue_a4c4_debate_won"
     },
     {
       "id": "act4_tb_ch5_intro",
@@ -3202,7 +3252,8 @@
       "speakerId": "kamala",
       "side": "LEFT",
       "text": "*Closes her three-circle Venn diagram binder as the calendar flips to 2025–2026* That wraps up 2024! And now, for the Grand Finale Act V (2025–2026), the story heads straight up I-95 to New York City—where democratic socialist Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger are taking the stage!",
-      "nextNodeId": "act4_tb_ch5_zohran_handoff"
+      "nextNodeId": "act4_tb_ch5_zohran_handoff",
+      "setFlagOnEnter": "blue_a4_finale_won"
     },
     {
       "id": "act4_tb_ch5_zohran_handoff",
@@ -3632,8 +3683,16 @@
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
       "text": "Welcome to 2025 and 2026! Up in New York City, Ugandan-born rap producer turned democratic socialist Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger take the stage!",
-      "nextNodeId": "act5_tb_ch1_oprah_welcome",
+      "nextNodeId": "act5_tb_ch1_relay_stays",
       "changeSceneId": "scene_act5_tb_ch1_chapati"
+    },
+    {
+      "id": "act5_tb_ch1_relay_stays",
+      "speakerId": "kamala",
+      "side": "LEFT",
+      "text": "*Laughs and squeezes into the Astoria food truck behind Hill-Rod, Nancy and Joe* Ha-ha-ha! You think we just fell out of a coconut tree? We exist in the context of all in which we live, and right now we live in THIS food truck. Zohran, Mayor, scoot over: it's a six-person ticket!",
+      "setFlagOnEnter": "blue_act5_leads_joined",
+      "nextNodeId": "act5_tb_ch1_oprah_welcome"
     },
     {
       "id": "act5_tb_ch1_oprah_welcome",
@@ -3720,7 +3779,8 @@
       "side": "LEFT",
       "text": "Rent frozen, buses fare-free, and our HP and MP are automatically back at 100%! Now let's step inside Gracie Mansion and the Turkish Airlines First-Class Lounge for Chapter 2—where my co-op partner Mayor Swagger is demonstrating his NYPD Contraband Baby-Doll search!",
       "nextNodeId": "act5_tb_ch2_intro",
-      "changeSceneId": "scene_act5_tb_ch2_swagger"
+      "changeSceneId": "scene_act5_tb_ch2_swagger",
+      "setFlagOnEnter": "blue_a5c1_landlord_won"
     },
     {
       "id": "act5_tb_ch2_intro",
@@ -3728,7 +3788,8 @@
       "side": "CENTER_NARRATOR",
       "text": "We are inside Gracie Mansion with Mayor Swagger! On the table sit a plastic baby doll, a glass jar of marbles, a plate of midnight Chilean sea bass from Osteria La Baia, a locked 6-digit iPhone, and a stack of Turkish Airlines lie-flat boarding passes!",
       "nextNodeId": "act5_tb_ch2_swagger_hub",
-      "changeSceneId": "scene_act5_tb_ch2_swagger"
+      "changeSceneId": "scene_act5_tb_ch2_swagger",
+      "setFlagOnEnter": "blue_a5c2_gracie_opened"
     },
     {
       "id": "act5_tb_ch2_swagger_hub",
@@ -3806,7 +3867,8 @@
       "side": "LEFT",
       "text": "That passcode is staying 6 digits forever, and our HP and MP are back at 100%! Now let's head to the Butler Star-Jump Stage & Cybertruck Lab in Chapter 3 to roast Musk-X!",
       "nextNodeId": "act5_tb_ch3_intro",
-      "changeSceneId": "scene_act5_tb_ch3_cybertruck"
+      "changeSceneId": "scene_act5_tb_ch3_cybertruck",
+      "setFlagOnEnter": "blue_a5c2_auditor_won"
     },
     {
       "id": "act5_tb_ch3_intro",

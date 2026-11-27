@@ -14,11 +14,34 @@
     "avatarTint": "#FF7043",
     "startAtb": 0.5,
     "spellIds": [
-      "zohran_nani_chapati",
-      "zohran_municipal_grocery",
-      "zohran_freeze_the_rent",
-      "zohran_bowdoin_stipend",
-      "zohran_vindication_pilot"
+      "zohran_nani_chapati"
     ]
-  }
+  },
+  "joinWhenFlag": "blue_act5_leads_joined",
+  "spellGrants": [
+    {
+      "flag": "blue_a4c1_venn_won",
+      "spellIds": [
+        "zohran_freeze_the_rent"
+      ]
+    },
+    {
+      "flag": "blue_a4c4_debate_won",
+      "spellIds": [
+        "zohran_municipal_grocery"
+      ]
+    },
+    {
+      "flag": "blue_a4_finale_won",
+      "spellIds": [
+        "zohran_bowdoin_stipend"
+      ]
+    },
+    {
+      "flag": "blue_a5c1_landlord_won",
+      "spellIds": [
+        "zohran_vindication_pilot"
+      ]
+    }
+  ]
 }

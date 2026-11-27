@@ -20,9 +20,22 @@
     "avatarTint": "#5C6BC0",
     "startAtb": 0.0,
     "spellIds": [
-      "ca_vance_debate",
-      "ca_vance_slam",
-      "ca_vance_fortitude"
+      "ca_vance_debate"
     ]
-  }
+  },
+  "joinWhenFlag": "red_vance_joined",
+  "spellGrants": [
+    {
+      "flag": "red_a3_finale_won",
+      "spellIds": [
+        "ca_vance_slam"
+      ]
+    },
+    {
+      "flag": "red_a4c1_donut_won",
+      "spellIds": [
+        "ca_vance_fortitude"
+      ]
+    }
+  ]
 }

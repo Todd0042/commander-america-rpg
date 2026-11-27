@@ -14,12 +14,40 @@
     "avatarTint": "#81C784",
     "startAtb": 0.5,
     "spellIds": [
-      "nancy_sotu_shred",
-      "nancy_subzero_flex",
-      "nancy_sideways_clap",
-      "nancy_pass_to_find_out",
-      "nancy_deep_itm_calls",
-      "nancy_vindication_nvda"
+      "nancy_sotu_shred"
     ]
-  }
+  },
+  "joinWhenFlag": "blue_nancy_joined",
+  "spellGrants": [
+    {
+      "flag": "blue_a1c2_ferns_won",
+      "spellIds": [
+        "nancy_pass_to_find_out"
+      ]
+    },
+    {
+      "flag": "blue_a1_finale_won",
+      "spellIds": [
+        "nancy_sideways_clap"
+      ]
+    },
+    {
+      "flag": "blue_a2c3_subzero_opened",
+      "spellIds": [
+        "nancy_subzero_flex"
+      ]
+    },
+    {
+      "flag": "blue_a2c4_stocks_opened",
+      "spellIds": [
+        "nancy_deep_itm_calls"
+      ]
+    },
+    {
+      "flag": "blue_a4c2_donut_won",
+      "spellIds": [
+        "nancy_vindication_nvda"
+      ]
+    }
+  ]
 }

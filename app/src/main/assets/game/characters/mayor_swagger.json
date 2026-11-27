@@ -14,9 +14,22 @@
     "avatarTint": "#26A69A",
     "startAtb": 0.4,
     "spellIds": [
-      "swagger_turkish_upgrade",
-      "swagger_contraband_doll",
       "swagger_vegan_seabass"
     ]
-  }
+  },
+  "joinWhenFlag": "blue_act5_leads_joined",
+  "spellGrants": [
+    {
+      "flag": "blue_a4_finale_won",
+      "spellIds": [
+        "swagger_turkish_upgrade"
+      ]
+    },
+    {
+      "flag": "blue_a5c2_gracie_opened",
+      "spellIds": [
+        "swagger_contraband_doll"
+      ]
+    }
+  ]
 }

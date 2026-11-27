@@ -20,9 +20,22 @@
     "avatarTint": "#42A5F5",
     "startAtb": 0.0,
     "spellIds": [
-      "ca_marco_filibuster",
-      "ca_marco_sanction",
-      "ca_marco_hydrate"
+      "ca_marco_filibuster"
     ]
-  }
+  },
+  "joinWhenFlag": "red_marco_joined",
+  "spellGrants": [
+    {
+      "flag": "red_a1_finale_won",
+      "spellIds": [
+        "ca_marco_hydrate"
+      ]
+    },
+    {
+      "flag": "red_a2_finale_won",
+      "spellIds": [
+        "ca_marco_sanction"
+      ]
+    }
+  ]
 }

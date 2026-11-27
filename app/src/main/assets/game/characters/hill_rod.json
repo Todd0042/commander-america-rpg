@@ -17,11 +17,29 @@
     "avatarTint": "#64B5F6",
     "startAtb": 0.5,
     "spellIds": [
-      "hill_pokemon_go",
       "hill_cloth_wipe",
-      "hill_hot_sauce",
-      "hill_cattle_futures",
       "hill_vindication_11hr"
     ]
-  }
+  },
+  "joinWhenFlag": "blue_hill_rod_joined",
+  "spellGrants": [
+    {
+      "flag": "blue_a1c2_ferns_won",
+      "spellIds": [
+        "hill_pokemon_go"
+      ]
+    },
+    {
+      "flag": "blue_a1_finale_won",
+      "spellIds": [
+        "hill_hot_sauce"
+      ]
+    },
+    {
+      "flag": "blue_a4c1_venn_won",
+      "spellIds": [
+        "hill_cattle_futures"
+      ]
+    }
+  ]
 }

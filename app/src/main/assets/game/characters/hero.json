@@ -27,14 +27,41 @@
     "startAtb": 0.0,
     "spellIds": [
       "ca_tremendous_strike",
-      "ca_art_of_the_deal",
-      "ca_obama_did_it_first",
-      "ca_presidential_veto",
-      "ca_executive_action",
-      "ca_build_the_wall",
       "ca_rally_patriots"
     ]
   },
+  "spellGrants": [
+    {
+      "flag": "red_a1c2_barry_won",
+      "spellIds": [
+        "ca_obama_did_it_first"
+      ]
+    },
+    {
+      "flag": "red_a1c3_bus_won",
+      "spellIds": [
+        "ca_build_the_wall"
+      ]
+    },
+    {
+      "flag": "red_a1_finale_won",
+      "spellIds": [
+        "ca_art_of_the_deal"
+      ]
+    },
+    {
+      "flag": "red_a2c3_sharpie_won",
+      "spellIds": [
+        "ca_executive_action"
+      ]
+    },
+    {
+      "flag": "red_a2_finale_won",
+      "spellIds": [
+        "ca_presidential_veto"
+      ]
+    }
+  ],
   "sprite": {
     "palette": {
       ".": "#00000000",

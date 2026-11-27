@@ -588,6 +588,32 @@
       "healPctOfMax": 0.25
     },
     {
+      "id": "ca_kennedy_bless_your_heart",
+      "name": "Bless Your Heart",
+      "school": "HOLY",
+      "basePower": 60,
+      "isHeal": true,
+      "description": "A slow Louisiana 'bless your heart' that patches up one ally (or Kennedy himself) like a porch-side poultice.",
+      "exampleChant": "Bless your heart!",
+      "aliases": [
+        "bless your heart",
+        "bless",
+        "bless heart",
+        "poultice",
+        "porch remedy"
+      ],
+      "presetChants": {
+        "BASIC": "Bless your heart!",
+        "ADEPT": "Porch remedy!",
+        "MASTER": "Well, bless your heart, sugar!",
+        "MYTHIC": "Arise Louisiana mercy, bless your heart, patch up!",
+        "TRANSCENDENTAL": "By every porch swing and crawfish boil in the Bayou State, bless your heart, patch you up, and send you back into that hearing room good as new!"
+      },
+      "target": "ally",
+      "hitsAll": false,
+      "healPctOfMax": 0.45
+    },
+    {
       "id": "biden_gibberish_audio",
       "name": "Real-Audio Gibberish (`Truinanashabbadepressure!`)",
       "school": "ELECTROMANCY",

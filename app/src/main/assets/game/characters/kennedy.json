@@ -21,8 +21,17 @@
     "startAtb": 0.0,
     "spellIds": [
       "ca_kennedy_english",
-      "ca_kennedy_officer",
-      "ca_kennedy_remedy"
+      "ca_kennedy_remedy",
+      "ca_kennedy_bless_your_heart"
     ]
-  }
+  },
+  "joinWhenFlag": "red_kennedy_joined",
+  "spellGrants": [
+    {
+      "flag": "red_a3_finale_won",
+      "spellIds": [
+        "ca_kennedy_officer"
+      ]
+    }
+  ]
 }

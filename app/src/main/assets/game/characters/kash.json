@@ -21,8 +21,16 @@
     "startAtb": 0.0,
     "spellIds": [
       "ca_kash_declassify",
-      "ca_kash_binder",
       "ca_kash_clearance"
     ]
-  }
+  },
+  "joinWhenFlag": "red_kash_joined",
+  "spellGrants": [
+    {
+      "flag": "red_a2c4_scif_won",
+      "spellIds": [
+        "ca_kash_binder"
+      ]
+    }
+  ]
 }

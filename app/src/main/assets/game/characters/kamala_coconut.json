@@ -17,12 +17,40 @@
     "avatarTint": "#BA68C8",
     "startAtb": 0.5,
     "spellIds": [
-      "kamala_coconut_tree",
-      "kamala_unburdened_loop",
-      "kamala_venn_diagram",
-      "kamala_passage_of_time",
-      "kamala_yellow_school_bus",
-      "kamala_vindication_tiffany"
+      "kamala_coconut_tree"
     ]
-  }
+  },
+  "joinWhenFlag": "blue_kamala_joined",
+  "spellGrants": [
+    {
+      "flag": "blue_a3c1_cornpop_won",
+      "spellIds": [
+        "kamala_yellow_school_bus"
+      ]
+    },
+    {
+      "flag": "blue_a3c3_foghorn_won",
+      "spellIds": [
+        "kamala_venn_diagram"
+      ]
+    },
+    {
+      "flag": "blue_a3_finale_won",
+      "spellIds": [
+        "kamala_unburdened_loop"
+      ]
+    },
+    {
+      "flag": "blue_a4c3_passage_opened",
+      "spellIds": [
+        "kamala_passage_of_time"
+      ]
+    },
+    {
+      "flag": "blue_a5c2_auditor_won",
+      "spellIds": [
+        "kamala_vindication_tiffany"
+      ]
+    }
+  ]
 }

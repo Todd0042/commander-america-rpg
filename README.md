@@ -43,7 +43,7 @@
   * [🎙️ What Is Commander America RPG?](#-what-is-commander-america-rpg)
   * [🏛️ How a Campaign Rally Works in 3 Steps](#-how-a-campaign-rally-works-in-3-steps)
   * [🗳️ Dual Campaign Tracks: "Paint it Red" & "Bewilder with Blue"](#-dual-campaign-tracks-paint-it-red--bewilder-with-blue)
-  * [🇺🇸 The 8-Act Story & Iconic Roster](#-the-8-act-story--iconic-roster)
+  * [🇺🇸 Who Fights, and When They Join](#-who-fights-and-when-they-join)
   * [🚶 100% Screenless Pocket Walk Mode](#-100-screenless-pocket-walk-mode)
   * [🚀 Quick Download & Installation (Android APK)](#-quick-download--installation-android-apk)
 * **Part 2 — Consolidated Technical Documentation & Architecture Reference**
@@ -70,14 +70,15 @@ Players step into the shoes of **Commander America** and his ragtag coalition of
 Instead of navigating clunky touch interfaces, you issue commands with your **actual voice**:
 - **🗣️ Speak Real Political Catchphrases**: Unleash iconic abilities like *"Art of the Deal"*, *"Big Beautiful Wall"*, *"Tariff Strike"*, or *"Covfefe Blast"* by chanting into your phone.
 - **⚡ Resonance Acoustic Scoring**: Speak with rally-level inflection, confidence, and cadence to score **MYTHIC (100%–150%)** and **TRANSCENDENTAL ($\ge 155\%$)** resonance multipliers that supercharge your spells up to 3.0x base effectiveness.
-- **👑 Legendary Companion Fellowship**: Command allies like JD of the Hills, Chief Elon, Tulsi of the Pacific, Vivek the Disruptor, and Bobby the Healthy.
+- **👑 A Growing Party**: Red's Commander America is joined by **Little Marco**, **Wizard Kash**, **Foghorn Kennedy** and **JD Pants**; Blue's relay keeps every earlier lead on as **Nancy Palooza**, **Joe Naptime**, **Kamala Coconut**, **Zohran Cardamom** and **Mayor Swagger** join.
+- **📜 Spells Learned From the Story**: everyone starts small (one attack, plus a heal for the main characters and healers) and learns the rest at story milestones; late joiners arrive already knowing what the story has passed.
 - **🎧 Real Historical Audio**: Trigger legally sound, public domain soundbites from official Presidential and White House archives directly on the battle line.
 
 ---
 
 ## 🏛️ How a Campaign Rally Works in 3 Steps
 
-1. **Speak to Command**: On your turn, call out a spell or party member name (*"Commander America tariff strike"*, *"Elon rocket volley"*, *"Tulsi surf ward"*).
+1. **Speak to Command**: On your turn, call out a spell or party member name (*"Tremendous strike the lobbyist"*, *"Rally the patriots, heal Marco"*, *"Cloth wipe"*).
 2. **Inflect with Conviction**: Speak with rhythmic, deliberate rally phrasing. The on-device Resonance Engine evaluates your decibel volume, pitch contour, and thesaurus keywords.
 3. **Listen to the Narrative Firestorm**: The engine's multi-voice TTS and authentic historical soundbites react instantly to your choices and combat victories.
 
@@ -85,22 +86,28 @@ Instead of navigating clunky touch interfaces, you issue commands with your **ac
 
 ## 🗳️ Dual Campaign Tracks: "Paint it Red" & "Bewilder with Blue"
 
-From the Title Screen, players can choose their journey:
-- **Track A ("Paint it Red")**: Lead the Coalition of Rebels through 8 explosive Acts, storming debate stages, disrupting donor summits, and taking down bureaucratic bosses.
-- **Track B ("Bewilder with Blue")**: The Standard-Bearer Relay alternate perspective, featuring teleprompter gauntlets, committee hearings, and political spin maneuvers.
+From the Title Screen, players pick a candidate, and with it a track. Both run through **five Acts (2015–2026)** and meet in a bipartisan curtain call:
+- **Track A ("Paint it Red")**: **Commander America** from the golden escalator to the 2026 grand finale, building a five-hero coalition along the way.
+- **Track B ("Bewilder with Blue")**: the **Standard-Bearer Relay**. Each Act hands the spotlight to a new lead, and the earlier leads stay in the party, so the team grows from one fighter to six.
 
 ---
 
-## 🇺🇸 The 8-Act Story & Iconic Roster
+## 🇺🇸 Who Fights, and When They Join
 
-- **Act 1: The Escalator Descent & The Rust Belt Rumbles** (Battle: Low-Energy Dynast & Debate Moderatrons).
-- **Act 2: The Deep Swamp & The Fog of Litigation** (Battle: Subpoena Golem & Bureaucratic Paperwork Swarms).
-- **Act 3: Silicon Valley Summits & The Free Speech Frontier** (Recruitment: Chief Elon & The Algorithmic Overlords).
-- **Act 4: The MAHA Health Odyssey** (Recruitment: Bobby the Healthy & Ultra-Processed Food Titans).
-- **Act 5: The War Room of the Pacific** (Recruitment: Tulsi the Free & The Warhawk Syndicate).
-- **Act 6: The Midnight Ballot Vault** (Confrontation: Counting Machine Glitches & The Mail-in Phantom).
-- **Act 7: The Teleprompter Citadel** (Showdown: Barry the Teleprompter & Madame Vice's Word Salad Golem).
-- **Act 8: The Inaugural Summit** (Climax: The Beltway Leviathan).
+| Track | Fighter | Joins | Role |
+|---|---|---|---|
+| Red | **Commander America** | Act I | Main character: attacks + targetable heal (*Rally The Patriots*) |
+| Red | **Little Marco** | Act II, after the inauguration fight | Striker and guard, no heal |
+| Red | **Wizard Kash** | Act II, Chapter 4 (the SCIF) | Large targetable heal (*Security Clearance*) |
+| Red | **Foghorn Kennedy** | Act III, Chapter 2 (Senate Judiciary) | Healer: party heal (*Common Sense Remedy*) and strong single heal (*Bless Your Heart*) |
+| Red | **JD Pants** | Act IV, Chapter 1 (the donut shop) | Striker and guard, no heal |
+| Blue | **Hill-Rod** | Act I | Main character: attacks + targetable heal (*11-Hour Marathon Shield*) |
+| Blue | **Nancy Palooza** | Act II | Striker, no heal |
+| Blue | **Joe Naptime** | Act III | Healer: party heal (*Baskin-Robbins Lick*) and strong single heal (*9:00 AM Lid & Sundae Nap*) |
+| Blue | **Kamala Coconut** | Act IV | Striker and guard, no heal |
+| Blue | **Zohran Cardamom** & **Mayor Swagger** | Act V | Strikers and guards, no heal |
+
+Every fighter starts with **one single-target attack** (plus their role's heals) and **learns the rest of their kit at story milestones**: chapter victories, Act finales and the openings of their own chapters. A spoken line announces it (*"Little Marco learns Maximum Sanctions"*). Fighters who join later arrive already knowing the spells tied to milestones they missed, and still learn more after joining; on Blue, earlier leads keep learning after they hand over. Spells are only ever added, never swapped out.
 
 ---
 
