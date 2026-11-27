@@ -8,7 +8,7 @@
 
 # 🇺🇸 Commander America RPG
 
-[![Version](https://img.shields.io/badge/Version-1.7.0-ff2a85.svg)](https://github.com/Todd0042/commander-america-rpg/releases)
+[![Version](https://img.shields.io/badge/Version-1.7.1-ff2a85.svg)](https://github.com/Todd0042/commander-america-rpg/releases)
 [![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-00f0ff.svg)](LICENSE)
 [![Platform: Android 8.0+](https://img.shields.io/badge/Platform-Android%208.0%2B%20(API%2026%2B)-3DDC84.svg?logo=android&logoColor=white)](https://developer.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF.svg?logo=kotlin&logoColor=white)](https://kotlinlang.org)
@@ -16,7 +16,7 @@
 [![Engine: VoiceRPG](https://img.shields.io/badge/Engine-VoiceRPG%20v2.0.0-teal.svg)](https://github.com/Todd0042/voice-rpg-engine)
 [![Voice Control: Hands-Free](https://img.shields.io/badge/Controls-Hands--Free%20Voice-orange.svg)](app/src/main/java/com/voicerpg/engine/audio/SpeechManager.kt)
 [![16 KB Page Size](https://img.shields.io/badge/16%20KB-Compatible-success.svg)](https://developer.android.com/16kb-page-size)
-[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-368%20Passing-39ff14.svg)](app/src/test/java/com/voicerpg/engine/)
+[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-383%20Passing-39ff14.svg)](app/src/test/java/com/voicerpg/engine/)
 [![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20Creator-F16061?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/todd0042)
 
 > **A voice-commanded political satire JRPG for Android: two campaigns told from opposite sides of the aisle (Red "Paint it Red" and Blue "Bewilder with Blue"), spells you shout into your phone and learn as the story unfolds, real-audio sound bites, and a game you can finish entirely by ear in Pocket Mode.**
@@ -478,7 +478,7 @@ commander-america-rpg/
 
 ## 11. Running the Tests
 
-Commander America runs **368 automated unit tests**: the shared engine suite running against this game's content (story reachability, hub completion, spells from the story, heals and roles, no-mana contract, bestiary, sprite contract, battle balance and more), plus the game's own checks in [CommanderAmericaContentTest.kt](app/src/test/java/com/voicerpg/game/CommanderAmericaContentTest.kt) (the two tracks, voice-resolvable commander spells, wired sound bites, music).
+Commander America runs **383 automated unit tests**: the shared engine suite running against this game's content (story reachability, hub completion, spells from the story, heals and roles, no-mana contract, bestiary, sprite contract, battle balance and more), plus the game's own checks in [CommanderAmericaContentTest.kt](app/src/test/java/com/voicerpg/game/CommanderAmericaContentTest.kt) (the two tracks, voice-resolvable commander spells, wired sound bites, music).
 
 ```bash
 # Run the unit tests
