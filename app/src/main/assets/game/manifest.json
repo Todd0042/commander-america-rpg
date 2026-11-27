@@ -53,10 +53,10 @@
     {
       "id": "track_a",
       "displayName": "Paint it Red",
-      "subtitle": "Commander America + Little Marco + Wizard Kash + Foghorn Kennedy + JD Pants + Musk-X",
+      "subtitle": "Commander America + Little Marco + Wizard Kash + Foghorn Kennedy + JD Pants",
       "startNodeId": "act1_intro",
       "startSceneId": "scene_act1_ch1_escalator",
-      "rosterDescription": "Rubio • Vance • Patel • Kennedy",
+      "rosterDescription": "Little Marco • Wizard Kash • Foghorn Kennedy • JD Pants",
       "badgeText": "1P",
       "voiceKeywords": [
         "trump",
@@ -96,7 +96,7 @@
       "subtitle": "Hill-Rod ➔ Nancy Palooza ➔ Joe Naptime ➔ Kamala Coconut ➔ Zohran Cardamom & Mayor Swagger",
       "startNodeId": "act1_tb_ch1_intro",
       "startSceneId": "scene_act1_tb_ch1_server",
-      "rosterDescription": "Hill-Rod ➔ Joe Naptime ➔ Kamala ➔ Barry",
+      "rosterDescription": "Hill-Rod ➔ Nancy ➔ Joe ➔ Kamala ➔ Zohran & Mayor Swagger",
       "badgeText": "2P",
       "voiceKeywords": [
         "hillary",
@@ -108,6 +108,7 @@
         "relay"
       ],
       "hero": {
+        "characterId": "hill_rod",
         "name": "Hill-Rod",
         "title": "Standard-Bearer & Server Specialist",
         "heroClassId": "commander",
@@ -115,7 +116,7 @@
         "auraColor": "SAPPHIRE_FROST",
         "alias": "CHAPPAQUA TECHNOMANCER",
         "slogan": "IT'S HER TURN • WIPE IT WITH A CLOTH",
-        "playstyle": "4-Hero Standard-Bearer Relay",
+        "playstyle": "6-Hero Standard-Bearer Relay",
         "featuredMoves": [
           "Cloth Wipe",
           "BleachBit Protocol",
