@@ -63,7 +63,7 @@
       "id": "act1_ch1_psaki_interrupts",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
-      "text": "Excuse me—Jen Circle-Back here! We're circling back to those paid escalator actors in 2016, 2020, and 2024! We have an entire spreadsheet of people in neon t-shirts, and we will never let this go!",
+      "text": "Excuse me\u2014Jen Circle-Back here! We're circling back to those paid escalator actors in 2016, 2020, and 2024! We have an entire spreadsheet of people in neon t-shirts, and we will never let this go!",
       "nextNodeId": "act1_ch1_karoline_note"
     },
     {
@@ -212,13 +212,14 @@
       "side": "CENTER_NARRATOR",
       "text": "Chyron McSpin's producer and a K-Street Retainer Lobbyist are swarming the brass handrail! Commander, hit 'em with Tremendous Strike and Art of the Deal!",
       "nextNodeId": "act1_ch1_post_battle",
-      "triggerBattleEncounterId": "act1_ch1_press_battle"
+      "triggerBattleEncounterId": "act1_ch1_press_battle",
+      "battleEnvironmentId": "golden_atrium"
     },
     {
       "id": "act1_ch1_post_battle",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "They're fleeing down Fifth Avenue still shouting about the $50 casting extras! Good thing we have zero XP grinding and zero gold clutter in this game—our HP and MP are 100% restored automatically! Onward to Chapter 2: The Cleveland Debate Stage!",
+      "text": "They're fleeing down Fifth Avenue still shouting about the $50 casting extras! Good thing we have zero XP grinding and zero gold clutter in this game\u2014our HP and MP are 100% restored automatically! Onward to Chapter 2: The Cleveland Debate Stage!",
       "nextNodeId": "act1_ch2_intro",
       "changeSceneId": "scene_act1_ch2_debate"
     },
@@ -233,7 +234,7 @@
       "id": "act1_ch2_jeb_opens",
       "speakerId": "establishment_rival",
       "side": "RIGHT",
-      "text": "Now look, Donald... you can't insult your way to the presidency—especially after paying escalator actors $50 a head! My Right to Rise Super PAC spent $130 million, I put an exclamation point right after 'Jeb!', and my website sells a very sturdy $75 'Guaca Bowle' dish. In Hanover, New Hampshire on February 3, 2016, I finished my speech and nobody made a sound, so I politely said: 'Please clap.'",
+      "text": "Now look, Donald... you can't insult your way to the presidency\u2014especially after paying escalator actors $50 a head! My Right to Rise Super PAC spent $130 million, I put an exclamation point right after 'Jeb!', and my website sells a very sturdy $75 'Guaca Bowle' dish. In Hanover, New Hampshire on February 3, 2016, I finished my speech and nobody made a sound, so I politely said: 'Please clap.'",
       "choices": [
         {
           "id": "a2_guac",
@@ -278,35 +279,35 @@
       "id": "act1_ch2_roast_jeb",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Folks, we are going to replay 'Please clap' and that $75 Guaca Bowle for the next ten years! You spent $130 million and got three delegates, Jeb—meanwhile Hill-Rod put $1,000 into Arkansas live-cattle futures in 1978 and walked out with $100,000 by 'reading the Wall Street Journal'! Maybe she should have managed your Super PAC!",
+      "text": "Folks, we are going to replay 'Please clap' and that $75 Guaca Bowle for the next ten years! You spent $130 million and got three delegates, Jeb\u2014meanwhile Hill-Rod put $1,000 into Arkansas live-cattle futures in 1978 and walked out with $100,000 by 'reading the Wall Street Journal'! Maybe she should have managed your Super PAC!",
       "nextNodeId": "act1_ch2_roast_marco"
     },
     {
       "id": "act1_ch2_roast_marco",
       "speakerId": "marco",
       "side": "RIGHT",
-      "text": "Donald, let's dispel once and for all with this fiction that Barack Obama doesn't know what he's doing—he knows EXACTLY what he's doing! Wait, Chris Christie just called me out for repeating my memorized 25-second speech—so let's dispel once and for all with this fiction that Barack Obama doesn't know what he's doing! *Lunges four feet sideways off-camera to take a frantic 2013 State-of-the-Union sip from a miniature Poland Spring water bottle*",
+      "text": "Donald, let's dispel once and for all with this fiction that Barack Obama doesn't know what he's doing\u2014he knows EXACTLY what he's doing! Wait, Chris Christie just called me out for repeating my memorized 25-second speech\u2014so let's dispel once and for all with this fiction that Barack Obama doesn't know what he's doing! *Lunges four feet sideways off-camera to take a frantic 2013 State-of-the-Union sip from a miniature Poland Spring water bottle*",
       "nextNodeId": "act1_ch2_barry_enters"
     },
     {
       "id": "act1_ch2_barry_enters",
       "speakerId": "obama",
       "side": "RIGHT",
-      "text": "Now... let me be clear. *Uhhh...* you guys are STILL talking about my August 2014 tan suit, my September 2014 styrofoam cup Latte Salute stepping off Marine One, and the May 2009 afternoon at Ray's Hell Burger in Arlington when I asked: 'Do you have a spicy mustard, maybe a Dijon?' That was seven years ago, Donald! You still haven't gotten over the 2011 Correspondents' Dinner where I released my long-form Kapiʻolani Hospital birth certificate AND the 1961 Honolulu Advertiser newspaper clipping!",
+      "text": "Now... let me be clear. *Uhhh...* you guys are STILL talking about my August 2014 tan suit, my September 2014 styrofoam cup Latte Salute stepping off Marine One, and the May 2009 afternoon at Ray's Hell Burger in Arlington when I asked: 'Do you have a spicy mustard, maybe a Dijon?' That was seven years ago, Donald! You still haven't gotten over the 2011 Correspondents' Dinner where I released my long-form Kapi\u02bbolani Hospital birth certificate AND the 1961 Honolulu Advertiser newspaper clipping!",
       "nextNodeId": "act1_ch2_barry_kimmel"
     },
     {
       "id": "act1_ch2_barry_kimmel",
       "speakerId": "obama",
       "side": "RIGHT",
-      "text": "And speaking of never letting things go—on Jimmy Kimmel Live in October 2016, I read your tweet aloud saying 'President Obama will go down as perhaps the worst president in the history of the United States!' And I looked straight into the camera and said: 'Well, @realDonaldTrump, at least I will go down as a president!' *Drops microphone onto a plate of Grey Poupon*",
+      "text": "And speaking of never letting things go\u2014on Jimmy Kimmel Live in October 2016, I read your tweet aloud saying 'President Obama will go down as perhaps the worst president in the history of the United States!' And I looked straight into the camera and said: 'Well, @realDonaldTrump, at least I will go down as a president!' *Drops microphone onto a plate of Grey Poupon*",
       "nextNodeId": "act1_ch2_commander_tan_rebuttal"
     },
     {
       "id": "act1_ch2_commander_tan_rebuttal",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Hold on, Barry—nobody is EVER letting that tan suit or that Dijon burger go! Congressman Peter King went on CNN for forty-eight hours straight calling that beige linen jacket an impeachable fashion crisis! And what about the 2009 MLB All-Star Game in St. Louis where you wore high-waisted mom jeans and lobbed the ceremonial first pitch 58 feet into the dirt?! Or when your teleprompter unplugged in Elkhart and you went 'if-if-if-if-if-if—okie-doke!'",
+      "text": "Hold on, Barry\u2014nobody is EVER letting that tan suit or that Dijon burger go! Congressman Peter King went on CNN for forty-eight hours straight calling that beige linen jacket an impeachable fashion crisis! And what about the 2009 MLB All-Star Game in St. Louis where you wore high-waisted mom jeans and lobbed the ceremonial first pitch 58 feet into the dirt?! Or when your teleprompter unplugged in Elkhart and you went 'if-if-if-if-if-if\u2014okie-doke!'",
       "nextNodeId": "act1_ch2_mumbai_vindication"
     },
     {
@@ -322,13 +323,14 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE TAN SUIT, LATTE SALUTE & DIJON POUPON EXHIBITION MATCH, BROTHER! Barry Teleprompter and his Poupon Mustard Sommelier are stepping into the ring! Watch out for his 135-yard mom-jeans lob!",
       "nextNodeId": "act1_ch2_post_battle",
-      "triggerBattleEncounterId": "act1_track_a_barry_battle"
+      "triggerBattleEncounterId": "act1_track_a_barry_battle",
+      "battleEnvironmentId": "debate_stage"
     },
     {
       "id": "act1_ch2_post_battle",
       "speakerId": "obama",
       "side": "RIGHT",
-      "text": "Look... *uhhh...* make no mistake: that tan suit still breathes fantastically in August humidity, and Dijon is objectively superior to yellow ketchup-water. Oh, and by the way, Donald—did you pay those escalator actors $50 a head before or after you popped a box of Tic-Tacs on the 2005 Access Hollywood bus?! See you in Chapter 3!",
+      "text": "Look... *uhhh...* make no mistake: that tan suit still breathes fantastically in August humidity, and Dijon is objectively superior to yellow ketchup-water. Oh, and by the way, Donald\u2014did you pay those escalator actors $50 a head before or after you popped a box of Tic-Tacs on the 2005 Access Hollywood bus?! See you in Chapter 3!",
       "nextNodeId": "act1_ch3_intro",
       "changeSceneId": "scene_act1_ch3_taco_bus",
       "setFlagOnEnter": "red_a1c2_barry_won"
@@ -337,14 +339,14 @@
       "id": "act1_ch3_intro",
       "speakerId": "narrator_karoline",
       "side": "CENTER_NARRATOR",
-      "text": "Welcome to Chapter 3 of Act I! It is May 5, 2016 inside Trump Tower Grill. Commander America is sitting at his desk over a stack of old newspapers—including a 1990s bikini photo of his second wife Marla Maples—giving a big thumbs-up over a deep-fried fiesta tortilla shell!",
+      "text": "Welcome to Chapter 3 of Act I! It is May 5, 2016 inside Trump Tower Grill. Commander America is sitting at his desk over a stack of old newspapers\u2014including a 1990s bikini photo of his second wife Marla Maples\u2014giving a big thumbs-up over a deep-fried fiesta tortilla shell!",
       "nextNodeId": "act1_ch3_taco_bowl_tweet"
     },
     {
       "id": "act1_ch3_taco_bowl_tweet",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Dictates tweet word for word on May 5, 2016* 'Happy #CincoDeMayo! The best taco bowls are made in Trump Tower Grill. I love Hispanics!' Look at that shell, folks—100% authentic Midtown Manhattan crunch! Surely nobody in the media will bring up anything from 2005 while I'm enjoying this taco bowl!",
+      "text": "*Dictates tweet word for word on May 5, 2016* 'Happy #CincoDeMayo! The best taco bowls are made in Trump Tower Grill. I love Hispanics!' Look at that shell, folks\u2014100% authentic Midtown Manhattan crunch! Surely nobody in the media will bring up anything from 2005 while I'm enjoying this taco bowl!",
       "nextNodeId": "act1_ch3_billy_bus_crashes"
     },
     {
@@ -358,7 +360,7 @@
       "id": "act1_ch3_billy_verbatim",
       "speakerId": "billy_bus",
       "side": "RIGHT",
-      "text": "*Hits play on the giant loudspeaker* 'I moved on her actually. You know, she was down on Palm Beach. I moved on her, and I failed. I'll admit it. I did try and f*** her. She was married... I took her out furniture—I moved on her like a b*tch, actually. She wanted to get some furniture. I said, \"I'll show you where they have some nice furniture.\" ... I better use some Tic-Tacs just in case I start kissing her. You know I'm automatically attracted to beautiful—I just start kissing them. It's like a magnet. Just kiss. I don't even wait. And when you're a star, they let you do it. You can do anything... Grab 'em by the p*ssy. You can do anything.'",
+      "text": "*Hits play on the giant loudspeaker* 'I moved on her actually. You know, she was down on Palm Beach. I moved on her, and I failed. I'll admit it. I did try and f*** her. She was married... I took her out furniture\u2014I moved on her like a b*tch, actually. She wanted to get some furniture. I said, \"I'll show you where they have some nice furniture.\" ... I better use some Tic-Tacs just in case I start kissing her. You know I'm automatically attracted to beautiful\u2014I just start kissing them. It's like a magnet. Just kiss. I don't even wait. And when you're a star, they let you do it. You can do anything... Grab 'em by the p*ssy. You can do anything.'",
       "choices": [
         {
           "id": "a3_tictac",
@@ -391,7 +393,7 @@
       "id": "act1_ch3_tictac_defense",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "First of all, folks, that was eleven years ago in 2005—the same year Hill-Rod was sitting in the front row at my Palm Beach wedding eating my cake! Second of all, listen to the tape: I said I tried to take Nancy O'Dell furniture shopping and I FAILED! What kind of supervillain brags on a hot mic about striking out at an ottoman warehouse after popping two white Tic-Tacs?!",
+      "text": "First of all, folks, that was eleven years ago in 2005\u2014the same year Hill-Rod was sitting in the front row at my Palm Beach wedding eating my cake! Second of all, listen to the tape: I said I tried to take Nancy O'Dell furniture shopping and I FAILED! What kind of supervillain brags on a hot mic about striking out at an ottoman warehouse after popping two white Tic-Tacs?!",
       "nextNodeId": "act1_ch3_never_let_it_go"
     },
     {
@@ -414,13 +416,14 @@
       "side": "CENTER_NARRATOR",
       "text": "Super PAC Media Strategists and Consultant Fact-Checkers are trying to weaponize the 2005 bus tape and the Taco Bowl tweet! Commander, clear the stage!",
       "nextNodeId": "act1_ch3_bus_post_battle",
-      "triggerBattleEncounterId": "act1_ch2_debate_battle"
+      "triggerBattleEncounterId": "act1_ch2_debate_battle",
+      "battleEnvironmentId": "debate_stage"
     },
     {
       "id": "act1_ch3_bus_post_battle",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "We survived the October Surprise bus ambush—and our HP and MP are right back at 100%! Now let's march into Chapter 4: The Final 2016 General Election Showdown against Hill-Rod!",
+      "text": "We survived the October Surprise bus ambush\u2014and our HP and MP are right back at 100%! Now let's march into Chapter 4: The Final 2016 General Election Showdown against Hill-Rod!",
       "nextNodeId": "act1_ch4_intro",
       "changeSceneId": "scene_act1_ch3_rally",
       "setFlagOnEnter": "red_a1c3_bus_won"
@@ -429,7 +432,7 @@
       "id": "act1_ch4_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "It is Election Eve, November 2016! Hill-Rod arrives on the debate stage fresh off taking five swipes to get through a Bronx subway turnstile, pulling Ninja Squirrel hot sauce out of her purse on The Breakfast Club, and telling Virginia voters to 'Pokémon Go-to-the-Polls'!",
+      "text": "It is Election Eve, November 2016! Hill-Rod arrives on the debate stage fresh off taking five swipes to get through a Bronx subway turnstile, pulling Ninja Squirrel hot sauce out of her purse on The Breakfast Club, and telling Virginia voters to 'Pok\u00e9mon Go-to-the-Polls'!",
       "nextNodeId": "act1_ch4_hill_rod_arrives"
     },
     {
@@ -443,7 +446,7 @@
       "id": "act1_ch4_commander_counter_barrage",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Oh yeah, Hill-Rod?! Well before we discuss tax brackets, I'd like to remind everyone for the 500th time today that in 1978 you turned $1,000 into $100,000 in live-cattle futures by 'reading the Wall Street Journal,' in 2005 you ate two slices of cake at my wedding, in 2014 your IT guy 'stonetear' asked Reddit how to BleachBit 33,000 emails off a Chappaqua basement server before you asked 'What, like with a cloth or something?!', and in April 2016 it took you FIVE SWIPES to walk through a Bronx subway turnstile while carrying pandering hot sauce and shouting 'Pokémon Go-to-the-Polls!'",
+      "text": "Oh yeah, Hill-Rod?! Well before we discuss tax brackets, I'd like to remind everyone for the 500th time today that in 1978 you turned $1,000 into $100,000 in live-cattle futures by 'reading the Wall Street Journal,' in 2005 you ate two slices of cake at my wedding, in 2014 your IT guy 'stonetear' asked Reddit how to BleachBit 33,000 emails off a Chappaqua basement server before you asked 'What, like with a cloth or something?!', and in April 2016 it took you FIVE SWIPES to walk through a Bronx subway turnstile while carrying pandering hot sauce and shouting 'Pok\u00e9mon Go-to-the-Polls!'",
       "nextNodeId": "act1_ch4_comey_cameo"
     },
     {
@@ -457,9 +460,10 @@
       "id": "act1_ch3_finale_battle_trigger",
       "speakerId": "narrator_hulk",
       "side": "CENTER_NARRATOR",
-      "text": "IT'S THE 2016 GENERAL ELECTION MAIN EVENT, BROTHER! Commander America's Golden Podium, Taco Bowls, and Tic-Tacs vs. Hill-Rod's Chappaqua Cloth Wipe, Purse Hot Sauce, and Pokémon Go-To-The-Polls! RING THE BELL!",
+      "text": "IT'S THE 2016 GENERAL ELECTION MAIN EVENT, BROTHER! Commander America's Golden Podium, Taco Bowls, and Tic-Tacs vs. Hill-Rod's Chappaqua Cloth Wipe, Purse Hot Sauce, and Pok\u00e9mon Go-To-The-Polls! RING THE BELL!",
       "nextNodeId": "act1_ch3_post_battle",
-      "triggerBattleEncounterId": "act1_track_a_hill_rod_finale"
+      "triggerBattleEncounterId": "act1_track_a_hill_rod_finale",
+      "battleEnvironmentId": "debate_stage"
     },
     {
       "id": "act1_ch3_post_battle",
@@ -481,7 +485,7 @@
       "id": "act1_tb_ch1_kjp_oprah",
       "speakerId": "narrator_kjp",
       "side": "CENTER_NARRATOR",
-      "text": "According to my binder, thirty-three thousand emails just evaporated into thin air! But don't panic, folks—Oprah is in the driveway with the megaphone!",
+      "text": "According to my binder, thirty-three thousand emails just evaporated into thin air! But don't panic, folks\u2014Oprah is in the driveway with the megaphone!",
       "nextNodeId": "act1_tb_ch1_oprah_hype",
       "setFlagOnEnter": "blue_hill_rod_joined"
     },
@@ -546,7 +550,7 @@
         },
         {
           "id": "tb1_proceed",
-          "text": "Grab the pantsuits—we're heading to the Bronx subway!",
+          "text": "Grab the pantsuits\u2014we're heading to the Bronx subway!",
           "voiceKeywords": [
             "proceed",
             "advance",
@@ -577,7 +581,7 @@
       "id": "act1_tb_ch1_cattle_joke",
       "speakerId": "hill_rod",
       "side": "LEFT",
-      "text": "Spicy Sean is screaming about 1978 cattle futures! Look, I turned a thousand bucks into a hundred grand trading cows! That wasn't luck—that was pure cow instinct! If Donald can ride a golden escalator, I can ride a golden steer!",
+      "text": "Spicy Sean is screaming about 1978 cattle futures! Look, I turned a thousand bucks into a hundred grand trading cows! That wasn't luck\u2014that was pure cow instinct! If Donald can ride a golden escalator, I can ride a golden steer!",
       "nextNodeId": "act1_tb_ch1_server_hub",
       "setFlagOnEnter": "tb1_cattle_done"
     },
@@ -615,36 +619,37 @@
       "id": "act1_tb_ch2_hill_turnstile_clapback",
       "speakerId": "hill_rod",
       "side": "LEFT",
-      "text": "*Finally pushes through on the fifth swipe* Listen here, Chyron—at least I didn't ride the subway using brass tokens like Donald claimed, and at least I didn't ride an Access Hollywood bus in 2005 eating Tic-Tacs and yelling 'grab 'em by the p*ssy' after failing to buy a couch with Nancy O'Dell! Now get out of my way, I'm late for Zach Two-Ferns!",
+      "text": "*Finally pushes through on the fifth swipe* Listen here, Chyron\u2014at least I didn't ride the subway using brass tokens like Donald claimed, and at least I didn't ride an Access Hollywood bus in 2005 eating Tic-Tacs and yelling 'grab 'em by the p*ssy' after failing to buy a couch with Nancy O'Dell! Now get out of my way, I'm late for Zach Two-Ferns!",
       "nextNodeId": "act1_tb_ch2_zach_interrogates"
     },
     {
       "id": "act1_tb_ch2_zach_interrogates",
       "speakerId": "zach_ferns",
       "side": "RIGHT",
-      "text": "*Sits deadpan between two dusty potted ferns on September 22, 2016* Secretary Hill-Rod, I'm so excited to meet the first female president... and for a younger generation, you'll also become their first white president. Also, when Commander America is elected, what do you think you'll wear to the inauguration? Hold that thought—let's take a quick break for our paid sponsor: a campaign commercial for Donald Trump!",
+      "text": "*Sits deadpan between two dusty potted ferns on September 22, 2016* Secretary Hill-Rod, I'm so excited to meet the first female president... and for a younger generation, you'll also become their first white president. Also, when Commander America is elected, what do you think you'll wear to the inauguration? Hold that thought\u2014let's take a quick break for our paid sponsor: a campaign commercial for Donald Trump!",
       "nextNodeId": "act1_tb_ch2_hill_reacts_ferns"
     },
     {
       "id": "act1_tb_ch2_hill_reacts_ferns",
       "speakerId": "hill_rod",
       "side": "LEFT",
-      "text": "Did you seriously just cut away in the middle of my interview to play a literal Donald Trump campaign commercial?! And now as we wrap up, you're asking me: 'This has been really great, we should stay in touch—what's the best way to reach you? Email?' EVEN THE COMEDY HOST WON'T LET THE EMAIL SERVER GO!",
+      "text": "Did you seriously just cut away in the middle of my interview to play a literal Donald Trump campaign commercial?! And now as we wrap up, you're asking me: 'This has been really great, we should stay in touch\u2014what's the best way to reach you? Email?' EVEN THE COMEDY HOST WON'T LET THE EMAIL SERVER GO!",
       "nextNodeId": "act1_tb_ch2_ferns_battle_trigger"
     },
     {
       "id": "act1_tb_ch2_ferns_battle_trigger",
       "speakerId": "narrator_oprah",
       "side": "CENTER_NARRATOR",
-      "text": "ZACH TWO-FERNS JUST WEAPONIZED THE PUBLIC-ACCESS STUDIO PLANTS AND PLAYED ANOTHER TRUMP AD, HONEY! Hill-Rod, unleash Pokémon Go-To-The-Polls and your Chappaqua Cloth Wipe!",
+      "text": "ZACH TWO-FERNS JUST WEAPONIZED THE PUBLIC-ACCESS STUDIO PLANTS AND PLAYED ANOTHER TRUMP AD, HONEY! Hill-Rod, unleash Pok\u00e9mon Go-To-The-Polls and your Chappaqua Cloth Wipe!",
       "nextNodeId": "act1_tb_ch2_post_battle",
-      "triggerBattleEncounterId": "act1_track_b_ferns_battle"
+      "triggerBattleEncounterId": "act1_track_b_ferns_battle",
+      "battleEnvironmentId": "talk_show_set"
     },
     {
       "id": "act1_tb_ch2_post_battle",
       "speakerId": "hill_rod",
       "side": "LEFT",
-      "text": "That's the last time I sit between two ferns without checking the ad-buy sheet first! With HP and MP 100% restored, let's head to Chapter 3: The Breakfast Club radio studio and our Virginia Pokémon Go rally!",
+      "text": "That's the last time I sit between two ferns without checking the ad-buy sheet first! With HP and MP 100% restored, let's head to Chapter 3: The Breakfast Club radio studio and our Virginia Pok\u00e9mon Go rally!",
       "nextNodeId": "act1_tb_ch3_intro",
       "changeSceneId": "scene_act1_tb_ch3_breakfast",
       "setFlagOnEnter": "blue_a1c2_ferns_won"
@@ -661,7 +666,7 @@
       "id": "act1_tb_ch4_intro",
       "speakerId": "comey_tall",
       "side": "RIGHT",
-      "text": "*Pokes his 6-foot-8 head back out from behind the blue curtain on November 6, 2016—48 hours before Election Day* Oh, hi again, Secretary Hill-Rod! Funny story: our automated hashing software finished scanning Anthony Weiner's laptop in forty-eight hours and every single email was just a duplicate of the ones we already cleared back in July! My bad! Good luck in Wisconsin—which you haven't visited once since the April primary!",
+      "text": "*Pokes his 6-foot-8 head back out from behind the blue curtain on November 6, 2016\u201448 hours before Election Day* Oh, hi again, Secretary Hill-Rod! Funny story: our automated hashing software finished scanning Anthony Weiner's laptop in forty-eight hours and every single email was just a duplicate of the ones we already cleared back in July! My bad! Good luck in Wisconsin\u2014which you haven't visited once since the April primary!",
       "nextNodeId": "act1_tb_ch4_commander_confrontation",
       "changeSceneId": "scene_act1_tb_ch4_javits"
     },
@@ -669,7 +674,7 @@
       "id": "act1_tb_ch4_commander_confrontation",
       "speakerId": "commander_america",
       "side": "RIGHT",
-      "text": "Look who finally swiped her MetroCard five times to get onto the Election Night stage, folks! Tell me, Hill-Rod—did you wipe that glass ceiling at the Javits Center 'with a cloth or something' like Paul Combetta ('stonetear') wiped your 33,000 Chappaqua emails with BleachBit?! Or are you still reading the 1978 Wall Street Journal between two potted ferns while yelling 'Pokémon Go-to-the-Polls'?!",
+      "text": "Look who finally swiped her MetroCard five times to get onto the Election Night stage, folks! Tell me, Hill-Rod\u2014did you wipe that glass ceiling at the Javits Center 'with a cloth or something' like Paul Combetta ('stonetear') wiped your 33,000 Chappaqua emails with BleachBit?! Or are you still reading the 1978 Wall Street Journal between two potted ferns while yelling 'Pok\u00e9mon Go-to-the-Polls'?!",
       "choices": [
         {
           "id": "tb3_roast_bus",
@@ -709,9 +714,10 @@
       "id": "act1_tb_ch3_finale_battle_trigger",
       "speakerId": "narrator_oprah",
       "side": "CENTER_NARRATOR",
-      "text": "IT'S THE 2016 ELECTION NIGHT SHOWDOWN, EVERYBODY! Hill-Rod vs. Commander America, Billy Access-Bus, and the $50 Casting Extra! Unleash Pokémon Go-To-The-Polls, Purse Ninja Hot Sauce, and the 11-Hour Marathon Shield!",
+      "text": "IT'S THE 2016 ELECTION NIGHT SHOWDOWN, EVERYBODY! Hill-Rod vs. Commander America, Billy Access-Bus, and the $50 Casting Extra! Unleash Pok\u00e9mon Go-To-The-Polls, Purse Ninja Hot Sauce, and the 11-Hour Marathon Shield!",
       "nextNodeId": "act1_tb_ch3_post_battle",
-      "triggerBattleEncounterId": "act1_track_b_commander_finale"
+      "triggerBattleEncounterId": "act1_track_b_commander_finale",
+      "battleEnvironmentId": "rally_stage"
     },
     {
       "id": "act1_tb_ch3_post_battle",
@@ -725,7 +731,7 @@
       "id": "act2_ch1_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "Welcome to Act II (2017–2020): Five brand-new chapters of executive chaos! It is January 21, 2017 inside the West Wing. White House Press Secretary Spicy Sean has already chewed and swallowed 35 pieces of Orbit Cinnamon gum whole before noon—right after sneaking into the Eisenhower Executive Office Building at 8:00 PM to steal a mini-fridge from junior research staffers!",
+      "text": "Welcome to Act II (2017\u20132020): Five brand-new chapters of executive chaos! It is January 21, 2017 inside the West Wing. White House Press Secretary Spicy Sean has already chewed and swallowed 35 pieces of Orbit Cinnamon gum whole before noon\u2014right after sneaking into the Eisenhower Executive Office Building at 8:00 PM to steal a mini-fridge from junior research staffers!",
       "nextNodeId": "act2_ch1_spicer_podium",
       "changeSceneId": "scene_act2_ch1_mall"
     },
@@ -733,7 +739,7 @@
       "id": "act2_ch1_spicer_podium",
       "speakerId": "spicy_sean",
       "side": "LEFT",
-      "text": "*Stands at the Brady Briefing Room lectern in a suit jacket two sizes too large, swallowing a wad of cinnamon gum whole* 'This was the largest audience to ever witness an inauguration—period—both in person and around the globe! Look at the white floor coverings on the National Mall grass! Nobody has ever used white floor coverings before!'",
+      "text": "*Stands at the Brady Briefing Room lectern in a suit jacket two sizes too large, swallowing a wad of cinnamon gum whole* 'This was the largest audience to ever witness an inauguration\u2014period\u2014both in person and around the globe! Look at the white floor coverings on the National Mall grass! Nobody has ever used white floor coverings before!'",
       "nextNodeId": "act2_ch1_mooch_arrives"
     },
     {
@@ -747,7 +753,7 @@
       "id": "act2_ch1_mall_hub",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Look at this communications team, folks—Spicy Sean is hiding in the dark behind the White House bushes yelling at reporters to turn their camera lights off, and The Mooch just set the land-speed record for getting fired before his first paycheck! How do we handle the press corps?",
+      "text": "Look at this communications team, folks\u2014Spicy Sean is hiding in the dark behind the White House bushes yelling at reporters to turn their camera lights off, and The Mooch just set the land-speed record for getting fired before his first paycheck! How do we handle the press corps?",
       "choices": [
         {
           "id": "a2c1_bushes",
@@ -806,7 +812,7 @@
       "id": "act2_ch1_spicer_bushes",
       "speakerId": "spicy_sean",
       "side": "LEFT",
-      "text": "*Whispers from deep inside a dark row of White House holly bushes on the night of May 9, 2017* Listen, Commander, after you fired Director Jim-Tall while he was watching TV in Los Angeles—and he laughed thinking the breaking news chyron was a prank—twenty reporters chased me across the driveway! So naturally I crouched behind these bushes in pitch darkness and told them I'd only answer questions if they turned all their camera lights off! Also, nobody touches my stolen mini-fridge!",
+      "text": "*Whispers from deep inside a dark row of White House holly bushes on the night of May 9, 2017* Listen, Commander, after you fired Director Jim-Tall while he was watching TV in Los Angeles\u2014and he laughed thinking the breaking news chyron was a prank\u2014twenty reporters chased me across the driveway! So naturally I crouched behind these bushes in pitch darkness and told them I'd only answer questions if they turned all their camera lights off! Also, nobody touches my stolen mini-fridge!",
       "nextNodeId": "act2_ch1_mall_hub",
       "setFlagOnEnter": "a2c1_bushes_done"
     },
@@ -814,7 +820,7 @@
       "id": "act2_ch1_mooch_rant",
       "speakerId": "the_mooch",
       "side": "RIGHT",
-      "text": "Hey, I'm a straight shooter from Long Island! When I called Ryan Lizza at The New Yorker on July 26, 2017, did I scream that Reince Priebus is a 'f***ing paranoid schizophrenic, a paranoiac' and say 'I'm not Steve Bannon, I'm not trying to suck my own c***'?! Yes I did! And in my defense, eleven days is still a full Scaramucci—the official unit of measurement for political survival!",
+      "text": "Hey, I'm a straight shooter from Long Island! When I called Ryan Lizza at The New Yorker on July 26, 2017, did I scream that Reince Priebus is a 'f***ing paranoid schizophrenic, a paranoiac' and say 'I'm not Steve Bannon, I'm not trying to suck my own c***'?! Yes I did! And in my defense, eleven days is still a full Scaramucci\u2014the official unit of measurement for political survival!",
       "nextNodeId": "act2_ch1_mall_hub",
       "setFlagOnEnter": "a2c1_mooch_done"
     },
@@ -832,7 +838,8 @@
       "side": "CENTER_NARRATOR",
       "text": "THE BRIEFING ROOM DOORS ARE BLOWING OFF THE HINGES, BROTHER! Crowd-Size Fact-Checkers and Cable Chyron Operators are storming the podium! Unleash the 12:06 AM Covfefe Drop and the Red Diet Coke Button!",
       "nextNodeId": "act2_ch1_post_battle",
-      "triggerBattleEncounterId": "act2_ch1_inauguration_battle"
+      "triggerBattleEncounterId": "act2_ch1_inauguration_battle",
+      "battleEnvironmentId": "national_mall"
     },
     {
       "id": "act2_ch1_post_battle",
@@ -855,7 +862,7 @@
       "id": "act2_ch2_diet_coke_button",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Taps the red wooden button on the Resolute Desk while reporters from the Associated Press and Financial Times flinch* Everyone gets a little nervous when I press this button, folks! They think it's the nuclear football—nope! Watch this: ten seconds later, a White House butler walks in carrying a single ice-cold Diet Coke on a silver platter! Twelve times a day! Peak executive efficiency!",
+      "text": "*Taps the red wooden button on the Resolute Desk while reporters from the Associated Press and Financial Times flinch* Everyone gets a little nervous when I press this button, folks! They think it's the nuclear football\u2014nope! Watch this: ten seconds later, a White House butler walks in carrying a single ice-cold Diet Coke on a silver platter! Twelve times a day! Peak executive efficiency!",
       "nextNodeId": "act2_ch2_oval_hub"
     },
     {
@@ -928,7 +935,7 @@
       "id": "act2_ch2_eclipse_node",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Walks out onto the Truman Balcony on August 21, 2017 holding protective ISO-certified eclipse glasses in his right hand—then points his finger at the sky and squints BARE-EYED straight into the blinding sun* Suddenly a panicked White House aide beneath the balcony screams at the top of his lungs: 'DON'T LOOK!' Look, folks, the sun blinked first! Nobody has stronger retinas than me!",
+      "text": "*Walks out onto the Truman Balcony on August 21, 2017 holding protective ISO-certified eclipse glasses in his right hand\u2014then points his finger at the sky and squints BARE-EYED straight into the blinding sun* Suddenly a panicked White House aide beneath the balcony screams at the top of his lungs: 'DON'T LOOK!' Look, folks, the sun blinked first! Nobody has stronger retinas than me!",
       "nextNodeId": "act2_ch2_oval_hub",
       "setFlagOnEnter": "a2c2_eclipse_done"
     },
@@ -944,7 +951,7 @@
       "id": "act2_ch3_sharpie_intro",
       "speakerId": "narrator_hulk",
       "side": "CENTER_NARRATOR",
-      "text": "WELCOME TO CHAPTER 3 OF ACT II, BROTHER! From shooting NBA three-pointers with rolls of Bounty paper towels in San Juan, to redrawing Hurricane Dorian's cone into Alabama with a black Sharpie marker, to investigating why Americans have to flush low-flow toilets fifteen times—this chapter is pure non-stop 2017–2019 history!",
+      "text": "WELCOME TO CHAPTER 3 OF ACT II, BROTHER! From shooting NBA three-pointers with rolls of Bounty paper towels in San Juan, to redrawing Hurricane Dorian's cone into Alabama with a black Sharpie marker, to investigating why Americans have to flush low-flow toilets fifteen times\u2014this chapter is pure non-stop 2017\u20132019 history!",
       "nextNodeId": "act2_ch3_towel_shots",
       "changeSceneId": "scene_act2_ch3_sharpie"
     },
@@ -952,7 +959,7 @@
       "id": "act2_ch3_towel_shots",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Squares his shoulders at Calvary Chapel in Guaynabo, Puerto Rico on October 3, 2017 and launches a jump-shot with a roll of Bounty paper towels into the crowd* Swish! Look at that form, folks—pure Steph Curry from the free-throw line! 'They had these lovely, soft towels. Very good towel!'",
+      "text": "*Squares his shoulders at Calvary Chapel in Guaynabo, Puerto Rico on October 3, 2017 and launches a jump-shot with a roll of Bounty paper towels into the crowd* Swish! Look at that form, folks\u2014pure Steph Curry from the free-throw line! 'They had these lovely, soft towels. Very good towel!'",
       "nextNodeId": "act2_ch3_sharpie_hub"
     },
     {
@@ -1017,7 +1024,7 @@
       "id": "act2_ch3_sharpie_node",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Points at the August 29 National Hurricane Center poster on the Oval Office easel (Sept 4, 2019)* Look at that white forecast cone, folks—and look at that totally official, completely natural black permanent-marker bubble drawn onto the end of the Florida panhandle so it touches southeastern Alabama! What Sharpie?! I don't know anything about a Sharpie, other than it's a very bold, very decisive marker!",
+      "text": "*Points at the August 29 National Hurricane Center poster on the Oval Office easel (Sept 4, 2019)* Look at that white forecast cone, folks\u2014and look at that totally official, completely natural black permanent-marker bubble drawn onto the end of the Florida panhandle so it touches southeastern Alabama! What Sharpie?! I don't know anything about a Sharpie, other than it's a very bold, very decisive marker!",
       "nextNodeId": "act2_ch3_sharpie_hub",
       "setFlagOnEnter": "a2c3_sharpie_done"
     },
@@ -1025,7 +1032,7 @@
       "id": "act2_ch3_toilets_node",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Leans forward at the White House Small Business Roundtable on December 6, 2019* 'We have a situation where we're looking very strongly at sinks and showers and other elements of bathrooms where you turn the faucet on—in areas where there's tremendous amounts of water, where the water rushes out to sea because you could never handle it—and you don't get any water! People are flushing toilets 10 times, 15 times, as opposed to once! They end up using more water!'",
+      "text": "*Leans forward at the White House Small Business Roundtable on December 6, 2019* 'We have a situation where we're looking very strongly at sinks and showers and other elements of bathrooms where you turn the faucet on\u2014in areas where there's tremendous amounts of water, where the water rushes out to sea because you could never handle it\u2014and you don't get any water! People are flushing toilets 10 times, 15 times, as opposed to once! They end up using more water!'",
       "nextNodeId": "act2_ch3_sharpie_hub",
       "setFlagOnEnter": "a2c3_toilets_done"
     },
@@ -1041,7 +1048,7 @@
       "id": "act2_ch3_narrator_roasts_callback",
       "speakerId": "narrator_karoline",
       "side": "CENTER_NARRATOR",
-      "text": "*Laughs from the narrator desk* Did you see that?! It is December 2019—we are in the middle of an official White House roundtable about bathroom water pressure and hurricane markers—and the second Chyron runs out of material, he panics and reaches fourteen years into the past for a 2005 bus tape! Politicians and cable anchors genuinely never let anything go!",
+      "text": "*Laughs from the narrator desk* Did you see that?! It is December 2019\u2014we are in the middle of an official White House roundtable about bathroom water pressure and hurricane markers\u2014and the second Chyron runs out of material, he panics and reaches fourteen years into the past for a 2005 bus tape! Politicians and cable anchors genuinely never let anything go!",
       "nextNodeId": "act2_ch3_sharpie_hub"
     },
     {
@@ -1050,7 +1057,8 @@
       "side": "CENTER_NARRATOR",
       "text": "THE NOAA SHARPIE METEOROLOGIST AND THE 15-FLUSH EPA PLUMBING INSPECTOR ARE CHARGING THE OVAL OFFICE EASEL, BROTHER! Hit 'em with Bounty Paper-Towel Free-Throws and the Black Sharpie Cone Extension!",
       "nextNodeId": "act2_ch3_sharpie_post_battle",
-      "triggerBattleEncounterId": "act2_track_a_sharpie_battle"
+      "triggerBattleEncounterId": "act2_track_a_sharpie_battle",
+      "battleEnvironmentId": "supply_gym"
     },
     {
       "id": "act2_ch3_sharpie_post_battle",
@@ -1065,7 +1073,7 @@
       "id": "act2_ch4_scif_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "We are inside the House Intelligence Secure Compartmented Information Facility (SCIF). Kicking open the acoustic vault door is your new party companion: Kash Subpoena—carrying his four-page February 2018 Nunes FISA Memo under one arm and a stack of $19.99 illustrated children's books under the other!",
+      "text": "We are inside the House Intelligence Secure Compartmented Information Facility (SCIF). Kicking open the acoustic vault door is your new party companion: Kash Subpoena\u2014carrying his four-page February 2018 Nunes FISA Memo under one arm and a stack of $19.99 illustrated children's books under the other!",
       "nextNodeId": "act2_ch4_kash_recruitment",
       "changeSceneId": "scene_act2_ch4_scif",
       "setFlagOnEnter": "red_kash_joined"
@@ -1074,14 +1082,14 @@
       "id": "act2_ch4_kash_recruitment",
       "speakerId": "kash",
       "side": "LEFT",
-      "text": "*Slams a four-page memo and a glossy picture book onto the table* Commander! Kash Subpoena reporting for party duty! Not only did I co-author the four-page Nunes FISA Memo exposing the Carter Page warrant applications, I also wrote a three-part Brave Books children's fantasy trilogy called The Plot Against the King—where I literally had the illustrator draw me as a bearded medieval sorcerer named 'WIZARD KASH' who saves 'KING DONALD' using a magical Scroll of Truth!",
+      "text": "*Slams a four-page memo and a glossy picture book onto the table* Commander! Kash Subpoena reporting for party duty! Not only did I co-author the four-page Nunes FISA Memo exposing the Carter Page warrant applications, I also wrote a three-part Brave Books children's fantasy trilogy called The Plot Against the King\u2014where I literally had the illustrator draw me as a bearded medieval sorcerer named 'WIZARD KASH' who saves 'KING DONALD' using a magical Scroll of Truth!",
       "nextNodeId": "act2_ch4_scif_hub"
     },
     {
       "id": "act2_ch4_scif_hub",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Hold on, Kash—you wrote a children's bedtime book where I'm King Donald and you're a wizard in a pointy robe?! Let's inspect your kit and drop our biggest Vindication receipts of the term!",
+      "text": "Hold on, Kash\u2014you wrote a children's bedtime book where I'm King Donald and you're a wizard in a pointy robe?! Let's inspect your kit and drop our biggest Vindication receipts of the term!",
       "choices": [
         {
           "id": "a2c4_wizard",
@@ -1127,7 +1135,7 @@
       "id": "act2_ch4_wizard_book_node",
       "speakerId": "kash",
       "side": "LEFT",
-      "text": "*Opens The Plot Against the King to page 4* Look at the artwork, Commander: there's me as Wizard Kash holding a glowing staff, there's a magical slug named 'Dossier,' and for the villain in a 2022 children's book, I drew 'Hillary Queenton'! Oh, and don't ask my former DOJ colleagues about when I claimed I was the 'lead Benghazi trial prosecutor'—they got super technical and pointed out I was a junior staffer who showed up in the final week and wasn't even on the trial team!",
+      "text": "*Opens The Plot Against the King to page 4* Look at the artwork, Commander: there's me as Wizard Kash holding a glowing staff, there's a magical slug named 'Dossier,' and for the villain in a 2022 children's book, I drew 'Hillary Queenton'! Oh, and don't ask my former DOJ colleagues about when I claimed I was the 'lead Benghazi trial prosecutor'\u2014they got super technical and pointed out I was a junior staffer who showed up in the final week and wasn't even on the trial team!",
       "nextNodeId": "act2_ch4_wizard_meta_gag",
       "setFlagOnEnter": "a2c4_wizard_done"
     },
@@ -1135,7 +1143,7 @@
       "id": "act2_ch4_wizard_meta_gag",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "*Chuckles at the desk* Wait a second, Kash—you published a children's picture book six years after the 2016 election and you STILL put Hillary on the cover as the villain?! In Washington, D.C., not even bedtime stories for first-graders are capable of letting old elections go!",
+      "text": "*Chuckles at the desk* Wait a second, Kash\u2014you published a children's picture book six years after the 2016 election and you STILL put Hillary on the cover as the villain?! In Washington, D.C., not even bedtime stories for first-graders are capable of letting old elections go!",
       "nextNodeId": "act2_ch4_scif_hub"
     },
     {
@@ -1152,13 +1160,14 @@
       "side": "CENTER_NARRATOR",
       "text": "WIZARD KASH JUST JOINED THE ACTIVE PARTY, BROTHER! Unleash his 4-Page Nunes FISA Scroll and King Donald's Wizard Book against the Subpoena Bureaucrats!",
       "nextNodeId": "act2_ch4_scif_post_battle",
-      "triggerBattleEncounterId": "act4_ch1_fisa_battle"
+      "triggerBattleEncounterId": "act4_ch1_fisa_battle",
+      "battleEnvironmentId": "secure_vault"
     },
     {
       "id": "act2_ch4_scif_post_battle",
       "speakerId": "kash",
       "side": "LEFT",
-      "text": "Boom! The SCIF is cleared, every binder is declassified, and our HP and MP are back at 100%! Now let's march into the House Chamber for Chapter 5—the Act II Finale against Speaker Nancy Palooza!",
+      "text": "Boom! The SCIF is cleared, every binder is declassified, and our HP and MP are back at 100%! Now let's march into the House Chamber for Chapter 5\u2014the Act II Finale against Speaker Nancy Palooza!",
       "nextNodeId": "act2_ch3_intro",
       "changeSceneId": "scene_act2_ch3_rotunda",
       "setFlagOnEnter": "red_a2c4_scif_won"
@@ -1167,7 +1176,7 @@
       "id": "act2_ch3_intro",
       "speakerId": "narrator_karoline",
       "side": "CENTER_NARRATOR",
-      "text": "We are inside the House Chamber in 2020! Standing on the Speaker's dais behind Commander America is Speaker Nancy Palooza—flanked by two $24,000 stainless-steel Sub-Zero freezers stuffed with $12 pints of Jeni's Splendid Ice Cream, a stack of pre-scored State of the Union pages, and a fresh blowout from an unmasked visit to a locked-down San Francisco hair salon!",
+      "text": "We are inside the House Chamber in 2020! Standing on the Speaker's dais behind Commander America is Speaker Nancy Palooza\u2014flanked by two $24,000 stainless-steel Sub-Zero freezers stuffed with $12 pints of Jeni's Splendid Ice Cream, a stack of pre-scored State of the Union pages, and a fresh blowout from an unmasked visit to a locked-down San Francisco hair salon!",
       "nextNodeId": "act2_ch5_nancy_greeting",
       "changeSceneId": "scene_act2_ch3_rotunda"
     },
@@ -1198,7 +1207,8 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE 2020 STATE OF THE UNION SHOWDOWN, BROTHER! Commander America, Little Marco, and Wizard Kash vs. Speaker Nancy Palooza's Pre-Scored Speech Rip, 45-Degree Sideways Seal Clap, and Twin $24,000 Sub-Zero Freezers! RING THE BELL!",
       "nextNodeId": "act2_ch5_post_battle",
-      "triggerBattleEncounterId": "act2_media_battle"
+      "triggerBattleEncounterId": "act2_media_battle",
+      "battleEnvironmentId": "house_chamber"
     },
     {
       "id": "act2_ch5_post_battle",
@@ -1228,7 +1238,7 @@
       "id": "act2_tb_ch1_kjp_oprah",
       "speakerId": "narrator_kjp",
       "side": "CENTER_NARRATOR",
-      "text": "Flipping to Tab 2 of my historic binder: Nancy Palooza has reclaimed the Speaker's gavel, perfected the 45-degree sideways seal clap, and is walking past the White House shrubbery—wait, why are the bushes shaking to the beat of Destiny's Child?!",
+      "text": "Flipping to Tab 2 of my historic binder: Nancy Palooza has reclaimed the Speaker's gavel, perfected the 45-degree sideways seal clap, and is walking past the White House shrubbery\u2014wait, why are the bushes shaking to the beat of Destiny's Child?!",
       "nextNodeId": "act2_tb_ch1_oprah_salsa"
     },
     {
@@ -1242,14 +1252,14 @@
       "id": "act2_tb_ch1_spicer_salsa_ambush",
       "speakerId": "spicy_sean",
       "side": "RIGHT",
-      "text": "*Leaps out of the White House bushes in a blinding neon-green ruffled sleeves shirt, shaking a pair of maracas while chewing 35 pieces of Orbit Cinnamon gum* HOLD IT RIGHT THERE, MADAM SPEAKER! On September 16, 2019 I debuted on Dancing with the Stars in this exact neon-green cabbage-ruffle shirt dancing the salsa to 'Bills, Bills, Bills' and scored a 12 out of 30! And speaking of bills—didn't you tell America 'We have to pass the bill so that you can find out what is in it'?!",
+      "text": "*Leaps out of the White House bushes in a blinding neon-green ruffled sleeves shirt, shaking a pair of maracas while chewing 35 pieces of Orbit Cinnamon gum* HOLD IT RIGHT THERE, MADAM SPEAKER! On September 16, 2019 I debuted on Dancing with the Stars in this exact neon-green cabbage-ruffle shirt dancing the salsa to 'Bills, Bills, Bills' and scored a 12 out of 30! And speaking of bills\u2014didn't you tell America 'We have to pass the bill so that you can find out what is in it'?!",
       "nextNodeId": "act2_tb_ch1_nancy_clapback"
     },
     {
       "id": "act2_tb_ch1_nancy_clapback",
       "speakerId": "pelosi",
       "side": "LEFT",
-      "text": "*Extends her arms at a razor-sharp 45-degree angle and delivers the February 5, 2019 Sideways Seal Clap right at Spicy Sean's neon sleeves* Oh, bravo, Sean! Look at you—first you stole a mini-fridge from twenty-two-year-old staffers at 8:00 PM, then you hid in those exact bushes in the dark after the Comey firing shouting 'Turn the lights off!', and now you're dressed like a radioactive head of romaine lettuce alongside a Communications Director who got fired in eleven days!",
+      "text": "*Extends her arms at a razor-sharp 45-degree angle and delivers the February 5, 2019 Sideways Seal Clap right at Spicy Sean's neon sleeves* Oh, bravo, Sean! Look at you\u2014first you stole a mini-fridge from twenty-two-year-old staffers at 8:00 PM, then you hid in those exact bushes in the dark after the Comey firing shouting 'Turn the lights off!', and now you're dressed like a radioactive head of romaine lettuce alongside a Communications Director who got fired in eleven days!",
       "nextNodeId": "act2_tb_ch1_mooch_chimes_in"
     },
     {
@@ -1265,7 +1275,8 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S NEON SALSA RUFFLES AND THE 11-DAY MOOCH VS. SPEAKER NANCY PALOOZA, EVERYBODY! Unleash the 45-Degree Sideways Seal Clap and Pass the Bill to Find Out!",
       "nextNodeId": "act2_tb_ch1_post_battle",
-      "triggerBattleEncounterId": "act2_track_b_spicer_salsa_battle"
+      "triggerBattleEncounterId": "act2_track_b_spicer_salsa_battle",
+      "battleEnvironmentId": "national_mall"
     },
     {
       "id": "act2_tb_ch1_post_battle",
@@ -1287,7 +1298,7 @@
       "id": "act2_tb_ch2_sotu_hub",
       "speakerId": "pelosi",
       "side": "LEFT",
-      "text": "*Tests the thickness of the State of the Union speech pages between her fingers* Wait a minute—the White House printed this speech on heavy-gauge archival cardstock! If I try to rip thirty pages of this cold at the end of the speech, my hands might get stuck on live television! How do we prepare the grand finale and crush the doctored video smear against us?",
+      "text": "*Tests the thickness of the State of the Union speech pages between her fingers* Wait a minute\u2014the White House printed this speech on heavy-gauge archival cardstock! If I try to rip thirty pages of this cold at the end of the speech, my hands might get stuck on live television! How do we prepare the grand finale and crush the doctored video smear against us?",
       "choices": [
         {
           "id": "tb2_prescore",
@@ -1346,7 +1357,7 @@
       "id": "act2_tb_ch2_prescore_node",
       "speakerId": "pelosi",
       "side": "LEFT",
-      "text": "*Lowers the stack of pages just below desk level while C-SPAN cameras zoom in, discreetly pinching and pre-ripping small starter notches into the top left margins* Always engineer your structural tear lines in advance! Then, the moment he finishes speaking, I stand up behind his shoulder, hold each pre-scored packet high for the cameras, and—*RRRRIP! RRRRIP!* And when reporters ask why I tore it up outside the chamber: 'It was the courteous thing to do considering the alternatives!'",
+      "text": "*Lowers the stack of pages just below desk level while C-SPAN cameras zoom in, discreetly pinching and pre-ripping small starter notches into the top left margins* Always engineer your structural tear lines in advance! Then, the moment he finishes speaking, I stand up behind his shoulder, hold each pre-scored packet high for the cameras, and\u2014*RRRRIP! RRRRIP!* And when reporters ask why I tore it up outside the chamber: 'It was the courteous thing to do considering the alternatives!'",
       "nextNodeId": "act2_tb_ch2_sotu_hub",
       "setFlagOnEnter": "tb2_prescore_done"
     },
@@ -1445,7 +1456,7 @@
       "id": "act2_tb_ch3_icecream_node",
       "speakerId": "pelosi",
       "side": "LEFT",
-      "text": "*Pulls open the heavy stainless-steel Sub-Zero freezer drawer on national television (April 14, 2020), revealing dozens of neatly stacked $12 pints of Jeni's Splendid Ice Cream* 'I like chocolate better than anything! Look—Darkest Chocolate, Chocolate Indulgence, Milkiest Chocolate! I don't know what I would have done if I didn't have my ice cream!'Wait—why are my own campaign consultants screaming that flexing $24,000 appliances full of $12 artisanal pints during a 14% unemployment spike is 'Marie Antoinette with a waffle cone'?!",
+      "text": "*Pulls open the heavy stainless-steel Sub-Zero freezer drawer on national television (April 14, 2020), revealing dozens of neatly stacked $12 pints of Jeni's Splendid Ice Cream* 'I like chocolate better than anything! Look\u2014Darkest Chocolate, Chocolate Indulgence, Milkiest Chocolate! I don't know what I would have done if I didn't have my ice cream!'Wait\u2014why are my own campaign consultants screaming that flexing $24,000 appliances full of $12 artisanal pints during a 14% unemployment spike is 'Marie Antoinette with a waffle cone'?!",
       "nextNodeId": "act2_tb_ch3_subzero_hub",
       "setFlagOnEnter": "tb3_icecream_done"
     },
@@ -1469,7 +1480,7 @@
       "id": "act2_tb_ch4_intro",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
-      "text": "We are inside the House Clerk's Periodic Transaction Report (PTR) Vault! On the wall, retail traders have launched an actual exchange-traded fund ticker—'NANC'—just to copy Paul and Nancy's deep-in-the-money tech call options on Alphabet, Visa, and Palo Alto Networks!",
+      "text": "We are inside the House Clerk's Periodic Transaction Report (PTR) Vault! On the wall, retail traders have launched an actual exchange-traded fund ticker\u2014'NANC'\u2014just to copy Paul and Nancy's deep-in-the-money tech call options on Alphabet, Visa, and Palo Alto Networks!",
       "nextNodeId": "act2_tb_ch4_free_market",
       "changeSceneId": "scene_act2_tb_ch4_stocks",
       "setFlagOnEnter": "blue_a2c4_stocks_opened"
@@ -1547,7 +1558,7 @@
       "id": "act2_tb_ch4_kash_ambush",
       "speakerId": "kash",
       "side": "RIGHT",
-      "text": "*Kicks open the House Clerk doors wearing a purple 'Wizard Kash' cape over his suit and waving his four-page Nunes Memo* FREEZE THOSE CALL OPTIONS, SPEAKER PALOOZA! I am Kash Subpoena—known to readers ages 4 to 8 as 'Wizard Kash' from my $19.99 Brave Books classic The Plot Against the King! Every binder in this building is declassified!",
+      "text": "*Kicks open the House Clerk doors wearing a purple 'Wizard Kash' cape over his suit and waving his four-page Nunes Memo* FREEZE THOSE CALL OPTIONS, SPEAKER PALOOZA! I am Kash Subpoena\u2014known to readers ages 4 to 8 as 'Wizard Kash' from my $19.99 Brave Books classic The Plot Against the King! Every binder in this building is declassified!",
       "nextNodeId": "act2_tb_ch4_kash_battle_trigger"
     },
     {
@@ -1556,7 +1567,8 @@
       "side": "CENTER_NARRATOR",
       "text": "WIZARD KASH AND HIS DECLASSIFIED BINDER GOLEM ARE ATTACKING THE STOCK VAULT, HONEY! Nancy Palooza, hit him with the $24,000 Sub-Zero Freezer Flex and the $341k Pre-CHIPS Act Loss Receipt!",
       "nextNodeId": "act2_tb_ch4_post_battle",
-      "triggerBattleEncounterId": "act2_track_b_kash_battle"
+      "triggerBattleEncounterId": "act2_track_b_kash_battle",
+      "battleEnvironmentId": "secure_vault"
     },
     {
       "id": "act2_tb_ch4_post_battle",
@@ -1578,7 +1590,7 @@
       "id": "act2_tb_ch5_rudy_arrives",
       "speakerId": "rudy_ghoul",
       "side": "RIGHT",
-      "text": "*Stands between a stack of bags of topsoil and a yellow 'ADULT BOOKS & NOVELTIES' sign while dark brown hair dye begins melting in twin streams down both of his temples* Welcome to Four Seasons Total Landscaping! Wait—a reporter in the front row is telling me the Associated Press and every television network just called Pennsylvania while I was standing in front of this garage door?! *Raises both arms to the sky* 'All the networks! Wow! All the networks! We have to forget about the law! Judges don't count! Don't be ridiculous, networks don't get to decide elections!'",
+      "text": "*Stands between a stack of bags of topsoil and a yellow 'ADULT BOOKS & NOVELTIES' sign while dark brown hair dye begins melting in twin streams down both of his temples* Welcome to Four Seasons Total Landscaping! Wait\u2014a reporter in the front row is telling me the Associated Press and every television network just called Pennsylvania while I was standing in front of this garage door?! *Raises both arms to the sky* 'All the networks! Wow! All the networks! We have to forget about the law! Judges don't count! Don't be ridiculous, networks don't get to decide elections!'",
       "nextNodeId": "act2_tb_ch5_nancy_roasts_rudy"
     },
     {
@@ -1592,7 +1604,7 @@
       "id": "act2_tb_ch5_rudy_borat_defense",
       "speakerId": "rudy_ghoul",
       "side": "RIGHT",
-      "text": "*Dabs a handkerchief across his forehead, smearing another streak of brown hair dye across his cheek* First of all, My Cousin Vinny is a masterpiece of constitutional jurisprudence—'How many fingers am I holding up?! Look at her, she's wearing thick glasses!' Second of all, regarding last month's Borat Subsequent Moviefilm hotel scene—as I tweeted on October 21, 2020: 'The Borat video is a complete fabrication. I was tucking in my shirt after taking off the recording equipment!' Now prepare to face the wrath of Four Seasons Total Landscaping!",
+      "text": "*Dabs a handkerchief across his forehead, smearing another streak of brown hair dye across his cheek* First of all, My Cousin Vinny is a masterpiece of constitutional jurisprudence\u2014'How many fingers am I holding up?! Look at her, she's wearing thick glasses!' Second of all, regarding last month's Borat Subsequent Moviefilm hotel scene\u2014as I tweeted on October 21, 2020: 'The Borat video is a complete fabrication. I was tucking in my shirt after taking off the recording equipment!' Now prepare to face the wrath of Four Seasons Total Landscaping!",
       "nextNodeId": "act2_tb_ch5_finale_battle_trigger"
     },
     {
@@ -1601,7 +1613,8 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE GRAND FINALE AT FOUR SEASONS TOTAL LANDSCAPING, EVERYBODY! Speaker Nancy Palooza vs. Rudy Ghoul, the Riding-Mower Mechanic, and the Melting Hair-Dye Blob! Unleash the Pre-Scored SOTU Speech Rip and Deep-ITM Call Options!",
       "nextNodeId": "act2_tb_ch5_post_battle",
-      "triggerBattleEncounterId": "act2_track_b_rudy_finale"
+      "triggerBattleEncounterId": "act2_track_b_rudy_finale",
+      "battleEnvironmentId": "landscaping_lot"
     },
     {
       "id": "act2_tb_ch5_post_battle",
@@ -1622,7 +1635,7 @@
       "id": "act3_ch1_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "Welcome to Act III (2021–2023)! On Day One of January 2021, Joe Naptime evicted the red wooden Diet Coke valet button from the Resolute Desk and replaced it with a freezer full of Jeni's Splendid Chocolate Chip ice cream! Meanwhile, out on the tarmac at Joint Base Andrews on March 19, 2021, a brisk breeze is blowing across the stairs of Air Force One!",
+      "text": "Welcome to Act III (2021\u20132023)! On Day One of January 2021, Joe Naptime evicted the red wooden Diet Coke valet button from the Resolute Desk and replaced it with a freezer full of Jeni's Splendid Chocolate Chip ice cream! Meanwhile, out on the tarmac at Joint Base Andrews on March 19, 2021, a brisk breeze is blowing across the stairs of Air Force One!",
       "nextNodeId": "act3_ch1_stairs_bike_intro",
       "changeSceneId": "scene_act3_ch1_steel_mill"
     },
@@ -1630,7 +1643,7 @@
       "id": "act3_ch1_stairs_bike_intro",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Look at the tarmac at Joint Base Andrews on March 19, 2021, folks! Joe Naptime tries to jog up the Air Force One staircase—he trips once, he trips a second time, and he drops all the way to his knees a THIRD time in four seconds before saluting at the top! And how did Karine Hatch-Act explain it to the press pool?!",
+      "text": "Look at the tarmac at Joint Base Andrews on March 19, 2021, folks! Joe Naptime tries to jog up the Air Force One staircase\u2014he trips once, he trips a second time, and he drops all the way to his knees a THIRD time in four seconds before saluting at the top! And how did Karine Hatch-Act explain it to the press pool?!",
       "nextNodeId": "act3_ch1_kjp_wind_excuse"
     },
     {
@@ -1644,7 +1657,7 @@
       "id": "act3_ch1_tarmac_hub",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Sure, Karine—a 14-mile-per-hour breeze knocked him down three times going UP the stairs! And wait until you see what happens when he stops his Trek bicycle in Rehoboth Beach or searches a room for a congresswoman! What are we inspecting first?",
+      "text": "Sure, Karine\u2014a 14-mile-per-hour breeze knocked him down three times going UP the stairs! And wait until you see what happens when he stops his Trek bicycle in Rehoboth Beach or searches a room for a congresswoman! What are we inspecting first?",
       "choices": [
         {
           "id": "a3c1_bike",
@@ -1689,7 +1702,7 @@
       "id": "act3_ch1_bike_node",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Points at the Cape Henlopen State Park bike trail in Rehoboth Beach, Delaware (June 18, 2022)* Watch the physics here, folks: Joe rides up to the press pool on his Trek FX hybrid bike, comes to a COMPLETE STOP—zero miles per hour!—tries to pull his right sneaker out of the metal pedal toe-cage, and slowly tips over sideways into a bush like a giant timber tree! At least when he stood up he blamed the toe cages instead of Vladimir Putin!",
+      "text": "*Points at the Cape Henlopen State Park bike trail in Rehoboth Beach, Delaware (June 18, 2022)* Watch the physics here, folks: Joe rides up to the press pool on his Trek FX hybrid bike, comes to a COMPLETE STOP\u2014zero miles per hour!\u2014tries to pull his right sneaker out of the metal pedal toe-cage, and slowly tips over sideways into a bush like a giant timber tree! At least when he stood up he blamed the toe cages instead of Vladimir Putin!",
       "nextNodeId": "act3_ch1_tarmac_hub",
       "setFlagOnEnter": "a3c1_bike_done"
     },
@@ -1697,7 +1710,7 @@
       "id": "act3_ch1_jackie_node",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "And then on September 28, 2022 at the White House Conference on Hunger, right after watching a tribute video for Congresswoman Jackie Walorski—who had tragically passed away seven weeks earlier and for whom Joe had issued an official White House condolence statement—he looks around the room and says verbatim: 'Jackie, are you here? Where's Jackie? I think she was going to be here!' And Karine Hatch-Act spent twenty minutes at the podium claiming 'She was just top of mind!'",
+      "text": "And then on September 28, 2022 at the White House Conference on Hunger, right after watching a tribute video for Congresswoman Jackie Walorski\u2014who had tragically passed away seven weeks earlier and for whom Joe had issued an official White House condolence statement\u2014he looks around the room and says verbatim: 'Jackie, are you here? Where's Jackie? I think she was going to be here!' And Karine Hatch-Act spent twenty minutes at the podium claiming 'She was just top of mind!'",
       "nextNodeId": "act3_ch1_tarmac_hub",
       "setFlagOnEnter": "a3c1_jackie_done"
     },
@@ -1707,7 +1720,8 @@
       "side": "CENTER_NARRATOR",
       "text": "WATCH OUT FOR THOSE METAL PEDAL TOE CAGES, BROTHER! The Air Force One Triple-Stumble Staircase and the Stationary Rehoboth Trek Bicycle are blocking the runway! Smash 'em flat!",
       "nextNodeId": "act3_ch1_post_battle",
-      "triggerBattleEncounterId": "act3_track_a_stairs_bike_battle"
+      "triggerBattleEncounterId": "act3_track_a_stairs_bike_battle",
+      "battleEnvironmentId": "airport_tarmac"
     },
     {
       "id": "act3_ch1_post_battle",
@@ -1737,7 +1751,7 @@
       "id": "act3_ch2_kennedy_hub",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Wait a second, Foghorn—half the country thinks you whittle porch rockers in a bayou bait shop, and Kayleigh just handed me your real-life academic transcript! Let's check out your secret Oxford degree and your greatest Senate hearing one-liners!",
+      "text": "Wait a second, Foghorn\u2014half the country thinks you whittle porch rockers in a bayou bait shop, and Kayleigh just handed me your real-life academic transcript! Let's check out your secret Oxford degree and your greatest Senate hearing one-liners!",
       "choices": [
         {
           "id": "a3c2_oxford",
@@ -1795,7 +1809,7 @@
       "id": "act3_ch2_oxford_node",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "EQUAL-OPPORTUNITY FACT CHECK! Before Senator Foghorn Kennedy adopted his folksy country-grandpa persona and switched parties in 2007 (after running as a Democrat and endorsing John Kerry in 2004!), he graduated magna cum laude from Vanderbilt, served as Executive Editor of the Virginia Law Review, and went to England where he earned a First-Class Honours Bachelor of Civil Law degree from Magdalen College, Oxford University! He knows Latin maxims—he just prefers talking about possums and crackheads on cable TV!",
+      "text": "EQUAL-OPPORTUNITY FACT CHECK! Before Senator Foghorn Kennedy adopted his folksy country-grandpa persona and switched parties in 2007 (after running as a Democrat and endorsing John Kerry in 2004!), he graduated magna cum laude from Vanderbilt, served as Executive Editor of the Virginia Law Review, and went to England where he earned a First-Class Honours Bachelor of Civil Law degree from Magdalen College, Oxford University! He knows Latin maxims\u2014he just prefers talking about possums and crackheads on cable TV!",
       "nextNodeId": "act3_ch2_kennedy_hub",
       "setFlagOnEnter": "a3c2_oxford_done"
     },
@@ -1819,7 +1833,7 @@
       "id": "act3_ch3_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "It is 2022–2023: The Great Classified Cardboard Box War! On the left side of the screen is the gilded Lake Room bathroom at Mar-a-Lago, where dozens of cardboard bankers boxes are stacked next to the toilet beneath a crystal chandelier; on the right side is Joe Naptime's Wilmington garage, where classified Ukraine and Iran folders sit in a crushed box on the floor next to his green 1967 Chevrolet Corvette Stingray!",
+      "text": "It is 2022\u20132023: The Great Classified Cardboard Box War! On the left side of the screen is the gilded Lake Room bathroom at Mar-a-Lago, where dozens of cardboard bankers boxes are stacked next to the toilet beneath a crystal chandelier; on the right side is Joe Naptime's Wilmington garage, where classified Ukraine and Iran folders sit in a crushed box on the floor next to his green 1967 Chevrolet Corvette Stingray!",
       "nextNodeId": "act3_ch3_chandelier_defense",
       "changeSceneId": "scene_act3_ch3_af1"
     },
@@ -1880,7 +1894,7 @@
       "id": "act3_ch3_corvette_node",
       "speakerId": "biden",
       "side": "RIGHT",
-      "text": "*Pops up on the monitor wearing aviators (Jan 12, 2023)* 'By the way, my Corvette's in a locked garage, okay? So it's not like they're sitting out on the street!' And when Special Counsel Robert Hur's report came out, he wrote that we also found classified Afghanistan notebooks in my basement den from 1977—hey, a guy's gotta have reading material when he's waxing the Stingray!",
+      "text": "*Pops up on the monitor wearing aviators (Jan 12, 2023)* 'By the way, my Corvette's in a locked garage, okay? So it's not like they're sitting out on the street!' And when Special Counsel Robert Hur's report came out, he wrote that we also found classified Afghanistan notebooks in my basement den from 1977\u2014hey, a guy's gotta have reading material when he's waxing the Stingray!",
       "nextNodeId": "act3_ch3_box_hub",
       "setFlagOnEnter": "a3c3_corvette_done"
     },
@@ -1898,13 +1912,14 @@
       "side": "CENTER_NARRATOR",
       "text": "THE BATHROOM CHANDELIER BOX INSPECTOR AND THE WILMINGTON CORVETTE GARAGE SENTINEL ARE CHARGING IN, BROTHER! Foghorn Kennedy, hit 'em with Plain English Cross-Exam and Call an Officer!",
       "nextNodeId": "act3_ch3_post_battle",
-      "triggerBattleEncounterId": "act3_track_a_chandelier_battle"
+      "triggerBattleEncounterId": "act3_track_a_chandelier_battle",
+      "battleEnvironmentId": "gilded_storage"
     },
     {
       "id": "act3_ch3_post_battle",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "The chandelier still sparkles, our HP and MP are 100% restored, and now it's August 24, 2023—time to fly to Atlanta in Chapter 4 for the Fulton County Mugshot heard 'round the world!",
+      "text": "The chandelier still sparkles, our HP and MP are 100% restored, and now it's August 24, 2023\u2014time to fly to Atlanta in Chapter 4 for the Fulton County Mugshot heard 'round the world!",
       "nextNodeId": "act3_ch4_intro",
       "changeSceneId": "scene_act3_ch4_summit"
     },
@@ -1912,7 +1927,7 @@
       "id": "act3_ch4_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "It is August 24, 2023 at the Fulton County Jail on Rice Street in Atlanta, Georgia. Commander America has just stepped up to the booking camera for Booking #P01135809—after filling out his own height and weight form in advance!",
+      "text": "It is August 24, 2023 at the Fulton County Jail on Rice Street in Atlanta, Georgia. Commander America has just stepped up to the booking camera for Booking #P01135809\u2014after filling out his own height and weight form in advance!",
       "nextNodeId": "act3_ch4_mugshot_pose",
       "changeSceneId": "scene_act3_ch4_summit"
     },
@@ -1973,7 +1988,7 @@
       "id": "act3_ch4_merch_node",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Within ninety minutes of leaving the Fulton County Jail on August 24, 2023, we slapped my scowling booking photo onto $34 T-shirts, $25 coffee mugs, and $15 beverage coolers with two giant words underneath: 'NEVER SURRENDER!' Even though a mugshot is quite literally a photograph taken while you are surrendering to the Sheriff's Office, it raised $7.1 MILLION in seventy-two hours—the biggest single-day fundraising haul of the entire campaign!",
+      "text": "Within ninety minutes of leaving the Fulton County Jail on August 24, 2023, we slapped my scowling booking photo onto $34 T-shirts, $25 coffee mugs, and $15 beverage coolers with two giant words underneath: 'NEVER SURRENDER!' Even though a mugshot is quite literally a photograph taken while you are surrendering to the Sheriff's Office, it raised $7.1 MILLION in seventy-two hours\u2014the biggest single-day fundraising haul of the entire campaign!",
       "nextNodeId": "act3_ch4_mugshot_hub",
       "setFlagOnEnter": "a3c4_merch_done"
     },
@@ -1981,7 +1996,7 @@
       "id": "act3_ch4_tactful_meta",
       "speakerId": "media_anchor",
       "side": "RIGHT",
-      "text": "*Waves a bathroom scale outside the jail* You don't weigh 215 pounds, your mugshot just funded your entire primary campaign—and... and don't forget in June 2015 you paid Extra Mile Casting actors $50 a head to clap at your escalator!",
+      "text": "*Waves a bathroom scale outside the jail* You don't weigh 215 pounds, your mugshot just funded your entire primary campaign\u2014and... and don't forget in June 2015 you paid Extra Mile Casting actors $50 a head to clap at your escalator!",
       "nextNodeId": "act3_ch4_kennedy_roasts_meta",
       "setFlagOnEnter": "a3c4_meta_done"
     },
@@ -1996,7 +2011,7 @@
       "id": "act3_ch5_baskin_intro",
       "speakerId": "narrator_karoline",
       "side": "CENTER_NARRATOR",
-      "text": "We are inside a Baskin-Robbins ice-cream parlor in Portland, Oregon! Standing at the counter while Consumer Price Index inflation sits at a 40-year high of 8.2% is Joe Naptime—holding a double-scoop chocolate chip waffle cone in one hand and reading straight off a giant glass teleprompter!",
+      "text": "We are inside a Baskin-Robbins ice-cream parlor in Portland, Oregon! Standing at the counter while Consumer Price Index inflation sits at a 40-year high of 8.2% is Joe Naptime\u2014holding a double-scoop chocolate chip waffle cone in one hand and reading straight off a giant glass teleprompter!",
       "nextNodeId": "act3_ch5_biden_cone_lick",
       "changeSceneId": "scene_act3_ch5_baskin"
     },
@@ -2004,14 +2019,14 @@
       "id": "act3_ch5_biden_cone_lick",
       "speakerId": "biden",
       "side": "RIGHT",
-      "text": "*Takes a massive lick of his Baskin-Robbins chocolate chip waffle cone on October 15, 2022 as reporters ask about inflation and the global economy* 'I'm not concerned about the strength of the dollar—I'm concerned about the rest of the world! Our economy is strong as hell, man! Inflation is worldwide, it's worse off everywhere else than it is in the United States! By the way, don't eat the waitstaff!'",
+      "text": "*Takes a massive lick of his Baskin-Robbins chocolate chip waffle cone on October 15, 2022 as reporters ask about inflation and the global economy* 'I'm not concerned about the strength of the dollar\u2014I'm concerned about the rest of the world! Our economy is strong as hell, man! Inflation is worldwide, it's worse off everywhere else than it is in the United States! By the way, don't eat the waitstaff!'",
       "nextNodeId": "act3_ch5_repeat_the_line"
     },
     {
       "id": "act3_ch5_repeat_the_line",
       "speakerId": "biden",
       "side": "RIGHT",
-      "text": "*Turns to his glass teleprompter from July 8, 2022 and reads every single word on the screen including the speechwriter's stage instructions* 'It is noteworthy that the percentage of women who register to vote and cast a ballot is consistently higher than the percentage of the men who do so. End of quote. Repeat the line. Women are not without electoral and, or, political—let me be precise: not and/or—or political power!'",
+      "text": "*Turns to his glass teleprompter from July 8, 2022 and reads every single word on the screen including the speechwriter's stage instructions* 'It is noteworthy that the percentage of women who register to vote and cast a ballot is consistently higher than the percentage of the men who do so. End of quote. Repeat the line. Women are not without electoral and, or, political\u2014let me be precise: not and/or\u2014or political power!'",
       "nextNodeId": "act3_ch5_commander_roasts_biden"
     },
     {
@@ -2027,7 +2042,8 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE SHOWDOWN AT BASKIN-ROBBINS, BROTHER! Commander America, Little Marco, Wizard Kash, and Foghorn Kennedy vs. Joe Naptime's Real-Audio Gibberish, Double-Scoop Waffle Cone Blitz, and the 'Repeat the Line' Teleprompter! RING THE BELL!",
       "nextNodeId": "act3_ch5_post_battle",
-      "triggerBattleEncounterId": "act3_track_a_biden_ice_cream_finale"
+      "triggerBattleEncounterId": "act3_track_a_biden_ice_cream_finale",
+      "battleEnvironmentId": "ice_cream_parlor"
     },
     {
       "id": "act3_ch5_post_battle",
@@ -2122,7 +2138,7 @@
       "id": "act3_tb_ch1_cornpop_node",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "*Points a waffle cone at the diving board (June 26, 2017 verbatim)* 'Corn Pop was a bad dude! And he ran a bunch of bad boys! And I did and back in those days—to show how things have changed—one of the things you had to use, if you used Pomade in your hair, you had to wear a bathing cap! And so he was up on the board and wouldn't listen to me. I said, \"Hey, Esther, you! Off the board, or I'll come up and drag you off!\" Well, he came off, and he said, \"I'll meet you outside!\" He was waiting for me with three guys and straight razors that they had banged on the curb or put in a rainwater barrel to get rusty! So I walked out with six feet of metal chain wrapped in a towel and told him: \"You might cut me, Corn Pop, but I'm going to wrap this chain around your head!\" And then I apologized for calling him Esther Williams and we became friends!'",
+      "text": "*Points a waffle cone at the diving board (June 26, 2017 verbatim)* 'Corn Pop was a bad dude! And he ran a bunch of bad boys! And I did and back in those days\u2014to show how things have changed\u2014one of the things you had to use, if you used Pomade in your hair, you had to wear a bathing cap! And so he was up on the board and wouldn't listen to me. I said, \"Hey, Esther, you! Off the board, or I'll come up and drag you off!\" Well, he came off, and he said, \"I'll meet you outside!\" He was waiting for me with three guys and straight razors that they had banged on the curb or put in a rainwater barrel to get rusty! So I walked out with six feet of metal chain wrapped in a towel and told him: \"You might cut me, Corn Pop, but I'm going to wrap this chain around your head!\" And then I apologized for calling him Esther Williams and we became friends!'",
       "nextNodeId": "act3_tb_ch1_pool_hub",
       "setFlagOnEnter": "tb3c1_corn_done"
     },
@@ -2130,7 +2146,7 @@
       "id": "act3_tb_ch1_leghair_node",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "*Grins nostalgically into the microphone (June 26, 2017 verbatim)* 'And by the way, you know, I sit on the stand, and it'd get hot! I got a lot of—I got hairy legs that turn—that, that, that, that, that turn—uh, blonde in the sun! And the kids used to come up and reach in the pool and rub my leg down so it was straight and then watch the hair come back up again! They'd look at it! So I learned about roaches, I learned about kids jumping on my lap, and I've loved kids jumping on my lap!'Meanwhile my campaign press aides in the back row are quietly hyperventilating into paper bags!",
+      "text": "*Grins nostalgically into the microphone (June 26, 2017 verbatim)* 'And by the way, you know, I sit on the stand, and it'd get hot! I got a lot of\u2014I got hairy legs that turn\u2014that, that, that, that, that turn\u2014uh, blonde in the sun! And the kids used to come up and reach in the pool and rub my leg down so it was straight and then watch the hair come back up again! They'd look at it! So I learned about roaches, I learned about kids jumping on my lap, and I've loved kids jumping on my lap!'Meanwhile my campaign press aides in the back row are quietly hyperventilating into paper bags!",
       "nextNodeId": "act3_tb_ch1_pool_hub",
       "setFlagOnEnter": "tb3c1_legs_done"
     },
@@ -2148,7 +2164,8 @@
       "side": "CENTER_NARRATOR",
       "text": "CORN POP JUST STEPPED OUT OF THE POOL HOUSE WITH A RAINWATER-BARREL STRAIGHT RAZOR BESIDE A ROGUE TOE-CAGE BICYCLE, HONEY! Joe Naptime, unleash Real-Audio Gibberish (`Truinanashabbadepressure!`) and Double-Scoop Waffle Cone Blitz!",
       "nextNodeId": "act3_tb_ch1_post_battle",
-      "triggerBattleEncounterId": "act3_track_b_corn_pop_battle"
+      "triggerBattleEncounterId": "act3_track_b_corn_pop_battle",
+      "battleEnvironmentId": "beach_trail"
     },
     {
       "id": "act3_tb_ch1_post_battle",
@@ -2163,7 +2180,7 @@
       "id": "act3_tb_ch2_intro",
       "speakerId": "narrator_kjp",
       "side": "CENTER_NARRATOR",
-      "text": "It is July 8, 2022 inside the Roosevelt Room! The speechwriting staff typed bracketed stage directions onto the teleprompter glass—'[End of quote. Repeat the line.]'—assuming nobody would ever read the brackets out loud!",
+      "text": "It is July 8, 2022 inside the Roosevelt Room! The speechwriting staff typed bracketed stage directions onto the teleprompter glass\u2014'[End of quote. Repeat the line.]'\u2014assuming nobody would ever read the brackets out loud!",
       "nextNodeId": "act3_tb_ch2_prompter_hub",
       "changeSceneId": "scene_act3_tb_ch2_teleprompter"
     },
@@ -2308,7 +2325,7 @@
       "id": "act3_tb_ch3_strong_node",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "*Takes a slow, deliberate lick of the chocolate chip waffle cone while reporters shout about 8.2% inflation (Oct 15, 2022)* 'I'm not concerned about the strength of the dollar—I'm concerned about the rest of the world! Our economy is strong as hell, man!' Look, nothing reassures working families paying $5 for a dozen eggs quite like watching the President demolish a waffle cone at Baskin-Robbins!",
+      "text": "*Takes a slow, deliberate lick of the chocolate chip waffle cone while reporters shout about 8.2% inflation (Oct 15, 2022)* 'I'm not concerned about the strength of the dollar\u2014I'm concerned about the rest of the world! Our economy is strong as hell, man!' Look, nothing reassures working families paying $5 for a dozen eggs quite like watching the President demolish a waffle cone at Baskin-Robbins!",
       "nextNodeId": "act3_tb_ch3_baskin_hub",
       "setFlagOnEnter": "tb3c3_str_done"
     },
@@ -2316,7 +2333,7 @@
       "id": "act3_tb_ch3_vindications_node",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "First, cable news screamed that my climate plan was going to ban red meat and limit every American to one hamburger a month and two beers a week! Two beers a week?! Folks in Scranton would throw me in the river! Second, they cropped a video at the G7 summit to make it look like I was wandering off into the woods—I was walking over to give a thumbs-up to an Italian skydiver who just dropped out of an airplane! Give me a break!",
+      "text": "First, cable news screamed that my climate plan was going to ban red meat and limit every American to one hamburger a month and two beers a week! Two beers a week?! Folks in Scranton would throw me in the river! Second, they cropped a video at the G7 summit to make it look like I was wandering off into the woods\u2014I was walking over to give a thumbs-up to an Italian skydiver who just dropped out of an airplane! Give me a break!",
       "nextNodeId": "act3_tb_ch3_baskin_hub",
       "setFlagOnEnter": "tb3c3_vind_done"
     },
@@ -2324,7 +2341,7 @@
       "id": "act3_tb_ch3_kennedy_ambush",
       "speakerId": "kennedy",
       "side": "RIGHT",
-      "text": "*Saunters into the Baskin-Robbins adjusting his spectacles* Well now, Mr. President, watching you explain inflation over a waffle cone is like watching a mule try to do calculus! Look, your budget looks like somebody gave it a weed-whacker haircut—and if you hate fiscal restraint, the next time you're in trouble, call a crackhead!",
+      "text": "*Saunters into the Baskin-Robbins adjusting his spectacles* Well now, Mr. President, watching you explain inflation over a waffle cone is like watching a mule try to do calculus! Look, your budget looks like somebody gave it a weed-whacker haircut\u2014and if you hate fiscal restraint, the next time you're in trouble, call a crackhead!",
       "nextNodeId": "act3_tb_ch3_battle_trigger"
     },
     {
@@ -2333,7 +2350,8 @@
       "side": "CENTER_NARRATOR",
       "text": "SENATOR FOGHORN KENNEDY JUST BROUGHT HIS OXFORD LAW DEGREE AND HIS FOLKSY ONE-LINERS INTO BASKIN-ROBBINS, EVERYBODY! Joe Naptime, hit him with Jeni's Chocolate Chip Brain-Freeze and 'Economy Strong As Hell' Lick!",
       "nextNodeId": "act3_tb_ch3_post_battle",
-      "triggerBattleEncounterId": "act3_track_b_foghorn_battle"
+      "triggerBattleEncounterId": "act3_track_b_foghorn_battle",
+      "battleEnvironmentId": "ice_cream_parlor"
     },
     {
       "id": "act3_tb_ch3_post_battle",
@@ -2416,7 +2434,7 @@
       "id": "act3_tb_ch4_corvette_node",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "*Lowers his aviators on January 12, 2023* 'By the way, my Corvette's in a locked garage, okay? So it's not like they're sitting out on the street! People know I take classified material seriously!' Okay, sure, Special Counsel Robert Hur later included a photo of the battered cardboard box sitting open next to a dog crate and a ladder—and described me as a 'sympathetic, well-meaning, elderly man with a poor memory'—which made me so mad I held an emergency 8:00 PM press conference where I immediately mixed up the President of Egypt with the President of Mexico!",
+      "text": "*Lowers his aviators on January 12, 2023* 'By the way, my Corvette's in a locked garage, okay? So it's not like they're sitting out on the street! People know I take classified material seriously!' Okay, sure, Special Counsel Robert Hur later included a photo of the battered cardboard box sitting open next to a dog crate and a ladder\u2014and described me as a 'sympathetic, well-meaning, elderly man with a poor memory'\u2014which made me so mad I held an emergency 8:00 PM press conference where I immediately mixed up the President of Egypt with the President of Mexico!",
       "nextNodeId": "act3_tb_ch4_garage_hub",
       "setFlagOnEnter": "tb3c4_corv_done"
     },
@@ -2424,7 +2442,7 @@
       "id": "act3_tb_ch4_gibberish_node",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "*Steps up to the microphone and triggers his Real-Audio Gibberish sampler* Listen to these 100% real, unedited dictionary expansions, Jack: (1) 'I'll lead an effective strategy to mobilize truinanashabbadepressure!' (2) 'Barack and I think it's a right to have badakathcare!' (3) 'America is a nation that can be defined in a single word: Asufutimaehaehfutbw—excuse me, at the foothills of the Himalayas with Xi Jinping!' (4) 'You're a lying dog-faced pony soldier!' (5) 'All men and women are created by the—go—you know—you know the thing!' and (6) 'We finally beat Medicare!' Try translating THAT on a debate stage!",
+      "text": "*Steps up to the microphone and triggers his Real-Audio Gibberish sampler* Listen to these 100% real, unedited dictionary expansions, Jack: (1) 'I'll lead an effective strategy to mobilize truinanashabbadepressure!' (2) 'Barack and I think it's a right to have badakathcare!' (3) 'America is a nation that can be defined in a single word: Asufutimaehaehfutbw\u2014excuse me, at the foothills of the Himalayas with Xi Jinping!' (4) 'You're a lying dog-faced pony soldier!' (5) 'All men and women are created by the\u2014go\u2014you know\u2014you know the thing!' and (6) 'We finally beat Medicare!' Try translating THAT on a debate stage!",
       "nextNodeId": "act3_tb_ch4_garage_hub",
       "setFlagOnEnter": "tb3c4_gib_done"
     },
@@ -2440,7 +2458,7 @@
       "id": "act3_tb_ch4_meta_callback",
       "speakerId": "kash",
       "side": "RIGHT",
-      "text": "*Pokes his head through the Wilmington garage window wearing his Wizard Kash cape* Aha! Classified folders next to a 1967 Corvette! Which reminds me—in 2015 Hillary wiped 33,000 Chappaqua emails 'with a cloth or something'!",
+      "text": "*Pokes his head through the Wilmington garage window wearing his Wizard Kash cape* Aha! Classified folders next to a 1967 Corvette! Which reminds me\u2014in 2015 Hillary wiped 33,000 Chappaqua emails 'with a cloth or something'!",
       "nextNodeId": "act3_tb_ch4_oprah_roasts_meta"
     },
     {
@@ -2463,14 +2481,14 @@
       "id": "act3_tb_ch5_confrontation",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "C'mon, man! Look at this malarkey: first you stacked thirty boxes of government records on the shower floor under a crystal bathroom chandelier at Mar-a-Lago, then on August 24, 2023 you walked into the Fulton County Jail, wrote down on the booking form that you're 6 foot 3 and 215 POUNDS—the exact weight of NFL quarterback Lamar Jackson—and sold $7.1 million worth of T-shirts that say 'NEVER SURRENDER!' right underneath a photo of you literally surrendering at a police station!",
+      "text": "C'mon, man! Look at this malarkey: first you stacked thirty boxes of government records on the shower floor under a crystal bathroom chandelier at Mar-a-Lago, then on August 24, 2023 you walked into the Fulton County Jail, wrote down on the booking form that you're 6 foot 3 and 215 POUNDS\u2014the exact weight of NFL quarterback Lamar Jackson\u2014and sold $7.1 million worth of T-shirts that say 'NEVER SURRENDER!' right underneath a photo of you literally surrendering at a police station!",
       "nextNodeId": "act3_tb_ch5_commander_reply"
     },
     {
       "id": "act3_tb_ch5_commander_reply",
       "speakerId": "commander_america",
       "side": "RIGHT",
-      "text": "That mugshot is the greatest work of art since the Mona Lisa, Joe—and 215 pounds is my fighting weight after eighteen holes at Bedminster! Meanwhile, you tripped three times going UP the stairs of Air Force One, tipped over on a stationary bicycle in Rehoboth Beach, read 'End of quote, repeat the line' off the teleprompter, and kept your classified folders in a crushed box next to your 1967 Corvette! Let's settle Act III right here!",
+      "text": "That mugshot is the greatest work of art since the Mona Lisa, Joe\u2014and 215 pounds is my fighting weight after eighteen holes at Bedminster! Meanwhile, you tripped three times going UP the stairs of Air Force One, tipped over on a stationary bicycle in Rehoboth Beach, read 'End of quote, repeat the line' off the teleprompter, and kept your classified folders in a crushed box next to your 1967 Corvette! Let's settle Act III right here!",
       "nextNodeId": "act3_tb_ch5_finale_battle_trigger"
     },
     {
@@ -2479,13 +2497,14 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE GRAND FINALE, EVERYBODY! Joe Naptime's Real-Audio Gibberish & Double-Scoop Ice-Cream Cryomancy vs. Commander America's 215-Pound Mugshot, the Mar-a-Lago Bathroom Chandelier Golem, and the $7.1M Merch Press! RING THE BELL!",
       "nextNodeId": "act3_tb_ch5_post_battle",
-      "triggerBattleEncounterId": "act3_track_b_mugshot_finale"
+      "triggerBattleEncounterId": "act3_track_b_mugshot_finale",
+      "battleEnvironmentId": "booking_room"
     },
     {
       "id": "act3_tb_ch5_post_battle",
       "speakerId": "biden",
       "side": "LEFT",
-      "text": "*Finishes his double-scoop chocolate chip waffle cone in Rehoboth Beach on Sunday afternoon, July 21, 2024, and taps 'Post' on X at 1:46 PM* Folks, after we finally beat Medicare on that June 27 debate stage—and George Clooney wrote an op-ed three weeks after I raised $28 million at his Hollywood gala—it's time to pass the torch for Act IV to Vice President Kamala Coconut!",
+      "text": "*Finishes his double-scoop chocolate chip waffle cone in Rehoboth Beach on Sunday afternoon, July 21, 2024, and taps 'Post' on X at 1:46 PM* Folks, after we finally beat Medicare on that June 27 debate stage\u2014and George Clooney wrote an op-ed three weeks after I raised $28 million at his Hollywood gala\u2014it's time to pass the torch for Act IV to Vice President Kamala Coconut!",
       "nextNodeId": "act3_tb_ch5_kamala_handoff",
       "setFlagOnEnter": "blue_a3_finale_won"
     },
@@ -2500,7 +2519,7 @@
       "id": "act4_ch1_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "Welcome to Act IV (2024): Five chapters of Coconut Trees, Venn Diagrams, Donut Shop Interrogations, and McDonald's Fry Baskets! It is August 22, 2024 inside Holt's Sweet Shoppe in Valdosta, Georgia, where your newest party companion—JD Pants—is attempting human small talk with a bakery clerk in front of twenty television cameras!",
+      "text": "Welcome to Act IV (2024): Five chapters of Coconut Trees, Venn Diagrams, Donut Shop Interrogations, and McDonald's Fry Baskets! It is August 22, 2024 inside Holt's Sweet Shoppe in Valdosta, Georgia, where your newest party companion\u2014JD Pants\u2014is attempting human small talk with a bakery clerk in front of twenty television cameras!",
       "nextNodeId": "act4_ch1_vance_donuts",
       "changeSceneId": "scene_act4_ch1_fisa",
       "setFlagOnEnter": "red_vance_joined"
@@ -2509,14 +2528,14 @@
       "id": "act4_ch1_vance_donuts",
       "speakerId": "vance",
       "side": "LEFT",
-      "text": "*Stands stiffly in a suit in front of the glass pastry case as the bakery worker asks not to be on camera* 'Okay, she doesn't want to be on film, guys, so just cut her out of anything. I'm JD Vance, I'm running for Vice President, good to see you.' And she just says: 'Okay.' So I try to break the ice: 'How long has this place been here?' ('About four years.') 'Okay, good. How long have you worked here?' ('A little over two years.') 'Okay, good... Just, uh, a lot of glazed here, some sprinkle stuff, some of these cinnamon rolls—just whatever makes sense!'",
+      "text": "*Stands stiffly in a suit in front of the glass pastry case as the bakery worker asks not to be on camera* 'Okay, she doesn't want to be on film, guys, so just cut her out of anything. I'm JD Vance, I'm running for Vice President, good to see you.' And she just says: 'Okay.' So I try to break the ice: 'How long has this place been here?' ('About four years.') 'Okay, good. How long have you worked here?' ('A little over two years.') 'Okay, good... Just, uh, a lot of glazed here, some sprinkle stuff, some of these cinnamon rolls\u2014just whatever makes sense!'",
       "nextNodeId": "act4_ch1_donut_hub"
     },
     {
       "id": "act4_ch1_donut_hub",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Hold on, JD—you walked into a Georgia donut shop and ordered 'some sprinkle stuff, whatever makes sense' like an extraterrestrial reading a Wikipedia article about breakfast pastries?! Let's inspect your 2024 campaign trail highlights and your biggest Vindication Win!",
+      "text": "Hold on, JD\u2014you walked into a Georgia donut shop and ordered 'some sprinkle stuff, whatever makes sense' like an extraterrestrial reading a Wikipedia article about breakfast pastries?! Let's inspect your 2024 campaign trail highlights and your biggest Vindication Win!",
       "choices": [
         {
           "id": "a4c1_swiss",
@@ -2575,7 +2594,7 @@
       "id": "act4_ch1_swiss_node",
       "speakerId": "vance",
       "side": "LEFT",
-      "text": "*Holds a can of Diet Mountain Dew outside Pat's King of Steaks in South Philadelphia (Aug 19, 2024)* Look, after John Kerry famously ruined his campaign in 2004 by asking for Swiss cheese at Pat's, I walked up to the window and asked the grill cook: 'I don't know, why don't you all dislike Swiss cheese? What's the story?!' before ordering a Whiz wit! Hey, at least I didn't drink a soy latte—I had a Diet Mountain Dew today, and the left is probably gonna call that racist too!",
+      "text": "*Holds a can of Diet Mountain Dew outside Pat's King of Steaks in South Philadelphia (Aug 19, 2024)* Look, after John Kerry famously ruined his campaign in 2004 by asking for Swiss cheese at Pat's, I walked up to the window and asked the grill cook: 'I don't know, why don't you all dislike Swiss cheese? What's the story?!' before ordering a Whiz wit! Hey, at least I didn't drink a soy latte\u2014I had a Diet Mountain Dew today, and the left is probably gonna call that racist too!",
       "nextNodeId": "act4_ch1_donut_hub",
       "setFlagOnEnter": "a4c1_swiss_done"
     },
@@ -2601,13 +2620,14 @@
       "side": "CENTER_NARRATOR",
       "text": "JD PANTS IS IN THE ACTIVE PARTY, BROTHER! Ordering 'some sprinkle stuff, whatever makes sense' just triggered the Glazed Donut Case and the South Philly Swiss-Cheese Heckler! Unleash Debate Dismantle and Appalachian Slam!",
       "nextNodeId": "act4_ch1_post_battle",
-      "triggerBattleEncounterId": "act4_track_a_donut_battle"
+      "triggerBattleEncounterId": "act4_track_a_donut_battle",
+      "battleEnvironmentId": "donut_shop"
     },
     {
       "id": "act4_ch1_post_battle",
       "speakerId": "vance",
       "side": "LEFT",
-      "text": "Okay, good! We boxed up two dozen glazed donuts, our HP and MP are back at 100%, and now let's head to Chapter 2—where Kamala Coconut is explaining to Lester Holt why she hasn't visited Europe!",
+      "text": "Okay, good! We boxed up two dozen glazed donuts, our HP and MP are back at 100%, and now let's head to Chapter 2\u2014where Kamala Coconut is explaining to Lester Holt why she hasn't visited Europe!",
       "nextNodeId": "act4_ch2_intro",
       "changeSceneId": "scene_act4_ch2_binder",
       "setFlagOnEnter": "red_a4c1_donut_won"
@@ -2616,7 +2636,7 @@
       "id": "act4_ch2_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "After Sunday afternoon July 21, 2024—when Joe Naptime dropped out via a 1:46 PM X post from Rehoboth Beach—Vice President Kamala Coconut inherited the top of the ticket! Let's review her greatest geographic and chronological masterpieces!",
+      "text": "After Sunday afternoon July 21, 2024\u2014when Joe Naptime dropped out via a 1:46 PM X post from Rehoboth Beach\u2014Vice President Kamala Coconut inherited the top of the ticket! Let's review her greatest geographic and chronological masterpieces!",
       "nextNodeId": "act4_ch2_lester_holt",
       "changeSceneId": "scene_act4_ch2_binder"
     },
@@ -2685,7 +2705,7 @@
       "id": "act4_ch2_passage_node",
       "speakerId": "kamala",
       "side": "RIGHT",
-      "text": "*Nods sagely at the podium in Sunset, Louisiana (March 21, 2022)* 'The governor and I, and we were all doing a tour of the library here and talking about the significance of the passage of time, right, the significance of the passage of time. So, when you think about it, there is great significance to the passage of time in terms of what we need to do to lay these wires. What we need to do to create these jobs. And there is such great significance to the passage of time when we think about a day in the life of our children!' Four times in thirty-two seconds—new world record!",
+      "text": "*Nods sagely at the podium in Sunset, Louisiana (March 21, 2022)* 'The governor and I, and we were all doing a tour of the library here and talking about the significance of the passage of time, right, the significance of the passage of time. So, when you think about it, there is great significance to the passage of time in terms of what we need to do to lay these wires. What we need to do to create these jobs. And there is such great significance to the passage of time when we think about a day in the life of our children!' Four times in thirty-two seconds\u2014new world record!",
       "nextNodeId": "act4_ch2_border_hub",
       "setFlagOnEnter": "a4c2_passage_done"
     },
@@ -2701,7 +2721,7 @@
       "id": "act4_ch3_bus_venn_hub",
       "speakerId": "kamala",
       "side": "RIGHT",
-      "text": "*Raises both hands in front of a bright yellow school bus in Seattle (Oct 2022)* 'Who doesn't love a yellow school bus, right?! Can you raise your hand if you love a yellow school bus, right?! Just, there's something about the—and most of us, many of us, went to school on the yellow school bus, right?! And it's part of our experience growing up!'",
+      "text": "*Raises both hands in front of a bright yellow school bus in Seattle (Oct 2022)* 'Who doesn't love a yellow school bus, right?! Can you raise your hand if you love a yellow school bus, right?! Just, there's something about the\u2014and most of us, many of us, went to school on the yellow school bus, right?! And it's part of our experience growing up!'",
       "choices": [
         {
           "id": "a4c3_venn",
@@ -2747,7 +2767,7 @@
       "id": "act4_ch3_venn_node",
       "speakerId": "kamala",
       "side": "RIGHT",
-      "text": "*Draws three overlapping circles in the air* 'Remember Venn diagrams, those three circles, right?! I love Venn diagrams! I really do, I love Venn diagrams! I'm always asking my staff, \"Is there a Venn diagram for this?\"' And when my teleprompter briefly went dark in Flint, Michigan on October 4, 2024: 'So 32 days... 32 days... 32 days! Okay, we got a little—32 days!'",
+      "text": "*Draws three overlapping circles in the air* 'Remember Venn diagrams, those three circles, right?! I love Venn diagrams! I really do, I love Venn diagrams! I'm always asking my staff, \"Is there a Venn diagram for this?\"' And when my teleprompter briefly went dark in Flint, Michigan on October 4, 2024: 'So 32 days... 32 days... 32 days! Okay, we got a little\u201432 days!'",
       "nextNodeId": "act4_ch3_bus_venn_hub",
       "setFlagOnEnter": "a4c3_venn_done"
     },
@@ -2765,13 +2785,14 @@
       "side": "CENTER_NARRATOR",
       "text": "HERE COMES THE ELECTRIC YELLOW SCHOOL BUS AND THE THREE OVERLAPPING VENN CIRCLES, BROTHER! Clear the depot so we can get to our shift at the McDonald's fry station!",
       "nextNodeId": "act4_ch3_post_battle",
-      "triggerBattleEncounterId": "act6_ch3_bus_battle"
+      "triggerBattleEncounterId": "act6_ch3_bus_battle",
+      "battleEnvironmentId": "bus_depot"
     },
     {
       "id": "act4_ch3_post_battle",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "The yellow school bus is parked, our HP and MP are 100% restored, and now it's October 20, 2024—time to tie on a McDonald's apron and a neon-orange garbage truck vest in Chapter 4!",
+      "text": "The yellow school bus is parked, our HP and MP are 100% restored, and now it's October 20, 2024\u2014time to tie on a McDonald's apron and a neon-orange garbage truck vest in Chapter 4!",
       "nextNodeId": "act4_ch4_intro",
       "changeSceneId": "scene_act4_ch4_hearing"
     },
@@ -2779,7 +2800,7 @@
       "id": "act4_ch4_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "It is October 2024—the peak of campaign photo-op theater! First, on October 20 in Feasterville-Trevose, Pennsylvania, Commander America takes off his suit jacket, ties a yellow-trimmed McDonald's apron over his white dress shirt and red silk tie, and steps up to the deep fryer!",
+      "text": "It is October 2024\u2014the peak of campaign photo-op theater! First, on October 20 in Feasterville-Trevose, Pennsylvania, Commander America takes off his suit jacket, ties a yellow-trimmed McDonald's apron over his white dress shirt and red silk tie, and steps up to the deep fryer!",
       "nextNodeId": "act4_ch4_fry_station",
       "changeSceneId": "scene_act4_ch4_hearing"
     },
@@ -2787,7 +2808,7 @@
       "id": "act4_ch4_fry_station",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "*Shakes a metal salt shaker over a sizzling basket of golden McDonald's French fries and uses the stainless-steel fry scoop to fill red cartons* Look at the wrist action on that salt shaker, folks! Remember, I'm a lifelong germaphobe—I love that you never touch the fry with your bare hands! And as I told the reporters outside the drive-thru window: 'I've now worked for 15 minutes more than Kamala at McDonald's!'",
+      "text": "*Shakes a metal salt shaker over a sizzling basket of golden McDonald's French fries and uses the stainless-steel fry scoop to fill red cartons* Look at the wrist action on that salt shaker, folks! Remember, I'm a lifelong germaphobe\u2014I love that you never touch the fry with your bare hands! And as I told the reporters outside the drive-thru window: 'I've now worked for 15 minutes more than Kamala at McDonald's!'",
       "nextNodeId": "act4_ch4_photo_op_hub"
     },
     {
@@ -2863,7 +2884,7 @@
       "id": "act4_ch5_coconut_intro",
       "speakerId": "narrator_karoline",
       "side": "CENTER_NARRATOR",
-      "text": "We have reached the heart of the Coconut Grove! Standing atop the Unburdened Dais is Vice President Kamala Coconut—ready to drop the full philosophical weight of what can be, unburdened by what has been!",
+      "text": "We have reached the heart of the Coconut Grove! Standing atop the Unburdened Dais is Vice President Kamala Coconut\u2014ready to drop the full philosophical weight of what can be, unburdened by what has been!",
       "nextNodeId": "act4_ch5_kamala_speech",
       "changeSceneId": "scene_act4_ch5_coconut_finale"
     },
@@ -2871,14 +2892,14 @@
       "id": "act4_ch5_kamala_speech",
       "speakerId": "kamala",
       "side": "RIGHT",
-      "text": "*Throw her head back with a booming laugh before turning deadly serious (May 10, 2023 verbatim)* 'My mother used to—she would give us a hard time sometimes, and she would say to us, \"I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!\" *Laughs* You exist in the context of all in which you live and what came before you! And together, we will see what can be, unburdened by what has been!'",
+      "text": "*Throw her head back with a booming laugh before turning deadly serious (May 10, 2023 verbatim)* 'My mother used to\u2014she would give us a hard time sometimes, and she would say to us, \"I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!\" *Laughs* You exist in the context of all in which you live and what came before you! And together, we will see what can be, unburdened by what has been!'",
       "nextNodeId": "act4_ch5_commander_reply"
     },
     {
       "id": "act4_ch5_commander_reply",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "We have all Five Party Heroes unlocked, folks—me in my McDonald's fry apron, Little Marco with his water bottle, Wizard Kash with his 4-page memo, Foghorn Kennedy with his Oxford drawl, and JD Pants with a box of 'whatever makes sense' glazed donuts! Let's unburden this coconut tree right now!",
+      "text": "We have all Five Party Heroes unlocked, folks\u2014me in my McDonald's fry apron, Little Marco with his water bottle, Wizard Kash with his 4-page memo, Foghorn Kennedy with his Oxford drawl, and JD Pants with a box of 'whatever makes sense' glazed donuts! Let's unburden this coconut tree right now!",
       "nextNodeId": "act4_ch5_finale_battle_trigger"
     },
     {
@@ -2887,7 +2908,8 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE MAIN EVENT, BROTHER! The Full 5-Hero Commander America Party vs. Kamala Coconut's Coconut Tree Context Drop, Triple-Circle Venn Diagram, and 'Unburdened By What Has Been'! RING THE BELL!",
       "nextNodeId": "act4_ch5_post_battle",
-      "triggerBattleEncounterId": "act6_kamala_battle"
+      "triggerBattleEncounterId": "act6_kamala_battle",
+      "battleEnvironmentId": "coconut_grove"
     },
     {
       "id": "act4_ch5_post_battle",
@@ -2968,7 +2990,7 @@
       "id": "act4_tb_ch1_coconut_node",
       "speakerId": "kamala",
       "side": "LEFT",
-      "text": "*Laughs heartily at the White House swearing-in ceremony (May 10, 2023)* 'My mother used to—she would give us a hard time sometimes, and she would say to us, \"I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!\" *Laughs* You exist in the context of all in which you live and what came before you!' And when the GOP tried to make that clip an attack ad in July 2024, Gen-Z turned it into fifty million brat-green Charli XCX remixes overnight!",
+      "text": "*Laughs heartily at the White House swearing-in ceremony (May 10, 2023)* 'My mother used to\u2014she would give us a hard time sometimes, and she would say to us, \"I don't know what's wrong with you young people. You think you just fell out of a coconut tree?!\" *Laughs* You exist in the context of all in which you live and what came before you!' And when the GOP tried to make that clip an attack ad in July 2024, Gen-Z turned it into fifty million brat-green Charli XCX remixes overnight!",
       "nextNodeId": "act4_tb_ch1_coconut_hub",
       "setFlagOnEnter": "tb4c1_coco_done"
     },
@@ -2976,7 +2998,7 @@
       "id": "act4_tb_ch1_montel_vindication",
       "speakerId": "kamala",
       "side": "LEFT",
-      "text": "Conspiracy accounts claimed I got a political appointment from Montel Williams in 2001! Honey, Montel and I dated twenty-three years ago, walked a red carpet in Hollywood, and broke up like normal adults! There was no secret payoff, no scandal—just good old-fashioned early-2000s red carpet fashion!",
+      "text": "Conspiracy accounts claimed I got a political appointment from Montel Williams in 2001! Honey, Montel and I dated twenty-three years ago, walked a red carpet in Hollywood, and broke up like normal adults! There was no secret payoff, no scandal\u2014just good old-fashioned early-2000s red carpet fashion!",
       "nextNodeId": "act4_tb_ch1_coconut_hub",
       "setFlagOnEnter": "tb4c1_mon_done"
     },
@@ -2986,13 +3008,14 @@
       "side": "CENTER_NARRATOR",
       "text": "UNCONTEXTUALIZED PUNDITS AND A 32-DAY TELEPROMPTER GLITCH ARE BLOCKING THE STAGE, HONEY! Kamala Coconut, trap them in the Triple-Circle Venn Diagram!",
       "nextNodeId": "act4_tb_ch1_post_battle",
-      "triggerBattleEncounterId": "act4_track_b_venn_critics_battle"
+      "triggerBattleEncounterId": "act4_track_b_venn_critics_battle",
+      "battleEnvironmentId": "coconut_grove"
     },
     {
       "id": "act4_tb_ch1_post_battle",
       "speakerId": "kamala",
       "side": "LEFT",
-      "text": "They have officially been unburdened by what has been, and our HP and MP are back at 100%! Now let's head to Valdosta, Georgia in Chapter 2—where JD Pants is currently interrogating a donut shop worker!",
+      "text": "They have officially been unburdened by what has been, and our HP and MP are back at 100%! Now let's head to Valdosta, Georgia in Chapter 2\u2014where JD Pants is currently interrogating a donut shop worker!",
       "nextNodeId": "act4_tb_ch2_intro",
       "changeSceneId": "scene_act4_tb_ch2_donuts",
       "setFlagOnEnter": "blue_a4c1_venn_won"
@@ -3001,7 +3024,7 @@
       "id": "act4_tb_ch2_intro",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
-      "text": "We are inside Holt's Sweet Shoppe in Valdosta, Georgia on August 22, 2024! Standing at the pastry counter is Republican VP nominee JD Pants—asking every employee how long the building has existed before ordering 'some sprinkle stuff, whatever makes sense'!",
+      "text": "We are inside Holt's Sweet Shoppe in Valdosta, Georgia on August 22, 2024! Standing at the pastry counter is Republican VP nominee JD Pants\u2014asking every employee how long the building has existed before ordering 'some sprinkle stuff, whatever makes sense'!",
       "nextNodeId": "act4_tb_ch2_donut_hub",
       "changeSceneId": "scene_act4_tb_ch2_donuts"
     },
@@ -3063,7 +3086,7 @@
       "id": "act4_tb_ch2_vindications_node",
       "speakerId": "kamala",
       "side": "LEFT",
-      "text": "First, when they asked me who the best rapper alive was and I said Tupac, I laughed because West Coast loyalty runs deep! Pac's spirit is alive in California! Second, someone made up a fake TV station in San Francisco claiming I did a hit-and-run in 2011! Microsoft investigated and found a foreign troll farm hired an actress! I don't even drive—the Secret Service won't let me touch a steering wheel!",
+      "text": "First, when they asked me who the best rapper alive was and I said Tupac, I laughed because West Coast loyalty runs deep! Pac's spirit is alive in California! Second, someone made up a fake TV station in San Francisco claiming I did a hit-and-run in 2011! Microsoft investigated and found a foreign troll farm hired an actress! I don't even drive\u2014the Secret Service won't let me touch a steering wheel!",
       "nextNodeId": "act4_tb_ch2_donut_hub",
       "setFlagOnEnter": "tb4c2_vind_done"
     },
@@ -3073,7 +3096,8 @@
       "side": "CENTER_NARRATOR",
       "text": "JD PANTS JUST THREW A BOX OF 'WHATEVER MAKES SENSE' SPRINKLE DONUTS AND A DIET MOUNTAIN DEW, EVERYBODY! Kamala Coconut, hit him with Yellow Electric School Bus Charge and Coconut Tree Context!",
       "nextNodeId": "act4_tb_ch2_post_battle",
-      "triggerBattleEncounterId": "act4_track_b_vance_donut_battle"
+      "triggerBattleEncounterId": "act4_track_b_vance_donut_battle",
+      "battleEnvironmentId": "donut_shop"
     },
     {
       "id": "act4_tb_ch2_post_battle",
@@ -3144,7 +3168,7 @@
       "id": "act4_tb_ch3_time_node",
       "speakerId": "kamala",
       "side": "LEFT",
-      "text": "Look, whether I'm telling Lester Holt 'And I haven't been to Europe!', or explaining that 'Ukraine is a country in Europe next to another country called Russia,' or saying 'the significance of the passage of time' four times in thirty-two seconds in Sunset, Louisiana—nobody fills a two-minute cable segment with fewer concrete nouns than me!",
+      "text": "Look, whether I'm telling Lester Holt 'And I haven't been to Europe!', or explaining that 'Ukraine is a country in Europe next to another country called Russia,' or saying 'the significance of the passage of time' four times in thirty-two seconds in Sunset, Louisiana\u2014nobody fills a two-minute cable segment with fewer concrete nouns than me!",
       "nextNodeId": "act4_tb_ch3_passage_hub",
       "setFlagOnEnter": "tb4c3_time_done"
     },
@@ -3152,7 +3176,7 @@
       "id": "act4_tb_ch3_vind45_node",
       "speakerId": "kamala",
       "side": "LEFT",
-      "text": "First, conspiracy theorists zoomed in on my debate earrings and claimed they were high-tech Bluetooth earpieces broadcasting debate answers from the Pentagon! Honey, they're Tiffany pearl earrings! I've worn them for ten years! Second, opponents claimed I locked up thousands of people for weed in California—state records showed forty-five! If you're going to come for my record, at least get the math right!",
+      "text": "First, conspiracy theorists zoomed in on my debate earrings and claimed they were high-tech Bluetooth earpieces broadcasting debate answers from the Pentagon! Honey, they're Tiffany pearl earrings! I've worn them for ten years! Second, opponents claimed I locked up thousands of people for weed in California\u2014state records showed forty-five! If you're going to come for my record, at least get the math right!",
       "nextNodeId": "act4_tb_ch3_passage_hub",
       "setFlagOnEnter": "tb4c3_vind_done"
     },
@@ -3160,14 +3184,14 @@
       "id": "act4_tb_ch3_meta_callback",
       "speakerId": "kash",
       "side": "RIGHT",
-      "text": "*Bursts through the side door waving a 2014 photograph* Forget Tiffany pearl earrings—what about August 28, 2014 when Barry Teleprompter wore a summer TAN SUIT to a press briefing and ordered Dijon mustard on a burger in 2009?!",
+      "text": "*Bursts through the side door waving a 2014 photograph* Forget Tiffany pearl earrings\u2014what about August 28, 2014 when Barry Teleprompter wore a summer TAN SUIT to a press briefing and ordered Dijon mustard on a burger in 2009?!",
       "nextNodeId": "act4_tb_ch3_psaki_roasts_meta"
     },
     {
       "id": "act4_tb_ch3_psaki_roasts_meta",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
-      "text": "*Laughs at the narrator desk* Kash, it is the autumn of 2024! That tan suit is ten years old and the Dijon mustard burger is fifteen years old—that burger is old enough to have a learner's permit to drive a yellow school bus! Now let's head to Philadelphia for Chapter 4: The September 10, 2024 Debate Stage!",
+      "text": "*Laughs at the narrator desk* Kash, it is the autumn of 2024! That tan suit is ten years old and the Dijon mustard burger is fifteen years old\u2014that burger is old enough to have a learner's permit to drive a yellow school bus! Now let's head to Philadelphia for Chapter 4: The September 10, 2024 Debate Stage!",
       "nextNodeId": "act4_tb_ch4_intro",
       "changeSceneId": "scene_act4_tb_ch4_debate"
     },
@@ -3175,7 +3199,7 @@
       "id": "act4_tb_ch4_intro",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
-      "text": "It is September 10, 2024 at the National Constitution Center in Philadelphia! Kamala Coconut walks all the way behind Commander America's podium to force the first presidential debate handshake since 2016—and then drops the ultimate bait about his rally crowd sizes!",
+      "text": "It is September 10, 2024 at the National Constitution Center in Philadelphia! Kamala Coconut walks all the way behind Commander America's podium to force the first presidential debate handshake since 2016\u2014and then drops the ultimate bait about his rally crowd sizes!",
       "nextNodeId": "act4_tb_ch4_rally_bait",
       "changeSceneId": "scene_act4_tb_ch4_debate"
     },
@@ -3190,7 +3214,7 @@
       "id": "act4_tb_ch4_trump_television",
       "speakerId": "commander_america",
       "side": "RIGHT",
-      "text": "*Glares into the camera on September 10, 2024* 'First of all, nobody leaves my rallies! We have the biggest, most incredible rallies in the history of politics! And in Springfield, they're eating the dogs, the people that came in, they're eating the cats, they're eating—they're eating the pets of the people that live there!' And when ABC moderator David Muir claims the Springfield city manager found no credible reports: 'Well, I've seen people on television! The people on television say my dog was taken and used for food!'",
+      "text": "*Glares into the camera on September 10, 2024* 'First of all, nobody leaves my rallies! We have the biggest, most incredible rallies in the history of politics! And in Springfield, they're eating the dogs, the people that came in, they're eating the cats, they're eating\u2014they're eating the pets of the people that live there!' And when ABC moderator David Muir claims the Springfield city manager found no credible reports: 'Well, I've seen people on television! The people on television say my dog was taken and used for food!'",
       "nextNodeId": "act4_tb_ch4_concepts_of_a_plan"
     },
     {
@@ -3206,7 +3230,8 @@
       "side": "CENTER_NARRATOR",
       "text": "HE JUST UNVEILED 'CONCEPTS OF A PLAN' AFTER NINE YEARS AND 'THE PEOPLE ON TELEVISION,' HONEY! Kamala Coconut, unleash Tiffany Pearl Fact-Check and Significance of the Passage of Time!",
       "nextNodeId": "act4_tb_ch4_post_battle",
-      "triggerBattleEncounterId": "act4_track_b_concepts_debate_battle"
+      "triggerBattleEncounterId": "act4_track_b_concepts_debate_battle",
+      "battleEnvironmentId": "debate_stage"
     },
     {
       "id": "act4_tb_ch4_post_battle",
@@ -3221,7 +3246,7 @@
       "id": "act4_tb_ch5_intro",
       "speakerId": "narrator_kjp",
       "side": "CENTER_NARRATOR",
-      "text": "It is late October 2024! Commander America is leaning out of a closed-to-the-public McDonald's drive-thru window wearing a yellow-trimmed fry apron over his silk tie—right beside a white Green Bay garbage truck and a neon-orange reflective safety vest!",
+      "text": "It is late October 2024! Commander America is leaning out of a closed-to-the-public McDonald's drive-thru window wearing a yellow-trimmed fry apron over his silk tie\u2014right beside a white Green Bay garbage truck and a neon-orange reflective safety vest!",
       "nextNodeId": "act4_tb_ch5_kamala_confronts",
       "changeSceneId": "scene_act4_tb_ch5_mcdonalds"
     },
@@ -3236,7 +3261,7 @@
       "id": "act4_tb_ch5_commander_reply",
       "speakerId": "commander_america",
       "side": "RIGHT",
-      "text": "Those French fries were salted to perfection, Kamala—and my neon-orange garbage truck vest is high fashion! Meanwhile, you spent $2.5 million on celebrity town halls, got stuck saying '32 days, 32 days' when your Flint teleprompter blinked, and told America we fell out of a coconut tree! Let's settle Act IV right now!",
+      "text": "Those French fries were salted to perfection, Kamala\u2014and my neon-orange garbage truck vest is high fashion! Meanwhile, you spent $2.5 million on celebrity town halls, got stuck saying '32 days, 32 days' when your Flint teleprompter blinked, and told America we fell out of a coconut tree! Let's settle Act IV right now!",
       "nextNodeId": "act4_tb_ch5_finale_battle_trigger"
     },
     {
@@ -3245,13 +3270,14 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE 2024 SHOWDOWN, EVERYBODY! Kamala Coconut vs. Commander America's McDonald's Fry-Cook Apron, the Neon-Orange Mack Garbage Truck, and JD Pants's Diet Mountain Dew! RING THE BELL!",
       "nextNodeId": "act4_tb_ch5_post_battle",
-      "triggerBattleEncounterId": "act4_track_b_mcdonalds_finale"
+      "triggerBattleEncounterId": "act4_track_b_mcdonalds_finale",
+      "battleEnvironmentId": "drive_thru"
     },
     {
       "id": "act4_tb_ch5_post_battle",
       "speakerId": "kamala",
       "side": "LEFT",
-      "text": "*Closes her three-circle Venn diagram binder as the calendar flips to 2025–2026* That wraps up 2024! And now, for the Grand Finale Act V (2025–2026), the story heads straight up I-95 to New York City—where democratic socialist Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger are taking the stage!",
+      "text": "*Closes her three-circle Venn diagram binder as the calendar flips to 2025\u20132026* That wraps up 2024! And now, for the Grand Finale Act V (2025\u20132026), the story heads straight up I-95 to New York City\u2014where democratic socialist Zohran Cardamom ('Mr. Cardamom') and swaggering table-water connoisseur Mayor Swagger are taking the stage!",
       "nextNodeId": "act4_tb_ch5_zohran_handoff",
       "setFlagOnEnter": "blue_a4_finale_won"
     },
@@ -3259,14 +3285,14 @@
       "id": "act4_tb_ch5_zohran_handoff",
       "speakerId": "zohran_cardamom",
       "side": "LEFT",
-      "text": "*Steps out of an Astoria food truck wearing a bespoke suit and an apron, slapping a sizzling chapati onto the grill while 'Nani' plays on the speakers* Yo, peace everybody—it's Zohran Cardamom, aka Young Cardamom, aka Mr. Cardamom! In Act V (2025–2026), we're taking on Musk-X's Dark Gothic MAGA Mid-Air Star-Jump, Mayor Swagger's Turkish 'rat-free table water,' and Commander America in the Bipartisan Grand Finale! Let's roll!",
+      "text": "*Steps out of an Astoria food truck wearing a bespoke suit and an apron, slapping a sizzling chapati onto the grill while 'Nani' plays on the speakers* Yo, peace everybody\u2014it's Zohran Cardamom, aka Young Cardamom, aka Mr. Cardamom! In Act V (2025\u20132026), we're taking on Musk-X's Dark Gothic MAGA Mid-Air Star-Jump, Mayor Swagger's Turkish 'rat-free table water,' and Commander America in the Bipartisan Grand Finale! Let's roll!",
       "nextNodeId": "act5_tb_ch1_intro"
     },
     {
       "id": "act5_ch1_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "Welcome to Act V (2024–2026): The Grand Finale Era! I'm Kayleigh Binder-Tabs, with Karoline Podium-Boss and Hulkster 24-Pythons! It is October 5, 2024 at the Butler Farm Show grounds in Pennsylvania—where Guest Tech-Support Summon Musk-X has just sprinted onto the stage in an all-black 'Dark Gothic MAGA' cap and leaped into a mid-air 'X' star-jump exposing four inches of billionaire midriff!",
+      "text": "Welcome to Act V (2024\u20132026): The Grand Finale Era! I'm Kayleigh Binder-Tabs, with Karoline Podium-Boss and Hulkster 24-Pythons! It is October 5, 2024 at the Butler Farm Show grounds in Pennsylvania\u2014where Guest Tech-Support Summon Musk-X has just sprinted onto the stage in an all-black 'Dark Gothic MAGA' cap and leaped into a mid-air 'X' star-jump exposing four inches of billionaire midriff!",
       "nextNodeId": "act5_ch1_musk_joins",
       "changeSceneId": "scene_act5_ch1_arena"
     },
@@ -3274,7 +3300,7 @@
       "id": "act5_ch1_musk_joins",
       "speakerId": "elon",
       "side": "LEFT",
-      "text": "*Lands from a 2-foot vertical mid-air X-jump, tugging his black 'Occupy Mars' t-shirt back down over his stomach while carrying a porcelain bathroom sink* 'As you can see, I am not just MAGA—I am Dark, Gothic MAGA!' *Sets the porcelain sink down next to a stainless-steel Cybertruck with two shattered windows* And I brought the actual porcelain bathroom sink I carried into Twitter headquarters on October 26, 2022 just so I could tweet 'Entering Twitter HQ – let that sink in!' before firing the C-suite and renaming the entire bird app to my favorite letter of the alphabet: X!",
+      "text": "*Lands from a 2-foot vertical mid-air X-jump, tugging his black 'Occupy Mars' t-shirt back down over his stomach while carrying a porcelain bathroom sink* 'As you can see, I am not just MAGA\u2014I am Dark, Gothic MAGA!' *Sets the porcelain sink down next to a stainless-steel Cybertruck with two shattered windows* And I brought the actual porcelain bathroom sink I carried into Twitter headquarters on October 26, 2022 just so I could tweet 'Entering Twitter HQ \u2013 let that sink in!' before firing the C-suite and renaming the entire bird app to my favorite letter of the alphabet: X!",
       "nextNodeId": "act5_ch1_musk_hub"
     },
     {
@@ -3328,7 +3354,7 @@
       "id": "act5_ch1_cybertruck_node",
       "speakerId": "elon",
       "side": "LEFT",
-      "text": "*Watches chief designer Franz von Holzhausen hurl a solid steel ball at the Cybertruck's 'unbreakable Armor Glass' driver window on November 21, 2019—loudly spider-webbing it on live worldwide stream* 'Oh my f***ing God. Well, maybe that was a little too hard!' *Throws the steel ball at the rear passenger window, smashing that one too* 'It didn't go through! That's a plus side! We'll fix it in post!' And when Don Lemon asked me in March 2024 about my biweekly prescribed ketamine for a 'negative chemical state,' I told him it's in the shareholders' best interest—right alongside my $40 million '$420 Funding Secured' tweet!",
+      "text": "*Watches chief designer Franz von Holzhausen hurl a solid steel ball at the Cybertruck's 'unbreakable Armor Glass' driver window on November 21, 2019\u2014loudly spider-webbing it on live worldwide stream* 'Oh my f***ing God. Well, maybe that was a little too hard!' *Throws the steel ball at the rear passenger window, smashing that one too* 'It didn't go through! That's a plus side! We'll fix it in post!' And when Don Lemon asked me in March 2024 about my biweekly prescribed ketamine for a 'negative chemical state,' I told him it's in the shareholders' best interest\u2014right alongside my $40 million '$420 Funding Secured' tweet!",
       "nextNodeId": "act5_ch1_musk_hub",
       "setFlagOnEnter": "a5c1_cyb_done"
     },
@@ -3346,7 +3372,8 @@
       "side": "CENTER_NARRATOR",
       "text": "TWO SHATTERED CYBERTRUCK WINDOWS AND A PORCELAIN BATHROOM SINK ARE CHARGING THE STAGE, BROTHER! Musk-X, hit 'em with the Dark Gothic MAGA Mid-Air Star-Jump!",
       "nextNodeId": "act5_ch1_post_battle",
-      "triggerBattleEncounterId": "act5_track_a_cybertruck_sink_battle"
+      "triggerBattleEncounterId": "act5_track_a_cybertruck_sink_battle",
+      "battleEnvironmentId": "rally_stage"
     },
     {
       "id": "act5_ch1_post_battle",
@@ -3360,7 +3387,7 @@
       "id": "act5_ch2_intro",
       "speakerId": "narrator_hulk",
       "side": "CENTER_NARRATOR",
-      "text": "WELCOME TO JULY 18, 2024 AT THE FISERV FORUM IN MILWAUKEE AND THE 'DOGE' HEADQUARTERS, BROTHER! Watch me step up to the convention podium in a black blazer, rip off my outer shirt to reveal a Trump-Vance shirt, and then rip THAT shirt in half too—LET TRUMPAMANIA RUN WILD, BROTHER!",
+      "text": "WELCOME TO JULY 18, 2024 AT THE FISERV FORUM IN MILWAUKEE AND THE 'DOGE' HEADQUARTERS, BROTHER! Watch me step up to the convention podium in a black blazer, rip off my outer shirt to reveal a Trump-Vance shirt, and then rip THAT shirt in half too\u2014LET TRUMPAMANIA RUN WILD, BROTHER!",
       "nextNodeId": "act5_ch2_doge_hub",
       "changeSceneId": "scene_act5_ch2_senate"
     },
@@ -3368,7 +3395,7 @@
       "id": "act5_ch2_doge_hub",
       "speakerId": "elon",
       "side": "LEFT",
-      "text": "*Waves a giant Shiba Inu meme coin banner over a pile of federal agency org charts* Welcome to the Department of Government Efficiency—specifically named 'DOGE' so the official acronym of US government reform matches a 2013 Shiba Inu meme coin I pumped on Saturday Night Live! What are we auditing first?",
+      "text": "*Waves a giant Shiba Inu meme coin banner over a pile of federal agency org charts* Welcome to the Department of Government Efficiency\u2014specifically named 'DOGE' so the official acronym of US government reform matches a 2013 Shiba Inu meme coin I pumped on Saturday Night Live! What are we auditing first?",
       "choices": [
         {
           "id": "a5c2_bob",
@@ -3430,15 +3457,16 @@
       "id": "act5_ch2_battle_trigger",
       "speakerId": "narrator_karoline",
       "side": "CENTER_NARRATOR",
-      "text": "A SWARM OF RED-TAPE SUBCOMMITTEE CHAIRS IS BLOCKING THE DOGE AUDIT! Commander America, Musk-X, and JD Pants—clear the floor!",
+      "text": "A SWARM OF RED-TAPE SUBCOMMITTEE CHAIRS IS BLOCKING THE DOGE AUDIT! Commander America, Musk-X, and JD Pants\u2014clear the floor!",
       "nextNodeId": "act5_ch2_post_battle",
-      "triggerBattleEncounterId": "act5_track_a_doge_bureaucrats_battle"
+      "triggerBattleEncounterId": "act5_track_a_doge_bureaucrats_battle",
+      "battleEnvironmentId": "convention_floor"
     },
     {
       "id": "act5_ch2_post_battle",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "DOGE just cut their HP to zero, and our party is back at 100%! Now let's fly to New York City for Chapter 3—where swaggering table-water connoisseur Mayor Swagger is waiting in a Turkish Airlines lie-flat business-class seat!",
+      "text": "DOGE just cut their HP to zero, and our party is back at 100%! Now let's fly to New York City for Chapter 3\u2014where swaggering table-water connoisseur Mayor Swagger is waiting in a Turkish Airlines lie-flat business-class seat!",
       "nextNodeId": "act5_ch3_intro",
       "changeSceneId": "scene_act5_ch3_terrace"
     },
@@ -3446,7 +3474,7 @@
       "id": "act5_ch3_intro",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "Welcome to New York City—the 'Istanbul of America'! Reclining in a $15,000 Turkish Airlines lie-flat business-class suite while eating a late-night fillet of 'strictly vegan' Chilean sea bass at Osteria La Baia is New York's self-proclaimed 'Swagger Man,' Mayor Swagger!",
+      "text": "Welcome to New York City\u2014the 'Istanbul of America'! Reclining in a $15,000 Turkish Airlines lie-flat business-class suite while eating a late-night fillet of 'strictly vegan' Chilean sea bass at Osteria La Baia is New York's self-proclaimed 'Swagger Man,' Mayor Swagger!",
       "nextNodeId": "act5_ch3_swagger_speech",
       "changeSceneId": "scene_act5_ch3_terrace"
     },
@@ -3454,14 +3482,14 @@
       "id": "act5_ch3_swagger_speech",
       "speakerId": "mayor_swagger",
       "side": "RIGHT",
-      "text": "*Takes a sip of tap water from a champagne flute while wearing a custom suit* 'Wait a minute—this is table water from New York City! And when someone upgrades you on Turkish Airlines, you do what New Yorkers do: you say THANK YOU! Because a preliminary review of your planning always preludes the pre-planning!'",
+      "text": "*Takes a sip of tap water from a champagne flute while wearing a custom suit* 'Wait a minute\u2014this is table water from New York City! And when someone upgrades you on Turkish Airlines, you do what New Yorkers do: you say THANK YOU! Because a preliminary review of your planning always preludes the pre-planning!'",
       "nextNodeId": "act5_ch3_swagger_hub"
     },
     {
       "id": "act5_ch3_swagger_hub",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Look at Mayor Swagger, folks—they indicted him over Turkish Airlines seat upgrades, he changed his iPhone passcode from 4 digits to 6 digits and told the FBI he forgot it, and he filmed an instructional video pulling a revolver out of a plastic baby doll! Which of Mayor Swagger's greatest hits are we exposing first?",
+      "text": "Look at Mayor Swagger, folks\u2014they indicted him over Turkish Airlines seat upgrades, he changed his iPhone passcode from 4 digits to 6 digits and told the FBI he forgot it, and he filmed an instructional video pulling a revolver out of a plastic baby doll! Which of Mayor Swagger's greatest hits are we exposing first?",
       "choices": [
         {
           "id": "a5c3_babydoll",
@@ -3508,7 +3536,7 @@
       "id": "act5_ch3_babydoll_node",
       "speakerId": "mayor_swagger",
       "side": "RIGHT",
-      "text": "*Holds up a creepy plastic baby doll and a glass jar of marbles with deadpan seriousness* 'Look at this innocent-looking baby doll on your child's dresser. You pull the head off—BOOM, there's a loaded .38 revolver inside the doll! You look at this glass jar of decorative marbles—BOOM, crack cocaine rocks at the bottom! You check the pillowcase—BOOM, marijuana!'",
+      "text": "*Holds up a creepy plastic baby doll and a glass jar of marbles with deadpan seriousness* 'Look at this innocent-looking baby doll on your child's dresser. You pull the head off\u2014BOOM, there's a loaded .38 revolver inside the doll! You look at this glass jar of decorative marbles\u2014BOOM, crack cocaine rocks at the bottom! You check the pillowcase\u2014BOOM, marijuana!'",
       "nextNodeId": "act5_ch3_swagger_hub",
       "setFlagOnEnter": "a5c3_doll_done"
     },
@@ -3516,7 +3544,7 @@
       "id": "act5_ch3_seabass_node",
       "speakerId": "vance",
       "side": "LEFT",
-      "text": "Wait a second, Mayor—you published an entire book about how you're a strict 100% plant-based vegan who lectures kids on school lunches, and yet the waiters at Osteria La Baia in Midtown Manhattan caught you ordering the $48 Chilean sea bass at midnight! And when the FBI seized your iPhones in November 2023, you claimed you had just changed your passcode from four digits to six digits 'to prevent staffers from accidentally butt-dialing' and conveniently forgot the new six-digit code!",
+      "text": "Wait a second, Mayor\u2014you published an entire book about how you're a strict 100% plant-based vegan who lectures kids on school lunches, and yet the waiters at Osteria La Baia in Midtown Manhattan caught you ordering the $48 Chilean sea bass at midnight! And when the FBI seized your iPhones in November 2023, you claimed you had just changed your passcode from four digits to six digits 'to prevent staffers from accidentally butt-dialing' and conveniently forgot the new six-digit code!",
       "nextNodeId": "act5_ch3_swagger_hub",
       "setFlagOnEnter": "a5c3_fish_done"
     },
@@ -3526,13 +3554,14 @@
       "side": "CENTER_NARRATOR",
       "text": "MAYOR SWAGGER JUST RECLINED HIS TURKISH AIRLINES LIE-FLAT SEAT AND PULLED OUT THE CONTRABAND BABY DOLL, BROTHER! Ring the bell!",
       "nextNodeId": "act5_ch3_post_battle",
-      "triggerBattleEncounterId": "act5_track_a_swagger_turkish_battle"
+      "triggerBattleEncounterId": "act5_track_a_swagger_turkish_battle",
+      "battleEnvironmentId": "airport_lounge"
     },
     {
       "id": "act5_ch3_post_battle",
       "speakerId": "mayor_swagger",
       "side": "RIGHT",
-      "text": "*Tips his cap with a grin* Hey, Commander—after what the DOJ put both of us through, I respect the hustle! Keep an eye on Queens in Chapter 4, though—because Ugandan-born rap producer turned democratic socialist 'Mr. Cardamom' just pulled up in an Astoria chapati truck to freeze the rent and make the Q70 bus free!",
+      "text": "*Tips his cap with a grin* Hey, Commander\u2014after what the DOJ put both of us through, I respect the hustle! Keep an eye on Queens in Chapter 4, though\u2014because Ugandan-born rap producer turned democratic socialist 'Mr. Cardamom' just pulled up in an Astoria chapati truck to freeze the rent and make the Q70 bus free!",
       "nextNodeId": "act5_ch4_intro",
       "changeSceneId": "scene_act5_ch4_closets"
     },
@@ -3540,7 +3569,7 @@
       "id": "act5_ch4_intro",
       "speakerId": "narrator_karoline",
       "side": "CENTER_NARRATOR",
-      "text": "We have arrived in Astoria, Queens! Standing in front of a chapati food truck wearing a bespoke thrifted suit under a floral kitchen apron is Zohran Cardamom—formerly known in the 2016–2019 rap scene as 'Young Cardamom' and 'Mr. Cardamom'!",
+      "text": "We have arrived in Astoria, Queens! Standing in front of a chapati food truck wearing a bespoke thrifted suit under a floral kitchen apron is Zohran Cardamom\u2014formerly known in the 2016\u20132019 rap scene as 'Young Cardamom' and 'Mr. Cardamom'!",
       "nextNodeId": "act5_ch4_zohran_speech",
       "changeSceneId": "scene_act5_ch4_closets"
     },
@@ -3555,7 +3584,7 @@
       "id": "act5_ch4_zohran_hub",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "Wait until you hear the full dossier on 'Mr. Cardamom,' folks! Let's roast his 'working-class revolution' résumé and watch Chyron McSpin embarrass himself one last time before the 2026 Grand Finale!",
+      "text": "Wait until you hear the full dossier on 'Mr. Cardamom,' folks! Let's roast his 'working-class revolution' r\u00e9sum\u00e9 and watch Chyron McSpin embarrass himself one last time before the 2026 Grand Finale!",
       "choices": [
         {
           "id": "a5c4_bowdoin",
@@ -3614,7 +3643,7 @@
       "id": "act5_ch4_bowdoin_node",
       "speakerId": "vance",
       "side": "LEFT",
-      "text": "Let's read the 'proletariat' bio here, Zohran: Your mother is Oscar-nominated Hollywood director Mira Nair (Monsoon Wedding, Disney's Queen of Katwe—which you served as music supervisor on!), your father is an endowed Columbia University professor, you attended the $60,000-a-year private Bank Street School for Children on the Upper West Side, and you graduated from elite Bowdoin College in Maine before LARPing as a socialist revolutionary in a $2,000 suit!",
+      "text": "Let's read the 'proletariat' bio here, Zohran: Your mother is Oscar-nominated Hollywood director Mira Nair (Monsoon Wedding, Disney's Queen of Katwe\u2014which you served as music supervisor on!), your father is an endowed Columbia University professor, you attended the $60,000-a-year private Bank Street School for Children on the Upper West Side, and you graduated from elite Bowdoin College in Maine before LARPing as a socialist revolutionary in a $2,000 suit!",
       "nextNodeId": "act5_ch4_zohran_hub",
       "setFlagOnEnter": "a5c4_bow_done"
     },
@@ -3622,7 +3651,7 @@
       "id": "act5_ch4_grocery_node",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "And look at his big economic plan, folks—Five City-Owned Municipal Grocery Stores run by the New York City bureaucracy! Have you ever been to the DMV in Queens? Imagine waiting at Window 14B with a stamped triplicate voucher just to buy a bruised avocado and a carton of oat milk!",
+      "text": "And look at his big economic plan, folks\u2014Five City-Owned Municipal Grocery Stores run by the New York City bureaucracy! Have you ever been to the DMV in Queens? Imagine waiting at Window 14B with a stamped triplicate voucher just to buy a bruised avocado and a carton of oat milk!",
       "nextNodeId": "act5_ch4_zohran_hub",
       "setFlagOnEnter": "a5c4_groc_done"
     },
@@ -3630,7 +3659,7 @@
       "id": "act5_ch4_meta_callback",
       "speakerId": "media_anchor",
       "side": "RIGHT",
-      "text": "*Bursts out of a Queens subway entrance waving a faded VHS tape in the year 2026* STOP TALKING ABOUT MUNICIPAL GROCERY STORES! What about October 7, 2016—when we aired the 2005 Access Hollywood bus tape where Commander America popped Tic-Tacs with Billy Bush?!",
+      "text": "*Bursts out of a Queens subway entrance waving a faded VHS tape in the year 2026* STOP TALKING ABOUT MUNICIPAL GROCERY STORES! What about October 7, 2016\u2014when we aired the 2005 Access Hollywood bus tape where Commander America popped Tic-Tacs with Billy Bush?!",
       "nextNodeId": "act5_ch4_musk_roasts_meta",
       "setFlagOnEnter": "a5c4_meta_done"
     },
@@ -3638,7 +3667,7 @@
       "id": "act5_ch4_musk_roasts_meta",
       "speakerId": "elon",
       "side": "LEFT",
-      "text": "*Laughs while holding his porcelain bathroom sink* Bro, it is the year 2026! That 2005 Billy Bush bus tape is TWENTY-ONE YEARS OLD—that tape is old enough to legally drink a beer at a bar and rent a Cybertruck! Let that sink in!",
+      "text": "*Laughs while holding his porcelain bathroom sink* Bro, it is the year 2026! That 2005 Billy Bush bus tape is TWENTY-ONE YEARS OLD\u2014that tape is old enough to legally drink a beer at a bar and rent a Cybertruck! Let that sink in!",
       "nextNodeId": "act5_ch4_zohran_hub"
     },
     {
@@ -3660,16 +3689,17 @@
       "id": "act5_ch5_commander_banter",
       "speakerId": "commander_america",
       "side": "LEFT",
-      "text": "We've been through eleven years of escalators, Chappaqua servers, Covfefe tweets, $24,000 freezers, Corn Pop chains, coconut trees, donut shops, and mid-air X-jumps, folks! Musk-X, JD Pants, Wizard Kash, Foghorn Kennedy, Little Marco—let's take home the Grand Finale!",
+      "text": "We've been through eleven years of escalators, Chappaqua servers, Covfefe tweets, $24,000 freezers, Corn Pop chains, coconut trees, donut shops, and mid-air X-jumps, folks! Musk-X, JD Pants, Wizard Kash, Foghorn Kennedy, Little Marco\u2014let's take home the Grand Finale!",
       "nextNodeId": "act5_ch5_finale_battle_trigger"
     },
     {
       "id": "act5_ch5_finale_battle_trigger",
       "speakerId": "narrator_hulk",
       "side": "CENTER_NARRATOR",
-      "text": "THIS IS IT, BROTHER—THE GRAND FINALE! Commander America & Musk-X vs. Zohran Cardamom ('Mr. Cardamom'), Kamala Coconut, and Joe Naptime! LET EQUAL-OPPORTUNITY SATIRE RUN WILD!",
+      "text": "THIS IS IT, BROTHER\u2014THE GRAND FINALE! Commander America & Musk-X vs. Zohran Cardamom ('Mr. Cardamom'), Kamala Coconut, and Joe Naptime! LET EQUAL-OPPORTUNITY SATIRE RUN WILD!",
       "nextNodeId": "act5_ch5_post_battle",
-      "triggerBattleEncounterId": "act5_track_a_grand_finale"
+      "triggerBattleEncounterId": "act5_track_a_grand_finale",
+      "battleEnvironmentId": "finale_arena"
     },
     {
       "id": "act5_ch5_post_battle",
@@ -3709,7 +3739,7 @@
       "choices": [
         {
           "id": "tb5c1_nani",
-          "text": "Perform the 2019 'Mr. Cardamom – Nani' rap verse & self-roast the Bank Street / Bowdoin trust-fund résumé!",
+          "text": "Perform the 2019 'Mr. Cardamom \u2013 Nani' rap verse & self-roast the Bank Street / Bowdoin trust-fund r\u00e9sum\u00e9!",
           "voiceKeywords": [
             "nani",
             "cardamom",
@@ -3753,7 +3783,7 @@
       "id": "act5_tb_ch1_nani_node",
       "speakerId": "zohran_cardamom",
       "side": "LEFT",
-      "text": "*Raps on the steps of the chapati truck in an apron* Before I ever ran for office, I performed under the stage names 'Young Cardamom' and 'Mr. Cardamom,' curated the soundtrack for Disney's Queen of Katwe (directed by my mom Mira Nair!), and filmed the 2019 music video 'Nani' in an apron with cookbook legend Madhur Jaffrey! And look, yes—I went to the $60,000-a-year Bank Street School and Bowdoin College before preaching the working-class revolution in a symmetrical Wes Anderson TikTok, so I'm roasting my own Ivy-adjacent résumé before JD Pants can!",
+      "text": "*Raps on the steps of the chapati truck in an apron* Before I ever ran for office, I performed under the stage names 'Young Cardamom' and 'Mr. Cardamom,' curated the soundtrack for Disney's Queen of Katwe (directed by my mom Mira Nair!), and filmed the 2019 music video 'Nani' in an apron with cookbook legend Madhur Jaffrey! And look, yes\u2014I went to the $60,000-a-year Bank Street School and Bowdoin College before preaching the working-class revolution in a symmetrical Wes Anderson TikTok, so I'm roasting my own Ivy-adjacent r\u00e9sum\u00e9 before JD Pants can!",
       "nextNodeId": "act5_tb_ch1_zohran_hub",
       "setFlagOnEnter": "tb5c1_nani_done"
     },
@@ -3771,13 +3801,14 @@
       "side": "CENTER_NARRATOR",
       "text": "LUXURY CONDO RENT-HIKE LOBBYISTS AND AN MTA SWIPE-CARD TURNSTILE ARE BLOCKING THE BUS LANE, EVERYBODY! Zohran Cardamom and Mayor Swagger, freeze their rent!",
       "nextNodeId": "act5_tb_ch1_post_battle",
-      "triggerBattleEncounterId": "act5_track_b_landlord_lobby_battle"
+      "triggerBattleEncounterId": "act5_track_b_landlord_lobby_battle",
+      "battleEnvironmentId": "queens_street"
     },
     {
       "id": "act5_tb_ch1_post_battle",
       "speakerId": "zohran_cardamom",
       "side": "LEFT",
-      "text": "Rent frozen, buses fare-free, and our HP and MP are automatically back at 100%! Now let's step inside Gracie Mansion and the Turkish Airlines First-Class Lounge for Chapter 2—where my co-op partner Mayor Swagger is demonstrating his NYPD Contraband Baby-Doll search!",
+      "text": "Rent frozen, buses fare-free, and our HP and MP are automatically back at 100%! Now let's step inside Gracie Mansion and the Turkish Airlines First-Class Lounge for Chapter 2\u2014where my co-op partner Mayor Swagger is demonstrating his NYPD Contraband Baby-Doll search!",
       "nextNodeId": "act5_tb_ch2_intro",
       "changeSceneId": "scene_act5_tb_ch2_swagger",
       "setFlagOnEnter": "blue_a5c1_landlord_won"
@@ -3795,7 +3826,7 @@
       "id": "act5_tb_ch2_swagger_hub",
       "speakerId": "mayor_swagger",
       "side": "LEFT",
-      "text": "*Adjusts his collar with maximum swagger* Listen, Zohran—nobody survives New York politics without a little swagger, a glass of rat-free New York tap water, and a preliminary review of your planning that preludes the pre-planning! What are we showing the voters before we battle the Subpoena Auditors?",
+      "text": "*Adjusts his collar with maximum swagger* Listen, Zohran\u2014nobody survives New York politics without a little swagger, a glass of rat-free New York tap water, and a preliminary review of your planning that preludes the pre-planning! What are we showing the voters before we battle the Subpoena Auditors?",
       "choices": [
         {
           "id": "tb5c2_swagger_hits",
@@ -3849,7 +3880,7 @@
       "id": "act5_tb_ch2_vindications_node",
       "speakerId": "zohran_cardamom",
       "side": "LEFT",
-      "text": "The tabloids printed flyers claiming I live in a five-million-dollar Tribeca penthouse! I live in a rent-stabilized apartment in Astoria where the radiator sounds like a haunted percussion section! And no, my city grocery pilot isn't banning bodegas—bodegas are sacred NYC culture! I just want people to be able to afford milk and fresh vegetables!",
+      "text": "The tabloids printed flyers claiming I live in a five-million-dollar Tribeca penthouse! I live in a rent-stabilized apartment in Astoria where the radiator sounds like a haunted percussion section! And no, my city grocery pilot isn't banning bodegas\u2014bodegas are sacred NYC culture! I just want people to be able to afford milk and fresh vegetables!",
       "nextNodeId": "act5_tb_ch2_swagger_hub",
       "setFlagOnEnter": "tb5c2_vind_done"
     },
@@ -3859,7 +3890,8 @@
       "side": "CENTER_NARRATOR",
       "text": "A SUBPOENA PASSCODE CRACKER AND AN OSTERIA LA BAIA SEA-BASS WAITER ARE STORMING THE LOUNGE, HONEY! Zohran and Mayor Swagger, hit 'em with Turkish Airlines Upgrade and 5 City-Owned Grocery Stores!",
       "nextNodeId": "act5_tb_ch2_post_battle",
-      "triggerBattleEncounterId": "act5_track_b_turkish_auditor_battle"
+      "triggerBattleEncounterId": "act5_track_b_turkish_auditor_battle",
+      "battleEnvironmentId": "airport_lounge"
     },
     {
       "id": "act5_tb_ch2_post_battle",
@@ -3874,7 +3906,7 @@
       "id": "act5_tb_ch3_intro",
       "speakerId": "narrator_psaki",
       "side": "CENTER_NARRATOR",
-      "text": "We are at the Cybertruck Demo Stage! Across from us stands billionaire Guest Summon Musk-X—wearing his black 'Dark Gothic MAGA' hat, clutching a porcelain bathroom sink, and standing beside a Cybertruck with two steel-ball-shattered windows!",
+      "text": "We are at the Cybertruck Demo Stage! Across from us stands billionaire Guest Summon Musk-X\u2014wearing his black 'Dark Gothic MAGA' hat, clutching a porcelain bathroom sink, and standing beside a Cybertruck with two steel-ball-shattered windows!",
       "nextNodeId": "act5_tb_ch3_musk_hub",
       "changeSceneId": "scene_act5_tb_ch3_cybertruck"
     },
@@ -3936,7 +3968,7 @@
       "id": "act5_tb_ch3_meta_callback",
       "speakerId": "kash",
       "side": "RIGHT",
-      "text": "*Runs out from behind the shattered Cybertruck waving a yellowed 1978 ledger* Forget Cybertruck windows and mid-air star-jumps—what about 1978 when Hill-Rod turned $1,000 into $99,537 trading Arkansas cattle futures with Refco broker Red Bone?!",
+      "text": "*Runs out from behind the shattered Cybertruck waving a yellowed 1978 ledger* Forget Cybertruck windows and mid-air star-jumps\u2014what about 1978 when Hill-Rod turned $1,000 into $99,537 trading Arkansas cattle futures with Refco broker Red Bone?!",
       "nextNodeId": "act5_tb_ch3_oprah_roasts_meta",
       "setFlagOnEnter": "tb5c3_meta_done"
     },
@@ -3944,7 +3976,7 @@
       "id": "act5_tb_ch3_oprah_roasts_meta",
       "speakerId": "narrator_oprah",
       "side": "CENTER_NARRATOR",
-      "text": "HONEY, IT IS THE YEAR 2026! THAT 1978 ARKANSAS CATTLE TRADE IS FORTY-EIGHT YEARS OLD! Zohran Cardamom wasn't even BORN until 1991—thirteen years AFTER those cows retired! Let the 1978 cows rest in peace!",
+      "text": "HONEY, IT IS THE YEAR 2026! THAT 1978 ARKANSAS CATTLE TRADE IS FORTY-EIGHT YEARS OLD! Zohran Cardamom wasn't even BORN until 1991\u2014thirteen years AFTER those cows retired! Let the 1978 cows rest in peace!",
       "nextNodeId": "act5_tb_ch3_musk_hub"
     },
     {
@@ -3953,13 +3985,14 @@
       "side": "CENTER_NARRATOR",
       "text": "Musk-X just leaped into a Dark Gothic MAGA Star-Jump and hurled a steel ball through the Cybertruck window! Zohran Cardamom and Mayor Swagger, engage!",
       "nextNodeId": "act5_tb_ch3_post_battle",
-      "triggerBattleEncounterId": "act5_track_b_musk_starjump_battle"
+      "triggerBattleEncounterId": "act5_track_b_musk_starjump_battle",
+      "battleEnvironmentId": "rally_stage"
     },
     {
       "id": "act5_tb_ch3_post_battle",
       "speakerId": "zohran_cardamom",
       "side": "LEFT",
-      "text": "We fixed that Cybertruck in post, and our HP and MP are back at 100%! Now let's storm the Department of Government Efficiency ('DOGE') in Chapter 4—where JD Pants, Wizard Kash, and Foghorn Kennedy are guarding the door!",
+      "text": "We fixed that Cybertruck in post, and our HP and MP are back at 100%! Now let's storm the Department of Government Efficiency ('DOGE') in Chapter 4\u2014where JD Pants, Wizard Kash, and Foghorn Kennedy are guarding the door!",
       "nextNodeId": "act5_tb_ch4_intro",
       "changeSceneId": "scene_act5_tb_ch4_doge"
     },
@@ -3991,7 +4024,8 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE DOGE VANGUARD BOSS RUSH, HONEY! Zohran Cardamom & Mayor Swagger vs. JD Pants, Wizard Kash, and Senator Foghorn Kennedy! RING THE BELL!",
       "nextNodeId": "act5_tb_ch4_post_battle",
-      "triggerBattleEncounterId": "act5_track_b_doge_squad_battle"
+      "triggerBattleEncounterId": "act5_track_b_doge_squad_battle",
+      "battleEnvironmentId": "secure_vault"
     },
     {
       "id": "act5_tb_ch4_post_battle",
@@ -4013,14 +4047,14 @@
       "id": "act5_tb_ch5_commander_challenge",
       "speakerId": "commander_america",
       "side": "RIGHT",
-      "text": "Look who made it to the Grand Finale, folks—'Mr. Cardamom' in his Nani rap apron and Mayor Swagger with his Turkish Airlines boarding pass and midnight sea bass! I've got twelve Diet Cokes on ice, a gold Sharpie, 'Concepts of a Plan,' and Musk-X jumping into a giant X behind me! Let's see what you've got!",
+      "text": "Look who made it to the Grand Finale, folks\u2014'Mr. Cardamom' in his Nani rap apron and Mayor Swagger with his Turkish Airlines boarding pass and midnight sea bass! I've got twelve Diet Cokes on ice, a gold Sharpie, 'Concepts of a Plan,' and Musk-X jumping into a giant X behind me! Let's see what you've got!",
       "nextNodeId": "act5_tb_ch5_zohran_response"
     },
     {
       "id": "act5_tb_ch5_zohran_response",
       "speakerId": "zohran_cardamom",
       "side": "LEFT",
-      "text": "For Hill-Rod's Chappaqua server, Nancy's $24,000 Sub-Zero ice-cream freezers, Joe's 10-clip Badakathcare megaphone, Kamala's Coconut Tree context, Mayor Swagger's Contraband Baby-Doll, and my Astoria chapati truck—let's bring this house down!",
+      "text": "For Hill-Rod's Chappaqua server, Nancy's $24,000 Sub-Zero ice-cream freezers, Joe's 10-clip Badakathcare megaphone, Kamala's Coconut Tree context, Mayor Swagger's Contraband Baby-Doll, and my Astoria chapati truck\u2014let's bring this house down!",
       "nextNodeId": "act5_tb_ch5_finale_battle_trigger"
     },
     {
@@ -4029,13 +4063,14 @@
       "side": "CENTER_NARRATOR",
       "text": "IT'S THE 2026 GRAND FINALE SHOWDOWN, EVERYBODY! Zohran Cardamom ('Mr. Cardamom') & Mayor Swagger vs. Commander America, Musk-X & the Diet Coke Valet Turret! RING THE FINAL BELL!",
       "nextNodeId": "act5_bipartisan_curtain_call",
-      "triggerBattleEncounterId": "act5_track_b_grand_finale"
+      "triggerBattleEncounterId": "act5_track_b_grand_finale",
+      "battleEnvironmentId": "finale_arena"
     },
     {
       "id": "act5_bipartisan_curtain_call",
       "speakerId": "narrator_kayleigh",
       "side": "CENTER_NARRATOR",
-      "text": "LADIES AND GENTLEMEN, ALL FIVE ACTS (2015–2026) ARE COMPLETE! All six narrators—Kayleigh Binder-Tabs, Karoline Podium-Boss, Hulkster 24-Pythons, Jen Circle-Back, Karine Hatch-Act, and Oprah Free-Car—are sharing one giant desk as both sides of the aisle step out for the Bipartisan Curtain Call!",
+      "text": "LADIES AND GENTLEMEN, ALL FIVE ACTS (2015\u20132026) ARE COMPLETE! All six narrators\u2014Kayleigh Binder-Tabs, Karoline Podium-Boss, Hulkster 24-Pythons, Jen Circle-Back, Karine Hatch-Act, and Oprah Free-Car\u2014are sharing one giant desk as both sides of the aisle step out for the Bipartisan Curtain Call!",
       "nextNodeId": "act5_curtain_call_psaki",
       "changeSceneId": "scene_act8_ch5_inauguration"
     },
@@ -4064,7 +4099,7 @@
       "id": "act8_ch5_hulk_finale",
       "speakerId": "narrator_hulk",
       "side": "CENTER_NARRATOR",
-      "text": "THAT'S A WRAP ON ALL FIVE ACTS (2015–2026), BROTHER! 48 CHAPTERS OF 100% FACT-CHECKED, EQUAL-OPPORTUNITY BIPARTISAN SATIRE—THANK YOU FOR PLAYING COMMANDER AMERICA RPG!",
+      "text": "THAT'S A WRAP ON ALL FIVE ACTS (2015\u20132026), BROTHER! 48 CHAPTERS OF 100% FACT-CHECKED, EQUAL-OPPORTUNITY BIPARTISAN SATIRE\u2014THANK YOU FOR PLAYING COMMANDER AMERICA RPG!",
       "setFlagOnEnter": "game_completed"
     }
   ]

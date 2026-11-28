@@ -23,7 +23,8 @@
           "hp": 157,
           "attack": 315
         }
-      ]
+      ],
+      "environmentId": "golden_atrium"
     },
     {
       "id": "act1_ch2_debate_battle",
@@ -53,7 +54,8 @@
           "hp": 225,
           "attack": 262
         }
-      ]
+      ],
+      "environmentId": "debate_stage"
     },
     {
       "id": "act1_track_a_barry_battle",
@@ -77,7 +79,8 @@
           "hp": 171,
           "attack": 247
         }
-      ]
+      ],
+      "environmentId": "debate_stage"
     },
     {
       "id": "act1_track_a_hill_rod_finale",
@@ -107,7 +110,8 @@
           "hp": 179,
           "attack": 243
         }
-      ]
+      ],
+      "environmentId": "debate_stage"
     },
     {
       "id": "act1_track_b_ferns_battle",
@@ -132,7 +136,8 @@
           "hp": 253,
           "attack": 19
         }
-      ]
+      ],
+      "environmentId": "talk_show_set"
     },
     {
       "id": "act1_track_b_commander_finale",
@@ -162,7 +167,8 @@
           "hp": 458,
           "attack": 10
         }
-      ]
+      ],
+      "environmentId": "rally_stage"
     },
     {
       "id": "act2_ch1_inauguration_battle",
@@ -186,7 +192,8 @@
           "hp": 356,
           "attack": 187
         }
-      ]
+      ],
+      "environmentId": "national_mall"
     },
     {
       "id": "act2_media_battle",
@@ -218,7 +225,8 @@
           "hp": 315,
           "attack": 169
         }
-      ]
+      ],
+      "environmentId": "house_chamber"
     },
     {
       "id": "act2_track_a_sharpie_battle",
@@ -243,7 +251,8 @@
           "hp": 613,
           "attack": 229
         }
-      ]
+      ],
+      "environmentId": "supply_gym"
     },
     {
       "id": "act2_track_b_spicer_salsa_battle",
@@ -268,7 +277,8 @@
           "hp": 1481,
           "attack": 44
         }
-      ]
+      ],
+      "environmentId": "national_mall"
     },
     {
       "id": "act2_track_b_kash_battle",
@@ -293,7 +303,8 @@
           "hp": 1339,
           "attack": 38
         }
-      ]
+      ],
+      "environmentId": "secure_vault"
     },
     {
       "id": "act2_track_b_rudy_finale",
@@ -324,7 +335,8 @@
           "hp": 912,
           "attack": 29
         }
-      ]
+      ],
+      "environmentId": "landscaping_lot"
     },
     {
       "id": "act3_track_a_stairs_bike_battle",
@@ -350,7 +362,8 @@
           "hp": 1030,
           "attack": 209
         }
-      ]
+      ],
+      "environmentId": "airport_tarmac"
     },
     {
       "id": "act3_track_a_chandelier_battle",
@@ -377,7 +390,8 @@
           "hp": 1034,
           "attack": 200
         }
-      ]
+      ],
+      "environmentId": "gilded_storage"
     },
     {
       "id": "act3_track_a_biden_ice_cream_finale",
@@ -410,7 +424,8 @@
           "hp": 561,
           "attack": 146
         }
-      ]
+      ],
+      "environmentId": "ice_cream_parlor"
     },
     {
       "id": "act3_track_b_corn_pop_battle",
@@ -436,7 +451,8 @@
           "hp": 2766,
           "attack": 66
         }
-      ]
+      ],
+      "environmentId": "beach_trail"
     },
     {
       "id": "act3_track_b_foghorn_battle",
@@ -462,7 +478,8 @@
           "hp": 2726,
           "attack": 98
         }
-      ]
+      ],
+      "environmentId": "ice_cream_parlor"
     },
     {
       "id": "act3_track_b_mugshot_finale",
@@ -494,7 +511,8 @@
           "hp": 2087,
           "attack": 61
         }
-      ]
+      ],
+      "environmentId": "booking_room"
     },
     {
       "id": "act4_ch1_fisa_battle",
@@ -520,7 +538,8 @@
           "hp": 1257,
           "attack": 274
         }
-      ]
+      ],
+      "environmentId": "secure_vault"
     },
     {
       "id": "act4_track_a_donut_battle",
@@ -548,7 +567,8 @@
           "hp": 1017,
           "attack": 387
         }
-      ]
+      ],
+      "environmentId": "donut_shop"
     },
     {
       "id": "act4_track_b_venn_critics_battle",
@@ -575,7 +595,8 @@
           "hp": 1791,
           "attack": 86
         }
-      ]
+      ],
+      "environmentId": "coconut_grove"
     },
     {
       "id": "act4_track_b_vance_donut_battle",
@@ -602,7 +623,8 @@
           "hp": 4245,
           "attack": 81
         }
-      ]
+      ],
+      "environmentId": "donut_shop"
     },
     {
       "id": "act4_track_b_concepts_debate_battle",
@@ -629,7 +651,8 @@
           "hp": 3216,
           "attack": 102
         }
-      ]
+      ],
+      "environmentId": "debate_stage"
     },
     {
       "id": "act4_track_b_mcdonalds_finale",
@@ -662,7 +685,8 @@
           "hp": 1701,
           "attack": 91
         }
-      ]
+      ],
+      "environmentId": "drive_thru"
     },
     {
       "id": "act5_track_a_cybertruck_sink_battle",
@@ -690,7 +714,8 @@
           "hp": 1216,
           "attack": 310
         }
-      ]
+      ],
+      "environmentId": "rally_stage"
     },
     {
       "id": "act5_track_a_doge_bureaucrats_battle",
@@ -718,7 +743,8 @@
           "hp": 1049,
           "attack": 292
         }
-      ]
+      ],
+      "environmentId": "convention_floor"
     },
     {
       "id": "act5_track_a_swagger_turkish_battle",
@@ -746,7 +772,8 @@
           "hp": 1117,
           "attack": 237
         }
-      ]
+      ],
+      "environmentId": "airport_lounge"
     },
     {
       "id": "act5_track_a_grand_finale",
@@ -780,7 +807,8 @@
           "hp": 1162,
           "attack": 168
         }
-      ]
+      ],
+      "environmentId": "finale_arena"
     },
     {
       "id": "act5_track_b_landlord_lobby_battle",
@@ -809,7 +837,8 @@
           "hp": 4572,
           "attack": 184
         }
-      ]
+      ],
+      "environmentId": "queens_street"
     },
     {
       "id": "act5_track_b_turkish_auditor_battle",
@@ -838,7 +867,8 @@
           "hp": 5528,
           "attack": 221
         }
-      ]
+      ],
+      "environmentId": "airport_lounge"
     },
     {
       "id": "act5_track_b_musk_starjump_battle",
@@ -867,7 +897,8 @@
           "hp": 4782,
           "attack": 148
         }
-      ]
+      ],
+      "environmentId": "rally_stage"
     },
     {
       "id": "act5_track_b_doge_squad_battle",
@@ -902,7 +933,8 @@
           "hp": 6380,
           "attack": 284
         }
-      ]
+      ],
+      "environmentId": "secure_vault"
     },
     {
       "id": "act5_track_b_grand_finale",
@@ -937,7 +969,8 @@
           "hp": 5084,
           "attack": 113
         }
-      ]
+      ],
+      "environmentId": "finale_arena"
     },
     {
       "id": "act6_ch3_bus_battle",
@@ -965,7 +998,8 @@
           "hp": 1077,
           "attack": 395
         }
-      ]
+      ],
+      "environmentId": "bus_depot"
     },
     {
       "id": "act6_kamala_battle",
@@ -999,7 +1033,8 @@
           "hp": 594,
           "attack": 363
         }
-      ]
+      ],
+      "environmentId": "coconut_grove"
     }
   ]
 }

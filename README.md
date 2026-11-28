@@ -405,8 +405,8 @@ Ten tracks in `app/src/main/assets/audio/music/` (title, rally, combat, inaugura
 ## 8. Battle Sprites & Backdrops
 
 - **Battle sprites** (`app/src/main/assets/game/sprites/sheets/`): **54** animated side-view Aseprite sheets (PNG + JSON): 11 party fighters, 24 enemy families and 19 bosses, at 64 px (bosses at 96 or 128 px), each with `feet`/`hit`/`cast`/`head` slices and `release=`/`impact=` events. Bosses that are recolours of another sheet are listed in [sprites.json](app/src/main/assets/game/sprites/sprites.json). The roster behind them, with the artist's brief per sheet, is [art/sprite_roster.json](art/sprite_roster.json) / [art/SPRITE_BRIEFS.md](art/SPRITE_BRIEFS.md); previews are in [art/sprite-previews/](art/sprite-previews/). The engine's `scripts/sprite_coverage.sh commander-america-rpg` lists what the sprite contract still needs before a release build is allowed.
-- **Battle backdrops** ([environments.json](app/src/main/assets/game/environments/environments.json)): five pixel-art backdrops (`environments/{castle,cave,dungeon,forest,swamp}.png`, 1344x768), each with its painted floor line (`artHorizon`) so fighters stand on the floor. The selfie creator ([selfie_filters.json](app/src/main/assets/game/creation/selfie_filters.json)) offers them as backgrounds.
-- **Story art and portraits**: 96 scene images in `app/src/main/assets/story/` and 38 portraits in `app/src/main/assets/portraits/`.
+- **Battle backdrops** ([environments.json](app/src/main/assets/game/environments/environments.json)): **22** data-driven battle environments (66 PNGs across `.png`, `_p.png`, and `_s.png`, `overlayType: "NONE"`), each with its painted floor line (`artHorizon`) so fighters stand on the floor. The selfie creator ([selfie_filters.json](app/src/main/assets/game/creation/selfie_filters.json)) offers them as backgrounds.
+- **Story art and portraits**: 144 scene images (48 stems across `.jpg`, `_p.jpg`, and `_s.jpg`) in `app/src/main/assets/story/` and 38 portraits in `app/src/main/assets/portraits/`.
 
 ---
 
@@ -451,7 +451,7 @@ commander-america-rpg/
 │       │   │   │   ├── encounters/       # encounters.json (35 story fights)
 │       │   │   │   ├── combat/           # affinity_matrix.json, balance.json, status_catalog.json
 │       │   │   │   ├── sprites/          # sheets/ (54 Aseprite sheets), sprites.json
-│       │   │   │   ├── environments/     # environments.json (5 backdrops)
+│       │   │   │   ├── environments/     # environments.json (22 battle backdrops)
 │       │   │   │   ├── creation/         # selfie_filters.json
 │       │   │   │   ├── translations/     # Story translations (de, es, fr, it, pt)
 │       │   │   │   ├── commands/         # Voice commands, 6 languages (engine-owned)

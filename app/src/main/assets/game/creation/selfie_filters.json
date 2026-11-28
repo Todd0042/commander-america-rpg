@@ -1,27 +1,47 @@
 {
   "_doc": "Commander America selfie portrait settings. Unused while manifest creationMode is preset_select (the red/blue candidate picker replaces character creation); kept themed in case free creation returns.",
   "isEnabled": true,
-  "disclaimerTitle": "⚠️ CAMPAIGN PHOTO RELEASE",
+  "disclaimerTitle": "\u26a0\ufe0f CAMPAIGN PHOTO RELEASE",
   "disclaimerText": "You are about to put your face on the campaign trail.\n\nYour portrait stays on this device and is only used for your candidate card. Step up to the podium when you are ready.",
-  "disclaimerConfirmButton": "STEP UP TO THE PODIUM ➔",
+  "disclaimerConfirmButton": "STEP UP TO THE PODIUM \u2794",
   "disclaimerCancelButton": "CANCEL / KEEP DEFAULT",
-  "sourceDialogTitle": "📸 PORTRAIT CAPTURE",
+  "sourceDialogTitle": "\ud83d\udcf8 PORTRAIT CAPTURE",
   "sourceDialogSubtitle": "Snap a real selfie or select an existing photo to project your likeness into the game.",
-  "filterDialogTitle": "📸 PORTRAIT CALIBRATION",
+  "filterDialogTitle": "\ud83d\udcf8 PORTRAIT CALIBRATION",
   "filterDialogSubtitle": "Campaign Poster Touch-Ups",
-  "filterConfirmButton": "ACCEPT PORTRAIT ✔",
-  "backgroundToggleLabel": "🌲 Realm Environment",
+  "filterConfirmButton": "ACCEPT PORTRAIT \u2714",
+  "backgroundToggleLabel": "\ud83c\udf32 Realm Environment",
   "backgroundToggleDescription": "AI person cutout over realm landscape",
   "availableBackgrounds": [
-    { "id": "forest", "label": "Ancient Forest", "assetPath": "environments/forest.png" },
-    { "id": "castle", "label": "High Keep", "assetPath": "environments/castle.png" },
-    { "id": "cave", "label": "Crystal Cavern", "assetPath": "environments/cave.png" },
-    { "id": "dungeon", "label": "Obsidian Vault", "assetPath": "environments/dungeon.png" },
-    { "id": "swamp", "label": "Rotting Fens", "assetPath": "environments/swamp.png" }
+    {
+      "id": "debate_stage",
+      "label": "Debate Stage",
+      "assetPath": "environments/debate_stage.png"
+    },
+    {
+      "id": "national_mall",
+      "label": "National Mall",
+      "assetPath": "environments/national_mall.png"
+    },
+    {
+      "id": "golden_atrium",
+      "label": "Golden Atrium",
+      "assetPath": "environments/golden_atrium.png"
+    },
+    {
+      "id": "rally_stage",
+      "label": "Rally Stage",
+      "assetPath": "environments/rally_stage.png"
+    },
+    {
+      "id": "finale_arena",
+      "label": "Finale Arena",
+      "assetPath": "environments/finale_arena.png"
+    }
   ],
   "eyeEffect": {
     "enabledByDefault": true,
-    "label": "👁️ Astral Fatigue",
+    "label": "\ud83d\udc41\ufe0f Astral Fatigue",
     "description": "Sub-orbital dark shading from arcane exhaustion",
     "darkCenterColorHex": "#872D192A",
     "radiusFactor": 0.28,
@@ -29,18 +49,34 @@
   },
   "colorGrade": {
     "enabledByDefault": true,
-    "label": "🌙 Ethereal Tint",
+    "label": "\ud83c\udf19 Ethereal Tint",
     "description": "Atmospheric cyan-indigo realm grading",
     "colorMatrix": [
-      0.92, 0.00, 0.00, 0.0, -5.0,
-      0.00, 1.05, 0.00, 0.0, 8.0,
-      0.00, 0.00, 1.08, 0.0, 12.0,
-      0.00, 0.00, 0.00, 1.0, 0.0
+      0.92,
+      0.0,
+      0.0,
+      0.0,
+      -5.0,
+      0.0,
+      1.05,
+      0.0,
+      0.0,
+      8.0,
+      0.0,
+      0.0,
+      1.08,
+      0.0,
+      12.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0
     ]
   },
   "scanlines": {
     "enabledByDefault": true,
-    "label": "📜 Archive Grain",
+    "label": "\ud83d\udcdc Archive Grain",
     "description": "Subtle archaic scanlines",
     "lineAlpha": 32,
     "lineSpacing": 3.8,

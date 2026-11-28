@@ -1,85 +1,311 @@
 {
-  "_doc": "Battle environments catalog for the template engine. Defines visual assets, lore metadata, ambient lighting colors, and alias fallbacks for drop-in game environments.",
+  "_doc": "Battle environments catalog for commander-america-rpg. Generated from BATTLE_BACKGROUND_PROMPTS.md.",
   "environments": [
     {
-      "id": "castle",
-      "displayName": "The Training Grounds",
-      "icon": "🏰",
-      "loreLocation": "Grand Courtyard",
-      "subtitle": "Stone battlements, banners in the wind, training targets & banneret shields",
-      "ambientThemeColor": "#2196F3",
-      "backgroundAsset": "environments/castle.png",
+      "id": "golden_atrium",
+      "displayName": "Gold Escalator Atrium, Manhattan",
+      "icon": "\ud83c\udfd9\ufe0f",
+      "loreLocation": "Gold Escalator Atrium, Manhattan",
+      "subtitle": "A gleaming Manhattan tower atrium: a grand brass-gold escalator descending along the back, pink-and-gold...",
+      "ambientThemeColor": "#FFC107",
+      "backgroundAsset": "environments/golden_atrium.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "debate_stage",
+      "displayName": "Primary Debate Stage",
+      "icon": "\ud83c\udf99\ufe0f",
+      "loreLocation": "Primary Debate Stage",
+      "subtitle": "A televised presidential debate stage: a row of empty podiums across the back under hot spotlights, a...",
+      "ambientThemeColor": "#D32F2F",
+      "backgroundAsset": "environments/debate_stage.png",
       "aliases": [
-        "courtyard",
+        "castle",
         "CASTLE",
-        "training_grounds"
+        "DEBATE_STAGE"
       ],
-      "overlayType": "CASTLE",
-      "artHorizon": 0.6
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
     },
     {
-      "id": "cave",
-      "displayName": "The Crystal Cavern",
-      "icon": "💎",
-      "loreLocation": "Deep Chasm",
-      "subtitle": "Bioluminescent crystal clusters, echoing stalactites & subterranean mist",
-      "ambientThemeColor": "#78909C",
-      "backgroundAsset": "environments/cave.png",
-      "aliases": [
-        "cavern",
-        "CAVE",
-        "crystal_cavern"
-      ],
-      "overlayType": "CAVE",
-      "artHorizon": 0.55
-    },
-    {
-      "id": "dungeon",
-      "displayName": "The Echo Hall",
-      "icon": "🗝️",
-      "loreLocation": "Subterranean Vaults",
-      "subtitle": "Carved stone columns, iron braziers, runic inscriptions & ancient arches",
-      "ambientThemeColor": "#FF9800",
-      "backgroundAsset": "environments/dungeon.png",
-      "aliases": [
-        "vaults",
-        "DUNGEON",
-        "echo_hall"
-      ],
-      "overlayType": "DUNGEON",
-      "artHorizon": 0.66
-    },
-    {
-      "id": "forest",
-      "displayName": "The Whispering Woods",
-      "icon": "🌲",
-      "loreLocation": "Verdant Canopy",
-      "subtitle": "Towering oaks, drifting spores, sunbeams through leaves & mossy roots",
-      "ambientThemeColor": "#4CAF50",
-      "backgroundAsset": "environments/forest.png",
-      "aliases": [
-        "woods",
-        "FOREST",
-        "whispering_woods"
-      ],
-      "overlayType": "FOREST",
-      "artHorizon": 0.57
-    },
-    {
-      "id": "swamp",
-      "displayName": "The Sunken Hollow",
-      "icon": "🌿",
-      "loreLocation": "Marshlands",
-      "subtitle": "Murky waters, will-o'-the-wisps, weeping cypress & clinging fog",
+      "id": "talk_show_set",
+      "displayName": "Two-Fern Web Talk Show Set",
+      "icon": "\ud83c\udf3f",
+      "loreLocation": "Two-Fern Web Talk Show Set",
+      "subtitle": "A deliberately cheap web talk-show set: two tired chairs in front of a black curtain, a potted fern on...",
       "ambientThemeColor": "#8D6E63",
-      "backgroundAsset": "environments/swamp.png",
+      "backgroundAsset": "environments/talk_show_set.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "rally_stage",
+      "displayName": "Outdoor Rally Stage, Fairgrounds",
+      "icon": "\ud83d\udce3",
+      "loreLocation": "Outdoor Rally Stage, Fairgrounds",
+      "subtitle": "An outdoor campaign rally stage at a fairground: a raised stage along the back with a podium and...",
+      "ambientThemeColor": "#E53935",
+      "backgroundAsset": "environments/rally_stage.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "national_mall",
+      "displayName": "The National Mall & White House Hedges",
+      "icon": "\ud83c\udfdb\ufe0f",
+      "loreLocation": "The National Mall & White House Hedges",
+      "subtitle": "The National Mall in January: a white domed capitol far away at the back, bare trees, a long reflecting...",
+      "ambientThemeColor": "#1976D2",
+      "backgroundAsset": "environments/national_mall.png",
       "aliases": [
-        "marsh",
-        "SWAMP",
-        "sunken_hollow"
+        "forest",
+        "FOREST",
+        "NATIONAL_MALL"
       ],
-      "overlayType": "SWAMP",
-      "artHorizon": 0.72
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "house_chamber",
+      "displayName": "House Chamber",
+      "icon": "\u2696\ufe0f",
+      "loreLocation": "House Chamber",
+      "subtitle": "A grand legislative chamber: the tiered marble rostrum with a gavel and a large blank seal shape across...",
+      "ambientThemeColor": "#5D4037",
+      "backgroundAsset": "environments/house_chamber.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "supply_gym",
+      "displayName": "Hurricane Relief Gym",
+      "icon": "\ud83c\udfc0",
+      "loreLocation": "Hurricane Relief Gym",
+      "subtitle": "A school gym turned hurricane relief supply centre: pallets of paper towel rolls and water cases along the...",
+      "ambientThemeColor": "#0288D1",
+      "backgroundAsset": "environments/supply_gym.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "secure_vault",
+      "displayName": "The Secure Vault",
+      "icon": "\ud83d\udd12",
+      "loreLocation": "SCIF / Records",
+      "subtitle": "A sealed government secure room and records vault: a massive round vault door open along the back, walls...",
+      "ambientThemeColor": "#455A64",
+      "backgroundAsset": "environments/secure_vault.png",
+      "aliases": [
+        "dungeon",
+        "DUNGEON",
+        "SECURE_VAULT"
+      ],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "landscaping_lot",
+      "displayName": "Total Landscaping Parking Lot, Philadelphia",
+      "icon": "\ud83d\ude9c",
+      "loreLocation": "Total Landscaping Parking Lot, Philadelphia",
+      "subtitle": "A small industrial strip in Philadelphia: a modest garage door of a landscaping business along the back...",
+      "ambientThemeColor": "#689F38",
+      "backgroundAsset": "environments/landscaping_lot.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "airport_tarmac",
+      "displayName": "Airport Tarmac & Air Stairs",
+      "icon": "\u2708\ufe0f",
+      "loreLocation": "Airport Tarmac & Air Stairs",
+      "subtitle": "An airport tarmac on a windy day: a large blue-and-white presidential-style jet along the back with a tall...",
+      "ambientThemeColor": "#90A4AE",
+      "backgroundAsset": "environments/airport_tarmac.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "beach_trail",
+      "displayName": "Beach Bike Trail & Community Pool",
+      "icon": "\ud83d\udeb2",
+      "loreLocation": "Beach Bike Trail & Community Pool",
+      "subtitle": "A beach-town bike trail beside a community swimming pool: a chain-link pool fence with a lifeguard chair...",
+      "ambientThemeColor": "#4DB6AC",
+      "backgroundAsset": "environments/beach_trail.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "gilded_storage",
+      "displayName": "Gilded Resort Ballroom & Box Storage",
+      "icon": "\ud83d\udce6",
+      "loreLocation": "Gilded Resort Ballroom & Box Storage",
+      "subtitle": "A gilded resort's over-the-top ballroom-bathroom: crystal chandeliers, gold mirrors and marble, with...",
+      "ambientThemeColor": "#FFD54F",
+      "backgroundAsset": "environments/gilded_storage.png",
+      "aliases": [
+        "cave",
+        "CAVE",
+        "GILDED_STORAGE"
+      ],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "booking_room",
+      "displayName": "County Jail Booking Room",
+      "icon": "\ud83d\udcf8",
+      "loreLocation": "County Jail Booking Room",
+      "subtitle": "A county jail booking room: a height-chart wall with plain lines (no numbers) and a camera on a tripod...",
+      "ambientThemeColor": "#546E7A",
+      "backgroundAsset": "environments/booking_room.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "ice_cream_parlor",
+      "displayName": "Ice-Cream Parlor Counter, Portland",
+      "icon": "\ud83c\udf66",
+      "loreLocation": "Ice-Cream Parlor Counter, Portland",
+      "subtitle": "A bright ice-cream parlor: a long glass freezer counter of colourful tubs along the back, a waffle-cone...",
+      "ambientThemeColor": "#EC407A",
+      "backgroundAsset": "environments/ice_cream_parlor.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "donut_shop",
+      "displayName": "Small-Town Donut Shop, Georgia",
+      "icon": "\ud83c\udf69",
+      "loreLocation": "Small-Town Donut Shop, Georgia",
+      "subtitle": "A small-town donut shop: a glass display case of sprinkle donuts along the back, a coffee pot, a register,...",
+      "ambientThemeColor": "#FF7043",
+      "backgroundAsset": "environments/donut_shop.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "coconut_grove",
+      "displayName": "The Coconut Grove",
+      "icon": "\ud83e\udd65",
+      "loreLocation": "Venn Mirage",
+      "subtitle": "A surreal tropical coconut grove: tall palms with coconuts along the back, three giant translucent...",
+      "ambientThemeColor": "#43A047",
+      "backgroundAsset": "environments/coconut_grove.png",
+      "aliases": [
+        "swamp",
+        "SWAMP",
+        "COCONUT_GROVE"
+      ],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "drive_thru",
+      "displayName": "Fast-Food Drive-Thru & Garbage Truck",
+      "icon": "\ud83c\udf5f",
+      "loreLocation": "Fast-Food Drive-Thru & Garbage Truck",
+      "subtitle": "A fast-food drive-thru: the service window and fry station glowing along the back, golden fry baskets, a...",
+      "ambientThemeColor": "#FB8C00",
+      "backgroundAsset": "environments/drive_thru.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "convention_floor",
+      "displayName": "National Convention Floor",
+      "icon": "\ud83c\udf88",
+      "loreLocation": "National Convention Floor",
+      "subtitle": "A national party convention floor: a huge stage along the back with giant video screens, balloon nets in...",
+      "ambientThemeColor": "#C62828",
+      "backgroundAsset": "environments/convention_floor.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "airport_lounge",
+      "displayName": "Luxury Airline Lounge & Mansion Kitchen",
+      "icon": "\ud83d\udecb\ufe0f",
+      "loreLocation": "Luxury Airline Lounge & Mansion Kitchen",
+      "subtitle": "A luxury airline business lounge: lie-flat seat pods along the back, a buffet with a plate of sea bass,...",
+      "ambientThemeColor": "#00838F",
+      "backgroundAsset": "environments/airport_lounge.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "queens_street",
+      "displayName": "Queens Street, Food Truck & Bus Stop",
+      "icon": "\ud83d\ude90",
+      "loreLocation": "Queens Street, Food Truck & Bus Stop",
+      "subtitle": "A Queens, New York street: a colourful chapati food truck with its window open along the back, a bus...",
+      "ambientThemeColor": "#F9A825",
+      "backgroundAsset": "environments/queens_street.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "bus_depot",
+      "displayName": "Electric School Bus Depot",
+      "icon": "\ud83d\ude8c",
+      "loreLocation": "Electric School Bus Depot",
+      "subtitle": "An electric school bus depot: a row of yellow school buses plugged into charging posts along the back,...",
+      "ambientThemeColor": "#FDD835",
+      "backgroundAsset": "environments/bus_depot.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
+    },
+    {
+      "id": "finale_arena",
+      "displayName": "The Bipartisan Grand Finale Stage",
+      "icon": "\ud83c\udf86",
+      "loreLocation": "The Bipartisan Grand Finale Stage",
+      "subtitle": "The grand finale stage: a huge golden stage along the back with red and blue curtains swept open, golden...",
+      "ambientThemeColor": "#FFD700",
+      "backgroundAsset": "environments/finale_arena.png",
+      "aliases": [],
+      "overlayType": "NONE",
+      "artHorizon": 0.55,
+      "artHorizonPortrait": 0.55
     }
   ]
 }
